@@ -1,23 +1,22 @@
----
-layout: page
-title: About Us
----
+#About Us
+
+AddressBook - Level 3 was developed by the se-edu team. Our team was tasked to build on top of this project to morph 
+it to something new! We chose to build a internship hunting application, InternHunter,
+to help university students like us!
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
-
 ## Project team
 
-### John Doe
+### Keane Chan Jun Yu
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/keanecjy.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/keanecjy)]
+[[portfolio](team/keanecjy.md)]
 
-* Role: Project Advisor
+* Role: Developer
+* Responsibilities: Logic
 
 ### Jane Doe
 
