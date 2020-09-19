@@ -18,14 +18,14 @@ We are a team based in the [School of Computing, National University of Singapor
 * Role: Developer
 * Responsibilities: Logic
 
-### Jane Doe
+### Sean Lum
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/seanjyjy.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/seanjyjy)]
+[[portfolio](team/seanjyjy.md)]
 
-* Role: Team Lead
+* Role: Developer
 * Responsibilities: UI
 
 ### Johnny Doe
