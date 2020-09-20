@@ -11,7 +11,7 @@ It tracks and leverages on key metrics and information to create an optimal inte
 
 ## Summary of contributions
 
-* New Feature: 
+* New Feature:
 
 * New Feature:
 
@@ -36,5 +36,4 @@ It tracks and leverages on key metrics and information to create an optimal inte
 
 ## Contributions to the User Guide
 
-    
 ## Contributions to the Developer Guide

@@ -1,6 +1,6 @@
 # About Us
 
-AddressBook - Level 3 was developed by the se-edu team. Our team was tasked to build on top of this project to morph 
+AddressBook - Level 3 was developed by the se-edu team. Our team was tasked to build on top of this project to morph
 it to something new! We chose to build a internship hunting application, InternHunter,
 to help university students like us!
 
@@ -28,14 +28,14 @@ We are a team based in the [School of Computing, National University of Singapor
 * Role: Developer
 * Responsibilities: UI
 
-### Gan Wan Cheng Isaac 
+### Gan Wan Cheng Isaac
 
 <img src="images/orzymandias.png" width="200px">
 
 [[github](http://github.com/orzymandias)] [[portfolio](team/orzymandias.md)]
 
 * Role: Team lead
-* Responsibilities: Commons 
+* Responsibilities: Commons
 
 ### Jean Doe
 
