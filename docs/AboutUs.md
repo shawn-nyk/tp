@@ -28,14 +28,14 @@ We are a team based in the [School of Computing, National University of Singapor
 * Role: Developer
 * Responsibilities: UI
 
-### Johnny Doe
+### Gan Wan Cheng Isaac 
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/orzymandias.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/orzymandias)] [[portfolio](team/orzymandias.md)]
 
-* Role: Developer
-* Responsibilities: Data
+* Role: Team lead
+* Responsibilities: Commons 
 
 ### Jean Doe
 
