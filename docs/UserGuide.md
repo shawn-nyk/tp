@@ -46,13 +46,13 @@ Edits an internship.
 Format:  `edit -int INDEX [n/COMPANY_NAME] [j/JOB_NAME] [i/INDUSTRY] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE] 
 [r/REQUIREMENT]...` - `INDEX` is the index of the internship application in the list of internship applications.
 
-_Note that DATE can only be added if there is a STATUS in the input._
+_Note: `DATE` can only be added if there is a `STATUS` in the input._
 
 Examples:
 - `edit -int 7 r/Java r/FXML w/2000`
 - `edit -int 4 s/interview d/22-09-20`
 
-##### More about internships…
+**More about internships...**
 
 Each job has its own status. On initial adding of internship, the status of the internship application is applied by
 default. Each status will be tagged to a date. If a date is not specified, InternHunter will assign today’s date to it.
