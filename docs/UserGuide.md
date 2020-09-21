@@ -11,7 +11,7 @@ title: User Guide
 
 #### Adding an internship application: `add-int`
 
-Applies for an internship. This internship will be automatically added to the list of jobs in the company 
+Applies for an internship. This internship will be automatically added to the list of jobs in the company
 (if company has already been created). Otherwise, it creates the company and adds this job into it.
 
 Format: `add -int n/COMPANY_NAME j/JOB_NAME [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
