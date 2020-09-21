@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Keane Chan Jun Yu - Project Portfolio
+title: Fidella Widjojo - Project Portfolio
 ---
 
 ## Project: InternHunter
@@ -23,20 +23,21 @@ It tracks and leverages on key metrics and information to create an optimal inte
 ## Other contributions
 
 * **Project management**:
+ * Setup the team organization and repository.
 
 * **Enhancements to existing features**:
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): 
-  * Contributed to forum discussions: [#236](https://github.com/nus-cs2103-AY2021S1/forum/issues/236), 
-  * Questions on forum: [#173](https://github.com/nus-cs2103-AY2021S1/forum/issues/173)
+  * Contributed to forum discussions: 
+  * Questions on forum:
   * Reported bugs and suggestions for other teams in the class:
   * Some parts of the history feature I added was adopted by several other class mates:
 
 * **Tools**:
+  * Integrated a new Github plugin (CircleCI) to the team repo
 
 ## Contributions to the User Guide
     
 ## Contributions to the Developer Guide
 
-   
