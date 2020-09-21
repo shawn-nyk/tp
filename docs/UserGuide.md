@@ -58,15 +58,6 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 </div>
 
-### Viewing help : `help`
-
-Shows a message explaning how to access the help page.
-
-![help message](images/helpMessage.png)
-
-Format: `help`
-
-
 ### Adding a person: `add`
 
 Adds a person to the address book.
@@ -142,8 +133,26 @@ Clears all entries from the address book.
 
 Format: `clear`
 
-### Exiting the program : `exit`
+### Switching Tabs : `switch`
 
+Switches between tabs.
+
+Format: `switch -TYPE`
+
+There are three types:
+* `com`
+* `int`
+* `me`
+
+Example: 
+* `switch -me`
+
+### Viewing Help: `help`
+Displays a link to the InternHunter user guide.
+
+Format: `help`
+
+### Exiting the Program: `exit`
 Exits the program.
 
 Format: `exit`
@@ -167,12 +176,20 @@ _{explain the feature here}_
 
 ## Command summary
 
-Action | Format, Examples
---------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List** | `list`
-**Help** | `help`
+Type| Action | Format
+----|-------|------------------
+**Company** | **Add** | `add -com n/COMPANY_NAME i/INDUSTRY j/JOBS`
+&nbsp; | **Delete** | `delete -com INDEX`
+&nbsp; | **Edit** | `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY] [j/JOBS]`
+&nbsp; | **View** | `view -com INDEX`
+**Internship** | **Add** | `add -int n/COMPANY_NAME j/JOB_NAME  [i/INDUSTRY] [r/REQUIREMENT] [p/PERIOD] [w/WAGE]` <br/> `add -int  n/COMPANY_NAME INDEX`
+&nbsp; | **Delete** | `delete -int INDEX`
+&nbsp; | **Edit** | `edit -int INDEX [n/COMPANY_NAME] [j/JOB_NAME] [i/INDUSTRY] [r/REQUIREMENT] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE]`
+&nbsp; | **View** | `view -int INDEX`
+**Profile** | **Add** | `add -me  c/CAT d/DESCRIPTORS`
+&nbsp; | **Delete** | `delete -me INDEX`
+&nbsp; | **Edit** | `edit -me INDEX c/CAT d/DESCRIPTORS`
+&nbsp; | **View** | `view -me INDEX`
+**General** | **Switch** | `switch -TYPE`
+&nbsp; | **Help** | `help`
+&nbsp; | **Exit** | `exit`
