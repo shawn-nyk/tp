@@ -52,7 +52,7 @@ Format:  `edit -int INDEX [n/COMPANY_NAME] [j/JOB_NAME] [i/INDUSTRY] [p/PERIOD] 
 
 <div markdown="span" class="alert alert-info">
  
-:information_source: **Note:** `DATE` can only be added if there is a `STATUS` in the input._
+:information_source: **Note:** `DATE` can only be added if there is a `STATUS` in the input.
  
 </div>
 
