@@ -27,7 +27,11 @@ name and job name only.
 
 Format: `add -int n/COMPANY_NAME INDEX` - `INDEX` refers to position of internship in the company
 
-_Note: `view -com INDEX` (to view a company's profile, including its list of jobs)_
+<div markdown="span" class="alert alert-primary">
+
+:bulb: **Tip:** `view -com INDEX` (to view a company's profile, including its list of jobs)
+
+</div>
 
 #### Deleting an internship application: `delete -int`
 
@@ -46,7 +50,11 @@ Edits an internship.
 Format:  `edit -int INDEX [n/COMPANY_NAME] [j/JOB_NAME] [i/INDUSTRY] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE] 
 [r/REQUIREMENT]...` - `INDEX` is the index of the internship application in the list of internship applications.
 
-_Note: `DATE` can only be added if there is a `STATUS` in the input._
+<div markdown="span" class="alert alert-info">
+ 
+:information_source: **Note:** `DATE` can only be added if there is a `STATUS` in the input._
+ 
+</div>
 
 Examples:
 - `edit -int 7 r/Java r/FXML w/2000`
