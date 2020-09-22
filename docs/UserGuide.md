@@ -10,26 +10,26 @@ title: User Guide
 ## Table Of Contents
 
 [1. Introduction](#introduction) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[1.1. What our app manages](#what-our-app-manages) <br />
+  [1.1. What our app manages](#what-our-app-manages) <br />
 [2. Quick start](#quick-start) <br />
 [3. Features](#features) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.1. Company Profile](#company-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.1. Adding a company profile: `add -com`](#Adding-a-company-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.2. Deleting a company profile: `delete -com`](#Deleting-a-company-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.3. Editing a company profile: `edit -com`](#Editing-a-company-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.4. Viewing a company profile: `view -com`](#Viewing-a-company-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.2. Internship Application](#internship-application) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1. Adding an internship application: `add -int`](#Adding-an-internship-application) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.2. Deleting an internship application: `delete -int`](#Deleting-an-internship-application) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.3. Editing an internship application: `edit -int`](#Editing-an-internship-application) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.4. Viewing an internship application: `view -int`](#Viewing-an-internship-application) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3. User Profile](#user-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1. Adding skills and achievement: `add -me`](#Adding-skills-and-achievement) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2. Deleting skills and achievement: `delete -me`](#Deleting-skills-and-achievement) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3. Editing skills and achievement: `view -me`](#Editing-skills-and-achievement) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4. Switching Tabs](#switching-tabs) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5. Viewing Help](#viewing-help) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.6. Exiting the program](#exiting-the-program) <br />
+  [3.1. Company Profile](#company-profile) <br />
+    [3.1.1. Adding a company profile: `add -com`](#Adding-a-company-profile) <br />
+    [3.1.2. Deleting a company profile: `delete -com`](#Deleting-a-company-profile) <br />
+    [3.1.3. Editing a company profile: `edit -com`](#Editing-a-company-profile) <br />
+    [3.1.4. Viewing a company profile: `view -com`](#Viewing-a-company-profile) <br />
+    [3.2. Internship Application](#internship-application) <br />
+    [3.2.1. Adding an internship application: `add -int`](#Adding-an-internship-application) <br />
+    [3.2.2. Deleting an internship application: `delete -int`](#Deleting-an-internship-application) <br />
+    [3.2.3. Editing an internship application: `edit -int`](#Editing-an-internship-application) <br />
+    [3.2.4. Viewing an internship application: `view -int`](#Viewing-an-internship-application) <br />
+    [3.3. User Profile](#user-profile) <br />
+    [3.3.1. Adding skills and achievement: `add -me`](#Adding-skills-and-achievement) <br />
+    [3.3.2. Deleting skills and achievement: `delete -me`](#Deleting-skills-and-achievement) <br />
+    [3.3.3. Editing skills and achievement: `view -me`](#Editing-skills-and-achievement) <br />
+    [3.4. Switching Tabs](#switching-tabs-switch) <br />
+    [3.5. Viewing Help](#viewing-help--help) <br />
+    [3.6. Exiting the program](#exiting-the-program) <br />
 [4. Command Summary](#command-summary) <br />
 
 ---
@@ -61,6 +61,21 @@ Profile | me | category, descriptors
 1. Refer to the [Features](#features) below for details of each command.
 --------------------------------------------------------------------------------------------------------------------
 
+**:information_source: Notes about the command format:**<br>
+
+* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+  e.g. in `add -com n/COMPANY_NAME i/INDUSTRY j/JOBS`, `COMPANY_NAME, INDUSTRY, JOBS` are parameters which can be used as `add -com n/Garena i/Gaming j/Game developer`.
+
+* Items in square brackets are optional.<br>
+  e.g `add -int n/COMPANY_NAME j/JOB_NAME  [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` can be used as <br/> `add -int n/Google j/Software Engineer i/Software
+`.
+
+* Items with `…`​ after them can be used multiple times including zero times.<br>
+  e.g. `[r/REQUIREMENT]...​` can be used as `r/Rust`, `r/React native r/JavaScript` etc.
+
+* Parameters can be in any order.<br>
+  e.g. if the command specifies `i/INDUSTRY r/REQUIREMENT`, `r/REQUIREMENT i/INDUSTRY` is also acceptable.
+
 ## Features
 
 ### Internship Application
@@ -83,11 +98,7 @@ name and job name only.
 
 Format: `add -int n/COMPANY_NAME INDEX` - `INDEX` refers to position of internship in the company
 
-<div markdown="span" class="alert alert-primary">
-
 :bulb: **Tip:** `view -com INDEX` (to view a company's profile, including its list of jobs)
-
-</div>
 
 #### Deleting an internship application: `delete -int`
 
@@ -106,11 +117,7 @@ Edits an internship.
 Format:  `edit -int INDEX [n/COMPANY_NAME] [j/JOB_NAME] [i/INDUSTRY] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE] 
 [r/REQUIREMENT]...` - `INDEX` is the index of the internship application in the list of internship applications.
 
-<div markdown="span" class="alert alert-info">
- 
 :information_source: **Note:** `DATE` can only be added if there is a `STATUS` in the input.
- 
-</div>
 
 Examples:
 - `edit -int 7 r/Java r/FXML w/2000`
@@ -126,6 +133,7 @@ Accepted statuses:
 - Interview
 - Waiting
 - Rejected
+- Offered
 - Accepted
 
 Accepted date formats:
@@ -146,28 +154,8 @@ applications
 Examples:
 - `view -int 3`
 
-### Switching Tabs : `switch`
+### Switching Tabs: `switch`
 
---------------------------------------------------------------------------------------------------------------------
-
-**:information_source: Notes about the command format:**<br>
-
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add -com n/COMPANY_NAME i/INDUSTRY j/JOBS`, `COMPANY_NAME, INDUSTRY, JOBS` are parameters which can be used as `add -com n/Garena i/Gaming j/Game developer`.
-
-* Items in square brackets are optional.<br>
-  e.g `add -int n/COMPANY_NAME j/JOB_NAME  [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` can be used as <br/> `add -int n/Google j/Software Engineer i/Software
-`.
-
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[r/REQUIREMENT]...​` can be used as `r/Rust`, `r/React native r/JavaScript` etc.
-
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `i/INDUSTRY r/REQUIREMENT`, `r/REQUIREMENT i/INDUSTRY` is also acceptable.
-
-</div>
-
-#### Switching Tabs : `switch`
 Switches between tabs.
 
 Format: `switch -TYPE`
@@ -180,12 +168,12 @@ There are three types:
 Example: 
 * `switch -me`
 
-#### Viewing Help : `help`
+### Viewing Help: `help`
 Displays a link to the InternHunter user guide.
 
 Format: `help`
 
-#### Exiting the Program : `exit`
+### Exiting the Program: `exit`
 Exits the program.
 
 Format: `exit`
