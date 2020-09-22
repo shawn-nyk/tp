@@ -262,30 +262,59 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `InternHunter` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Add a company profile**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User requests to add a company profile and provides company details. 
+2. InternHunter adds the company profile.
+    
+    Use case ends.
+
+**Extensions**
+
+* 1a. InternHunter detects an error in the input format.
+    		
+    * 1a1. InternHunter displays an error message and informs the user of the valid input format.
+    
+        Use case resumes at step 1.
+    		
+**Use case: Delete a company profile**
+
+**MSS**
+
+1. User requests to delete a company profile.
+2. InternHunter removes the company profile from the list.
+    
+    Use case ends.
+    
+**Extensions**
+* 1a. InternHunter detects that the index entered is out of bounds.
+    		
+    * 1a1. InternHunter displays an error message and informs the user of the valid input format.
+
+        Use case resumes at step 1.
+
+
+**Use case: View a company profile**
+
+**MSS**
+
+1. User requests to view a company profile.
+2. InternHunter displays the company profile.
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. InternHunter detects that the index entered is out of bounds.
+    		
+    * 1a1. InternHunter displays an error message and informs the user of the valid input format.
+        
+        Use case resumes at step 1.
 
-  Use case ends.
-
-* 3a. The given index is invalid.
-
-    * 3a1. AddressBook shows an error message.
-
-      Use case resumes at step 2.
 
 *{More to be added}*
 
