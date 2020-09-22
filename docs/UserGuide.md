@@ -46,7 +46,7 @@ Data type | Alias | Attributes
 ----------|-------|-----------
 Company | com | company name, industry, jobs
 Internship | int | company name, job name, industry, requirements, period , wage, status
-Profile | me | type, descriptors
+Profile | me | category, descriptors
 
 ## Quick start
 
