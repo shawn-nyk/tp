@@ -24,9 +24,10 @@ title: User Guide
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.3. Editing an internship application: `edit -int`](#Editing-an-internship-application) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.4. Viewing an internship application: `view -int`](#Viewing-an-internship-application) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3. User Profile](#user-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1. Adding skills and achievement: `add -me`](#Adding-skills-and-achievement) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2. Deleting skills and achievement: `delete -me`](#Deleting-skills-and-achievement) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3. Editing skills and achievement: `view -me`](#Editing-skills-and-achievement) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1. Adding to user profile: `add -me`](#adding-to-user-profile-add--me) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2. Deleting from user profile: `delete -me`](#deleting-from-user-profile-delete--me) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3. Editing user profile: `view -me`](#editing-user-profile-edit--me) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4. Viewing item in user profile: `view -int`](#viewing-item-in-user-profile-view--me) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4. Switching Tabs](#switching-tabs) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[3.5. Viewing Help](#viewing-help) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[3.6. Exiting the program](#exiting-the-program) <br />
@@ -78,6 +79,61 @@ Profile | me | category, descriptors
   e.g. if the command specifies `i/INDUSTRY r/REQUIREMENT`, `r/REQUIREMENT i/INDUSTRY` is also acceptable.
 
 </div>
+
+## Features
+
+### User Profile
+
+#### Adding to user profile: `add -me`
+
+Adds experience, skills or achievements descriptors to your user profile.
+
+Format: `add -me  c/CATEGORY d/DESCRIPTORS`
+
+* Category specifies a category which can be either experience, skills or achievement.
+
+Examples:
+* `add -me c/achievement d/special recognition in Hack n Roll!`
+* `add -me c/experience d/Internship at Govtech`
+* `add -me c/skill d/HTML`
+
+#### Deleting from user profile: `delete -me`
+
+Deletes experience, skills and achievements descriptors from your user profile.
+
+Format: `delete -me INDEX`
+
+* INDEX refers to the index of the item in the displayed list of items.
+* INDEX follows a one based indexing.
+
+Example:
+* `delete -me 2`
+
+#### Editing user profile: `edit -me`
+
+Edit the experience, skills or achievements descriptors of your user profile.
+
+Format: `edit -me INDEX [c/CATEGORY] [d/DESCRIPTORS] `
+
+* At least one of the optional fields must be provided.
+* INDEX refers to the index of the item in the displayed list of items.
+* INDEX follows a one based indexing.
+
+Example:
+* `edit -me 2 c/skill d/CSS`
+* `edit -me 4 c/achievement`
+
+#### Viewing item in user profile: `view -me`
+
+Selects an item in the user profile to show in detail.
+
+Format: `view -me INDEX`
+
+* INDEX refers to the index of the item in the displayed list of items.
+* INDEX follows a one based indexing.
+
+Example:
+* `view -me 3`
 
 #### Switching Tabs : `switch`
 Switches between tabs.
