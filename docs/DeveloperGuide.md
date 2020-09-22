@@ -123,7 +123,7 @@ Guarantees: Editing of skill or achievement is successful
   1b1. InternHunter displays an error message and informs the user of the valid input format. </br>
   Use case resumes from step 1.
 
-### Use case: UC12 - Switch tabs
+### Use case: UC13 - Switch tabs
 
 #### MSS
 
