@@ -28,22 +28,6 @@ name and job name only.
 Format: `add -int n/COMPANY_NAME INDEX` - `INDEX` refers to position of internship in the company
 
 <div markdown="span" class="alert alert-primary">
-### Switching Tabs : `switch`
-
-Switches between tabs.
-
-Format: `switch -TYPE`
-
-There are three types:
-* `com`
-* `int`
-* `me`
-
-Example: 
-* `switch -me`
-
-### Viewing Help : `help`
-Displays a link to the InternHunter user guide.
 
 :bulb: **Tip:** `view -com INDEX` (to view a company's profile, including its list of jobs)
 
@@ -105,6 +89,26 @@ applications
 
 Examples:
 - `view -int 3`
+
+### Switching Tabs : `switch`
+
+Switches between tabs.
+
+Format: `switch -TYPE`
+
+There are three types:
+* `com`
+* `int`
+* `me`
+
+Example: 
+* `switch -me`
+
+### Viewing Help : `help`
+Displays a link to the InternHunter user guide.
+
+Format: `help`
+
 ### Exiting the Program : `exit`
 Exits the program.
 
