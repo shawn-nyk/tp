@@ -36,7 +36,8 @@ title: User Guide
 
 ## Introduction
 
-InternHunter is a CLI-centric desktop application which aids university students in applying for tech internships. It tracks and leverages on key metrics and information to create an optimal internship hunting experience.
+InternHunter is a CLI-centric desktop application which aids university students in applying for tech internships.
+It tracks and leverages on key metrics and information to create an optimal internship hunting experience.
 
 #### What our app manages
 
@@ -45,7 +46,7 @@ InternHunter allows the management of three data types:
 Data type | Alias | Attributes
 ----------|-------|-----------
 Company | com | company name, industry, jobs
-Internship | int | company name, job name, industry, requirements, period , wage, status
+Internship | int | company name, job title, industry, requirements, period, wage, status
 Profile | me | category, descriptors
 
 ## Quick start
@@ -67,34 +68,36 @@ Profile | me | category, descriptors
   e.g. in `add -com n/COMPANY_NAME i/INDUSTRY j/JOBS`, `COMPANY_NAME, INDUSTRY, JOBS` are parameters which can be used as `add -com n/Garena i/Gaming j/Game developer`.
 
 * Items in square brackets are optional.<br>
-  e.g `add -int n/COMPANY_NAME j/JOB_NAME  [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` can be used as <br/> `add -int n/Google j/Software Engineer i/Software
+  e.g `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` can be used as <br/> `add -int n/Google j/Software Engineer i/Software
 `.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[r/REQUIREMENT]...​` can be used as `r/Rust`, `r/React native r/JavaScript` etc.
+  e.g. `[r/REQUIREMENT]...` can be used as `r/Rust`, `r/React native r/JavaScript` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `i/INDUSTRY r/REQUIREMENT`, `r/REQUIREMENT i/INDUSTRY` is also acceptable.
+
+* `INDEX` refers to the index of the item in the displayed list of items. (Follows one based indexing) <br>
 
 ## Features
 
 ### Internship Application
 
-#### Adding an internship application: `add-int`
+#### Adding an internship application: `add -int`
 
 Applies for an internship. This internship will be automatically added to the list of jobs in the company
 (if company has already been created). Otherwise, it creates the company and adds this job into it.
 
-Format: `add -int n/COMPANY_NAME j/JOB_NAME [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
+Format: `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
 
 Examples:
-- add -int n/Google i/Software j/Software Engineer
-- add -int n/Google i/Software j/Software Engineer r/React w/3000 r/HTML5
+- `add -int n/Google i/Software j/Software Engineer`
+- `add -int n/Google i/Software j/Software Engineer r/React w/3000 r/HTML5`
 
 **Already created the internship before?**
 
 Fret not, we have an alternative method to apply for an internship! This format adds an internship with the company
-name and job name only.
+name and job title only.
 
 Format: `add -int n/COMPANY_NAME INDEX` - `INDEX` refers to position of internship in the company
 
@@ -104,8 +107,7 @@ Format: `add -int n/COMPANY_NAME INDEX` - `INDEX` refers to position of internsh
 
 Deletes an internship.
  
-Format: `delete -int INDEX` - `INDEX` is the index of the internship application in the list of internship
-applications
+Format: `delete -int INDEX` 
 
 Examples:
 - `delete -int 3`
@@ -114,8 +116,8 @@ Examples:
 
 Edits an internship.
 
-Format:  `edit -int INDEX [n/COMPANY_NAME] [j/JOB_NAME] [i/INDUSTRY] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE] 
-[r/REQUIREMENT]...` - `INDEX` is the index of the internship application in the list of internship applications.
+Format:  `edit -int INDEX [n/COMPANY_NAME] [j/JOB_TITLE] [i/INDUSTRY] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE] 
+[r/REQUIREMENT]...`
 
 :information_source: **Note:** `DATE` can only be added if there is a `STATUS` in the input.
 
@@ -146,7 +148,13 @@ Accepted date formats:
 
 #### Viewing an internship application: `view -int`
 
-## Features
+Selects an internship application in the list of internship applications to show in detail.
+ 
+Format: `view -int INDEX` - `INDEX` is the index of the internship application in the list of internship
+applications
+
+Examples:
+- `view -int 3`
 
 ### User Profile
 
@@ -201,15 +209,6 @@ Format: `view -me INDEX`
 Example:
 * `view -me 3`
 
-#### Switching Tabs : `switch`
-Selects an internship application in the list of internship applications to show in detail.
- 
-Format: `view -int INDEX` - `INDEX` is the index of the internship application in the list of internship
-applications
-
-Examples:
-- `view -int 3`
-
 ### Switching Tabs: `switch`
 
 Switches between tabs.
@@ -244,9 +243,9 @@ Type            | Action     | Format
 &nbsp;          | **Delete** | `delete -com INDEX`
 &nbsp;          | **Edit**   | `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY] [j/JOBS]`
 &nbsp;          | **View**   | `view -com INDEX`
-**Internship**  | **Add**    | `add -int n/COMPANY_NAME j/JOB_NAME  [i/INDUSTRY] [r/REQUIREMENT] [p/PERIOD] [w/WAGE]` <br/> `add -int  n/COMPANY_NAME INDEX`
+**Internship**  | **Add**    | `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [r/REQUIREMENT] [p/PERIOD] [w/WAGE]` <br/> `add -int  n/COMPANY_NAME INDEX`
 &nbsp;          | **Delete** | `delete -int INDEX`
-&nbsp;          | **Edit**   | `edit -int INDEX [n/COMPANY_NAME] [j/JOB_NAME] [i/INDUSTRY] [r/REQUIREMENT] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE]`
+&nbsp;          | **Edit**   | `edit -int INDEX [n/COMPANY_NAME] [j/JOB_TITLE] [i/INDUSTRY] [r/REQUIREMENT] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE]`
 &nbsp;          | **View**   | `view -int INDEX`
 **Profile**     | **Add**    | `add -me  c/CAT d/DESCRIPTORS`
 &nbsp;          | **Delete** | `delete -me INDEX`
