@@ -10,26 +10,26 @@ title: User Guide
 ## Table Of Contents
 
 [1. Introduction](#introduction) <br />
-  [1.1. What our app manages](#what-our-app-manages) <br />
+ [1.1. What our app manages](#what-our-app-manages) <br />
 [2. Quick start](#quick-start) <br />
 [3. Features](#features) <br />
-  [3.1. Company Profile](#company-profile) <br />
-    [3.1.1. Adding a company profile: `add -com`](#Adding-a-company-profile) <br />
-    [3.1.2. Deleting a company profile: `delete -com`](#Deleting-a-company-profile) <br />
-    [3.1.3. Editing a company profile: `edit -com`](#Editing-a-company-profile) <br />
-    [3.1.4. Viewing a company profile: `view -com`](#Viewing-a-company-profile) <br />
-    [3.2. Internship Application](#internship-application) <br />
-    [3.2.1. Adding an internship application: `add -int`](#Adding-an-internship-application) <br />
-    [3.2.2. Deleting an internship application: `delete -int`](#Deleting-an-internship-application) <br />
-    [3.2.3. Editing an internship application: `edit -int`](#Editing-an-internship-application) <br />
-    [3.2.4. Viewing an internship application: `view -int`](#Viewing-an-internship-application) <br />
-    [3.3. User Profile](#user-profile) <br />
-    [3.3.1. Adding skills and achievement: `add -me`](#Adding-skills-and-achievement) <br />
-    [3.3.2. Deleting skills and achievement: `delete -me`](#Deleting-skills-and-achievement) <br />
-    [3.3.3. Editing skills and achievement: `view -me`](#Editing-skills-and-achievement) <br />
-    [3.4. Switching Tabs](#switching-tabs-switch) <br />
-    [3.5. Viewing Help](#viewing-help--help) <br />
-    [3.6. Exiting the program](#exiting-the-program) <br />
+ [3.1. Company Profile](#company-profile) <br />
+  [3.1.1. Adding a company profile: `add -com`](#Adding-a-company-profile) <br />
+  [3.1.2. Deleting a company profile: `delete -com`](#Deleting-a-company-profile) <br />
+  [3.1.3. Editing a company profile: `edit -com`](#Editing-a-company-profile) <br />
+  [3.1.4. Viewing a company profile: `view -com`](#Viewing-a-company-profile) <br />
+  [3.2. Internship Application](#internship-application) <br />
+  [3.2.1. Adding an internship application: `add -int`](#Adding-an-internship-application) <br />
+  [3.2.2. Deleting an internship application: `delete -int`](#Deleting-an-internship-application) <br />
+  [3.2.3. Editing an internship application: `edit -int`](#Editing-an-internship-application) <br />
+  [3.2.4. Viewing an internship application: `view -int`](#Viewing-an-internship-application) <br />
+  [3.3. User Profile](#user-profile) <br />
+  [3.3.1. Adding skills and achievement: `add -me`](#Adding-skills-and-achievement) <br />
+  [3.3.2. Deleting skills and achievement: `delete -me`](#Deleting-skills-and-achievement) <br />
+  [3.3.3. Editing skills and achievement: `view -me`](#Editing-skills-and-achievement) <br />
+  [3.4. Switching Tabs](#switching-tabs-switch) <br />
+  [3.5. Viewing Help](#viewing-help--help) <br />
+  [3.6. Exiting the program](#exiting-the-program) <br />
 [4. Command Summary](#command-summary) <br />
 
 ---
