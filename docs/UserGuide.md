@@ -28,9 +28,9 @@ title: User Guide
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2. Deleting from user profile: `delete -me`](#deleting-from-user-profile-delete--me) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3. Editing user profile: `view -me`](#editing-user-profile-edit--me) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4. Viewing item in user profile: `view -int`](#viewing-item-in-user-profile-view--me) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4. Switching Tabs](#switching-tabs--switch) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5. Viewing Help](#viewing-help--help) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.6. Exiting the program](#exiting-the-program--exit) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4. Switching Tabs](#switching-tabs-switch) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5. Viewing Help](#viewing-help-help) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[3.6. Exiting the program](#exiting-the-program-exit) <br />
 [4. Command Summary](#command-summary) <br />
 
 ---
