@@ -43,7 +43,7 @@ Type            | Action     | Format
 &nbsp;          | **View**   | `view -int INDEX`
 **Profile**     | **Add**    | `add -me  c/CAT d/DESCRIPTORS`
 &nbsp;          | **Delete** | `delete -me INDEX`
-&nbsp;          | **Edit**   | `edit -me INDEX c/CAT d/DESCRIPTORS`
+&nbsp;          | **Edit**   | `edit -me INDEX [c/CAT] [d/DESCRIPTORS]`
 &nbsp;          | **View**   | `view -me INDEX`
 **General**     | **Switch** | `switch -TYPE`
 &nbsp;          | **Help**   | `help`
