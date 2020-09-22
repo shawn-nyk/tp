@@ -24,10 +24,10 @@ title: User Guide
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.3. Editing an internship application: `edit -int`](#Editing-an-internship-application) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.4. Viewing an internship application: `view -int`](#Viewing-an-internship-application) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3. User Profile](#user-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1. Adding to user profile: `add -me`](#Adding-to-user-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2. Deleting from user profile: `delete -me`](#Deleting-from-user-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3. Editing user profile: `view -me`](#Editing-user-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4. Viewing item in user profile: `view -int`](#Viewing-item-in-user-profile) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1. Adding to user profile: `add -me`](#adding-to-user-profile-add--me) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2. Deleting from user profile: `delete -me`](#deleting-from-user-profile-delete--me) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3. Editing user profile: `view -me`](#editing-user-profile-edit--me) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4. Viewing item in user profile: `view -int`](#viewing-item-in-user-profile-view--me) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4. Switching Tabs](#switching-tabs) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[3.5. Viewing Help](#viewing-help) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[3.6. Exiting the program](#exiting-the-program) <br />
