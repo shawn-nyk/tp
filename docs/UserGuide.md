@@ -177,9 +177,6 @@ Deletes experience, skills and achievements descriptors from your user profile.
 
 Format: `delete -me INDEX`
 
-* INDEX refers to the index of the item in the displayed list of items.
-* INDEX follows a one based indexing.
-
 Example:
 * `delete -me 2`
 
@@ -190,8 +187,6 @@ Edit the experience, skills or achievements descriptors of your user profile.
 Format: `edit -me INDEX [c/CATEGORY] [d/DESCRIPTORS] `
 
 * At least one of the optional fields must be provided.
-* INDEX refers to the index of the item in the displayed list of items.
-* INDEX follows a one based indexing.
 
 Example:
 * `edit -me 2 c/skill d/CSS`
@@ -202,9 +197,6 @@ Example:
 Selects an item in the user profile to show in detail.
 
 Format: `view -me INDEX`
-
-* INDEX refers to the index of the item in the displayed list of items.
-* INDEX follows a one based indexing.
 
 Example:
 * `view -me 3`
