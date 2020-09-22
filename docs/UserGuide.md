@@ -24,9 +24,10 @@ title: User Guide
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.3. Editing an internship application: `edit -int`](#Editing-an-internship-application) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.4. Viewing an internship application: `view -int`](#Viewing-an-internship-application) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3. User Profile](#user-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1. Adding skills and achievement: `add -me`](#Adding-skills-and-achievement) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2. Deleting skills and achievement: `delete -me`](#Deleting-skills-and-achievement) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3. Editing skills and achievement: `view -me`](#Editing-skills-and-achievement) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1. Adding to user profile: `add -me`](#Adding-to-user-profile) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2. Deleting from user profile: `delete -me`](#Deleting-from-user-profile) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3. Editing user profile: `view -me`](#Editing-user-profile) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4. Viewing item in user profile: `view -int`](#Viewing-item-in-user-profile) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4. Switching Tabs](#switching-tabs) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[3.5. Viewing Help](#viewing-help) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[3.6. Exiting the program](#exiting-the-program) <br />
@@ -96,7 +97,7 @@ Examples:
 * `add -me c/experience d/Internship at Govtech`
 * `add -me c/skill d/HTML`
 
-#### Deleting to user profile: `delete -me`
+#### Deleting from user profile: `delete -me`
 
 Deletes experience, skills and achievements descriptors from your user profile.
 
@@ -122,7 +123,7 @@ Example:
 * `edit -me 2 c/skill d/CSS`
 * `edit -me 4 c/achievement`
 
-#### Viewing an item in user profile: `view -me`
+#### Viewing item in user profile: `view -me`
 
 Selects an item in the user profile to show in detail.
 
