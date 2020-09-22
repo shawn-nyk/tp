@@ -10,6 +10,7 @@ title: User Guide
 ## Table Of Contents
 
 [1. Introduction](#introduction) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[1.1. What our app manages](#what-our-app-manages) <br />
 [2. Quick start](#quick-start) <br />
 [3. Features](#features) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[3.1. Company Profile](#company-profile) <br />
@@ -36,6 +37,16 @@ title: User Guide
 ## Introduction
 
 InternHunter is a CLI-centric desktop application which aids university students in applying for tech internships. It tracks and leverages on key metrics and information to create an optimal internship hunting experience.
+
+#### What our app manages
+
+InternHunter allows the management of three data types:
+
+Data type | Alias | Attributes
+----------|-------|-----------
+Company | com | company name, industry, jobs
+Internship | int | company name, job name, industry, requirements, period , wage, status
+Profile | me | type, descriptors
 
 ## Quick start
 
@@ -71,12 +82,5 @@ InternHunter is a CLI-centric desktop application which aids university students
   e.g. if the command specifies `i/INDUSTRY r/REQUIREMENT`, `r/REQUIREMENT i/INDUSTRY` is also acceptable.
 
 </div>
-
-#### Overview
-Data type | Alias | Attributes
-----------|-------|-----------
-Company | com | company name, industry, jobs
-Internship | int | company name, job name, industry, requirements, period , wage, status
-Profile | me | type, descriptors
 
 
