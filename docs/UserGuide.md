@@ -14,23 +14,23 @@ title: User Guide
 [2. Quick start](#quick-start) <br />
 [3. Features](#features) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[3.1. Company Profile](#company-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.1. Adding a company profile: `add -com`](#Adding-a-company-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.2. Deleting a company profile: `delete -com`](#Deleting-a-company-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.3. Editing a company profile: `edit -com`](#Editing-a-company-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.4. Viewing a company profile: `view -com`](#Viewing-a-company-profile) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.1. Adding a company profile: `add -com`](#adding-a-company-profile-add--com) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.2. Deleting a company profile: `delete -com`](#deleting-a-company-profile-delete--com) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.3. Editing a company profile: `edit -com`](#editing-a-company-profile-edit--com) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.4. Viewing a company profile: `view -com`](#viewing-a-company-profile-view--com) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[3.2. Internship Application](#internship-application) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1. Adding an internship application: `add -int`](#Adding-an-internship-application) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.2. Deleting an internship application: `delete -int`](#Deleting-an-internship-application) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.3. Editing an internship application: `edit -int`](#Editing-an-internship-application) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.4. Viewing an internship application: `view -int`](#Viewing-an-internship-application) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1. Adding an internship application: `add -int`](#adding-an-internship-application-add--int) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.2. Deleting an internship application: `delete -int`](#deleting-an-internship-application-delete--int) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.3. Editing an internship application: `edit -int`](#editing-an-internship-application-edit-int) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.4. Viewing an internship application: `view -int`](#viewing-an-internship-application-view--int) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3. User Profile](#user-profile) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1. Adding to user profile: `add -me`](#adding-to-user-profile-add--me) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2. Deleting from user profile: `delete -me`](#deleting-from-user-profile-delete--me) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3. Editing user profile: `view -me`](#editing-user-profile-edit--me) <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4. Viewing item in user profile: `view -int`](#viewing-item-in-user-profile-view--me) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4. Switching Tabs](#switching-tabs) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5. Viewing Help](#viewing-help) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.6. Exiting the program](#exiting-the-program) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4. Switching Tabs](#switching-tabs--switch) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[3.5. Viewing Help](#viewing-help--help) <br />
+&nbsp;&nbsp;&nbsp;&nbsp;[3.6. Exiting the program](#exiting-the-program--exit) <br />
 [4. Command Summary](#command-summary) <br />
 
 ---
@@ -63,6 +63,8 @@ Profile | me | category, descriptors
 
 --------------------------------------------------------------------------------------------------------------------
 
+## Features
+
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
@@ -80,7 +82,6 @@ Profile | me | category, descriptors
 
 </div>
 
-## Features
 
 ### User Profile
 
@@ -135,7 +136,7 @@ Format: `view -me INDEX`
 Example:
 * `view -me 3`
 
-#### Switching Tabs : `switch`
+#### Switching Tabs: `switch`
 Switches between tabs.
 
 Format: `switch -TYPE`
@@ -148,12 +149,12 @@ There are three types:
 Example: 
 * `switch -me`
 
-#### Viewing Help : `help`
+#### Viewing Help: `help`
 Displays a link to the InternHunter user guide.
 
 Format: `help`
 
-#### Exiting the Program : `exit`
+#### Exiting the Program: `exit`
 Exits the program.
 
 Format: `exit`
