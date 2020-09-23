@@ -10,34 +10,34 @@ title: User Guide
 ## Table Of Contents
 
 [1. Introduction](#introduction) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[1.1. What our app manages](#what-our-app-manages) <br />
+ [1.1. What our app manages](#what-our-app-manages) <br />
 [2. Quick start](#quick-start) <br />
 [3. Features](#features) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.1. Company Profile](#company-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.1. Adding a company profile: `add -com`](#Adding-a-company-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.2. Deleting a company profile: `delete -com`](#Deleting-a-company-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.3. Editing a company profile: `edit -com`](#Editing-a-company-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.4. Viewing a company profile: `view -com`](#Viewing-a-company-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.2. Internship Application](#internship-application) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1. Adding an internship application: `add -int`](#Adding-an-internship-application) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.2. Deleting an internship application: `delete -int`](#Deleting-an-internship-application) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.3. Editing an internship application: `edit -int`](#Editing-an-internship-application) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.4. Viewing an internship application: `view -int`](#Viewing-an-internship-application) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.3. User Profile](#user-profile) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1. Adding to user profile: `add -me`](#adding-to-user-profile-add--me) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2. Deleting from user profile: `delete -me`](#deleting-from-user-profile-delete--me) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3. Editing user profile: `view -me`](#editing-user-profile-edit--me) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4. Viewing item in user profile: `view -int`](#viewing-item-in-user-profile-view--me) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4. Switching Tabs](#switching-tabs) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.5. Viewing Help](#viewing-help) <br />
-&nbsp;&nbsp;&nbsp;&nbsp;[3.6. Exiting the program](#exiting-the-program) <br />
+ [3.1. Company Profile](#company-profile) <br />
+  [3.1.1. Adding a company profile: `add -com`](#Adding-a-company-profile) <br />
+  [3.1.2. Deleting a company profile: `delete -com`](#Deleting-a-company-profile) <br />
+  [3.1.3. Editing a company profile: `edit -com`](#Editing-a-company-profile) <br />
+  [3.1.4. Viewing a company profile: `view -com`](#Viewing-a-company-profile) <br />
+  [3.2. Internship Application](#internship-application) <br />
+  [3.2.1. Adding an internship application: `add -int`](#Adding-an-internship-application) <br />
+  [3.2.2. Deleting an internship application: `delete -int`](#Deleting-an-internship-application) <br />
+  [3.2.3. Editing an internship application: `edit -int`](#Editing-an-internship-application) <br />
+  [3.2.4. Viewing an internship application: `view -int`](#Viewing-an-internship-application) <br />
+  [3.3. User Profile](#user-profile) <br />
+  [3.3.1. Adding skills and achievement: `add -me`](#Adding-skills-and-achievement) <br />
+  [3.3.2. Deleting skills and achievement: `delete -me`](#Deleting-skills-and-achievement) <br />
+  [3.3.3. Editing skills and achievement: `view -me`](#Editing-skills-and-achievement) <br />
+  [3.4. Switching Tabs](#switching-tabs-switch) <br />
+  [3.5. Viewing Help](#viewing-help--help) <br />
+  [3.6. Exiting the program](#exiting-the-program) <br />
 [4. Command Summary](#command-summary) <br />
 
 ---
 
 ## Introduction
 
-InternHunter is a CLI-centric desktop application which aids university students in applying for tech internships. It tracks and leverages on key metrics and information to create an optimal internship hunting experience.
+InternHunter is a CLI-centric desktop application which aids university students in applying for tech internships.
+It tracks and leverages on key metrics and information to create an optimal internship hunting experience.
 
 #### What our app manages
 
@@ -46,7 +46,7 @@ InternHunter allows the management of three data types:
 Data type | Alias | Attributes
 ----------|-------|-----------
 Company | com | company name, industry, jobs
-Internship | int | company name, job name, industry, requirements, period , wage, status
+Internship | int | company name, job title, industry, requirements, period, wage, status
 Profile | me | category, descriptors
 
 ## Quick start
@@ -60,7 +60,6 @@ Profile | me | category, descriptors
 1. Double-click the file to start the app or run `java -jar InternHunter.jar` from the terminal. The features available in the current version of InternHunter are listed below: 
 
 1. Refer to the [Features](#features) below for details of each command.
-
 --------------------------------------------------------------------------------------------------------------------
 
 **:information_source: Notes about the command format:**<br>
@@ -69,18 +68,93 @@ Profile | me | category, descriptors
   e.g. in `add -com n/COMPANY_NAME i/INDUSTRY j/JOBS`, `COMPANY_NAME, INDUSTRY, JOBS` are parameters which can be used as `add -com n/Garena i/Gaming j/Game developer`.
 
 * Items in square brackets are optional.<br>
-  e.g `add -int n/COMPANY_NAME j/JOB_NAME  [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` can be used as <br/> `add -int n/Google j/Software Engineer i/Software
+  e.g `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` can be used as <br/> `add -int n/Google j/Software Engineer i/Software
 `.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[r/REQUIREMENT]...​` can be used as `r/Rust`, `r/React native r/JavaScript` etc.
+  e.g. `[r/REQUIREMENT]...` can be used as `r/Rust`, `r/React native r/JavaScript` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `i/INDUSTRY r/REQUIREMENT`, `r/REQUIREMENT i/INDUSTRY` is also acceptable.
 
-</div>
+* `INDEX` refers to the index of the item in the displayed list of items. (Follows one based indexing) <br>
 
 ## Features
+
+### Internship Application
+
+#### Adding an internship application: `add -int`
+
+Applies for an internship. This internship will be automatically added to the list of jobs in the company
+(if company has already been created). Otherwise, it creates the company and adds this job into it.
+
+Format: `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
+
+Examples:
+- `add -int n/Google i/Software j/Software Engineer`
+- `add -int n/Google i/Software j/Software Engineer r/React w/3000 r/HTML5`
+
+**Already created the internship before?**
+
+Fret not, we have an alternative method to apply for an internship! This format adds an internship with the company
+name and job title only.
+
+Format: `add -int n/COMPANY_NAME INDEX` - `INDEX` refers to position of internship in the company
+
+:bulb: **Tip:** `view -com INDEX` (to view a company's profile, including its list of jobs)
+
+#### Deleting an internship application: `delete -int`
+
+Deletes an internship.
+ 
+Format: `delete -int INDEX` 
+
+Examples:
+- `delete -int 3`
+
+#### Editing an internship application: `edit -int`
+
+Edits an internship.
+
+Format:  `edit -int INDEX [n/COMPANY_NAME] [j/JOB_TITLE] [i/INDUSTRY] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE] 
+[r/REQUIREMENT]...`
+
+:information_source: **Note:** `DATE` can only be added if there is a `STATUS` in the input.
+
+Examples:
+- `edit -int 7 r/Java r/FXML w/2000`
+- `edit -int 4 s/interview d/22-09-20`
+
+**More about internships...**
+
+Each job has its own status. On initial adding of internship, the status of the internship application is applied by
+default. Each status will be tagged to a date. If a date is not specified, InternHunter will assign today’s date to it.
+
+Accepted statuses:
+- Applied
+- Interview
+- Waiting
+- Rejected
+- Offered
+- Accepted
+
+Accepted date formats:
+
+- d-M-yy HHmm
+    - e.g. 23-12-19 2230
+- d-M-yy
+    - e.g. 23-12-19
+    - Time will be taken as 2359
+
+#### Viewing an internship application: `view -int`
+
+Selects an internship application in the list of internship applications to show in detail.
+ 
+Format: `view -int INDEX` - `INDEX` is the index of the internship application in the list of internship
+applications
+
+Examples:
+- `view -int 3`
 
 ### User Profile
 
@@ -103,9 +177,6 @@ Deletes experience, skills and achievements descriptors from your user profile.
 
 Format: `delete -me INDEX`
 
-* INDEX refers to the index of the item in the displayed list of items.
-* INDEX follows a one based indexing.
-
 Example:
 * `delete -me 2`
 
@@ -116,8 +187,6 @@ Edit the experience, skills or achievements descriptors of your user profile.
 Format: `edit -me INDEX [c/CATEGORY] [d/DESCRIPTORS] `
 
 * At least one of the optional fields must be provided.
-* INDEX refers to the index of the item in the displayed list of items.
-* INDEX follows a one based indexing.
 
 Example:
 * `edit -me 2 c/skill d/CSS`
@@ -129,13 +198,11 @@ Selects an item in the user profile to show in detail.
 
 Format: `view -me INDEX`
 
-* INDEX refers to the index of the item in the displayed list of items.
-* INDEX follows a one based indexing.
-
 Example:
 * `view -me 3`
 
-#### Switching Tabs : `switch`
+### Switching Tabs: `switch`
+
 Switches between tabs.
 
 Format: `switch -TYPE`
@@ -148,12 +215,12 @@ There are three types:
 Example: 
 * `switch -me`
 
-#### Viewing Help : `help`
+### Viewing Help: `help`
 Displays a link to the InternHunter user guide.
 
 Format: `help`
 
-#### Exiting the Program : `exit`
+### Exiting the Program: `exit`
 Exits the program.
 
 Format: `exit`
@@ -168,9 +235,9 @@ Type            | Action     | Format
 &nbsp;          | **Delete** | `delete -com INDEX`
 &nbsp;          | **Edit**   | `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY] [j/JOBS]`
 &nbsp;          | **View**   | `view -com INDEX`
-**Internship**  | **Add**    | `add -int n/COMPANY_NAME j/JOB_NAME  [i/INDUSTRY] [r/REQUIREMENT] [p/PERIOD] [w/WAGE]` <br/> `add -int  n/COMPANY_NAME INDEX`
+**Internship**  | **Add**    | `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [r/REQUIREMENT] [p/PERIOD] [w/WAGE]` <br/> `add -int  n/COMPANY_NAME INDEX`
 &nbsp;          | **Delete** | `delete -int INDEX`
-&nbsp;          | **Edit**   | `edit -int INDEX [n/COMPANY_NAME] [j/JOB_NAME] [i/INDUSTRY] [r/REQUIREMENT] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE]`
+&nbsp;          | **Edit**   | `edit -int INDEX [n/COMPANY_NAME] [j/JOB_TITLE] [i/INDUSTRY] [r/REQUIREMENT] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE]`
 &nbsp;          | **View**   | `view -int INDEX`
 **Profile**     | **Add**    | `add -me  c/CAT d/DESCRIPTORS`
 &nbsp;          | **Delete** | `delete -me INDEX`
