@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Gan Wan Cheng Isaac - Project Portfolio
+title: Fidella Widjojo - Project Portfolio
 ---
 
 ## Project: InternHunter
@@ -14,29 +14,30 @@ It tracks and leverages on key metrics and information to create an optimal inte
 
 ## Summary of contributions
 
-* New Feature:
+* **New Feature**: 
 
-* New Feature:
+* **New Feature**:
 
-* Code contributed: [RepoSense link]()
+* **Code contributed**: [RepoSense link]()
+
+## Other contributions
 
 * **Project management**:
-  * Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+ * Setup the team organization and repository.
 
 * **Enhancements to existing features**:
-  * Updated the GUI color scheme (Pull requests [\#33](), [\#34]())
-  * Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests [\#36](), [\#38]())
 
 * **Community**:
-  * PRs reviewed (with non-trivial review comments):
-  * Contributed to forum discussions:
+  * PRs reviewed (with non-trivial review comments): 
+  * Contributed to forum discussions: 
+  * Questions on forum:
   * Reported bugs and suggestions for other teams in the class:
+  * Some parts of the history feature I added was adopted by several other class mates:
 
 * **Tools**:
   * Integrated a new Github plugin (CircleCI) to the team repo
 
-* _{you can add/remove categories in the list above}_
-
 ## Contributions to the User Guide
-
+    
 ## Contributions to the Developer Guide
+
