@@ -99,7 +99,7 @@ Guarantees: Deletion of skill or achievement is successful
 
 #### Extensions
 
-1a. InternHunter detects that the index entered is out of bounds. </br>
+1a. InternHunter detects an invalid input. </br>
   1a1. InternHunter displays an error message and informs the user of the valid input format. </br>
   Use case resumes from step 1.
 
@@ -115,13 +115,10 @@ Guarantees: Editing of skill or achievement is successful
     Use case ends.
 
 #### Extensions
-1a. InternHunter detects that the index entered is out of bounds. </br>
+1a. InternHunter detects an invalid input. </br>
   1a1. InternHunter displays an error message and informs the user of the valid input format. </br>
   Use case resumes from step 1.
-  
-1b. InternHunter detects an error in the input format. </br>
-  1b1. InternHunter displays an error message and informs the user of the valid input format. </br>
-  Use case resumes from step 1.
+
 
 ### Use case: UC13 - Switch tabs
 
@@ -132,7 +129,7 @@ Guarantees: Editing of skill or achievement is successful
     Use case ends.
 
 #### Extensions
-1a. InternHunter detects an error in the input format. </br>
+1a. InternHunter detects an invalid input. </br>
   1a1. InternHunter displays an error message and informs the user of the valid input format. </br>
   Use case resumes from step 1.
 
