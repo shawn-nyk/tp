@@ -18,12 +18,12 @@ title: User Guide
   [3.1.2. Deleting a company profile: `delete -com`](#deleting-a-company-profile-delete--com) <br />
   [3.1.3. Editing a company profile: `edit -com`](#editing-a-company-profile-edit--com) <br />
   [3.1.4. Viewing a company profile: `view -com`](#viewing-a-company-profile-view--com) <br />
-  [3.2. Internship Application](#internship-application) <br />
+ [3.2. Internship Application](#internship-application) <br />
   [3.2.1. Adding an internship application: `add -int`](#adding-an-internship-application-add--int) <br />
   [3.2.2. Deleting an internship application: `delete -int`](#deleting-an-internship-application-delete--int) <br />
   [3.2.3. Editing an internship application: `edit -int`](#editing-an-internship-application-edit--int) <br />
   [3.2.4. Viewing an internship application: `view -int`](#viewing-an-internship-application-view--int) <br />
-  [3.3. User Profile](#user-profile) <br />
+ [3.3. User Profile](#user-profile) <br />
   [3.3.1. Adding to user profile: `add -me`](#adding-to-user-profile-add--me) <br />
   [3.3.2. Deleting from user profile: `delete -me`](#deleting-from-user-profile-delete--me) <br />
   [3.3.3. Editing user profile: `edit -me`](#editing-user-profile-edit--me) <br />
