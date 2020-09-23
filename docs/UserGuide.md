@@ -28,9 +28,9 @@ title: User Guide
   [3.3.2. Deleting from user profile: `delete -me`](#deleting-from-user-profile-delete--me) <br />
   [3.3.3. Editing user profile: `edit -me`](#editing-user-profile-edit--me) <br />
   [3.3.4. Viewing item in user profile: `view -me`](#viewing-item-in-user-profile-view--me) <br />
- [3.4. Switching Tabs](#switching-tabs--switch) <br />
- [3.5. Viewing Help](#viewing-help--help) <br />
- [3.6. Exiting the program](#exiting-the-program--exit) <br />
+ [3.4. Switching Tabs](#switching-tabs-switch) <br />
+ [3.5. Viewing Help](#viewing-help-help) <br />
+ [3.6. Exiting the program](#exiting-the-program-exit) <br />
 [4. Command Summary](#command-summary) <br />
 
 ---
