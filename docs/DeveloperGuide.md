@@ -38,7 +38,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user       | view an internship application                                 |                                                                                   |
 | `* * *`  | user       | track an internship application's status                       |                                                                                   |
 | `* * *`  | user       | save the dates of my upcoming interviews                       | keep track of them                                                                |
-| `* * *`  | user       | see a list of my skills and achievements                       | understand which internships is a better fit for me                               |
+| `* * *`  | user       | see a list of my skills and achievements                       | understand which internships are a better fit for me                              |
 | `* * *`  | user       | add to my list of skills and achievements                      | keep my list of skills and achievements updated and accurate                      |
 | `* * *`  | user       | delete a skill / achievement                                   | keep my list of skills and achievements updated and accurate                      |
 | `* *`    | user       | edit a skill / achievement                                     | keep my list of skills and achievements updated and accurate                      |
