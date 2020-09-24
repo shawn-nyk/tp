@@ -172,9 +172,6 @@ MSS:
 
 #### MSS
 
-Precondition: System is running
-Guarantees: System will stop running
-
 1.  User requests to exit InternHunter.
 2.  InternHunter prompts for confirmation.
 3.  User confirms intention to exit.
