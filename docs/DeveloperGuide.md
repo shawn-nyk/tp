@@ -86,6 +86,52 @@ Guarantees: Editing of internship application is successful
   1b1. InternHunter displays an error message and informs the user of the valid input format. <br />
   Use case resumes from step 1.
 
+### Use case: UC10 - Delete a skill or achievement
+
+#### MSS
+
+Precondition: User already has an existing list of skills and achievements. </br>
+Guarantees: Deletion of skill or achievement is successful
+
+1.  User requests to delete a skill or achievement from the user profile and provides the index.
+2.  InternHunter removes the skill or achievement from the user profile. </br>
+    Use case ends.
+
+#### Extensions
+
+1a. InternHunter detects an invalid input. </br>
+  1a1. InternHunter displays an error message and informs the user of the valid input format. </br>
+  Use case resumes from step 1.
+
+### Use case: UC11 - Edit a skill or achievement
+
+#### MSS
+
+Precondition: User already has an existing list of skills and achievements. </br>
+Guarantees: Editing of skill or achievement is successful
+
+1.  User requests to edit the details of a skill or achievement and inputs the index and details.
+2.  InternHunter edits the skill or achievement from the user profile. </br>
+    Use case ends.
+
+#### Extensions
+1a. InternHunter detects an invalid input. </br>
+  1a1. InternHunter displays an error message and informs the user of the valid input format. </br>
+  Use case resumes from step 1.
+
+
+### Use case: UC13 - Switch tabs
+
+#### MSS
+
+1.  User requests to switch the tab of the screen.
+2.  InternHunter switch to the requested tab. </br>
+    Use case ends.
+
+#### Extensions
+1a. InternHunter detects an invalid input. </br>
+  1a1. InternHunter displays an error message and informs the user of the valid input format. </br>
+  Use case resumes from step 1.
 
 ## Appendix E: Glossary
 
