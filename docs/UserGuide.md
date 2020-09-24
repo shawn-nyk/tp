@@ -46,7 +46,7 @@ InternHunter allows the management of three data types:
 
 Data type | Alias | Attributes
 ----------|-------|-----------
-Company | com | company name, industry, jobs
+Company | com | company name, industry, job titles
 Internship | int | company name, job title, industry, requirements, period, wage, status
 Profile | me | category, descriptors
 
@@ -68,13 +68,14 @@ Profile | me | category, descriptors
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add -com n/COMPANY_NAME i/INDUSTRY j/JOBS`, `COMPANY_NAME, INDUSTRY, JOBS` are parameters which can be used as `add -com n/Garena i/Gaming j/Game developer`.
+  e.g. in `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLES...`, `COMPANY_NAME, INDUSTRY, JOB_TITLES` are parameters
+   which can be used as `add -com n/Garena i/Gaming j/Game developer`.
 
 * Items in square brackets are optional.<br>
   e.g `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` can be used as <br/> `add -int n/Google j/Software Engineer i/Software
 `.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
+* Items with `...`​ after them can be used multiple times including zero times.<br>
   e.g. `[r/REQUIREMENT]...` can be used as `r/Rust`, `r/React native r/JavaScript` etc.
 
 * Parameters can be in any order.<br>
@@ -82,6 +83,46 @@ Profile | me | category, descriptors
 
 * `INDEX` refers to the index of the item in the displayed list of items. (Follows one based indexing) <br>
 
+
+### Company Profile
+
+#### Adding a company profile: `add -com`
+
+Adds a company profile to your list of company profiles.
+
+Format: `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLES...`
+
+Examples:
+- `add -com n/Garena i/Gaming j/Game developer`
+- `add -com n/Google i/Internet i/Cloud computing i/Artificial intelligence j/Software engineer j/Cloud architect`
+
+#### Deleting a company profile: `delete -com`
+
+Deletes a company profile from your list of company profiles.
+
+Format: `delete -com INDEX`
+
+Example:
+- `delete -com 5`
+
+#### Editing a company profile: `edit -com`
+
+Edits a company profile from your list of company profiles.
+
+Format: `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOB_TITLES]...`
+
+Examples:
+- `edit -com 1 j/Game developer j/Software tester`
+- `edit -com 2 n/Google LLC i/Cloud computing i/Artificial intelligence i/Deep learning`
+
+#### Viewing a company profile: `view -com`
+
+Selects a company profile in your list of company profiles to show in detail.
+
+Format: `view -com INDEX`
+
+Example:
+- `view -com 3`
 
 ### Internship Application
 
@@ -111,7 +152,7 @@ Deletes an internship.
  
 Format: `delete -int INDEX` 
 
-Examples:
+Example:
 - `delete -int 3`
 
 #### Editing an internship application: `edit -int`
@@ -129,23 +170,23 @@ Examples:
 
 **More about internships...**
 
-Each job has its own status. On initial adding of internship, the status of the internship application is applied by
+Each job has its own status. On initial adding of internship, the status of the internship application is `Applied` by
 default. Each status will be tagged to a date. If a date is not specified, InternHunter will assign today’s date to it.
 
 Accepted statuses:
-- Applied
-- Interview
-- Waiting
-- Rejected
-- Offered
-- Accepted
+- `Applied`
+- `Interview`
+- `Waiting`
+- `Rejected`
+- `Offered`
+- `Accepted`
 
 Accepted date formats:
 
 - d-M-yy HHmm
-    - e.g. 23-12-19 2230
+    - e.g. `23-12-19 2230`
 - d-M-yy
-    - e.g. 23-12-19
+    - e.g. `23-12-19`
     - Time will be taken as 2359
 
 #### Viewing an internship application: `view -int`
@@ -155,7 +196,7 @@ Selects an internship application in the list of internship applications to show
 Format: `view -int INDEX` - `INDEX` is the index of the internship application in the list of internship
 applications
 
-Examples:
+Example:
 - `view -int 3`
 
 ### User Profile
@@ -164,7 +205,7 @@ Examples:
 
 Adds experience, skills or achievements descriptors to your user profile.
 
-Format: `add -me  c/CATEGORY d/DESCRIPTORS`
+Format: `add -me c/CATEGORY d/DESCRIPTORS`
 
 * Category specifies a category which can be either experience, skills or achievement.
 
@@ -186,11 +227,11 @@ Example:
 
 Edit the experience, skills or achievements descriptors of your user profile.
 
-Format: `edit -me INDEX [c/CATEGORY] [d/DESCRIPTORS] `
+Format: `edit -me INDEX [c/CATEGORY] [d/DESCRIPTORS]`
 
 * At least one of the optional fields must be provided.
 
-Example:
+Examples:
 * `edit -me 2 c/skill d/CSS`
 * `edit -me 4 c/achievement`
 
@@ -209,7 +250,7 @@ Switches between tabs.
 
 Format: `switch -TYPE`
 
-There are three types:
+There are three `TYPE`s:
 * `com`
 * `int`
 * `me`
@@ -233,15 +274,15 @@ Format: `exit`
 
 Type            | Action     | Format
 ----------------|------------|------------------
-**Company**     | **Add**    | `add -com n/COMPANY_NAME i/INDUSTRY j/JOBS`
+**Company**     | **Add**    | `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLES...`
 &nbsp;          | **Delete** | `delete -com INDEX`
-&nbsp;          | **Edit**   | `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY] [j/JOBS]`
+&nbsp;          | **Edit**   | `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOB_TITLES]...`
 &nbsp;          | **View**   | `view -com INDEX`
-**Internship**  | **Add**    | `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [r/REQUIREMENT] [p/PERIOD] [w/WAGE]` <br/> `add -int  n/COMPANY_NAME INDEX`
+**Internship**  | **Add**    | `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` <br/> `add -int n/COMPANY_NAME INDEX`
 &nbsp;          | **Delete** | `delete -int INDEX`
-&nbsp;          | **Edit**   | `edit -int INDEX [n/COMPANY_NAME] [j/JOB_TITLE] [i/INDUSTRY] [r/REQUIREMENT] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE]`
+&nbsp;          | **Edit**   | `edit -int INDEX [n/COMPANY_NAME] [j/JOB_TITLE] [i/INDUSTRY] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE] [r/REQUIREMENT]...`
 &nbsp;          | **View**   | `view -int INDEX`
-**Profile**     | **Add**    | `add -me  c/CAT d/DESCRIPTORS`
+**Profile**     | **Add**    | `add -me c/CAT d/DESCRIPTORS`
 &nbsp;          | **Delete** | `delete -me INDEX`
 &nbsp;          | **Edit**   | `edit -me INDEX [c/CAT] [d/DESCRIPTORS]`
 &nbsp;          | **View**   | `view -me INDEX`
