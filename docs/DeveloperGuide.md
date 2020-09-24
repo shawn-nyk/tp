@@ -11,6 +11,74 @@ title: Developer Guide
 
 (For all use cases below, the **System** is `InternHunter` and the **Actor** is the `user`)
 
+### Use case: UC01 - Add a company profile
+
+#### MSS
+
+Guarantees: Addition of company profile is successful
+
+1. User requests to add a company profile and provides company details. 
+2. InternHunter adds the company profile.<br/>
+Use case ends.
+
+#### Extensions
+
+1a. InternHunter detects an error in the input format. <br/>
+  1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
+  Use case resumes from step 1.
+    		
+### Use case: UC02 - Delete a company profile
+
+#### MSS
+
+Precondition: User already has an existing list of company profiles <br/>
+Guarantees: Deletion of company profile is successful
+
+1. User requests to delete a company profile.
+2. InternHunter removes the company profile from the list.<br/>
+Use case ends.
+    
+#### Extensions
+
+1a. InternHunter detects an error in the input format. <br/>
+  1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
+  Use case resumes from step 1.
+
+
+### Use case: UC03 - View a company profile
+
+##### MSS
+
+Precondition: User already has an existing list of company profiles <br/>
+Guarantees: Viewing of company profile is successful
+
+1. User requests to view a company profile.
+2. InternHunter displays the company profile.<br/>
+Use case ends.
+
+####  Extensions
+
+1a. InternHunter detects an error in the input format. <br/>
+  1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
+  Use case resumes from step 1.
+
+### Use case: UC04 - Edit a company profile
+
+##### MSS
+
+Precondition: User already has an existing list of company profiles <br/>
+Guarantees: Editing of company profile is successful
+
+1. User requests to edit the details of a company profile
+2. InternHunter edits the details of this internship application. <br/>
+Use case ends.
+
+####  Extensions
+
+1a. InternHunter detects an error in the input format. <br/>
+  1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
+  Use case resumes from step 1.
+
 ### Use case: UC05 - Add an internship application
 
 #### MSS
