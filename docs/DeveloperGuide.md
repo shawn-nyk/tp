@@ -30,18 +30,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user       | get error feedback when a command fails                        | know what went wrong                                                              |
 | `* * *`  | user       | add a company profile                                          | keep track of companies that I'm interested in                                    |
 | `* * *`  | user       | delete a company profile                                       | remove company profiles that I no longer need / am no longer interested in        |
-| `* *`    | user       | edit a company profile                                         | keep my company profiles updated and accurate                                     |
+| `* * *`  | user       | edit a company profile                                         | keep my company profiles updated and accurate                                     |
 | `* * *`  | user       | view a company profile                                         |                                                                                   |
 | `* * *`  | user       | add an internship application                                  | keep track of the internships that I have applied for                             |
 | `* * *`  | user       | delete an internship application                               | remove internship applications that I no longer need / am no longer interested in |
-| `* *`    | user       | edit an internship application                                 | keep my internship applications updated and accurate                              |
+| `* * *`  | user       | edit an internship application                                 | keep my internship applications updated and accurate                              |
 | `* * *`  | user       | view an internship application                                 |                                                                                   |
 | `* * *`  | user       | track an internship application's status                       |                                                                                   |
 | `* * *`  | user       | save the dates of my upcoming interviews                       | keep track of them                                                                |
 | `* * *`  | user       | see a list of my skills and achievements                       | understand which internships are a better fit for me                              |
 | `* * *`  | user       | add to my list of skills and achievements                      | keep my list of skills and achievements updated and accurate                      |
 | `* * *`  | user       | delete a skill / achievement                                   | keep my list of skills and achievements updated and accurate                      |
-| `* *`    | user       | edit a skill / achievement                                     | keep my list of skills and achievements updated and accurate                      |
+| `* * *`  | user       | edit a skill / achievement                                     | keep my list of skills and achievements updated and accurate                      |
 | `* * *`  | user       | view a skill / achievement                                     |                                                                                   |
 | `* *`    | user       | navigate the application easily through a clear user interface |                                                                                   |
 | `* *`    | user       | get fast feedback from the app                                 |                                                                                   |
