@@ -46,7 +46,7 @@ InternHunter allows the management of three data types:
 
 Data type | Alias | Attributes
 ----------|-------|-----------
-Company | com | company name, industry, jobs
+Company | com | company name, industry, job titles
 Internship | int | company name, job title, industry, requirements, period, wage, status
 Profile | me | category, descriptors
 
@@ -68,13 +68,14 @@ Profile | me | category, descriptors
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add -com n/COMPANY_NAME i/INDUSTRY j/JOBS`, `COMPANY_NAME, INDUSTRY, JOBS` are parameters which can be used as `add -com n/Garena i/Gaming j/Game developer`.
+  e.g. in `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLES...`, `COMPANY_NAME, INDUSTRY, JOB_TITLES` are parameters
+   which can be used as `add -com n/Garena i/Gaming j/Game developer`.
 
 * Items in square brackets are optional.<br>
   e.g `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` can be used as <br/> `add -int n/Google j/Software Engineer i/Software
 `.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
+* Items with `...`​ after them can be used multiple times including zero times.<br>
   e.g. `[r/REQUIREMENT]...` can be used as `r/Rust`, `r/React native r/JavaScript` etc.
 
 * Parameters can be in any order.<br>
@@ -101,14 +102,14 @@ Deletes a company profile from your list of company profiles.
 
 Format: `delete -com INDEX`
 
-Examples:
+Example:
 - `delete -com 5`
 
 #### Editing a company profile: `edit -com`
 
 Edits a company profile from your list of company profiles.
 
-Format: `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOBS]...`
+Format: `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOB_TITLES]...`
 
 Examples:
 - `edit -com 1 j/Game developer j/Software tester`
@@ -120,7 +121,7 @@ Selects a company profile in your list of company profiles to show in detail.
 
 Format: `view -com INDEX`
 
-Examples:
+Example:
 - `view -com 3`
 
 ### Internship Application
@@ -151,7 +152,7 @@ Deletes an internship.
  
 Format: `delete -int INDEX` 
 
-Examples:
+Example:
 - `delete -int 3`
 
 #### Editing an internship application: `edit -int`
@@ -195,7 +196,7 @@ Selects an internship application in the list of internship applications to show
 Format: `view -int INDEX` - `INDEX` is the index of the internship application in the list of internship
 applications
 
-Examples:
+Example:
 - `view -int 3`
 
 ### User Profile
@@ -230,7 +231,7 @@ Format: `edit -me INDEX [c/CATEGORY] [d/DESCRIPTORS]`
 
 * At least one of the optional fields must be provided.
 
-Example:
+Examples:
 * `edit -me 2 c/skill d/CSS`
 * `edit -me 4 c/achievement`
 
@@ -275,7 +276,7 @@ Type            | Action     | Format
 ----------------|------------|------------------
 **Company**     | **Add**    | `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLES...`
 &nbsp;          | **Delete** | `delete -com INDEX`
-&nbsp;          | **Edit**   | `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOBS]...`
+&nbsp;          | **Edit**   | `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOB_TITLES]...`
 &nbsp;          | **View**   | `view -com INDEX`
 **Internship**  | **Add**    | `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` <br/> `add -int n/COMPANY_NAME INDEX`
 &nbsp;          | **Delete** | `delete -int INDEX`
