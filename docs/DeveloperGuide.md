@@ -96,7 +96,7 @@ Guarantees: Editing of internship application is successful
 
 #### MSS
 
-Precondition: User already has an existing user profile item. </br>
+Precondition: User already has an existing user profile items </br>
 Guarantees: Deletion of user profile item is successful
 
 1.  User requests to delete a user profile item from the user profile and provides the index.
@@ -113,7 +113,7 @@ Guarantees: Deletion of user profile item is successful
 
 #### MSS
 
-Precondition: User already has an existing list of user profile items. </br>
+Precondition: User already has an existing list of user profile items </br>
 Guarantees: Editing of user profile item is successful
 
 1.  User requests to edit the details of a user profile item and inputs the index and details.
@@ -130,7 +130,7 @@ Guarantees: Editing of user profile item is successful
 
 #### MSS
 
-Precondition: User already has an existing list of user profile items. </br>
+Precondition: User already has an existing list of user profile items </br>
 Guarantees: Viewing of user profile item is successful
 
 1.  User requests to view the details of a user profile item.
@@ -146,9 +146,6 @@ Guarantees: Viewing of user profile item is successful
 
 #### MSS
 
-Precondition: User already has an existing list of user profile items. </br>
-Guarantees: Viewing of user profile item is successful
-
 1.  User requests to switch the tab of the screen.
 2.  InternHunter switch to the requested tab. </br>
     Use case ends.
@@ -163,8 +160,7 @@ Guarantees: Viewing of user profile item is successful
 
 #### MSS
 
-Precondition: User needs help with using the system.
-Guarantees: User will get directions to the user guide.
+Guarantees: User will get directions to the user guide
 
 MSS:
 1.  User requests for help.
@@ -176,14 +172,14 @@ MSS:
 
 #### MSS
 
-Precondition: System is running.
-Guarantees: System will stop running.
+Precondition: System is running
+Guarantees: System will stop running
 
-1.  User requests to exit the app.
+1.  User requests to exit InternHunter.
 2.  InternHunter prompts for confirmation.
 3.  User confirms intention to exit.
 4.  InternHunter exits. </br>
-     Use case ends.
+    Use case ends.
 
 #### Extensions
 2a. User chooses to cancel the confirmation. </br>
