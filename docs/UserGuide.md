@@ -46,7 +46,7 @@ InternHunter allows the management of three data types:
 
 Data type | Alias | Attributes
 ----------|-------|-----------
-Company | com | company name, industry, job titles
+Company | com | company name, industry, job title
 Internship | int | company name, job title, industry, requirements, period, wage, status
 Profile | me | category, descriptors
 
