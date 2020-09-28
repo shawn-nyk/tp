@@ -1,0 +1,3 @@
+<?import javafx.scene.layout.VBox?>
+
+<fx:root type="javafx.scene.layout.VBox" fx:id="company" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" translateX="-4" style="-fx-background-color: greenyellow" prefHeight="510"/>

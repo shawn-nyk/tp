@@ -9,7 +9,8 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.text.TextFlow?>
+<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #fdfdfd;">
   <GridPane HBox.hgrow="ALWAYS">
     <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
@@ -28,9 +29,14 @@
         <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
       </HBox>
       <FlowPane fx:id="tags" />
-      <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
-      <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
-      <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
+      <TextFlow fx:id="phone" styleClass="cell_small_label"/>
+      <TextFlow fx:id="address" styleClass="cell_small_label" />
+      <TextFlow fx:id="email" styleClass="cell_small_label" />
     </VBox>
   </GridPane>
+  <VBox minWidth="100" maxWidth="100" minHeight="-Infinity" alignment="BASELINE_CENTER">
+    <VBox fx:id="statusBox" styleClass="cell_status_box_label">
+      <Label fx:id="status" styleClass="cell_status_label"/>
+    </VBox>
+  </VBox>
 </HBox>
