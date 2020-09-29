@@ -10,7 +10,8 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.text.TextFlow?>
-<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #fdfdfd;">
+<?import javafx.scene.image.ImageView?>
+<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <GridPane HBox.hgrow="ALWAYS">
     <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
@@ -34,9 +35,11 @@
       <TextFlow fx:id="email" styleClass="cell_small_label" />
     </VBox>
   </GridPane>
-  <VBox minWidth="100" maxWidth="100" minHeight="-Infinity" alignment="BASELINE_CENTER">
+  <VBox styleClass="cell_right_portion" minHeight="-Infinity">
     <VBox fx:id="statusBox" styleClass="cell_status_box_label">
       <Label fx:id="status" styleClass="cell_status_label"/>
     </VBox>
+    <ImageView fitHeight="23.0" fitWidth="23.0" fx:id="calendar" translateY="25"/>
+    <Label fx:id="date" styleClass="cell_date_label"/>
   </VBox>
 </HBox>

@@ -2,10 +2,13 @@
     -fx-background-color: white;
     -fx-text-fill: #638bfb;
     -fx-font-family: Nunito;
+    -fx-min-height: 41;
 }
 
 .button_style {
     -fx-background-color: white;
+    -fx-min-height: 41;
+    -fx-min-width: 76;
 }
 
 .main_background_style {
@@ -52,6 +55,7 @@
     -fx-spacing: 10;
     -fx-pref-width: 91;
     -fx-pref-height: 100;
+    -fx-alignment: center;
 }
 .tab_parameter_style {
     -fx-min-height: 95;
@@ -144,6 +148,14 @@
     -fx-text-fill: white;
 }
 
+.cell_date_label {
+    -fx-font-family: "Nunito";
+    -fx-font-weight: bold;
+    -fx-font-size: 9px;
+    -fx-text-fill: #8092CC;
+    -fx-translate-y: 30;
+}
+
 .cell_status_box_label{
     -fx-min-width: 60;
     -fx-max-width: 60;
@@ -153,8 +165,63 @@
     -fx-alignment: center;
 }
 
+.cell_right_portion {
+    -fx-min-width: 100;
+    -fx-max-width: 100;
+    -fx-alignment: baseline-center;
+}
+
+.internship_display {
+    -fx-background-color: #fdfdfd;
+    -fx-pref-height: 510;
+    -fx-translate-x: -4;
+}
+
+.internship_information_container {
+    -fx-border-width: 1 0 0 0;
+    -fx-border-color: #6A9DF7 transparent #6A9DF7 transparent;
+    -fx-fill-width: true;
+    -fx-spacing: 5;
+    -fx-alignment: center;
+}
+
+.internship_information_display_container {
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #6A9DF7 transparent #6A9DF7 transparent;
+    -fx-min-height: 30;
+}
+
+.internship_information_title {
+    -fx-alignment: top-center;
+    -fx-min-width: 65;
+}
+
+.internship_information_description {
+    -fx-alignment: center;
+    -fx-min-width: 200;
+}
+
+.internship_title {
+    -fx-text-fill: #6F67C6;
+    -fx-font-family: "Nunito";
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+}
+
+.internship_title_bar {
+    -fx-pref-height: 1;
+    -fx-background-color: #DBE8FF;
+}
+
+.internship_title_container {
+    -fx-fill-width: true;
+    -fx-spacing: 5;
+    -fx-alignment: center;
+    -fx-pref-height: 90;
+}
+
 #cardPane {
-    -fx-background-color: transparent;
+    -fx-background-color: #fdfdfd;
     -fx-border-width: 0;
 }
 

@@ -4,6 +4,8 @@ import java.util.Comparator;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
@@ -20,14 +22,18 @@ import seedu.address.model.person.Person;
  */
 public class PersonCard extends UiPart<Region> {
 
+    //FXML
     private static final String FXML = "PersonListCard.fxml";
 
-    // Person's Attribute
+    //Image Link
+    private static final String CALENDAR_IMAGE_LINK = "/images/calendar.png";
+
+    //Person's Attribute
     private static final String ATTRIBUTE_PHONE = "Phone";
     private static final String ATTRIBUTE_ADDRESS = "Address";
     private static final String ATTRIBUTE_EMAIL = "Email";
 
-    // PersonCard styling attribute
+    //FXML properties
     private static final String DISPLAY_FONT = "Nunito";
     private static final int DISPLAY_SIZE = 12;
     private static final String TITLE_COLOR = "#363F80";
@@ -53,6 +59,10 @@ public class PersonCard extends UiPart<Region> {
     private VBox statusBox;
     @FXML
     private Label status;
+    @FXML
+    private ImageView calendar;
+    @FXML
+    private Label date;
 
     /**
      * Creates a {@code PersonCard} with the given {@code Person} and index to display.
@@ -70,6 +80,8 @@ public class PersonCard extends UiPart<Region> {
         initializeHeader(displayedIndex);
         initializeBody();
         initializeTags();
+        initializeStatus();
+        initializeDate();
     }
 
     /**
@@ -96,7 +108,16 @@ public class PersonCard extends UiPart<Region> {
         person.getTags().stream()
             .sorted(Comparator.comparing(tag -> tag.tagName))
             .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        setRandomStatus(); // to be removed in when other classes are ready.
+    }
+
+    private void initializeStatus() {
+        setRandomStatus(); // to be change in when other classes are ready.
+    }
+
+    private void initializeDate() {
+        Image calendarIcon = new Image(this.getClass().getResourceAsStream(CALENDAR_IMAGE_LINK));
+        calendar.setImage(calendarIcon);
+        date.setText("21/07/2020"); // to be made later!
     }
 
     /**

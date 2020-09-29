@@ -8,7 +8,7 @@
     <HBox styleClass="tab_parameter_style">
         <Button onAction="#handleClick" fx:id="internshipButton" mnemonicParsing="false" styleClass="tab_button_style">
             <graphic>
-                <VBox styleClass="tab_container_style" alignment="CENTER" spacing="10">
+                <VBox styleClass="tab_container_style">
                     <ImageView fitHeight="27.0" fitWidth="27.0" fx:id="internshipIcon" translateY="10" translateX="2"/>
                     <Label text="Internship" styleClass="tab_label_style"/>
                     <HBox styleClass="tab_line_style"/>
@@ -20,7 +20,7 @@
     <HBox styleClass="tab_parameter_style">
         <Button translateY = "-13.5" onAction="#handleClick" fx:id="companyButton" mnemonicParsing="false" styleClass="tab_button_style">
             <graphic>
-                <VBox prefHeight="100.0" prefWidth="91.0" styleClass="tab_container_style" alignment="CENTER" spacing="10">
+                <VBox styleClass="tab_container_style">
                     <ImageView fitHeight="26.0" fitWidth="26.0" fx:id="companyIcon" translateY="5"/>
                     <Label text="Company" styleClass="tab_label_style"/>
                     <HBox styleClass="tab_line_style"/>
@@ -32,7 +32,7 @@
     <HBox styleClass="tab_parameter_style">
         <Button translateY = "-27" onAction="#handleClick" fx:id="userButton" mnemonicParsing="false" styleClass="tab_button_style">
             <graphic>
-                <VBox prefHeight="100.0" prefWidth="91.0" styleClass="tab_container_style" alignment="CENTER" spacing="10">
+                <VBox  styleClass="tab_container_style">
                     <ImageView fitHeight="23.0" fitWidth="23.0" fx:id="userIcon" translateY="5"/>
                     <Label text="Profile" styleClass="tab_label_style"/>
                     <HBox styleClass="tab_line_style"/>
