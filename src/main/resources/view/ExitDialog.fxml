@@ -8,15 +8,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<DialogPane fx:id="dialogPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="220.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<DialogPane fx:id="dialogPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <header>
-      <Label style="-fx-font-weight: 800;" text="Confirm Exit" textFill="#363f80">
+      <Label text="Confirm Exit" textFill="#363f80">
          <padding>
             <Insets left="10.0" right="10.0" top="10.0" />
          </padding>
          <font>
-            <Font name="Nunito Regular" size="13.0" />
+            <Font name="Nunito Bold" size="13.0" />
          </font>
       </Label>
    </header>
@@ -24,10 +23,10 @@
       <VBox spacing="20.0">
          <children>
             <Label text="Are you sure you want to exit?" textFill="#8e8fb5" />
-            <ButtonBar>
+            <ButtonBar buttonOrder="">
               <buttons>
-                  <Button fx:id="noButton" mnemonicParsing="false" onAction="#cancelExit" style="-fx-background-color: #8E8FB5;" text="No" textFill="WHITE" />
-                  <Button fx:id="yesButton" alignment="CENTER" mnemonicParsing="false" onAction="#confirmExit" style="-fx-background-color: #363f80;" text="Yes" textAlignment="CENTER" textFill="WHITE" />
+                  <Button fx:id="yesButton" alignment="CENTER" mnemonicParsing="false" onAction="#confirmExit" style="-fx-background-color: #363f80;" text="Yes" textFill="WHITE" />
+                  <Button fx:id="noButton" alignment="CENTER" mnemonicParsing="false" onAction="#cancelExit" style="-fx-background-color: #8E8FB5;" text="No" textFill="WHITE" />
               </buttons>
             </ButtonBar>
          </children>

@@ -1,23 +1,12 @@
 package seedu.address.ui;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
-
-import java.awt.*;
 
 public class ExitDialog extends UiPart<DialogPane> {
 
@@ -35,6 +24,11 @@ public class ExitDialog extends UiPart<DialogPane> {
     private Dialog<Boolean> dialog;
     private WindowEvent event;
 
+    /**
+     * Creates a new Exit dialog.
+     *
+     * @param event event that triggers the creation of exit dialog.
+     */
     public ExitDialog(WindowEvent event) {
         super(FXML);
         dialog = new Dialog<>();
@@ -62,8 +56,8 @@ public class ExitDialog extends UiPart<DialogPane> {
     @FXML
     private boolean cancelExit() {
         dialog.setResult(Boolean.TRUE);
-        event.consume();
         dialog.hide();
+        event.consume();
         return false;
     }
 }
