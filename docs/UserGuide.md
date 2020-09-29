@@ -46,7 +46,7 @@ InternHunter allows the management of three data types:
 
 Data type | Alias | Attributes
 ----------|-------|-----------
-Company | com | company name, industry, job titles
+Company | com | company name, industry, job title
 Internship | int | company name, job title, industry, requirements, period, wage, status
 Profile | me | category, descriptors
 
@@ -68,8 +68,8 @@ Profile | me | category, descriptors
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLES...`, `COMPANY_NAME, INDUSTRY, JOB_TITLES` are parameters
-   which can be used as `add -com n/Garena i/Gaming j/Game developer`.
+  e.g. in `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLE...`, `COMPANY_NAME`, `INDUSTRY` and `JOB_TITLE` are
+   parameters which can be used as `add -com n/Garena i/Gaming j/Game developer`.
 
 * Items in square brackets are optional.<br>
   e.g `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` can be used as <br/> `add -int n/Google j/Software Engineer i/Software
@@ -81,7 +81,7 @@ Profile | me | category, descriptors
 * Parameters can be in any order.<br>
   e.g. if the command specifies `i/INDUSTRY r/REQUIREMENT`, `r/REQUIREMENT i/INDUSTRY` is also acceptable.
 
-* `INDEX` refers to the index of the item in the displayed list of items. (Follows one based indexing) <br>
+* `INDEX` refers to the index of the item in the displayed list of items (follows one-based indexing). <br>
 
 
 ### Company Profile
@@ -90,7 +90,7 @@ Profile | me | category, descriptors
 
 Adds a company profile to your list of company profiles.
 
-Format: `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLES...`
+Format: `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLE...`
 
 Examples:
 - `add -com n/Garena i/Gaming j/Game developer`
@@ -109,7 +109,7 @@ Example:
 
 Edits a company profile from your list of company profiles.
 
-Format: `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOB_TITLES]...`
+Format: `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOB_TITLE]...`
 
 Examples:
 - `edit -com 1 j/Game developer j/Software tester`
@@ -274,9 +274,9 @@ Format: `exit`
 
 Type            | Action     | Format
 ----------------|------------|------------------
-**Company**     | **Add**    | `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLES...`
+**Company**     | **Add**    | `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLE...`
 &nbsp;          | **Delete** | `delete -com INDEX`
-&nbsp;          | **Edit**   | `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOB_TITLES]...`
+&nbsp;          | **Edit**   | `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOB_TITLE]...`
 &nbsp;          | **View**   | `view -com INDEX`
 **Internship**  | **Add**    | `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` <br/> `add -int n/COMPANY_NAME INDEX`
 &nbsp;          | **Delete** | `delete -int INDEX`

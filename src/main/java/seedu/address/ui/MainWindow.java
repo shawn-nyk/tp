@@ -66,6 +66,11 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+
+        primaryStage.setOnCloseRequest(event -> {
+            ExitDialog exitDialog = new ExitDialog(event);
+            exitDialog.show();
+        });
     }
 
     public Stage getPrimaryStage() {
