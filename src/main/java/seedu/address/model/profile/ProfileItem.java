@@ -18,14 +18,14 @@ public class ProfileItem {
     // Identity fields
     private final String title;
     private final String type;
-    
+
     // Data fields
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public ProfileItem(String title,  String type, Set<Tag> tags) {
+    public ProfileItem(String title, String type, Set<Tag> tags) {
         requireAllNonNull(type, title, tags);
         this.type = type;
         this.title = title;

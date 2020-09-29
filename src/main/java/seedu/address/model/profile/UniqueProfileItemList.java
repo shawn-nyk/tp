@@ -13,10 +13,10 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
  * A list of profile items that enforces uniqueness between its elements and does not allow nulls.
- * A profile item is considered unique by comparing using {@code Profile#isSameProfileItem(ProfileItem)}. As such, 
- * adding and updating of profile items uses ProfileItem#isSameProfileItem(ProfileItem) for equality so as to ensure 
- * that the profile item being added or updated is unique in terms of identity in the UniquePersonList. 
- * However, the removal of a profile item uses ProfileItem#equals(Object) so as to ensure that the profile item with 
+ * A profile item is considered unique by comparing using {@code Profile#isSameProfileItem(ProfileItem)}. As such,
+ * adding and updating of profile items uses ProfileItem#isSameProfileItem(ProfileItem) for equality so as to ensure
+ * that the profile item being added or updated is unique in terms of identity in the UniquePersonList.
+ * However, the removal of a profile item uses ProfileItem#equals(Object) so as to ensure that the profile item with
  * exactly the same  fields will be removed.
  *
  * Supports a minimal set of list operations.
