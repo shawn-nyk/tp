@@ -27,8 +27,8 @@ It tracks and leverages on key metrics and information to create an optimal inte
 * **Enhancements to existing features**:
 
 * **Community**:
-  * PRs reviewed (with non-trivial review comments): 
-  * Contributed to forum discussions: [#236](https://github.com/nus-cs2103-AY2021S1/forum/issues/236), 
+  * PRs reviewed (with non-trivial review comments):
+  * Contributed to forum discussions: [#236](https://github.com/nus-cs2103-AY2021S1/forum/issues/236),
   * Questions on forum: [#173](https://github.com/nus-cs2103-AY2021S1/forum/issues/173)
   * Reported bugs and suggestions for other teams in the class:
   * Some parts of the history feature I added was adopted by several other class mates:
