@@ -86,7 +86,7 @@ public class Tabs extends VBox {
      * Handles the click {@code event} on the tabs.
      */
     @FXML
-    public void handleClick(ActionEvent event) throws IOException {
+    public void handleClick(ActionEvent event) {
         if (event.getSource() == internshipButton) {
             selectInternship(stage);
         } else if (event.getSource() == companyButton) {
@@ -114,6 +114,7 @@ public class Tabs extends VBox {
 
     /**
      * Set the display and tab to be of {@code internship} in the {@code stage}
+     * Currently it only switches the information display.
      */
     private void selectInternship(Stage stage) {
         // adjust tab bar position
@@ -126,6 +127,7 @@ public class Tabs extends VBox {
 
     /**
      * Set the display and tab to be of {@code company} in the {@code stage}
+     * Currently it only switches the information display.
      */
     private void selectCompany(Stage stage) {
         // adjust tab bar position
@@ -138,6 +140,7 @@ public class Tabs extends VBox {
 
     /**
      * Set the display and tab to be of {@code user} in the {@code stage}
+     * Currently it only switches the information display.
      */
     private void selectUser(Stage stage) {
         // adjust tab bar position

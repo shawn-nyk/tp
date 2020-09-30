@@ -74,6 +74,35 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Set up the GUI properties in the {@code primaryStage} using the stored user settings in {@code logic}.
+     */
+    private void initializeUi(Stage primaryStage, Logic logic) {
+        setWindowDefaultSize(logic.getGuiSettings());
+        bindHeights(primaryStage);
+        helpWindow = new HelpWindow();
+    }
+
+    /**
+     * Binds the height of {@code personList} and {@code resultDisplayPlaceHolder} in the {@code primaryStage}
+     */
+    private void bindHeights(Stage primaryStage) {
+        personList.prefWidthProperty().bind(primaryStage.widthProperty().subtract(PERSON_LIST_HEIGHT_SHRINK));
+        resultDisplayPlaceholder.prefWidthProperty().bind(primaryStage.widthProperty().subtract(RESULT_HEIGHT_SHRINK));
+    }
+
+    /**
+     * Sets the default size based on {@code guiSettings}.
+     */
+    private void setWindowDefaultSize(GuiSettings guiSettings) {
+        primaryStage.setHeight(guiSettings.getWindowHeight());
+        primaryStage.setWidth(guiSettings.getWindowWidth());
+        if (guiSettings.getWindowCoordinates() != null) {
+            primaryStage.setX(guiSettings.getWindowCoordinates().getX());
+            primaryStage.setY(guiSettings.getWindowCoordinates().getY());
+        }
+    }
+
+    /**
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
@@ -90,18 +119,6 @@ public class MainWindow extends UiPart<Stage> {
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
         tabsContainer.getChildren().add(Tabs.getTabs(this, primaryStage));
-    }
-
-    /**
-     * Sets the default size based on {@code guiSettings}.
-     */
-    private void setWindowDefaultSize(GuiSettings guiSettings) {
-        primaryStage.setHeight(guiSettings.getWindowHeight());
-        primaryStage.setWidth(guiSettings.getWindowWidth());
-        if (guiSettings.getWindowCoordinates() != null) {
-            primaryStage.setX(guiSettings.getWindowCoordinates().getX());
-            primaryStage.setY(guiSettings.getWindowCoordinates().getY());
-        }
     }
 
     /**
@@ -163,23 +180,6 @@ public class MainWindow extends UiPart<Stage> {
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
         }
-    }
-
-    /**
-     * Set up the GUI properties in the {@code primaryStage} using the stored user settings in {@code logic}.
-     */
-    private void initializeUi(Stage primaryStage, Logic logic) {
-        setWindowDefaultSize(logic.getGuiSettings());
-        bindHeights(primaryStage);
-        helpWindow = new HelpWindow();
-    }
-
-    /**
-     * Binds the height of {@code personList} and {@code resultDisplayPlaceHolder} in the {@code primaryStage}
-     */
-    private void bindHeights(Stage primaryStage) {
-        personList.prefWidthProperty().bind(primaryStage.widthProperty().subtract(PERSON_LIST_HEIGHT_SHRINK));
-        resultDisplayPlaceholder.prefWidthProperty().bind(primaryStage.widthProperty().subtract(RESULT_HEIGHT_SHRINK));
     }
 
     /**
