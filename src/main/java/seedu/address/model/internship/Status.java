@@ -2,11 +2,10 @@ package seedu.address.model.internship;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
- * Represents a Status in the InternshipItem.
+ * Represents a Status in the InternshipItem. Each status is tagged to a date of creation.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Status {
@@ -15,30 +14,30 @@ public class Status {
     private final JobStatus jobStatus;
 
     // Data fields
-    private final LocalDateTime dateTime;
+    private final Date date;
 
     /**
      * Constructs a {@code Status} object.
      *
      * @param jobStatus A valid job status.
-     * @param dateTime Date and time of status.
+     * @param date Date and time of status.
      */
-    public Status(JobStatus jobStatus, LocalDateTime dateTime) {
-        requireAllNonNull(jobStatus, dateTime);
+    public Status(JobStatus jobStatus, Date date) {
+        requireAllNonNull(jobStatus, date);
         this.jobStatus = jobStatus;
-        this.dateTime = dateTime;
+        this.date = date;
     }
 
     public JobStatus getJobStatus() {
         return jobStatus;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public Date getDate() {
+        return date;
     }
 
     /**
-     * Returns true if both statuses of the same name have at least one other identity field that is the same.
+     * Returns true if both statuses have the same job status.
      * This defines a weaker notion of equality between two statuses.
      */
     public boolean isSameStatus(Status otherStatus) {
@@ -51,7 +50,7 @@ public class Status {
     }
 
     /**
-     * Returns true if both statuses have the same data fields.
+     * Returns true if both statuses have the same job status and date.
      */
     @Override
     public boolean equals(Object other) {
@@ -65,13 +64,13 @@ public class Status {
 
         Status otherStatus = (Status) other;
         return otherStatus.getJobStatus().equals(getJobStatus())
-                && otherStatus.getDateTime().equals(getDateTime());
+                && otherStatus.getDate().equals(getDate());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(jobStatus, dateTime);
+        return Objects.hash(jobStatus, date);
     }
 
     @Override
@@ -79,7 +78,7 @@ public class Status {
         final StringBuilder builder = new StringBuilder();
         builder.append(getJobStatus())
                 .append(" Date ")
-                .append(getDateTime());
+                .append(getDate());
         return builder.toString();
     }
 

@@ -64,7 +64,7 @@ public class InternshipItem {
     }
 
     /**
-     * Returns true if both InternshipItems of the same name have at least one other identity field that is the same.
+     * Returns true if both InternshipItems have the same job and period.
      * This defines a weaker notion of equality between two InternshipItems.
      */
     public boolean isSameInternshipItem(InternshipItem otherInternshipItem) {

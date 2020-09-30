@@ -56,7 +56,7 @@ public class Job {
     }
 
     /**
-     * Returns true if both Jobs have the same identity and data fields.
+     * Returns true if both Jobs have the same job title, company name, and industry.
      * This defines a stronger notion of equality between two Jobs.
      */
     @Override
