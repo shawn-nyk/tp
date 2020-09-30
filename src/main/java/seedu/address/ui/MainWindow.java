@@ -13,6 +13,12 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.ui.cards.PersonListPanel;
+import seedu.address.ui.display.CompanyDisplay;
+import seedu.address.ui.display.InternshipDisplay;
+import seedu.address.ui.display.UserDisplay;
+import seedu.address.ui.tabs.TabName;
+import seedu.address.ui.tabs.Tabs;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -183,11 +189,11 @@ public class MainWindow extends UiPart<Stage> {
         assert (input.equals(TabName.INTERNSHIP) || input.equals(TabName.COMPANY) || input.equals(TabName.USER));
         display.getChildren().clear();
         switch (input) {
-        case INTERNSHIP:
-            display.getChildren().add(InternshipDisplay.getInternshipDisplay(primaryStage));
-            break;
         case COMPANY:
             display.getChildren().add(CompanyDisplay.getCompanyDisplay(primaryStage));
+            break;
+        case INTERNSHIP:
+            display.getChildren().add(InternshipDisplay.getInternshipDisplay(primaryStage));
             break;
         case USER:
             display.getChildren().add(UserDisplay.getUserDisplay(primaryStage));

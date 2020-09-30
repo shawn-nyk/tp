@@ -4,14 +4,14 @@
 
 <?import javafx.scene.text.TextFlow?>
 <?import javafx.geometry.Insets?>
-<fx:root type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" styleClass="internship_information_display_container">
-    <VBox styleClass="internship_information_title">
+<fx:root type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" styleClass="title_description_container">
+    <VBox fx:id="titleInformation" styleClass="title_information">
         <padding>
             <Insets top="10" right="10" bottom="10" left="10" />
         </padding>
         <TextFlow fx:id="title"/>
     </VBox>
-    <VBox styleClass="internship_information_description">
+    <VBox fx:id="descriptionInformation" styleClass="description_information">
         <padding>
             <Insets top="10" right="10" bottom="10" left="10" />
         </padding>

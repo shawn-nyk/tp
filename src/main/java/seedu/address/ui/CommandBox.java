@@ -35,6 +35,7 @@ public class CommandBox extends UiPart<Region> {
     private Button sendButton;
 
     private final CommandExecutor commandExecutor;
+
     /**
      * Creates a {@code CommandBox} with the given {@code CommandExecutor}.
      */

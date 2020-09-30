@@ -1,4 +1,4 @@
-package seedu.address.ui;
+package seedu.address.ui.cards;
 
 import java.util.Comparator;
 
@@ -16,6 +16,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import seedu.address.model.person.Person;
+import seedu.address.ui.UiPart;
 
 /**
  * An UI component that displays information of a {@code Person}.

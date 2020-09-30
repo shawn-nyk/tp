@@ -171,13 +171,13 @@
     -fx-alignment: baseline-center;
 }
 
-.internship_display {
+.information_display{
     -fx-background-color: #fdfdfd;
     -fx-pref-height: 510;
     -fx-translate-x: -4;
 }
 
-.internship_information_container {
+.information_container {
     -fx-border-width: 1 0 0 0;
     -fx-border-color: #6A9DF7 transparent #6A9DF7 transparent;
     -fx-fill-width: true;
@@ -185,35 +185,34 @@
     -fx-alignment: center;
 }
 
-.internship_information_display_container {
+.title_description_container {
     -fx-border-width: 0 0 1 0;
     -fx-border-color: #6A9DF7 transparent #6A9DF7 transparent;
     -fx-min-height: 30;
 }
 
-.internship_information_title {
+.title_information {
     -fx-alignment: top-center;
-    -fx-min-width: 65;
 }
 
-.internship_information_description {
+.description_information {
     -fx-alignment: center;
-    -fx-min-width: 200;
+    -fx-min-width: 150;
 }
 
-.internship_title {
+.information_display_title {
     -fx-text-fill: #6F67C6;
     -fx-font-family: "Nunito";
-    -fx-font-size: 25px;
+    -fx-font-size: 23px;
     -fx-font-weight: bold;
 }
 
-.internship_title_bar {
+.information_display_bar {
     -fx-pref-height: 1;
     -fx-background-color: #DBE8FF;
 }
 
-.internship_title_container {
+.information_display_container {
     -fx-fill-width: true;
     -fx-spacing: 5;
     -fx-alignment: center;
@@ -249,4 +248,3 @@
     -fx-background-radius: 2;
     -fx-font-size: 11;
 }
-

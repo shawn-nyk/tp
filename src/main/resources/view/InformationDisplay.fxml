@@ -3,17 +3,17 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
-<fx:root type="javafx.scene.layout.VBox" fx:id="internship" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" styleClass="internship_display">
+<fx:root type="javafx.scene.layout.VBox" fx:id="informationDisplay" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" styleClass="information_display">
     <GridPane HBox.hgrow="ALWAYS">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
         </columnConstraints>
         <VBox minHeight="105" GridPane.columnIndex="0">
-            <VBox styleClass="internship_title_container">
-                <Label fx:id="companyName" styleClass="internship_title"/>
-                <HBox fx:id="nameBar" styleClass="internship_title_bar"/>
+            <VBox styleClass="information_display_container">
+                <Label fx:id="informationTitle" styleClass="information_display_title"/>
+                <HBox fx:id="nameBar" styleClass="information_display_bar"/>
             </VBox>
-            <VBox fx:id="internshipDisplayInformation" styleClass="internship_information_container"/>
+            <VBox fx:id="information" styleClass="information_container"/>
         </VBox>
     </GridPane>
 </fx:root>

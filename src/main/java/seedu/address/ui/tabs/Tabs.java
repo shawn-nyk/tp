@@ -1,4 +1,4 @@
-package seedu.address.ui;
+package seedu.address.ui.tabs;
 
 import java.io.IOException;
 
@@ -11,7 +11,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import seedu.address.ui.MainWindow;
 
+/**
+ * Tabs which allow switching of screens for different information.
+ */
 public class Tabs extends VBox {
 
     //FXML
