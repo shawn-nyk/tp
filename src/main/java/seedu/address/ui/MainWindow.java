@@ -80,6 +80,11 @@ public class MainWindow extends UiPart<Stage> {
         setWindowDefaultSize(logic.getGuiSettings());
         bindHeights(primaryStage);
         helpWindow = new HelpWindow();
+
+        primaryStage.setOnCloseRequest(event -> {
+            ExitDialog exitDialog = new ExitDialog(event);
+            exitDialog.show();
+        });
     }
 
     /**
