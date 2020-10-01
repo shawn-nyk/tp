@@ -1,6 +1,6 @@
 package seedu.address.model.internship;
 
-public enum JobStatus {
+public enum ApplicationStatus {
     APPLIED,
     INTERVIEW,
     WAITING,

@@ -7,30 +7,29 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import seedu.address.model.job.Job;
+import seedu.address.model.Item;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 
 /**
  * Represents an InternshipItem in the InternHunter application.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class InternshipItem {
+public class InternshipItem implements Item {
 
     // Identity fields
-    private final Job job;
-    private final Name period;
+    private final Name job;
+    private final String period;
 
     // Data fields
-    private final Phone wage;
+    private final Wage wage;
     private final Status status;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public InternshipItem(Job job, Name period, Phone wage, Status status, Set<Tag> tags) {
+    public InternshipItem(Name job, String period, Wage wage, Status status, Set<Tag> tags) {
         requireAllNonNull(job, period, wage, status, tags);
         this.job = job;
         this.period = period;
@@ -39,15 +38,15 @@ public class InternshipItem {
         this.tags.addAll(tags);
     }
 
-    public Job getJob() {
+    public Name getJob() {
         return job;
     }
 
-    public Name getPeriod() {
+    public String getPeriod() {
         return period;
     }
 
-    public Phone getWage() {
+    public Wage getWage() {
         return wage;
     }
 
@@ -66,15 +65,33 @@ public class InternshipItem {
     /**
      * Returns true if both InternshipItems have the same job and period.
      * This defines a weaker notion of equality between two InternshipItems.
+     *
+     * @param otherItem Other InternShipItem to compare to.
+     * @return True if and only if the 2 InternshipItems have the same identity fields.
      */
-    public boolean isSameInternshipItem(InternshipItem otherInternshipItem) {
-        if (otherInternshipItem == this) {
+    @Override
+    public boolean isSameItem(Item otherItem) {
+        if (otherItem == this) {
             return true;
         }
 
-        return otherInternshipItem != null
-                && otherInternshipItem.getJob().equals(getJob())
+        if (!(otherItem instanceof InternshipItem)) {
+            return false;
+        }
+
+        InternshipItem otherInternshipItem = (InternshipItem) otherItem;
+        return otherInternshipItem.getJob().equals(getJob())
                 && otherInternshipItem.getPeriod().equals(getPeriod());
+    }
+
+    /**
+     * Obtains the name of the item.
+     *
+     * @return Item name.
+     */
+    @Override
+    public String getItemName() {
+        return "internship";
     }
 
     /**

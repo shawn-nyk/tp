@@ -11,7 +11,8 @@ import java.time.format.DateTimeFormatter;
  */
 public class Date {
 
-    private static final String DATE_TIME_OUTPUT_FORMAT = "d MMM yyyy @ h.mm a";
+    private static final String DATE_TIME_LONG_FORMAT = "d MMM yyyy @ h.mm a";
+    private static final String DATE_TIME_SHORT_FORMAT = "d MMM";
 
     private final LocalDateTime date;
 
@@ -38,6 +39,15 @@ public class Date {
         return sameYear && sameDay;
     }
 
+    /**
+     * Returns the short date format for main screen view.
+     *
+     * @return Short date format.
+     */
+    public String getShortDate() {
+        return date.format(DateTimeFormatter.ofPattern(DATE_TIME_SHORT_FORMAT));
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -50,9 +60,14 @@ public class Date {
         return date.hashCode();
     }
 
+    /**
+     * Returns the long date format for right pane view.
+     *
+     * @return Long date format.
+     */
     @Override
     public String toString() {
-        return date.format(DateTimeFormatter.ofPattern(DATE_TIME_OUTPUT_FORMAT));
+        return date.format(DateTimeFormatter.ofPattern(DATE_TIME_LONG_FORMAT));
     }
 
 }
