@@ -1,4 +1,6 @@
-package seedu.address.model;
+package seedu.address.model.item;
+
+import java.util.LinkedHashMap;
 
 /**
  * Represents an Item in the InternHunter application.
@@ -21,5 +23,12 @@ public interface Item {
      * @return Item name.
      */
     String getItemName();
+
+    /**
+     * Obtains the mapping of all field names to their corresponding fields.
+     *
+     * @return Mapping of field names to fields for the item.
+     */
+    LinkedHashMap<String, Object> getMapping();
 
 }

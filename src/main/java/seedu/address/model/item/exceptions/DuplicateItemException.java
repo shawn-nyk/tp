@@ -1,4 +1,6 @@
-package seedu.address.model;
+package seedu.address.model.item.exceptions;
+
+import seedu.address.model.item.Item;
 
 /**
  * Signals that the operation will result in duplicate Persons (Persons are considered duplicates if they have the same

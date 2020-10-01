@@ -1,4 +1,6 @@
-package seedu.address.model;
+package seedu.address.model.item.exceptions;
+
+import seedu.address.model.item.Item;
 
 /**
  * Signals that the operation is unable to find the specified item.

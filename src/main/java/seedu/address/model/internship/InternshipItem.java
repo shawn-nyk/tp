@@ -4,10 +4,11 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Objects;
 import java.util.Set;
 
-import seedu.address.model.Item;
+import seedu.address.model.item.Item;
 import seedu.address.model.person.Name;
 import seedu.address.model.tag.Tag;
 
@@ -18,31 +19,32 @@ import seedu.address.model.tag.Tag;
 public class InternshipItem implements Item {
 
     // Identity fields
-    private final Name job;
+    private final Name companyName;
+    private final Name jobTitle;
     private final String period;
 
     // Data fields
     private final Wage wage;
-    private final InternshipStatus internshipStatus;
-    private final StatusDate statusDate;
-    private final Set<Tag> tags = new HashSet<>();
+    private final Set<Tag> skills = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public InternshipItem(Name job, String period, Wage wage, InternshipStatus internshipStatus, StatusDate statusDate,
-            Set<Tag> tags) {
-        requireAllNonNull(job, period, wage, internshipStatus, tags);
-        this.job = job;
+    public InternshipItem(Name companyName, Name jobTitle, String period, Wage wage, Set<Tag> skills) {
+        requireAllNonNull(companyName, jobTitle, period, wage, skills);
+        this.companyName = companyName;
+        this.jobTitle = jobTitle;
         this.period = period;
         this.wage = wage;
-        this.internshipStatus = internshipStatus;
-        this.statusDate = statusDate;
-        this.tags.addAll(tags);
+        this.skills.addAll(skills);
     }
 
-    public Name getJob() {
-        return job;
+    public Name getCompanyName() {
+        return jobTitle;
+    }
+
+    public Name getJobTitle() {
+        return jobTitle;
     }
 
     public String getPeriod() {
@@ -53,24 +55,16 @@ public class InternshipItem implements Item {
         return wage;
     }
 
-    public InternshipStatus getInternshipStatus() {
-        return internshipStatus;
-    }
-
-    public StatusDate getStatusDate() {
-        return statusDate;
-    }
-
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
     public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
+        return Collections.unmodifiableSet(skills);
     }
 
     /**
-     * Returns true if both InternshipItems have the same job and period.
+     * Returns true if both InternshipItems have the same jobTitle and period.
      * This defines a weaker notion of equality between two InternshipItems.
      *
      * @param otherItem Other InternShipItem to compare to.
@@ -87,7 +81,8 @@ public class InternshipItem implements Item {
         }
 
         InternshipItem otherInternshipItem = (InternshipItem) otherItem;
-        return otherInternshipItem.getJob().equals(getJob())
+        return otherInternshipItem.getCompanyName().equals(getCompanyName())
+                && otherInternshipItem.getJobTitle().equals(getJobTitle())
                 && otherInternshipItem.getPeriod().equals(getPeriod());
     }
 
@@ -99,6 +94,21 @@ public class InternshipItem implements Item {
     @Override
     public String getItemName() {
         return "internship";
+    }
+
+    /**
+     * Obtains the mapping of all field names to their corresponding fields in an InternshipItem object.
+     *
+     * @return Mapping of field names to fields for the InternshipItem.
+     */
+    public LinkedHashMap<String, Object> getMapping() {
+        LinkedHashMap<String, Object> mapping = new LinkedHashMap<>();
+        mapping.put("Header", companyName);
+        mapping.put("Job title", jobTitle);
+        mapping.put("Period", period);
+        mapping.put("Wage", wage);
+        mapping.put("Skills", skills);
+        return mapping;
     }
 
     /**
@@ -116,33 +126,30 @@ public class InternshipItem implements Item {
         }
 
         InternshipItem otherInternshipItem = (InternshipItem) other;
-        return otherInternshipItem.getJob().equals(getJob())
+        return otherInternshipItem.getCompanyName().equals(getCompanyName())
+                && otherInternshipItem.getJobTitle().equals(getJobTitle())
                 && otherInternshipItem.getPeriod().equals(getPeriod())
                 && otherInternshipItem.getWage().equals(getWage())
-                && otherInternshipItem.getInternshipStatus().equals(getInternshipStatus())
-                && otherInternshipItem.getStatusDate().equals(getStatusDate())
                 && otherInternshipItem.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(job, period, wage, internshipStatus, statusDate, tags);
+        return Objects.hash(companyName, jobTitle, period, wage, skills);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getJob())
+        builder.append(getCompanyName())
+                .append(" Job title: ")
+                .append(getJobTitle())
                 .append(" Period: ")
                 .append(getPeriod())
                 .append(" Wage: ")
                 .append(getWage())
-                .append(" Internship status: ")
-                .append(getInternshipStatus())
-                .append(" Date: ")
-                .append(getStatusDate())
-                .append(" Tags: ");
+                .append(" Skills: ");
         getTags().forEach(builder::append);
         return builder.toString();
     }
