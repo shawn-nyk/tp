@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 
 /**
  * Represents an Item in the InternHunter application.
- * There are 3 types of items, InternshipItem, CompanyItem, ProfileItem.
+ * There are 4 types of items, InternshipItem, InternshipApplication, CompanyItem, ProfileItem.
  */
 public interface Item {
 

@@ -64,29 +64,6 @@ public class InternshipItem implements Item {
     }
 
     /**
-     * Returns true if both InternshipItems have the same jobTitle and period.
-     * This defines a weaker notion of equality between two InternshipItems.
-     *
-     * @param otherItem Other InternShipItem to compare to.
-     * @return True if and only if the 2 InternshipItems have the same identity fields.
-     */
-    @Override
-    public boolean isSameItem(Item otherItem) {
-        if (otherItem == this) {
-            return true;
-        }
-
-        if (!(otherItem instanceof InternshipItem)) {
-            return false;
-        }
-
-        InternshipItem otherInternshipItem = (InternshipItem) otherItem;
-        return otherInternshipItem.getCompanyName().equals(getCompanyName())
-                && otherInternshipItem.getJobTitle().equals(getJobTitle())
-                && otherInternshipItem.getPeriod().equals(getPeriod());
-    }
-
-    /**
      * Obtains the name of the item.
      *
      * @return Item name.
@@ -109,6 +86,29 @@ public class InternshipItem implements Item {
         mapping.put("Wage", wage);
         mapping.put("Skills", skills);
         return mapping;
+    }
+
+    /**
+     * Returns true if both InternshipItems have the same jobTitle and period.
+     * This defines a weaker notion of equality between two InternshipItems.
+     *
+     * @param otherItem Other InternShipItem to compare to.
+     * @return True if and only if the 2 InternshipItems have the same identity fields.
+     */
+    @Override
+    public boolean isSameItem(Item otherItem) {
+        if (otherItem == this) {
+            return true;
+        }
+
+        if (!(otherItem instanceof InternshipItem)) {
+            return false;
+        }
+
+        InternshipItem otherInternshipItem = (InternshipItem) otherItem;
+        return otherInternshipItem.getCompanyName().equals(getCompanyName())
+                && otherInternshipItem.getJobTitle().equals(getJobTitle())
+                && otherInternshipItem.getPeriod().equals(getPeriod());
     }
 
     /**
