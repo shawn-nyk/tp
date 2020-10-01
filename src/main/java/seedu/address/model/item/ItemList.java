@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
  * Wraps all item data at the macro level.
  * Duplicates are not allowed (by .isSameItem comparison)
  */
-public class ItemList implements ReadOnlyItemList {
+public abstract class ItemList implements ReadOnlyItemList {
 
     private final UniqueItemList items;
 
@@ -91,6 +91,14 @@ public class ItemList implements ReadOnlyItemList {
      */
     public void removeItem(Item key) {
         items.remove(key);
+    }
+
+    /**
+     * Removes {@code key} from this {@code ItemList}, removing the object based on the weaker notion of equality.
+     * {@code key} need not be in this item list.
+     */
+    public void deepRemoveItem(Item key) {
+        items.deepRemove(key);
     }
 
     //// util methods

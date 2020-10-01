@@ -79,6 +79,18 @@ public class UniqueItemList implements Iterable<Item> {
         }
     }
 
+    /**
+     * Removes the equivalent item from the list, based on the weaker notion of equality between 2 items.
+     */
+    public void deepRemove(Item toRemove) {
+        requireNonNull(toRemove);
+        for (Item item : internalList) {
+            if (item.isSameItem(toRemove)) {
+                internalList.remove(toRemove);
+            }
+        }
+    }
+
     public void setItems(UniqueItemList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);

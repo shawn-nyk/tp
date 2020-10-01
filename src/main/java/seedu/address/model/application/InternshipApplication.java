@@ -14,8 +14,10 @@ import seedu.address.model.item.Item;
  */
 public class InternshipApplication implements Item {
 
-    // Data fields
+    // Identity fields
     private final InternshipItem internshipItem;
+
+    // Data fields
     private final InternshipStatus internshipStatus;
     private final StatusDate statusDate;
 
@@ -44,29 +46,6 @@ public class InternshipApplication implements Item {
     }
 
     /**
-     * Returns true if both InternshipApplications have the {@code InternshipItem}, {@code InternshipStatus}, and
-     * {@code StatusDate}.
-     *
-     * @param otherItem Other InternshipApplication to compare to.
-     * @return True if and only if the 2 InternshipApplications have the same data fields.
-     */
-    @Override
-    public boolean isSameItem(Item otherItem) {
-        if (otherItem == this) {
-            return true;
-        }
-
-        if (!(otherItem instanceof InternshipApplication)) {
-            return false;
-        }
-
-        InternshipApplication otherApplication = (InternshipApplication) otherItem;
-        return otherApplication.getInternshipItem().equals(getInternshipItem())
-                && otherApplication.getInternshipStatus().equals(getInternshipStatus())
-                && otherApplication.getStatusDate().equals(getStatusDate());
-    }
-
-    /**
      * Obtains the name of the item.
      *
      * @return Item name.
@@ -89,7 +68,29 @@ public class InternshipApplication implements Item {
     }
 
     /**
+     * Returns true if both InternshipApplications have the {@code InternshipItem}.
+     * This defines a weaker notion of equality between two InternshipApplication objects.
+     *
+     * @param otherItem Other InternshipApplication to compare to.
+     * @return True if and only if the 2 InternshipApplications have the same identity field.
+     */
+    @Override
+    public boolean isSameItem(Item otherItem) {
+        if (otherItem == this) {
+            return true;
+        }
+
+        if (!(otherItem instanceof InternshipApplication)) {
+            return false;
+        }
+
+        InternshipApplication otherApplication = (InternshipApplication) otherItem;
+        return otherApplication.getInternshipItem().equals(getInternshipItem());
+    }
+
+    /**
      * Returns true if both InternshipApplications have the same data fields.
+     * This defines a stronger notion of equality between two InternshipApplication objects.
      */
     @Override
     public boolean equals(Object other) {
