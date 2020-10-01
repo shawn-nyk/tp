@@ -2,7 +2,12 @@ package seedu.address.ui;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -13,13 +18,23 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class CommandBox extends UiPart<Region> {
 
+    // Style class
     public static final String ERROR_STYLE_CLASS = "error";
+
+    // FXML
     private static final String FXML = "CommandBox.fxml";
 
-    private final CommandExecutor commandExecutor;
+    // Image Link
+    private static final String ARROW_IMAGE_LINK = "/images/sendarrow.png";
 
     @FXML
     private TextField commandTextField;
+    @FXML
+    private ImageView buttonImage;
+    @FXML
+    private Button sendButton;
+
+    private final CommandExecutor commandExecutor;
 
     /**
      * Creates a {@code CommandBox} with the given {@code CommandExecutor}.
@@ -27,8 +42,33 @@ public class CommandBox extends UiPart<Region> {
     public CommandBox(CommandExecutor commandExecutor) {
         super(FXML);
         this.commandExecutor = commandExecutor;
+        setCommandTextFieldProperties();
+        setSendButtonProperties();
+    }
+
+    /**
+     * Loads the arrow image and set the image as the button icon.
+     */
+    private void setSendButtonIcon() {
+        Image arrow = new Image(this.getClass().getResourceAsStream(ARROW_IMAGE_LINK));
+        buttonImage.setImage(arrow);
+    }
+
+    /**
+     * Set the button style.
+     */
+    private void setSendButtonProperties() {
+        HBox.setHgrow(sendButton, Priority.ALWAYS);
+        setSendButtonIcon();
+    }
+
+    /**
+     * Set the command text field style.
+     */
+    private void setCommandTextFieldProperties() {
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
+        HBox.setHgrow(commandTextField, Priority.ALWAYS);
     }
 
     /**
