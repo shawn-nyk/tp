@@ -11,7 +11,7 @@ public class Wage {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Wage should only contain numbers, and it should be at least 3 digits long";
-    public static final String VALIDATION_REGEX = "\\d{3,}";
+    public static final String VALIDATION_REGEX = "^[1-9]\\d*";
     public final String value;
 
     /**
@@ -26,7 +26,8 @@ public class Wage {
     }
 
     /**
-     * Returns true if a given string is a valid wage number.
+     * Returns true if a given string is a valid wage.
+     * Valid wage is defined as a positive number.
      */
     public static boolean isValidWage(String test) {
         return test.matches(VALIDATION_REGEX);
