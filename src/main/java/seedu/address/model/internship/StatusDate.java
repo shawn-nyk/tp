@@ -6,10 +6,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Represents a Status's date.
+ * Represents the date of the Internship status update.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Date {
+public class StatusDate {
 
     private static final String DATE_TIME_LONG_FORMAT = "d MMM yyyy @ h.mm a";
     private static final String DATE_TIME_SHORT_FORMAT = "d MMM";
@@ -21,7 +21,7 @@ public class Date {
      *
      * @param date A valid date.
      */
-    public Date(LocalDateTime date) {
+    public StatusDate(LocalDateTime date) {
         requireNonNull(date);
         this.date = date;
     }
@@ -51,8 +51,8 @@ public class Date {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Date // instanceof handles nulls
-                && sameDate(((Date) other).date)); // state check
+                || (other instanceof StatusDate // instanceof handles nulls
+                && sameDate(((StatusDate) other).date)); // state check
     }
 
     @Override

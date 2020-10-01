@@ -23,18 +23,21 @@ public class InternshipItem implements Item {
 
     // Data fields
     private final Wage wage;
-    private final Status status;
+    private final InternshipStatus internshipStatus;
+    private final StatusDate statusDate;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public InternshipItem(Name job, String period, Wage wage, Status status, Set<Tag> tags) {
-        requireAllNonNull(job, period, wage, status, tags);
+    public InternshipItem(Name job, String period, Wage wage, InternshipStatus internshipStatus, StatusDate statusDate,
+            Set<Tag> tags) {
+        requireAllNonNull(job, period, wage, internshipStatus, tags);
         this.job = job;
         this.period = period;
         this.wage = wage;
-        this.status = status;
+        this.internshipStatus = internshipStatus;
+        this.statusDate = statusDate;
         this.tags.addAll(tags);
     }
 
@@ -50,8 +53,12 @@ public class InternshipItem implements Item {
         return wage;
     }
 
-    public Status getStatus() {
-        return status;
+    public InternshipStatus getInternshipStatus() {
+        return internshipStatus;
+    }
+
+    public StatusDate getStatusDate() {
+        return statusDate;
     }
 
     /**
@@ -112,14 +119,15 @@ public class InternshipItem implements Item {
         return otherInternshipItem.getJob().equals(getJob())
                 && otherInternshipItem.getPeriod().equals(getPeriod())
                 && otherInternshipItem.getWage().equals(getWage())
-                && otherInternshipItem.getStatus().equals(getStatus())
+                && otherInternshipItem.getInternshipStatus().equals(getInternshipStatus())
+                && otherInternshipItem.getStatusDate().equals(getStatusDate())
                 && otherInternshipItem.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(job, period, wage, status, tags);
+        return Objects.hash(job, period, wage, internshipStatus, statusDate, tags);
     }
 
     @Override
@@ -130,8 +138,10 @@ public class InternshipItem implements Item {
                 .append(getPeriod())
                 .append(" Wage: ")
                 .append(getWage())
-                .append(" Status: ")
-                .append(getStatus())
+                .append(" Internship status: ")
+                .append(getInternshipStatus())
+                .append(" Date: ")
+                .append(getStatusDate())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
