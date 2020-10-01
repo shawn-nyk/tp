@@ -54,6 +54,7 @@ public class Tabs extends VBox {
 
     private Stage stage;
     private MainWindow mainWindow;
+    private TabName tabName;
 
     /**
      * Constructs the {@code Tabs} in the given {@code primaryStage} of the {@code mainWindow}.
@@ -62,12 +63,15 @@ public class Tabs extends VBox {
         try {
             stage = primaryStage;
             this.mainWindow = mainWindow;
+            tabName = TabName.INTERNSHIP; // preload the screen name
+
             // Loading the information of the GUI
             FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource(FXML));
             fxmlLoader.setController(this);
             fxmlLoader.setRoot(this);
             fxmlLoader.load();
             internship.setStyle(TAB_COLOR);
+
             // initialize the GUI of the tabs.
             setTabIcons();
         } catch (IOException e) {
@@ -89,13 +93,30 @@ public class Tabs extends VBox {
     public void handleClick(ActionEvent event) {
         if (event.getSource() == internshipButton) {
             selectInternship(stage);
+            tabName = TabName.INTERNSHIP;
         } else if (event.getSource() == companyButton) {
             selectCompany(stage);
+            tabName = TabName.COMPANY;
         } else if (event.getSource() == userButton) {
             selectUser(stage);
+            tabName = TabName.USER;
         } else {
             assert false : "Invalid button";
         }
+    }
+
+    /**
+     * todo Javadocs
+     */
+    public TabName getCurrentTabName() {
+        return tabName;
+    }
+
+    /**
+     * todo Javadocs
+     */
+    public void setTabName(TabName tabName) {
+        this.tabName = tabName;
     }
 
     /**
@@ -116,11 +137,12 @@ public class Tabs extends VBox {
      * Set the display and tab to be of {@code internship} in the {@code stage}
      * Currently it only switches the information display.
      */
-    private void selectInternship(Stage stage) {
+    public void selectInternship(Stage stage) {
         // adjust tab bar position
         setColor(internship, INTERNSHIP_Y_TRANSLATE);
         setTransparent(company, COMPANY_Y_TRANSLATE);
         setTransparent(user, USER_Y_TRANSLATE);
+
         // adjust the display of the gui
         mainWindow.changeDisplay(TabName.INTERNSHIP, stage);
     }
@@ -129,11 +151,12 @@ public class Tabs extends VBox {
      * Set the display and tab to be of {@code company} in the {@code stage}
      * Currently it only switches the information display.
      */
-    private void selectCompany(Stage stage) {
+    public void selectCompany(Stage stage) {
         // adjust tab bar position
         setTransparent(internship, INTERNSHIP_Y_TRANSLATE);
         setColor(company, COMPANY_Y_TRANSLATE);
         setTransparent(user, USER_Y_TRANSLATE);
+
         // adjust the display of the gui
         mainWindow.changeDisplay(TabName.COMPANY, stage);
     }
@@ -142,11 +165,12 @@ public class Tabs extends VBox {
      * Set the display and tab to be of {@code user} in the {@code stage}
      * Currently it only switches the information display.
      */
-    private void selectUser(Stage stage) {
+    public void selectUser(Stage stage) {
         // adjust tab bar position
         setTransparent(internship, INTERNSHIP_Y_TRANSLATE);
         setTransparent(company, COMPANY_Y_TRANSLATE);
         setColor(user, USER_Y_TRANSLATE);
+
         // adjust the display of the gui
         mainWindow.changeDisplay(TabName.USER, stage);
     }
