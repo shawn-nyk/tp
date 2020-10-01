@@ -10,9 +10,9 @@ import javafx.collections.ObservableList;
  * Wraps all item data at the macro level.
  * Duplicates are not allowed (by .isSameItem comparison)
  */
-public abstract class ItemList implements ReadOnlyItemList {
+public class ItemList<T extends Item> implements ReadOnlyItemList<T> {
 
-    private final UniqueItemList items;
+    private final UniqueItemList<T> items;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -22,7 +22,7 @@ public abstract class ItemList implements ReadOnlyItemList {
      *   among constructors.
      */
     {
-        items = new UniqueItemList();
+        items = new UniqueItemList<>();
     }
 
     public ItemList() {
@@ -31,7 +31,7 @@ public abstract class ItemList implements ReadOnlyItemList {
     /**
      * Creates an ItemList using the Items in the {@code toBeCopied}
      */
-    public ItemList(ReadOnlyItemList toBeCopied) {
+    public ItemList(ReadOnlyItemList<T> toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -42,14 +42,14 @@ public abstract class ItemList implements ReadOnlyItemList {
      * Replaces the contents of the item list with {@code items}.
      * {@code items} must not contain duplicate items.
      */
-    public void setItems(List<Item> items) {
+    public void setItems(List<T> items) {
         this.items.setItems(items);
     }
 
     /**
      * Resets the existing data of this {@code ItemList} with {@code newData}.
      */
-    public void resetData(ReadOnlyItemList newData) {
+    public void resetData(ReadOnlyItemList<T> newData) {
         requireNonNull(newData);
 
         setItems(newData.getItemList());
@@ -60,7 +60,7 @@ public abstract class ItemList implements ReadOnlyItemList {
     /**
      * Returns true if an item with the same identity as {@code item} exists in the item list.
      */
-    public boolean hasItem(Item item) {
+    public boolean hasItem(T item) {
         requireNonNull(item);
         return items.contains(item);
     }
@@ -69,7 +69,7 @@ public abstract class ItemList implements ReadOnlyItemList {
      * Adds an item to the item list.
      * The item must not already exist in the item list.
      */
-    public void addItem(Item p) {
+    public void addItem(T p) {
         items.add(p);
     }
 
@@ -79,7 +79,7 @@ public abstract class ItemList implements ReadOnlyItemList {
      * The item identity of {@code editedItem} must not be the same as another existing item in the
      * item list.
      */
-    public void setItem(Item target, Item editedItem) {
+    public void setItem(T target, T editedItem) {
         requireNonNull(editedItem);
 
         items.setItem(target, editedItem);
@@ -89,7 +89,7 @@ public abstract class ItemList implements ReadOnlyItemList {
      * Removes {@code key} from this {@code ItemList}.
      * {@code key} must exist in the item list.
      */
-    public void removeItem(Item key) {
+    public void removeItem(T key) {
         items.remove(key);
     }
 
@@ -97,7 +97,7 @@ public abstract class ItemList implements ReadOnlyItemList {
      * Removes {@code key} from this {@code ItemList}, removing the object based on the weaker notion of equality.
      * {@code key} need not be in this item list.
      */
-    public void deepRemoveItem(Item key) {
+    public void deepRemoveItem(T key) {
         items.deepRemove(key);
     }
 
@@ -110,7 +110,7 @@ public abstract class ItemList implements ReadOnlyItemList {
     }
 
     @Override
-    public ObservableList<Item> getItemList() {
+    public ObservableList<T> getItemList() {
         return items.asUnmodifiableObservableList();
     }
 
