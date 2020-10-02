@@ -52,7 +52,6 @@ public class StatusDate {
         return isDateFormat(date) || isDateTimeFormat(date);
     }
 
-    // TODO: Possibly remove in the future if not used
     /**
      * Returns the short date format for main screen view.
      *
