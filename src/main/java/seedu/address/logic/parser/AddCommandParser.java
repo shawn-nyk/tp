@@ -1,16 +1,23 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.clisyntax.CliSyntax.ITEM_PREFIX_INTERNSHIP;
+import static seedu.address.logic.parser.clisyntax.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.clisyntax.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.clisyntax.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.clisyntax.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.clisyntax.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.clisyntax.internship.InternshipCliSyntax.PREFIX_JOB_TITLE;
+import static seedu.address.logic.parser.clisyntax.internship.InternshipCliSyntax.PREFIX_PERIOD;
+import static seedu.address.logic.parser.clisyntax.internship.InternshipCliSyntax.PREFIX_REQUIREMENT;
+import static seedu.address.logic.parser.clisyntax.internship.InternshipCliSyntax.PREFIX_WAGE;
 
 import java.util.Set;
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.add.AddCommand;
+import seedu.address.logic.commands.add.AddCommandAbstract;
+import seedu.address.logic.commands.add.AddInternshipCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -22,31 +29,62 @@ import seedu.address.model.tag.Tag;
 /**
  * Parses input arguments and creates a new AddCommand object
  */
-public class AddCommandParser implements Parser<AddCommand> {
+public class AddCommandParser implements Parser<AddCommandAbstract> {
+
+    private static final int ITEM_TYPE_INDEX = 0;
+    private static final int ITEM_PREFIX_INDEX = 1;
+    // 2 types of argument item type and item field
+    private static final int NUMBER_OF_ARGUMENTS_TYPES = 2;
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
      * and returns an AddCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public AddCommand parse(String args) throws ParseException {
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+    public AddCommandAbstract parse(String args) throws ParseException {
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
-                || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+        String[] argumentTypes = args.strip().split(" ", NUMBER_OF_ARGUMENTS_TYPES);
+        if (argumentTypes.length < NUMBER_OF_ARGUMENTS_TYPES) {
+            throw new ParseException(String.format(
+                    MESSAGE_INVALID_COMMAND_FORMAT, AddInternshipCommand.MESSAGE_USAGE));
+        }
+        String itemType = argumentTypes[ITEM_TYPE_INDEX];
+        String itemPrefixes = argumentTypes[ITEM_PREFIX_INDEX];
+
+        switch (itemType) {
+        case ITEM_PREFIX_INTERNSHIP:
+            ArgumentMultimap internshipMultimap =
+                    ArgumentTokenizer.tokenize(args, PREFIX_JOB_TITLE, PREFIX_PERIOD, PREFIX_WAGE, PREFIX_REQUIREMENT);
+
+            // Todo: Only includes compulsory fields
+            if (!arePrefixesPresent(internshipMultimap, PREFIX_JOB_TITLE, PREFIX_PERIOD,
+                PREFIX_WAGE, PREFIX_REQUIREMENT)
+                    || !internshipMultimap.getPreamble().isEmpty()) {
+                throw new ParseException(String.format(
+                            MESSAGE_INVALID_COMMAND_FORMAT, AddInternshipCommand.MESSAGE_USAGE));
+            }
+            // Todo: Add parser utilities for Internship
+            return new AddInternshipCommand("Not an internship added");
+        default:
+            ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(
+                        args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+
+            if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
+                    || !argMultimap.getPreamble().isEmpty()) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            }
+
+            Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+            Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
+            Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
+            Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+            Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+
+            Person person = new Person(name, phone, email, address, tagList);
+
+            return new AddCommand(person);
         }
 
-        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
-        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
-        Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-
-        Person person = new Person(name, phone, email, address, tagList);
-
-        return new AddCommand(person);
     }
 
     /**

@@ -1,4 +1,6 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.clisyntax;
+
+import seedu.address.logic.parser.Prefix;
 
 /**
  * Contains Command Line Interface (CLI) syntax definitions common to multiple commands
@@ -12,4 +14,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
 
+    public static final String ITEM_PREFIX_INTERNSHIP = "-int";
+    public static final String ITEM_PREFIX_USER_PROFILE = "-me";
 }
