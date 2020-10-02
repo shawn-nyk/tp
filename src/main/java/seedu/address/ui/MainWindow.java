@@ -84,13 +84,6 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * todo Javadocs
-     */
-    public Tabs getTabs() {
-        return tabs;
-    }
-
-    /**
      * Set up the GUI properties in the {@code primaryStage} using the stored user settings in {@code logic}.
      */
     private void initializeUi(Stage primaryStage, Logic logic) {
@@ -110,6 +103,7 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Binds the height of {@code personList} and {@code resultDisplayPlaceHolder} in the {@code primaryStage}
+     * Set up the GUI properties in the {@code primaryStage} using the stored user settings in {@code logic}.
      */
     private void bindHeights(Stage primaryStage) {
         personList.prefWidthProperty().bind(primaryStage.widthProperty().subtract(PERSON_LIST_HEIGHT_SHRINK));
@@ -145,7 +139,7 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
-        tabs = Tabs.getTabs(this, primaryStage);
+        tabs = Tabs.getTabs(this, primaryStage, logic);
         tabsContainer.getChildren().add(tabs);
     }
 
@@ -174,15 +168,17 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleExit() {
         primaryStage.fireEvent(new WindowEvent(primaryStage, WindowEvent.WINDOW_CLOSE_REQUEST));
-        GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
-            (int) primaryStage.getX(), (int) primaryStage.getY());
-        logic.setGuiSettings(guiSettings);
-        helpWindow.hide();
-        primaryStage.hide();
     }
 
     public ListPanel getListPanel() {
         return listPanel;
+    }
+
+    /**
+     * Switch the tabs of the application.
+     */
+    private void switchTab() {
+        tabs.switchTab();
     }
 
     /**
@@ -195,6 +191,11 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+
+            if (commandResult.isSwitchTab()) {
+                switchTab();
+            }
+
             if (commandResult.isShowHelp()) {
                 handleHelp();
             }
@@ -212,7 +213,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Change the display of screen, depending on {@code input}, in the {@code primaryStage}.
+     * Changes the display of screen, depending on {@code input}, in the {@code primaryStage}.
      */
     public void changeDisplay(TabName input, Stage primaryStage) {
         assert (input.equals(TabName.INTERNSHIP) || input.equals(TabName.COMPANY) || input.equals(TabName.USER));

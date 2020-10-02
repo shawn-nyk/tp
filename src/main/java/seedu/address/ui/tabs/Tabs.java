@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import seedu.address.logic.Logic;
 import seedu.address.ui.MainWindow;
 
 /**
@@ -54,16 +55,16 @@ public class Tabs extends VBox {
 
     private Stage stage;
     private MainWindow mainWindow;
-    private TabName tabName;
+    private Logic logic;
 
     /**
      * Constructs the {@code Tabs} in the given {@code primaryStage} of the {@code mainWindow}.
      */
-    private Tabs(MainWindow mainWindow, Stage primaryStage) {
+    private Tabs(MainWindow mainWindow, Stage primaryStage, Logic logic) {
         try {
             stage = primaryStage;
             this.mainWindow = mainWindow;
-            tabName = TabName.INTERNSHIP; // preload the screen name
+            this.logic = logic;
 
             // Loading the information of the GUI
             FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource(FXML));
@@ -82,8 +83,8 @@ public class Tabs extends VBox {
     /**
      * Creates the {@code Tabs} information in the {@code primaryStage} of the {@code mainWindow}.
      */
-    public static Tabs getTabs(MainWindow mainWindow, Stage primaryStage) {
-        return new Tabs(mainWindow, primaryStage);
+    public static Tabs getTabs(MainWindow mainWindow, Stage primaryStage, Logic logic) {
+        return new Tabs(mainWindow, primaryStage, logic);
     }
 
     /**
@@ -93,34 +94,41 @@ public class Tabs extends VBox {
     public void handleClick(ActionEvent event) {
         if (event.getSource() == internshipButton) {
             selectInternship(stage);
-            tabName = TabName.INTERNSHIP;
+            logic.setTabName(TabName.INTERNSHIP);
         } else if (event.getSource() == companyButton) {
             selectCompany(stage);
-            tabName = TabName.COMPANY;
+            logic.setTabName(TabName.COMPANY);
         } else if (event.getSource() == userButton) {
             selectUser(stage);
-            tabName = TabName.USER;
+            logic.setTabName(TabName.USER);
         } else {
             assert false : "Invalid button";
         }
     }
 
     /**
-     * todo Javadocs
+     * Switch tabs.
      */
-    public TabName getCurrentTabName() {
-        return tabName;
+    public void switchTab() {
+        TabName tabName = logic.getTabName();
+        switch (tabName) {
+        case COMPANY:
+            selectCompany(stage);
+            break;
+        case INTERNSHIP:
+            selectInternship(stage);
+            break;
+        case USER:
+            selectUser(stage);
+            break;
+        default:
+            assert false;
+        }
     }
 
-    /**
-     * todo Javadocs
-     */
-    public void setTabName(TabName tabName) {
-        this.tabName = tabName;
-    }
 
     /**
-     * Set up the tab icons in GUI of {@code MainWindow}.
+     * Sets up the tab icons in GUI of {@code MainWindow}.
      */
     private void setTabIcons() {
         Image internshipPicture = new Image(getClass().getResourceAsStream(INTERNSHIP_IMAGE_LINK));
@@ -134,7 +142,7 @@ public class Tabs extends VBox {
     }
 
     /**
-     * Set the display and tab to be of {@code internship} in the {@code stage}
+     * Sets the display and tab to be of {@code internship} in the {@code stage}
      * Currently it only switches the information display.
      */
     public void selectInternship(Stage stage) {
@@ -148,7 +156,7 @@ public class Tabs extends VBox {
     }
 
     /**
-     * Set the display and tab to be of {@code company} in the {@code stage}
+     * Sets the display and tab to be of {@code company} in the {@code stage}
      * Currently it only switches the information display.
      */
     public void selectCompany(Stage stage) {
@@ -162,7 +170,7 @@ public class Tabs extends VBox {
     }
 
     /**
-     * Set the display and tab to be of {@code user} in the {@code stage}
+     * Sets the display and tab to be of {@code user} in the {@code stage}
      * Currently it only switches the information display.
      */
     public void selectUser(Stage stage) {
@@ -176,14 +184,14 @@ public class Tabs extends VBox {
     }
 
     /**
-     * Set the color of the {@code scene} to be transparent.
+     * Sets the color of the {@code scene} to be transparent.
      */
     private <T extends Pane> void setTransparent(T scene, String distance) {
         scene.setStyle(TRANSPARENT + distance);
     }
 
     /**
-     * Set the color of the {@code scene} to be {@code TAB_COLOR}.
+     * Sets the color of the {@code scene} to be {@code TAB_COLOR}.
      */
     private <T extends Pane> void setColor(T scene, String distance) {
         scene.setStyle(TAB_COLOR + distance);

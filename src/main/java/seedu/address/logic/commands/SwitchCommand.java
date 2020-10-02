@@ -1,11 +1,7 @@
 package seedu.address.logic.commands;
 
-import javafx.stage.Stage;
 import seedu.address.model.Model;
-import seedu.address.ui.MainWindow;
-import seedu.address.ui.UiManager;
 import seedu.address.ui.tabs.TabName;
-import seedu.address.ui.tabs.Tabs;
 
 /**
  * Switch the screen to a a certain tab.
@@ -35,32 +31,17 @@ public class SwitchCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) {
-        MainWindow mainWindow = UiManager.getMainWindow();
-        Tabs tabs = mainWindow.getTabs();
-        Stage stage = mainWindow.getPrimaryStage();
-        TabName currentTab = tabs.getCurrentTabName();
+
+        TabName currentTab = model.getTabName();
         String resultMessage;
 
         if (tabName.equals(currentTab)) {
             resultMessage = sameScreenText;
         } else {
-            switch (tabName) {
-            case COMPANY:
-                tabs.selectCompany(stage);
-                break;
-            case INTERNSHIP:
-                tabs.selectInternship(stage);
-                break;
-            case USER:
-                tabs.selectUser(stage);
-                break;
-            default:
-                assert false;
-            }
             resultMessage = switchedScreenText;
-            tabs.setTabName(tabName);
+            model.setTabName(tabName);
         }
-        return new CommandResult(resultMessage);
+        return new CommandResult(resultMessage, false, false, true);
     }
 
     /**
