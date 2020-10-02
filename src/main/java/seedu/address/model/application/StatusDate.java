@@ -1,13 +1,13 @@
 package seedu.address.model.application;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.util.DateUtil.DATE_INPUT_FORMAT;
-import static seedu.address.model.util.DateUtil.DATE_TIME_INPUT_FORMAT;
 import static seedu.address.model.util.DateUtil.DATE_TIME_LONG_FORMAT;
 import static seedu.address.model.util.DateUtil.DATE_TIME_SHORT_FORMAT;
+import static seedu.address.model.util.DateUtil.formatterDateTime;
+import static seedu.address.model.util.DateUtil.isDateFormat;
+import static seedu.address.model.util.DateUtil.isDateTimeFormat;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 /**
  * Represents the date of the Internship status update.
@@ -49,7 +49,7 @@ public class StatusDate {
      * @return True if date has a valid input format, false otherwise.
      */
     public boolean isValidDate(String date) {
-        return (date.equals(DATE_INPUT_FORMAT) || date.equals(DATE_TIME_INPUT_FORMAT));
+        return isDateFormat(date) || isDateTimeFormat(date);
     }
 
     // TODO: Possibly remove in the future if not used
@@ -59,7 +59,7 @@ public class StatusDate {
      * @return Short date format.
      */
     public String getShortDate() {
-        return date.format(DateTimeFormatter.ofPattern(DATE_TIME_SHORT_FORMAT));
+        return date.format(formatterDateTime(DATE_TIME_SHORT_FORMAT));
     }
 
     @Override
@@ -81,7 +81,7 @@ public class StatusDate {
      */
     @Override
     public String toString() {
-        return date.format(DateTimeFormatter.ofPattern(DATE_TIME_LONG_FORMAT));
+        return date.format(formatterDateTime(DATE_TIME_LONG_FORMAT));
     }
 
 }
