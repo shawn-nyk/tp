@@ -9,10 +9,10 @@ import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.item.Item;
 
 /**
- * Represents an InternshipApplication in the InternHunter application.
+ * Represents an InternshipApplicationItem in the InternHunter application.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class InternshipApplication extends Item {
+public class InternshipApplicationItem extends Item {
 
     // Identity fields
     private final InternshipItem internshipItem;
@@ -24,7 +24,7 @@ public class InternshipApplication extends Item {
     /**
      * Every field must be present and not null.
      */
-    public InternshipApplication(InternshipItem internshipItem, InternshipStatus internshipStatus,
+    public InternshipApplicationItem(InternshipItem internshipItem, InternshipStatus internshipStatus,
             StatusDate statusDate) {
 
         requireAllNonNull(internshipItem, internshipStatus, statusDate);
@@ -58,7 +58,7 @@ public class InternshipApplication extends Item {
     /**
      * Obtains the mapping of all field names to their corresponding fields.
      *
-     * @return Mapping of field names to fields for the InternshipApplication object.
+     * @return Mapping of field names to fields for the InternshipApplicationItem object.
      */
     public LinkedHashMap<String, Object> getMapping() {
         LinkedHashMap<String, Object> mapping = internshipItem.getMapping();
@@ -69,9 +69,9 @@ public class InternshipApplication extends Item {
 
     /**
      * Returns true if both InternshipApplications have the {@code InternshipItem}.
-     * This defines a weaker notion of equality between two InternshipApplication objects.
+     * This defines a weaker notion of equality between two InternshipApplicationItem objects.
      *
-     * @param otherItem Other InternshipApplication to compare to.
+     * @param otherItem Other InternshipApplicationItem to compare to.
      * @return True if and only if the 2 InternshipApplications have the same identity field.
      */
     @Override
@@ -80,17 +80,17 @@ public class InternshipApplication extends Item {
             return true;
         }
 
-        if (!(otherItem instanceof InternshipApplication)) {
+        if (!(otherItem instanceof InternshipApplicationItem)) {
             return false;
         }
 
-        InternshipApplication otherApplication = (InternshipApplication) otherItem;
+        InternshipApplicationItem otherApplication = (InternshipApplicationItem) otherItem;
         return otherApplication.getInternshipItem().equals(getInternshipItem());
     }
 
     /**
      * Returns true if both InternshipApplications have the same data fields.
-     * This defines a stronger notion of equality between two InternshipApplication objects.
+     * This defines a stronger notion of equality between two InternshipApplicationItem objects.
      */
     @Override
     public boolean equals(Object other) {
@@ -98,11 +98,11 @@ public class InternshipApplication extends Item {
             return true;
         }
 
-        if (!(other instanceof InternshipApplication)) {
+        if (!(other instanceof InternshipApplicationItem)) {
             return false;
         }
 
-        InternshipApplication otherApplication = (InternshipApplication) other;
+        InternshipApplicationItem otherApplication = (InternshipApplicationItem) other;
         return otherApplication.getInternshipItem().equals(getInternshipItem())
                 && otherApplication.getInternshipStatus().equals(getInternshipStatus())
                 && otherApplication.getStatusDate().equals(getStatusDate());

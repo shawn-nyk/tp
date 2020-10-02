@@ -2,20 +2,24 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextInputControl;
-import javafx.scene.input.KeyCombination;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.ui.cards.PersonListPanel;
+import seedu.address.ui.display.CompanyDisplay;
+import seedu.address.ui.display.InternshipDisplay;
+import seedu.address.ui.display.UserDisplay;
+import seedu.address.ui.tabs.TabName;
+import seedu.address.ui.tabs.Tabs;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -23,7 +27,12 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class MainWindow extends UiPart<Stage> {
 
+    //FXML
     private static final String FXML = "MainWindow.fxml";
+
+    //FXML properties
+    private static final int PERSON_LIST_HEIGHT_SHRINK = 255;
+    private static final int RESULT_HEIGHT_SHRINK = 350;
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
@@ -36,19 +45,17 @@ public class MainWindow extends UiPart<Stage> {
     private HelpWindow helpWindow;
 
     @FXML
-    private StackPane commandBoxPlaceholder;
-
-    @FXML
-    private MenuItem helpMenuItem;
-
+    private VBox personList;
     @FXML
     private StackPane personListPanelPlaceholder;
-
     @FXML
-    private StackPane resultDisplayPlaceholder;
-
+    private VBox display;
     @FXML
-    private StackPane statusbarPlaceholder;
+    private ScrollPane resultDisplayPlaceholder;
+    @FXML
+    private VBox commandBoxPlaceholder;
+    @FXML
+    private VBox tabsContainer;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -59,73 +66,38 @@ public class MainWindow extends UiPart<Stage> {
         // Set dependencies
         this.primaryStage = primaryStage;
         this.logic = logic;
-
         // Configure the UI
-        setWindowDefaultSize(logic.getGuiSettings());
-
-        setAccelerators();
-
-        helpWindow = new HelpWindow();
-
-        primaryStage.setOnCloseRequest(event -> {
-            ExitDialog exitDialog = new ExitDialog(event);
-            exitDialog.show();
-        });
+        initializeUi(primaryStage, logic);
     }
 
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
-    private void setAccelerators() {
-        setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
-    }
-
     /**
-     * Sets the accelerator of a MenuItem.
-     * @param keyCombination the KeyCombination value of the accelerator
+     * Sets up the GUI properties in the {@code primaryStage} using the stored user settings in {@code logic}.
      */
-    private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
-        menuItem.setAccelerator(keyCombination);
+    private void initializeUi(Stage primaryStage, Logic logic) {
+        setWindowDefaultSize(logic.getGuiSettings());
+        bindHeights(primaryStage);
+        helpWindow = new HelpWindow();
 
-        /*
-         * TODO: the code below can be removed once the bug reported here
-         * https://bugs.openjdk.java.net/browse/JDK-8131666
-         * is fixed in later version of SDK.
-         *
-         * According to the bug report, TextInputControl (TextField, TextArea) will
-         * consume function-key events. Because CommandBox contains a TextField, and
-         * ResultDisplay contains a TextArea, thus some accelerators (e.g F1) will
-         * not work when the focus is in them because the key event is consumed by
-         * the TextInputControl(s).
-         *
-         * For now, we add following event filter to capture such key events and open
-         * help window purposely so to support accelerators even when focus is
-         * in CommandBox or ResultDisplay.
-         */
-        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-            if (event.getTarget() instanceof TextInputControl && keyCombination.match(event)) {
-                menuItem.getOnAction().handle(new ActionEvent());
-                event.consume();
-            }
+        primaryStage.setOnCloseRequest(event -> {
+            GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
+                    (int) primaryStage.getX(), (int) primaryStage.getY());
+            logic.setGuiSettings(guiSettings);
+
+            ExitDialog exitDialog = new ExitDialog(event, helpWindow);
+            exitDialog.show();
         });
     }
 
     /**
-     * Fills up all the placeholders of this window.
+     * Binds the height of {@code personList} and {@code resultDisplayPlaceHolder} in the {@code primaryStage}
      */
-    void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
-
-        resultDisplay = new ResultDisplay();
-        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
-
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
-        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
-
-        CommandBox commandBox = new CommandBox(this::executeCommand);
-        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+    private void bindHeights(Stage primaryStage) {
+        personList.prefWidthProperty().bind(primaryStage.widthProperty().subtract(PERSON_LIST_HEIGHT_SHRINK));
+        resultDisplayPlaceholder.prefWidthProperty().bind(primaryStage.widthProperty().subtract(RESULT_HEIGHT_SHRINK));
     }
 
     /**
@@ -141,6 +113,25 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Fills up all the placeholders of this window.
+     */
+    void fillInnerParts() {
+        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+
+        resultDisplay = new ResultDisplay();
+        resultDisplayPlaceholder.setContent(resultDisplay.getRoot());
+
+        display.getChildren().clear();
+        display.getChildren().add(InternshipDisplay.getInternshipDisplay(primaryStage));
+
+        CommandBox commandBox = new CommandBox(this::executeCommand);
+        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        tabsContainer.getChildren().add(Tabs.getTabs(this, primaryStage));
+    }
+
+    /**
      * Opens the help window or focuses on it if it's already opened.
      */
     @FXML
@@ -152,6 +143,9 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Displays the GUI.
+     */
     void show() {
         primaryStage.show();
     }
@@ -162,10 +156,11 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleExit() {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
-                (int) primaryStage.getX(), (int) primaryStage.getY());
+            (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
+        primaryStage.fireEvent(new WindowEvent(primaryStage, WindowEvent.WINDOW_CLOSE_REQUEST));
     }
 
     public PersonListPanel getPersonListPanel() {
@@ -182,7 +177,6 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
-
             if (commandResult.isShowHelp()) {
                 handleHelp();
             }
@@ -196,6 +190,28 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Invalid command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
+        }
+    }
+
+    /**
+     * Changes the display of screen, depending on {@code input}, in the {@code primaryStage}.
+     */
+    public void changeDisplay(TabName input, Stage primaryStage) {
+        assert (input.equals(TabName.INTERNSHIP) || input.equals(TabName.COMPANY) || input.equals(TabName.USER));
+        display.getChildren().clear();
+        switch (input) {
+        case COMPANY:
+            display.getChildren().add(CompanyDisplay.getCompanyDisplay(primaryStage));
+            break;
+        case INTERNSHIP:
+            display.getChildren().add(InternshipDisplay.getInternshipDisplay(primaryStage));
+            break;
+        case USER:
+            display.getChildren().add(UserDisplay.getUserDisplay(primaryStage));
+            break;
+        default:
+            assert false;
+            break;
         }
     }
 }
