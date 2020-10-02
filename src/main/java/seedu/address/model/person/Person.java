@@ -4,16 +4,18 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.address.model.item.Item;
 import seedu.address.model.tag.Tag;
 
 /**
  * Represents a Person in the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Person {
+public class Person extends Item {
 
     // Identity fields
     private final Name name;
@@ -64,10 +66,16 @@ public class Person {
      * Returns true if both persons of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
      */
-    public boolean isSamePerson(Person otherPerson) {
-        if (otherPerson == this) {
+    public boolean isSameItem(Item otherItem) {
+        if (this == otherItem) {
             return true;
         }
+
+        if (!(otherItem instanceof Person)) {
+            return false;
+        }
+
+        Person otherPerson = (Person) otherItem;
 
         return otherPerson != null
                 && otherPerson.getName().equals(getName())
@@ -115,6 +123,22 @@ public class Person {
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
+    }
+
+    @Override
+    public String getItemName() {
+        return "person";
+    }
+
+    @Override
+    public LinkedHashMap<String, Object> getMapping() {
+        LinkedHashMap<String, Object> mapping = new LinkedHashMap<>();
+        mapping.put("Name", name);
+        mapping.put("Phone", phone);
+        mapping.put("Email", email);
+        mapping.put("Address", address);
+        mapping.put("Tags", tags);
+        return mapping;
     }
 
 }
