@@ -14,10 +14,14 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.ui.cards.PersonListPanel;
 import seedu.address.ui.display.CompanyDisplay;
+import seedu.address.ui.display.InformationDisplay;
 import seedu.address.ui.display.InternshipDisplay;
 import seedu.address.ui.display.UserDisplay;
+import seedu.address.ui.panel.CompanyListPanel;
+import seedu.address.ui.panel.InternshipListPanel;
+import seedu.address.ui.panel.ListPanel;
+import seedu.address.ui.panel.UserListPanel;
 import seedu.address.ui.tabs.TabName;
 import seedu.address.ui.tabs.Tabs;
 
@@ -40,9 +44,11 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private PersonListPanel personListPanel;
+    private ListPanel listPanel;
+    private InformationDisplay informationDisplay;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private Tabs tabs;
 
     @FXML
     private VBox personList;
@@ -70,6 +76,9 @@ public class MainWindow extends UiPart<Stage> {
         initializeUi(primaryStage, logic);
     }
 
+    /**
+     * todo Javadocs
+     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }
@@ -116,19 +125,21 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        listPanel = new InternshipListPanel(logic.getFilteredPersonList());
+        personListPanelPlaceholder.getChildren().add(listPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.setContent(resultDisplay.getRoot());
 
         display.getChildren().clear();
-        display.getChildren().add(InternshipDisplay.getInternshipDisplay(primaryStage));
+        informationDisplay = InternshipDisplay.getInternshipDisplay(primaryStage);
+        display.getChildren().add(informationDisplay.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
-        tabsContainer.getChildren().add(Tabs.getTabs(this, primaryStage));
+        tabs = Tabs.getTabs(this, primaryStage, logic);
+        tabsContainer.getChildren().add(tabs);
     }
 
     /**
@@ -155,16 +166,18 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleExit() {
-        GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
-            (int) primaryStage.getX(), (int) primaryStage.getY());
-        logic.setGuiSettings(guiSettings);
-        helpWindow.hide();
-        primaryStage.hide();
         primaryStage.fireEvent(new WindowEvent(primaryStage, WindowEvent.WINDOW_CLOSE_REQUEST));
     }
 
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
+    public ListPanel getListPanel() {
+        return listPanel;
+    }
+
+    /**
+     * Switch the tabs of the application.
+     */
+    private void switchTab() {
+        tabs.switchTab();
     }
 
     /**
@@ -177,6 +190,11 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+
+            if (commandResult.isSwitchTab()) {
+                switchTab();
+            }
+
             if (commandResult.isShowHelp()) {
                 handleHelp();
             }
@@ -199,19 +217,25 @@ public class MainWindow extends UiPart<Stage> {
     public void changeDisplay(TabName input, Stage primaryStage) {
         assert (input.equals(TabName.INTERNSHIP) || input.equals(TabName.COMPANY) || input.equals(TabName.USER));
         display.getChildren().clear();
+        personListPanelPlaceholder.getChildren().clear();
         switch (input) {
         case COMPANY:
-            display.getChildren().add(CompanyDisplay.getCompanyDisplay(primaryStage));
+            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage);
+            listPanel = new CompanyListPanel(logic.getFilteredPersonList());
             break;
         case INTERNSHIP:
-            display.getChildren().add(InternshipDisplay.getInternshipDisplay(primaryStage));
+            informationDisplay = InternshipDisplay.getInternshipDisplay(primaryStage);
+            listPanel = new InternshipListPanel(logic.getFilteredPersonList());
             break;
         case USER:
-            display.getChildren().add(UserDisplay.getUserDisplay(primaryStage));
+            informationDisplay = UserDisplay.getUserDisplay(primaryStage);
+            listPanel = new UserListPanel(logic.getFilteredPersonList());
             break;
         default:
             assert false;
             break;
         }
+        display.getChildren().add(informationDisplay.getRoot());
+        personListPanelPlaceholder.getChildren().add(listPanel.getRoot());
     }
 }
