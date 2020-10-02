@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
+import seedu.address.ui.tabs.TabName;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -22,6 +23,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final Tab tabControl;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -35,6 +37,7 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        this.tabControl = new TabManager();
     }
 
     public ModelManager() {
@@ -148,4 +151,19 @@ public class ModelManager implements Model {
                 && filteredPersons.equals(other.filteredPersons);
     }
 
+    //=========== Tab Control Accessors =============================================================
+
+    /**
+     * Retrieves the current tab name.
+     */
+    public TabName getTabName() {
+        return tabControl.getTabName();
+    }
+
+    /**
+     * Sets the current tab name with {@code tabName}.
+     */
+    public void setTabName(TabName tabName) {
+        tabControl.setTabName(tabName);
+    }
 }
