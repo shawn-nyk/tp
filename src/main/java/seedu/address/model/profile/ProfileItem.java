@@ -4,32 +4,33 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Objects;
 import java.util.Set;
 
-import seedu.address.model.tag.Tag;
+import seedu.address.model.item.Item;
 
 /**
- * Represents a Profile Item in the address book.
+ * Represents a Profile Item in the UserProfile.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class ProfileItem {
+public class ProfileItem extends Item {
 
     // Identity fields
     private final String title;
-    private final String type;
+    private final ProfileItemType type;
 
     // Data fields
-    private final Set<Tag> tags = new HashSet<>();
+    private final Set<Descriptor> descriptors = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public ProfileItem(String title, String type, Set<Tag> tags) {
-        requireAllNonNull(type, title, tags);
+    public ProfileItem(String title, ProfileItemType type, Set<Descriptor> descriptors) {
+        requireAllNonNull(type, title, descriptors);
         this.type = type;
         this.title = title;
-        this.tags.addAll(tags);
+        this.descriptors.addAll(descriptors);
     }
 
 
@@ -37,34 +38,44 @@ public class ProfileItem {
         return title;
     }
 
-    public String getType() {
+    public ProfileItemType getType() {
         return type;
     }
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
+    public Set<Descriptor> getDescriptors() {
+        return Collections.unmodifiableSet(descriptors);
     }
 
     /**
-     * Returns true if both profiles of the same name have at least one other identity field that is the same.
-     * This defines a weaker notion of equality between two persons.
+     * Returns true if both items are the have the same name and type.
+     * This defines a weaker notion of equality between two ProfileItemObjects.
+     *
+     * @param otherItem item to compare to.
+     * @return True if and only if the 2 items have the same identity fields.
      */
-    public boolean isSameProfileItem(seedu.address.model.profile.ProfileItem otherProfileItem) {
-        if (otherProfileItem == this) {
+    @Override
+    public boolean isSameItem(Item otherItem) {
+        if (otherItem == this) {
             return true;
         }
 
-        return otherProfileItem != null
+        if (!(otherItem instanceof ProfileItem)) {
+            return false;
+        }
+
+        ProfileItem otherProfileItem = (ProfileItem) otherItem;
+
+        return otherItem != null
                 && otherProfileItem.getType().equals(getType())
                 && (otherProfileItem.getTitle().equals(getTitle()));
     }
 
     /**
-     * Returns true if both profile item have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * Returns true if both profile item have the same data fields and descriptors.
+     * This defines a stronger notion of equality between two ProfileItem objects.
      */
     @Override
     public boolean equals(Object other) {
@@ -72,19 +83,20 @@ public class ProfileItem {
             return true;
         }
 
-        if (!(other instanceof seedu.address.model.profile.ProfileItem)) {
+        if (!(other instanceof ProfileItem)) {
             return false;
         }
-        seedu.address.model.profile.ProfileItem otherProfileItem = (seedu.address.model.profile.ProfileItem) other;
+        ProfileItem otherProfileItem = (ProfileItem) other;
         return otherProfileItem != null
                 && otherProfileItem.getType().equals(getType())
-                && (otherProfileItem.getTitle().equals(getTitle()));
+                && (otherProfileItem.getTitle().equals(getTitle()))
+                && (otherProfileItem.getDescriptors().equals(getDescriptors()));
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(title, type, tags);
+        return Objects.hash(title, type, descriptors);
     }
 
     @Override
@@ -93,10 +105,34 @@ public class ProfileItem {
         builder.append(getTitle())
                 .append(" Type: ")
                 .append(getType())
-                .append(" Tags: ");
-        getTags().forEach(builder::append);
+                .append(" Descriptors: ");
+        getDescriptors().forEach(builder::append);
         return builder.toString();
     }
 
+
+    /**
+     * Obtains the name of the item.
+     *
+     * @return Item name.
+     */
+    @Override
+    public String getItemName() {
+        return "profile";
+    }
+
+    /**
+     * Obtains the mapping of all field names to their corresponding fields.
+     *
+     * @return Mapping of field names to fields for the ProfileItem.
+     */
+    @Override
+    public LinkedHashMap<String, Object> getMapping() {
+        LinkedHashMap<String, Object> mapping = new LinkedHashMap<>();
+        mapping.put("Title", title);
+        mapping.put("Type", type);
+        mapping.put("Descriptors", descriptors);
+        return mapping;
+    }
 }
 
