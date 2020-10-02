@@ -55,7 +55,7 @@ public class CommandBox extends UiPart<Region> {
     }
 
     /**
-     * Set the button style.
+     * Sets the button style.
      */
     private void setSendButtonProperties() {
         HBox.setHgrow(sendButton, Priority.ALWAYS);
@@ -63,7 +63,7 @@ public class CommandBox extends UiPart<Region> {
     }
 
     /**
-     * Set the command text field style.
+     * Sets the command text field style.
      */
     private void setCommandTextFieldProperties() {
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.

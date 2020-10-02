@@ -23,13 +23,14 @@ public class ExitDialog extends UiPart<DialogPane> {
 
     private Dialog<Boolean> dialog;
     private WindowEvent event;
+    private HelpWindow helpWindow;
 
     /**
      * Creates a new Exit dialog.
      *
      * @param event event that triggers the creation of exit dialog.
      */
-    public ExitDialog(WindowEvent event) {
+    public ExitDialog(WindowEvent event, HelpWindow helpWindow) {
         super(FXML);
         dialog = new Dialog<>();
         dialog.setDialogPane(dialogPane);
@@ -40,6 +41,7 @@ public class ExitDialog extends UiPart<DialogPane> {
             event.consume();
         });
         this.event = event;
+        this.helpWindow = helpWindow;
     }
 
     public void show() {
@@ -50,6 +52,7 @@ public class ExitDialog extends UiPart<DialogPane> {
     private boolean confirmExit() {
         dialog.setResult(Boolean.TRUE);
         dialog.hide();
+        helpWindow.hide();
         return true;
     }
 

@@ -7,6 +7,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
@@ -74,7 +75,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Set up the GUI properties in the {@code primaryStage} using the stored user settings in {@code logic}.
+     * Sets up the GUI properties in the {@code primaryStage} using the stored user settings in {@code logic}.
      */
     private void initializeUi(Stage primaryStage, Logic logic) {
         setWindowDefaultSize(logic.getGuiSettings());
@@ -82,7 +83,11 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow = new HelpWindow();
 
         primaryStage.setOnCloseRequest(event -> {
-            ExitDialog exitDialog = new ExitDialog(event);
+            GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
+                    (int) primaryStage.getX(), (int) primaryStage.getY());
+            logic.setGuiSettings(guiSettings);
+
+            ExitDialog exitDialog = new ExitDialog(event, helpWindow);
             exitDialog.show();
         });
     }
@@ -155,6 +160,7 @@ public class MainWindow extends UiPart<Stage> {
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
+        primaryStage.fireEvent(new WindowEvent(primaryStage, WindowEvent.WINDOW_CLOSE_REQUEST));
     }
 
     public PersonListPanel getPersonListPanel() {
@@ -188,7 +194,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Change the display of screen, depending on {@code input}, in the {@code primaryStage}.
+     * Changes the display of screen, depending on {@code input}, in the {@code primaryStage}.
      */
     public void changeDisplay(TabName input, Stage primaryStage) {
         assert (input.equals(TabName.INTERNSHIP) || input.equals(TabName.COMPANY) || input.equals(TabName.USER));
