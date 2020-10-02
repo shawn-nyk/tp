@@ -8,7 +8,7 @@ import seedu.address.model.util.PositiveNumber;
  */
 public class Wage extends PositiveNumber {
 
-    public static final String MESSAGE_CONSTRAINTS = "Wage should only contain positive numbers";
+    public static final String MESSAGE_CONSTRAINTS = "Wage should only contain a positive number";
 
     /**
      * Constructs a {@code Wage}.

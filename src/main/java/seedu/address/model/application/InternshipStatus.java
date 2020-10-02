@@ -1,5 +1,15 @@
 package seedu.address.model.application;
 
+import static seedu.address.model.util.StatusUtil.ACCEPTED_KEYWORD;
+import static seedu.address.model.util.StatusUtil.APPLIED_KEYWORD;
+import static seedu.address.model.util.StatusUtil.INTERVIEW_KEYWORD;
+import static seedu.address.model.util.StatusUtil.OFFERED_KEYWORD;
+import static seedu.address.model.util.StatusUtil.REJECTED_KEYWORD;
+import static seedu.address.model.util.StatusUtil.WAITING_KEYWORD;
+
+/**
+ * InternshipStatus class which contains the valid statuses for an internship application.
+ */
 public enum InternshipStatus {
     APPLIED,
     INTERVIEW,
@@ -10,6 +20,21 @@ public enum InternshipStatus {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Job status can only be applied, interview, waiting, rejected, offered or accepted.";
+
+    /**
+     * Returns true if the given status is valid.
+     *
+     * @param status Input status.
+     * @return True if status is valid, false otherwise.
+     */
+    public static boolean isValidStatus(String status) {
+        return status.equals(APPLIED_KEYWORD)
+                || status.equals(INTERVIEW_KEYWORD)
+                || status.equals(WAITING_KEYWORD)
+                || status.equals(OFFERED_KEYWORD)
+                || status.equals(ACCEPTED_KEYWORD)
+                || status.equals(REJECTED_KEYWORD);
+    }
 
     /**
      * Converts the job status to title case.

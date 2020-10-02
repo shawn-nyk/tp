@@ -1,6 +1,10 @@
 package seedu.address.model.application;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.util.DateUtil.DATE_INPUT_FORMAT;
+import static seedu.address.model.util.DateUtil.DATE_TIME_INPUT_FORMAT;
+import static seedu.address.model.util.DateUtil.DATE_TIME_LONG_FORMAT;
+import static seedu.address.model.util.DateUtil.DATE_TIME_SHORT_FORMAT;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -11,8 +15,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class StatusDate {
 
-    private static final String DATE_TIME_LONG_FORMAT = "d MMM yyyy @ h.mm a";
-    private static final String DATE_TIME_SHORT_FORMAT = "d MMM";
+    public static final String MESSAGE_CONSTRAINTS = "Status date should be in the format of d-M-yy or d-M-yy HHmm";
 
     private final LocalDateTime date;
 
@@ -39,6 +42,17 @@ public class StatusDate {
         return sameYear && sameDay;
     }
 
+    /**
+     * Returns true if the given date is valid.
+     *
+     * @param date Input date.
+     * @return True if date has a valid input format, false otherwise.
+     */
+    public boolean isValidDate(String date) {
+        return (date.equals(DATE_INPUT_FORMAT) || date.equals(DATE_TIME_INPUT_FORMAT));
+    }
+
+    // TODO: Possibly remove in the future if not used
     /**
      * Returns the short date format for main screen view.
      *

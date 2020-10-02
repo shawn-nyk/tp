@@ -16,7 +16,7 @@ import seedu.address.model.tag.Tag;
  * Represents an InternshipItem in the InternHunter application.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class InternshipItem implements Item {
+public class InternshipItem extends Item {
 
     // Identity fields
     private final Name companyName;

@@ -12,7 +12,7 @@ import seedu.address.model.item.Item;
  * Represents an InternshipApplication in the InternHunter application.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class InternshipApplication implements Item {
+public class InternshipApplication extends Item {
 
     // Identity fields
     private final InternshipItem internshipItem;
