@@ -6,6 +6,7 @@ import java.util.Comparator;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -18,7 +19,7 @@ import seedu.address.ui.UiPart;
 import seedu.address.ui.textstyle.TitleDescription;
 
 /**
- * todo Javadocs
+ * A UI component that displays information of a {@code Person}.
  */
 public abstract class Card extends UiPart<Region> {
 

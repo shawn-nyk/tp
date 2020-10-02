@@ -32,7 +32,7 @@ public class ResultDisplay extends UiPart<Region> {
     }
 
     /**
-     * Display the {@code feedbackToUser} in {@code resultDisplay}.
+     * Displays the {@code feedbackToUser} in {@code resultDisplay}.
      */
     public void setFeedbackToUser(String feedbackToUser) {
         requireNonNull(feedbackToUser);
@@ -42,7 +42,7 @@ public class ResultDisplay extends UiPart<Region> {
     }
 
     /**
-     * Set the color and font of the {@code text}.
+     * Sets the color and font of the {@code text}.
      */
     private void setTextStyle(Text text) {
         text.setFill(Color.web(TEXT_COLOR));
@@ -50,14 +50,14 @@ public class ResultDisplay extends UiPart<Region> {
     }
 
     /**
-     * Clear any old text in {@code resultDisplay}.
+     * Clears any old text in {@code resultDisplay}.
      */
     private void clearHistory() {
         resultDisplay.getChildren().clear();
     }
 
     /**
-     * Display the {@code text} in {@code resultDisplay}.
+     * Displays the {@code text} in {@code resultDisplay}.
      */
     private void setNewText(Text text) {
         setTextStyle(text);

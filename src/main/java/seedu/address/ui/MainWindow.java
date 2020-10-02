@@ -84,7 +84,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Set up the GUI properties in the {@code primaryStage} using the stored user settings in {@code logic}.
+     * Sets up the GUI properties in the {@code primaryStage} using the stored user settings in {@code logic}.
      */
     private void initializeUi(Stage primaryStage, Logic logic) {
         setWindowDefaultSize(logic.getGuiSettings());

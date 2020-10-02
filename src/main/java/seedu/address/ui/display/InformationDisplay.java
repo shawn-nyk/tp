@@ -37,7 +37,7 @@ public abstract class InformationDisplay extends UiPart<Region> {
     }
 
     /**
-     * Set the size of {@code InformationDisplay} in the given {@code primaryStage}.
+     * Sets the size of {@code InformationDisplay} in the given {@code primaryStage}.
      */
     private void initializeInformationDisplay(Stage primaryStage) {
         informationDisplay.prefHeightProperty().bind(primaryStage.heightProperty().subtract(INFORMATION_HEIGHT_SHRINK));
