@@ -43,7 +43,7 @@ public class TitleDescription {
     }
 
     /**
-     * Set a text with a pre-defined font and its {@code color}.
+     * Sets a text with a pre-defined font and its {@code color}.
      */
     private static void setTextStyle(Text text, Color color) {
         text.setFont(Font.font(DISPLAY_FONT, FontWeight.BOLD, DISPLAY_SIZE));

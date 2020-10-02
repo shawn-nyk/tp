@@ -69,7 +69,7 @@ public class PersonCard extends UiPart<Region> {
     }
 
     /**
-     * Set up the styling of the {@code PersonCard} with {@code displayedIndex}.
+     * Sets up the styling of the {@code PersonCard} with {@code displayedIndex}.
      */
     private void initializePersonCard(int displayedIndex) {
         initializeHeader(displayedIndex);
@@ -80,7 +80,7 @@ public class PersonCard extends UiPart<Region> {
     }
 
     /**
-     * Set up the header of the {@code PersonCard} with {@code displayedIndex}.
+     * Sets up the header of the {@code PersonCard} with {@code displayedIndex}.
      */
     private void initializeHeader(int displayedIndex) {
         id.setText(displayedIndex + ". ");
@@ -88,7 +88,7 @@ public class PersonCard extends UiPart<Region> {
     }
 
     /**
-     * Set up the content of the {@code PersonCard}.
+     * Sets up the content of the {@code PersonCard}.
      */
     private void initializeBody() {
         setStyling(ATTRIBUTE_PHONE, person.getPhone().value);
@@ -97,7 +97,7 @@ public class PersonCard extends UiPart<Region> {
     }
 
     /**
-     * Set up the tags of the {@code PersonCard}.
+     * Sets up the tags of the {@code PersonCard}.
      */
     private void initializeTags() {
         person.getTags().stream()
@@ -116,7 +116,7 @@ public class PersonCard extends UiPart<Region> {
     }
 
     /**
-     * Initialized the GUI of the properties inside {@code PersonCard}.
+     * Initializes the GUI of the properties inside {@code PersonCard}.
      */
     private void setStyling(String type, String description) {
         TitleDescription titleDescription = createTitleDescription(type + ": ", description);

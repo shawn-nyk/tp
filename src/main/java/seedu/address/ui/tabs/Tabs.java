@@ -99,7 +99,7 @@ public class Tabs extends VBox {
     }
 
     /**
-     * Set up the tab icons in GUI of {@code MainWindow}.
+     * Sets up the tab icons in GUI of {@code MainWindow}.
      */
     private void setTabIcons() {
         Image internshipPicture = new Image(getClass().getResourceAsStream(INTERNSHIP_IMAGE_LINK));
@@ -113,7 +113,7 @@ public class Tabs extends VBox {
     }
 
     /**
-     * Set the display and tab to be of {@code internship} in the {@code stage}
+     * Sets the display and tab to be of {@code internship} in the {@code stage}
      * Currently it only switches the information display.
      */
     private void selectInternship(Stage stage) {
@@ -126,7 +126,7 @@ public class Tabs extends VBox {
     }
 
     /**
-     * Set the display and tab to be of {@code company} in the {@code stage}
+     * Sets the display and tab to be of {@code company} in the {@code stage}
      * Currently it only switches the information display.
      */
     private void selectCompany(Stage stage) {
@@ -139,7 +139,7 @@ public class Tabs extends VBox {
     }
 
     /**
-     * Set the display and tab to be of {@code user} in the {@code stage}
+     * Sets the display and tab to be of {@code user} in the {@code stage}
      * Currently it only switches the information display.
      */
     private void selectUser(Stage stage) {
@@ -152,14 +152,14 @@ public class Tabs extends VBox {
     }
 
     /**
-     * Set the color of the {@code scene} to be transparent.
+     * Sets the color of the {@code scene} to be transparent.
      */
     private <T extends Pane> void setTransparent(T scene, String distance) {
         scene.setStyle(TRANSPARENT + distance);
     }
 
     /**
-     * Set the color of the {@code scene} to be {@code TAB_COLOR}.
+     * Sets the color of the {@code scene} to be {@code TAB_COLOR}.
      */
     private <T extends Pane> void setColor(T scene, String distance) {
         scene.setStyle(TAB_COLOR + distance);

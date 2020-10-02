@@ -75,7 +75,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Set up the GUI properties in the {@code primaryStage} using the stored user settings in {@code logic}.
+     * Sets up the GUI properties in the {@code primaryStage} using the stored user settings in {@code logic}.
      */
     private void initializeUi(Stage primaryStage, Logic logic) {
         setWindowDefaultSize(logic.getGuiSettings());
@@ -194,7 +194,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Change the display of screen, depending on {@code input}, in the {@code primaryStage}.
+     * Changes the display of screen, depending on {@code input}, in the {@code primaryStage}.
      */
     public void changeDisplay(TabName input, Stage primaryStage) {
         assert (input.equals(TabName.INTERNSHIP) || input.equals(TabName.COMPANY) || input.equals(TabName.USER));
