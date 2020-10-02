@@ -103,7 +103,6 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Binds the height of {@code personList} and {@code resultDisplayPlaceHolder} in the {@code primaryStage}
-     * Set up the GUI properties in the {@code primaryStage} using the stored user settings in {@code logic}.
      */
     private void bindHeights(Stage primaryStage) {
         personList.prefWidthProperty().bind(primaryStage.widthProperty().subtract(PERSON_LIST_HEIGHT_SHRINK));
