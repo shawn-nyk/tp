@@ -22,8 +22,8 @@ public class UiManager implements Ui {
     private static final Logger logger = LogsCenter.getLogger(UiManager.class);
     private static final String ICON_APPLICATION = "/images/address_book_32.png";
 
+    private static MainWindow mainWindow;
     private Logic logic;
-    private MainWindow mainWindow;
 
     /**
      * Creates a {@code UiManager} with the given {@code Logic}.
@@ -51,10 +51,23 @@ public class UiManager implements Ui {
         }
     }
 
+    /**
+     * todo Javadocs
+     */
+    public static MainWindow getMainWindow() {
+        return mainWindow;
+    }
+
+    /**
+     * todo Javadocs
+     */
     private Image getImage(String imagePath) {
         return new Image(MainApp.class.getResourceAsStream(imagePath));
     }
 
+    /**
+     * todo Javadocs
+     */
     void showAlertDialogAndWait(Alert.AlertType type, String title, String headerText, String contentText) {
         showAlertDialogAndWait(mainWindow.getPrimaryStage(), type, title, headerText, contentText);
     }
@@ -64,9 +77,9 @@ public class UiManager implements Ui {
      * This method only returns after the user has closed the alert dialog.
      */
     private static void showAlertDialogAndWait(Stage owner, AlertType type, String title, String headerText,
-                                               String contentText) {
+            String contentText) {
         final Alert alert = new Alert(type);
-        alert.getDialogPane().getStylesheets().add("view/DarkTheme.css");
+        alert.getDialogPane().getStylesheets().add("view/MainWindow.css");
         alert.initOwner(owner);
         alert.setTitle(title);
         alert.setHeaderText(headerText);
