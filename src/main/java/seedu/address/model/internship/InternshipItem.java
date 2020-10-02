@@ -40,7 +40,7 @@ public class InternshipItem extends Item {
     }
 
     public Name getCompanyName() {
-        return jobTitle;
+        return companyName;
     }
 
     public Name getJobTitle() {
