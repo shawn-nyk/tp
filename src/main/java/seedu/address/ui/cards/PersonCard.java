@@ -19,7 +19,7 @@ import seedu.address.ui.UiPart;
 import seedu.address.ui.textstyle.TitleDescription;
 
 /**
- * An UI component that displays information of a {@code Person}.
+ * A UI component that displays information of a {@code Person}.
  */
 public class PersonCard extends UiPart<Region> {
 
