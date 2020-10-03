@@ -1,22 +1,20 @@
 package seedu.address.ui.display;
 
-import java.io.IOException;
-
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import seedu.address.ui.MainWindow;
+import seedu.address.ui.UiPart;
 
 /**
  * A display that contains information.
  */
-public class InformationDisplay extends VBox {
+public abstract class InformationDisplay extends UiPart<Region> {
 
     //FXML
-    private static final String FXML = "/view/InformationDisplay.fxml";
+    private static final String FXML = "InformationDisplay.fxml";
 
     //FXML properties
     private static final int INFORMATION_HEIGHT_SHRINK = 155;
@@ -33,15 +31,8 @@ public class InformationDisplay extends VBox {
     /**
      * Constructs a {@code InformationDisplay} in the given {@code primaryStage}.
      */
-    InformationDisplay(Stage primaryStage) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource(FXML));
-            fxmlLoader.setController(this);
-            fxmlLoader.setRoot(this);
-            fxmlLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public InformationDisplay(Stage primaryStage) {
+        super(FXML);
         initializeInformationDisplay(primaryStage);
     }
 

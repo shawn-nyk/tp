@@ -1,18 +1,18 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
-import java.util.function.Predicate;
 
-import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.application.InternshipApplicationItem;
+import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.person.Person;
+import seedu.address.model.profile.ProfileItem;
+import seedu.address.ui.tabs.TabName;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
-    Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -37,51 +37,40 @@ public interface Model {
     /**
      * Returns the user prefs' address book file path.
      */
-    Path getAddressBookFilePath();
+    Path getInternHunterFilePath();
 
     /**
      * Sets the user prefs' address book file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setInternHunterFilePath(Path internHunterFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Get person list manager.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
-
-    /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
+    FilterableItemList<Person> getAddressBook();
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Get internship list manager.
      */
-    boolean hasPerson(Person person);
+    FilterableItemList<InternshipItem> getInternshipList();
 
     /**
-     * Deletes the given person.
-     * The person must exist in the address book.
+     * Get internship application list manager.
      */
-    void deletePerson(Person target);
+    FilterableItemList<InternshipApplicationItem> getInternshipApplicationList();
 
     /**
-     * Adds the given person.
-     * {@code person} must not already exist in the address book.
+     * Get profile list manager.
      */
-    void addPerson(Person person);
+    FilterableItemList<ProfileItem> getProfileList();
 
     /**
-     * Replaces the given person {@code target} with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * Replaces the current tab name with {@code tabName}.
      */
-    void setPerson(Person target, Person editedPerson);
-
-    /** Returns an unmodifiable view of the filtered person list */
-    ObservableList<Person> getFilteredPersonList();
+    void setTabName(TabName tabName);
 
     /**
-     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
-     * @throws NullPointerException if {@code predicate} is null.
+     * Retrieves the current tab name
      */
-    void updateFilteredPersonList(Predicate<Person> predicate);
+    TabName getTabName();
 }

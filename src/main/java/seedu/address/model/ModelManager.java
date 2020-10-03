@@ -4,14 +4,17 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
-import java.util.function.Predicate;
 import java.util.logging.Logger;
 
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.application.InternshipApplicationItem;
+import seedu.address.model.internship.InternshipItem;
+import seedu.address.model.item.ItemList;
+import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
+import seedu.address.model.profile.ProfileItem;
+import seedu.address.ui.tabs.TabName;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -19,26 +22,63 @@ import seedu.address.model.person.Person;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final FilterableItemList<Person> addressBook;
+    private final FilterableItemList<InternshipItem> internshipList;
+    private final FilterableItemList<InternshipApplicationItem> internshipApplicationList;
+    private final FilterableItemList<ProfileItem> profileList;
     private final UserPrefs userPrefs;
-    private final FilteredList<Person> filteredPersons;
+    private final Tab tabControl;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(
+            ReadOnlyItemList<Person> addressBook,
+            ReadOnlyItemList<InternshipItem> internshipList,
+            ReadOnlyItemList<InternshipApplicationItem> internshipApplicationList,
+            ReadOnlyItemList<ProfileItem> profileList,
+            ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(addressBook, userPrefs);
+        requireAllNonNull(addressBook, internshipList, internshipApplicationList, profileList, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with address book: " + addressBook
+                + " and internship list " + internshipList
+                + " and internship application list " + internshipApplicationList
+                + " and profile list " + profileList
+                + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.addressBook = new ItemListManager<>(new ItemList<>(addressBook));
+        this.internshipList = new ItemListManager<>(new ItemList<>(internshipList));
+        this.internshipApplicationList = new ItemListManager<>(new ItemList<>(internshipApplicationList));
+        this.profileList = new ItemListManager<>(new ItemList<>(profileList));
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        this.tabControl = new TabManager();
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new ItemList<>(), new ItemList<>(), new ItemList<>(), new ItemList<>(), new UserPrefs());
+    }
+
+    //=========== Models Getters =============================================================================
+
+    @Override
+    public FilterableItemList<Person> getAddressBook() {
+        return addressBook;
+    }
+
+    @Override
+    public FilterableItemList<InternshipItem> getInternshipList() {
+        return internshipList;
+    }
+
+    @Override
+    public FilterableItemList<InternshipApplicationItem> getInternshipApplicationList() {
+        return internshipApplicationList;
+    }
+
+    @Override
+    public FilterableItemList<ProfileItem> getProfileList() {
+        return profileList;
     }
 
     //=========== UserPrefs ==================================================================================
@@ -66,67 +106,31 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
+    public Path getInternHunterFilePath() {
         return userPrefs.getAddressBookFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setInternHunterFilePath(Path internHunterFilePath) {
+        requireNonNull(internHunterFilePath);
+        userPrefs.setAddressBookFilePath(internHunterFilePath);
     }
 
-    //=========== AddressBook ================================================================================
 
-    @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
-    }
-
-    @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
-    }
-
-    @Override
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return addressBook.hasPerson(person);
-    }
-
-    @Override
-    public void deletePerson(Person target) {
-        addressBook.removePerson(target);
-    }
-
-    @Override
-    public void addPerson(Person person) {
-        addressBook.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-    }
-
-    @Override
-    public void setPerson(Person target, Person editedPerson) {
-        requireAllNonNull(target, editedPerson);
-
-        addressBook.setPerson(target, editedPerson);
-    }
-
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Tab Control Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
+     * Retrieves the current tab name.
      */
-    @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return filteredPersons;
+    public TabName getTabName() {
+        return tabControl.getTabName();
     }
 
-    @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
-        requireNonNull(predicate);
-        filteredPersons.setPredicate(predicate);
+    /**
+     * Sets the current tab name with {@code tabName}.
+     */
+    public void setTabName(TabName tabName) {
+        tabControl.setTabName(tabName);
     }
 
     @Override
@@ -144,8 +148,9 @@ public class ModelManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
-                && userPrefs.equals(other.userPrefs)
-                && filteredPersons.equals(other.filteredPersons);
+                && internshipList.equals(other.internshipList)
+                && internshipApplicationList.equals(other.internshipApplicationList)
+                && profileList.equals(other.profileList)
+                && userPrefs.equals(other.userPrefs);
     }
-
 }
