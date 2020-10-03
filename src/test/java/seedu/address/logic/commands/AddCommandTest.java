@@ -22,6 +22,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
+import seedu.address.ui.tabs.TabName;
 
 public class AddCommandTest {
 
@@ -145,6 +146,16 @@ public class AddCommandTest {
 
         @Override
         public void updateFilteredPersonList(Predicate<Person> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setTabName(TabName tabName) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public TabName getTabName() {
             throw new AssertionError("This method should not be called.");
         }
     }

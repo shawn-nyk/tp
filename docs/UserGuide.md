@@ -46,7 +46,7 @@ InternHunter allows the management of three data types:
 
 Data type | Alias | Attributes
 ----------|-------|-----------
-Company | com | company name, industry, job titles
+Company | com | company name, industry, job title
 Internship | int | company name, job title, industry, requirements, period, wage, status
 Profile | me | category, descriptors
 
@@ -58,9 +58,10 @@ Profile | me | category, descriptors
 
 1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
 
-1. Double-click the file to start the app or run `java -jar InternHunter.jar` from the terminal. The features available in the current version of InternHunter are listed below: 
+1. Double-click the file to start the app or run `java -jar InternHunter.jar` from the terminal.
 
-1. Refer to the [Features](#features) below for details of each command.
+1. The [Features](#features) available in the current version of InternHunter are listed below.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
