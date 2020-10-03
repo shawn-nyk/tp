@@ -85,45 +85,46 @@ Profile | me | category, descriptors
 * `INDEX` refers to the index of the item in the displayed list of items (follows one-based indexing). <br>
 
 
-### Company Profile
+### Company
 
-#### Adding a company profile: `add -com`
+#### Adding a company: `add com`
 
-Adds a company profile to your list of company profiles.
+Adds a company to your list of companies.
 
-Format: `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLE...`
-
-Examples:
-- `add -com n/Garena i/Gaming j/Game developer`
-- `add -com n/Google i/Internet i/Cloud computing i/Artificial intelligence j/Software engineer j/Cloud architect`
-
-#### Deleting a company profile: `delete -com`
-
-Deletes a company profile from your list of company profiles.
-
-Format: `delete -com INDEX`
-
-Example:
-- `delete -com 5`
-
-#### Editing a company profile: `edit -com`
-
-Edits a company profile from your list of company profiles.
-
-Format: `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOB_TITLE]...`
+Format: `add com n/COMPANY_NAME a/ADDRESS e/EMAIL p/PHONE_NUMBER [t/INDUSTRY_TYPE]...`
 
 Examples:
-- `edit -com 1 j/Game developer j/Software tester`
-- `edit -com 2 n/Google LLC i/Cloud computing i/Artificial intelligence i/Deep learning`
+- `add com n/Google a/70 Pasir Panjang Rd, #03-71 e/GoogleHires@gmail.com p/65218000 t/Cloud Computing t/Artificial Intelligence`
+- `add com n/Garena a/201 Victoria St e/GarenaHires@gmail.com p/65093545`
 
-#### Viewing a company profile: `view -com`
+#### Deleting a company: `delete com`
 
-Selects a company profile in your list of company profiles to show in detail.
+Deletes a company from your list of companies. All internships and applications associated with this company will also be deleted.
 
-Format: `view -com INDEX`
+Format: `delete com INDEX`
 
 Example:
-- `view -com 3`
+- `delete com 5`
+
+#### Editing a company: `edit com`
+
+Edits a company in your list of companies.
+
+Format: `edit com INDEX [n/COMPANY_NAME] [a/ADDRESS] [e/EMAIL] [p/PHONE_NUMBER] [t/INDUSTRY_TYPE]...`
+- At least one of the optional fields must be provided.
+
+Examples:
+- `edit com 1 n/Google Singapore e/GoogleIsHiring@gmail.com`
+- `edit com 2 p/61234567`
+
+#### Viewing a company: `view com`
+
+Selects a company in your list of companies to show in detail.
+
+Format: `view com INDEX`
+
+Example:
+- `view com 3`
 
 ### Internship Application
 
