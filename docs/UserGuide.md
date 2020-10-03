@@ -46,7 +46,7 @@ InternHunter allows the management of three data types:
 
 Data type | Alias | Attributes
 ----------|-------|-----------
-Company | com | company name, industry, job titles
+Company | com | company name, industry, job title
 Internship | int | company name, job title, industry, requirements, period, wage, status
 Profile | me | category, descriptors
 
@@ -58,9 +58,10 @@ Profile | me | category, descriptors
 
 1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
 
-1. Double-click the file to start the app or run `java -jar InternHunter.jar` from the terminal. The features available in the current version of InternHunter are listed below: 
+1. Double-click the file to start the app or run `java -jar InternHunter.jar` from the terminal.
 
-1. Refer to the [Features](#features) below for details of each command.
+1. The [Features](#features) available in the current version of InternHunter are listed below.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
@@ -68,8 +69,8 @@ Profile | me | category, descriptors
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLES...`, `COMPANY_NAME, INDUSTRY, JOB_TITLES` are parameters
-   which can be used as `add -com n/Garena i/Gaming j/Game developer`.
+  e.g. in `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLE...`, `COMPANY_NAME`, `INDUSTRY` and `JOB_TITLE` are
+   parameters which can be used as `add -com n/Garena i/Gaming j/Game developer`.
 
 * Items in square brackets are optional.<br>
   e.g `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` can be used as <br/> `add -int n/Google j/Software Engineer i/Software
@@ -81,48 +82,49 @@ Profile | me | category, descriptors
 * Parameters can be in any order.<br>
   e.g. if the command specifies `i/INDUSTRY r/REQUIREMENT`, `r/REQUIREMENT i/INDUSTRY` is also acceptable.
 
-* `INDEX` refers to the index of the item in the displayed list of items. (Follows one based indexing) <br>
+* `INDEX` refers to the index of the item in the displayed list of items (follows one-based indexing). <br>
 
 
-### Company Profile
+### Company
 
-#### Adding a company profile: `add -com`
+#### Adding a company: `add com`
 
-Adds a company profile to your list of company profiles.
+Adds a company to your list of companies.
 
-Format: `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLES...`
-
-Examples:
-- `add -com n/Garena i/Gaming j/Game developer`
-- `add -com n/Google i/Internet i/Cloud computing i/Artificial intelligence j/Software engineer j/Cloud architect`
-
-#### Deleting a company profile: `delete -com`
-
-Deletes a company profile from your list of company profiles.
-
-Format: `delete -com INDEX`
-
-Example:
-- `delete -com 5`
-
-#### Editing a company profile: `edit -com`
-
-Edits a company profile from your list of company profiles.
-
-Format: `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOB_TITLES]...`
+Format: `add com n/COMPANY_NAME a/ADDRESS e/EMAIL p/PHONE_NUMBER [t/INDUSTRY_TYPE]...`
 
 Examples:
-- `edit -com 1 j/Game developer j/Software tester`
-- `edit -com 2 n/Google LLC i/Cloud computing i/Artificial intelligence i/Deep learning`
+- `add com n/Google a/70 Pasir Panjang Rd, #03-71 e/GoogleHires@gmail.com p/65218000 t/Cloud Computing t/Artificial Intelligence`
+- `add com n/Garena a/201 Victoria St e/GarenaHires@gmail.com p/65093545`
 
-#### Viewing a company profile: `view -com`
+#### Deleting a company: `delete com`
 
-Selects a company profile in your list of company profiles to show in detail.
+Deletes a company from your list of companies. All internships and applications associated with this company will also be deleted.
 
-Format: `view -com INDEX`
+Format: `delete com INDEX`
 
 Example:
-- `view -com 3`
+- `delete com 5`
+
+#### Editing a company: `edit com`
+
+Edits a company in your list of companies.
+
+Format: `edit com INDEX [n/COMPANY_NAME] [a/ADDRESS] [e/EMAIL] [p/PHONE_NUMBER] [t/INDUSTRY_TYPE]...`
+- At least one of the optional fields must be provided.
+
+Examples:
+- `edit com 1 n/Google Singapore e/GoogleIsHiring@gmail.com`
+- `edit com 2 p/61234567`
+
+#### Viewing a company: `view com`
+
+Selects a company in your list of companies to show in detail.
+
+Format: `view com INDEX`
+
+Example:
+- `view com 3`
 
 ### Internship Application
 
@@ -274,9 +276,9 @@ Format: `exit`
 
 Type            | Action     | Format
 ----------------|------------|------------------
-**Company**     | **Add**    | `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLES...`
+**Company**     | **Add**    | `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLE...`
 &nbsp;          | **Delete** | `delete -com INDEX`
-&nbsp;          | **Edit**   | `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOB_TITLES]...`
+&nbsp;          | **Edit**   | `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOB_TITLE]...`
 &nbsp;          | **View**   | `view -com INDEX`
 **Internship**  | **Add**    | `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` <br/> `add -int n/COMPANY_NAME INDEX`
 &nbsp;          | **Delete** | `delete -int INDEX`
