@@ -65,4 +65,9 @@ public class AddCommand extends AddCommandAbstract {
                 || (other instanceof AddCommand // instanceof handles nulls
                 && toAdd.equals(((AddCommand) other).toAdd));
     }
+
+    @Override
+    public String getItemType() {
+        return "person";
+    }
 }

@@ -1,7 +1,10 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.clisyntax.CliSyntax.ITEM_PREFIX_APPLICATION;
+import static seedu.address.logic.parser.clisyntax.CliSyntax.ITEM_PREFIX_COMPANY;
 import static seedu.address.logic.parser.clisyntax.CliSyntax.ITEM_PREFIX_INTERNSHIP;
+import static seedu.address.logic.parser.clisyntax.CliSyntax.ITEM_PREFIX_USER_PROFILE;
 import static seedu.address.logic.parser.clisyntax.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.clisyntax.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.clisyntax.CliSyntax.PREFIX_NAME;
@@ -33,7 +36,6 @@ public class AddCommandParser implements Parser<AddCommandAbstract> {
 
     private static final int ITEM_TYPE_INDEX = 0;
     private static final int ITEM_PREFIX_INDEX = 1;
-    // 2 types of argument item type and item field
     private static final int NUMBER_OF_ARGUMENTS_TYPES = 2;
 
     /**
@@ -44,28 +46,41 @@ public class AddCommandParser implements Parser<AddCommandAbstract> {
     public AddCommandAbstract parse(String args) throws ParseException {
 
         String[] argumentTypes = args.strip().split(" ", NUMBER_OF_ARGUMENTS_TYPES);
-        if (argumentTypes.length < NUMBER_OF_ARGUMENTS_TYPES) {
-            throw new ParseException(String.format(
-                    MESSAGE_INVALID_COMMAND_FORMAT, AddInternshipCommand.MESSAGE_USAGE));
-        }
         String itemType = argumentTypes[ITEM_TYPE_INDEX];
-        String itemPrefixes = argumentTypes[ITEM_PREFIX_INDEX];
 
+        // comment out these 2 lines to access og addresss book
+        checkArgumentTypeSufficiency(argumentTypes);
+        String itemPrefixes = argumentTypes[ITEM_PREFIX_INDEX];
         switch (itemType) {
+        case ITEM_PREFIX_COMPANY:
+            return null;
+
         case ITEM_PREFIX_INTERNSHIP:
+            // todo: replace args with itemPrefixes
             ArgumentMultimap internshipMultimap =
-                    ArgumentTokenizer.tokenize(args, PREFIX_JOB_TITLE, PREFIX_PERIOD, PREFIX_WAGE, PREFIX_REQUIREMENT);
+                    ArgumentTokenizer.tokenize(itemPrefixes,
+                        PREFIX_JOB_TITLE, PREFIX_PERIOD, PREFIX_WAGE, PREFIX_REQUIREMENT);
 
             // Todo: Only includes compulsory fields
-            if (!arePrefixesPresent(internshipMultimap, PREFIX_JOB_TITLE, PREFIX_PERIOD,
-                PREFIX_WAGE, PREFIX_REQUIREMENT)
-                    || !internshipMultimap.getPreamble().isEmpty()) {
-                throw new ParseException(String.format(
-                            MESSAGE_INVALID_COMMAND_FORMAT, AddInternshipCommand.MESSAGE_USAGE));
-            }
+            //            if (!arePrefixesPresent(internshipMultimap, PREFIX_JOB_TITLE, PREFIX_PERIOD,
+            //                PREFIX_WAGE, PREFIX_REQUIREMENT)
+            //                    || !internshipMultimap.getPreamble().isEmpty()) {
+            //                throw new ParseException(String.format(
+            //                            MESSAGE_INVALID_COMMAND_FORMAT, AddInternshipCommand.MESSAGE_USAGE));
+            //            }
             // Todo: Add parser utilities for Internship
+            // eg: Parse field e.g. Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+            // Todo: Create Internship object based on abstracted fields.
             return new AddInternshipCommand("Not an internship added");
+        case ITEM_PREFIX_APPLICATION:
+            return null;
+
+        case ITEM_PREFIX_USER_PROFILE:
+            return null;
+
         default:
+            //todo: delete below and throw new parse exception for unrecognizable item type
+
             ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(
                         args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
 
@@ -95,4 +110,15 @@ public class AddCommandParser implements Parser<AddCommandAbstract> {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 
+    /**
+     * Checks if number of argument types are sufficient.
+     *
+     * @return true if there are 2 types of argument: item type and prefixes.
+     */
+    private void checkArgumentTypeSufficiency(String[] argumentTypes) throws ParseException {
+        if (argumentTypes.length < NUMBER_OF_ARGUMENTS_TYPES) {
+            throw new ParseException(String.format(
+                    MESSAGE_INVALID_COMMAND_FORMAT, AddCommandAbstract.MESSAGE_USAGE));
+        }
+    }
 }

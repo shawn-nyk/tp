@@ -14,6 +14,9 @@ public class CliSyntax {
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
 
-    public static final String ITEM_PREFIX_INTERNSHIP = "-int";
-    public static final String ITEM_PREFIX_USER_PROFILE = "-me";
+    /* Item Prefix definitions */
+    public static final String ITEM_PREFIX_COMPANY = "com";
+    public static final String ITEM_PREFIX_INTERNSHIP = "int";
+    public static final String ITEM_PREFIX_APPLICATION = "app";
+    public static final String ITEM_PREFIX_USER_PROFILE = "me";
 }
