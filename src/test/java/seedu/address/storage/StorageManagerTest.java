@@ -11,9 +11,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.item.ItemList;
+import seedu.address.model.item.ReadOnlyItemList;
+import seedu.address.model.person.Person;
 
 public class StorageManagerTest {
 
@@ -54,15 +55,15 @@ public class StorageManagerTest {
          * {@link JsonAddressBookStorage} class.
          * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBookStorageTest} class.
          */
-        AddressBook original = getTypicalAddressBook();
-        storageManager.saveAddressBook(original);
-        ReadOnlyAddressBook retrieved = storageManager.readAddressBook().get();
-        assertEquals(original, new AddressBook(retrieved));
+        ItemList<Person> original = getTypicalAddressBook();
+        storageManager.saveItemList(original);
+        ReadOnlyItemList<Person> retrieved = storageManager.readItemList().get();
+        assertEquals(original, new ItemList<>(retrieved));
     }
 
     @Test
     public void getAddressBookFilePath() {
-        assertNotNull(storageManager.getAddressBookFilePath());
+        assertNotNull(storageManager.getItemListFilePath());
     }
 
 }

@@ -9,12 +9,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.item.ItemList;
+import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
 
 /**
- * An Immutable AddressBook that is serializable to JSON format.
+ * An Immutable Address Book that is serializable to JSON format.
  */
 @JsonRootName(value = "addressbook")
 class JsonSerializableAddressBook {
@@ -36,23 +36,23 @@ class JsonSerializableAddressBook {
      *
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
-    public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
-        persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
+    public JsonSerializableAddressBook(ReadOnlyItemList<Person> source) {
+        persons.addAll(source.getItemList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
     }
 
     /**
-     * Converts this address book into the model's {@code AddressBook} object.
+     * Converts this address book into the model's {@code FilterableItemList<Person>} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
-    public AddressBook toModelType() throws IllegalValueException {
-        AddressBook addressBook = new AddressBook();
+    public ItemList<Person> toModelType() throws IllegalValueException {
+        ItemList<Person> addressBook = new ItemList<>();
         for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
             Person person = jsonAdaptedPerson.toModelType();
-            if (addressBook.hasPerson(person)) {
+            if (addressBook.hasItem(person)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }
-            addressBook.addPerson(person);
+            addressBook.addItem(person);
         }
         return addressBook;
     }
