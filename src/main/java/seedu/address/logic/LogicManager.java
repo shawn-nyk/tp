@@ -16,6 +16,7 @@ import seedu.address.model.Model;
 import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
 import seedu.address.storage.Storage;
+import seedu.address.ui.tabs.TabName;
 
 /**
  * The main LogicManager of the app.
@@ -77,5 +78,15 @@ public class LogicManager implements Logic {
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
+    }
+
+    @Override
+    public TabName getTabName() {
+        return model.getTabName();
+    }
+
+    @Override
+    public void setTabName(TabName tabName) {
+        model.setTabName(tabName);
     }
 }

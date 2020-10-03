@@ -14,6 +14,7 @@ import seedu.address.model.item.ItemList;
 import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
+import seedu.address.ui.tabs.TabName;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -26,6 +27,7 @@ public class ModelManager implements Model {
     private final FilterableItemList<InternshipApplicationItem> internshipApplicationList;
     private final FilterableItemList<ProfileItem> profileList;
     private final UserPrefs userPrefs;
+    private final Tab tabControl;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -50,6 +52,7 @@ public class ModelManager implements Model {
         this.internshipApplicationList = new ItemListManager<>(new ItemList<>(internshipApplicationList));
         this.profileList = new ItemListManager<>(new ItemList<>(profileList));
         this.userPrefs = new UserPrefs(userPrefs);
+        this.tabControl = new TabManager();
     }
 
     public ModelManager() {
@@ -111,6 +114,23 @@ public class ModelManager implements Model {
     public void setInternHunterFilePath(Path internHunterFilePath) {
         requireNonNull(internHunterFilePath);
         userPrefs.setAddressBookFilePath(internHunterFilePath);
+    }
+
+
+    //=========== Tab Control Accessors =============================================================
+
+    /**
+     * Retrieves the current tab name.
+     */
+    public TabName getTabName() {
+        return tabControl.getTabName();
+    }
+
+    /**
+     * Sets the current tab name with {@code tabName}.
+     */
+    public void setTabName(TabName tabName) {
+        tabControl.setTabName(tabName);
     }
 
     @Override

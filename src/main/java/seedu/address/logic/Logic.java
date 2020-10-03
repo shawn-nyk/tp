@@ -9,6 +9,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
+import seedu.address.ui.tabs.TabName;
 
 /**
  * API of the Logic component
@@ -47,4 +48,14 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Returns the current tab of InternHunter.
+     */
+    TabName getTabName();
+
+    /**
+     * Sets the current tab of InternHunter.
+     */
+    void setTabName(TabName tabName);
 }

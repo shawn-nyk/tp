@@ -7,6 +7,7 @@ import seedu.address.model.application.InternshipApplicationItem;
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
+import seedu.address.ui.tabs.TabName;
 
 /**
  * The API of the Model component.
@@ -62,4 +63,14 @@ public interface Model {
      * Get profile list manager.
      */
     FilterableItemList<ProfileItem> getProfileList();
+
+    /**
+     * Replaces the current tab name with {@code tabName}.
+     */
+    void setTabName(TabName tabName);
+
+    /**
+     * Retrieves the current tab name
+     */
+    TabName getTabName();
 }

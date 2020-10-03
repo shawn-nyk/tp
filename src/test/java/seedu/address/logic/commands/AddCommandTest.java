@@ -21,6 +21,7 @@ import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.testutil.PersonBuilder;
+import seedu.address.ui.tabs.TabName;
 
 public class AddCommandTest {
 
@@ -123,6 +124,16 @@ public class AddCommandTest {
 
         @Override
         public FilterableItemList<ProfileItem> getProfileList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setTabName(TabName tabName) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public TabName getTabName() {
             throw new AssertionError("This method should not be called.");
         }
 
