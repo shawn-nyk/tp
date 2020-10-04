@@ -1,11 +1,11 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.edit;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_TAG;
 import static seedu.address.model.FilterableItemList.PREDICATE_SHOW_ALL_ITEMS;
 
 import java.util.Collections;
@@ -17,6 +17,8 @@ import java.util.Set;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Address;
