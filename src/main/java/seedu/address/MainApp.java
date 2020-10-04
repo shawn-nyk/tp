@@ -91,7 +91,8 @@ public class MainApp extends Application {
             initialData = new ItemList<>();
         }
 
-        return new ModelManager(initialData, new ItemList<>(), new ItemList<>(), new ItemList<>(), userPrefs);
+        return new ModelManager(initialData, new ItemList<>(), new ItemList<>(), new ItemList<>(), new ItemList<>(),
+                userPrefs);
     }
 
     private void initLogging(Config config) {
