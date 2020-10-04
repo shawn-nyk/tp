@@ -1,10 +1,10 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.clisyntax.CliSyntax.ITEM_PREFIX_APPLICATION;
-import static seedu.address.logic.parser.clisyntax.CliSyntax.ITEM_PREFIX_COMPANY;
-import static seedu.address.logic.parser.clisyntax.CliSyntax.ITEM_PREFIX_INTERNSHIP;
-import static seedu.address.logic.parser.clisyntax.CliSyntax.ITEM_PREFIX_USER_PROFILE;
+import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.ITEM_PREFIX_APPLICATION;
+import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.ITEM_PREFIX_COMPANY;
+import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.ITEM_PREFIX_INTERNSHIP;
+import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.ITEM_PREFIX_USER_PROFILE;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.delete.DeleteCommand;
@@ -65,7 +65,8 @@ public class DeleteCommandParser implements Parser<DeleteCommandAbstract> {
     /**
      * Checks if number of argument types are sufficient.
      *
-     * @return true if there are 2 types of argument: item type and index.
+     * @param argumentTypes is a list of arguments delimited by the
+     * first space in the user argument after stripping wrapping spaces.
      */
     private void checkArgumentTypeSufficiency(String[] argumentTypes) throws ParseException {
         if (argumentTypes.length < NUMBER_OF_ARGUMENTS_TYPES) {

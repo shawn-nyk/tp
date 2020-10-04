@@ -30,7 +30,7 @@ public class AddInternshipCommand extends AddCommandAbstract {
     private final String toAdd;
 
     /**
-     * Creates an AddCommand to add the specified {@code Internship}
+     * Creates an AddCommand to add the specified {@code Internship}.
      */
     public AddInternshipCommand(String internshipItem) {
         requireNonNull(internshipItem);

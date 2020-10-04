@@ -3,9 +3,10 @@ package seedu.address.logic.commands.add;
 import seedu.address.logic.commands.Command;
 
 /**
- * Represents and Add Command for Items.
+ * Represents an Add Command for Items.
  */
 public abstract class AddCommandAbstract extends Command {
+
     public static final String COMMAND_WORD = "add";
     //todo Update Message Usage to standardised format
     public static final String MESSAGE_USAGE = COMMAND_WORD
