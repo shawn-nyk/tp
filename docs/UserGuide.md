@@ -93,10 +93,10 @@ Note: You must be viewing the **Companies** page in order to execute these comma
 
 Adds a company to your list of companies.
 
-Format: `add com n/COMPANY_NAME a/ADDRESS e/EMAIL p/PHONE_NUMBER [t/INDUSTRY_TYPE]...`
+Format: `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`
 
 Examples:
-- `add com n/Google a/70 Pasir Panjang Rd, #03-71 e/GoogleHires@gmail.com p/65218000 t/Cloud Computing t/Artificial Intelligence`
+- `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Intelligence`
 - `add com n/Garena a/201 Victoria St e/GarenaHires@gmail.com p/65093545`
 
 #### Deleting a company: `delete com`
@@ -112,7 +112,7 @@ Example:
 
 Edits a company in your list of companies.
 
-Format: `edit com INDEX [n/COMPANY_NAME] [a/ADDRESS] [e/EMAIL] [p/PHONE_NUMBER] [t/INDUSTRY_TYPE]...`
+Format: `edit com INDEX [n/COMPANY_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/INDUSTRY]...`
 - At least one of the optional fields must be provided.
 
 Examples:
