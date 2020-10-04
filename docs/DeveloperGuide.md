@@ -208,7 +208,7 @@ Guarantees: Addition of user profile item is successful
 
  &emsp;1a. InternHunter detects an invalid input. <br />
  &emsp;1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
- &emsp; Use case resumes from step 1.
+ &emsp;Use case resumes from step 1.
 
 ### Use case: UC10 - Delete a user profile item 
 
