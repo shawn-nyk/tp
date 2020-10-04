@@ -61,7 +61,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### MSS
 
-Precondition: User is on the Companies page
+Precondition: User is on the Companies page <br/>
 Guarantees: Addition of company is successful
 
 1. User requests to add a company and provides details.
