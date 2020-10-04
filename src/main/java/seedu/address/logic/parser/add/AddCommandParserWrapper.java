@@ -33,7 +33,7 @@ public class AddCommandParserWrapper implements Parser<AddCommandAbstract> {
 
         // comment out these 2 lines to access og addresss book
         checkArgumentTypeSufficiency(argumentTypes);
-        String itemPrefixes = argumentTypes[ITEM_PREFIX_INDEX];
+        String itemPrefixes = " " + argumentTypes[ITEM_PREFIX_INDEX];
         switch (itemType) {
         case ITEM_PREFIX_COMPANY:
             return null;
