@@ -197,15 +197,16 @@ Guarantees: Editing of internship application is successful
 
 #### MSS
 
+Precondition: User is on the Profile page
 Guarantees: Addition of user profile item is successful
 
-1.  User requests to add a user profile item to the user profile and provides the relevant data.
+1.  User requests to add a user profile item to the user profile and provides details.
 2.  InternHunter adds the user profile item to the user profile. <br />
     Use case ends.
 
 #### Extensions
 
-1a. InternHunter detects an invalid input. <br />
+ 1a. InternHunter detects an invalid input. <br />
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
   Use case resumes from step 1.
 
@@ -213,49 +214,57 @@ Guarantees: Addition of user profile item is successful
 
 #### MSS
 
-Precondition: User already has an existing user profile items </br>
+Precondition: User is on the Profile page and already has an existing list of user profile items <br/>
 Guarantees: Deletion of user profile item is successful
 
-1.  User requests to delete a user profile item from the user profile and provides the index.
+1.  User requests to delete a user profile item from the user profile.
 2.  InternHunter removes the user profile item from the user profile. </br>
     Use case ends.
 
 #### Extensions
 
-1a. InternHunter detects an invalid input. <br />
+ 1a. InternHunter detects an error in the input format. <br />
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
   Use case resumes from step 1.
+
+ 1b. InternHunter detects an invalid index. <br/>
+  1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
+  Use case resumes from step 1.
+
 
 ### Use case: UC11 - Edit a user profile item
 
 #### MSS
 
-Precondition: User already has an existing list of user profile items </br>
+Precondition: User is on the Profile page and already has an existing list of user profile items <br/>
 Guarantees: Editing of user profile item is successful
 
-1.  User requests to edit the details of a user profile item and inputs the index and details.
-2.  InternHunter edits the user profile item from the user profile. </br>
+1.  User requests to edit the details of a user profile item and provides details.
+2.  InternHunter edits the user profile item in the user profile. </br>
     Use case ends.
 
 #### Extensions
-1a. InternHunter detects an invalid input. <br />
+ 1a. InternHunter detects an invalid input. <br />
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
+  Use case resumes from step 1.
+
+ 1b. InternHunter detects an invalid index.<br />
+  1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br />
   Use case resumes from step 1.
 
 ### Use case: UC12 - View a user profile item
 
 #### MSS
-
-Precondition: User already has an existing list of user profile items </br>
+Precondition: User is on the Profile page and already has an existing list of user profile items <br/>
 Guarantees: Viewing of user profile item is successful
 
 1.  User requests to view the details of a user profile item.
-2.  InternHunter shows the details of this internship application. </br>
+2.  InternHunter shows the details of this internship application. <br/>
     Use case ends.
     
 #### Extensions
-1a. InternHunter detects an invalid input. </br>
-  1a1. InternHunter displays an error message and informs the user of the valid input format. </br>
+ 1a. InternHunter detects an error in the input format. <br/>
+  1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
   Use case resumes from step 1.
 
 ### Use case: UC13 - Switch tabs
@@ -263,23 +272,21 @@ Guarantees: Viewing of user profile item is successful
 #### MSS
 
 1.  User requests to switch the tab of the screen.
-2.  InternHunter switches to the requested tab. <br />
+2.  InternHunter switches to the requested tab. </br>
     Use case ends.
 
 #### Extensions
-1a. InternHunter detects an invalid input. <br />
-  1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
+ 1a. InternHunter detects an error in the input format. <br/>
+  1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
   Use case resumes from step 1.
 
 ### Use case: UC14 - Get help
 
 #### MSS
-
 Guarantees: User will get directions to the user guide
 
-MSS:
 1.  User requests for help.
-2.  InternHunter displays help message directing user to user guide. </br>
+2.  InternHunter displays help message directing user to user guide. <br/>
     Use case ends.
 
 
@@ -290,12 +297,12 @@ MSS:
 1.  User requests to exit InternHunter.
 2.  InternHunter prompts for confirmation.
 3.  User confirms intention to exit.
-4.  InternHunter exits. </br>
+4.  InternHunter exits. <br/>
     Use case ends.
 
 #### Extensions
-2a. User chooses to cancel the confirmation. </br>
-    Use case ends.
+ 2a. User chooses to cancel the confirmation. <br/>
+ Use case ends.
     
 ## Appendix D: Non-Functional Requirements
 
