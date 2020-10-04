@@ -206,9 +206,9 @@ Guarantees: Addition of user profile item is successful
 
 #### Extensions
 
- 1a. InternHunter detects an invalid input. <br />
-  1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
-  Use case resumes from step 1.
+ &emsp;1a. InternHunter detects an invalid input. <br />
+ &emsp;1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
+ &emsp; Use case resumes from step 1.
 
 ### Use case: UC10 - Delete a user profile item 
 
@@ -223,13 +223,13 @@ Guarantees: Deletion of user profile item is successful
 
 #### Extensions
 
- 1a. InternHunter detects an error in the input format. <br />
-  1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
-  Use case resumes from step 1.
+ &emsp;1a. InternHunter detects an error in the input format. <br />
+ &emsp; 1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
+ &emsp;  Use case resumes from step 1.
 
- 1b. InternHunter detects an invalid index. <br/>
-  1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
-  Use case resumes from step 1.
+&emsp; 1b. InternHunter detects an invalid index. <br/>
+ &emsp;  1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
+ &emsp;  Use case resumes from step 1.
 
 
 ### Use case: UC11 - Edit a user profile item
@@ -244,13 +244,13 @@ Guarantees: Editing of user profile item is successful
     Use case ends.
 
 #### Extensions
- 1a. InternHunter detects an invalid input. <br />
-  1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
-  Use case resumes from step 1.
+ &emsp; 1a. InternHunter detects an invalid input. <br />
+ &emsp;  1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
+ &emsp;  Use case resumes from step 1.
 
- 1b. InternHunter detects an invalid index.<br />
-  1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br />
-  Use case resumes from step 1.
+ &emsp; 1b. InternHunter detects an invalid index.<br />
+ &emsp;  1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br />
+ &emsp;  Use case resumes from step 1.
 
 ### Use case: UC12 - View a user profile item
 
@@ -263,9 +263,9 @@ Guarantees: Viewing of user profile item is successful
     Use case ends.
     
 #### Extensions
- 1a. InternHunter detects an error in the input format. <br/>
-  1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
-  Use case resumes from step 1.
+ &emsp; 1a. InternHunter detects an error in the input format. <br/>
+ &emsp;  1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
+ &emsp;  Use case resumes from step 1.
 
 ### Use case: UC13 - Switch tabs
 
@@ -276,9 +276,9 @@ Guarantees: Viewing of user profile item is successful
     Use case ends.
 
 #### Extensions
- 1a. InternHunter detects an error in the input format. <br/>
-  1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
-  Use case resumes from step 1.
+ &emsp; 1a. InternHunter detects an error in the input format. <br/>
+ &emsp;  1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
+  &emsp; Use case resumes from step 1.
 
 ### Use case: UC14 - Get help
 
@@ -301,8 +301,8 @@ Guarantees: User will get directions to the user guide
     Use case ends.
 
 #### Extensions
- 2a. User chooses to cancel the confirmation. <br/>
- Use case ends.
+ &emsp; 2a. User chooses to cancel the confirmation. <br/>
+ &emsp; Use case ends.
     
 ## Appendix D: Non-Functional Requirements
 
