@@ -275,20 +275,20 @@ Format: `exit`
 
 Type            | Action     | Format
 ----------------|------------|------------------
-**Company**     | **Add**    | `add com n/COMPANY_NAME a/ADDRESS e/EMAIL p/PHONE_NUMBER [t/INDUSTRY_TYPE]...`
+**Company**     | **Add**    | `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`
 &nbsp;          | **Delete** | `delete com INDEX`
-&nbsp;          | **Edit**   | `edit com INDEX [n/COMPANY_NAME] [a/ADDRESS] [e/EMAIL] [p/PHONE_NUMBER] [t/INDUSTRY_TYPE]...`
+&nbsp;          | **Edit**   | `edit com INDEX [n/COMPANY_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/INDUSTRY]...`
 &nbsp;          | **View**   | `view com INDEX`
 **Internship**  | **Add**    | `add int INDEX j/JOB_TITLE [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
 &nbsp;          | **Delete** | `delete int INDEX`
 &nbsp;          | **Edit**   | `edit int INDEX i/INDEX [j/JOB_TITLE] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
-**Internship**  | **Add**    | `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
-**Application**`| **Delete** | `delete app INDEX`
+**Application** | **Add**    | `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
+&nbsp;          | **Delete** | `delete app INDEX`
 &nbsp;          | **Edit**   | `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
 &nbsp;          | **View**   | `view app INDEX`
-**Profile**     | **Add**    | `add me c/CAT d/DESCRIPTORS`
+**Profile**     | **Add**    | `add me c/CAT t/TITLE [d/DESCRIPTOR]...`
 &nbsp;          | **Delete** | `delete me INDEX`
-&nbsp;          | **Edit**   | `edit me INDEX [c/CAT] [d/DESCRIPTORS]`
+&nbsp;          | **Edit**   | `edit me INDEX [c/CAT] [t/TITLE] [d/DESCRIPTOR]...`
 &nbsp;          | **View**   | `view me INDEX`
 **General**     | **Switch** | `switch TYPE`
 &nbsp;          | **Help**   | `help`

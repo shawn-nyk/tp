@@ -126,7 +126,7 @@ Precondition: User is on the Companies page <br/>
 Guarantees: Addition of internship is successful
 
 1.  User requests to add an internship to a company and provides the relevant details.
-2.  InternHunter adds the internship to the list of internships of the company.
+2.  InternHunter adds the internship to the list of internships of the company. <br/>
     Use case ends.
 
 #### Extensions
