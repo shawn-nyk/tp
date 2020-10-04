@@ -87,6 +87,8 @@ Profile | me | category, descriptors
 
 ### Company
 
+Note: You must be viewing the **Companies** page in order to execute these commands.
+
 #### Adding a company: `add com`
 
 Adds a company to your list of companies.
