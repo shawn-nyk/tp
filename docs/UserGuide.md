@@ -249,7 +249,7 @@ Example:
 
 Switches between tabs.
 
-Format: `switch -TYPE`
+Format: `switch TYPE`
 
 There are three `TYPE`s:
 * `com`
@@ -257,7 +257,7 @@ There are three `TYPE`s:
 * `me`
 
 Example: 
-* `switch -me`
+* `switch me`
 
 ### Viewing Help: `help`
 Displays a link to the InternHunter user guide.
@@ -265,7 +265,7 @@ Displays a link to the InternHunter user guide.
 Format: `help`
 
 ### Exiting the Program: `exit`
-Exits the program.
+Shows an exit confirmation dialog.
 
 Format: `exit`
 
@@ -275,18 +275,21 @@ Format: `exit`
 
 Type            | Action     | Format
 ----------------|------------|------------------
-**Company**     | **Add**    | `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLE...`
-&nbsp;          | **Delete** | `delete -com INDEX`
-&nbsp;          | **Edit**   | `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOB_TITLE]...`
-&nbsp;          | **View**   | `view -com INDEX`
-**Internship**  | **Add**    | `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` <br/> `add -int n/COMPANY_NAME INDEX`
-&nbsp;          | **Delete** | `delete -int INDEX`
-&nbsp;          | **Edit**   | `edit -int INDEX [n/COMPANY_NAME] [j/JOB_TITLE] [i/INDUSTRY] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE] [r/REQUIREMENT]...`
-&nbsp;          | **View**   | `view -int INDEX`
-**Profile**     | **Add**    | `add -me c/CAT d/DESCRIPTORS`
-&nbsp;          | **Delete** | `delete -me INDEX`
-&nbsp;          | **Edit**   | `edit -me INDEX [c/CAT] [d/DESCRIPTORS]`
-&nbsp;          | **View**   | `view -me INDEX`
-**General**     | **Switch** | `switch -TYPE`
+**Company**     | **Add**    | `add com n/COMPANY_NAME a/ADDRESS e/EMAIL p/PHONE_NUMBER [t/INDUSTRY_TYPE]...`
+&nbsp;          | **Delete** | `delete com INDEX`
+&nbsp;          | **Edit**   | `edit com INDEX [n/COMPANY_NAME] [a/ADDRESS] [e/EMAIL] [p/PHONE_NUMBER] [t/INDUSTRY_TYPE]...`
+&nbsp;          | **View**   | `view com INDEX`
+**Internship**  | **Add**    | `add int INDEX j/JOB_TITLE [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
+&nbsp;          | **Delete** | `delete int INDEX`
+&nbsp;          | **Edit**   | `edit int INDEX i/INDEX [j/JOB_TITLE] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
+**Internship**  | **Add**    | `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
+**Application**`| **Delete** | `delete app INDEX`
+&nbsp;          | **Edit**   | `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
+&nbsp;          | **View**   | `view app INDEX`
+**Profile**     | **Add**    | `add me c/CAT d/DESCRIPTORS`
+&nbsp;          | **Delete** | `delete me INDEX`
+&nbsp;          | **Edit**   | `edit me INDEX [c/CAT] [d/DESCRIPTORS]`
+&nbsp;          | **View**   | `view me INDEX`
+**General**     | **Switch** | `switch TYPE`
 &nbsp;          | **Help**   | `help`
 &nbsp;          | **Exit**   | `exit`
