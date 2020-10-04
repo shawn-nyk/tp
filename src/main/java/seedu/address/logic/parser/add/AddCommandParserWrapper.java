@@ -55,7 +55,8 @@ public class AddCommandParserWrapper implements Parser<AddCommandAbstract> {
     /**
      * Checks if number of argument types are sufficient.
      *
-     * @return true if there are 2 types of argument: item type and prefixes.
+     * @param argumentTypes is a list of arguments delimited by the
+     * first space in the user argument after stripping wrapping spaces.
      */
     private void checkArgumentTypeSufficiency (String[] argumentTypes) throws ParseException {
         if (argumentTypes.length < NUMBER_OF_ARGUMENTS_TYPES) {
