@@ -324,7 +324,7 @@ Type            | Action     | Format
 &nbsp;          | **Edit**   | `edit com INDEX [n/COMPANY_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/INDUSTRY]...`
 &nbsp;          | **View**   | `view com INDEX`
 **Internship**  | **Add**    | `add int INDEX j/JOB_TITLE [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
-&nbsp;          | **Delete** | `delete int INDEX`
+&nbsp;          | **Delete** | `delete int INDEX i/INDEX`
 &nbsp;          | **Edit**   | `edit int INDEX i/INDEX [j/JOB_TITLE] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
 **Application** | **Add**    | `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
 &nbsp;          | **Delete** | `delete app INDEX`
