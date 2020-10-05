@@ -1,12 +1,13 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_TAG;
 
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
@@ -14,7 +15,7 @@ import seedu.address.model.person.Person;
 /**
  * Adds a person to the address book.
  */
-public class AddCommand extends Command {
+public class AddCommand extends AddCommandAbstract {
 
     public static final String COMMAND_WORD = "add";
 
@@ -50,11 +51,11 @@ public class AddCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (model.hasPerson(toAdd)) {
+        if (model.getAddressBook().hasItem(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
-        model.addPerson(toAdd);
+        model.getAddressBook().addItem(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
@@ -63,5 +64,10 @@ public class AddCommand extends Command {
         return other == this // short circuit if same object
                 || (other instanceof AddCommand // instanceof handles nulls
                 && toAdd.equals(((AddCommand) other).toAdd));
+    }
+
+    @Override
+    public String getItemType() {
+        return "person";
     }
 }

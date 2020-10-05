@@ -7,20 +7,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
-import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.logic.commands.add.AddCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.AddressBook;
+import seedu.address.model.FilterableItemList;
+import seedu.address.model.ItemListManager;
 import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.application.InternshipApplicationItem;
+import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.person.Person;
+import seedu.address.model.profile.ProfileItem;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.ui.tabs.TabName;
 
@@ -39,7 +39,6 @@ public class AddCommandTest {
         CommandResult commandResult = new AddCommand(validPerson).execute(modelStub);
 
         assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validPerson), commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validPerson), modelStub.personsAdded);
     }
 
     @Test
@@ -100,52 +99,32 @@ public class AddCommandTest {
         }
 
         @Override
-        public Path getAddressBookFilePath() {
+        public Path getInternHunterFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAddressBookFilePath(Path addressBookFilePath) {
+        public void setInternHunterFilePath(Path internHunterFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void addPerson(Person person) {
+        public FilterableItemList<Person> getAddressBook() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAddressBook(ReadOnlyAddressBook newData) {
+        public FilterableItemList<InternshipItem> getInternshipList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
+        public FilterableItemList<InternshipApplicationItem> getInternshipApplicationList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public boolean hasPerson(Person person) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void deletePerson(Person target) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void setPerson(Person target, Person editedPerson) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public ObservableList<Person> getFilteredPersonList() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void updateFilteredPersonList(Predicate<Person> predicate) {
+        public FilterableItemList<ProfileItem> getProfileList() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -158,6 +137,7 @@ public class AddCommandTest {
         public TabName getTabName() {
             throw new AssertionError("This method should not be called.");
         }
+
     }
 
     /**
@@ -172,9 +152,10 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPerson(Person person) {
-            requireNonNull(person);
-            return this.person.isSamePerson(person);
+        public FilterableItemList<Person> getAddressBook() {
+            FilterableItemList<Person> itemList = new ItemListManager<>();
+            itemList.addItem(person);
+            return itemList;
         }
     }
 
@@ -182,23 +163,10 @@ public class AddCommandTest {
      * A Model stub that always accept the person being added.
      */
     private class ModelStubAcceptingPersonAdded extends ModelStub {
-        final ArrayList<Person> personsAdded = new ArrayList<>();
 
         @Override
-        public boolean hasPerson(Person person) {
-            requireNonNull(person);
-            return personsAdded.stream().anyMatch(person::isSamePerson);
-        }
-
-        @Override
-        public void addPerson(Person person) {
-            requireNonNull(person);
-            personsAdded.add(person);
-        }
-
-        @Override
-        public ReadOnlyAddressBook getAddressBook() {
-            return new AddressBook();
+        public FilterableItemList<Person> getAddressBook() {
+            return new ItemListManager<>();
         }
     }
 
