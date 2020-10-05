@@ -202,7 +202,7 @@ Example:
 
 ### User Profile
 
-Note: You must be viewing the **Profile** page in order to execute these commands.
+Note: You must be on the **Profile** page in order to execute these commands.
 
 Your user profile can contain 3 categories of information.
 
