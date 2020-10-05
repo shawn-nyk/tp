@@ -14,6 +14,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.ui.tabs.TabName;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -21,6 +22,40 @@ import seedu.address.model.tag.Tag;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_TAB = "Tab name should be either com, int or me";
+
+    /**
+     * Parses {@code selectedTab} into a {@code TabName} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     * @throws ParseException if the specified selectedTab is invalid (not com or int or me).
+     */
+    public static TabName parseTab(String selectedTab) throws ParseException {
+        requireNonNull(selectedTab);
+        TabName tabName;
+        String tab = selectedTab.trim();
+
+        if (tab.length() <= 0) {
+            throw new ParseException(MESSAGE_INVALID_TAB);
+        }
+        tab = tab.substring(1);
+
+        // can consider to be flexible allowing com, company, int, internship, me, user
+        switch (tab) {
+        case "com":
+            tabName = TabName.COMPANY;
+            break;
+        case "int":
+            tabName = TabName.INTERNSHIP;
+            break;
+        case "me":
+            tabName = TabName.USER;
+            break;
+        default:
+            throw new ParseException(MESSAGE_INVALID_TAB);
+        }
+        return tabName;
+    }
+
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be

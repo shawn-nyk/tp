@@ -1,0 +1,19 @@
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<VBox fx:id="informationDisplay" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" styleClass="information_display">
+    <GridPane HBox.hgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
+        </columnConstraints>
+        <VBox minHeight="105" GridPane.columnIndex="0">
+            <VBox styleClass="information_display_container">
+                <Label fx:id="informationTitle" styleClass="information_display_title"/>
+                <HBox fx:id="nameBar" styleClass="information_display_bar"/>
+            </VBox>
+            <VBox fx:id="information" styleClass="information_container"/>
+        </VBox>
+    </GridPane>
+</VBox>
