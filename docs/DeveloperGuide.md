@@ -218,7 +218,7 @@ Precondition: User is on the Profile page and already has an existing list of us
 Guarantees: Deletion of user profile item is successful
 
 1.  User requests to delete a user profile item from the user profile.
-2.  InternHunter removes the user profile item from the user profile. </br>
+2.  InternHunter removes the user profile item from the user profile. <br/>
     Use case ends.
 
 #### Extensions
@@ -239,7 +239,7 @@ Precondition: User is on the Profile page and already has an existing list of us
 Guarantees: Editing of user profile item is successful
 
 1.  User requests to edit the details of a user profile item and provides details.
-2.  InternHunter edits the user profile item in the user profile. </br>
+2.  InternHunter edits the user profile item in the user profile. <br/>
     Use case ends.
 
 #### Extensions
@@ -273,7 +273,7 @@ Guarantees: Viewing of user profile item is successful
 #### MSS
 
 1.  User requests to switch the tab of the screen.
-2.  InternHunter switches to the requested tab. </br>
+2.  InternHunter switches to the requested tab. <br/>
     Use case ends.
 
 #### Extensions
