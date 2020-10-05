@@ -205,48 +205,61 @@ Example:
 
 ### User Profile
 
-#### Adding to user profile: `add -me`
+Note: You must be on the **Profile** page in order to execute these commands.
+
+Your user profile can contain 3 categories of information.
+
+Valid `CATEGORY` specifiers:
+- `achievement`
+- `experience`
+- `skill`
+
+Each profile item (bit of information) also contains a `TITLE` that describes the item, and you can optionally 
+add additional `DESCRIPTOR`s to further describe the item in point form.
+
+#### Adding to user profile: `add me`
 
 Adds experience, skills or achievements descriptors to your user profile.
 
-Format: `add -me c/CATEGORY d/DESCRIPTORS`
+Format: `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
 
 * Category specifies a category which can be either experience, skills or achievement.
 
 Examples:
-* `add -me c/achievement d/special recognition in Hack n Roll!`
-* `add -me c/experience d/Internship at Govtech`
-* `add -me c/skill d/HTML`
+* `add me c/experience t/Internship at Govtech d/Implemented automate testing 
+using TravisCI d/Implemented dashboard to track code coverage`
+* `add me c/achievement t/special recognition in Hack n Roll!`
+* `add me c/skill t/HTML d/Learn how to create divs`
 
-#### Deleting from user profile: `delete -me`
+#### Deleting from user profile: `delete me`
 
-Deletes experience, skills and achievements descriptors from your user profile.
+Deletes experience, skills or achievements descriptors from your user profile.
 
-Format: `delete -me INDEX`
+Format: `delete me INDEX`
 
 Example:
-* `delete -me 2`
+* `delete me 2`
 
-#### Editing user profile: `edit -me`
+#### Editing user profile: `edit me`
 
 Edit the experience, skills or achievements descriptors of your user profile.
 
-Format: `edit -me INDEX [c/CATEGORY] [d/DESCRIPTORS]`
+Format: `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTORS]`
 
 * At least one of the optional fields must be provided.
 
 Examples:
-* `edit -me 2 c/skill d/CSS`
-* `edit -me 4 c/achievement`
+* `edit me 2 c/skill t/CSS d/learnt how to use flexbox`
+* `edit me 4 c/achievement`
 
-#### Viewing item in user profile: `view -me`
+#### Viewing item in user profile: `view me`
 
 Selects an item in the user profile to show in detail.
 
-Format: `view -me INDEX`
+Format: `view me INDEX`
 
 Example:
-* `view -me 3`
+* `view me 3`
 
 ### Switching Tabs: `switch`
 
@@ -260,7 +273,7 @@ There are three `TYPE`s:
 * `me`
 
 Example: 
-* `switch -me`
+* `switch me`
 
 ### Viewing Help: `help`
 Displays a link to the InternHunter user guide.
