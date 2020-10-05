@@ -18,6 +18,7 @@ import seedu.address.model.ItemListManager;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.application.InternshipApplicationItem;
+import seedu.address.model.company.CompanyItem;
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
@@ -110,6 +111,11 @@ public class AddCommandTest {
 
         @Override
         public FilterableItemList<Person> getAddressBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public FilterableItemList<CompanyItem> getCompanyList() {
             throw new AssertionError("This method should not be called.");
         }
 
