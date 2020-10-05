@@ -137,7 +137,6 @@ Use case ends.
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
-### Use case: UC05 - Add an internship application
 ### Use case: UC05 - Add an internship
 
 #### MSS
