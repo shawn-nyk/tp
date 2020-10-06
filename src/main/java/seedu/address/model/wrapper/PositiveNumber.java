@@ -1,4 +1,4 @@
-package seedu.address.model.util;
+package seedu.address.model.wrapper;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
@@ -10,6 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class PositiveNumber {
 
     public static final String VALIDATION_REGEX = "^[1-9]\\d*";
+
     public final String value;
 
     /**
