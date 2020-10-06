@@ -75,10 +75,12 @@ public class ApplicationItem extends Item {
      */
     @Override
     public boolean isSameItem(Item otherItem) {
+        // short circuit if same object
         if (otherItem == this) {
             return true;
         }
 
+        // instanceof handles nulls
         if (!(otherItem instanceof ApplicationItem)) {
             return false;
         }

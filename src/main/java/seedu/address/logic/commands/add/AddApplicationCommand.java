@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_WRONG_TAB;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
@@ -22,11 +23,13 @@ import seedu.address.model.application.Status;
 import seedu.address.model.application.StatusDate;
 import seedu.address.model.company.CompanyItem;
 import seedu.address.model.internship.InternshipItem;
+import seedu.address.ui.tabs.TabName;
 
 public class AddApplicationCommand extends AddCommandAbstract {
 
     public static final String MESSAGE_DUPLICATE_APPLICATION = "This application already exists in Internhunter";
-    public static final String MESSAGE_SUCCESS = "New application added: %1$s";
+    public static final String MESSAGE_SUCCESS = "New application added: %s\n"
+            + "Type in 'switch app' to see the newly added application!";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an application to Internhunter. "
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_INDEX + "INDEX "
@@ -63,6 +66,11 @@ public class AddApplicationCommand extends AddCommandAbstract {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        if (!model.getTabName().equals(TabName.APPLICATION)) {
+            throw new CommandException(String.format(MESSAGE_WRONG_TAB, APPLICATION_NAME));
+        }
+
         List<CompanyItem> lastShownCompanyList = model.getCompanyList().getFilteredItemList();
 
         if (companyIndex.getZeroBased() >= lastShownCompanyList.size()) {
@@ -92,4 +100,24 @@ public class AddApplicationCommand extends AddCommandAbstract {
     public String getItemType() {
         return APPLICATION_NAME;
     }
+
+    @Override
+    public boolean equals(Object otherCommand) {
+        // short circuit if same object
+        if (otherCommand == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(otherCommand instanceof AddApplicationCommand)) {
+            return false;
+        }
+
+        AddApplicationCommand otherAddApplicationCommand = (AddApplicationCommand) otherCommand;
+        return companyIndex.equals(otherAddApplicationCommand.companyIndex)
+                && internshipIndex.equals(otherAddApplicationCommand.internshipIndex)
+                && status.equals(otherAddApplicationCommand.status)
+                && statusDate.equals(otherAddApplicationCommand.statusDate);
+    }
+
 }
