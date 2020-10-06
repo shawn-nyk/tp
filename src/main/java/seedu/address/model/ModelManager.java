@@ -8,7 +8,8 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.application.InternshipApplicationItem;
+import seedu.address.model.application.ApplicationItem;
+import seedu.address.model.company.CompanyItem;
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.item.ItemList;
 import seedu.address.model.item.ReadOnlyItemList;
@@ -17,14 +18,15 @@ import seedu.address.model.profile.ProfileItem;
 import seedu.address.ui.tabs.TabName;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the InternHunter app data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final FilterableItemList<Person> addressBook;
+    private final FilterableItemList<CompanyItem> companyList;
     private final FilterableItemList<InternshipItem> internshipList;
-    private final FilterableItemList<InternshipApplicationItem> internshipApplicationList;
+    private final FilterableItemList<ApplicationItem> internshipApplicationList;
     private final FilterableItemList<ProfileItem> profileList;
     private final UserPrefs userPrefs;
     private final Tab tabControl;
@@ -34,20 +36,23 @@ public class ModelManager implements Model {
      */
     public ModelManager(
             ReadOnlyItemList<Person> addressBook,
+            ReadOnlyItemList<CompanyItem> companyList,
             ReadOnlyItemList<InternshipItem> internshipList,
-            ReadOnlyItemList<InternshipApplicationItem> internshipApplicationList,
+            ReadOnlyItemList<ApplicationItem> internshipApplicationList,
             ReadOnlyItemList<ProfileItem> profileList,
             ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(addressBook, internshipList, internshipApplicationList, profileList, userPrefs);
+        requireAllNonNull(addressBook, companyList, internshipList, internshipApplicationList, profileList, userPrefs);
 
         logger.fine("Initializing with address book: " + addressBook
+                + " and company list " + companyList
                 + " and internship list " + internshipList
                 + " and internship application list " + internshipApplicationList
                 + " and profile list " + profileList
                 + " and user prefs " + userPrefs);
 
         this.addressBook = new ItemListManager<>(new ItemList<>(addressBook));
+        this.companyList = new ItemListManager<>(new ItemList<>(companyList));
         this.internshipList = new ItemListManager<>(new ItemList<>(internshipList));
         this.internshipApplicationList = new ItemListManager<>(new ItemList<>(internshipApplicationList));
         this.profileList = new ItemListManager<>(new ItemList<>(profileList));
@@ -56,7 +61,7 @@ public class ModelManager implements Model {
     }
 
     public ModelManager() {
-        this(new ItemList<>(), new ItemList<>(), new ItemList<>(), new ItemList<>(), new UserPrefs());
+        this(new ItemList<>(), new ItemList<>(), new ItemList<>(), new ItemList<>(), new ItemList<>(), new UserPrefs());
     }
 
     //=========== Models Getters =============================================================================
@@ -67,12 +72,17 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public FilterableItemList<CompanyItem> getCompanyList() {
+        return companyList;
+    }
+
+    @Override
     public FilterableItemList<InternshipItem> getInternshipList() {
         return internshipList;
     }
 
     @Override
-    public FilterableItemList<InternshipApplicationItem> getInternshipApplicationList() {
+    public FilterableItemList<ApplicationItem> getInternshipApplicationList() {
         return internshipApplicationList;
     }
 
@@ -148,6 +158,7 @@ public class ModelManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
+                && companyList.equals(other.companyList)
                 && internshipList.equals(other.internshipList)
                 && internshipApplicationList.equals(other.internshipApplicationList)
                 && profileList.equals(other.profileList)

@@ -85,104 +85,103 @@ Profile | me | category, descriptors
 * `INDEX` refers to the index of the item in the displayed list of items (follows one-based indexing). <br>
 
 
-### Company Profile
+### Company
 
-#### Adding a company profile: `add -com`
+Note: You must be on the **Companies** page in order to execute these commands.
 
-Adds a company profile to your list of company profiles.
+#### Adding a company: `add com`
 
-Format: `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLE...`
+Adds a company to your list of companies.
+
+Format: `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`
 
 Examples:
-- `add -com n/Garena i/Gaming j/Game developer`
-- `add -com n/Google i/Internet i/Cloud computing i/Artificial intelligence j/Software engineer j/Cloud architect`
+- `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Intelligence`
+- `add com n/Garena a/201 Victoria St e/GarenaHires@gmail.com p/65093545`
 
-#### Deleting a company profile: `delete -com`
+#### Deleting a company: `delete com`
 
-Deletes a company profile from your list of company profiles.
+Deletes a company from your list of companies. All internships and applications associated with this company will also be deleted.
 
-Format: `delete -com INDEX`
+Format: `delete com INDEX`
 
 Example:
-- `delete -com 5`
+- `delete com 5`
 
-#### Editing a company profile: `edit -com`
+#### Editing a company: `edit com`
 
-Edits a company profile from your list of company profiles.
+Edits a company in your list of companies.
 
-Format: `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOB_TITLE]...`
+Format: `edit com INDEX [n/COMPANY_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/INDUSTRY]...`
+- At least one of the optional fields must be provided.
 
 Examples:
-- `edit -com 1 j/Game developer j/Software tester`
-- `edit -com 2 n/Google LLC i/Cloud computing i/Artificial intelligence i/Deep learning`
+- `edit com 1 n/Google Singapore e/GoogleIsHiring@gmail.com`
+- `edit com 2 p/61234567`
 
-#### Viewing a company profile: `view -com`
+#### Viewing a company: `view com`
 
-Selects a company profile in your list of company profiles to show in detail.
+Selects a company in your list of companies to show in detail.
 
-Format: `view -com INDEX`
+Format: `view com INDEX`
 
 Example:
-- `view -com 3`
+- `view com 3`
 
-### Internship Application
+### Internship
 
-#### Adding an internship application: `add -int`
+Note: You must be on the **Companies** page in order to execute these commands.
 
-Applies for an internship. This internship will be automatically added to the list of jobs in the company
-(if company has already been created). Otherwise, it creates the company and adds this job into it.
+#### Adding an internship: `add int`
 
-Format: `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
+Adds an internship to a company.
+
+Format: `add int INDEX j/JOB_TITLE [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
 
 Examples:
-- `add -int n/Google i/Software j/Software Engineer`
-- `add -int n/Google i/Software j/Software Engineer r/React w/3000 r/HTML5`
+- `add int 1 j/Software Engineer`
+- `add int 3 j/Web Developer r/React w/3000 r/HTML5`
 
-**Already created the internship before?**
+#### Deleting an internship: `delete int`
 
-Fret not, we have an alternative method to apply for an internship! This format adds an internship with the company
-name and job title only.
-
-Format: `add -int n/COMPANY_NAME INDEX` - `INDEX` refers to position of internship in the company
-
-:bulb: **Tip:** `view -com INDEX` (to view a company's profile, including its list of jobs)
-
-#### Deleting an internship application: `delete -int`
-
-Deletes an internship.
+Deletes an internship from a company. The application (if any) made with this internship will also be deleted.
  
-Format: `delete -int INDEX` 
+Format: `delete int INDEX i/INDEX` 
+- `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
+internship in the company’s list of internships.
 
 Example:
-- `delete -int 3`
+- `delete int 3 i/2`
 
-#### Editing an internship application: `edit -int`
+#### Editing an internship: `edit int`
 
-Edits an internship.
+Edits an internship from a company.
 
-Format:  `edit -int INDEX [n/COMPANY_NAME] [j/JOB_TITLE] [i/INDUSTRY] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE] 
-[r/REQUIREMENT]...`
-
-:information_source: **Note:** `DATE` can only be added if there is a `STATUS` in the input.
+Format:  `edit int INDEX i/INDEX [j/JOB_TITLE] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
+- `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
+internship in the company’s list of internships.
+- At least one of the optional fields must be provided.
 
 Examples:
-- `edit -int 7 r/Java r/FXML w/2000`
-- `edit -int 4 s/interview d/22-09-20`
+- `edit int 7 i/1 r/Java r/Python w/2000`
+- `edit int 4 i/4 j/ML Engineer`
 
-**More about internships...**
+### Application
 
-Each job has its own status. On initial adding of internship, the status of the internship application is `Applied` by
-default. Each status will be tagged to a date. If a date is not specified, InternHunter will assign today’s date to it.
+Note: You must be on the **Companies** page in order to execute the add app command. To execute all other commands, you
+must be on the **Applications** page.
 
-Accepted statuses:
-- `Applied`
-- `Interview`
-- `Waiting`
-- `Rejected`
-- `Offered`
-- `Accepted`
+Each application comes with a `STATUS` and `STATUS_DATE` field that indicates the date that the status was set/changed.
 
-Accepted date formats:
+Valid `STATUS` specifiers:
+- `applied`
+- `interview`
+- `waiting`
+- `rejected`
+- `offered`
+- `accepted`
+
+Valid `STATUS_DATE` formats:
 
 - d-M-yy HHmm
     - e.g. `23-12-19 2230`
@@ -190,66 +189,111 @@ Accepted date formats:
     - e.g. `23-12-19`
     - Time will be taken as 2359
 
-#### Viewing an internship application: `view -int`
+#### Adding an application: `add app`
 
-Selects an internship application in the list of internship applications to show in detail.
+Selects an internship from a company and adds it to your list of applications. If unspecified, the application’s
+`STATUS` will be `Applied`, and it’s `STATUS_DATE` will be set as today’s date.
+
+Format: `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
+- Where `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
+internship in the company’s list of internships.
+
+Examples:
+- `add app 1 i/2`
+- `add app 1 i/2 s/waiting d/23-12-20`
+
+#### Deleting an application: `delete app`
+
+Deletes an application from your list of applications.
  
-Format: `view -int INDEX` - `INDEX` is the index of the internship application in the list of internship
-applications
+Format: `delete app INDEX` 
 
 Example:
-- `view -int 3`
+- `delete app 3`
+
+#### Editing an application: `edit app`
+
+Edits an application in your list of applications.
+
+Format:  `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
+- At least one of the optional fields must be provided.
+
+Examples:
+- `edit app 5 s/offered`
+- `edit app 2 s/waiting d/10-11-20`
+
+#### Viewing an application: `view app`
+
+Selects an application in the list of applications to show in detail.
+ 
+Format: `view app INDEX`
+
+Example:
+- `view app 3`
 
 ### User Profile
 
-#### Adding to user profile: `add -me`
+Note: You must be on the **Profile** page in order to execute these commands.
+
+Your user profile can contain 3 categories of information.
+
+Valid `CATEGORY` specifiers:
+- `achievement`
+- `experience`
+- `skill`
+
+Each profile item (bit of information) also contains a `TITLE` that describes the item, and you can optionally 
+add additional `DESCRIPTOR`s to further describe the item in point form.
+
+#### Adding to user profile: `add me`
 
 Adds experience, skills or achievements descriptors to your user profile.
 
-Format: `add -me c/CATEGORY d/DESCRIPTORS`
+Format: `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
 
 * Category specifies a category which can be either experience, skills or achievement.
 
 Examples:
-* `add -me c/achievement d/special recognition in Hack n Roll!`
-* `add -me c/experience d/Internship at Govtech`
-* `add -me c/skill d/HTML`
+* `add me c/experience t/Internship at Govtech d/Implemented automate testing 
+using TravisCI d/Implemented dashboard to track code coverage`
+* `add me c/achievement t/special recognition in Hack n Roll!`
+* `add me c/skill t/HTML d/Learn how to create divs`
 
-#### Deleting from user profile: `delete -me`
+#### Deleting from user profile: `delete me`
 
-Deletes experience, skills and achievements descriptors from your user profile.
+Deletes experience, skills or achievements descriptors from your user profile.
 
-Format: `delete -me INDEX`
+Format: `delete me INDEX`
 
 Example:
-* `delete -me 2`
+* `delete me 2`
 
-#### Editing user profile: `edit -me`
+#### Editing user profile: `edit me`
 
 Edit the experience, skills or achievements descriptors of your user profile.
 
-Format: `edit -me INDEX [c/CATEGORY] [d/DESCRIPTORS]`
+Format: `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTORS]`
 
 * At least one of the optional fields must be provided.
 
 Examples:
-* `edit -me 2 c/skill d/CSS`
-* `edit -me 4 c/achievement`
+* `edit me 2 c/skill t/CSS d/learnt how to use flexbox`
+* `edit me 4 c/achievement`
 
-#### Viewing item in user profile: `view -me`
+#### Viewing item in user profile: `view me`
 
 Selects an item in the user profile to show in detail.
 
-Format: `view -me INDEX`
+Format: `view me INDEX`
 
 Example:
-* `view -me 3`
+* `view me 3`
 
 ### Switching Tabs: `switch`
 
 Switches between tabs.
 
-Format: `switch -TYPE`
+Format: `switch TYPE`
 
 There are three `TYPE`s:
 * `com`
@@ -257,7 +301,7 @@ There are three `TYPE`s:
 * `me`
 
 Example: 
-* `switch -me`
+* `switch me`
 
 ### Viewing Help: `help`
 Displays a link to the InternHunter user guide.
@@ -265,7 +309,7 @@ Displays a link to the InternHunter user guide.
 Format: `help`
 
 ### Exiting the Program: `exit`
-Exits the program.
+Shows an exit confirmation dialog.
 
 Format: `exit`
 
@@ -275,18 +319,21 @@ Format: `exit`
 
 Type            | Action     | Format
 ----------------|------------|------------------
-**Company**     | **Add**    | `add -com n/COMPANY_NAME i/INDUSTRY... j/JOB_TITLE...`
-&nbsp;          | **Delete** | `delete -com INDEX`
-&nbsp;          | **Edit**   | `edit -com INDEX [n/COMPANY_NAME] [i/INDUSTRY]... [j/JOB_TITLE]...`
-&nbsp;          | **View**   | `view -com INDEX`
-**Internship**  | **Add**    | `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` <br/> `add -int n/COMPANY_NAME INDEX`
-&nbsp;          | **Delete** | `delete -int INDEX`
-&nbsp;          | **Edit**   | `edit -int INDEX [n/COMPANY_NAME] [j/JOB_TITLE] [i/INDUSTRY] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE] [r/REQUIREMENT]...`
-&nbsp;          | **View**   | `view -int INDEX`
-**Profile**     | **Add**    | `add -me c/CAT d/DESCRIPTORS`
-&nbsp;          | **Delete** | `delete -me INDEX`
-&nbsp;          | **Edit**   | `edit -me INDEX [c/CAT] [d/DESCRIPTORS]`
-&nbsp;          | **View**   | `view -me INDEX`
-**General**     | **Switch** | `switch -TYPE`
+**Company**     | **Add**    | `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`
+&nbsp;          | **Delete** | `delete com INDEX`
+&nbsp;          | **Edit**   | `edit com INDEX [n/COMPANY_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/INDUSTRY]...`
+&nbsp;          | **View**   | `view com INDEX`
+**Internship**  | **Add**    | `add int INDEX j/JOB_TITLE [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
+&nbsp;          | **Delete** | `delete int INDEX i/INDEX`
+&nbsp;          | **Edit**   | `edit int INDEX i/INDEX [j/JOB_TITLE] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
+**Application** | **Add**    | `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
+&nbsp;          | **Delete** | `delete app INDEX`
+&nbsp;          | **Edit**   | `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
+&nbsp;          | **View**   | `view app INDEX`
+**Profile**     | **Add**    | `add me c/CAT t/TITLE [d/DESCRIPTOR]...`
+&nbsp;          | **Delete** | `delete me INDEX`
+&nbsp;          | **Edit**   | `edit me INDEX [c/CAT] [t/TITLE] [d/DESCRIPTOR]...`
+&nbsp;          | **View**   | `view me INDEX`
+**General**     | **Switch** | `switch TYPE`
 &nbsp;          | **Help**   | `help`
 &nbsp;          | **Exit**   | `exit`

@@ -1,0 +1,23 @@
+package seedu.address.model.company;
+
+import seedu.address.model.wrapper.AlphaNumericWord;
+
+/**
+ * Represents a Tag in the address book. TODO: Javadocs (Shawn)
+ * Guarantees: immutable; name is valid as declared in {@link #isValidAlphaNumericWord(String)}
+ */
+public class Industry extends AlphaNumericWord {
+
+    public static final String MESSAGE_CONSTRAINTS = "Industry types should only contain alphanumeric characters and "
+            + "spaces, and it should not be blank";
+
+    /**
+     * Constructs a {@code Industry}.
+     *
+     * @param industryType A valid industry type.
+     */
+    public Industry(String industryType) {
+        super(industryType, MESSAGE_CONSTRAINTS);
+    }
+
+}
