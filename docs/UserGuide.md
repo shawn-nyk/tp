@@ -32,7 +32,7 @@ title: User Guide
   [3.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
   [3.4.3. Editing profile: `edit me`](#editing-profile-edit-me) <br />
   [3.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
- [3.5 General](#general) <br /> 
+ [3.5 General](#general) <br /> 
   [3.5.1. Switching Tabs: `switch`](#switching-tabs-switch) <br />
   [3.5.2. Viewing Help: `help`](#viewing-help-help) <br />
   [3.5.3. Exiting the program: `exit`](#exiting-the-program-exit) <br />
@@ -177,7 +177,7 @@ Examples:
 
 ### Application
 
-Note: You must be on the **Company** tab in order to execute the add app command. To execute all other commands, you
+Note: You must be on the **Company** tab in order to execute the add app command. To execute all other commands of type Application, you
 must be on the **Application** tab.
 
 Each application comes with a `STATUS` and `STATUS_DATE` field that indicates the date that the status was set/changed.
@@ -201,7 +201,7 @@ Valid `STATUS_DATE` formats:
 #### Adding an application: `add app`
 
 Selects an internship from a company and adds it to your list of applications. If unspecified, the application’s
-`STATUS` will be `Applied`, and it’s `STATUS_DATE` will be set as today’s date.
+`STATUS` will be `applied`, and it’s `STATUS_DATE` will be set as today’s date.
 
 Format: `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
 - Where `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
@@ -308,8 +308,10 @@ Format: `switch TYPE`
 
 There are three `TYPE`s:
 * `com`
-* `int`
+* `app`
 * `me`
+
+`com` refers to Company tab, `app` refers to Application tab, `me` refers to Profile tab.
 
 Example: 
 * `switch me`
@@ -341,9 +343,9 @@ Type            | Action     | Format
 &nbsp;          | **Delete** | `delete app INDEX`
 &nbsp;          | **Edit**   | `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
 &nbsp;          | **View**   | `view app INDEX`
-**Profile**     | **Add**    | `add me c/CAT t/TITLE [d/DESCRIPTOR]...`
+**Profile**     | **Add**    | `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
 &nbsp;          | **Delete** | `delete me INDEX`
-&nbsp;          | **Edit**   | `edit me INDEX [c/CAT] [t/TITLE] [d/DESCRIPTOR]...`
+&nbsp;          | **Edit**   | `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTOR]...`
 &nbsp;          | **View**   | `view me INDEX`
 **General**     | **Switch** | `switch TYPE`
 &nbsp;          | **Help**   | `help`
