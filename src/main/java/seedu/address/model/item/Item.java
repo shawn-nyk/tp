@@ -1,5 +1,7 @@
 package seedu.address.model.item;
 
+import seedu.address.storage.item.JsonAdaptedItem;
+
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
@@ -48,5 +50,7 @@ public abstract class Item {
                 || type.equals(APPLICATION_ALIAS)
                 || type.equals(PROFILE_ALIAS);
     }
+
+    public abstract JsonAdaptedItem<? extends Item> getJsonAdaptedItem();
 
 }

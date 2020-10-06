@@ -10,6 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.model.item.Item;
+import seedu.address.storage.item.JsonAdaptedItem;
 
 /**
  * Represents a Profile Item in the UserProfile.
@@ -42,6 +43,7 @@ public class ProfileItem extends Item {
     public ProfileItemType getType() {
         return type;
     }
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -134,6 +136,11 @@ public class ProfileItem extends Item {
         mapping.put("Type", type);
         mapping.put("Descriptors", descriptors);
         return mapping;
+    }
+
+    @Override
+    public JsonAdaptedItem<? extends Item> getJsonAdaptedItem() {
+        return null;
     }
 }
 

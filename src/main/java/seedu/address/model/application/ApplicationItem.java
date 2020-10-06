@@ -8,6 +8,7 @@ import java.util.Objects;
 
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.item.Item;
+import seedu.address.storage.item.JsonAdaptedItem;
 
 /**
  * Represents an ApplicationItem in the InternHunter application.
@@ -124,6 +125,11 @@ public class ApplicationItem extends Item {
                 .append(" Date: ")
                 .append(getStatusDate());
         return builder.toString();
+    }
+
+    @Override
+    public JsonAdaptedItem<? extends Item> getJsonAdaptedItem() {
+        return null;
     }
 
 }

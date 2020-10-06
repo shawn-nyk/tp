@@ -11,6 +11,10 @@ import java.util.Set;
 
 import seedu.address.model.company.CompanyName;
 import seedu.address.model.item.Item;
+import seedu.address.model.person.Name;
+import seedu.address.model.tag.Tag;
+import seedu.address.storage.internship.JsonAdaptedInternshipItem;
+import seedu.address.storage.item.JsonAdaptedItem;
 
 /**
  * Represents an InternshipItem in the InternHunter application.
@@ -71,7 +75,7 @@ public class InternshipItem extends Item {
      */
     @Override
     public String getItemName() {
-        return INTERNSHIP_NAME;
+        return "internship";
     }
 
     /**
@@ -154,5 +158,11 @@ public class InternshipItem extends Item {
         getRequirements().forEach(builder::append);
         return builder.toString();
     }
+
+    @Override
+    public JsonAdaptedItem<InternshipItem> getJsonAdaptedItem() {
+        return new JsonAdaptedInternshipItem(this);
+    }
+
 
 }

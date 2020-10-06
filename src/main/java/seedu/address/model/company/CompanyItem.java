@@ -13,6 +13,8 @@ import java.util.Set;
 
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.item.Item;
+import seedu.address.storage.company.JsonAdaptedCompanyItem;
+import seedu.address.storage.item.JsonAdaptedItem;
 
 /**
  * Represents a Person in the address book. TODO: Javadocs (Shawn)
@@ -34,7 +36,7 @@ public class CompanyItem extends Item {
      * Every field must be present and not null.
      */
     public CompanyItem(CompanyName companyName, Phone phone, Email email, Address address, Set<Industry> industries,
-                       List<InternshipItem> internships) {
+            List<InternshipItem> internships) {
         requireAllNonNull(companyName, phone, email, address, industries, internships);
         this.companyName = companyName;
         this.phone = phone;
@@ -157,6 +159,11 @@ public class CompanyItem extends Item {
         mapping.put("Industries", industries);
         mapping.put("Internships", internships);
         return mapping;
+    }
+
+    @Override
+    public JsonAdaptedItem<CompanyItem> getJsonAdaptedItem() {
+        return new JsonAdaptedCompanyItem(this);
     }
 
 }
