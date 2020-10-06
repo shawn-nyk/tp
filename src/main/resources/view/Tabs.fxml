@@ -10,7 +10,7 @@
             <graphic>
                 <VBox styleClass="tab_container_style">
                     <ImageView fitHeight="27.0" fitWidth="27.0" fx:id="internshipIcon" translateY="10" translateX="2"/>
-                    <Label text="Internship" styleClass="tab_label_style"/>
+                    <Label text="Application" styleClass="tab_label_style"/>
                     <HBox styleClass="tab_line_style"/>
                 </VBox>
             </graphic>

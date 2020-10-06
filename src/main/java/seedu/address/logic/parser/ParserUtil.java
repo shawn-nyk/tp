@@ -1,6 +1,9 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
+import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
+import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -37,17 +40,16 @@ public class ParserUtil {
         if (tab.length() <= 0) {
             throw new ParseException(MESSAGE_INVALID_TAB);
         }
-        tab = tab.substring(1);
-
+        
         // can consider to be flexible allowing com, company, int, internship, me, user
         switch (tab) {
-        case "com":
+        case COMPANY_ALIAS:
             tabName = TabName.COMPANY;
             break;
-        case "int":
+        case INTERNSHIP_ALIAS:
             tabName = TabName.INTERNSHIP;
             break;
-        case "me":
+        case PROFILE_ALIAS:
             tabName = TabName.USER;
             break;
         default:
