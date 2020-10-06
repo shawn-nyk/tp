@@ -6,7 +6,7 @@ import seedu.address.model.person.Person;
 /**
  * todo Javadocs
  */
-public class InternshipCard extends Card {
+public class ApplicationCard extends Card {
 
     //Image Link
     private static final String CALENDAR_IMAGE_LINK = "/images/calendar.png";
@@ -14,7 +14,7 @@ public class InternshipCard extends Card {
     /**
      * todo Javadocs
      */
-    public InternshipCard(Person person, int displayedIndex) {
+    public ApplicationCard(Person person, int displayedIndex) {
         super(person, displayedIndex);
         initializeInternshipCardGui();
     }

@@ -10,7 +10,7 @@ public class TabManager implements Tab {
      * Initializes TabManger which controls the current {@code tabName}. By default, it is always Internship tab.
      */
     public TabManager() {
-        tabName = TabName.INTERNSHIP; // default tab that is displayed to user each time the app is opened.
+        tabName = TabName.COMPANY; // default tab that is displayed to user each time the app is opened.
     }
 
     /**

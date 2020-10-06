@@ -14,14 +14,14 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.ui.display.ApplicationDisplay;
 import seedu.address.ui.display.CompanyDisplay;
 import seedu.address.ui.display.InformationDisplay;
-import seedu.address.ui.display.InternshipDisplay;
-import seedu.address.ui.display.UserDisplay;
+import seedu.address.ui.display.ProfileDisplay;
 import seedu.address.ui.panel.CompanyListPanel;
-import seedu.address.ui.panel.InternshipListPanel;
+import seedu.address.ui.panel.ApplicationListPanel;
 import seedu.address.ui.panel.ListPanel;
-import seedu.address.ui.panel.UserListPanel;
+import seedu.address.ui.panel.ProfileListPanel;
 import seedu.address.ui.tabs.TabName;
 import seedu.address.ui.tabs.Tabs;
 
@@ -125,14 +125,14 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        listPanel = new InternshipListPanel(logic.getFilteredPersonList());
+        listPanel = new ApplicationListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(listPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.setContent(resultDisplay.getRoot());
 
         display.getChildren().clear();
-        informationDisplay = InternshipDisplay.getInternshipDisplay(primaryStage);
+        informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage);
         display.getChildren().add(informationDisplay.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
@@ -215,7 +215,7 @@ public class MainWindow extends UiPart<Stage> {
      * Changes the display of screen, depending on {@code input}, in the {@code primaryStage}.
      */
     public void changeDisplay(TabName input, Stage primaryStage) {
-        assert (input.equals(TabName.INTERNSHIP) || input.equals(TabName.COMPANY) || input.equals(TabName.USER));
+        assert (input.equals(TabName.APPLICATION) || input.equals(TabName.COMPANY) || input.equals(TabName.PROFILE));
         display.getChildren().clear();
         personListPanelPlaceholder.getChildren().clear();
         switch (input) {
@@ -223,13 +223,13 @@ public class MainWindow extends UiPart<Stage> {
             informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage);
             listPanel = new CompanyListPanel(logic.getFilteredPersonList());
             break;
-        case INTERNSHIP:
-            informationDisplay = InternshipDisplay.getInternshipDisplay(primaryStage);
-            listPanel = new InternshipListPanel(logic.getFilteredPersonList());
+        case APPLICATION:
+            informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage);
+            listPanel = new ApplicationListPanel(logic.getFilteredPersonList());
             break;
-        case USER:
-            informationDisplay = UserDisplay.getUserDisplay(primaryStage);
-            listPanel = new UserListPanel(logic.getFilteredPersonList());
+        case PROFILE:
+            informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage);
+            listPanel = new ProfileListPanel(logic.getFilteredPersonList());
             break;
         default:
             assert false;

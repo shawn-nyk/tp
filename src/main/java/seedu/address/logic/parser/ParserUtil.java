@@ -47,10 +47,10 @@ public class ParserUtil {
             tabName = TabName.COMPANY;
             break;
         case INTERNSHIP_ALIAS:
-            tabName = TabName.INTERNSHIP;
+            tabName = TabName.APPLICATION;
             break;
         case PROFILE_ALIAS:
-            tabName = TabName.USER;
+            tabName = TabName.PROFILE;
             break;
         default:
             throw new ParseException(MESSAGE_INVALID_TAB);
