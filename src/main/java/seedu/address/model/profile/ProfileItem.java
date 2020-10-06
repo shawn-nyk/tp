@@ -1,6 +1,7 @@
 package seedu.address.model.profile;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.model.util.ItemUtil.PROFILE_NAME;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -118,7 +119,7 @@ public class ProfileItem extends Item {
      */
     @Override
     public String getItemName() {
-        return "profile";
+        return PROFILE_NAME;
     }
 
     /**

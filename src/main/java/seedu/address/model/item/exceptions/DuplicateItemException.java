@@ -8,6 +8,6 @@ import seedu.address.model.item.Item;
  */
 public class DuplicateItemException extends RuntimeException {
     public DuplicateItemException(Item item) {
-        super(String.format("Operation would result in duplicate %s items", item));
+        super(String.format("Operation would result in duplicate %s items", item.getItemName()));
     }
 }
