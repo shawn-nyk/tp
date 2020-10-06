@@ -11,31 +11,31 @@ import seedu.address.ui.tabs.TabName;
 public class SwitchCommandTest {
 
     // Default screen is Internship.
-    public static final String SAME_SCREEN_TEXT = "Already in Internship tab";
-    public static final String SWITCHED_SCREEN_TEXT_USER = "Switching to User tab";
-    public static final String SWITCHED_SCREEN_TEXT_COMPANY = "Switching to Company tab";
+    public static final String SAME_SCREEN_TEXT = "Already in Company tab";
+    public static final String SWITCHED_SCREEN_TEXT_PROFILE = "Switching to Profile tab";
+    public static final String SWITCHED_SCREEN_TEXT_APPLICATION = "Switching to Application tab";
 
     private final Model model = new ModelManager();
     private final Model expectedModel = new ModelManager();
 
     @Test
-    public void execute_switchToUserTab_success() {
-        CommandResult expectedCommandResult = new CommandResult(SWITCHED_SCREEN_TEXT_USER, false, false,
+    public void execute_switchToProfileTab_success() {
+        CommandResult expectedCommandResult = new CommandResult(SWITCHED_SCREEN_TEXT_PROFILE, false, false,
             true);
-        assertCommandSuccess(new SwitchCommand(TabName.USER), model, expectedCommandResult, expectedModel);
+        assertCommandSuccess(new SwitchCommand(TabName.PROFILE), model, expectedCommandResult, expectedModel);
     }
 
     @Test
     public void execute_switchToCompanyTab_success() {
-        CommandResult expectedCommandResult = new CommandResult(SWITCHED_SCREEN_TEXT_COMPANY, false,
+        CommandResult expectedCommandResult = new CommandResult(SAME_SCREEN_TEXT, false,
             false, true);
         assertCommandSuccess(new SwitchCommand(TabName.COMPANY), model, expectedCommandResult, expectedModel);
     }
 
     @Test
-    public void execute_switchToInternshipTab_success() {
-        CommandResult expectedCommandResult = new CommandResult(SAME_SCREEN_TEXT, false, false,
+    public void execute_switchToApplicationTab_success() {
+        CommandResult expectedCommandResult = new CommandResult(SWITCHED_SCREEN_TEXT_APPLICATION, false, false,
             true);
-        assertCommandSuccess(new SwitchCommand(TabName.INTERNSHIP), model, expectedCommandResult, expectedModel);
+        assertCommandSuccess(new SwitchCommand(TabName.APPLICATION), model, expectedCommandResult, expectedModel);
     }
 }

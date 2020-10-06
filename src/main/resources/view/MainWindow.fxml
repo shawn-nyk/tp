@@ -37,7 +37,7 @@
                   <padding>
                     <Insets top="10" right="10" bottom="10" left="10" />
                   </padding>
-                  <StackPane fx:id="ListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+                  <StackPane fx:id="listPanelPlaceholder" VBox.vgrow="ALWAYS"/>
                 </VBox>
               </VBox>
               <VBox fx:id="display" GridPane.columnIndex="5" GridPane.rowIndex="0" styleClass="display_container_style"/>

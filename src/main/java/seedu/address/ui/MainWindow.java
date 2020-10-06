@@ -18,8 +18,8 @@ import seedu.address.ui.display.ApplicationDisplay;
 import seedu.address.ui.display.CompanyDisplay;
 import seedu.address.ui.display.InformationDisplay;
 import seedu.address.ui.display.ProfileDisplay;
-import seedu.address.ui.panel.CompanyListPanel;
 import seedu.address.ui.panel.ApplicationListPanel;
+import seedu.address.ui.panel.CompanyListPanel;
 import seedu.address.ui.panel.ListPanel;
 import seedu.address.ui.panel.ProfileListPanel;
 import seedu.address.ui.tabs.TabName;
@@ -53,7 +53,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private VBox cardList;
     @FXML
-    private StackPane ListPanelPlaceholder;
+    private StackPane listPanelPlaceholder;
     @FXML
     private VBox display;
     @FXML
@@ -126,7 +126,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
         listPanel = new CompanyListPanel(logic.getFilteredPersonList());
-        ListPanelPlaceholder.getChildren().add(listPanel.getRoot());
+        listPanelPlaceholder.getChildren().add(listPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.setContent(resultDisplay.getRoot());
@@ -217,7 +217,7 @@ public class MainWindow extends UiPart<Stage> {
     public void changeDisplay(TabName input, Stage primaryStage) {
         assert (input.equals(TabName.APPLICATION) || input.equals(TabName.COMPANY) || input.equals(TabName.PROFILE));
         display.getChildren().clear();
-        ListPanelPlaceholder.getChildren().clear();
+        listPanelPlaceholder.getChildren().clear();
         switch (input) {
         case COMPANY:
             informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage);
@@ -236,6 +236,6 @@ public class MainWindow extends UiPart<Stage> {
             break;
         }
         display.getChildren().add(informationDisplay.getRoot());
-        ListPanelPlaceholder.getChildren().add(listPanel.getRoot());
+        listPanelPlaceholder.getChildren().add(listPanel.getRoot());
     }
 }

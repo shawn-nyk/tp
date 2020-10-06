@@ -43,7 +43,7 @@ public class Tag {
     public int hashCode() {
         return tagName.hashCode();
     }
-    
+
     public String getName() {
         return tagName;
     }
