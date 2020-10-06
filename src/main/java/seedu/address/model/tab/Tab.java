@@ -1,4 +1,4 @@
-package seedu.address.model;
+package seedu.address.model.tab;
 
 import seedu.address.ui.tabs.TabName;
 
@@ -16,4 +16,5 @@ public interface Tab {
      * Retrieves the current tab name
      */
     TabName getTabName();
+
 }

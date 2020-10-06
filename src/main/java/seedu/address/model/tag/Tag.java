@@ -43,11 +43,6 @@ public class Tag {
     public int hashCode() {
         return tagName.hashCode();
     }
-//
-//    @Override
-//    public String toString() {
-//        return tagName;
-//    }
     
     public String getName() {
         return tagName;

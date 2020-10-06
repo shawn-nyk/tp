@@ -1,9 +1,6 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
-import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
-import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -11,6 +8,7 @@ import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.commons.util.TabUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -25,7 +23,7 @@ import seedu.address.ui.tabs.TabName;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
-    public static final String MESSAGE_INVALID_TAB = "Tab name should be either com, int or me";
+    public static final String MESSAGE_MISSING_TAB_NAME = "Switch requires a tab name as well.";
 
     /**
      * Parses {@code selectedTab} into a {@code TabName} and returns it. Leading and trailing whitespaces will be
@@ -34,30 +32,12 @@ public class ParserUtil {
      */
     public static TabName parseTab(String selectedTab) throws ParseException {
         requireNonNull(selectedTab);
-        TabName tabName;
         String tab = selectedTab.trim();
-
-        if (tab.length() <= 0) {
-            throw new ParseException(MESSAGE_INVALID_TAB);
+        if (TabUtil.isEmptyTab(tab)) {
+            throw new ParseException(MESSAGE_MISSING_TAB_NAME);
         }
-        
-        // can consider to be flexible allowing com, company, int, internship, me, user
-        switch (tab) {
-        case COMPANY_ALIAS:
-            tabName = TabName.COMPANY;
-            break;
-        case INTERNSHIP_ALIAS:
-            tabName = TabName.APPLICATION;
-            break;
-        case PROFILE_ALIAS:
-            tabName = TabName.PROFILE;
-            break;
-        default:
-            throw new ParseException(MESSAGE_INVALID_TAB);
-        }
-        return tabName;
+        return TabUtil.getSwitchTabName(tab);
     }
-
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be

@@ -90,7 +90,7 @@ public abstract class Card extends UiPart<Region> {
     protected void initializeTags() {
         person.getTags().stream()
             .sorted(Comparator.comparing(Tag::getName))
-            .forEach(tag -> tags.getChildren().add(new Label(tag.toString())));
+            .forEach(tag -> tags.getChildren().add(new Label(tag.getName())));
     }
 
 

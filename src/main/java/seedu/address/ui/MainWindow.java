@@ -51,9 +51,9 @@ public class MainWindow extends UiPart<Stage> {
     private Tabs tabs;
 
     @FXML
-    private VBox personList;
+    private VBox cardList;
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane ListPanelPlaceholder;
     @FXML
     private VBox display;
     @FXML
@@ -105,7 +105,7 @@ public class MainWindow extends UiPart<Stage> {
      * Binds the height of {@code personList} and {@code resultDisplayPlaceHolder} in the {@code primaryStage}
      */
     private void bindHeights(Stage primaryStage) {
-        personList.prefWidthProperty().bind(primaryStage.widthProperty().subtract(PERSON_LIST_HEIGHT_SHRINK));
+        cardList.prefWidthProperty().bind(primaryStage.widthProperty().subtract(PERSON_LIST_HEIGHT_SHRINK));
         resultDisplayPlaceholder.prefWidthProperty().bind(primaryStage.widthProperty().subtract(RESULT_HEIGHT_SHRINK));
     }
 
@@ -125,8 +125,8 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        listPanel = new ApplicationListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(listPanel.getRoot());
+        listPanel = new CompanyListPanel(logic.getFilteredPersonList());
+        ListPanelPlaceholder.getChildren().add(listPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.setContent(resultDisplay.getRoot());
@@ -217,7 +217,7 @@ public class MainWindow extends UiPart<Stage> {
     public void changeDisplay(TabName input, Stage primaryStage) {
         assert (input.equals(TabName.APPLICATION) || input.equals(TabName.COMPANY) || input.equals(TabName.PROFILE));
         display.getChildren().clear();
-        personListPanelPlaceholder.getChildren().clear();
+        ListPanelPlaceholder.getChildren().clear();
         switch (input) {
         case COMPANY:
             informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage);
@@ -236,6 +236,6 @@ public class MainWindow extends UiPart<Stage> {
             break;
         }
         display.getChildren().add(informationDisplay.getRoot());
-        personListPanelPlaceholder.getChildren().add(listPanel.getRoot());
+        ListPanelPlaceholder.getChildren().add(listPanel.getRoot());
     }
 }
