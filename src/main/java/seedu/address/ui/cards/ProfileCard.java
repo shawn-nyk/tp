@@ -1,16 +1,17 @@
 package seedu.address.ui.cards;
 
-import seedu.address.model.person.Person;
+import seedu.address.model.profile.ProfileItem;
+
 /**
  * todo Javadocs
  */
-public class ProfileCard extends Card {
+public class ProfileCard extends Card<ProfileItem> {
 
     /**
      * todo Javadocs
      */
-    public ProfileCard(Person person, int displayedIndex) {
-        super(person, displayedIndex);
+    public ProfileCard(ProfileItem profileItem, int displayedIndex) {
+        super(profileItem, displayedIndex);
         initializeUserCardGui();
     }
 
@@ -19,8 +20,16 @@ public class ProfileCard extends Card {
      */
     private void initializeUserCardGui() {
         // to be edited in the future!
-        initializeHeader(displayedIndex);
         initializeBody();
-        initializeTags();
+    }
+
+    @Override
+    protected void setName() {
+
+    }
+
+    @Override
+    protected void setTags() {
+
     }
 }

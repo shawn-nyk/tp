@@ -1,17 +1,21 @@
 package seedu.address.ui.cards;
 
-import seedu.address.model.person.Person;
+import java.util.ArrayList;
+import java.util.List;
+
+import seedu.address.model.company.CompanyItem;
+import seedu.address.model.internship.InternshipItem;
 
 /**
  * todo Javadocs
  */
-public class CompanyCard extends Card {
+public class CompanyCard extends Card<CompanyItem> {
 
     /**
      * todo Javadocs
      */
-    public CompanyCard(Person person, int displayedIndex) {
-        super(person, displayedIndex);
+    public CompanyCard(CompanyItem companyItem, int displayedIndex) {
+        super(companyItem, displayedIndex);
         initializeCompanyCardGui();
     }
 
@@ -20,8 +24,18 @@ public class CompanyCard extends Card {
      */
     private void initializeCompanyCardGui() {
         // to be edited in the future!
-        initializeHeader(displayedIndex);
         initializeBody();
-        initializeTags();
+    }
+    
+    @Override
+    protected void setName() {
+        
+    }
+
+    @Override
+    protected void setTags() {
+//        person.getTags().stream()
+//            .sorted(Comparator.comparing(Tag::getName))
+//            .forEach(tag -> tags.getChildren().add(new Label(tag.getName())));
     }
 }

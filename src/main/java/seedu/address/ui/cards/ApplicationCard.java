@@ -1,12 +1,13 @@
 package seedu.address.ui.cards;
 
 import javafx.scene.image.Image;
+import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.person.Person;
 
 /**
  * todo Javadocs
  */
-public class ApplicationCard extends Card {
+public class ApplicationCard extends Card<ApplicationItem> {
 
     //Image Link
     private static final String CALENDAR_IMAGE_LINK = "/images/calendar.png";
@@ -14,8 +15,8 @@ public class ApplicationCard extends Card {
     /**
      * todo Javadocs
      */
-    public ApplicationCard(Person person, int displayedIndex) {
-        super(person, displayedIndex);
+    public ApplicationCard(ApplicationItem applicationItem, int displayedIndex) {
+        super(applicationItem, displayedIndex);
         initializeInternshipCardGui();
     }
 
@@ -24,11 +25,21 @@ public class ApplicationCard extends Card {
      */
     private void initializeInternshipCardGui() {
         // to be edited in the future!
-        initializeHeader(displayedIndex);
+        setId(displayedIndex);
         initializeBody();
-        initializeTags();
         initializeDate();
         initializeStatus();
+    }
+    
+    @Override
+    protected void setName() {
+        Object companyName = mapping.get("Header");
+        name.setText(companyName.toString());
+    }
+
+    @Override
+    protected void setTags() {
+
     }
 
     /**

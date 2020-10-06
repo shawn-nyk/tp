@@ -3,6 +3,7 @@ package seedu.address.ui.cards;
 import static seedu.address.ui.textstyle.TitleDescription.createTitleDescription;
 
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -13,15 +14,14 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import seedu.address.model.person.Person;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.item.Item;
 import seedu.address.ui.UiPart;
 import seedu.address.ui.textstyle.TitleDescription;
 
 /**
  * A UI component that displays information of a {@code Person}.
  */
-public abstract class Card extends UiPart<Region> {
+public abstract class Card<T extends Item> extends UiPart<Region> {
 
     //FXML
     private static final String FXML = "Card.fxml";
@@ -31,8 +31,9 @@ public abstract class Card extends UiPart<Region> {
     private static final String ATTRIBUTE_ADDRESS = "Address";
     private static final String ATTRIBUTE_EMAIL = "Email";
 
-    public final Person person;
+    public final T item;
     protected int displayedIndex;
+    public LinkedHashMap<String, Object> mapping;
 
     @FXML
     protected VBox statusBox;
@@ -43,9 +44,9 @@ public abstract class Card extends UiPart<Region> {
     @FXML
     protected Label date;
     @FXML
-    private HBox cardPane;
+    protected Label name;
     @FXML
-    private Label name;
+    private HBox cardPane;
     @FXML
     private Label id;
     @FXML
@@ -60,39 +61,42 @@ public abstract class Card extends UiPart<Region> {
     /**
      * todo Javadocs
      */
-    public Card(Person person, int displayedIndex) {
+    public Card(T item, int displayedIndex) {
         super(FXML);
-        this.person = person;
+        this.item = item;
         this.displayedIndex = displayedIndex;
-        //initializePersonCard(displayedIndex);
+        this.mapping = item.getMapping();
     }
 
     /**
      * todo Javadocs
      */
-    protected void initializeHeader(int displayedIndex) {
+    protected void setId(int displayedIndex) {
         id.setText(displayedIndex + ". ");
-        name.setText(person.getName().fullName);
+
     }
+
+    /**
+     * todo Javadocs
+     */
+    protected abstract void setName();
+
+    /**
+     * todo Javadocs
+     */
+    protected abstract void setTags();
+//        person.getTags().stream()
+//            .sorted(Comparator.comparing(Tag::getName))
+//            .forEach(tag -> tags.getChildren().add(new Label(tag.getName())));
 
     /**
      * todo Javadocs
      */
     protected void initializeBody() {
-        setStyling(ATTRIBUTE_PHONE, person.getPhone().value);
-        setStyling(ATTRIBUTE_ADDRESS, person.getAddress().value);
-        setStyling(ATTRIBUTE_EMAIL, person.getEmail().value);
+        //setStyling(ATTRIBUTE_PHONE, person.getPhone().value);
+        //setStyling(ATTRIBUTE_ADDRESS, person.getAddress().value);
+        //setStyling(ATTRIBUTE_EMAIL, person.getEmail().value);
     }
-
-    /**
-     * todo Javadocs
-     */
-    protected void initializeTags() {
-        person.getTags().stream()
-            .sorted(Comparator.comparing(Tag::getName))
-            .forEach(tag -> tags.getChildren().add(new Label(tag.getName())));
-    }
-
 
     /**
      * todo Javadocs
@@ -132,6 +136,6 @@ public abstract class Card extends UiPart<Region> {
         // state check
         Card card = (Card) other;
         return id.getText().equals(card.id.getText())
-            && person.equals(card.person);
+            && item.equals(card.item);
     }
 }

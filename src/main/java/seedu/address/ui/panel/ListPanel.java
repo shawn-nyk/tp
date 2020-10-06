@@ -7,26 +7,30 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.person.Person;
+import seedu.address.model.company.CompanyItem;
+import seedu.address.model.item.Item;
 import seedu.address.ui.UiPart;
 
 /**
  * todo Javadocs
  */
-public abstract class ListPanel extends UiPart<Region> {
+public abstract class ListPanel<T extends Item> extends UiPart<Region> {
 
     private static final String FXML = "ListPanel.fxml";
 
     @FXML
-    protected ListView<Person> personListView;
+    protected ListView<T> itemListView;
 
     private final Logger logger = LogsCenter.getLogger(ListPanel.class);
 
     /**
      * todo Javadocs
      */
-    public ListPanel(ObservableList<Person> personList) {
+    public ListPanel(ObservableList<T> itemList) {
         super(FXML);
-        personListView.setItems(personList);
+        T item = itemList.get(0);
+        System.out.println(item instanceof CompanyItem);
+        itemListView.setItems(itemList);
+        System.out.println("hello world");
     }
 }

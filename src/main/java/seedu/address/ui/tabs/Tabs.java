@@ -126,7 +126,6 @@ public class Tabs extends VBox {
         }
     }
 
-
     /**
      * Sets up the tab icons in GUI of {@code MainWindow}.
      */

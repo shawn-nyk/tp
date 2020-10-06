@@ -3,6 +3,7 @@ package seedu.address.ui;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -49,6 +50,7 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private Tabs tabs;
+    public TempStubData tempStubData;
 
     @FXML
     private VBox cardList;
@@ -74,6 +76,9 @@ public class MainWindow extends UiPart<Stage> {
         this.logic = logic;
         // Configure the UI
         initializeUi(primaryStage, logic);
+        
+        // TO REMOVE TEMPORARY
+        this.tempStubData = new TempStubData();
     }
 
     /**
@@ -125,8 +130,9 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        listPanel = new CompanyListPanel(logic.getFilteredPersonList());
-        listPanelPlaceholder.getChildren().add(listPanel.getRoot());
+        
+        listPanel = new CompanyListPanel(tempStubData.filteredCompanyItemList);
+        listPanelPlaceholder.getChildren().add((Node) listPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.setContent(resultDisplay.getRoot());
@@ -221,21 +227,21 @@ public class MainWindow extends UiPart<Stage> {
         switch (input) {
         case COMPANY:
             informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage);
-            listPanel = new CompanyListPanel(logic.getFilteredPersonList());
+            listPanel = new CompanyListPanel(tempStubData.filteredCompanyItemList);
             break;
         case APPLICATION:
             informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage);
-            listPanel = new ApplicationListPanel(logic.getFilteredPersonList());
+            listPanel = new ApplicationListPanel(tempStubData.filteredApplicationItemList);
             break;
         case PROFILE:
             informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage);
-            listPanel = new ProfileListPanel(logic.getFilteredPersonList());
+            listPanel = new ProfileListPanel(tempStubData.filteredProfileItemList);
             break;
         default:
             assert false;
             break;
         }
         display.getChildren().add(informationDisplay.getRoot());
-        listPanelPlaceholder.getChildren().add(listPanel.getRoot());
+        listPanelPlaceholder.getChildren().add((Node) listPanel.getRoot());
     }
 }
