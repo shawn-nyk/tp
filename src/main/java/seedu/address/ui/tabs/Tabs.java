@@ -142,7 +142,7 @@ public class Tabs extends VBox {
     }
 
     /**
-     * Sets the display and tab to be of {@code Application} in the {@code stage}
+     * Sets the display and tab to be of {@code application} in the {@code stage}
      * Currently it only switches the information display.
      */
     public void selectApplication(Stage stage) {
@@ -170,7 +170,7 @@ public class Tabs extends VBox {
     }
 
     /**
-     * Sets the display and tab to be of {@code Profile} in the {@code stage}
+     * Sets the display and tab to be of {@code profile} in the {@code stage}
      * Currently it only switches the information display.
      */
     public void selectProfile(Stage stage) {
