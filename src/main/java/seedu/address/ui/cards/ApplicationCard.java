@@ -1,5 +1,8 @@
 package seedu.address.ui.cards;
 
+import java.util.Comparator;
+
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.person.Person;
@@ -26,6 +29,8 @@ public class ApplicationCard extends Card<ApplicationItem> {
     private void initializeInternshipCardGui() {
         // to be edited in the future!
         setId(displayedIndex);
+        setName();
+        setTags();
         initializeBody();
         initializeDate();
         initializeStatus();
@@ -39,7 +44,8 @@ public class ApplicationCard extends Card<ApplicationItem> {
 
     @Override
     protected void setTags() {
-
+        Object requirements = mapping.get("Requirements");
+        System.out.println(requirements.toString());
     }
 
     /**

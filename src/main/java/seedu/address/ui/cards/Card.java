@@ -56,7 +56,7 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
     @FXML
     private TextFlow email;
     @FXML
-    private FlowPane tags;
+    protected FlowPane tags;
 
     /**
      * todo Javadocs

@@ -29,8 +29,6 @@ public abstract class ListPanel<T extends Item> extends UiPart<Region> {
     public ListPanel(ObservableList<T> itemList) {
         super(FXML);
         T item = itemList.get(0);
-        System.out.println(item instanceof CompanyItem);
         itemListView.setItems(itemList);
-        System.out.println("hello world");
     }
 }
