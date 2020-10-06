@@ -87,7 +87,7 @@ Profile | me | category, descriptors
 
 ### Company
 
-Note: You must be viewing the **Companies** page in order to execute these commands.
+Note: You must be on the **Companies** page in order to execute these commands.
 
 #### Adding a company: `add com`
 
@@ -128,64 +128,60 @@ Format: `view com INDEX`
 Example:
 - `view com 3`
 
-### Internship Application
+### Internship
 
-#### Adding an internship application: `add -int`
+Note: You must be on the **Companies** page in order to execute these commands.
 
-Applies for an internship. This internship will be automatically added to the list of jobs in the company
-(if company has already been created). Otherwise, it creates the company and adds this job into it.
+#### Adding an internship: `add int`
 
-Format: `add -int n/COMPANY_NAME j/JOB_TITLE [i/INDUSTRY] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
+Adds an internship to a company.
+
+Format: `add int INDEX j/JOB_TITLE [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
 
 Examples:
-- `add -int n/Google i/Software j/Software Engineer`
-- `add -int n/Google i/Software j/Software Engineer r/React w/3000 r/HTML5`
+- `add int 1 j/Software Engineer`
+- `add int 3 j/Web Developer r/React w/3000 r/HTML5`
 
-**Already created the internship before?**
+#### Deleting an internship: `delete int`
 
-Fret not, we have an alternative method to apply for an internship! This format adds an internship with the company
-name and job title only.
-
-Format: `add -int n/COMPANY_NAME INDEX` - `INDEX` refers to position of internship in the company
-
-:bulb: **Tip:** `view -com INDEX` (to view a company's profile, including its list of jobs)
-
-#### Deleting an internship application: `delete -int`
-
-Deletes an internship.
+Deletes an internship from a company. The application (if any) made with this internship will also be deleted.
  
-Format: `delete -int INDEX` 
+Format: `delete int INDEX i/INDEX` 
+- `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
+internship in the company’s list of internships.
 
 Example:
-- `delete -int 3`
+- `delete int 3 i/2`
 
-#### Editing an internship application: `edit -int`
+#### Editing an internship: `edit int`
 
-Edits an internship.
+Edits an internship from a company.
 
-Format:  `edit -int INDEX [n/COMPANY_NAME] [j/JOB_TITLE] [i/INDUSTRY] [p/PERIOD] [w/WAGE] [s/STATUS] [d/DATE] 
-[r/REQUIREMENT]...`
-
-:information_source: **Note:** `DATE` can only be added if there is a `STATUS` in the input.
+Format:  `edit int INDEX i/INDEX [j/JOB_TITLE] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
+- `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
+internship in the company’s list of internships.
+- At least one of the optional fields must be provided.
 
 Examples:
-- `edit -int 7 r/Java r/FXML w/2000`
-- `edit -int 4 s/interview d/22-09-20`
+- `edit int 7 i/1 r/Java r/Python w/2000`
+- `edit int 4 i/4 j/ML Engineer`
 
-**More about internships...**
+### Application
 
-Each job has its own status. On initial adding of internship, the status of the internship application is `Applied` by
-default. Each status will be tagged to a date. If a date is not specified, InternHunter will assign today’s date to it.
+Note: You must be on the **Companies** page in order to execute the add app command. To execute all other commands, you
+must be on the **Applications** page.
 
-Accepted statuses:
-- `Applied`
-- `Interview`
-- `Waiting`
-- `Rejected`
-- `Offered`
-- `Accepted`
+Each application comes with a `STATUS` and `STATUS_DATE` field that indicates the date that the status was set/changed.
 
-Accepted date formats:
+Valid `STATUS` specifiers:
+- `applied`
+- `interview`
+- `waiting`
+- `rejected`
+- `offered`
+- `accepted`
+
+Valid `STATUS_DATE` formats:
 
 - d-M-yy HHmm
     - e.g. `23-12-19 2230`
@@ -193,15 +189,47 @@ Accepted date formats:
     - e.g. `23-12-19`
     - Time will be taken as 2359
 
-#### Viewing an internship application: `view -int`
+#### Adding an application: `add app`
 
-Selects an internship application in the list of internship applications to show in detail.
+Selects an internship from a company and adds it to your list of applications. If unspecified, the application’s
+`STATUS` will be `Applied`, and it’s `STATUS_DATE` will be set as today’s date.
+
+Format: `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
+- Where `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
+internship in the company’s list of internships.
+
+Examples:
+- `add app 1 i/2`
+- `add app 1 i/2 s/waiting d/23-12-20`
+
+#### Deleting an application: `delete app`
+
+Deletes an application from your list of applications.
  
-Format: `view -int INDEX` - `INDEX` is the index of the internship application in the list of internship
-applications
+Format: `delete app INDEX` 
 
 Example:
-- `view -int 3`
+- `delete app 3`
+
+#### Editing an application: `edit app`
+
+Edits an application in your list of applications.
+
+Format:  `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
+- At least one of the optional fields must be provided.
+
+Examples:
+- `edit app 5 s/offered`
+- `edit app 2 s/waiting d/10-11-20`
+
+#### Viewing an application: `view app`
+
+Selects an application in the list of applications to show in detail.
+ 
+Format: `view app INDEX`
+
+Example:
+- `view app 3`
 
 ### User Profile
 
@@ -296,7 +324,7 @@ Type            | Action     | Format
 &nbsp;          | **Edit**   | `edit com INDEX [n/COMPANY_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/INDUSTRY]...`
 &nbsp;          | **View**   | `view com INDEX`
 **Internship**  | **Add**    | `add int INDEX j/JOB_TITLE [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
-&nbsp;          | **Delete** | `delete int INDEX`
+&nbsp;          | **Delete** | `delete int INDEX i/INDEX`
 &nbsp;          | **Edit**   | `edit int INDEX i/INDEX [j/JOB_TITLE] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
 **Application** | **Add**    | `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
 &nbsp;          | **Delete** | `delete app INDEX`
