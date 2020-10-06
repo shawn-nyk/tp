@@ -144,7 +144,7 @@ Examples:
 
 #### Deleting an internship: `delete int`
 
-Deletes an internship from a company. The application made for the deleted internship, if any, will also be deleted.
+Deletes an internship from a company. The application (if any) made with this internship will also be deleted.
  
 Format: `delete int INDEX i/INDEX` 
 - `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the

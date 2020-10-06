@@ -61,7 +61,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### MSS
 
-Precondition: User is on the Companies page <br/>
+Precondition: User is on the Companies tab <br/>
 Guarantees: Addition of company is successful
 
 1. User requests to add a company and provides details.
@@ -78,7 +78,7 @@ Use case ends.
 
 #### MSS
 
-Precondition: User is on the Companies page and already has an existing list of companies <br/>
+Precondition: User is on the Companies tab and already has an existing list of companies <br/>
 Guarantees: Deletion of company is successful
 
 1. User requests to delete a company.
@@ -99,7 +99,7 @@ Use case ends.
 
 ##### MSS
 
-Precondition: User is on the Companies page and already has an existing list of companies <br/>
+Precondition: User is on the Companies tab and already has an existing list of companies <br/>
 Guarantees: Editing of company is successful
 
 1. User requests to edit the details of a company and provides details.
@@ -120,7 +120,7 @@ Use case ends.
 
 ##### MSS
 
-Precondition: User is on the Companies page and already has an existing list of companies <br/>
+Precondition: User is on the Companies tab and already has an existing list of companies <br/>
 Guarantees: Viewing of company is successful
 
 1. User requests to view a company.
@@ -141,7 +141,7 @@ Use case ends.
 
 #### MSS
 
-Precondition: User is on the Companies page and already has an existing list of companies <br/>
+Precondition: User is on the Companies tab and already has an existing list of companies <br/>
 Guarantees: Addition of internship is successful
 
 1.  User requests to add an internship to a company and provides the index and relevant details.
@@ -162,11 +162,11 @@ Guarantees: Addition of internship is successful
 
 #### MSS
 
-Precondition: User is on the Companies page and already has an existing list of internships in a company <br/>
+Precondition: User is on the Companies tab and already has an existing list of internships in a company <br/>
 Guarantees: Deletion of internship is successful
 
 1.  User requests to delete an internship of a company and provides the index.
-2.  InternHunter removes the internship from the list of internships of a company. <br />
+2.  InternHunter removes the internship from the list of internships in a company. <br />
     Use case ends.
 
 #### Extensions
@@ -183,7 +183,7 @@ Guarantees: Deletion of internship is successful
 
 #### MSS
 
-Precondition: User is on the Companies page and already has an existing list of internships of a company <br/>
+Precondition: User is on the Companies tab and already has an existing list of internships in a company <br/>
 Guarantees: Editing of internship is successful
 
 1.  User requests to edit the details of an internship and inputs the index and details.
@@ -204,12 +204,12 @@ Guarantees: Editing of internship is successful
 
 #### MSS
 
-Precondition: User is on the Companies page and already has an existing list of internships of a company <br/>
+Precondition: User is on the Companies tab and already has an existing list of internships in a company <br/>
 Guarantees: Adding of application is successful
 
 1.  User requests to apply for an internship and provides the index and relevant details.
-2.  InternHunter adds the application to the list of applications and prompts the user to switch to the Companies tab
-to view the newly added application. <br/>
+2.  InternHunter adds the application to the list of applications and prompts the user to switch to the Applications
+tab to view the newly added application. <br/>
     Use case ends.
 
 #### Extensions
@@ -226,7 +226,7 @@ to view the newly added application. <br/>
 
 #### MSS
 
-Precondition: User is on the Applications page and already has an existing list of applications <br />
+Precondition: User is on the Applications tab and already has an existing list of applications <br />
 Guarantees: Deletion of application is successful
 
 1.  User requests to delete an application and provides the index.
@@ -247,7 +247,7 @@ Guarantees: Deletion of application is successful
 
 #### MSS
 
-Precondition: User is on the Applications page and already has an existing list of applications <br />
+Precondition: User is on the Applications tab and already has an existing list of applications <br />
 Guarantees: Editing of application is successful
 
 1.  User requests to edit the details of an application and inputs the index and details.
@@ -268,7 +268,7 @@ Guarantees: Editing of application is successful
 
 #### MSS
 
-Precondition: User is on the Applications page and already has an existing list of applications <br />
+Precondition: User is on the Applications tab and already has an existing list of applications <br />
 Guarantees: Viewing of application is successful
 
 1.  User requests to view the details of an application and provides the index.
@@ -289,7 +289,7 @@ Guarantees: Viewing of application is successful
 
 #### MSS
 
-Precondition: User is on the Profile page
+Precondition: User is on the Profile tab
 Guarantees: Addition of user profile item is successful
 
 1.  User requests to add a user profile item to the user profile and provides details.
@@ -306,7 +306,7 @@ Guarantees: Addition of user profile item is successful
 
 #### MSS
 
-Precondition: User is on the Profile page and already has an existing list of user profile items <br/>
+Precondition: User is on the Profile tab and already has an existing list of user profile items <br/>
 Guarantees: Deletion of user profile item is successful
 
 1.  User requests to delete a user profile item from the user profile.
@@ -327,7 +327,7 @@ Guarantees: Deletion of user profile item is successful
 
 #### MSS
 
-Precondition: User is on the Profile page and already has an existing list of user profile items <br/>
+Precondition: User is on the Profile tab and already has an existing list of user profile items <br/>
 Guarantees: Editing of user profile item is successful
 
 1.  User requests to edit the details of a user profile item and provides details.
@@ -347,7 +347,7 @@ Guarantees: Editing of user profile item is successful
 ### Use case: UC15 - View a user profile item
 
 #### MSS
-Precondition: User is on the Profile page and already has an existing list of user profile items <br/>
+Precondition: User is on the Profile tab and already has an existing list of user profile items <br/>
 Guarantees: Viewing of user profile item is successful
 
 1.  User requests to view the details of a user profile item.
