@@ -26,15 +26,16 @@ title: User Guide
   [3.3.1. Adding an application: `add app`](#adding-an-application-add-app) <br />
   [3.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
   [3.3.3. Editing an application: `edit app`](#editing-an-application-edit-app) <br />
-  [3.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
- [3.4. Profile](#user-profile) <br />
+  [3.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
+ [3.4. Profile](#profile) <br />
   [3.4.1. Adding to profile: `add me`](#adding-to-profile-add-me) <br />
   [3.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
   [3.4.3. Editing profile: `edit me`](#editing-profile-edit-me) <br />
   [3.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
- [3.5. Switching Tabs](#switching-tabs-switch) <br />
- [3.6. Viewing Help](#viewing-help-help) <br />
- [3.7. Exiting the program](#exiting-the-program-exit) <br />
+ [3.5 General](#general) <br /> 
+  [3.5.1. Switching Tabs: `switch`](#switching-tabs-switch) <br />
+  [3.5.2. Viewing Help: `help`](#viewing-help-help) <br />
+  [3.5.3. Exiting the program: `exit`](#exiting-the-program-exit) <br />
 [4. Command Summary](#command-summary) <br />
 
 ---
@@ -73,7 +74,7 @@ Profile Item | me | category, title, descriptors | An item in your profile
 
 **:information_source: Notes about the command format:**<br>
 
-* Commands that deal with Company, Internship, Application, and User Profile can only be executed when you are on the appropriate tab in the app.
+* Commands that deal with Company, Internship, Application, and Profile can only be executed when you are on the appropriate tab in the app.
 The tab you must be on to execute a certain command is stated under each relevant section header in this guide.
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
@@ -95,7 +96,7 @@ The tab you must be on to execute a certain command is stated under each relevan
 
 ### Company
 
-Note: You must be on the **Companies** page in order to execute these commands.
+Note: You must be on the **Company** tab in order to execute these commands.
 
 #### Adding a company: `add com`
 
@@ -138,7 +139,7 @@ Example:
 
 ### Internship
 
-Note: You must be on the **Companies** page in order to execute these commands.
+Note: You must be on the **Company** tab in order to execute these commands.
 
 #### Adding an internship: `add int`
 
@@ -176,8 +177,8 @@ Examples:
 
 ### Application
 
-Note: You must be on the **Companies** page in order to execute the add app command. To execute all other commands, you
-must be on the **Applications** page.
+Note: You must be on the **Company** tab in order to execute the add app command. To execute all other commands, you
+must be on the **Application** tab.
 
 Each application comes with a `STATUS` and `STATUS_DATE` field that indicates the date that the status was set/changed.
 
@@ -243,7 +244,7 @@ Example:
 
 Note: You must be on the **Profile** tab in order to execute these commands.
 
-Your user profile can contain 3 categories of information.
+Your profile can contain 3 categories of information.
 
 Valid `CATEGORY` specifiers:
 - `achievement`
@@ -255,7 +256,7 @@ add additional `DESCRIPTOR`s to further describe the item in point form.
 
 #### Adding to profile: `add me`
 
-Adds experience, skills or achievements descriptors to your user profile.
+Adds experience, skills or achievements descriptors to your profile.
 
 Format: `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
 
@@ -269,7 +270,7 @@ using TravisCI d/Implemented dashboard to track code coverage`
 
 #### Deleting item in profile: `delete me`
 
-Deletes experience, skills or achievements descriptors from your user profile.
+Deletes experience, skills or achievements descriptors from your profile.
 
 Format: `delete me INDEX`
 
@@ -278,7 +279,7 @@ Example:
 
 #### Editing profile: `edit me`
 
-Edit the experience, skills or achievements descriptors of your user profile.
+Edit the experience, skills or achievements descriptors of your profile.
 
 Format: `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTORS]`
 
@@ -290,14 +291,16 @@ Examples:
 
 #### Viewing item in profile: `view me`
 
-Selects an item in the user profile to show in detail.
+Selects an item in the profile to show in detail.
 
 Format: `view me INDEX`
 
 Example:
 * `view me 3`
 
-### Switching Tabs: `switch`
+### General
+
+#### Switching Tabs: `switch`
 
 Switches between tabs.
 
@@ -311,12 +314,12 @@ There are three `TYPE`s:
 Example: 
 * `switch me`
 
-### Viewing Help: `help`
+#### Viewing Help: `help`
 Displays a link to the InternHunter user guide.
 
 Format: `help`
 
-### Exiting the Program: `exit`
+#### Exiting the Program: `exit`
 Shows an exit confirmation dialog.
 
 Format: `exit`
