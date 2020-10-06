@@ -201,7 +201,7 @@ Valid `STATUS_DATE` formats:
 #### Adding an application: `add app`
 
 Selects an internship from a company and adds it to your list of applications. If unspecified, the application’s
-`STATUS` will be `applied`, and it’s `STATUS_DATE` will be set as today’s date.
+`STATUS` will be `Applied`, and it’s `STATUS_DATE` will be set as today’s date.
 
 Format: `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
 - Where `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
