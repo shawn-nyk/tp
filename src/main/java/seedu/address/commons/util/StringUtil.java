@@ -65,4 +65,16 @@ public class StringUtil {
             return false;
         }
     }
+
+    /**
+     * Converts a string to title case.
+     *
+     * @param string String input.
+     * @return Title case representation of string.
+     */
+    public static String toTitleCase(String string) {
+        char firstLetter = string.charAt(0);
+        String remaining = string.substring(1);
+        return Character.toUpperCase(firstLetter) + remaining.toLowerCase();
+    }
 }
