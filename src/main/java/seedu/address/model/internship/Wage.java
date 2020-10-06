@@ -1,6 +1,6 @@
 package seedu.address.model.internship;
 
-import seedu.address.model.util.PositiveNumber;
+import seedu.address.model.wrapper.PositiveNumber;
 
 /**
  * Represents a Internship's wage.

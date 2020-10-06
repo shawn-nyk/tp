@@ -3,7 +3,7 @@ package seedu.address.model;
 import java.nio.file.Path;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.application.InternshipApplicationItem;
+import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.company.CompanyItem;
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.person.Person;
@@ -63,7 +63,7 @@ public interface Model {
     /**
      * Get internship application list manager.
      */
-    FilterableItemList<InternshipApplicationItem> getInternshipApplicationList();
+    FilterableItemList<ApplicationItem> getInternshipApplicationList();
 
     /**
      * Get profile list manager.

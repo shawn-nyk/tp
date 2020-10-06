@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.application.InternshipApplicationItem;
+import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.company.CompanyItem;
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.item.ItemList;
@@ -18,7 +18,7 @@ import seedu.address.model.profile.ProfileItem;
 import seedu.address.ui.tabs.TabName;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the InternHunter app data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
@@ -26,7 +26,7 @@ public class ModelManager implements Model {
     private final FilterableItemList<Person> addressBook;
     private final FilterableItemList<CompanyItem> companyList;
     private final FilterableItemList<InternshipItem> internshipList;
-    private final FilterableItemList<InternshipApplicationItem> internshipApplicationList;
+    private final FilterableItemList<ApplicationItem> internshipApplicationList;
     private final FilterableItemList<ProfileItem> profileList;
     private final UserPrefs userPrefs;
     private final Tab tabControl;
@@ -38,7 +38,7 @@ public class ModelManager implements Model {
             ReadOnlyItemList<Person> addressBook,
             ReadOnlyItemList<CompanyItem> companyList,
             ReadOnlyItemList<InternshipItem> internshipList,
-            ReadOnlyItemList<InternshipApplicationItem> internshipApplicationList,
+            ReadOnlyItemList<ApplicationItem> internshipApplicationList,
             ReadOnlyItemList<ProfileItem> profileList,
             ReadOnlyUserPrefs userPrefs) {
         super();
@@ -82,7 +82,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public FilterableItemList<InternshipApplicationItem> getInternshipApplicationList() {
+    public FilterableItemList<ApplicationItem> getInternshipApplicationList() {
         return internshipApplicationList;
     }
 
