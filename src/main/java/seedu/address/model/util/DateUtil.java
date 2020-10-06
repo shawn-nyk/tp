@@ -23,7 +23,7 @@ public class DateUtil {
     // Default timing if user does not input a time
     private static final String DEFAULT_TIME = "23:59";
 
-    private static final String ERROR_MESSAGE = "Checks for status date validtiy failed";
+    private static final String ERROR_MESSAGE = "Checks for status date validity failed";
 
     /**
      * Checks if the input given matches the d-M-yy HHmm format.

@@ -73,8 +73,12 @@ public class StringUtil {
      * @return Title case representation of string.
      */
     public static String toTitleCase(String string) {
+
+        assert string.length() > 1;
+
         char firstLetter = string.charAt(0);
         String remaining = string.substring(1);
         return Character.toUpperCase(firstLetter) + remaining.toLowerCase();
     }
+
 }
