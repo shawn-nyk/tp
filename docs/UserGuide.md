@@ -28,9 +28,9 @@ title: User Guide
   [3.3.3. Editing an application: `edit app`](#editing-an-application-edit-app) <br />
   [3.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
  [3.4. Profile](#profile) <br />
-  [3.4.1. Adding to profile: `add me`](#adding-to-profile-add-me) <br />
+  [3.4.1. Adding item to profile: `add me`](#adding-item-to-profile-add-me) <br />
   [3.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
-  [3.4.3. Editing profile: `edit me`](#editing-profile-edit-me) <br />
+  [3.4.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
   [3.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
  [3.5 General](#general) <br /> 
   [3.5.1. Switching Tabs: `switch`](#switching-tabs-switch) <br />
@@ -254,7 +254,7 @@ Valid `CATEGORY` specifiers:
 Each profile item (bit of information) also contains a `TITLE` that describes the item, and you can optionally 
 add additional `DESCRIPTOR`s to further describe the item in point form.
 
-#### Adding to profile: `add me`
+#### Adding item to profile: `add me`
 
 Adds experience, skills or achievements descriptors to your profile.
 
@@ -277,7 +277,7 @@ Format: `delete me INDEX`
 Example:
 * `delete me 2`
 
-#### Editing profile: `edit me`
+#### Editing item in profile: `edit me`
 
 Edit the experience, skills or achievements descriptors of your profile.
 
