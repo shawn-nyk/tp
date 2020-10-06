@@ -51,9 +51,9 @@ InternHunter allows the management of four data types:
 
 Data type | Alias | Attributes | What it represents
 ----------|-------|------------|-------------------
-Company | com | company name, industry, job title | A company offering internships
-Internship | int | company name, job title, industry, requirements, period, wage, status | An internship offered by a company
-Application | app | intership, status, status date | An internship application that you applied for
+Company | com | company name, phone number, email, address, industry types, internships | A company offering internships
+Internship | int | company name, job title, period, wage, requirements | An internship offered by a company
+Application | app | internship, status, status date | An internship application that you applied for
 Profile Item | me | category, title, descriptors | An item in your profile
 
 ## Quick start
