@@ -18,8 +18,8 @@ import seedu.address.model.item.Item;
 public class ProfileItem extends Item {
 
     // Identity fields
-    private final String title;
-    private final ProfileItemType type;
+    private final Title title;
+    private final ProfileItemCategory type;
 
     // Data fields
     private final Set<Descriptor> descriptors = new HashSet<>();
@@ -27,7 +27,7 @@ public class ProfileItem extends Item {
     /**
      * Every field must be present and not null.
      */
-    public ProfileItem(String title, ProfileItemType type, Set<Descriptor> descriptors) {
+    public ProfileItem(Title title, ProfileItemCategory type, Set<Descriptor> descriptors) {
         requireAllNonNull(type, title, descriptors);
         this.type = type;
         this.title = title;
@@ -35,11 +35,11 @@ public class ProfileItem extends Item {
     }
 
 
-    public String getTitle() {
+    public Title getTitle() {
         return title;
     }
 
-    public ProfileItemType getType() {
+    public ProfileItemCategory getType() {
         return type;
     }
     /**

@@ -1,10 +1,10 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.ITEM_PREFIX_APPLICATION;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.ITEM_PREFIX_COMPANY;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.ITEM_PREFIX_INTERNSHIP;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.ITEM_PREFIX_USER_PROFILE;
+import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
+import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
+import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
+import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.delete.DeleteCommand;
@@ -36,19 +36,19 @@ public class DeleteCommandParser implements Parser<DeleteCommandAbstract> {
             // change itemIndex to args to use addressbook
             Index index = ParserUtil.parseIndex(itemIndex);
             switch (itemType) {
-            case ITEM_PREFIX_COMPANY:
+            case COMPANY_ALIAS:
                 //todo: return own delete command
                 return new DeleteCommand(index);
 
-            case ITEM_PREFIX_INTERNSHIP:
+            case INTERNSHIP_ALIAS:
                 //todo: return own delete command
                 return new DeleteCommand(index);
 
-            case ITEM_PREFIX_APPLICATION:
+            case APPLICATION_ALIAS:
                 //todo: return own delete command
                 return new DeleteCommand(index);
 
-            case ITEM_PREFIX_USER_PROFILE:
+            case PROFILE_ALIAS:
                 //todo: return own delete command
                 return new DeleteCommand(index);
 
