@@ -2,7 +2,6 @@ package seedu.address.ui;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -10,7 +9,7 @@ import java.util.Set;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.application.ApplicationItem;
-import seedu.address.model.application.InternshipStatus;
+import seedu.address.model.application.Status;
 import seedu.address.model.application.StatusDate;
 import seedu.address.model.company.Address;
 import seedu.address.model.company.CompanyItem;
@@ -44,10 +43,10 @@ public class TempStubData {
         filteredCompanyItemList = FXCollections.observableArrayList();
         filteredProfileItemList = FXCollections.observableArrayList();
         for (int i = 0; i < 5; i++) {
-            InternshipStatus internshipStatus = getRandomStatus();
+            Status status = getRandomStatus();
             StatusDate statusDate = getRandomStatusDate();
             InternshipItem internshipItem = getRandomInternshipItem();
-            ApplicationItem applicationItem = new ApplicationItem(internshipItem, internshipStatus, statusDate);
+            ApplicationItem applicationItem = new ApplicationItem(internshipItem, status, statusDate);
             filteredApplicationItemList.add(applicationItem);
         }
     }
@@ -226,32 +225,32 @@ public class TempStubData {
 
 
     // TEMPORARY FUNCTION TO ALLOW DISPLAYS
-    private InternshipStatus getRandomStatus() {
+    private Status getRandomStatus() {
         int num = (int) (Math.random() * (6));
-        InternshipStatus internshipStatus;
+        Status status;
         switch (num) {
         case (0):
-            internshipStatus = InternshipStatus.APPLIED;
+            status = Status.APPLIED;
             break;
         case (1):
-            internshipStatus = InternshipStatus.INTERVIEW;
+            status = Status.INTERVIEW;
             break;
         case (2):
-            internshipStatus = InternshipStatus.WAITING;
+            status = Status.WAITING;
             break;
         case (3):
-            internshipStatus = InternshipStatus.REJECTED;
+            status = Status.REJECTED;
             break;
         case (4):
-            internshipStatus = InternshipStatus.OFFERED;
+            status = Status.OFFERED;
             break;
         case (5):
-            internshipStatus = InternshipStatus.ACCEPTED;
+            status = Status.ACCEPTED;
             break;
         default:
-            internshipStatus = null;
+            status = null;
         }
-        return internshipStatus;
+        return status;
     }
 
     private StatusDate getRandomStatusDate() {

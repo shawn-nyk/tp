@@ -1,5 +1,7 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.commons.util.StringUtil.toTitleCase;
+
 import seedu.address.model.Model;
 import seedu.address.ui.tabs.TabName;
 
@@ -25,8 +27,8 @@ public class SwitchCommand extends Command {
      */
     public SwitchCommand(TabName tabName) {
         this.tabName = tabName;
-        sameScreenText = String.format("Already in %s tab", capitalizeFirstLetterOnly(tabName.toString()));
-        switchedScreenText = String.format("Switching to %s tab", capitalizeFirstLetterOnly(tabName.toString()));
+        sameScreenText = String.format("Already in %s tab", toTitleCase(tabName.toString())); // change .toString() 
+        switchedScreenText = String.format("Switching to %s tab", toTitleCase(tabName.toString())); // change .toString()
     }
 
     @Override
@@ -42,15 +44,6 @@ public class SwitchCommand extends Command {
             model.setTabName(tabName);
         }
         return new CommandResult(resultMessage, false, false, true);
-    }
-
-    /**
-     * Capitalize only the first letter of {@code string}.
-     */
-    private String capitalizeFirstLetterOnly(String string) {
-        String firstLetter = string.substring(0, 1);
-        String rest = string.substring(1);
-        return firstLetter + rest.toLowerCase();
     }
 
     @Override

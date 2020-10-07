@@ -85,9 +85,6 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
      * todo Javadocs
      */
     protected abstract void setTags();
-//        person.getTags().stream()
-//            .sorted(Comparator.comparing(Tag::getName))
-//            .forEach(tag -> tags.getChildren().add(new Label(tag.getName())));
 
     /**
      * todo Javadocs
