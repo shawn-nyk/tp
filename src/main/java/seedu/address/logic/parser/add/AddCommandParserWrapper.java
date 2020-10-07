@@ -12,7 +12,7 @@ import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments for item type and returns AddCommand Object.
+ * Parses input arguments for item type and returns AddCommandAbstract Object.
  */
 public class AddCommandParserWrapper implements Parser<AddCommandAbstract> {
 
@@ -42,7 +42,7 @@ public class AddCommandParserWrapper implements Parser<AddCommandAbstract> {
             // todo: create parser object and return command from within
             return new AddInternshipCommand("Not an internship added");
         case ITEM_PREFIX_APPLICATION:
-            return null;
+            return new AddApplicationCommandParser().parse(itemPrefixes);
 
         case ITEM_PREFIX_USER_PROFILE:
             return null;
@@ -64,4 +64,5 @@ public class AddCommandParserWrapper implements Parser<AddCommandAbstract> {
                     MESSAGE_INVALID_COMMAND_FORMAT, AddCommandAbstract.MESSAGE_USAGE));
         }
     }
+
 }
