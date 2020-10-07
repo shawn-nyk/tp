@@ -46,24 +46,24 @@ public interface Model {
     void setInternHunterFilePath(Path internHunterFilePath);
 
     /**
-     * Get person list manager.
+     * Gets the person list manager.
      */
     FilterableItemList<Person> getAddressBook();
 
     /**
-     * Get company list manager.
+     * Gets the company list manager.
      */
     FilterableItemList<CompanyItem> getCompanyList();
 
     /**
-     * Get internship list manager.
+     * Gets the internship list manager.
      */
     FilterableItemList<InternshipItem> getInternshipList();
 
     /**
-     * Get internship application list manager.
+     * Gets the application list manager.
      */
-    FilterableItemList<ApplicationItem> getInternshipApplicationList();
+    FilterableItemList<ApplicationItem> getApplicationList();
 
     /**
      * Get profile list manager.

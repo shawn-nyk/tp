@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.clisyntax.internship.InternshipCliSynta
 import static seedu.address.logic.parser.clisyntax.internship.InternshipCliSyntax.PREFIX_PERIOD;
 import static seedu.address.logic.parser.clisyntax.internship.InternshipCliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.clisyntax.internship.InternshipCliSyntax.PREFIX_WAGE;
+import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
 
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -12,7 +13,6 @@ import seedu.address.model.Model;
 
 public class AddInternshipCommand extends AddCommandAbstract {
 
-    public static final String ITEM_TYPE = "internship";
     public static final String MESSAGE_SUCCESS = "New internship added: %1$s";
     // Todo: Fill Message Usage
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an internship to Internhunter. "
@@ -53,6 +53,6 @@ public class AddInternshipCommand extends AddCommandAbstract {
 
     @Override
     public String getItemType() {
-        return ITEM_TYPE;
+        return INTERNSHIP_NAME;
     }
 }

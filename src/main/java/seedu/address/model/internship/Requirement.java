@@ -1,11 +1,10 @@
 package seedu.address.model.internship;
 
-import seedu.address.model.wrapper.AlphaNumericWord;
+import seedu.address.model.wrapper.NonEmptyString;
 
-public class Requirement extends AlphaNumericWord {
+public class Requirement extends NonEmptyString {
 
-    public static final String MESSAGE_CONSTRAINTS =
-            "Requirements should only contain alphanumeric characters and spaces, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Requirements should not be blank";
 
     /**
      * Constructs a {@code JobTitle}.

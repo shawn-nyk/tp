@@ -14,6 +14,9 @@ public class ItemCliSyntax {
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
 
+    /* Common Prefix definitions */
+    public static final Prefix PREFIX_INDEX = new Prefix("i/");
+
     /* Item Prefix definitions */
     public static final String ITEM_PREFIX_COMPANY = "com";
     public static final String ITEM_PREFIX_INTERNSHIP = "int";
