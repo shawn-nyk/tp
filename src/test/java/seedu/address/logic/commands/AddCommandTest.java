@@ -124,7 +124,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public FilterableItemList<ApplicationItem> getInternshipApplicationList() {
+        public FilterableItemList<ApplicationItem> getApplicationList() {
             throw new AssertionError("This method should not be called.");
         }
 

@@ -7,10 +7,12 @@ import static seedu.address.model.util.StatusUtil.OFFERED_KEYWORD;
 import static seedu.address.model.util.StatusUtil.REJECTED_KEYWORD;
 import static seedu.address.model.util.StatusUtil.WAITING_KEYWORD;
 
+import seedu.address.commons.util.StringUtil;
+
 /**
- * InternshipStatus class which contains the valid statuses for an internship application.
+ * Status class which contains the valid statuses for an internship application.
  */
-public enum InternshipStatus {
+public enum Status {
     APPLIED,
     INTERVIEW,
     WAITING,
@@ -19,7 +21,7 @@ public enum InternshipStatus {
     ACCEPTED;
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Job status can only be applied, interview, waiting, rejected, offered or accepted.";
+            "Application status can only be applied, interview, waiting, rejected, offered or accepted.";
 
     /**
      * Returns true if the given status is valid.
@@ -37,25 +39,13 @@ public enum InternshipStatus {
     }
 
     /**
-     * Converts the job status to title case.
+     * Returns a string representation of the {@code Status}.
      *
-     * @return {@code JobStatus} in title case.
-     */
-    public String toTitleCase() {
-        String current = toString();
-        char firstLetter = current.charAt(0);
-        String remaining = toString().substring(1, current.length());
-        return Character.toUpperCase(firstLetter) + remaining;
-    }
-
-    /**
-     * Returns a string representation of the {@code JobStatus}.
-     *
-     * @return String representation of the {@code JobStatus}.
+     * @return String representation of the {@code Status}.
      */
     @Override
     public String toString() {
-        return super.toString().toLowerCase();
+        return StringUtil.toTitleCase(super.toString());
     }
 
 }
