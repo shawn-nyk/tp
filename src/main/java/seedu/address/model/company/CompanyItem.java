@@ -1,6 +1,7 @@
 package seedu.address.model.company;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,7 +21,7 @@ import seedu.address.model.item.Item;
 public class CompanyItem extends Item {
 
     // Identity fields
-    private final Name name;
+    private final CompanyName companyName;
     private final Phone phone;
     private final Email email;
 
@@ -32,10 +33,10 @@ public class CompanyItem extends Item {
     /**
      * Every field must be present and not null.
      */
-    public CompanyItem(Name name, Phone phone, Email email, Address address, Set<Industry> industries,
+    public CompanyItem(CompanyName companyName, Phone phone, Email email, Address address, Set<Industry> industries,
                        List<InternshipItem> internships) {
-        requireAllNonNull(name, phone, email, address, industries, internships);
-        this.name = name;
+        requireAllNonNull(companyName, phone, email, address, industries, internships);
+        this.companyName = companyName;
         this.phone = phone;
         this.email = email;
         this.address = address;
@@ -43,8 +44,8 @@ public class CompanyItem extends Item {
         this.internships.addAll(internships);
     }
 
-    public Name getName() {
-        return name;
+    public CompanyName getCompanyName() {
+        return companyName;
     }
 
     public Phone getPhone() {
@@ -75,7 +76,7 @@ public class CompanyItem extends Item {
     }
 
     /**
-     * Returns true if both persons of the same name have at least one other identity field that is the same.
+     * Returns true if both persons of the same companyName have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
      */
     public boolean isSameItem(Item otherItem) {
@@ -90,7 +91,7 @@ public class CompanyItem extends Item {
         CompanyItem otherCompanyItem = (CompanyItem) otherItem;
 
         return otherCompanyItem != null
-                && otherCompanyItem.getName().equals(getName())
+                && otherCompanyItem.getCompanyName().equals(getCompanyName())
                 && (otherCompanyItem.getPhone().equals(getPhone()) || otherCompanyItem.getEmail().equals(getEmail()));
     }
 
@@ -109,7 +110,7 @@ public class CompanyItem extends Item {
         }
 
         CompanyItem otherCompanyItem = (CompanyItem) other;
-        return otherCompanyItem.getName().equals(getName())
+        return otherCompanyItem.getCompanyName().equals(getCompanyName())
                 && otherCompanyItem.getPhone().equals(getPhone())
                 && otherCompanyItem.getEmail().equals(getEmail())
                 && otherCompanyItem.getAddress().equals(getAddress())
@@ -120,13 +121,13 @@ public class CompanyItem extends Item {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, industries, internships);
+        return Objects.hash(companyName, phone, email, address, industries, internships);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
+        builder.append(getCompanyName())
                 .append(" Phone: ")
                 .append(getPhone())
                 .append(" Email: ")
@@ -143,13 +144,13 @@ public class CompanyItem extends Item {
 
     @Override
     public String getItemName() {
-        return "company";
+        return COMPANY_NAME;
     }
 
     @Override
     public LinkedHashMap<String, Object> getMapping() {
         LinkedHashMap<String, Object> mapping = new LinkedHashMap<>();
-        mapping.put("Name", name);
+        mapping.put("Company name", companyName);
         mapping.put("Phone", phone);
         mapping.put("Email", email);
         mapping.put("Address", address);
