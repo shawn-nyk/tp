@@ -4,12 +4,12 @@ import seedu.address.model.person.Person;
 /**
  * todo Javadocs
  */
-public class UserCard extends Card {
+public class ProfileCard extends Card {
 
     /**
      * todo Javadocs
      */
-    public UserCard(Person person, int displayedIndex) {
+    public ProfileCard(Person person, int displayedIndex) {
         super(person, displayedIndex);
         initializeUserCardGui();
     }
