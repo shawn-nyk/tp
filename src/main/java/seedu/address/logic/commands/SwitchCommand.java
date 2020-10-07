@@ -13,7 +13,7 @@ public class SwitchCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Switch to the desired tab.\n"
         + "Parameters: Tab name.\n"
-        + "Example: " + COMMAND_WORD + "-com";
+        + "Example: " + COMMAND_WORD + " com";
 
     public final String sameScreenText;
     public final String switchedScreenText;
@@ -21,7 +21,7 @@ public class SwitchCommand extends Command {
     private final TabName tabName;
 
     /**
-     * Creates an AddCommand to switch {@code tabName}
+     * Creates a SwitchCommand to switch {@code tabName}.
      */
     public SwitchCommand(TabName tabName) {
         this.tabName = tabName;

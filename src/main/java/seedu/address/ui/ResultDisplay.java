@@ -18,7 +18,7 @@ public class ResultDisplay extends UiPart<Region> {
     private static final String FXML = "ResultDisplay.fxml";
 
     // FXML properties
-    private static final String TEXT_COLOR = "#5A4DEB";
+    private static final String TEXT_COLOR = "#5A4DEB"; // TODO change to red
     private static final String TEXT_FONT = "Nunito";
 
     @FXML
