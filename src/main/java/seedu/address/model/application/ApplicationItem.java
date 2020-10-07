@@ -1,8 +1,10 @@
 package seedu.address.model.application;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 
+import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.Objects;
 
@@ -30,6 +32,19 @@ public class ApplicationItem extends Item {
         this.internshipItem = internshipItem;
         this.status = status;
         this.statusDate = statusDate;
+    }
+
+    /**
+     * Creates an application item using the internship item.
+     * Method is used to match internships with their application.
+     *
+     * @param internshipItem Internship item.
+     */
+    public ApplicationItem(InternshipItem internshipItem) {
+        requireNonNull(internshipItem);
+        this.internshipItem = internshipItem;
+        this.status = Status.APPLIED;
+        this.statusDate = new StatusDate(LocalDateTime.now());
     }
 
     public InternshipItem getInternshipItem() {
