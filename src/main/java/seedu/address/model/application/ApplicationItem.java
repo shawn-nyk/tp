@@ -128,7 +128,7 @@ public class ApplicationItem extends Item {
     }
 
     @Override
-    public JsonAdaptedItem<? extends Item> getJsonAdaptedItem() {
+    public JsonAdaptedItem getJsonAdaptedItem() {
         return null;
     }
 

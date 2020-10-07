@@ -25,6 +25,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.item.Item;
 import seedu.address.storage.JsonSerializableItemList;
+import seedu.address.storage.item.JsonAdaptedItem;
 
 /**
  * Converts a Java object instance to JSON and vice versa
@@ -51,10 +52,10 @@ public class JsonUtil {
         return fromJsonString(FileUtil.readFromFile(jsonFile), classOfObjectToDeserialize);
     }
 
-    static <T extends Item> JsonSerializableItemList<T> deserializeObjectFromJsonFileSerializableItemList(Path jsonFile,
-            Class<T> contentClass)
+    static <T extends Item, U extends JsonAdaptedItem> JsonSerializableItemList<T, U> deserializeObjectFromJsonFileSerializableItemList(
+            Path jsonFile, Class<T> contentClass, Class<U> jsonClass)
             throws IOException {
-        return fromJsonStringSerializableItemList(FileUtil.readFromFile(jsonFile), contentClass);
+        return fromJsonStringSerializableItemList(FileUtil.readFromFile(jsonFile), contentClass, jsonClass);
     }
 
     /**
@@ -93,10 +94,11 @@ public class JsonUtil {
      *
      * @param filePath     cannot be null.
      * @param contentClass Json file has to correspond to the structure in the class given here.
+     * @param jsonClass    the json class of contentClass.
      * @throws DataConversionException if the file format is not as expected.
      */
-    public static <T extends Item> Optional<JsonSerializableItemList<T>> readJsonFileSerializableItemList(
-            Path filePath, Class<T> contentClass) throws DataConversionException {
+    public static <T extends Item, U extends JsonAdaptedItem> Optional<JsonSerializableItemList<T, U>> readJsonFileSerializableItemList(
+            Path filePath, Class<T> contentClass, Class<U> jsonClass) throws DataConversionException {
         requireNonNull(filePath);
 
         if (!Files.exists(filePath)) {
@@ -104,10 +106,10 @@ public class JsonUtil {
             return Optional.empty();
         }
 
-        JsonSerializableItemList<T> jsonFile;
+        JsonSerializableItemList<T, U> jsonFile;
 
         try {
-            jsonFile = deserializeObjectFromJsonFileSerializableItemList(filePath, contentClass);
+            jsonFile = deserializeObjectFromJsonFileSerializableItemList(filePath, contentClass, jsonClass);
         } catch (IOException e) {
             logger.warning("Error reading from jsonFile file " + filePath + ": " + e);
             throw new DataConversionException(e);
@@ -148,10 +150,10 @@ public class JsonUtil {
      * @param <T> The generic type to create an instance of
      * @return The instance of T with the specified values in the JSON string
      */
-    public static <T extends Item> JsonSerializableItemList<T> fromJsonStringSerializableItemList(String json,
-            Class<T> contentClass) throws IOException {
+    public static <T extends Item, U extends JsonAdaptedItem> JsonSerializableItemList<T, U> fromJsonStringSerializableItemList(
+            String json, Class<T> contentClass, Class<U> jsonClass) throws IOException {
         return objectMapper.readValue(json, objectMapper.getTypeFactory().constructParametricType(
-                JsonSerializableItemList.class, contentClass));
+                JsonSerializableItemList.class, contentClass, jsonClass));
     }
 
     /**

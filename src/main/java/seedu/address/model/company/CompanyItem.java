@@ -162,7 +162,7 @@ public class CompanyItem extends Item {
     }
 
     @Override
-    public JsonAdaptedItem<CompanyItem> getJsonAdaptedItem() {
+    public JsonAdaptedCompanyItem getJsonAdaptedItem() {
         return new JsonAdaptedCompanyItem(this);
     }
 

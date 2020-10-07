@@ -14,21 +14,24 @@ import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.item.Item;
 import seedu.address.model.item.ReadOnlyItemList;
+import seedu.address.storage.item.JsonAdaptedItem;
 
 /**
- * A class to access AddressBook data stored as a json file on the hard disk.
+ * A class to access ItemList<T> data stored as a json file on the hard disk.
  */
-public class JsonAddressBookStorage<T extends Item> implements ListStorage<T> {
+public class JsonItemListStorage<T extends Item, U extends JsonAdaptedItem> implements ListStorage<T, U> {
 
-    private static final Logger logger = LogsCenter.getLogger(JsonAddressBookStorage.class);
+    private static final Logger logger = LogsCenter.getLogger(JsonItemListStorage.class);
 
     private final Path filePath;
 
     private final Class<T> contentClass;
+    private final Class<U> jsonClass;
 
-    public JsonAddressBookStorage(Path filePath, Class<T> contentClass) {
+    public JsonItemListStorage(Path filePath, Class<T> contentClass, Class<U> jsonClass) {
         this.filePath = filePath;
         this.contentClass = contentClass;
+        this.jsonClass = jsonClass;
     }
 
     @Override
@@ -48,10 +51,11 @@ public class JsonAddressBookStorage<T extends Item> implements ListStorage<T> {
      * @throws DataConversionException if the file is not in the correct format.
      */
     public Optional<ReadOnlyItemList<T>> readItemList(Path filePath) throws DataConversionException {
+        logger.fine("Attempting to read data from file: " + filePath);
         requireNonNull(filePath);
 
-        Optional<JsonSerializableItemList<T>> jsonAddressBook = JsonUtil.readJsonFileSerializableItemList(
-                filePath, contentClass);
+        Optional<JsonSerializableItemList<T, U>> jsonAddressBook = JsonUtil.readJsonFileSerializableItemList(
+                filePath, contentClass, jsonClass);
         if (jsonAddressBook.isEmpty()) {
             return Optional.empty();
         }
@@ -75,11 +79,12 @@ public class JsonAddressBookStorage<T extends Item> implements ListStorage<T> {
      * @param filePath location of the data. Cannot be null.
      */
     public void saveItemList(ReadOnlyItemList<T> itemList, Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
         requireNonNull(itemList);
         requireNonNull(filePath);
 
         FileUtil.createIfMissing(filePath);
-        JsonUtil.saveJsonFile(new JsonSerializableItemList<>(itemList), filePath);
+        JsonUtil.saveJsonFile(new JsonSerializableItemList<T, U>(itemList), filePath);
     }
 
 }

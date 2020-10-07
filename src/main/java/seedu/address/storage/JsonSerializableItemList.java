@@ -16,17 +16,17 @@ import seedu.address.storage.item.JsonAdaptedItem;
 /**
  * An Immutable Item List that is serializable to JSON format.
  */
-public class JsonSerializableItemList<T extends Item> {
+public class JsonSerializableItemList<T extends Item, U extends JsonAdaptedItem> {
 
     public static final String MESSAGE_DUPLICATE_ITEM = "Item list contains duplicate item(s).";
 
-    private final List<JsonAdaptedItem<T>> items = new ArrayList<>();
+    private final List<U> items = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableItemList} with the given items.
      */
     @JsonCreator
-    public JsonSerializableItemList(@JsonProperty("items") List<JsonAdaptedItem<T>> items) {
+    public JsonSerializableItemList(@JsonProperty("items") List<U> items) {
         this.items.addAll(items);
     }
 
@@ -36,24 +36,24 @@ public class JsonSerializableItemList<T extends Item> {
      * @param source future changes to this will not affect the created {@code JsonSerializableItemList}.
      */
     public JsonSerializableItemList(ReadOnlyItemList<T> source) {
-        items.addAll(source.getItemList().stream().map(t -> (JsonAdaptedItem<T>) t.getJsonAdaptedItem()).collect(Collectors.toList()));
+        items.addAll(source.getItemList().stream().map(item -> (U) item.getJsonAdaptedItem()).collect(Collectors.toList()));
     }
 
     /**
-     * Converts this address book into the model's {@code ItemList<T>} object.
+     * Converts this item list into the model's {@code ItemList<T>} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
     public ItemList<T> toModelType() throws IllegalValueException {
-        ItemList<T> addressBook = new ItemList<>();
-        for (JsonAdaptedItem<T> jsonAdaptedItem : items) {
-            T item = jsonAdaptedItem.toModelType();
-            if (addressBook.hasItem(item)) {
+        ItemList<T> itemList = new ItemList<>();
+        for (JsonAdaptedItem jsonAdaptedItem : items) {
+            T item = (T) jsonAdaptedItem.toModelType();
+            if (itemList.hasItem(item)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_ITEM);
             }
-            addressBook.addItem(item);
+            itemList.addItem(item);
         }
-        return addressBook;
+        return itemList;
     }
 
 }

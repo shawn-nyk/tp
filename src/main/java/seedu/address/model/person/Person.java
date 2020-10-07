@@ -144,7 +144,7 @@ public class Person extends Item {
     }
 
     @Override
-    public JsonAdaptedItem<? extends Item> getJsonAdaptedItem() {
+    public JsonAdaptedPerson getJsonAdaptedItem() {
         return new JsonAdaptedPerson(this);
     }
 

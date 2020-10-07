@@ -7,13 +7,14 @@ import java.util.Optional;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.company.CompanyItem;
 import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
 
 /**
  * API of the Storage component
  */
-public interface Storage extends ListStorage<Person>, UserPrefsStorage {
+public interface Storage extends UserPrefsStorage {
 
     @Override
     Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;
@@ -21,13 +22,15 @@ public interface Storage extends ListStorage<Person>, UserPrefsStorage {
     @Override
     void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
 
-    @Override
-    Path getItemListFilePath();
+    Path getAddressBookFilePath();
 
-    @Override
-    Optional<ReadOnlyItemList<Person>> readItemList() throws DataConversionException, IOException;
+    Optional<ReadOnlyItemList<Person>> readAddressBook() throws DataConversionException, IOException;
 
-    @Override
-    void saveItemList(ReadOnlyItemList<Person> addressBook) throws IOException;
+    void saveAddressBook(ReadOnlyItemList<Person> addressBook) throws IOException;
 
+    Path getCompanyItemListFilePath();
+
+    Optional<ReadOnlyItemList<CompanyItem>> readCompanyItemList() throws DataConversionException, IOException;
+
+    void saveCompanyItemList(ReadOnlyItemList<CompanyItem> companyList) throws IOException;
 }

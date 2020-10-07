@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 /**
  * Jackson-friendly version of {@link InternshipItem}.
  */
-public class JsonAdaptedInternshipItem implements JsonAdaptedItem<InternshipItem> {
+public class JsonAdaptedInternshipItem implements JsonAdaptedItem {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Internship item's %s field is missing!";
 
     private final String companyName;

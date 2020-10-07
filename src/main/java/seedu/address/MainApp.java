@@ -2,6 +2,8 @@ package seedu.address;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -19,16 +21,24 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.company.Address;
+import seedu.address.model.company.CompanyItem;
+import seedu.address.model.company.CompanyName;
+import seedu.address.model.company.Email;
+import seedu.address.model.company.Phone;
 import seedu.address.model.item.ItemList;
 import seedu.address.model.item.ReadOnlyItemList;
+import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.util.SampleDataUtil;
-import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonItemListStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.ListStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
+import seedu.address.storage.company.JsonAdaptedCompanyItem;
+import seedu.address.storage.person.JsonAdaptedPerson;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
 
@@ -57,13 +67,14 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        ListStorage<Person> addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        ListStorage<Person, JsonAdaptedPerson> addressBookStorage = new JsonItemListStorage<>(userPrefs.getAddressBookFilePath(), Person.class, JsonAdaptedPerson.class);
+        ListStorage<CompanyItem, JsonAdaptedCompanyItem> companyItemListStorage = new JsonItemListStorage<>(userPrefs.getCompanyItemListFilePath(), CompanyItem.class, JsonAdaptedCompanyItem.class);
+        storage = new StorageManager(addressBookStorage, companyItemListStorage, userPrefsStorage);
 
         initLogging(config);
 
         model = initModelManager(storage, userPrefs);
-
+        
         logic = new LogicManager(model, storage);
 
         ui = new UiManager(logic);
@@ -78,8 +89,8 @@ public class MainApp extends Application {
         Optional<ReadOnlyItemList<Person>> addressBookOptional;
         ReadOnlyItemList<Person> initialData;
         try {
-            addressBookOptional = storage.readItemList();
-            if (!addressBookOptional.isPresent()) {
+            addressBookOptional = storage.readAddressBook();
+            if (addressBookOptional.isEmpty()) {
                 logger.info("Data file not found. Will be starting with a sample AddressBook");
             }
             initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);

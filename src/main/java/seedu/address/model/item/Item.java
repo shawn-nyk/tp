@@ -51,6 +51,11 @@ public abstract class Item {
                 || type.equals(PROFILE_ALIAS);
     }
 
-    public abstract JsonAdaptedItem<? extends Item> getJsonAdaptedItem();
+    /**
+     * Gets the json adapted version of item.
+     *
+     * @return json adapted item.
+     */
+    public abstract JsonAdaptedItem getJsonAdaptedItem();
 
 }

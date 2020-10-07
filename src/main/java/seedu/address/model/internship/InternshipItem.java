@@ -160,7 +160,7 @@ public class InternshipItem extends Item {
     }
 
     @Override
-    public JsonAdaptedItem<InternshipItem> getJsonAdaptedItem() {
+    public JsonAdaptedInternshipItem getJsonAdaptedItem() {
         return new JsonAdaptedInternshipItem(this);
     }
 

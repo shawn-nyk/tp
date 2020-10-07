@@ -21,7 +21,7 @@ import seedu.address.storage.item.JsonAdaptedItem;
 /**
  * Jackson-friendly version of {@link Person}.
  */
-public class JsonAdaptedPerson implements JsonAdaptedItem<Person> {
+public class JsonAdaptedPerson implements JsonAdaptedItem {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
 
