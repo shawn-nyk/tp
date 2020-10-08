@@ -14,7 +14,6 @@ import java.util.Set;
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.item.Item;
 import seedu.address.storage.company.JsonAdaptedCompanyItem;
-import seedu.address.storage.item.JsonAdaptedItem;
 
 /**
  * Represents a Person in the address book. TODO: Javadocs (Shawn)
@@ -81,6 +80,7 @@ public class CompanyItem extends Item {
      * Returns true if both persons of the same companyName have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
      */
+    @Override
     public boolean isSameItem(Item otherItem) {
         if (this == otherItem) {
             return true;

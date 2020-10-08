@@ -14,7 +14,6 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.deser.std.FromStringDeserializer;
@@ -52,10 +51,11 @@ public class JsonUtil {
         return fromJsonString(FileUtil.readFromFile(jsonFile), classOfObjectToDeserialize);
     }
 
-    static <T extends Item, U extends JsonAdaptedItem> JsonSerializableItemList<T, U> deserializeObjectFromJsonFileSerializableItemList(
-            Path jsonFile, Class<T> contentClass, Class<U> jsonClass)
+    static <T extends Item, U extends JsonAdaptedItem> JsonSerializableItemList<T, U> deserializeObjectFromJsonFile(
+            Path jsonFile, Class<T> contentClass,
+            Class<U> jsonClass)
             throws IOException {
-        return fromJsonStringSerializableItemList(FileUtil.readFromFile(jsonFile), contentClass, jsonClass);
+        return fromJsonString(FileUtil.readFromFile(jsonFile), contentClass, jsonClass);
     }
 
     /**
@@ -90,14 +90,14 @@ public class JsonUtil {
     /**
      * Returns the Json object from the given file or {@code Optional.empty()} object if the file is not found.
      * If any values are missing from the file, default values will be used, as long as the file is a valid json file.
-     * This method is used to circumvent Class<T> not allowing parameterized type.
+     * This method is used to circumvent Classnot allowing parameterized type.
      *
      * @param filePath     cannot be null.
      * @param contentClass Json file has to correspond to the structure in the class given here.
      * @param jsonClass    the json class of contentClass.
      * @throws DataConversionException if the file format is not as expected.
      */
-    public static <T extends Item, U extends JsonAdaptedItem> Optional<JsonSerializableItemList<T, U>> readJsonFileSerializableItemList(
+    public static <T extends Item, U extends JsonAdaptedItem> Optional<JsonSerializableItemList<T, U>> readJsonFile(
             Path filePath, Class<T> contentClass, Class<U> jsonClass) throws DataConversionException {
         requireNonNull(filePath);
 
@@ -109,7 +109,7 @@ public class JsonUtil {
         JsonSerializableItemList<T, U> jsonFile;
 
         try {
-            jsonFile = deserializeObjectFromJsonFileSerializableItemList(filePath, contentClass, jsonClass);
+            jsonFile = deserializeObjectFromJsonFile(filePath, contentClass, jsonClass);
         } catch (IOException e) {
             logger.warning("Error reading from jsonFile file " + filePath + ": " + e);
             throw new DataConversionException(e);
@@ -150,7 +150,7 @@ public class JsonUtil {
      * @param <T> The generic type to create an instance of
      * @return The instance of T with the specified values in the JSON string
      */
-    public static <T extends Item, U extends JsonAdaptedItem> JsonSerializableItemList<T, U> fromJsonStringSerializableItemList(
+    public static <T extends Item, U extends JsonAdaptedItem> JsonSerializableItemList<T, U> fromJsonString(
             String json, Class<T> contentClass, Class<U> jsonClass) throws IOException {
         return objectMapper.readValue(json, objectMapper.getTypeFactory().constructParametricType(
                 JsonSerializableItemList.class, contentClass, jsonClass));

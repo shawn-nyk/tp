@@ -36,7 +36,8 @@ public class JsonSerializableItemList<T extends Item, U extends JsonAdaptedItem>
      * @param source future changes to this will not affect the created {@code JsonSerializableItemList}.
      */
     public JsonSerializableItemList(ReadOnlyItemList<T> source) {
-        items.addAll(source.getItemList().stream().map(item -> (U) item.getJsonAdaptedItem()).collect(Collectors.toList()));
+        items.addAll(source.getItemList().stream().map(item ->
+                (U) item.getJsonAdaptedItem()).collect(Collectors.toList()));
     }
 
     /**
@@ -46,7 +47,7 @@ public class JsonSerializableItemList<T extends Item, U extends JsonAdaptedItem>
      */
     public ItemList<T> toModelType() throws IllegalValueException {
         ItemList<T> itemList = new ItemList<>();
-        for (JsonAdaptedItem jsonAdaptedItem : items) {
+        for (U jsonAdaptedItem : items) {
             T item = (T) jsonAdaptedItem.toModelType();
             if (itemList.hasItem(item)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_ITEM);

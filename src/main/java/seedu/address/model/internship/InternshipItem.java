@@ -1,7 +1,6 @@
 package seedu.address.model.internship;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -11,10 +10,7 @@ import java.util.Set;
 
 import seedu.address.model.company.CompanyName;
 import seedu.address.model.item.Item;
-import seedu.address.model.person.Name;
-import seedu.address.model.tag.Tag;
 import seedu.address.storage.internship.JsonAdaptedInternshipItem;
-import seedu.address.storage.item.JsonAdaptedItem;
 
 /**
  * Represents an InternshipItem in the InternHunter application.
@@ -83,6 +79,7 @@ public class InternshipItem extends Item {
      *
      * @return Mapping of field names to fields for the InternshipItem.
      */
+    @Override
     public LinkedHashMap<String, Object> getMapping() {
         LinkedHashMap<String, Object> mapping = new LinkedHashMap<>();
         mapping.put("Header", companyName);

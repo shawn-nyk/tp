@@ -19,9 +19,10 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.item.ItemList;
 import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
+import seedu.address.storage.person.JsonAdaptedPerson;
 
 public class JsonItemListStorageTest {
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonItemListStorageTest");
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
 
     @TempDir
     public Path testFolder;
@@ -32,7 +33,8 @@ public class JsonItemListStorageTest {
     }
 
     private java.util.Optional<ReadOnlyItemList<Person>> readAddressBook(String filePath) throws Exception {
-        return new JsonItemListStorage(Paths.get(filePath)).readItemList(addToTestDataPathIfNotNull(filePath));
+        return new JsonItemListStorage<>(Paths.get(filePath),
+                Person.class, JsonAdaptedPerson.class).readItemList(addToTestDataPathIfNotNull(filePath));
     }
 
     private Path addToTestDataPathIfNotNull(String prefsFileInTestDataFolder) {
@@ -65,7 +67,8 @@ public class JsonItemListStorageTest {
     public void readAndSaveAddressBook_allInOrder_success() throws Exception {
         Path filePath = testFolder.resolve("TempAddressBook.json");
         ItemList<Person> original = getTypicalAddressBook();
-        JsonItemListStorage jsonItemListStorage = new JsonItemListStorage(filePath);
+        JsonItemListStorage<Person, JsonAdaptedPerson> jsonItemListStorage =
+                new JsonItemListStorage(filePath, Person.class, JsonAdaptedPerson.class);
 
         // Save in new file and read back
         jsonItemListStorage.saveItemList(original, filePath);
@@ -97,8 +100,8 @@ public class JsonItemListStorageTest {
      */
     private void saveAddressBook(ItemList<Person> addressBook, String filePath) {
         try {
-            new JsonItemListStorage(Paths.get(filePath))
-                    .saveItemList(addressBook, addToTestDataPathIfNotNull(filePath));
+            new JsonItemListStorage<>(Paths.get(filePath), Person.class,
+                    JsonAdaptedPerson.class).saveItemList(addressBook, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);
         }

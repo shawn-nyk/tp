@@ -17,7 +17,7 @@ import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.storage.item.JsonAdaptedItem;
 
 /**
- * A class to access ItemList<T> data stored as a json file on the hard disk.
+ * A class to access ItemList data stored as a json file on the hard disk.
  */
 public class JsonItemListStorage<T extends Item, U extends JsonAdaptedItem> implements ListStorage<T, U> {
 
@@ -28,6 +28,13 @@ public class JsonItemListStorage<T extends Item, U extends JsonAdaptedItem> impl
     private final Class<T> contentClass;
     private final Class<U> jsonClass;
 
+    /**
+     * Initialized the json item list storage.
+     *
+     * @param filePath     path of the storage.
+     * @param contentClass item class saved in the storage.
+     * @param jsonClass    json adapted class of the item.
+     */
     public JsonItemListStorage(Path filePath, Class<T> contentClass, Class<U> jsonClass) {
         this.filePath = filePath;
         this.contentClass = contentClass;
@@ -50,11 +57,12 @@ public class JsonItemListStorage<T extends Item, U extends JsonAdaptedItem> impl
      * @param filePath location of the data. Cannot be null.
      * @throws DataConversionException if the file is not in the correct format.
      */
+    @Override
     public Optional<ReadOnlyItemList<T>> readItemList(Path filePath) throws DataConversionException {
         logger.fine("Attempting to read data from file: " + filePath);
         requireNonNull(filePath);
 
-        Optional<JsonSerializableItemList<T, U>> jsonAddressBook = JsonUtil.readJsonFileSerializableItemList(
+        Optional<JsonSerializableItemList<T, U>> jsonAddressBook = JsonUtil.readJsonFile(
                 filePath, contentClass, jsonClass);
         if (jsonAddressBook.isEmpty()) {
             return Optional.empty();
@@ -78,6 +86,7 @@ public class JsonItemListStorage<T extends Item, U extends JsonAdaptedItem> impl
      *
      * @param filePath location of the data. Cannot be null.
      */
+    @Override
     public void saveItemList(ReadOnlyItemList<T> itemList, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
         requireNonNull(itemList);

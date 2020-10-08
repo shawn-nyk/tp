@@ -11,7 +11,6 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.company.CompanyItem;
-import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.storage.application.JsonAdaptedApplicationItem;
@@ -35,11 +34,15 @@ public class StorageManager implements Storage {
      * Creates a {@code StorageManager} with the given {@code ItemListStorage} and {@code UserPrefStorage}.
      */
     public StorageManager(ListStorage<Person, JsonAdaptedPerson> addressBookStorage,
+            ListStorage<ApplicationItem, JsonAdaptedApplicationItem> applicationItemListStorage,
             ListStorage<CompanyItem, JsonAdaptedCompanyItem> companyItemListStorage,
+            ListStorage<ProfileItem, JsonAdaptedProfileItem> profileItemListStorage,
             UserPrefsStorage userPrefsStorage) {
         super();
         this.addressBookStorage = addressBookStorage;
+        this.applicationItemListStorage = applicationItemListStorage;
         this.companyItemListStorage = companyItemListStorage;
+        this.profileItemListStorage = profileItemListStorage;
         this.userPrefsStorage = userPrefsStorage;
     }
 

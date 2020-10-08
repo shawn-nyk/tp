@@ -42,6 +42,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         setAddressBookFilePath(newUserPrefs.getAddressBookFilePath());
     }
 
+    @Override
     public GuiSettings getGuiSettings() {
         return guiSettings;
     }
@@ -51,6 +52,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         this.guiSettings = guiSettings;
     }
 
+    @Override
     public Path getAddressBookFilePath() {
         return addressBookFilePath;
     }
@@ -109,8 +111,8 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     @Override
     public String toString() {
-        return "Gui Settings : " + guiSettings +
-                "\nLocal data file location : " + addressBookFilePath;
+        return "Gui Settings : " + guiSettings
+                + "\nLocal data file location : " + addressBookFilePath;
     }
 
 }

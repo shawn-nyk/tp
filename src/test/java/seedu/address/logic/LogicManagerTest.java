@@ -24,12 +24,19 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.application.ApplicationItem;
+import seedu.address.model.company.CompanyItem;
 import seedu.address.model.item.ItemList;
 import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
+import seedu.address.model.profile.ProfileItem;
 import seedu.address.storage.JsonItemListStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
+import seedu.address.storage.application.JsonAdaptedApplicationItem;
+import seedu.address.storage.company.JsonAdaptedCompanyItem;
+import seedu.address.storage.person.JsonAdaptedPerson;
+import seedu.address.storage.profile.JsonAdaptedProfileItem;
 import seedu.address.testutil.PersonBuilder;
 
 public class LogicManagerTest {
@@ -43,10 +50,21 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonItemListStorage addressBookStorage =
-                new JsonItemListStorage(temporaryFolder.resolve("addressBook.json"));
+        JsonItemListStorage<Person, JsonAdaptedPerson> addressBookStorage =
+                new JsonItemListStorage<>(temporaryFolder.resolve("addressBook.json"),
+                        Person.class, JsonAdaptedPerson.class);
+        JsonItemListStorage<ApplicationItem, JsonAdaptedApplicationItem> applicationItemListStorage =
+                new JsonItemListStorage<>(temporaryFolder.resolve("applicationitemlist.json"),
+                        ApplicationItem.class, JsonAdaptedApplicationItem.class);
+        JsonItemListStorage<CompanyItem, JsonAdaptedCompanyItem> companyItemListStorage =
+                new JsonItemListStorage<>(temporaryFolder.resolve("companyitemlist.json"),
+                        CompanyItem.class, JsonAdaptedCompanyItem.class);
+        JsonItemListStorage<ProfileItem, JsonAdaptedProfileItem> profileItemListStorage =
+                new JsonItemListStorage<>(temporaryFolder.resolve("profileitemlist.json"),
+                        ProfileItem.class, JsonAdaptedProfileItem.class);
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(addressBookStorage, applicationItemListStorage,
+                companyItemListStorage, profileItemListStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -71,11 +89,21 @@ public class LogicManagerTest {
     @Test
     public void execute_storageThrowsIoException_throwsCommandException() {
         // Setup LogicManager with JsonItemListIoExceptionThrowingStub
-        JsonItemListStorage addressBookStorage =
+        JsonItemListStorage<Person, JsonAdaptedPerson> addressBookStorage =
                 new JsonItemListIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAddressBook.json"));
+        JsonItemListStorage<ApplicationItem, JsonAdaptedApplicationItem> applicationItemListStorage =
+                new JsonItemListStorage<>(temporaryFolder.resolve("applicationitemlist.json"),
+                        ApplicationItem.class, JsonAdaptedApplicationItem.class);
+        JsonItemListStorage<CompanyItem, JsonAdaptedCompanyItem> companyItemListStorage =
+                new JsonItemListStorage<>(temporaryFolder.resolve("companyitemlist.json"),
+                        CompanyItem.class, JsonAdaptedCompanyItem.class);
+        JsonItemListStorage<ProfileItem, JsonAdaptedProfileItem> profileItemListStorage =
+                new JsonItemListStorage<>(temporaryFolder.resolve("profileitemlist.json"),
+                        ProfileItem.class, JsonAdaptedProfileItem.class);
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(addressBookStorage, applicationItemListStorage,
+                companyItemListStorage, profileItemListStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
 
         // Execute add command
@@ -135,7 +163,7 @@ public class LogicManagerTest {
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
         Model expectedModel = new ModelManager(model.getAddressBook().getUnfilteredItemList(), new ItemList<>(),
-                new ItemList<>(), new ItemList<>(), new ItemList<>(), new UserPrefs());
+                new ItemList<>(), new ItemList<>(), new UserPrefs());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -156,9 +184,9 @@ public class LogicManagerTest {
     /**
      * A stub class to throw an {@code IOException} when the save method is called.
      */
-    private static class JsonItemListIoExceptionThrowingStub extends JsonItemListStorage {
+    private static class JsonItemListIoExceptionThrowingStub extends JsonItemListStorage<Person, JsonAdaptedPerson> {
         private JsonItemListIoExceptionThrowingStub(Path filePath) {
-            super(filePath);
+            super(filePath, Person.class, JsonAdaptedPerson.class);
         }
 
         @Override

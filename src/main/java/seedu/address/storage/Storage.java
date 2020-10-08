@@ -1,7 +1,6 @@
 package seedu.address.storage;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataConversionException;
@@ -9,7 +8,6 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.company.CompanyItem;
-import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.storage.application.JsonAdaptedApplicationItem;
@@ -55,4 +53,5 @@ public interface Storage extends UserPrefsStorage {
      * @return profile item list storage.
      */
     ListStorage<ProfileItem, JsonAdaptedProfileItem> getProfileItemListStorage();
+
 }

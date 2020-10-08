@@ -2,10 +2,6 @@ package seedu.address.model.profile;
 
 import seedu.address.model.wrapper.AlphaNumericWord;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
-
-
 /**
  * Represents a descriptor in the profile item.
  * Guarantees: immutable; non-empty; name is valid as declared in {@link #isValidAlphaNumericWord(String)}

@@ -10,7 +10,6 @@ import seedu.address.model.company.Industry;
  * Jackson-friendly version of {@link Industry}.
  */
 class JsonAdaptedIndustry {
-    
     private final String industryType;
 
     /**

@@ -1,13 +1,13 @@
 package seedu.address.model.item;
 
-import seedu.address.storage.item.JsonAdaptedItem;
-
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
 import java.util.LinkedHashMap;
+
+import seedu.address.storage.item.JsonAdaptedItem;
 
 /**
  * Represents an Item in the InternHunter application.

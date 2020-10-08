@@ -1,17 +1,18 @@
 package seedu.address.storage.profile;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.profile.Descriptor;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.model.profile.ProfileItemType;
 import seedu.address.model.profile.Title;
 import seedu.address.storage.item.JsonAdaptedItem;
-
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Jackson-friendly version of {@link ProfileItem}.

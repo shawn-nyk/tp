@@ -1,7 +1,12 @@
 package seedu.address.storage.internship;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.company.CompanyName;
 import seedu.address.model.internship.InternshipItem;
@@ -9,21 +14,7 @@ import seedu.address.model.internship.JobTitle;
 import seedu.address.model.internship.Period;
 import seedu.address.model.internship.Requirement;
 import seedu.address.model.internship.Wage;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
-import seedu.address.storage.internship.JsonAdaptedRequirement;
 import seedu.address.storage.item.JsonAdaptedItem;
-
-import java.security.Key;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Jackson-friendly version of {@link InternshipItem}.
@@ -69,10 +60,12 @@ public class JsonAdaptedInternshipItem extends JsonAdaptedItem {
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted internship item.
      */
+    @Override
     public InternshipItem toModelType() throws IllegalValueException {
 
         if (companyName == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, CompanyName.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    CompanyName.class.getSimpleName()));
         }
         if (!CompanyName.isValidAlphaNumericWord(companyName)) {
             throw new IllegalValueException(CompanyName.MESSAGE_CONSTRAINTS);
@@ -80,7 +73,8 @@ public class JsonAdaptedInternshipItem extends JsonAdaptedItem {
         final CompanyName itemCompanyName = new CompanyName(companyName);
 
         if (jobTitle == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, JobTitle.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    JobTitle.class.getSimpleName()));
         }
         if (!JobTitle.isValidAlphaNumericWord(jobTitle)) {
             throw new IllegalValueException(JobTitle.MESSAGE_CONSTRAINTS);
@@ -88,7 +82,8 @@ public class JsonAdaptedInternshipItem extends JsonAdaptedItem {
         final JobTitle itemJobTitle = new JobTitle(jobTitle);
 
         if (period == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Period.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Period.class.getSimpleName()));
         }
         if (!Period.isValidNonEmptyString(period)) {
             throw new IllegalValueException(Period.MESSAGE_CONSTRAINTS);

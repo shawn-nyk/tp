@@ -10,7 +10,6 @@ import java.util.Set;
 
 import seedu.address.model.item.Item;
 import seedu.address.model.tag.Tag;
-import seedu.address.storage.item.JsonAdaptedItem;
 import seedu.address.storage.person.JsonAdaptedPerson;
 
 /**
@@ -68,6 +67,7 @@ public class Person extends Item {
      * Returns true if both persons of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
      */
+    @Override
     public boolean isSameItem(Item otherItem) {
         if (this == otherItem) {
             return true;

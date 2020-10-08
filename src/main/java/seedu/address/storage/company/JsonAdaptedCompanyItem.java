@@ -1,7 +1,14 @@
 package seedu.address.storage.company;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.company.Address;
 import seedu.address.model.company.CompanyItem;
@@ -12,12 +19,6 @@ import seedu.address.model.company.Phone;
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.storage.internship.JsonAdaptedInternshipItem;
 import seedu.address.storage.item.JsonAdaptedItem;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Jackson-friendly version of {@link CompanyItem}.
@@ -72,6 +73,7 @@ public class JsonAdaptedCompanyItem extends JsonAdaptedItem {
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted company item.
      */
+    @Override
     public CompanyItem toModelType() throws IllegalValueException {
         if (companyName == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -83,8 +85,8 @@ public class JsonAdaptedCompanyItem extends JsonAdaptedItem {
         final CompanyName itemCompanyName = new CompanyName(companyName);
 
         if (phone == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT
-                    , Phone.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Phone.class.getSimpleName()));
         }
         if (!Phone.isValidPhone(phone)) {
             throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
@@ -92,8 +94,8 @@ public class JsonAdaptedCompanyItem extends JsonAdaptedItem {
         final Phone itemPhone = new Phone(phone);
 
         if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT
-                    , Email.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Email.class.getSimpleName()));
         }
         if (!Email.isValidEmail(email)) {
             throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
@@ -101,8 +103,8 @@ public class JsonAdaptedCompanyItem extends JsonAdaptedItem {
         final Email itemEmail = new Email(email);
 
         if (address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT
-                    , Address.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Address.class.getSimpleName()));
         }
         if (!Address.isValidAddress(address)) {
             throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);

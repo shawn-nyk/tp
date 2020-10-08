@@ -2,11 +2,11 @@ package seedu.address.storage.application;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.application.Status;
 import seedu.address.model.application.StatusDate;
-import seedu.address.model.company.CompanyItem;
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.util.DateUtil;
 import seedu.address.storage.internship.JsonAdaptedInternshipItem;
