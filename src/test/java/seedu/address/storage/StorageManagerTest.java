@@ -15,6 +15,7 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.item.ItemList;
 import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
+import seedu.address.storage.person.JsonAdaptedPerson;
 
 public class StorageManagerTest {
 
@@ -25,9 +26,10 @@ public class StorageManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonItemListStorage addressBookStorage = new JsonItemListStorage(getTempFilePath("ab"));
+        JsonItemListStorage<Person, JsonAdaptedPerson> addressBookStorage = new JsonItemListStorage<>(
+                getTempFilePath("ab"), Person.class, JsonAdaptedPerson.class);
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageManager = new StorageManager(addressBookStorage, userPrefsStorage);
+        storageManager = new StorageManager(addressBookStorage, null, userPrefsStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -53,17 +55,17 @@ public class StorageManagerTest {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
          * {@link JsonItemListStorage} class.
-         * More extensive testing of UserPref saving/reading is done in {@link JsonItemListStorageTest} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
          */
         ItemList<Person> original = getTypicalAddressBook();
-        storageManager.saveItemList(original);
-        ReadOnlyItemList<Person> retrieved = storageManager.readItemList().get();
+        storageManager.saveAddressBook(original);
+        ReadOnlyItemList<Person> retrieved = storageManager.readAddressBook().get();
         assertEquals(original, new ItemList<>(retrieved));
     }
 
     @Test
     public void getAddressBookFilePath() {
-        assertNotNull(storageManager.getItemListFilePath());
+        assertNotNull(storageManager.getAddressBookFilePath());
     }
 
 }

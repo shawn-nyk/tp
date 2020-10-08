@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 /**
  * Jackson-friendly version of {@link InternshipItem}.
  */
-public class JsonAdaptedInternshipItem implements JsonAdaptedItem {
+public class JsonAdaptedInternshipItem extends JsonAdaptedItem {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Internship item's %s field is missing!";
 
     private final String companyName;
@@ -38,7 +38,7 @@ public class JsonAdaptedInternshipItem implements JsonAdaptedItem {
     private final Set<JsonAdaptedRequirement> requirements = new HashSet<>();
 
     /**
-     * Constructs a {@code JsonAdaptedInternshipItem} with the given person details.
+     * Constructs a {@code JsonAdaptedInternshipItem} with the given internship item details.
      */
     @JsonCreator
     public JsonAdaptedInternshipItem(@JsonProperty("companyName") String companyName,

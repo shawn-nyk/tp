@@ -9,11 +9,15 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.company.CompanyItem;
 import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
+import seedu.address.model.profile.ProfileItem;
+import seedu.address.storage.application.JsonAdaptedApplicationItem;
 import seedu.address.storage.company.JsonAdaptedCompanyItem;
 import seedu.address.storage.person.JsonAdaptedPerson;
+import seedu.address.storage.profile.JsonAdaptedProfileItem;
 
 /**
  * Manages storage of ItemList data in local storage.
@@ -22,7 +26,9 @@ public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private final ListStorage<Person, JsonAdaptedPerson> addressBookStorage;
+    private final ListStorage<ApplicationItem, JsonAdaptedApplicationItem> applicationItemListStorage;
     private final ListStorage<CompanyItem, JsonAdaptedCompanyItem> companyItemListStorage;
+    private final ListStorage<ProfileItem, JsonAdaptedProfileItem> profileItemListStorage;
     private final UserPrefsStorage userPrefsStorage;
 
     /**
@@ -54,38 +60,26 @@ public class StorageManager implements Storage {
         userPrefsStorage.saveUserPrefs(userPrefs);
     }
 
-    // ================ ItemList methods ==============================
+    // ================ Get ListStorage ==============================
+
     @Override
-    public Path getAddressBookFilePath() {
-        return addressBookStorage.getItemListFilePath();
+    public ListStorage<Person, JsonAdaptedPerson> getAddressBookStorage() {
+        return addressBookStorage;
     }
 
     @Override
-    public Optional<ReadOnlyItemList<Person>> readAddressBook() throws DataConversionException, IOException {
-        logger.fine("Attempting to read address book.");
-        return addressBookStorage.readItemList();
+    public ListStorage<ApplicationItem, JsonAdaptedApplicationItem> getApplicationItemListStorage() {
+        return applicationItemListStorage;
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyItemList<Person> addressBook) throws IOException {
-        logger.fine("Attempting to save address book.");
-        addressBookStorage.saveItemList(addressBook);
+    public ListStorage<CompanyItem, JsonAdaptedCompanyItem> getCompanyItemListStorage() {
+        return companyItemListStorage;
     }
 
     @Override
-    public Path getCompanyItemListFilePath() {
-        return companyItemListStorage.getItemListFilePath();
+    public ListStorage<ProfileItem, JsonAdaptedProfileItem> getProfileItemListStorage() {
+        return profileItemListStorage;
     }
 
-    @Override
-    public Optional<ReadOnlyItemList<CompanyItem>> readCompanyItemList() throws DataConversionException, IOException {
-        logger.fine("Attempting to read company item list.");
-        return companyItemListStorage.readItemList();
-    }
-
-    @Override
-    public void saveCompanyItemList(ReadOnlyItemList<CompanyItem> companyList) throws IOException {
-        logger.fine("Attempting to save company item list.");
-        companyItemListStorage.saveItemList(companyList);
-    }
 }

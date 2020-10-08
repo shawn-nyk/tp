@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 /**
  * Jackson-friendly version of {@link CompanyItem}.
  */
-public class JsonAdaptedCompanyItem implements JsonAdaptedItem {
+public class JsonAdaptedCompanyItem extends JsonAdaptedItem {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Company item's %s field is missing!";
 
@@ -35,7 +35,7 @@ public class JsonAdaptedCompanyItem implements JsonAdaptedItem {
     private final List<JsonAdaptedInternshipItem> internships = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonAdaptedCompanyItem} with the given company details.
+     * Constructs a {@code JsonAdaptedCompanyItem} with the given company item details.
      */
     @JsonCreator
     public JsonAdaptedCompanyItem(@JsonProperty("companyName") String companyName,
