@@ -50,11 +50,11 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private TextFlow phone;
+    private TextFlow p1;
     @FXML
-    private TextFlow address;
+    private TextFlow p2;
     @FXML
-    private TextFlow email;
+    private TextFlow p3;
     @FXML
     protected FlowPane tags;
 
@@ -71,14 +71,6 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
     /**
      * todo Javadocs
      */
-    protected void setId(int displayedIndex) {
-        id.setText(displayedIndex + ". ");
-
-    }
-
-    /**
-     * todo Javadocs
-     */
     protected abstract void setName();
 
     /**
@@ -89,33 +81,49 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
     /**
      * todo Javadocs
      */
-    protected void initializeBody() {
-        //setStyling(ATTRIBUTE_PHONE, person.getPhone().value);
-        //setStyling(ATTRIBUTE_ADDRESS, person.getAddress().value);
-        //setStyling(ATTRIBUTE_EMAIL, person.getEmail().value);
+    protected void setId(int displayedIndex) {
+        id.setText(displayedIndex + ". ");
     }
-
-    /**
-     * todo Javadocs
-     */
-    private void setStyling(String type, String description) {
+    
+    protected void setTextAt(String type, String description, LineNumber lineNumber) {
         TitleDescription titleDescription = createTitleDescription(type + ": ", description);
         Text styledTitle = titleDescription.getTitle();
         Text styledDescription = titleDescription.getDescription();
-        switch (type) {
-        case ATTRIBUTE_PHONE:
-            phone.getChildren().addAll(styledTitle, styledDescription);
+        switch(lineNumber) {
+        case L1:
+            setL1(styledTitle, styledDescription);
             break;
-        case ATTRIBUTE_ADDRESS:
-            address.getChildren().addAll(styledTitle, styledDescription);
+        case L2:
+            setL2(styledTitle, styledDescription);
             break;
-        case ATTRIBUTE_EMAIL:
-            email.getChildren().addAll(styledTitle, styledDescription);
+        case L3:
+            setL3(styledTitle, styledDescription);
             break;
         default:
             assert false;
             break;
         }
+    }
+
+    private void setL1(Text styledTitle, Text styledDescription) {
+        p1.getChildren().addAll(styledTitle, styledDescription);
+    }
+
+    private void setL2(Text styledTitle, Text styledDescription) {
+        p2.getChildren().addAll(styledTitle, styledDescription);
+    }
+
+    private void setL3(Text styledTitle, Text styledDescription) {
+        p3.getChildren().addAll(styledTitle, styledDescription);
+    }
+
+    /**
+     * todo Javadocs
+     */
+    protected void initializeBody() {
+        //setStyling(ATTRIBUTE_PHONE, person.getPhone().value);
+        //setStyling(ATTRIBUTE_ADDRESS, person.getAddress().value);
+        //setStyling(ATTRIBUTE_EMAIL, person.getEmail().value);
     }
 
     @Override

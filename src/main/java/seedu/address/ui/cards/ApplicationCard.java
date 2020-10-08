@@ -1,6 +1,5 @@
 package seedu.address.ui.cards;
 
-import static seedu.address.commons.util.StringUtil.toTitleCase;
 import static seedu.address.model.util.StatusUtil.ACCEPTED_KEYWORD;
 import static seedu.address.model.util.StatusUtil.APPLIED_KEYWORD;
 import static seedu.address.model.util.StatusUtil.INTERVIEW_KEYWORD;
@@ -32,19 +31,18 @@ public class ApplicationCard extends Card<ApplicationItem> {
      * todo Javadocs
      */
     private void initializeInternshipCardGui() {
-        // to be edited in the future!
         setId(displayedIndex);
         setName();
         setTags();
         setStatus();
-        initializeBody();
-        initializeDate();
+        setInformation();
+        setDate();
     }
     
     @Override
     protected void setName() {
-        Object companyName = mapping.get("Header");
-        name.setText(companyName.toString());
+        Object jobTitle = mapping.get("Job title");
+        name.setText(jobTitle.toString());
     }
 
     @Override
@@ -54,47 +52,58 @@ public class ApplicationCard extends Card<ApplicationItem> {
         setAllTags(tagList);
     }
 
+    /**
+     * todo Javadocs
+     */
     private String[] generateTags(String requirements) {
         int length = requirements.length();
         return requirements.substring(1, length - 1).split(",");
     }
-    
+
+    /**
+     * todo Javadocs
+     */
     private void setAllTags(String ... tagList) {
         for (String tag : tagList) {
             tags.getChildren().add(new Label(tag));
         }
     }
-    
+
+    /**
+     * todo Javadocs
+     */
     private void setStatus() {
         Object status = mapping.get("Status");
         getStatusStyle(status.toString());
     }
-    
+
+    /**
+     * todo Javadocs
+     */
     private void getStatusStyle(String statusType) {
-        System.out.println(statusType); // this in titleCase
         switch (statusType) {
         case (APPLIED_KEYWORD):
-            status.setText(toTitleCase(APPLIED_KEYWORD));
+            status.setText(APPLIED_KEYWORD);
             statusBox.setStyle("-fx-background-color: #3ADB9D");
             break;
         case (INTERVIEW_KEYWORD):
-            status.setText(toTitleCase(INTERVIEW_KEYWORD));
+            status.setText(INTERVIEW_KEYWORD);
             statusBox.setStyle("-fx-background-color: #F02E62");
             break;
         case (WAITING_KEYWORD):
-            status.setText(toTitleCase(WAITING_KEYWORD));
+            status.setText(WAITING_KEYWORD);
             statusBox.setStyle("-fx-background-color: #F4D014");
             break;
         case (REJECTED_KEYWORD):
-            status.setText(toTitleCase(REJECTED_KEYWORD));
+            status.setText(REJECTED_KEYWORD);
             statusBox.setStyle("-fx-background-color: #3A65DB");
             break;
         case (OFFERED_KEYWORD):
-            status.setText(toTitleCase(OFFERED_KEYWORD));
+            status.setText(OFFERED_KEYWORD);
             statusBox.setStyle("-fx-background-color: #3A65DB");
             break;
         case (ACCEPTED_KEYWORD):
-            status.setText(toTitleCase(ACCEPTED_KEYWORD));
+            status.setText(ACCEPTED_KEYWORD);
             statusBox.setStyle("-fx-background-color: #3A65DB");
             break;
         default:
@@ -102,14 +111,30 @@ public class ApplicationCard extends Card<ApplicationItem> {
         }
     }
 
+    /**
+     * todo Javadocs
+     */
+    private void setInformation() {
+        Object companyName = mapping.get("Header");
+        Object wage = mapping.get("Wage");
+        Object period = mapping.get("Period");
+        setTextAt("Company: ", companyName.toString(), LineNumber.L1);
+        setTextAt("Wage: ", wage.toString(), LineNumber.L2);
+        setTextAt("Period: ", period.toString(), LineNumber.L3);
+    }
 
     /**
      * todo Javadocs
      */
-    private void initializeDate() {
+    private void setDate() {
         Image calendarIcon = new Image(this.getClass().getResourceAsStream(CALENDAR_IMAGE_LINK));
         calendar.setImage(calendarIcon);
-        date.setText("21/07/2020"); // to be changed later!
+        Object dateInformation = mapping.get("Date");
+        date.setText(extractShortDate(dateInformation.toString().split(" ")));
+    }
+    
+    private String extractShortDate(String ... dateInformation) {
+        return dateInformation[0] + " " + dateInformation[1];
     }
 
 }
