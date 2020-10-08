@@ -10,6 +10,7 @@ import static seedu.address.model.util.StatusUtil.WAITING_KEYWORD;
 
 import java.time.LocalDateTime;
 
+import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.Status;
 import seedu.address.model.application.StatusDate;
@@ -30,7 +31,7 @@ public class ApplicationParserUtil {
      */
     public static Status parseStatus(String status) throws ParseException {
         requireNonNull(status);
-        String trimmedStatus = status.trim();
+        String trimmedStatus = StringUtil.toTitleCase(status.trim());
 
         if (!Status.isValidStatus(trimmedStatus)) {
             throw new ParseException(Status.MESSAGE_CONSTRAINTS);
