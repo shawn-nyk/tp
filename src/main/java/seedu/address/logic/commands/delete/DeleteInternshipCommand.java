@@ -9,7 +9,7 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.util.InternshipUtil;
+import seedu.address.logic.parser.util.InternshipAccessor;
 import seedu.address.model.Model;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.internship.InternshipItem;
@@ -51,11 +51,11 @@ public class DeleteInternshipCommand extends DeleteCommandAbstract {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        InternshipItem internshipItem = InternshipUtil.getInternship(model, companyIndex, internshipIndex);
+        InternshipItem internshipItem = InternshipAccessor.getInternship(model, companyIndex, internshipIndex);
 
         // Delete applications for this deleted internship
         ApplicationItem applicationItemToDelete = new ApplicationItem(internshipItem);
-        model.getApplicationList().deepDeleteItem(applicationItemToDelete);
+        model.getApplicationList().deleteSameItem(applicationItemToDelete);
 
         // Auto switch to companies tab after successful deletion
         model.setTabName(TabName.COMPANY);

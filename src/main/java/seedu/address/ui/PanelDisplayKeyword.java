@@ -1,9 +1,9 @@
-package seedu.address.model.util;
+package seedu.address.ui;
 
 /**
- * Contains the mapping of strings to their value.
+ * Contains the panel display names.
  */
-public class StringMappingUtil {
+public class PanelDisplayKeyword {
 
     /** Internship display names */
     public static final String JOB_TITLE_DISPLAY_NAME = "Job title";

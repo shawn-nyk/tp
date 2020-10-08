@@ -11,7 +11,7 @@ import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.util.InternshipUtil;
+import seedu.address.logic.parser.util.InternshipAccessor;
 import seedu.address.model.FilterableItemList;
 import seedu.address.model.Model;
 import seedu.address.model.application.ApplicationItem;
@@ -64,7 +64,7 @@ public class AddApplicationCommand extends AddCommandAbstract {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        InternshipItem internshipItem = InternshipUtil.getInternship(model, companyIndex, internshipIndex);
+        InternshipItem internshipItem = InternshipAccessor.getInternship(model, companyIndex, internshipIndex);
         ApplicationItem applicationItem = new ApplicationItem(internshipItem, status, statusDate);
 
         FilterableItemList<ApplicationItem> applicationList = model.getApplicationList();

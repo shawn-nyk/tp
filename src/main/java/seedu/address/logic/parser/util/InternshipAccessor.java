@@ -13,10 +13,19 @@ import seedu.address.model.company.CompanyItem;
 import seedu.address.model.internship.InternshipItem;
 
 /**
- * Gets the internship from a company, checking the indexes validity while doing so.
+ * Encapsulates the method to get an internship from a company.
  */
-public class InternshipUtil {
+public class InternshipAccessor {
 
+    /**
+     * Gets the internship from a company, checking the indexes validity while doing so.
+     *
+     * @param model Model of application.
+     * @param companyIndex Company index referenced.
+     * @param internshipIndex Internship index referenced.
+     * @return InternshipItem corresponding to the 2 indexes.
+     * @throws CommandException If indexes are out of bounds.
+     */
     public static InternshipItem getInternship(Model model, Index companyIndex, Index internshipIndex)
             throws CommandException {
         List<CompanyItem> lastShownCompanyList = model.getCompanyList().getFilteredItemList();

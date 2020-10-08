@@ -54,8 +54,8 @@ public class ItemListManager<T extends Item> implements FilterableItemList<T> {
     }
 
     @Override
-    public void deepDeleteItem(T target) {
-        itemList.deepRemoveItem(target);
+    public void deleteSameItem(T target) {
+        itemList.removeSameItem(target);
     }
 
     @Override

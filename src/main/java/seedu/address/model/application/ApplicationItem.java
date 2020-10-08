@@ -3,8 +3,8 @@ package seedu.address.model.application;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
-import static seedu.address.model.util.StringMappingUtil.DATE_DISPLAY_NAME;
-import static seedu.address.model.util.StringMappingUtil.STATUS_DISPLAY_NAME;
+import static seedu.address.ui.PanelDisplayKeyword.DATE_DISPLAY_NAME;
+import static seedu.address.ui.PanelDisplayKeyword.STATUS_DISPLAY_NAME;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;

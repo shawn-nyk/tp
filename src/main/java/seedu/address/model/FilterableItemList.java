@@ -33,7 +33,7 @@ public interface FilterableItemList<T extends Item> {
      * Deletes the given Item according to the weaker notion of equality.
      * The Item may not necessarily exist in the item list.
      */
-    void deepDeleteItem(T target);
+    void deleteSameItem(T target);
 
     /**
      * Adds the given Item.
