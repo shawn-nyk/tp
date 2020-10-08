@@ -1,5 +1,6 @@
 package seedu.address.ui.cards;
 
+import static seedu.address.model.util.DateUtil.extractDayAndMonth;
 import static seedu.address.model.util.StatusUtil.ACCEPTED_KEYWORD;
 import static seedu.address.model.util.StatusUtil.APPLIED_KEYWORD;
 import static seedu.address.model.util.StatusUtil.INTERVIEW_KEYWORD;
@@ -38,7 +39,7 @@ public class ApplicationCard extends Card<ApplicationItem> {
         setInformation();
         setDate();
     }
-    
+
     @Override
     protected void setName() {
         Object jobTitle = mapping.get("Job title");
@@ -129,12 +130,10 @@ public class ApplicationCard extends Card<ApplicationItem> {
     private void setDate() {
         Image calendarIcon = new Image(this.getClass().getResourceAsStream(CALENDAR_IMAGE_LINK));
         calendar.setImage(calendarIcon);
+        
         Object dateInformation = mapping.get("Date");
-        date.setText(extractShortDate(dateInformation.toString().split(" ")));
-    }
-    
-    private String extractShortDate(String ... dateInformation) {
-        return dateInformation[0] + " " + dateInformation[1];
+        String[] dateInformationArray = dateInformation.toString().split(" ");
+        date.setText(extractDayAndMonth(dateInformationArray));
     }
 
 }
