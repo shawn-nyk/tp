@@ -3,6 +3,8 @@ package seedu.address.model.application;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
+import static seedu.address.model.util.StringMappingUtil.DATE_DISPLAY;
+import static seedu.address.model.util.StringMappingUtil.STATUS_DISPLAY;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
@@ -76,8 +78,8 @@ public class ApplicationItem extends Item {
      */
     public LinkedHashMap<String, Object> getMapping() {
         LinkedHashMap<String, Object> mapping = internshipItem.getMapping();
-        mapping.put("Status", status);
-        mapping.put("Date", statusDate);
+        mapping.put(STATUS_DISPLAY, status);
+        mapping.put(DATE_DISPLAY, statusDate);
         return mapping;
     }
 
