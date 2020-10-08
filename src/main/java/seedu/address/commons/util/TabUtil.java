@@ -7,6 +7,9 @@ import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.tabs.TabName;
 
+/**
+ * todo javadocs
+ */
 public class TabUtil {
 
     private static final String MESSAGE_INVALID_TAB = "Tab name should be either com, app or me";

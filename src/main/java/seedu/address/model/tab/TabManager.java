@@ -2,6 +2,9 @@ package seedu.address.model.tab;
 
 import seedu.address.ui.tabs.TabName;
 
+/**
+ * todo javadoc
+ */
 public class TabManager implements Tab {
 
     private TabName tabName;
