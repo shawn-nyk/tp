@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import seedu.address.model.person.Person;
+import seedu.address.model.tag.Tag;
 import seedu.address.ui.UiPart;
 import seedu.address.ui.textstyle.TitleDescription;
 
@@ -88,8 +89,8 @@ public abstract class Card extends UiPart<Region> {
      */
     protected void initializeTags() {
         person.getTags().stream()
-            .sorted(Comparator.comparing(tag -> tag.tagName))
-            .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+            .sorted(Comparator.comparing(Tag::getName))
+            .forEach(tag -> tags.getChildren().add(new Label(tag.getName())));
     }
 
 

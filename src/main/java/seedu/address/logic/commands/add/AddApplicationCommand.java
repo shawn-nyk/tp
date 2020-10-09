@@ -1,43 +1,40 @@
 package seedu.address.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_WRONG_TAB;
+import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ITEM;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
-import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
-import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
 
-import java.util.List;
-
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.util.InternshipAccessor;
 import seedu.address.model.FilterableItemList;
 import seedu.address.model.Model;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.application.Status;
 import seedu.address.model.application.StatusDate;
-import seedu.address.model.company.CompanyItem;
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.ui.tabs.TabName;
 
+/**
+ * Adds an application to the Application list.
+ */
 public class AddApplicationCommand extends AddCommandAbstract {
 
-    public static final String MESSAGE_DUPLICATE_APPLICATION = "This application already exists in Internhunter";
     public static final String MESSAGE_SUCCESS = "New application added: %s\n"
             + "Type in 'switch app' to see the newly added application!";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an application to Internhunter. "
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_INDEX + "INDEX "
-            + "[" + PREFIX_STATUS + "STATUS]"
+            + "[" + PREFIX_STATUS + "STATUS] "
             + "[" + PREFIX_STATUS_DATE + "STATUS_DATE]\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_INDEX + "2"
-            + PREFIX_STATUS + "waiting"
+            + PREFIX_INDEX + "2 "
+            + PREFIX_STATUS + "waiting "
             + PREFIX_STATUS_DATE + "23-12-20";
 
     private final Index companyIndex;
@@ -67,32 +64,18 @@ public class AddApplicationCommand extends AddCommandAbstract {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (!model.getTabName().equals(TabName.APPLICATION)) {
-            throw new CommandException(String.format(MESSAGE_WRONG_TAB, APPLICATION_NAME));
-        }
-
-        List<CompanyItem> lastShownCompanyList = model.getCompanyList().getFilteredItemList();
-
-        if (companyIndex.getZeroBased() >= lastShownCompanyList.size()) {
-            throw new CommandException(String.format(Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, COMPANY_NAME));
-        }
-
-        CompanyItem companyItem = lastShownCompanyList.get(companyIndex.getZeroBased());
-        List<InternshipItem> internshipItemList = companyItem.getInternships();
-
-        if (internshipIndex.getZeroBased() >= internshipItemList.size()) {
-            throw new CommandException(String.format(Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, INTERNSHIP_NAME));
-        }
-
-        InternshipItem internshipItem = internshipItemList.get(internshipIndex.getZeroBased());
+        InternshipItem internshipItem = InternshipAccessor.getInternship(model, companyIndex, internshipIndex);
         ApplicationItem applicationItem = new ApplicationItem(internshipItem, status, statusDate);
 
         FilterableItemList<ApplicationItem> applicationList = model.getApplicationList();
 
         if (applicationList.hasItem(applicationItem)) {
-            throw new CommandException(MESSAGE_DUPLICATE_APPLICATION);
+            throw new CommandException(String.format(MESSAGE_DUPLICATE_ITEM, APPLICATION_NAME));
         }
+
         applicationList.addItem(applicationItem);
+        model.setTabName(TabName.APPLICATION);
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, applicationItem));
     }
 
@@ -102,18 +85,18 @@ public class AddApplicationCommand extends AddCommandAbstract {
     }
 
     @Override
-    public boolean equals(Object otherCommand) {
+    public boolean equals(Object other) {
         // short circuit if same object
-        if (otherCommand == this) {
+        if (other == this) {
             return true;
         }
 
         // instanceof handles nulls
-        if (!(otherCommand instanceof AddApplicationCommand)) {
+        if (!(other instanceof AddApplicationCommand)) {
             return false;
         }
 
-        AddApplicationCommand otherAddApplicationCommand = (AddApplicationCommand) otherCommand;
+        AddApplicationCommand otherAddApplicationCommand = (AddApplicationCommand) other;
         return companyIndex.equals(otherAddApplicationCommand.companyIndex)
                 && internshipIndex.equals(otherAddApplicationCommand.internshipIndex)
                 && status.equals(otherAddApplicationCommand.status)

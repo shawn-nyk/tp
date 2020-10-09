@@ -54,6 +54,11 @@ public class ItemListManager<T extends Item> implements FilterableItemList<T> {
     }
 
     @Override
+    public void deleteSameItem(T target) {
+        itemList.removeSameItem(target);
+    }
+
+    @Override
     public void addItem(T item) {
         itemList.addItem(item);
         updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);

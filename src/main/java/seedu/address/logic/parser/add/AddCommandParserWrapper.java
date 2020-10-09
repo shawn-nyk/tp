@@ -1,6 +1,7 @@
 package seedu.address.logic.parser.add;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.ITEM_PREFIX_APPLICATION;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.ITEM_PREFIX_COMPANY;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.ITEM_PREFIX_INTERNSHIP;
@@ -47,8 +48,9 @@ public class AddCommandParserWrapper implements Parser<AddCommandAbstract> {
         case ITEM_PREFIX_USER_PROFILE:
             return null;
 
+        // Throw exception as item type is invalid
         default:
-            return new AddCommandParser().parse(itemPrefixes);
+            throw new ParseException(MESSAGE_INVALID_ITEM_TYPE);
         }
     }
 
@@ -58,7 +60,7 @@ public class AddCommandParserWrapper implements Parser<AddCommandAbstract> {
      * @param argumentTypes is a list of arguments delimited by the
      * first space in the user argument after stripping wrapping spaces.
      */
-    private void checkArgumentTypeSufficiency (String[] argumentTypes) throws ParseException {
+    private void checkArgumentTypeSufficiency(String[] argumentTypes) throws ParseException {
         if (argumentTypes.length < NUMBER_OF_ARGUMENTS_TYPES) {
             throw new ParseException(String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT, AddCommandAbstract.MESSAGE_USAGE));

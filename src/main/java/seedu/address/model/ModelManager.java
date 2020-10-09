@@ -15,6 +15,8 @@ import seedu.address.model.item.ItemList;
 import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
+import seedu.address.model.tab.Tab;
+import seedu.address.model.tab.TabManager;
 import seedu.address.ui.tabs.TabName;
 
 /**
