@@ -35,6 +35,13 @@ public class ProfileParserUtil {
         return new Title(trimmedTitle);
     }
 
+    /**
+     * Parses a {@code String category} into a {@code ProfileItemCategory}.
+     *
+     * @param category category in String form.
+     * @return ProfileItemCategory Object parsed from String.
+     * @throws ParseException if not a valid profileItemCategory
+     */
     public static ProfileItemCategory parseCategory(String category) throws ParseException {
         requireNonNull(category);
         String trimmedCategory = category.trim();

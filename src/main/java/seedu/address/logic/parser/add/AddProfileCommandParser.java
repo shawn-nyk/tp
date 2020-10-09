@@ -43,7 +43,8 @@ public class AddProfileCommandParser implements Parser<AddProfileCommand> {
 
         Title title = ProfileParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
         ProfileItemCategory category = ProfileParserUtil.parseCategory(argMultimap.getValue(PREFIX_CATEGORY).get());
-        Set<Descriptor> descriptorSet = ProfileParserUtil.parseDescriptors(argMultimap.getAllValues(PREFIX_DESCRIPTORS));
+        Set<Descriptor> descriptorSet = ProfileParserUtil
+                                            .parseDescriptors(argMultimap.getAllValues(PREFIX_DESCRIPTORS));
 
         ProfileItem profileItem = new ProfileItem(title, category, descriptorSet);
 
