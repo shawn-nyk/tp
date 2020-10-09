@@ -12,6 +12,7 @@ import java.util.Objects;
 
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.item.Item;
+import seedu.address.storage.application.JsonAdaptedApplicationItem;
 import seedu.address.storage.item.JsonAdaptedItem;
 
 /**
@@ -77,6 +78,7 @@ public class ApplicationItem extends Item {
      *
      * @return Mapping of field names to fields for the ApplicationItem object.
      */
+    @Override
     public LinkedHashMap<String, Object> getMapping() {
         LinkedHashMap<String, Object> mapping = internshipItem.getMapping();
         mapping.put(STATUS_DISPLAY_NAME, status);
@@ -146,7 +148,7 @@ public class ApplicationItem extends Item {
 
     @Override
     public JsonAdaptedItem getJsonAdaptedItem() {
-        return null;
+        return new JsonAdaptedApplicationItem(this);
     }
 
 }

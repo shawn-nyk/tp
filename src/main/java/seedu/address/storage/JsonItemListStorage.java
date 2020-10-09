@@ -29,7 +29,7 @@ public class JsonItemListStorage<T extends Item, U extends JsonAdaptedItem> impl
     private final Class<U> jsonClass;
 
     /**
-     * Initialized the json item list storage.
+     * Initializes the json item list storage.
      *
      * @param filePath     path of the storage.
      * @param contentClass item class saved in the storage.

@@ -11,6 +11,7 @@ import java.util.Set;
 
 import seedu.address.model.item.Item;
 import seedu.address.storage.item.JsonAdaptedItem;
+import seedu.address.storage.profile.JsonAdaptedProfileItem;
 
 /**
  * Represents a Profile Item in the UserProfile.
@@ -140,7 +141,7 @@ public class ProfileItem extends Item {
 
     @Override
     public JsonAdaptedItem getJsonAdaptedItem() {
-        return null;
+        return new JsonAdaptedProfileItem(this);
     }
 }
 
