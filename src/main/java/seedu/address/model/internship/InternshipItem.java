@@ -2,6 +2,11 @@ package seedu.address.model.internship;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
+import static seedu.address.ui.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
+import static seedu.address.ui.PanelDisplayKeyword.JOB_TITLE_DISPLAY_NAME;
+import static seedu.address.ui.PanelDisplayKeyword.PERIOD_DISPLAY_NAME;
+import static seedu.address.ui.PanelDisplayKeyword.REQUIREMENTS_DISPLAY_NAME;
+import static seedu.address.ui.PanelDisplayKeyword.WAGE_DISPLAY_NAME;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -81,11 +86,11 @@ public class InternshipItem extends Item {
      */
     public LinkedHashMap<String, Object> getMapping() {
         LinkedHashMap<String, Object> mapping = new LinkedHashMap<>();
-        mapping.put("Header", companyName);
-        mapping.put("Job title", jobTitle);
-        mapping.put("Period", period);
-        mapping.put("Wage", wage);
-        mapping.put("Requirements", requirements);
+        mapping.put(JOB_TITLE_DISPLAY_NAME, jobTitle);
+        mapping.put(COMPANY_DISPLAY_NAME, companyName);
+        mapping.put(PERIOD_DISPLAY_NAME, period);
+        mapping.put(WAGE_DISPLAY_NAME, wage);
+        mapping.put(REQUIREMENTS_DISPLAY_NAME, requirements);
         return mapping;
     }
 

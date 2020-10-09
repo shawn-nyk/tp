@@ -30,6 +30,12 @@ public interface FilterableItemList<T extends Item> {
     void deleteItem(T target);
 
     /**
+     * Deletes the given Item according to the weaker notion of equality.
+     * The Item may not necessarily exist in the item list.
+     */
+    void deleteSameItem(T target);
+
+    /**
      * Adds the given Item.
      * {@code Item} must not already exist in the item list.
      */
