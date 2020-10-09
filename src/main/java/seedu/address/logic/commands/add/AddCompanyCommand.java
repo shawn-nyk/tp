@@ -2,6 +2,7 @@ package seedu.address.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ITEM;
+import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_EMAIL;
@@ -58,11 +59,7 @@ public class AddCompanyCommand extends AddCommandAbstract {
 
         model.getCompanyList().addItem(toAdd);
 
-        if (model.getTabName() != TabName.COMPANY) {
-            model.setTabName(TabName.COMPANY);
-        }
-
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), false, false, true);
+        return getCommandResult(model, String.format(MESSAGE_SUCCESS, toAdd), TabName.COMPANY);
     }
 
     @Override
