@@ -8,13 +8,12 @@ import static seedu.address.logic.parser.util.Util.arePrefixesPresent;
 
 import java.util.Set;
 
-import seedu.address.logic.commands.add.AddCommand;
 import seedu.address.logic.commands.add.AddProfileCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.exceptions.ProfileParserUtil;
+import seedu.address.logic.parser.util.ProfileParserUtil;
 import seedu.address.model.profile.Descriptor;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.model.profile.ProfileItemCategory;
@@ -38,7 +37,7 @@ public class AddProfileCommandParser implements Parser<AddProfileCommand> {
 
         if (!arePrefixesPresent(argMultimap, PREFIX_TITLE, PREFIX_CATEGORY)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddProfileCommand.MESSAGE_USAGE));
         }
 
         Title title = ProfileParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());

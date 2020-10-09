@@ -1,4 +1,4 @@
-package seedu.address.logic.parser.exceptions;
+package seedu.address.logic.parser.util;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.util.ProfileItemCategoryUtil.ACHIEVEMENT_KEYWORD;
@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.profile.Descriptor;
 import seedu.address.model.profile.ProfileItemCategory;
 import seedu.address.model.profile.Title;
