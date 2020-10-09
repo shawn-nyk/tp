@@ -1,10 +1,10 @@
 package seedu.address.logic.parser.add;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.add.AddUtil.arePrefixesPresent;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEGORY;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTORS;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_TITLE;
+import static seedu.address.logic.parser.util.Util.arePrefixesPresent;
 
 import java.util.Set;
 

@@ -6,14 +6,14 @@ import javafx.stage.Stage;
 import seedu.address.ui.tabs.TabName;
 
 /**
- * A display containing information about the chosen internship.
+ * A display containing information about the chosen application.
  */
-public class InternshipDisplay extends InformationDisplay {
+public class ApplicationDisplay extends InformationDisplay {
 
     /**
-     * Constructs a {@code InternshipDisplay} in the given {@code primaryStage}.
+     * Constructs a {@code ApplicationDisplay} in the given {@code primaryStage}.
      */
-    private InternshipDisplay(Stage primaryStage) {
+    private ApplicationDisplay(Stage primaryStage) {
         super(primaryStage);
         setInformationTitle("Software Engineering");
         // todo change when internship class is ready.
@@ -24,16 +24,16 @@ public class InternshipDisplay extends InformationDisplay {
             "Accepted", "25 March 2020"
         };
         for (int i = 0; i < titleArr.length; i++) {
-            TitleDescriptionDisplay internshipInformation = addTitleDescriptionDisplay(titleArr[i], descriptionArr[i],
-                TabName.INTERNSHIP);
-            addInformation(internshipInformation);
+            TitleDescriptionDisplay applicationInformation = addTitleDescriptionDisplay(titleArr[i], descriptionArr[i],
+                TabName.APPLICATION);
+            addInformation(applicationInformation);
         }
     }
 
     /**
-     * Creates the {@code InternshipDisplay} information in the {@code primaryStage}.
+     * Creates the {@code ApplicationDisplay} information in the {@code primaryStage}.
      */
-    public static InternshipDisplay getInternshipDisplay(Stage primaryStage) {
-        return new InternshipDisplay(primaryStage);
+    public static ApplicationDisplay getApplicationDisplay(Stage primaryStage) {
+        return new ApplicationDisplay(primaryStage);
     }
 }

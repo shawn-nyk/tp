@@ -1,14 +1,17 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.delete;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.delete.DeleteCommand;
+import seedu.address.logic.commands.delete.DeleteApplicationCommand;
 import seedu.address.logic.commands.delete.DeleteCommandAbstract;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -16,49 +19,46 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class DeleteCommandParser implements Parser<DeleteCommandAbstract> {
 
-    private static final int ITEM_TYPE_POS = 0;
-    private static final int ITEM_INDEX_POS = 1;
+    private static final int ITEM_TYPE_INDEX = 0;
+    private static final int ITEM_PREFIX_INDEX = 1;
     private static final int NUMBER_OF_ARGUMENTS_TYPES = 2;
 
     /**
      * todo:Parses the given {@code String} of arguments in the context of the DeleteCommand
      * and returns a DeleteCommand object for execution.
+     *
      * @throws ParseException if the user input does not conform the expected format
      */
     public DeleteCommandAbstract parse(String args) throws ParseException {
 
         String[] argumentTypes = args.strip().split(" ", NUMBER_OF_ARGUMENTS_TYPES);
-        String itemType = argumentTypes[ITEM_TYPE_POS];
-        // Comment these 2 lines to use original addressbook format
+        String itemType = argumentTypes[ITEM_TYPE_INDEX];
+
         checkArgumentTypeSufficiency(argumentTypes);
-        String itemIndex = argumentTypes[ITEM_INDEX_POS];
-        try {
-            // change itemIndex to args to use addressbook
-            Index index = ParserUtil.parseIndex(itemIndex);
-            switch (itemType) {
-            case COMPANY_ALIAS:
-                //todo: return own delete command
-                return new DeleteCommand(index);
+        String itemPrefixes = argumentTypes[ITEM_PREFIX_INDEX];
 
-            case INTERNSHIP_ALIAS:
-                //todo: return own delete command
-                return new DeleteCommand(index);
+        // Internship has a different parse requirement
+        if (itemType.equals(INTERNSHIP_ALIAS)) {
+            return new DeleteInternshipCommandParser().parse(itemPrefixes);
+        }
 
-            case APPLICATION_ALIAS:
-                //todo: return own delete command
-                return new DeleteCommand(index);
+        Index index = ParserUtil.parseIndex(itemPrefixes);
 
-            case PROFILE_ALIAS:
-                //todo: return own delete command
-                return new DeleteCommand(index);
+        switch (itemType) {
+        case COMPANY_ALIAS:
+            //todo: return own delete command
+            return null;
 
-            default:
-                //todo: throw new parse exception for unrecognizable item
-                return new DeleteCommand(index);
-            }
-        } catch (ParseException pe) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommandAbstract.MESSAGE_USAGE), pe);
+        case APPLICATION_ALIAS:
+            return new DeleteApplicationCommand(index);
+
+        case PROFILE_ALIAS:
+            //todo: return own delete command
+            return null;
+
+        default:
+            // Invalid item type
+            throw new ParseException(MESSAGE_INVALID_ITEM_TYPE);
         }
     }
 
