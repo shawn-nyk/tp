@@ -6,6 +6,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
+import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 
 import seedu.address.commons.core.index.Index;
@@ -25,10 +26,9 @@ import seedu.address.ui.tabs.TabName;
  */
 public class AddApplicationCommand extends AddCommandAbstract {
 
-    public static final String MESSAGE_SUCCESS = "New application added: %s\n"
-            + "Type in 'switch app' to see the newly added application!";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an application to Internhunter. "
-            + "Parameters: INDEX (must be a positive integer) "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " " + APPLICATION_ALIAS + ": Adds an application to "
+            + "InternHunter.\nParameters: "
+            + "INDEX "
             + PREFIX_INDEX + "INDEX "
             + "[" + PREFIX_STATUS + "STATUS] "
             + "[" + PREFIX_STATUS_DATE + "STATUS_DATE]\n"
@@ -36,6 +36,9 @@ public class AddApplicationCommand extends AddCommandAbstract {
             + PREFIX_INDEX + "2 "
             + PREFIX_STATUS + "waiting "
             + PREFIX_STATUS_DATE + "23-12-20";
+
+    public static final String MESSAGE_SUCCESS = "New application added: %s\n"
+            + "Type in 'switch app' to see the newly added application!";
 
     private final Index companyIndex;
     private final Index internshipIndex;
