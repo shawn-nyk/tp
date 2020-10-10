@@ -1,7 +1,6 @@
 package seedu.address.ui.display;
 
 import java.util.LinkedHashMap;
-import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
 

@@ -87,7 +87,7 @@ public class MainWindow extends UiPart<Stage> {
         this.logic = logic;
         // Configure the UI
         initializeUi(primaryStage, logic);
-        
+
         // linking to model
         companyItems = logic.getFilteredCompanyItemList();
         applicationItems = logic.getFilteredApplicationItemList();
@@ -148,7 +148,7 @@ public class MainWindow extends UiPart<Stage> {
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.setContent(resultDisplay.getRoot());
-        
+
         if (companyItems.size() > 0) {
             informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
             display.getChildren().add((Node) informationDisplay.getRoot());
