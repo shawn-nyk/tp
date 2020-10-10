@@ -59,7 +59,8 @@ public class AddCompanyCommand extends AddCommandAbstract {
 
         model.getCompanyList().addItem(toAdd);
 
-        return getCommandResult(model, String.format(MESSAGE_SUCCESS, toAdd), TabName.COMPANY);
+        String message = String.format(MESSAGE_SUCCESS, toAdd);
+        return getCommandResult(model, message, TabName.COMPANY);
     }
 
     @Override

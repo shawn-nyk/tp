@@ -20,8 +20,6 @@ import seedu.address.ui.tabs.TabName;
  */
 public class AddProfileCommand extends AddCommandAbstract {
 
-    public static final String COMMAND_WORD = "add";
-
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + PROFILE_ALIAS
             + ": Adds a profile item to "
             + "InternHunter.\nParameters: "
@@ -35,7 +33,7 @@ public class AddProfileCommand extends AddCommandAbstract {
             + PREFIX_DESCRIPTORS + "Learn how to use div and classes. "
             + PREFIX_DESCRIPTORS + "Learn how to inject javascript. ";
 
-    public static final String MESSAGE_SUCCESS = "New profileItem added: %1$s";
+    public static final String MESSAGE_SUCCESS = "New profile item added: %1$s";
 
     private final ProfileItem toAdd;
 
@@ -57,7 +55,8 @@ public class AddProfileCommand extends AddCommandAbstract {
 
         model.getProfileList().addItem(toAdd);
 
-        return getCommandResult(model, String.format(MESSAGE_SUCCESS, toAdd), TabName.PROFILE);
+        String message = String.format(MESSAGE_SUCCESS, toAdd);
+        return getCommandResult(model, message, TabName.PROFILE);
     }
 
     @Override

@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ITEM;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
-import static seedu.address.logic.commands.util.CommandUtil.getInternshipFromCompany;
+import static seedu.address.logic.commands.util.CommandUtil.getCompany;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
@@ -19,6 +19,7 @@ import seedu.address.model.Model;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.application.Status;
 import seedu.address.model.application.StatusDate;
+import seedu.address.model.company.CompanyItem;
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.ui.tabs.TabName;
 
@@ -33,7 +34,7 @@ public class AddApplicationCommand extends AddCommandAbstract {
             + PREFIX_INDEX + "INDEX "
             + "[" + PREFIX_STATUS + "STATUS] "
             + "[" + PREFIX_STATUS_DATE + "STATUS_DATE]\n"
-            + "Example: " + COMMAND_WORD + " 1 "
+            + "Example: " + COMMAND_WORD + " " + APPLICATION_ALIAS + " 1 "
             + PREFIX_INDEX + "2 "
             + PREFIX_STATUS + "waiting "
             + PREFIX_STATUS_DATE + "23-12-20";
@@ -67,7 +68,8 @@ public class AddApplicationCommand extends AddCommandAbstract {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        InternshipItem internshipItem = getInternshipFromCompany(model, companyIndex, internshipIndex);
+        CompanyItem companyItem = getCompany(model, companyIndex);
+        InternshipItem internshipItem = companyItem.getInternship(internshipIndex);
         ApplicationItem applicationItem = new ApplicationItem(internshipItem, status, statusDate);
 
         FilterableItemList<ApplicationItem> applicationList = model.getApplicationList();
@@ -77,8 +79,9 @@ public class AddApplicationCommand extends AddCommandAbstract {
         }
 
         applicationList.addItem(applicationItem);
-        return getCommandResult(model, String.format(MESSAGE_SUCCESS, applicationItem),
-                TabName.APPLICATION);
+
+        String message = String.format(MESSAGE_SUCCESS, applicationItem);
+        return getCommandResult(model, message, TabName.APPLICATION);
     }
 
     @Override

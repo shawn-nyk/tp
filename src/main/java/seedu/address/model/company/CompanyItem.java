@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.internship.InternshipItem;
@@ -32,7 +34,7 @@ public class CompanyItem extends Item {
     // Data fields
     private final Address address;
     private final Set<Industry> industries = new HashSet<>();
-    private final List<InternshipItem> internships = new ArrayList<>();
+    private final ObservableList<InternshipItem> internships = FXCollections.observableList(new ArrayList<>());
 
     /**
      * Every field must be present and not null.
@@ -88,6 +90,19 @@ public class CompanyItem extends Item {
     /** todo javadocs (shawn) */
     public void addInternship(InternshipItem internship) {
         internships.add(internship);
+    }
+
+    /** todo javadocs (shawn) */
+    public void removeInternship(Index internshipIndex) throws CommandException {
+        if (internshipIndex.getZeroBased() >= internships.size()) {
+            throw new CommandException(String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, INTERNSHIP_NAME));
+        }
+        internships.remove(internshipIndex.getZeroBased());
+    }
+
+    /** todo javadocs (shawn) */
+    public int getNumberOfInternships() {
+        return internships.size();
     }
 
     /**
