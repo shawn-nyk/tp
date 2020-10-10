@@ -10,6 +10,8 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.model.item.Item;
+import seedu.address.storage.item.JsonAdaptedItem;
+import seedu.address.storage.profile.JsonAdaptedProfileItem;
 
 /**
  * Represents a Profile Item in the UserProfile.
@@ -18,8 +20,8 @@ import seedu.address.model.item.Item;
 public class ProfileItem extends Item {
 
     // Identity fields
-    private final String title;
-    private final ProfileItemType type;
+    private final Title title;
+    private final ProfileItemCategory type;
 
     // Data fields
     private final Set<Descriptor> descriptors = new HashSet<>();
@@ -27,7 +29,7 @@ public class ProfileItem extends Item {
     /**
      * Every field must be present and not null.
      */
-    public ProfileItem(String title, ProfileItemType type, Set<Descriptor> descriptors) {
+    public ProfileItem(Title title, ProfileItemCategory type, Set<Descriptor> descriptors) {
         requireAllNonNull(type, title, descriptors);
         this.type = type;
         this.title = title;
@@ -35,13 +37,14 @@ public class ProfileItem extends Item {
     }
 
 
-    public String getTitle() {
+    public Title getTitle() {
         return title;
     }
 
-    public ProfileItemType getType() {
+    public ProfileItemCategory getType() {
         return type;
     }
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -134,6 +137,11 @@ public class ProfileItem extends Item {
         mapping.put("Type", type);
         mapping.put("Descriptors", descriptors);
         return mapping;
+    }
+
+    @Override
+    public JsonAdaptedItem getJsonAdaptedItem() {
+        return new JsonAdaptedProfileItem(this);
     }
 }
 

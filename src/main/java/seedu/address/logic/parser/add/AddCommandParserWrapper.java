@@ -2,10 +2,10 @@ package seedu.address.logic.parser.add;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.ITEM_PREFIX_APPLICATION;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.ITEM_PREFIX_COMPANY;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.ITEM_PREFIX_INTERNSHIP;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.ITEM_PREFIX_USER_PROFILE;
+import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
+import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
+import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
+import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
 import seedu.address.logic.commands.add.AddCommandAbstract;
 import seedu.address.logic.commands.add.AddInternshipCommand;
@@ -35,16 +35,15 @@ public class AddCommandParserWrapper implements Parser<AddCommandAbstract> {
         checkItemTypePresent(itemType);
         String commandDetails = getCommandDetails(argumentTypes);
         switch (itemType) {
-        case ITEM_PREFIX_COMPANY:
+        case COMPANY_ALIAS:
             return new AddCompanyCommandParser().parse(commandDetails);
-        case ITEM_PREFIX_INTERNSHIP:
-            // todo: create parser object and return command from within
+        case INTERNSHIP_ALIAS:
             return new AddInternshipCommand("Not an internship added");
-        case ITEM_PREFIX_APPLICATION:
+        case APPLICATION_ALIAS:
             return new AddApplicationCommandParser().parse(commandDetails);
-        case ITEM_PREFIX_USER_PROFILE:
-            return null;
-        // Throw exception as item type is invalid
+        case PROFILE_ALIAS:
+            return new AddProfileCommandParser().parse(commandDetails);
+
         default:
             throw new ParseException(MESSAGE_INVALID_ITEM_TYPE);
         }
