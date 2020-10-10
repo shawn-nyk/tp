@@ -1,5 +1,6 @@
 package seedu.address.model.company;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 
@@ -11,12 +12,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.item.Item;
 import seedu.address.storage.company.JsonAdaptedCompanyItem;
 
 /**
- * Represents a Person in the address book. TODO: Javadocs (Shawn)
+ * Represents a Person in the address book. todo javadocs (shawn)
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class CompanyItem extends Item {
@@ -34,15 +37,13 @@ public class CompanyItem extends Item {
     /**
      * Every field must be present and not null.
      */
-    public CompanyItem(CompanyName companyName, Phone phone, Email email, Address address, Set<Industry> industries,
-            List<InternshipItem> internships) {
-        requireAllNonNull(companyName, phone, email, address, industries, internships);
+    public CompanyItem(CompanyName companyName, Phone phone, Email email, Address address, Set<Industry> industries) {
+        requireAllNonNull(companyName, phone, email, address, industries);
         this.companyName = companyName;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.industries.addAll(industries);
-        this.internships.addAll(internships);
     }
 
     public CompanyName getCompanyName() {
@@ -70,10 +71,23 @@ public class CompanyItem extends Item {
     }
 
     /**
-     * TODO: Javadocs (Shawn)
+     * NOTE: May end up deleting this to prevent direct access to internship list. todo javadocs (shawn)
      */
     public List<InternshipItem> getInternships() {
         return Collections.unmodifiableList(internships);
+    }
+
+    /** todo javadocs (shawn) */
+    public InternshipItem getInternship(Index internshipIndex) throws CommandException {
+        if (internshipIndex.getZeroBased() >= internships.size()) {
+            throw new CommandException(String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, INTERNSHIP_NAME));
+        }
+        return internships.get(internshipIndex.getZeroBased());
+    }
+
+    /** todo javadocs (shawn) */
+    public void addInternship(InternshipItem internship) {
+        internships.add(internship);
     }
 
     /**
@@ -135,12 +149,15 @@ public class CompanyItem extends Item {
                 .append(" Email: ")
                 .append(getEmail())
                 .append(" Address: ")
-                .append(getAddress())
-                .append(" Industries: ");
-        getIndustries().forEach(builder::append);
-        builder.append(getInternships())
-                .append(" Internships: ");
-        getInternships().forEach(builder::append);
+                .append(getAddress());
+        if (!industries.isEmpty()) {
+            builder.append(" Industries: ");
+            getIndustries().forEach(industry -> builder.append(industry + " "));
+        }
+        if (!internships.isEmpty()) {
+            builder.append("Internships: ");
+            getInternships().forEach(builder::append);
+        }
         return builder.toString();
     }
 

@@ -98,5 +98,4 @@ public class AddApplicationCommandParser implements Parser<AddApplicationCommand
                     MESSAGE_INVALID_COMMAND_FORMAT, AddApplicationCommand.MESSAGE_USAGE));
         }
     }
-
 }

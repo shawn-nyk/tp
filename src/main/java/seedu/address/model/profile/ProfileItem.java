@@ -21,7 +21,7 @@ public class ProfileItem extends Item {
 
     // Identity fields
     private final Title title;
-    private final ProfileItemType type;
+    private final ProfileItemCategory type;
 
     // Data fields
     private final Set<Descriptor> descriptors = new HashSet<>();
@@ -29,7 +29,7 @@ public class ProfileItem extends Item {
     /**
      * Every field must be present and not null.
      */
-    public ProfileItem(Title title, ProfileItemType type, Set<Descriptor> descriptors) {
+    public ProfileItem(Title title, ProfileItemCategory type, Set<Descriptor> descriptors) {
         requireAllNonNull(type, title, descriptors);
         this.type = type;
         this.title = title;
@@ -41,7 +41,7 @@ public class ProfileItem extends Item {
         return title;
     }
 
-    public ProfileItemType getType() {
+    public ProfileItemCategory getType() {
         return type;
     }
 

@@ -3,20 +3,21 @@ package seedu.address.model.profile;
 import seedu.address.model.wrapper.AlphaNumericWord;
 
 /**
- * Represents a title fields in a Profile.
+ * Represents a title of a field in a {@code ProfileItem}
  * Guarantees: immutable; is valid as declared in {@link #isValidAlphaNumericWord(String)}
  */
 public class Title extends AlphaNumericWord {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Titles should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Profile Item Titles should only contain alphanumeric characters and spaces, and it should not be blank";
 
     /**
-     * Constructs a {@code Title}.
+     * Constructs a {@code Title} for the {@code ProfileItem}
      *
-     * @param title A valid title.
+     * @param title A valid title for the profile item.
      */
     public Title(String title) {
         super(title, MESSAGE_CONSTRAINTS);
     }
+
 }
