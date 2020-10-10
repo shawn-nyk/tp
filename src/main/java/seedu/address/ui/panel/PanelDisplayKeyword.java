@@ -22,6 +22,7 @@ public class PanelDisplayKeyword {
     public static final String ADDRESS_DISPLAY_NAME = "Address";
     public static final String INDUSTRIES_DISPLAY_NAME = "Industries";
     public static final String INTERNSHIPS_DISPLAY_NAME = "Internships";
+
     /** Profile display names */
     public static final String TITLE_DISPLAY_NAME = "Title";
     public static final String TYPE_DISPLAY_NAME = "Type";
