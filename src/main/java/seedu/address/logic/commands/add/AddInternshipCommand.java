@@ -1,10 +1,10 @@
 package seedu.address.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.clisyntax.internship.InternshipCliSyntax.PREFIX_JOB_TITLE;
-import static seedu.address.logic.parser.clisyntax.internship.InternshipCliSyntax.PREFIX_PERIOD;
-import static seedu.address.logic.parser.clisyntax.internship.InternshipCliSyntax.PREFIX_REQUIREMENT;
-import static seedu.address.logic.parser.clisyntax.internship.InternshipCliSyntax.PREFIX_WAGE;
+import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_JOB_TITLE;
+import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_PERIOD;
+import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_REQUIREMENT;
+import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_WAGE;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
 
 import seedu.address.logic.commands.CommandResult;
