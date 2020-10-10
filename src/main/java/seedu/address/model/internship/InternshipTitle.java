@@ -2,7 +2,7 @@ package seedu.address.model.internship;
 
 import seedu.address.model.wrapper.AlphaNumericWord;
 
-public class JobTitle extends AlphaNumericWord {
+public class InternshipTitle extends AlphaNumericWord {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Job titles should only contain alphanumeric characters and spaces, and it should not be blank";
@@ -12,7 +12,7 @@ public class JobTitle extends AlphaNumericWord {
      *
      * @param jobTitle A valid job title.
      */
-    public JobTitle(String jobTitle) {
+    public InternshipTitle(String jobTitle) {
         super(jobTitle, MESSAGE_CONSTRAINTS);
     }
 

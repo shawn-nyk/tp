@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_RE
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_WAGE;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -26,14 +27,16 @@ public class AddInternshipCommand extends AddCommandAbstract {
             + PREFIX_REQUIREMENT + "React"
             + PREFIX_REQUIREMENT + "Vue";
 
-    public static final String MESSAGE_DUPLICATE_INTERNSHIP = "This internship already exists in Internhunter";
     private final String toAdd;
+    private final Index companyIndex;
+
 
     /**
      * Creates an AddCommand to add the specified {@code Internship}.
      */
-    public AddInternshipCommand(String internshipItem) {
+    public AddInternshipCommand(Index companyIndex, String internshipItem) {
         requireNonNull(internshipItem);
+        this.companyIndex = companyIndex;
         toAdd = internshipItem;
     }
 

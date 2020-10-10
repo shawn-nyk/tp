@@ -13,7 +13,7 @@ import java.util.Set;
 import seedu.address.logic.commands.add.AddCompanyCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
-import seedu.address.logic.parser.CompanyParserUtil;
+import seedu.address.logic.parser.util.CompanyParserUtil;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.company.Address;

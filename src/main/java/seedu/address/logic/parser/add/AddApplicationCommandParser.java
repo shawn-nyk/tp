@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.add.AddApplicationCommand;
-import seedu.address.logic.parser.ApplicationParserUtil;
+import seedu.address.logic.parser.util.ApplicationParserUtil;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
