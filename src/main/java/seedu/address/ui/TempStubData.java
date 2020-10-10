@@ -24,7 +24,8 @@ import seedu.address.model.internship.Requirement;
 import seedu.address.model.internship.Wage;
 import seedu.address.model.profile.Descriptor;
 import seedu.address.model.profile.ProfileItem;
-import seedu.address.model.profile.ProfileItemType;
+import seedu.address.model.profile.ProfileItemCategory;
+import seedu.address.model.profile.Title;
 
 public class TempStubData {
 
@@ -42,7 +43,7 @@ public class TempStubData {
         filteredApplicationItemList = FXCollections.observableArrayList();
         filteredCompanyItemList = FXCollections.observableArrayList();
         filteredProfileItemList = FXCollections.observableArrayList();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             Status status = getRandomStatus();
             StatusDate statusDate = getRandomStatusDate();
             InternshipItem internshipItem = getRandomInternshipItem();
@@ -52,14 +53,14 @@ public class TempStubData {
     }
 
     void initializeCompanyItem() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             CompanyItem companyItem = makeCompanyItem();
             filteredCompanyItemList.add(companyItem);
         }
     }
 
     void initializeProfileItem() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             ProfileItem profileItem = makeProfileItem();
             filteredProfileItemList.add(profileItem);
         }
@@ -68,16 +69,16 @@ public class TempStubData {
     public ProfileItem makeProfileItem() {
         int num = (int) (Math.random() * (5));
         ProfileItem profileItem;
-        String title;
-        ProfileItemType profileItemType;
+        Title title;
+        ProfileItemCategory profileItemType;
         Set<Descriptor> d;
         ArrayList<Descriptor> ard;
         Descriptor d1;
         Descriptor d2;
         switch (num) {
         case (0):
-            profileItemType = ProfileItemType.EXPERIENCE;
-            title = "Hello world";
+            profileItemType = ProfileItemCategory.EXPERIENCE;
+            title = new Title("Hello world");
             d1 = new Descriptor("HTML");
             d2 = new Descriptor("CSS");
             ard = new ArrayList<>(List.of(d1, d2));
@@ -85,8 +86,8 @@ public class TempStubData {
             profileItem = new ProfileItem(title, profileItemType, d);
             break;
         case (1):
-            profileItemType = ProfileItemType.ACHIEVEMENT;
-            title = "Bye world";
+            profileItemType = ProfileItemCategory.ACHIEVEMENT;
+            title = new Title("Bye world");
             d1 = new Descriptor("React");
             d2 = new Descriptor("ReactNative");
             ard = new ArrayList<>(List.of(d1, d2));
@@ -94,8 +95,8 @@ public class TempStubData {
             profileItem = new ProfileItem(title, profileItemType, d);
             break;
         case (2):
-            profileItemType = ProfileItemType.SKILL;
-            title = "good morning";
+            profileItemType = ProfileItemCategory.SKILL;
+            title = new Title("good morning");
             d1 = new Descriptor("ahahahah");
             d2 = new Descriptor("hahahah");
             ard = new ArrayList<>(List.of(d1, d2));
@@ -103,8 +104,8 @@ public class TempStubData {
             profileItem = new ProfileItem(title, profileItemType, d);
             break;
         case (3):
-            profileItemType = ProfileItemType.EXPERIENCE;
-            title = "good night";
+            profileItemType = ProfileItemCategory.EXPERIENCE;
+            title = new Title("good night");
             d1 = new Descriptor("bebe");
             d2 = new Descriptor("aeae");
             ard = new ArrayList<>(List.of(d1, d2));
@@ -112,8 +113,8 @@ public class TempStubData {
             profileItem = new ProfileItem(title, profileItemType, d);
             break;
         case (4):
-            profileItemType = ProfileItemType.ACHIEVEMENT;
-            title = "zzzz world";
+            profileItemType = ProfileItemCategory.ACHIEVEMENT;
+            title = new Title("zzzz world");
             d1 = new Descriptor("zz");
             d2 = new Descriptor("zzzz");
             ard = new ArrayList<>(List.of(d1, d2));
@@ -121,8 +122,8 @@ public class TempStubData {
             profileItem = new ProfileItem(title, profileItemType, d);
             break;
         case (5):
-            profileItemType = ProfileItemType.SKILL;
-            title = "aaa";
+            profileItemType = ProfileItemCategory.SKILL;
+            title = new Title("aaa");
             d1 = new Descriptor("aaaaaaa");
             d2 = new Descriptor("Caaaa");
             ard = new ArrayList<>(List.of(d1, d2));
@@ -146,10 +147,6 @@ public class TempStubData {
         ArrayList<Industry> i;
         Industry i1;
         Industry i2;
-        List<InternshipItem> internshipItem = new ArrayList<>();
-        for (int j = 0; j < 4; j++) {
-            internshipItem.add(getRandomInternshipItem());
-        }
         switch (num) {
         case (0):
             c = new CompanyName("Google");
@@ -160,7 +157,7 @@ public class TempStubData {
             i2 = new Industry("Hardware");
             i = new ArrayList<>(List.of(i1, i2));
             industry = new HashSet<>(i);
-            companyItem = new CompanyItem(c, p, e, a, industry, internshipItem);
+            companyItem = new CompanyItem(c, p, e, a, industry);
             break;
         case (1):
             c = new CompanyName("Facebook");
@@ -168,57 +165,61 @@ public class TempStubData {
             e = new Email("www.abc123123@gmail.com");
             a = new Address("tampines 321");
             i1 = new Industry("Software");
-            i2 = new Industry("Hardware");
+            i2 = new Industry("Industry2");
             i = new ArrayList<>(List.of(i1, i2));
             industry = new HashSet<>(i);
-            companyItem = new CompanyItem(c, p, e, a, industry, internshipItem);
+            companyItem = new CompanyItem(c, p, e, a, industry);
             break;
         case (2):
             c = new CompanyName("Shopee");
             p = new Phone("321321321");
             e = new Email("www.321321231@gmail.com");
             a = new Address("tampines 321123");
-            i1 = new Industry("Software");
-            i2 = new Industry("Hardware");
+            i1 = new Industry("Industry3");
+            i2 = new Industry("Industry4");
             i = new ArrayList<>(List.of(i1, i2));
             industry = new HashSet<>(i);
-            companyItem = new CompanyItem(c, p, e, a, industry, internshipItem);
+            companyItem = new CompanyItem(c, p, e, a, industry);
             break;
         case (3):
             c = new CompanyName("Amazon");
             p = new Phone("1111222333");
             e = new Email("www.abc11122233333@gmail.com");
             a = new Address("bedok 123");
-            i1 = new Industry("Software");
-            i2 = new Industry("Hardware");
+            i1 = new Industry("Industry5");
+            i2 = new Industry("Industry6");
             i = new ArrayList<>(List.of(i1, i2));
             industry = new HashSet<>(i);
-            companyItem = new CompanyItem(c, p, e, a, industry, internshipItem);
+            companyItem = new CompanyItem(c, p, e, a, industry);
             break;
         case (4):
             c = new CompanyName("Netflix");
             p = new Phone("5361712314");
             e = new Email("www.abc@gmail.com");
             a = new Address("bedok 321");
-            i1 = new Industry("Software");
-            i2 = new Industry("Hardware");
+            i1 = new Industry("Industry7");
+            i2 = new Industry("Industry8");
             i = new ArrayList<>(List.of(i1, i2));
             industry = new HashSet<>(i);
-            companyItem = new CompanyItem(c, p, e, a, industry, internshipItem);
+            companyItem = new CompanyItem(c, p, e, a, industry);
             break;
         case (5):
             c = new CompanyName("Apple");
             p = new Phone("9999999191");
             e = new Email("www.abc1111122233334444@gmail.com");
             a = new Address("nus 123");
-            i1 = new Industry("Software");
-            i2 = new Industry("Hardware");
+            i1 = new Industry("Industry9");
+            i2 = new Industry("Industry10");
             i = new ArrayList<>(List.of(i1, i2));
             industry = new HashSet<>(i);
-            companyItem = new CompanyItem(c, p, e, a, industry, internshipItem);
+            companyItem = new CompanyItem(c, p, e, a, industry);
             break;
         default:
             companyItem = null;
+        }
+        for (int j = 0; j < 4; j++) {
+            assert companyItem != null;
+            companyItem.addInternship(getRandomInternshipItem());
         }
         return companyItem;
     }

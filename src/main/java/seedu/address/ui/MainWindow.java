@@ -175,10 +175,6 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.fireEvent(new WindowEvent(primaryStage, WindowEvent.WINDOW_CLOSE_REQUEST));
     }
 
-    public ListPanel getListPanel() {
-        return listPanel;
-    }
-
     /**
      * Switch the tabs of the application.
      */
@@ -244,4 +240,5 @@ public class MainWindow extends UiPart<Stage> {
         display.getChildren().add(informationDisplay.getRoot());
         listPanelPlaceholder.getChildren().add((Node) listPanel.getRoot());
     }
+
 }

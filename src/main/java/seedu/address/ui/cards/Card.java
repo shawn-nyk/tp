@@ -2,7 +2,6 @@ package seedu.address.ui.cards;
 
 import static seedu.address.ui.textstyle.TitleDescription.createTitleDescription;
 
-import java.util.Comparator;
 import java.util.LinkedHashMap;
 
 import javafx.fxml.FXML;
@@ -10,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -26,37 +26,32 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
     //FXML
     private static final String FXML = "Card.fxml";
 
-    //Person's Attribute
-    private static final String ATTRIBUTE_PHONE = "Phone";
-    private static final String ATTRIBUTE_ADDRESS = "Address";
-    private static final String ATTRIBUTE_EMAIL = "Email";
-
-    public final T item;
+    protected T item;
     protected int displayedIndex;
-    public LinkedHashMap<String, Object> mapping;
-
+    protected LinkedHashMap<String, Object> mapping;
+    
     @FXML
     protected VBox statusBox;
     @FXML
     protected Label status;
     @FXML
-    protected ImageView calendar;
+    protected ImageView imageView;
     @FXML
     protected Label date;
     @FXML
-    protected Label name;
+    private Label name;
+    @FXML
+    private FlowPane tags;
     @FXML
     private HBox cardPane;
     @FXML
     private Label id;
     @FXML
-    private TextFlow p1;
+    private TextFlow l1;
     @FXML
-    private TextFlow p2;
+    private TextFlow l2;
     @FXML
-    private TextFlow p3;
-    @FXML
-    protected FlowPane tags;
+    private TextFlow l3;
 
     /**
      * todo Javadocs
@@ -71,12 +66,42 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
     /**
      * todo Javadocs
      */
-    protected abstract void setName();
+    protected T getItem() {
+        return item;
+    }
 
     /**
      * todo Javadocs
      */
-    protected abstract void setTags();
+    protected void setName(String cardName) {
+        name.setText(cardName);
+    }
+
+    /**
+     * todo Javadocs
+     */
+    protected void setTags(String tagNames) {
+        String[] tagList = generateTags(tagNames);
+        setAllTags(tagList);
+    }
+
+    /**
+     * todo Javadocs
+     */
+    private String[] generateTags(String tagNames) {
+        int length = tagNames.length();
+        return tagNames.substring(1, length - 1).split(",");
+    }
+
+    /**
+     * todo Javadocs
+     */
+    private void setAllTags(String ... tagList) {
+        for (String tag : tagList) {
+            Label label = new Label(tag); // figure out how to text align
+            tags.getChildren().add(label);
+        }
+    }
 
     /**
      * todo Javadocs
@@ -84,20 +109,23 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
     protected void setId(int displayedIndex) {
         id.setText(displayedIndex + ". ");
     }
-    
-    protected void setTextAt(String type, String description, LineNumber lineNumber) {
-        TitleDescription titleDescription = createTitleDescription(type + ": ", description);
+
+    /**
+     * todo Javadocs
+     */
+    protected void setTextAt(String title, String description, LineNumber lineNumber) {
+        TitleDescription titleDescription = createTitleDescription(title + ": ", description);
         Text styledTitle = titleDescription.getTitle();
         Text styledDescription = titleDescription.getDescription();
         switch(lineNumber) {
         case L1:
-            setL1(styledTitle, styledDescription);
+            setLineText(l1, styledTitle, styledDescription);
             break;
         case L2:
-            setL2(styledTitle, styledDescription);
+            setLineText(l2, styledTitle, styledDescription);
             break;
         case L3:
-            setL3(styledTitle, styledDescription);
+            setLineText(l3, styledTitle, styledDescription);
             break;
         default:
             assert false;
@@ -105,25 +133,11 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
         }
     }
 
-    private void setL1(Text styledTitle, Text styledDescription) {
-        p1.getChildren().addAll(styledTitle, styledDescription);
-    }
-
-    private void setL2(Text styledTitle, Text styledDescription) {
-        p2.getChildren().addAll(styledTitle, styledDescription);
-    }
-
-    private void setL3(Text styledTitle, Text styledDescription) {
-        p3.getChildren().addAll(styledTitle, styledDescription);
-    }
-
     /**
      * todo Javadocs
      */
-    protected void initializeBody() {
-        //setStyling(ATTRIBUTE_PHONE, person.getPhone().value);
-        //setStyling(ATTRIBUTE_ADDRESS, person.getAddress().value);
-        //setStyling(ATTRIBUTE_EMAIL, person.getEmail().value);
+    private <K extends Pane> void setLineText(K textFlow, Text styledTitle, Text styledDescription) {
+        textFlow.getChildren().addAll(styledTitle, styledDescription);
     }
 
     @Override
@@ -139,7 +153,7 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
         }
 
         // state check
-        Card card = (Card) other;
+        Card<T> card = (Card<T>) other;
         return id.getText().equals(card.id.getText())
             && item.equals(card.item);
     }

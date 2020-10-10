@@ -1,9 +1,13 @@
 package seedu.address.ui.panel;
 
+import java.util.List;
+
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListCell;
 import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
+import seedu.address.model.profile.ProfileItemCategory;
 import seedu.address.ui.cards.ProfileCard;
 
 /**
@@ -14,8 +18,8 @@ public class ProfileListPanel extends ListPanel<ProfileItem> {
     /**
      * todo Javadocs
      */
-    public ProfileListPanel(ObservableList<ProfileItem> personList) {
-        super(personList);
+    public ProfileListPanel(ObservableList<ProfileItem> categoryList) {
+        super(categoryList);
         itemListView.setCellFactory(listView -> new ProfileListViewCell());
     }
 
@@ -23,7 +27,7 @@ public class ProfileListPanel extends ListPanel<ProfileItem> {
      * todo Javadocs
      */
     class ProfileListViewCell extends ListCell<ProfileItem> {
-        @Override
+
         protected void updateItem(ProfileItem profileItem, boolean empty) {
             super.updateItem(profileItem, empty);
 

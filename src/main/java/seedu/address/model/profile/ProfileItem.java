@@ -2,6 +2,9 @@ package seedu.address.model.profile;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.util.ItemUtil.PROFILE_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.DESCRIPTORS_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.TITLE_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.TYPE_DISPLAY_NAME;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -133,9 +136,9 @@ public class ProfileItem extends Item {
     @Override
     public LinkedHashMap<String, Object> getMapping() {
         LinkedHashMap<String, Object> mapping = new LinkedHashMap<>();
-        mapping.put("Title", title);
-        mapping.put("Type", type);
-        mapping.put("Descriptors", descriptors);
+        mapping.put(TITLE_DISPLAY_NAME, title);
+        mapping.put(TYPE_DISPLAY_NAME, type);
+        mapping.put(DESCRIPTORS_DISPLAY_NAME, descriptors);
         return mapping;
     }
 

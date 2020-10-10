@@ -1,10 +1,12 @@
 package seedu.address.ui.cards;
 
-import java.util.ArrayList;
-import java.util.List;
+import static seedu.address.ui.panel.PanelDisplayKeyword.ADDRESS_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.EMAIL_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.INDUSTRIES_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.PHONE_DISPLAY_NAME;
 
 import seedu.address.model.company.CompanyItem;
-import seedu.address.model.internship.InternshipItem;
 
 /**
  * todo Javadocs
@@ -23,19 +25,51 @@ public class CompanyCard extends Card<CompanyItem> {
      * todo Javadocs
      */
     private void initializeCompanyCardGui() {
-        // to be edited in the future!
-        initializeBody();
-    }
-    
-    @Override
-    protected void setName() {
-        
+        setId(displayedIndex);
+        setName();
+        setTags();
+        setPhone();
+        setEmail();
+        setAddress();
     }
 
-    @Override
-    protected void setTags() {
-//        person.getTags().stream()
-//            .sorted(Comparator.comparing(Tag::getName))
-//            .forEach(tag -> tags.getChildren().add(new Label(tag.getName())));
+    /**
+     * todo Javadocs
+     */
+    private void setName() {
+        Object companyName = mapping.get(COMPANY_DISPLAY_NAME);
+        setName(companyName.toString());
+    }
+
+    /**
+     * todo Javadocs
+     */
+    private void setTags() {
+        Object industries = mapping.get(INDUSTRIES_DISPLAY_NAME);
+        setTags(industries.toString());
+    }
+
+    /**
+     * todo Javadocs
+     */
+    private void setPhone() {
+        Object phone = mapping.get(PHONE_DISPLAY_NAME);
+        setTextAt(PHONE_DISPLAY_NAME, phone.toString(), LineNumber.L1);
+    }
+
+    /**
+     * todo Javadocs
+     */
+    private void setEmail() {
+        Object email = mapping.get(EMAIL_DISPLAY_NAME);
+        setTextAt(EMAIL_DISPLAY_NAME, email.toString(), LineNumber.L2);
+    }
+    
+    /**
+     * todo Javadocs
+     */
+    private void setAddress() {
+        Object address = mapping.get(ADDRESS_DISPLAY_NAME);
+        setTextAt(ADDRESS_DISPLAY_NAME, address.toString(), LineNumber.L3);
     }
 }
