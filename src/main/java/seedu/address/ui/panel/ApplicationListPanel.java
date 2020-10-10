@@ -4,7 +4,6 @@ package seedu.address.ui.panel;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListCell;
 import seedu.address.model.application.ApplicationItem;
-import seedu.address.model.item.Item;
 import seedu.address.ui.cards.ApplicationCard;
 
 /**

@@ -29,7 +29,7 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
     protected T item;
     protected int displayedIndex;
     protected LinkedHashMap<String, Object> mapping;
-    
+
     @FXML
     protected VBox statusBox;
     @FXML
@@ -152,6 +152,7 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
             return false;
         }
 
+        @SuppressWarnings("unchecked")
         // state check
         Card<T> card = (Card<T>) other;
         return id.getText().equals(card.id.getText())

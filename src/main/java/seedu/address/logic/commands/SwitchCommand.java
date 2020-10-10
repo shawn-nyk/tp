@@ -1,7 +1,5 @@
 package seedu.address.logic.commands;
 
-import static seedu.address.commons.util.StringUtil.toTitleCase;
-
 import seedu.address.model.Model;
 import seedu.address.ui.tabs.TabName;
 
@@ -27,8 +25,8 @@ public class SwitchCommand extends Command {
      */
     public SwitchCommand(TabName tabName) {
         this.tabName = tabName;
-        sameScreenText = String.format("Already in %s tab", toTitleCase(tabName.toString())); // change .toString() 
-        switchedScreenText = String.format("Switching to %s tab", toTitleCase(tabName.toString())); // change .toString()
+        sameScreenText = String.format("Already in %s tab", tabName.toString());
+        switchedScreenText = String.format("Switching to %s tab", tabName.toString());
     }
 
     @Override

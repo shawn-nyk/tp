@@ -28,7 +28,7 @@ public class CommandResult {
      */
     public CommandResult(String feedbackToUser, boolean isShowHelp, boolean isExit, boolean isSwitchTab,
         boolean isSwitchDisplay) {
-        
+
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.isShowHelp = isShowHelp;
         this.isExit = isExit;

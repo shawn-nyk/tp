@@ -25,10 +25,10 @@ public abstract class InformationDisplay<T extends Item> extends UiPart<Region> 
 
     //FXML properties
     private static final int INFORMATION_HEIGHT_SHRINK = 155;
-    
+
     protected T item;
     protected LinkedHashMap<String, Object> mapping;
-    
+
     @FXML
     private ScrollPane informationDisplay;
     @FXML

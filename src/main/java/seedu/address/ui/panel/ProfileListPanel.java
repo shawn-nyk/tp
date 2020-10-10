@@ -1,13 +1,8 @@
 package seedu.address.ui.panel;
 
-import java.util.List;
-
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListCell;
-import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
-import seedu.address.model.profile.ProfileItemCategory;
 import seedu.address.ui.cards.ProfileCard;
 
 /**

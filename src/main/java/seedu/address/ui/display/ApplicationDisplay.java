@@ -15,13 +15,13 @@ import seedu.address.ui.tabs.TabName;
  * A display containing information about the chosen application.
  */
 public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
-    
+
     /**
      * Constructs a {@code ApplicationDisplay} in the given {@code primaryStage}.
      */
     private ApplicationDisplay(Stage primaryStage, ApplicationItem applicationItem) {
         super(primaryStage, applicationItem);
-        
+
         initializeApplicationDisplayGui();
     }
 
@@ -54,7 +54,7 @@ public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
     private void setInformation() {
         Predicate<String> isRequirements = key -> key.equals(REQUIREMENTS_DISPLAY_NAME);
         Function<String, String> editString = string -> string.substring(1, string.length() - 1);
-        setInformation(editString, isRequirements, TabName.APPLICATION,APPLICATION_DISPLAY_KEY_LIST);
+        setInformation(editString, isRequirements, TabName.APPLICATION, APPLICATION_DISPLAY_KEY_LIST);
     }
 
 }

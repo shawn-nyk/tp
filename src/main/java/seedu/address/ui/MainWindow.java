@@ -58,10 +58,12 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private Tabs tabs;
-    public TempStubData tempStubData;
-    ObservableList<CompanyItem> companyItems;
-    ObservableList<ApplicationItem> applicationItems;
-    ObservableList<ProfileItem> profileItems;
+
+    //temporary datas, to be taken from model once ok!
+    private TempStubData tempStubData;
+    private ObservableList<CompanyItem> companyItems;
+    private ObservableList<ApplicationItem> applicationItems;
+    private ObservableList<ProfileItem> profileItems;
 
     @FXML
     private VBox cardList;
@@ -87,12 +89,12 @@ public class MainWindow extends UiPart<Stage> {
         this.logic = logic;
         // Configure the UI
         initializeUi(primaryStage, logic);
-        
+
         // TO REMOVE TEMPORARY
         this.tempStubData = new TempStubData();
-        companyItems = tempStubData.filteredCompanyItemList;
-        applicationItems = tempStubData.filteredApplicationItemList;
-        profileItems = tempStubData.filteredProfileItemList;
+        companyItems = tempStubData.getFilteredCompanyItemList();
+        applicationItems = tempStubData.getFilteredApplicationItemList();
+        profileItems = tempStubData.getFilteredProfileItemList();
     }
 
     /**
@@ -144,8 +146,7 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        
-        listPanel = new CompanyListPanel(tempStubData.filteredCompanyItemList);
+        listPanel = new CompanyListPanel(companyItems);
         listPanelPlaceholder.getChildren().add((Node) listPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -219,7 +220,7 @@ public class MainWindow extends UiPart<Stage> {
             if (commandResult.isSwitchTab()) {
                 switchTab();
             }
-            
+
             if (commandResult.isSwitchDisplay()) {
                 //changeDisplay();
             }
@@ -259,7 +260,10 @@ public class MainWindow extends UiPart<Stage> {
         display.getChildren().add((Node) informationDisplay.getRoot());
         listPanelPlaceholder.getChildren().add((Node) listPanel.getRoot());
     }
-    
+
+    /**
+     * todo javadocs
+     */
     public void changeDisplay(TabName tabName, int index) {
         switch (tabName) {
         case COMPANY:
@@ -274,6 +278,6 @@ public class MainWindow extends UiPart<Stage> {
         default:
             assert false;
             break;
-        }    
+        }
     }
 }

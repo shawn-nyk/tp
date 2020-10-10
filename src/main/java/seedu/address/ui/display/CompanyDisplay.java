@@ -22,7 +22,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
      */
     private CompanyDisplay(Stage primaryStage, CompanyItem companyItem) {
         super(primaryStage, companyItem);
-        
+
         initializeCompanyDisplayGui();
     }
 

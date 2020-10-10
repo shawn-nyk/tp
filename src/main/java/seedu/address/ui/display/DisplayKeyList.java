@@ -16,7 +16,7 @@ import static seedu.address.ui.panel.PanelDisplayKeyword.TYPE_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.WAGE_DISPLAY_NAME;
 
 public class DisplayKeyList {
-    
+
     public static final String[] APPLICATION_DISPLAY_KEY_LIST = {COMPANY_DISPLAY_NAME, PERIOD_DISPLAY_NAME,
         WAGE_DISPLAY_NAME, REQUIREMENTS_DISPLAY_NAME, STATUS_DISPLAY_NAME, DATE_DISPLAY_NAME
     };

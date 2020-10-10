@@ -64,7 +64,7 @@ public class CompanyCard extends Card<CompanyItem> {
         Object email = mapping.get(EMAIL_DISPLAY_NAME);
         setTextAt(EMAIL_DISPLAY_NAME, email.toString(), LineNumber.L2);
     }
-    
+
     /**
      * todo Javadocs
      */

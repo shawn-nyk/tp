@@ -25,7 +25,7 @@ public class ApplicationCard extends Card<ApplicationItem> {
 
     //Image Link
     private static final String CALENDAR_IMAGE_LINK = "/images/calendar.png";
-    
+
     //FXML properties
     private static final String MIN_WIDTH_STATUS_BOX = " -fx-min-width: 60;";
     private static final String MAX_WIDTH_STATUS_BOX = " -fx-max-width: 60;";
@@ -123,7 +123,7 @@ public class ApplicationCard extends Card<ApplicationItem> {
             break;
         default:
             assert false;
-            break;    
+            break;
         }
         statusBox.setStyle(updatedStatusBoxStyle);
     }
@@ -159,7 +159,7 @@ public class ApplicationCard extends Card<ApplicationItem> {
         Image calendarIcon = new Image(this.getClass().getResourceAsStream(CALENDAR_IMAGE_LINK));
         imageView.setImage(calendarIcon);
         setImageStyling();
-        
+
         Object dateInformation = mapping.get(DATE_DISPLAY_NAME);
         String[] dateInformationArray = dateInformation.toString().split(" ");
         date.setText(extractDayAndMonth(dateInformationArray));

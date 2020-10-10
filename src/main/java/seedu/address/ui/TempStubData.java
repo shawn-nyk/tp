@@ -29,16 +29,38 @@ import seedu.address.model.profile.Title;
 
 public class TempStubData {
 
-    ObservableList<CompanyItem> filteredCompanyItemList;
-    ObservableList<ApplicationItem> filteredApplicationItemList;
-    ObservableList<ProfileItem> filteredProfileItemList;
-    
+    private ObservableList<CompanyItem> filteredCompanyItemList;
+    private ObservableList<ApplicationItem> filteredApplicationItemList;
+    private ObservableList<ProfileItem> filteredProfileItemList;
+
     TempStubData() {
         initializeAppItem();
         initializeCompanyItem();
         initializeProfileItem();
     }
-    
+
+    /**
+     * temporary
+     */
+    public ObservableList<CompanyItem> getFilteredCompanyItemList() {
+        return filteredCompanyItemList;
+    }
+
+    /**
+     * temporary
+     */
+    public ObservableList<ApplicationItem> getFilteredApplicationItemList() {
+        return filteredApplicationItemList;
+    }
+
+    /**
+     * temporary
+     */
+    public ObservableList<ProfileItem> getFilteredProfileItemList() {
+        return filteredProfileItemList;
+    }
+
+
     void initializeAppItem() {
         filteredApplicationItemList = FXCollections.observableArrayList();
         for (int i = 0; i < 10; i++) {
@@ -65,7 +87,10 @@ public class TempStubData {
             filteredProfileItemList.add(profileItem);
         }
     }
-    
+
+    /**
+     * temporary
+     */
     public ProfileItem makeProfileItem() {
         int num = (int) (Math.random() * (5));
         ProfileItem profileItem;
@@ -135,7 +160,10 @@ public class TempStubData {
         }
         return profileItem;
     }
-    
+
+    /**
+     * temporary
+     */
     public CompanyItem makeCompanyItem() {
         int num = (int) (Math.random() * (6));
         CompanyItem companyItem;
@@ -259,22 +287,22 @@ public class TempStubData {
         StatusDate statusDate;
         switch (num) {
         case (0):
-            statusDate = new StatusDate(LocalDateTime.of(2017, 11, 10, 12,35));
+            statusDate = new StatusDate(LocalDateTime.of(2017, 11, 10, 12, 35));
             break;
         case (1):
-            statusDate = new StatusDate(LocalDateTime.of(2018, 12, 1, 11,35));
+            statusDate = new StatusDate(LocalDateTime.of(2018, 12, 1, 11, 35));
             break;
         case (2):
-            statusDate = new StatusDate(LocalDateTime.of(2019, 1, 2, 9,35));
+            statusDate = new StatusDate(LocalDateTime.of(2019, 1, 2, 9, 35));
             break;
         case (3):
-            statusDate = new StatusDate(LocalDateTime.of(2020, 3, 7, 7,35));
+            statusDate = new StatusDate(LocalDateTime.of(2020, 3, 7, 7, 35));
             break;
         case (4):
-            statusDate = new StatusDate(LocalDateTime.of(2016, 7, 12, 5,35));
+            statusDate = new StatusDate(LocalDateTime.of(2016, 7, 12, 5, 35));
             break;
         case (5):
-            statusDate = new StatusDate(LocalDateTime.of(2015, 9, 5, 3,35));
+            statusDate = new StatusDate(LocalDateTime.of(2015, 9, 5, 3, 35));
             break;
         default:
             statusDate = null;
@@ -305,9 +333,9 @@ public class TempStubData {
             r2 = new Requirement("CSS");
             r3 = new Requirement("React Native");
             r4 = new Requirement("Angular");
-            lr = new ArrayList<>(List.of(r1, r2 ,r3 ,r4));
+            lr = new ArrayList<>(List.of(r1, r2, r3, r4));
             r = new HashSet<>(lr);
-            internshipItem = new InternshipItem(c, j, p, w , r);
+            internshipItem = new InternshipItem(c, j, p, w, r);
             break;
         case (1):
             c = new CompanyName("Facebook");
@@ -318,7 +346,7 @@ public class TempStubData {
             r2 = new Requirement("Javascript");
             lr = new ArrayList<>(List.of(r1, r2));
             r = new HashSet<>(lr);
-            internshipItem = new InternshipItem(c, j, p, w , r);
+            internshipItem = new InternshipItem(c, j, p, w, r);
             break;
         case (2):
             c = new CompanyName("Shopee");
@@ -329,9 +357,9 @@ public class TempStubData {
             r2 = new Requirement("Javascript");
             r3 = new Requirement("React Native");
             r4 = new Requirement("Angular");
-            lr = new ArrayList<>(List.of(r1, r2 ,r3 ,r4));
+            lr = new ArrayList<>(List.of(r1, r2, r3, r4));
             r = new HashSet<>(lr);
-            internshipItem = new InternshipItem(c, j, p, w , r);
+            internshipItem = new InternshipItem(c, j, p, w, r);
             break;
         case (3):
             c = new CompanyName("Amazon");
@@ -342,7 +370,7 @@ public class TempStubData {
             r2 = new Requirement("CSS");
             lr = new ArrayList<>(List.of(r1, r2));
             r = new HashSet<>(lr);
-            internshipItem = new InternshipItem(c, j, p, w , r);
+            internshipItem = new InternshipItem(c, j, p, w, r);
             break;
         case (4):
             c = new CompanyName("Netflix");
@@ -353,9 +381,9 @@ public class TempStubData {
             r2 = new Requirement("Java");
             r3 = new Requirement("React");
             r4 = new Requirement("Python");
-            lr = new ArrayList<>(List.of(r1, r2 ,r3 ,r4));
+            lr = new ArrayList<>(List.of(r1, r2, r3, r4));
             r = new HashSet<>(lr);
-            internshipItem = new InternshipItem(c, j, p, w , r);
+            internshipItem = new InternshipItem(c, j, p, w, r);
             break;
         case (5):
             c = new CompanyName("Apple");
@@ -365,14 +393,13 @@ public class TempStubData {
             r1 = new Requirement("Objective C");
             r2 = new Requirement("React");
             r3 = new Requirement("React Native");
-            lr = new ArrayList<>(List.of(r1, r2 ,r3));
+            lr = new ArrayList<>(List.of(r1, r2, r3));
             r = new HashSet<>(lr);
-            internshipItem = new InternshipItem(c, j, p, w , r);
+            internshipItem = new InternshipItem(c, j, p, w, r);
             break;
         default:
             internshipItem = null;
         }
         return internshipItem;
     }
-    
 }

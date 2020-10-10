@@ -14,7 +14,7 @@ public class PanelDisplayKeyword {
     /** Application display names */
     public static final String STATUS_DISPLAY_NAME = "Status";
     public static final String DATE_DISPLAY_NAME = "Date";
-    
+
     /** Company display names */
     public static final String COMPANY_DISPLAY_NAME = "Company name";
     public static final String PHONE_DISPLAY_NAME = "Phone";

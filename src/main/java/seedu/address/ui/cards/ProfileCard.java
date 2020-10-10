@@ -15,7 +15,7 @@ public class ProfileCard extends Card<ProfileItem> {
     private static final String ACHIEVEMENT_IMAGE_LINK = "/images/achievement.png";
     private static final String EXPERIENCE_IMAGE_LINK = "/images/experience.png";
     private static final String SKILLS_IMAGE_LINK = "/images/skills.png";
-    
+
     //FXML properties
     private static final int IMAGE_HEIGHT_WIDTH = 60;
     private static final int IMAGE_TRANSLATE_Y = -25;
@@ -50,7 +50,7 @@ public class ProfileCard extends Card<ProfileItem> {
      */
     protected void setImageType() {
         Image image;
-        switch (getItem().getType()){
+        switch (getItem().getType()) {
         case ACHIEVEMENT:
             image = new Image(this.getClass().getResourceAsStream(ACHIEVEMENT_IMAGE_LINK));
             break;
