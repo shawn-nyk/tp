@@ -27,7 +27,7 @@ public class CompanyCard extends Card<CompanyItem> {
     private void initializeCompanyCardGui() {
         setId(displayedIndex);
         setName();
-        setTags();
+        setIndustries();
         setPhone();
         setEmail();
         setAddress();
@@ -44,7 +44,7 @@ public class CompanyCard extends Card<CompanyItem> {
     /**
      * todo Javadocs
      */
-    private void setTags() {
+    private void setIndustries() {
         Object industries = mapping.get(INDUSTRIES_DISPLAY_NAME);
         setTags(industries.toString());
     }
