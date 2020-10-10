@@ -16,7 +16,7 @@ import seedu.address.model.profile.ProfileItem;
 import seedu.address.ui.tabs.TabName;
 
 /**
- * Adds a Profile Item to the Model's Profile list. todo javadocs (shawn)
+ * Adds a Profile Item to the Model's Profile list.
  */
 public class AddProfileCommand extends AddCommandAbstract {
 
