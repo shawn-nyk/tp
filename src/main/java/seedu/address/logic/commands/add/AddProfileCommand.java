@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_ADDED_ITEM;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ITEM;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEGORY;
@@ -10,7 +11,6 @@ import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ITEM_NAME;
 import static seedu.address.model.util.ItemUtil.PROFILE_NAME;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -23,7 +23,7 @@ import seedu.address.ui.tabs.TabName;
 public class AddProfileCommand extends AddCommandAbstract {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + PROFILE_ALIAS
-            + ": Adds a profile item to "
+            + ": Adds a " + PROFILE_ITEM_NAME + " item to "
             + "InternHunter.\nParameters: "
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
@@ -55,7 +55,7 @@ public class AddProfileCommand extends AddCommandAbstract {
 
         model.getProfileList().addItem(toAdd);
 
-        String message = String.format(Messages.MESSAGE_ADDED_ITEM, PROFILE_ITEM_NAME, toAdd);
+        String message = String.format(MESSAGE_ADDED_ITEM, PROFILE_ITEM_NAME, toAdd);
         return getCommandResult(model, message, TabName.PROFILE);
     }
 

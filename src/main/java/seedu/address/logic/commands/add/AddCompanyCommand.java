@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_ADDED_ITEM;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ITEM;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_ADDRESS;
@@ -11,7 +12,6 @@ import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_PHONE
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -23,7 +23,8 @@ import seedu.address.ui.tabs.TabName;
  */
 public class AddCompanyCommand extends AddCommandAbstract {
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + " " + COMPANY_ALIAS + ": Adds a company to "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " " + COMPANY_ALIAS
+            + ": Adds a " + COMPANY_NAME + " to "
             + "InternHunter.\nParameters: "
             + PREFIX_COMPANY_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
@@ -58,7 +59,7 @@ public class AddCompanyCommand extends AddCommandAbstract {
 
         model.getCompanyList().addItem(toAdd);
 
-        String message = String.format(Messages.MESSAGE_ADDED_ITEM, COMPANY_NAME, toAdd);
+        String message = String.format(MESSAGE_ADDED_ITEM, COMPANY_NAME, toAdd);
         return getCommandResult(model, message, TabName.COMPANY);
     }
 

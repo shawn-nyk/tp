@@ -1,11 +1,11 @@
 package seedu.address.logic.commands.delete;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_DELETED_ITEM;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.commands.util.CommandUtil.getCompany;
 import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -35,7 +35,7 @@ public class DeleteCompanyCommand extends DeleteCommandAbstract {
         // Delete the company
         model.getCompanyList().deleteItem(companyToDelete);
 
-        String message = String.format(Messages.MESSAGE_DELETED_ITEM, COMPANY_NAME, companyToDelete);
+        String message = String.format(MESSAGE_DELETED_ITEM, COMPANY_NAME, companyToDelete);
         return getCommandResult(model, message, TabName.COMPANY);
     }
 
