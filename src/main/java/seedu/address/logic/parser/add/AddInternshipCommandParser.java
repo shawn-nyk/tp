@@ -10,7 +10,6 @@ import static seedu.address.logic.parser.util.Util.arePrefixesPresent;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.add.AddApplicationCommand;
 import seedu.address.logic.commands.add.AddInternshipCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
@@ -18,7 +17,6 @@ import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.util.InternshipParserUtil;
-import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.internship.InternshipTitle;
 import seedu.address.model.internship.Period;
 import seedu.address.model.internship.Requirement;
@@ -47,20 +45,37 @@ public class AddInternshipCommandParser implements Parser<AddInternshipCommand> 
         String remainingTokens = " " + argumentArr[INDEX_SECOND];
 
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(remainingTokens, PREFIX_JOB_TITLE, PREFIX_PERIOD, PREFIX_WAGE, PREFIX_REQUIREMENT);
+                ArgumentTokenizer.tokenize(remainingTokens, PREFIX_JOB_TITLE,
+                    PREFIX_PERIOD, PREFIX_WAGE, PREFIX_REQUIREMENT);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_JOB_TITLE) || !argMultimap.getPreamble().isEmpty()) {
+        // Todo: Wage will be compulsory until its status can be resolved
+        if (!arePrefixesPresent(argMultimap, PREFIX_JOB_TITLE, PREFIX_WAGE) || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddInternshipCommand.MESSAGE_USAGE));
         }
-        InternshipTitle internshipTitle =  InternshipParserUtil.parseInternshipTitle(argMultimap.getValue(PREFIX_JOB_TITLE).get());
-        Period period =  InternshipParserUtil.parsePeriod(argMultimap.getValue(PREFIX_PERIOD).get());
-        Wage wage =  InternshipParserUtil.parseWage(argMultimap.getValue(PREFIX_PERIOD).get());
-        Set<Requirement> requirements = InternshipParserUtil.parseRequirements(argMultimap.getAllValues(PREFIX_REQUIREMENT));
+        InternshipTitle internshipTitle = InternshipParserUtil
+            .parseInternshipTitle(argMultimap.getValue(PREFIX_JOB_TITLE).get());
+        Period period = getPeriod(argMultimap);
+        Wage wage = InternshipParserUtil.parseWage(argMultimap.getValue(PREFIX_WAGE).get());
+        Set<Requirement> requirements = InternshipParserUtil
+            .parseRequirements(argMultimap.getAllValues(PREFIX_REQUIREMENT));
 
-        InternshipItem internshipItem = new InternshipItem(internshipTitle, period, wage, requirements);
+        return new AddInternshipCommand(companyIndex, internshipTitle, period, wage, requirements);
+    }
 
-        return new AddInternshipCommand(companyIndex, internshipItem);
+    /**
+     * Obtains the period from the user input. Returns default unknown if unspecified.
+     *
+     * @param argMultimap ArgumentMultimap.
+     * @return StatusDate for this application.
+     * @throws ParseException if the given {@code StatusDate} is invalid.
+     */
+    private Period getPeriod(ArgumentMultimap argMultimap) throws ParseException {
+        if (argMultimap.getValue(PREFIX_PERIOD).isPresent()) {
+            return InternshipParserUtil.parsePeriod(argMultimap.getValue(PREFIX_PERIOD).get());
+        } else {
+            return new Period("unknown");
+        }
     }
 
     /**
@@ -72,7 +87,7 @@ public class AddInternshipCommandParser implements Parser<AddInternshipCommand> 
     private void checkArgumentTypeSufficiency(String[] argumentTypes) throws ParseException {
         if (argumentTypes.length < NUMBER_OF_ARGUMENTS_TYPES) {
             throw new ParseException(String.format(
-                    MESSAGE_INVALID_COMMAND_FORMAT, AddApplicationCommand.MESSAGE_USAGE));
+                    MESSAGE_INVALID_COMMAND_FORMAT, AddInternshipCommand.MESSAGE_USAGE));
         }
     }
 }

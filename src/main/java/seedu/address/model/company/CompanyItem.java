@@ -110,9 +110,15 @@ public class CompanyItem extends Item {
     }
 
     /**
-     * Returns true if both persons of the same companyName have at least one other identity field that is the same.
-     * This defines a weaker notion of equality between two persons.
+     * Checks if matching internship has same identity fields.
+     *
+     * @param internshipItem to check against.
+     * @return true if {@code internshipItem} exists in company.
      */
+    public boolean ifInternshipExists(InternshipItem internshipItem) {
+        return !internships.stream().filter(x -> x.isSameItem(internshipItem)).findAny().isEmpty();
+    }
+
     @Override
     public boolean isSameItem(Item otherItem) {
         if (this == otherItem) {
