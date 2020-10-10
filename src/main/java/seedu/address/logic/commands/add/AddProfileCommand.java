@@ -31,7 +31,7 @@ public class AddProfileCommand extends AddCommandAbstract {
             + "[" + PREFIX_DESCRIPTORS + "DESCRIPTOR]...\n"
             + "Example: " + COMMAND_WORD + " " + PROFILE_ALIAS + " "
             + PREFIX_TITLE + "Learn HTML "
-            + PREFIX_CATEGORY + "Skill "
+            + PREFIX_CATEGORY + "skill "
             + PREFIX_DESCRIPTORS + "Learn how to use div and classes. "
             + PREFIX_DESCRIPTORS + "Learn how to inject javascript. ";
 
