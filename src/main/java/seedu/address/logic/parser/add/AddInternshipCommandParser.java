@@ -17,7 +17,7 @@ import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.util.InternshipParserUtil;
-import seedu.address.model.internship.jobTitle;
+import seedu.address.model.internship.JobTitle;
 import seedu.address.model.internship.Period;
 import seedu.address.model.internship.Requirement;
 import seedu.address.model.internship.Wage;
@@ -53,7 +53,7 @@ public class AddInternshipCommandParser implements Parser<AddInternshipCommand> 
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddInternshipCommand.MESSAGE_USAGE));
         }
-        jobTitle jobTitle = InternshipParserUtil
+        JobTitle jobTitle = InternshipParserUtil
             .parseJobTitle(argMultimap.getValue(PREFIX_JOB_TITLE).get());
         Period period = getPeriod(argMultimap);
         Wage wage = InternshipParserUtil.parseWage(argMultimap.getValue(PREFIX_WAGE).get());

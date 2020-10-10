@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.company.CompanyName;
 import seedu.address.model.internship.InternshipItem;
-import seedu.address.model.internship.jobTitle;
+import seedu.address.model.internship.JobTitle;
 import seedu.address.model.internship.Period;
 import seedu.address.model.internship.Requirement;
 import seedu.address.model.internship.Wage;
@@ -74,12 +74,12 @@ public class JsonAdaptedInternshipItem extends JsonAdaptedItem {
 
         if (jobTitle == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    seedu.address.model.internship.jobTitle.class.getSimpleName()));
+                    JobTitle.class.getSimpleName()));
         }
-        if (!seedu.address.model.internship.jobTitle.isValidAlphaNumericWord(jobTitle)) {
-            throw new IllegalValueException(seedu.address.model.internship.jobTitle.MESSAGE_CONSTRAINTS);
+        if (!JobTitle.isValidAlphaNumericWord(jobTitle)) {
+            throw new IllegalValueException(JobTitle.MESSAGE_CONSTRAINTS);
         }
-        final seedu.address.model.internship.jobTitle itemJobTitle = new jobTitle(jobTitle);
+        final JobTitle itemJobTitle = new JobTitle(jobTitle);
 
         if (period == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
