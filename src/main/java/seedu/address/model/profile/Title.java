@@ -2,6 +2,10 @@ package seedu.address.model.profile;
 
 import seedu.address.model.wrapper.AlphaNumericWord;
 
+/**
+ * Represents a title of a field in a {@code ProfileItem}
+ * Guarantees: immutable; is valid as declared in {@link #isValidAlphaNumericWord(String)}
+ */
 public class Title extends AlphaNumericWord {
 
     public static final String MESSAGE_CONSTRAINTS =
