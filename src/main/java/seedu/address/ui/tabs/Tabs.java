@@ -151,7 +151,7 @@ public class Tabs extends VBox {
         setTransparent(profile, PROFILE_Y_TRANSLATE);
 
         // adjust the display of the gui
-        mainWindow.changeDisplay(TabName.APPLICATION, stage);
+        mainWindow.changeTabView(TabName.APPLICATION, stage);
     }
 
     /**
@@ -165,7 +165,7 @@ public class Tabs extends VBox {
         setTransparent(profile, PROFILE_Y_TRANSLATE);
 
         // adjust the display of the gui
-        mainWindow.changeDisplay(TabName.COMPANY, stage);
+        mainWindow.changeTabView(TabName.COMPANY, stage);
     }
 
     /**
@@ -179,7 +179,7 @@ public class Tabs extends VBox {
         setColor(profile, PROFILE_Y_TRANSLATE);
 
         // adjust the display of the gui
-        mainWindow.changeDisplay(TabName.PROFILE, stage);
+        mainWindow.changeTabView(TabName.PROFILE, stage);
     }
 
     /**

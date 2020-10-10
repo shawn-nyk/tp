@@ -43,7 +43,7 @@ public class SwitchCommand extends Command {
             resultMessage = switchedScreenText;
             model.setTabName(tabName);
         }
-        return new CommandResult(resultMessage, false, false, true);
+        return new CommandResult(resultMessage, false, false, true, false);
     }
 
     @Override

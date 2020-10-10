@@ -1,7 +1,12 @@
 package seedu.address.ui;
 
+import static seedu.address.ui.tabs.TabName.APPLICATION;
+import static seedu.address.ui.tabs.TabName.COMPANY;
+import static seedu.address.ui.tabs.TabName.PROFILE;
+
 import java.util.logging.Logger;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
@@ -15,6 +20,9 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.application.ApplicationItem;
+import seedu.address.model.company.CompanyItem;
+import seedu.address.model.profile.ProfileItem;
 import seedu.address.ui.display.ApplicationDisplay;
 import seedu.address.ui.display.CompanyDisplay;
 import seedu.address.ui.display.InformationDisplay;
@@ -51,6 +59,9 @@ public class MainWindow extends UiPart<Stage> {
     private HelpWindow helpWindow;
     private Tabs tabs;
     public TempStubData tempStubData;
+    ObservableList<CompanyItem> companyItems;
+    ObservableList<ApplicationItem> applicationItems;
+    ObservableList<ProfileItem> profileItems;
 
     @FXML
     private VBox cardList;
@@ -79,6 +90,9 @@ public class MainWindow extends UiPart<Stage> {
         
         // TO REMOVE TEMPORARY
         this.tempStubData = new TempStubData();
+        companyItems = tempStubData.filteredCompanyItemList;
+        applicationItems = tempStubData.filteredApplicationItemList;
+        profileItems = tempStubData.filteredProfileItemList;
     }
 
     /**
@@ -138,8 +152,8 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplayPlaceholder.setContent(resultDisplay.getRoot());
 
         display.getChildren().clear();
-        informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage);
-        display.getChildren().add(informationDisplay.getRoot());
+        informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
+        display.getChildren().add((Node) informationDisplay.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
@@ -193,16 +207,21 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
-            if (commandResult.isSwitchTab()) {
-                switchTab();
-            }
-
             if (commandResult.isShowHelp()) {
                 handleHelp();
             }
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+
+            if (commandResult.isSwitchTab()) {
+                switchTab();
+            }
+            
+            if (commandResult.isSwitchDisplay()) {
+                //changeDisplay();
             }
 
             return commandResult;
@@ -216,29 +235,45 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Changes the display of screen, depending on {@code input}, in the {@code primaryStage}.
      */
-    public void changeDisplay(TabName input, Stage primaryStage) {
-        assert (input.equals(TabName.APPLICATION) || input.equals(TabName.COMPANY) || input.equals(TabName.PROFILE));
+    public void changeTabView(TabName tabName, Stage primaryStage) {
+        assert (tabName.equals(APPLICATION) || tabName.equals(COMPANY) || tabName.equals(PROFILE));
         display.getChildren().clear();
         listPanelPlaceholder.getChildren().clear();
-        switch (input) {
+        switch (tabName) {
         case COMPANY:
-            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage);
-            listPanel = new CompanyListPanel(tempStubData.filteredCompanyItemList);
+            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
+            listPanel = new CompanyListPanel(companyItems);
             break;
         case APPLICATION:
-            informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage);
-            listPanel = new ApplicationListPanel(tempStubData.filteredApplicationItemList);
+            informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(0));
+            listPanel = new ApplicationListPanel(applicationItems);
             break;
         case PROFILE:
-            informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage);
-            listPanel = new ProfileListPanel(tempStubData.filteredProfileItemList);
+            informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(0));
+            listPanel = new ProfileListPanel(profileItems);
             break;
         default:
             assert false;
             break;
         }
-        display.getChildren().add(informationDisplay.getRoot());
+        display.getChildren().add((Node) informationDisplay.getRoot());
         listPanelPlaceholder.getChildren().add((Node) listPanel.getRoot());
     }
-
+    
+    public void changeDisplay(TabName tabName, int index) {
+        switch (tabName) {
+        case COMPANY:
+            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(index));
+            break;
+        case APPLICATION:
+            informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(index));
+            break;
+        case PROFILE:
+            informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index));
+            break;
+        default:
+            assert false;
+            break;
+        }    
+    }
 }

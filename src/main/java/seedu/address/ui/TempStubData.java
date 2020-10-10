@@ -41,8 +41,6 @@ public class TempStubData {
     
     void initializeAppItem() {
         filteredApplicationItemList = FXCollections.observableArrayList();
-        filteredCompanyItemList = FXCollections.observableArrayList();
-        filteredProfileItemList = FXCollections.observableArrayList();
         for (int i = 0; i < 10; i++) {
             Status status = getRandomStatus();
             StatusDate statusDate = getRandomStatusDate();
@@ -53,6 +51,7 @@ public class TempStubData {
     }
 
     void initializeCompanyItem() {
+        filteredCompanyItemList = FXCollections.observableArrayList();
         for (int i = 0; i < 10; i++) {
             CompanyItem companyItem = makeCompanyItem();
             filteredCompanyItemList.add(companyItem);
@@ -60,6 +59,7 @@ public class TempStubData {
     }
 
     void initializeProfileItem() {
+        filteredProfileItemList = FXCollections.observableArrayList();
         for (int i = 0; i < 10; i++) {
             ProfileItem profileItem = makeProfileItem();
             filteredProfileItemList.add(profileItem);

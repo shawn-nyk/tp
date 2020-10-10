@@ -50,7 +50,7 @@ public class CommandUtil {
     public static CommandResult getCommandResult(Model model, String messageSuccess, TabName tabName) {
         if (model.getTabName() != tabName) {
             model.setTabName(tabName);
-            return new CommandResult(messageSuccess, false, false, true);
+            return new CommandResult(messageSuccess, false, false, true, false);
         } else {
             return new CommandResult(messageSuccess);
         }
