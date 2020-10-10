@@ -1,9 +1,9 @@
 package seedu.address.logic.commands.delete;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.commands.util.CommandUtil.getApplication;
+import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
-
-import java.util.List;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -27,17 +27,11 @@ public class DeleteApplicationCommand extends DeleteCommandAbstract {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<ApplicationItem> lastShownList = model.getApplicationList().getFilteredItemList();
-
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(String.format(Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, APPLICATION_NAME));
-        }
-
-        ApplicationItem applicationToDelete = lastShownList.get(targetIndex.getZeroBased());
+        ApplicationItem applicationToDelete = getApplication(model, targetIndex);
         model.getApplicationList().deleteItem(applicationToDelete);
-        model.setTabName(TabName.APPLICATION);
 
-        return new CommandResult(String.format(Messages.MESSAGE_DELETED_ITEM, APPLICATION_NAME, applicationToDelete));
+        String message = String.format(Messages.MESSAGE_DELETED_ITEM, APPLICATION_NAME, applicationToDelete);
+        return getCommandResult(model, message, TabName.APPLICATION);
     }
 
     @Override
