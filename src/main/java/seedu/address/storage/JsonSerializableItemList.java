@@ -35,6 +35,7 @@ public class JsonSerializableItemList<T extends Item, U extends JsonAdaptedItem>
      *
      * @param source future changes to this will not affect the created {@code JsonSerializableItemList}.
      */
+    @SuppressWarnings("unchecked")
     public JsonSerializableItemList(ReadOnlyItemList<T> source) {
         items.addAll(source.getItemList().stream().map(item ->
                 (U) item.getJsonAdaptedItem()).collect(Collectors.toList()));
@@ -45,6 +46,7 @@ public class JsonSerializableItemList<T extends Item, U extends JsonAdaptedItem>
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
+    @SuppressWarnings("unchecked")
     public ItemList<T> toModelType() throws IllegalValueException {
         ItemList<T> itemList = new ItemList<>();
         for (U jsonAdaptedItem : items) {
