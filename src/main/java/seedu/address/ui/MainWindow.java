@@ -1,8 +1,14 @@
 package seedu.address.ui;
 
+import static seedu.address.ui.tabs.TabName.APPLICATION;
+import static seedu.address.ui.tabs.TabName.COMPANY;
+import static seedu.address.ui.tabs.TabName.PROFILE;
+
 import java.util.logging.Logger;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -14,14 +20,17 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.application.ApplicationItem;
+import seedu.address.model.company.CompanyItem;
+import seedu.address.model.profile.ProfileItem;
+import seedu.address.ui.display.ApplicationDisplay;
 import seedu.address.ui.display.CompanyDisplay;
 import seedu.address.ui.display.InformationDisplay;
-import seedu.address.ui.display.InternshipDisplay;
-import seedu.address.ui.display.UserDisplay;
+import seedu.address.ui.display.ProfileDisplay;
+import seedu.address.ui.panel.ApplicationListPanel;
 import seedu.address.ui.panel.CompanyListPanel;
-import seedu.address.ui.panel.InternshipListPanel;
 import seedu.address.ui.panel.ListPanel;
-import seedu.address.ui.panel.UserListPanel;
+import seedu.address.ui.panel.ProfileListPanel;
 import seedu.address.ui.tabs.TabName;
 import seedu.address.ui.tabs.Tabs;
 
@@ -50,10 +59,16 @@ public class MainWindow extends UiPart<Stage> {
     private HelpWindow helpWindow;
     private Tabs tabs;
 
+    //temporary datas, to be taken from model once ok!
+    private TempStubData tempStubData;
+    private ObservableList<CompanyItem> companyItems;
+    private ObservableList<ApplicationItem> applicationItems;
+    private ObservableList<ProfileItem> profileItems;
+
     @FXML
-    private VBox personList;
+    private VBox cardList;
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane listPanelPlaceholder;
     @FXML
     private VBox display;
     @FXML
@@ -74,6 +89,12 @@ public class MainWindow extends UiPart<Stage> {
         this.logic = logic;
         // Configure the UI
         initializeUi(primaryStage, logic);
+
+        // TO REMOVE TEMPORARY
+        this.tempStubData = new TempStubData();
+        companyItems = tempStubData.getFilteredCompanyItemList();
+        applicationItems = tempStubData.getFilteredApplicationItemList();
+        profileItems = tempStubData.getFilteredProfileItemList();
     }
 
     /**
@@ -105,7 +126,7 @@ public class MainWindow extends UiPart<Stage> {
      * Binds the height of {@code personList} and {@code resultDisplayPlaceHolder} in the {@code primaryStage}
      */
     private void bindHeights(Stage primaryStage) {
-        personList.prefWidthProperty().bind(primaryStage.widthProperty().subtract(PERSON_LIST_HEIGHT_SHRINK));
+        cardList.prefWidthProperty().bind(primaryStage.widthProperty().subtract(PERSON_LIST_HEIGHT_SHRINK));
         resultDisplayPlaceholder.prefWidthProperty().bind(primaryStage.widthProperty().subtract(RESULT_HEIGHT_SHRINK));
     }
 
@@ -125,15 +146,15 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        listPanel = new InternshipListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(listPanel.getRoot());
+        listPanel = new CompanyListPanel(companyItems);
+        listPanelPlaceholder.getChildren().add((Node) listPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.setContent(resultDisplay.getRoot());
 
         display.getChildren().clear();
-        informationDisplay = InternshipDisplay.getInternshipDisplay(primaryStage);
-        display.getChildren().add(informationDisplay.getRoot());
+        informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
+        display.getChildren().add((Node) informationDisplay.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
@@ -169,10 +190,6 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.fireEvent(new WindowEvent(primaryStage, WindowEvent.WINDOW_CLOSE_REQUEST));
     }
 
-    public ListPanel getListPanel() {
-        return listPanel;
-    }
-
     /**
      * Switch the tabs of the application.
      */
@@ -191,16 +208,21 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
-            if (commandResult.isSwitchTab()) {
-                switchTab();
-            }
-
             if (commandResult.isShowHelp()) {
                 handleHelp();
             }
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+
+            if (commandResult.isSwitchTab()) {
+                switchTab();
+            }
+
+            if (commandResult.isSwitchDisplay()) {
+                //changeDisplay();
             }
 
             return commandResult;
@@ -214,28 +236,48 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Changes the display of screen, depending on {@code input}, in the {@code primaryStage}.
      */
-    public void changeDisplay(TabName input, Stage primaryStage) {
-        assert (input.equals(TabName.INTERNSHIP) || input.equals(TabName.COMPANY) || input.equals(TabName.USER));
+    public void changeTabView(TabName tabName, Stage primaryStage) {
+        assert (tabName.equals(APPLICATION) || tabName.equals(COMPANY) || tabName.equals(PROFILE));
         display.getChildren().clear();
-        personListPanelPlaceholder.getChildren().clear();
-        switch (input) {
+        listPanelPlaceholder.getChildren().clear();
+        switch (tabName) {
         case COMPANY:
-            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage);
-            listPanel = new CompanyListPanel(logic.getFilteredPersonList());
+            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
+            listPanel = new CompanyListPanel(companyItems);
             break;
-        case INTERNSHIP:
-            informationDisplay = InternshipDisplay.getInternshipDisplay(primaryStage);
-            listPanel = new InternshipListPanel(logic.getFilteredPersonList());
+        case APPLICATION:
+            informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(0));
+            listPanel = new ApplicationListPanel(applicationItems);
             break;
-        case USER:
-            informationDisplay = UserDisplay.getUserDisplay(primaryStage);
-            listPanel = new UserListPanel(logic.getFilteredPersonList());
+        case PROFILE:
+            informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(0));
+            listPanel = new ProfileListPanel(profileItems);
             break;
         default:
             assert false;
             break;
         }
-        display.getChildren().add(informationDisplay.getRoot());
-        personListPanelPlaceholder.getChildren().add(listPanel.getRoot());
+        display.getChildren().add((Node) informationDisplay.getRoot());
+        listPanelPlaceholder.getChildren().add((Node) listPanel.getRoot());
+    }
+
+    /**
+     * todo javadocs
+     */
+    public void changeDisplay(TabName tabName, int index) {
+        switch (tabName) {
+        case COMPANY:
+            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(index));
+            break;
+        case APPLICATION:
+            informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(index));
+            break;
+        case PROFILE:
+            informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index));
+            break;
+        default:
+            assert false;
+            break;
+        }
     }
 }

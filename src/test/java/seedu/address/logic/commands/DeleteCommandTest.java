@@ -26,8 +26,8 @@ import seedu.address.model.person.Person;
  */
 public class DeleteCommandTest {
 
-    private Model model = new ModelManager(getTypicalAddressBook(), new ItemList<>(), new ItemList<>(),
-            new ItemList<>(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAddressBook(), new ItemList<>(),
+            new ItemList<>(), new ItemList<>(), new UserPrefs());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {

@@ -1,6 +1,10 @@
 package seedu.address.model.profile;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.model.util.ItemUtil.PROFILE_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.DESCRIPTORS_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.TITLE_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.TYPE_DISPLAY_NAME;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -9,6 +13,8 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.model.item.Item;
+import seedu.address.storage.item.JsonAdaptedItem;
+import seedu.address.storage.profile.JsonAdaptedProfileItem;
 
 /**
  * Represents a Profile Item in the UserProfile.
@@ -17,8 +23,8 @@ import seedu.address.model.item.Item;
 public class ProfileItem extends Item {
 
     // Identity fields
-    private final String title;
-    private final ProfileItemType type;
+    private final Title title;
+    private final ProfileItemCategory type;
 
     // Data fields
     private final Set<Descriptor> descriptors = new HashSet<>();
@@ -26,7 +32,7 @@ public class ProfileItem extends Item {
     /**
      * Every field must be present and not null.
      */
-    public ProfileItem(String title, ProfileItemType type, Set<Descriptor> descriptors) {
+    public ProfileItem(Title title, ProfileItemCategory type, Set<Descriptor> descriptors) {
         requireAllNonNull(type, title, descriptors);
         this.type = type;
         this.title = title;
@@ -34,13 +40,14 @@ public class ProfileItem extends Item {
     }
 
 
-    public String getTitle() {
+    public Title getTitle() {
         return title;
     }
 
-    public ProfileItemType getType() {
+    public ProfileItemCategory getType() {
         return type;
     }
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -118,7 +125,7 @@ public class ProfileItem extends Item {
      */
     @Override
     public String getItemName() {
-        return "profile";
+        return PROFILE_NAME;
     }
 
     /**
@@ -129,10 +136,15 @@ public class ProfileItem extends Item {
     @Override
     public LinkedHashMap<String, Object> getMapping() {
         LinkedHashMap<String, Object> mapping = new LinkedHashMap<>();
-        mapping.put("Title", title);
-        mapping.put("Type", type);
-        mapping.put("Descriptors", descriptors);
+        mapping.put(TITLE_DISPLAY_NAME, title);
+        mapping.put(TYPE_DISPLAY_NAME, type);
+        mapping.put(DESCRIPTORS_DISPLAY_NAME, descriptors);
         return mapping;
+    }
+
+    @Override
+    public JsonAdaptedItem getJsonAdaptedItem() {
+        return new JsonAdaptedProfileItem(this);
     }
 }
 

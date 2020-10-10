@@ -22,8 +22,8 @@ public class TitleDescriptionDisplay extends HBox {
     private static final String FXML = "/view/TitleDescriptionDisplay.fxml";
 
     //FXML properties
-    private static final String USER_INFORMATION_WIDTH = "-fx-min-width: 95";
-    private static final String COMPANY_INTERNSHIP_INFORMATION_WIDTH = "-fx-min-width: 75";
+    private static final String PROFILE_INFORMATION_WIDTH = "-fx-min-width: 95";
+    private static final String COMPANY_AND_APPLICATION_INFORMATION_WIDTH = "-fx-min-width: 105";
 
     @FXML
     private TextFlow title;
@@ -77,11 +77,11 @@ public class TitleDescriptionDisplay extends HBox {
         switch (tab) {
         case COMPANY:
             //Fallthrough
-        case INTERNSHIP:
-            titleInformation.setStyle(COMPANY_INTERNSHIP_INFORMATION_WIDTH);
+        case APPLICATION:
+            titleInformation.setStyle(COMPANY_AND_APPLICATION_INFORMATION_WIDTH);
             break;
-        case USER:
-            titleInformation.setStyle(USER_INFORMATION_WIDTH);
+        case PROFILE:
+            titleInformation.setStyle(PROFILE_INFORMATION_WIDTH);
             break;
         default:
             assert false;

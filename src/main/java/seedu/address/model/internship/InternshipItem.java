@@ -1,6 +1,12 @@
 package seedu.address.model.internship;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.JOB_TITLE_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.PERIOD_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.REQUIREMENTS_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.WAGE_DISPLAY_NAME;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -8,9 +14,9 @@ import java.util.LinkedHashMap;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.address.model.company.CompanyName;
 import seedu.address.model.item.Item;
-import seedu.address.model.person.Name;
-import seedu.address.model.tag.Tag;
+import seedu.address.storage.internship.JsonAdaptedInternshipItem;
 
 /**
  * Represents an InternshipItem in the InternHunter application.
@@ -19,35 +25,36 @@ import seedu.address.model.tag.Tag;
 public class InternshipItem extends Item {
 
     // Identity fields
-    private final Name companyName;
-    private final Name jobTitle;
-    private final String period;
+    private final CompanyName companyName;
+    private final JobTitle jobTitle;
+    private final Period period;
 
     // Data fields
     private final Wage wage;
-    private final Set<Tag> skills = new HashSet<>();
+    private final Set<Requirement> requirements = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public InternshipItem(Name companyName, Name jobTitle, String period, Wage wage, Set<Tag> skills) {
-        requireAllNonNull(companyName, jobTitle, period, wage, skills);
+    public InternshipItem(CompanyName companyName, JobTitle jobTitle, Period period, Wage wage,
+            Set<Requirement> requirements) {
+        requireAllNonNull(companyName, jobTitle, period, wage, requirements);
         this.companyName = companyName;
         this.jobTitle = jobTitle;
         this.period = period;
         this.wage = wage;
-        this.skills.addAll(skills);
+        this.requirements.addAll(requirements);
     }
 
-    public Name getCompanyName() {
+    public CompanyName getCompanyName() {
         return companyName;
     }
 
-    public Name getJobTitle() {
+    public JobTitle getJobTitle() {
         return jobTitle;
     }
 
-    public String getPeriod() {
+    public Period getPeriod() {
         return period;
     }
 
@@ -56,11 +63,11 @@ public class InternshipItem extends Item {
     }
 
     /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
+     * Returns an immutable requirement set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(skills);
+    public Set<Requirement> getRequirements() {
+        return Collections.unmodifiableSet(requirements);
     }
 
     /**
@@ -70,7 +77,7 @@ public class InternshipItem extends Item {
      */
     @Override
     public String getItemName() {
-        return "internship";
+        return INTERNSHIP_NAME;
     }
 
     /**
@@ -78,13 +85,14 @@ public class InternshipItem extends Item {
      *
      * @return Mapping of field names to fields for the InternshipItem.
      */
+    @Override
     public LinkedHashMap<String, Object> getMapping() {
         LinkedHashMap<String, Object> mapping = new LinkedHashMap<>();
-        mapping.put("Header", companyName);
-        mapping.put("Job title", jobTitle);
-        mapping.put("Period", period);
-        mapping.put("Wage", wage);
-        mapping.put("Skills", skills);
+        mapping.put(JOB_TITLE_DISPLAY_NAME, jobTitle);
+        mapping.put(COMPANY_DISPLAY_NAME, companyName);
+        mapping.put(PERIOD_DISPLAY_NAME, period);
+        mapping.put(WAGE_DISPLAY_NAME, wage);
+        mapping.put(REQUIREMENTS_DISPLAY_NAME, requirements);
         return mapping;
     }
 
@@ -130,13 +138,13 @@ public class InternshipItem extends Item {
                 && otherInternshipItem.getJobTitle().equals(getJobTitle())
                 && otherInternshipItem.getPeriod().equals(getPeriod())
                 && otherInternshipItem.getWage().equals(getWage())
-                && otherInternshipItem.getTags().equals(getTags());
+                && otherInternshipItem.getRequirements().equals(getRequirements());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(companyName, jobTitle, period, wage, skills);
+        return Objects.hash(companyName, jobTitle, period, wage, requirements);
     }
 
     @Override
@@ -149,9 +157,15 @@ public class InternshipItem extends Item {
                 .append(getPeriod())
                 .append(" Wage: ")
                 .append(getWage())
-                .append(" Skills: ");
-        getTags().forEach(builder::append);
+                .append(" Requirements: ");
+        getRequirements().forEach(builder::append);
         return builder.toString();
     }
+
+    @Override
+    public JsonAdaptedInternshipItem getJsonAdaptedItem() {
+        return new JsonAdaptedInternshipItem(this);
+    }
+
 
 }

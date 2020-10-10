@@ -26,7 +26,8 @@ public class ListCommandTest {
         model = new ModelManager(getTypicalAddressBook(), new ItemList<>(), new ItemList<>(),
                 new ItemList<>(), new UserPrefs());
         expectedModel = new ModelManager(model.getAddressBook().getUnfilteredItemList(), new ItemList<>(),
-                new ItemList<>(), new ItemList<>(), new UserPrefs());;
+                new ItemList<>(), new ItemList<>(), new UserPrefs());
+        ;
     }
 
     @Test

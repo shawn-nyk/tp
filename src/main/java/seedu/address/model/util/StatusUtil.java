@@ -5,11 +5,11 @@ package seedu.address.model.util;
  */
 public class StatusUtil {
 
-    public static final String APPLIED_KEYWORD = "applied";
-    public static final String INTERVIEW_KEYWORD = "interview";
-    public static final String WAITING_KEYWORD = "waiting";
-    public static final String REJECTED_KEYWORD = "rejected";
-    public static final String OFFERED_KEYWORD = "offered";
-    public static final String ACCEPTED_KEYWORD = "accepted";
+    public static final String APPLIED_KEYWORD = "Applied";
+    public static final String INTERVIEW_KEYWORD = "Interview";
+    public static final String WAITING_KEYWORD = "Waiting";
+    public static final String REJECTED_KEYWORD = "Rejected";
+    public static final String OFFERED_KEYWORD = "Offered";
+    public static final String ACCEPTED_KEYWORD = "Accepted";
 
 }

@@ -20,8 +20,10 @@ public class DateUtil {
     public static final String DATE_INPUT_FORMAT = "d-M-yy";
     public static final String DATE_TIME_INPUT_FORMAT = "d-M-yy HHmm";
 
-    // MISC
+    // Default timing if user does not input a time
     private static final String DEFAULT_TIME = "23:59";
+
+    private static final String ERROR_MESSAGE = "Checks for status date validity failed";
 
     /**
      * Checks if the input given matches the d-M-yy HHmm format.
@@ -59,7 +61,7 @@ public class DateUtil {
      * @param date Input date from user.
      * @return A LocalDate object.
      */
-    public static LocalDateTime formatDate(String date) {
+    private static LocalDateTime formatDate(String date) {
         LocalDate localDate = LocalDate.parse(date, formatterDateTime(DATE_INPUT_FORMAT));
         LocalTime currentTime = LocalTime.parse(DEFAULT_TIME);
         return LocalDateTime.of(localDate, currentTime);
@@ -71,8 +73,25 @@ public class DateUtil {
      * @param dateAndTime Input date and time from user.
      * @return Formatted date and time.
      */
-    public static LocalDateTime formatDateTime(String dateAndTime) {
+    private static LocalDateTime formatDateTime(String dateAndTime) {
         return LocalDateTime.parse(dateAndTime, formatterDateTime(DATE_TIME_INPUT_FORMAT));
+    }
+
+    /**
+     * Converts the string status date to a LocalDateTime object.
+     *
+     * @param statusDate Input status date.
+     * @return LocalDateTime object.
+     */
+    public static LocalDateTime convertToDateTime(String statusDate) {
+        if (isDateTimeFormat(statusDate)) {
+            return formatDateTime(statusDate);
+        } else if (isDateFormat(statusDate)) {
+            return formatDate(statusDate);
+        } else {
+            assert false : ERROR_MESSAGE;
+            return null;
+        }
     }
 
     /**
@@ -83,6 +102,13 @@ public class DateUtil {
      */
     public static DateTimeFormatter formatterDateTime(String pattern) {
         return DateTimeFormatter.ofPattern(pattern);
+    }
+
+    /**
+     * todo Javadocs
+     */
+    public static String extractDayAndMonth(String ... dateInformation) {
+        return dateInformation[0] + " " + dateInformation[1];
     }
 
 }
