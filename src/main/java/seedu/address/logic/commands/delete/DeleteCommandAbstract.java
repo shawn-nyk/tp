@@ -1,22 +1,34 @@
 package seedu.address.logic.commands.delete;
 
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
+import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
+import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
 import seedu.address.logic.commands.Command;
 
+/** todo javadocs */
 public abstract class DeleteCommandAbstract extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes an item from InternHunter.\n"
-            + "Parameters (for ITEM_TYPE 'com', 'app', 'me'): "
+            + ": Deletes an item from InternHunter by the index number used in the displayed list.\n"
+            + "Parameters (for ITEM_TYPE "
+            + "'" + COMPANY_ALIAS + "', "
+            + "'" + APPLICATION_ALIAS + "', "
+            + "'" + PROFILE_ALIAS + "'): "
             + "ITEM_TYPE INDEX\n"
-            + "Parameters (for ITEM_TYPE 'int'): "
+            + "Parameters (for ITEM_TYPE "
+            + "'" + INTERNSHIP_ALIAS + "'): "
             + "ITEM_TYPE INDEX " + PREFIX_INDEX + "INDEX\n"
-            + "Note: INDEX must be a positive integer.\n"
+            + "Note: Valid ITEM_TYPEs are "
+            + "'" + COMPANY_ALIAS + "', "
+            + "'" + INTERNSHIP_ALIAS + "', "
+            + "'" + APPLICATION_ALIAS + "' or "
+            + "'" + PROFILE_ALIAS + "'. "
+            + "INDEX must be a positive integer.\n"
             + "Examples:\n"
             + COMMAND_WORD + " " + COMPANY_ALIAS + " 2\n"
             + COMMAND_WORD + " " + INTERNSHIP_ALIAS + " 1 " + PREFIX_INDEX + "3";
