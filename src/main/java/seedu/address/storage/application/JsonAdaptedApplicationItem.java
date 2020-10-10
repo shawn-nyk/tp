@@ -61,7 +61,7 @@ public class JsonAdaptedApplicationItem extends JsonAdaptedItem {
         if (!Status.isValidStatus(status)) {
             throw new IllegalValueException(Status.MESSAGE_CONSTRAINTS);
         }
-        final Status itemStatus = Status.valueOf(status);
+        final Status itemStatus = Status.valueOf(status.toUpperCase());
 
         if (statusDate == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,

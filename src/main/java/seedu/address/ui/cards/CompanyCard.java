@@ -46,7 +46,10 @@ public class CompanyCard extends Card<CompanyItem> {
      */
     private void setTags() {
         Object industries = mapping.get(INDUSTRIES_DISPLAY_NAME);
-        setTags(industries.toString());
+        if (!industries.toString().equals("[]")) {
+            System.out.println(industries.toString());
+            setTags(industries.toString());
+        }
     }
 
     /**

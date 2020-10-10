@@ -86,7 +86,9 @@ public class ApplicationCard extends Card<ApplicationItem> {
      */
     private void setStatus() {
         Object status = mapping.get(STATUS_DISPLAY_NAME);
-        getStatusStyle(status.toString());
+        if (!status.toString().equals("[]")) {
+            getStatusStyle(status.toString());
+        }
     }
 
     /**
