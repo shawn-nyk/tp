@@ -2,11 +2,11 @@ package seedu.address.model.internship;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
-import static seedu.address.ui.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
-import static seedu.address.ui.PanelDisplayKeyword.JOB_TITLE_DISPLAY_NAME;
-import static seedu.address.ui.PanelDisplayKeyword.PERIOD_DISPLAY_NAME;
-import static seedu.address.ui.PanelDisplayKeyword.REQUIREMENTS_DISPLAY_NAME;
-import static seedu.address.ui.PanelDisplayKeyword.WAGE_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.JOB_TITLE_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.PERIOD_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.REQUIREMENTS_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.WAGE_DISPLAY_NAME;
 
 import java.util.Collections;
 import java.util.HashSet;

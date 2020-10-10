@@ -104,4 +104,11 @@ public class DateUtil {
         return DateTimeFormatter.ofPattern(pattern);
     }
 
+    /**
+     * todo Javadocs
+     */
+    public static String extractDayAndMonth(String ... dateInformation) {
+        return dateInformation[0] + " " + dateInformation[1];
+    }
+
 }
