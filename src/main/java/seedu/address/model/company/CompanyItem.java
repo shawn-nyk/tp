@@ -19,6 +19,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.item.Item;
+import seedu.address.storage.company.JsonAdaptedCompanyItem;
 
 /**
  * Represents a Person in the address book. todo javadocs (shawn)
@@ -46,6 +47,20 @@ public class CompanyItem extends Item {
         this.email = email;
         this.address = address;
         this.industries.addAll(industries);
+    }
+
+    /**
+     * Every field must be present and not null.
+     */
+    public CompanyItem(CompanyName companyName, Phone phone, Email email, Address address, Set<Industry> industries,
+            List<InternshipItem> internships) {
+        requireAllNonNull(companyName, phone, email, address, industries, internships);
+        this.companyName = companyName;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.industries.addAll(industries);
+        this.internships.addAll(internships);
     }
 
     public CompanyName getCompanyName() {
@@ -79,7 +94,9 @@ public class CompanyItem extends Item {
         return Collections.unmodifiableList(internships);
     }
 
-    /** todo javadocs (shawn) */
+    /**
+     * todo javadocs (shawn)
+     */
     public InternshipItem getInternship(Index internshipIndex) throws CommandException {
         if (internshipIndex.getZeroBased() >= internships.size()) {
             throw new CommandException(String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, INTERNSHIP_NAME));
@@ -87,7 +104,9 @@ public class CompanyItem extends Item {
         return internships.get(internshipIndex.getZeroBased());
     }
 
-    /** todo javadocs (shawn) */
+    /**
+     * todo javadocs (shawn)
+     */
     public void addInternship(InternshipItem internship) {
         internships.add(internship);
     }
@@ -109,6 +128,7 @@ public class CompanyItem extends Item {
      * Returns true if both persons of the same companyName have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
      */
+    @Override
     public boolean isSameItem(Item otherItem) {
         if (this == otherItem) {
             return true;
@@ -190,6 +210,11 @@ public class CompanyItem extends Item {
         mapping.put("Industries", industries);
         mapping.put("Internships", internships);
         return mapping;
+    }
+
+    @Override
+    public JsonAdaptedCompanyItem getJsonAdaptedItem() {
+        return new JsonAdaptedCompanyItem(this);
     }
 
 }
