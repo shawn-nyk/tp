@@ -41,8 +41,6 @@ public class ApplicationCard extends Card<ApplicationItem> {
     private static final String APPLIED_COLOR = "-fx-background-color: #465891;";
     private static final String INTERVIEW_COLOR = "-fx-background-color: #f86a23;";
     private static final String OFFERED_COLOR = "-fx-background-color: #0e2578;";
-
-
     private static final int IMAGE_HEIGHT_WIDTH = 23;
 
     /**
