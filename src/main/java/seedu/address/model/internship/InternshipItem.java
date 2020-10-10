@@ -26,7 +26,7 @@ public class InternshipItem extends Item {
 
     // Identity fields
     private final CompanyName companyName;
-    private final jobTitle jobTitle;
+    private final JobTitle jobTitle;
     private final Period period;
 
     // Data fields
@@ -36,7 +36,7 @@ public class InternshipItem extends Item {
     /**
      * Every field must be present and not null.
      */
-    public InternshipItem(CompanyName companyName, jobTitle jobTitle, Period period, Wage wage,
+    public InternshipItem(CompanyName companyName, JobTitle jobTitle, Period period, Wage wage,
                           Set<Requirement> requirements) {
         requireAllNonNull(companyName, jobTitle, period, wage, requirements);
         this.companyName = companyName;
@@ -50,7 +50,7 @@ public class InternshipItem extends Item {
         return companyName;
     }
 
-    public jobTitle getJobTitle() {
+    public JobTitle getJobTitle() {
         return jobTitle;
     }
 
