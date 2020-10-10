@@ -39,7 +39,7 @@ public class JsonAdaptedDescriptor {
      * @throws IllegalValueException if there were any data constraints violated in the adapted industry.
      */
     public Descriptor toModelType() throws IllegalValueException {
-        if (!Descriptor.isValidAlphaNumericWord(descriptor)) {
+        if (!Descriptor.isValidDescriptor(descriptor)) {
             throw new IllegalValueException(Descriptor.MESSAGE_CONSTRAINTS);
         }
         return new Descriptor(descriptor);
