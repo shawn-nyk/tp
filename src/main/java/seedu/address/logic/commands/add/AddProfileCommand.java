@@ -7,8 +7,10 @@ import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEG
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTORS;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_TITLE;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
+import static seedu.address.model.util.ItemUtil.PROFILE_ITEM_NAME;
 import static seedu.address.model.util.ItemUtil.PROFILE_NAME;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -19,8 +21,6 @@ import seedu.address.ui.tabs.TabName;
  * Adds a Profile Item to the Model's Profile list.
  */
 public class AddProfileCommand extends AddCommandAbstract {
-
-    public static final String COMMAND_WORD = "add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + PROFILE_ALIAS
             + ": Adds a profile item to "
@@ -34,8 +34,6 @@ public class AddProfileCommand extends AddCommandAbstract {
             + PREFIX_CATEGORY + "skill "
             + PREFIX_DESCRIPTORS + "Learn how to use div and classes. "
             + PREFIX_DESCRIPTORS + "Learn how to inject javascript. ";
-
-    public static final String MESSAGE_SUCCESS = "New profileItem added: %1$s";
 
     private final ProfileItem toAdd;
 
@@ -57,7 +55,8 @@ public class AddProfileCommand extends AddCommandAbstract {
 
         model.getProfileList().addItem(toAdd);
 
-        return getCommandResult(model, String.format(MESSAGE_SUCCESS, toAdd), TabName.PROFILE);
+        String message = String.format(Messages.MESSAGE_ADDED_ITEM, PROFILE_ITEM_NAME, toAdd);
+        return getCommandResult(model, message, TabName.PROFILE);
     }
 
     @Override
