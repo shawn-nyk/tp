@@ -26,7 +26,7 @@ public class InternshipItem extends Item {
 
     // Identity fields
     private final CompanyName companyName;
-    private final InternshipTitle internshipTitle;
+    private final jobTitle jobTitle;
     private final Period period;
 
     // Data fields
@@ -36,11 +36,11 @@ public class InternshipItem extends Item {
     /**
      * Every field must be present and not null.
      */
-    public InternshipItem(CompanyName companyName, InternshipTitle internshipTitle, Period period, Wage wage,
+    public InternshipItem(CompanyName companyName, jobTitle jobTitle, Period period, Wage wage,
                           Set<Requirement> requirements) {
-        requireAllNonNull(companyName, internshipTitle, period, wage, requirements);
+        requireAllNonNull(companyName, jobTitle, period, wage, requirements);
         this.companyName = companyName;
-        this.internshipTitle = internshipTitle;
+        this.jobTitle = jobTitle;
         this.period = period;
         this.wage = wage;
         this.requirements.addAll(requirements);
@@ -50,8 +50,8 @@ public class InternshipItem extends Item {
         return companyName;
     }
 
-    public InternshipTitle getInternshipTitle() {
-        return internshipTitle;
+    public jobTitle getJobTitle() {
+        return jobTitle;
     }
 
     public Period getPeriod() {
@@ -88,7 +88,7 @@ public class InternshipItem extends Item {
     @Override
     public LinkedHashMap<String, Object> getMapping() {
         LinkedHashMap<String, Object> mapping = new LinkedHashMap<>();
-        mapping.put(JOB_TITLE_DISPLAY_NAME, internshipTitle);
+        mapping.put(JOB_TITLE_DISPLAY_NAME, jobTitle);
         mapping.put(COMPANY_DISPLAY_NAME, companyName);
         mapping.put(PERIOD_DISPLAY_NAME, period);
         mapping.put(WAGE_DISPLAY_NAME, wage);
@@ -115,7 +115,7 @@ public class InternshipItem extends Item {
 
         InternshipItem otherInternshipItem = (InternshipItem) otherItem;
         return otherInternshipItem.getCompanyName().equals(getCompanyName())
-                && otherInternshipItem.getInternshipTitle().equals(getInternshipTitle())
+                && otherInternshipItem.getJobTitle().equals(getJobTitle())
                 && otherInternshipItem.getPeriod().equals(getPeriod());
     }
 
@@ -135,7 +135,7 @@ public class InternshipItem extends Item {
 
         InternshipItem otherInternshipItem = (InternshipItem) other;
         return otherInternshipItem.getCompanyName().equals(getCompanyName())
-                && otherInternshipItem.getInternshipTitle().equals(getInternshipTitle())
+                && otherInternshipItem.getJobTitle().equals(getJobTitle())
                 && otherInternshipItem.getPeriod().equals(getPeriod())
                 && otherInternshipItem.getWage().equals(getWage())
                 && otherInternshipItem.getRequirements().equals(getRequirements());
@@ -144,7 +144,7 @@ public class InternshipItem extends Item {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(companyName, internshipTitle, period, wage, requirements);
+        return Objects.hash(companyName, jobTitle, period, wage, requirements);
     }
 
     @Override
@@ -152,7 +152,7 @@ public class InternshipItem extends Item {
         final StringBuilder builder = new StringBuilder();
         builder.append(getCompanyName())
                 .append(" Job title: ")
-                .append(getInternshipTitle())
+                .append(getJobTitle())
                 .append(" Period: ")
                 .append(getPeriod())
                 .append(" Wage: ")

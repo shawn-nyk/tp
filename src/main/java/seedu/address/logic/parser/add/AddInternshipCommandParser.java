@@ -17,7 +17,7 @@ import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.util.InternshipParserUtil;
-import seedu.address.model.internship.InternshipTitle;
+import seedu.address.model.internship.jobTitle;
 import seedu.address.model.internship.Period;
 import seedu.address.model.internship.Requirement;
 import seedu.address.model.internship.Wage;
@@ -53,14 +53,14 @@ public class AddInternshipCommandParser implements Parser<AddInternshipCommand> 
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddInternshipCommand.MESSAGE_USAGE));
         }
-        InternshipTitle internshipTitle = InternshipParserUtil
-            .parseInternshipTitle(argMultimap.getValue(PREFIX_JOB_TITLE).get());
+        jobTitle jobTitle = InternshipParserUtil
+            .parseJobTitle(argMultimap.getValue(PREFIX_JOB_TITLE).get());
         Period period = getPeriod(argMultimap);
         Wage wage = InternshipParserUtil.parseWage(argMultimap.getValue(PREFIX_WAGE).get());
         Set<Requirement> requirements = InternshipParserUtil
             .parseRequirements(argMultimap.getAllValues(PREFIX_REQUIREMENT));
 
-        return new AddInternshipCommand(companyIndex, internshipTitle, period, wage, requirements);
+        return new AddInternshipCommand(companyIndex, jobTitle, period, wage, requirements);
     }
 
     /**
@@ -83,6 +83,7 @@ public class AddInternshipCommandParser implements Parser<AddInternshipCommand> 
      *
      * @param argumentTypes is a list of arguments delimited by the
      * first space in the user argument after stripping wrapping spaces.
+     * @throws ParseException if number of specified argument types are fewer than required.
      */
     private void checkArgumentTypeSufficiency(String[] argumentTypes) throws ParseException {
         if (argumentTypes.length < NUMBER_OF_ARGUMENTS_TYPES) {

@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.company.CompanyName;
 import seedu.address.model.internship.InternshipItem;
-import seedu.address.model.internship.InternshipTitle;
+import seedu.address.model.internship.jobTitle;
 import seedu.address.model.internship.Period;
 import seedu.address.model.internship.Requirement;
 import seedu.address.model.internship.Wage;
@@ -47,7 +47,7 @@ public class JsonAdaptedInternshipItem extends JsonAdaptedItem {
      */
     public JsonAdaptedInternshipItem(InternshipItem source) {
         companyName = source.getCompanyName().value;
-        jobTitle = source.getInternshipTitle().value;
+        jobTitle = source.getJobTitle().value;
         period = source.getPeriod().value;
         wage = source.getWage().value;
         requirements.addAll(source.getRequirements().stream()
@@ -74,12 +74,12 @@ public class JsonAdaptedInternshipItem extends JsonAdaptedItem {
 
         if (jobTitle == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    InternshipTitle.class.getSimpleName()));
+                    seedu.address.model.internship.jobTitle.class.getSimpleName()));
         }
-        if (!InternshipTitle.isValidAlphaNumericWord(jobTitle)) {
-            throw new IllegalValueException(InternshipTitle.MESSAGE_CONSTRAINTS);
+        if (!seedu.address.model.internship.jobTitle.isValidAlphaNumericWord(jobTitle)) {
+            throw new IllegalValueException(seedu.address.model.internship.jobTitle.MESSAGE_CONSTRAINTS);
         }
-        final InternshipTitle itemInternshipTitle = new InternshipTitle(jobTitle);
+        final seedu.address.model.internship.jobTitle itemJobTitle = new jobTitle(jobTitle);
 
         if (period == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -103,7 +103,7 @@ public class JsonAdaptedInternshipItem extends JsonAdaptedItem {
             itemRequirements.add(requirement.toModelType());
         }
 
-        return new InternshipItem(itemCompanyName, itemInternshipTitle, itemPeriod, itemWage, itemRequirements);
+        return new InternshipItem(itemCompanyName, itemJobTitle, itemPeriod, itemWage, itemRequirements);
     }
 
 }

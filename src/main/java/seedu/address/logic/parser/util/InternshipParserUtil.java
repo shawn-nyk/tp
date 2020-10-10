@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.internship.InternshipTitle;
+import seedu.address.model.internship.jobTitle;
 import seedu.address.model.internship.Period;
 import seedu.address.model.internship.Requirement;
 import seedu.address.model.internship.Wage;
@@ -25,13 +25,13 @@ public class InternshipParserUtil {
      *
      * @throws ParseException if the given {@code title} is invalid.
      */
-    public static InternshipTitle parseInternshipTitle(String title) throws ParseException {
+    public static jobTitle parseJobTitle(String title) throws ParseException {
         requireNonNull(title);
         String trimmedTitle = title.trim();
-        if (!InternshipTitle.isValidAlphaNumericWord(trimmedTitle)) {
-            throw new ParseException(InternshipTitle.MESSAGE_CONSTRAINTS);
+        if (!jobTitle.isValidAlphaNumericWord(trimmedTitle)) {
+            throw new ParseException(jobTitle.MESSAGE_CONSTRAINTS);
         }
-        return new InternshipTitle(trimmedTitle);
+        return new jobTitle(trimmedTitle);
     }
 
     /**

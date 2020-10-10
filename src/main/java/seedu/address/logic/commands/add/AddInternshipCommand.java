@@ -21,7 +21,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.company.CompanyItem;
 import seedu.address.model.internship.InternshipItem;
-import seedu.address.model.internship.InternshipTitle;
+import seedu.address.model.internship.jobTitle;
 import seedu.address.model.internship.Period;
 import seedu.address.model.internship.Requirement;
 import seedu.address.model.internship.Wage;
@@ -48,7 +48,7 @@ public class AddInternshipCommand extends AddCommandAbstract {
             + PREFIX_REQUIREMENT + "Vue ";
 
     private final Index companyIndex;
-    private final InternshipTitle internshipTitle;
+    private final jobTitle jobTitle;
     private final Period period;
     private final Wage wage;
     private final Set<Requirement> requirements;
@@ -56,11 +56,11 @@ public class AddInternshipCommand extends AddCommandAbstract {
     /**
      * Creates an AddCommand to add the specified {@code Internship}.
      */
-    public AddInternshipCommand(Index companyIndex, InternshipTitle internshipTitle,
+    public AddInternshipCommand(Index companyIndex, jobTitle jobTitle,
         Period period, Wage wage, Set<Requirement> requirements) {
-        requireAllNonNull(companyIndex, internshipTitle, period, wage, requirements);
+        requireAllNonNull(companyIndex, jobTitle, period, wage, requirements);
         this.companyIndex = companyIndex;
-        this.internshipTitle = internshipTitle;
+        this.jobTitle = jobTitle;
         this.period = period;
         this.wage = wage;
         this.requirements = requirements;
@@ -82,7 +82,7 @@ public class AddInternshipCommand extends AddCommandAbstract {
         }
         CompanyItem companyItem = lastShownCompanyList.get(companyIndex.getZeroBased());
         InternshipItem internshipItem = new InternshipItem(companyItem.getCompanyName(),
-            internshipTitle, period, wage, requirements);
+                jobTitle, period, wage, requirements);
 
         if (companyItem.ifInternshipExists(internshipItem)) {
             throw new CommandException(String.format(MESSAGE_DUPLICATE_ITEM,
