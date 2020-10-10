@@ -6,12 +6,12 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
   * Represents a descriptor in the profile item.
-  * Guarantees: immutable; non-empty; name is valid as declared in {@link #isValidDescriptor(String)}
+  * Guarantees: immutable; non-empty; descriptor is valid as declared in {@link #isValidDescriptor(String)}
   */
 public class Descriptor {
     public static final String MESSAGE_CONSTRAINTS = "descriptors should be alphanumeric,"
-        + "punctuations limited to .,?!:; and non-empty";
-    public static final String VALIDATION_REGEX = "^[A-Za-z0-9 .,!?:;]*+$";
+        + "punctuations limited to .,?!:;+# and non-empty";
+    public static final String VALIDATION_REGEX = "^[A-Za-z0-9 .,!?:;+#]*+$";
 
     public final String descriptor;
 

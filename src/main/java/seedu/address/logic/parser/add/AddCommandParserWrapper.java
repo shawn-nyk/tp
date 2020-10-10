@@ -35,17 +35,14 @@ public class AddCommandParserWrapper implements Parser<AddCommandAbstract> {
         checkItemTypePresent(itemType);
         String commandDetails = getCommandDetails(argumentTypes);
         switch (itemType) {
-
         case COMPANY_ALIAS:
             return new AddCompanyCommandParser().parse(commandDetails);
         case INTERNSHIP_ALIAS:
-            // todo: create parser object and return command from within
             return new AddInternshipCommand("Not an internship added");
         case APPLICATION_ALIAS:
             return new AddApplicationCommandParser().parse(commandDetails);
         case PROFILE_ALIAS:
             return new AddProfileCommandParser().parse(commandDetails);
-        // Throw exception as item type is invalid
         default:
             throw new ParseException(MESSAGE_INVALID_ITEM_TYPE);
         }

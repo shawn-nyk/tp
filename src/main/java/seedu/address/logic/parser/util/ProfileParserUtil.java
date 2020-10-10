@@ -1,4 +1,4 @@
-package seedu.address.logic.parser.exceptions;
+package seedu.address.logic.parser.util;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.util.ProfileItemCategoryUtil.ACHIEVEMENT_KEYWORD;
@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.profile.Descriptor;
 import seedu.address.model.profile.ProfileItemCategory;
 import seedu.address.model.profile.Title;
@@ -40,14 +41,14 @@ public class ProfileParserUtil {
      *
      * @param category category in String form.
      * @return ProfileItemCategory Object parsed from String.
-     * @throws ParseException if not a valid profileItemCategory
+     * @throws ParseException if not a valid profileItemCategory.
      */
     public static ProfileItemCategory parseCategory(String category) throws ParseException {
         requireNonNull(category);
         String trimmedCategory = category.trim();
         String trimmedLowerCaseCategory = trimmedCategory.toLowerCase();
 
-        if (!ProfileItemCategory.isValidProfileItemCategory(trimmedCategory)) {
+        if (!ProfileItemCategory.isValidProfileItemCategory(trimmedLowerCaseCategory)) {
             throw new ParseException(ProfileItemCategory.MESSAGE_CONSTRAINTS);
         }
 
@@ -81,6 +82,7 @@ public class ProfileParserUtil {
 
     /**
      * Parses {@code Collection<String> descriptor} into a {@code Set<Descriptor>}.
+     * @throws ParseException for invalid descriptors in descriptorSet.
      */
     public static Set<Descriptor> parseDescriptors(Collection<String> descriptors) throws ParseException {
         requireNonNull(descriptors);
