@@ -7,8 +7,10 @@ import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEG
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTORS;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_TITLE;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
+import static seedu.address.model.util.ItemUtil.PROFILE_ITEM_NAME;
 import static seedu.address.model.util.ItemUtil.PROFILE_NAME;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -33,8 +35,6 @@ public class AddProfileCommand extends AddCommandAbstract {
             + PREFIX_DESCRIPTORS + "Learn how to use div and classes. "
             + PREFIX_DESCRIPTORS + "Learn how to inject javascript. ";
 
-    public static final String MESSAGE_SUCCESS = "New profile item added: %1$s";
-
     private final ProfileItem toAdd;
 
     /**
@@ -55,7 +55,7 @@ public class AddProfileCommand extends AddCommandAbstract {
 
         model.getProfileList().addItem(toAdd);
 
-        String message = String.format(MESSAGE_SUCCESS, toAdd);
+        String message = String.format(Messages.MESSAGE_ADDED_ITEM, PROFILE_ITEM_NAME, toAdd);
         return getCommandResult(model, message, TabName.PROFILE);
     }
 

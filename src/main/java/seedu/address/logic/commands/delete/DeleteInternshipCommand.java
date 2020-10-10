@@ -28,7 +28,9 @@ public class DeleteInternshipCommand extends DeleteCommandAbstract {
             + "company.\n"
             + "The application (if any) made with this internship will also be deleted.\n"
             + "Parameters: INDEX " + PREFIX_INDEX + "INDEX\n"
-            + "Note: INDEX must be a positive integer\n"
+            + "Note: Select a company with the first INDEX and an internship within that company with the "
+            + "second INDEX. "
+            + "INDEX must be a positive integer.\n"
             + "Example: " + COMMAND_WORD + " " + INTERNSHIP_ALIAS + " 1 " + PREFIX_INDEX + "2";
 
     private final Index companyIndex;

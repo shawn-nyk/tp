@@ -2,9 +2,13 @@ package seedu.address.logic.commands.delete;
 
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
+import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
+import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
+import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
+import static seedu.address.model.util.ItemUtil.PROFILE_ITEM_NAME;
 
 import seedu.address.logic.commands.Command;
 
@@ -14,7 +18,12 @@ public abstract class DeleteCommandAbstract extends Command {
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes an item from InternHunter by the index number used in the displayed list.\n"
+            + ": Deletes a "
+            + COMPANY_NAME + ", "
+            + INTERNSHIP_NAME + ", "
+            + APPLICATION_NAME + " or "
+            + PROFILE_ITEM_NAME
+            + " from InternHunter by the index number used in the displayed list.\n"
             + "Parameters (for ITEM_TYPE "
             + "'" + COMPANY_ALIAS + "', "
             + "'" + APPLICATION_ALIAS + "', "

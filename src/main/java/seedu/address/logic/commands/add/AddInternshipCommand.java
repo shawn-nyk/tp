@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_WA
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -26,8 +27,6 @@ public class AddInternshipCommand extends AddCommandAbstract {
             + PREFIX_JOB_TITLE + "Software Engineer "
             + PREFIX_REQUIREMENT + "React "
             + PREFIX_REQUIREMENT + "Vue";
-
-    public static final String MESSAGE_SUCCESS = "New internship added: %1$s";
 
     private final String toAdd;
 
@@ -48,7 +47,7 @@ public class AddInternshipCommand extends AddCommandAbstract {
      */
     @Override
     public CommandResult execute(Model model) throws CommandException { // todo
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(Messages.MESSAGE_ADDED_ITEM, INTERNSHIP_NAME, toAdd));
     }
 
     @Override

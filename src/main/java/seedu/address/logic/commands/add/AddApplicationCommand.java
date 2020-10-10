@@ -11,6 +11,7 @@ import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -38,9 +39,6 @@ public class AddApplicationCommand extends AddCommandAbstract {
             + PREFIX_INDEX + "2 "
             + PREFIX_STATUS + "waiting "
             + PREFIX_STATUS_DATE + "23-12-20";
-
-    public static final String MESSAGE_SUCCESS = "New application added: %s\n"
-            + "Type in 'switch app' to see the newly added application!";
 
     private final Index companyIndex;
     private final Index internshipIndex;
@@ -70,17 +68,17 @@ public class AddApplicationCommand extends AddCommandAbstract {
         requireNonNull(model);
         CompanyItem companyItem = getCompany(model, companyIndex);
         InternshipItem internshipItem = companyItem.getInternship(internshipIndex);
-        ApplicationItem applicationItem = new ApplicationItem(internshipItem, status, statusDate);
+        ApplicationItem applicationToAdd = new ApplicationItem(internshipItem, status, statusDate);
 
         FilterableItemList<ApplicationItem> applicationList = model.getApplicationList();
 
-        if (applicationList.hasItem(applicationItem)) {
+        if (applicationList.hasItem(applicationToAdd)) {
             throw new CommandException(String.format(MESSAGE_DUPLICATE_ITEM, APPLICATION_NAME));
         }
 
-        applicationList.addItem(applicationItem);
+        applicationList.addItem(applicationToAdd);
 
-        String message = String.format(MESSAGE_SUCCESS, applicationItem);
+        String message = String.format(Messages.MESSAGE_ADDED_ITEM, APPLICATION_NAME, applicationToAdd);
         return getCommandResult(model, message, TabName.APPLICATION);
     }
 
