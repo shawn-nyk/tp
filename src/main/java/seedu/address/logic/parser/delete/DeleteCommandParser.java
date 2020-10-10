@@ -10,6 +10,7 @@ import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.delete.DeleteApplicationCommand;
 import seedu.address.logic.commands.delete.DeleteCommandAbstract;
+import seedu.address.logic.commands.delete.DeleteCompanyCommand;
 import seedu.address.logic.commands.delete.DeleteProfileCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
@@ -47,8 +48,7 @@ public class DeleteCommandParser implements Parser<DeleteCommandAbstract> {
 
         switch (itemType) {
         case COMPANY_ALIAS:
-            //todo: return own delete command
-            return null;
+            return new DeleteCompanyCommand(index);
 
         case APPLICATION_ALIAS:
             return new DeleteApplicationCommand(index);
