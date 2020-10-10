@@ -11,6 +11,7 @@ import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_PHONE
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -37,8 +38,6 @@ public class AddCompanyCommand extends AddCommandAbstract {
             + PREFIX_INDUSTRY + "Cloud Computing "
             + PREFIX_INDUSTRY + "Artificial Intelligence";
 
-    public static final String MESSAGE_SUCCESS = "New company added: %1$s";
-
     private final CompanyItem toAdd;
 
     /**
@@ -59,7 +58,8 @@ public class AddCompanyCommand extends AddCommandAbstract {
 
         model.getCompanyList().addItem(toAdd);
 
-        return getCommandResult(model, String.format(MESSAGE_SUCCESS, toAdd), TabName.COMPANY);
+        String message = String.format(Messages.MESSAGE_ADDED_ITEM, COMPANY_NAME, toAdd);
+        return getCommandResult(model, message, TabName.COMPANY);
     }
 
     @Override
