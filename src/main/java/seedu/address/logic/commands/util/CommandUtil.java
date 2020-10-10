@@ -62,8 +62,7 @@ public class CommandUtil {
     public static CommandResult getCommandResult(Model model, String message, TabName tabName) {
         if (model.getTabName() != tabName) {
             model.setTabName(tabName);
-            return new CommandResult(message, false, false, true);
-            return new CommandResult(messageSuccess, false, false, true, false);
+            return new CommandResult(message, false, false, true, false);
         } else {
             return new CommandResult(message);
         }
