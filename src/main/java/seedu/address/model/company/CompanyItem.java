@@ -3,6 +3,7 @@ package seedu.address.model.company;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
+import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,6 +47,20 @@ public class CompanyItem extends Item {
         this.industries.addAll(industries);
     }
 
+    /**
+     * Every field must be present and not null.
+     */
+    public CompanyItem(CompanyName companyName, Phone phone, Email email, Address address, Set<Industry> industries,
+            List<InternshipItem> internships) {
+        requireAllNonNull(companyName, phone, email, address, industries, internships);
+        this.companyName = companyName;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.industries.addAll(industries);
+        this.internships.addAll(internships);
+    }
+
     public CompanyName getCompanyName() {
         return companyName;
     }
@@ -77,7 +92,9 @@ public class CompanyItem extends Item {
         return Collections.unmodifiableList(internships);
     }
 
-    /** todo javadocs (shawn) */
+    /**
+     * todo javadocs (shawn)
+     */
     public InternshipItem getInternship(Index internshipIndex) throws CommandException {
         if (internshipIndex.getZeroBased() >= internships.size()) {
             throw new CommandException(String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, INTERNSHIP_NAME));
@@ -85,7 +102,9 @@ public class CompanyItem extends Item {
         return internships.get(internshipIndex.getZeroBased());
     }
 
-    /** todo javadocs (shawn) */
+    /**
+     * todo javadocs (shawn)
+     */
     public void addInternship(InternshipItem internship) {
         internships.add(internship);
     }

@@ -25,7 +25,7 @@ public class JsonAdaptedDescriptor {
      * Converts a given {@code Descriptor} into this class for Jackson use.
      */
     public JsonAdaptedDescriptor(Descriptor source) {
-        descriptor = source.value;
+        descriptor = source.descriptor;
     }
 
     @JsonValue

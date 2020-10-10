@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.profile.Descriptor;
 import seedu.address.model.profile.ProfileItem;
-import seedu.address.model.profile.ProfileItemType;
+import seedu.address.model.profile.ProfileItemCategory;
 import seedu.address.model.profile.Title;
 import seedu.address.storage.item.JsonAdaptedItem;
 
@@ -64,12 +64,12 @@ public class JsonAdaptedProfileItem extends JsonAdaptedItem {
 
         if (profileType == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    ProfileItemType.class.getSimpleName()));
+                    ProfileItemCategory.class.getSimpleName()));
         }
-        if (!ProfileItemType.isValidProfileItemType(profileType)) {
-            throw new IllegalValueException(ProfileItemType.MESSAGE_CONSTRAINTS);
+        if (!ProfileItemCategory.isValidProfileItemCategory(profileType)) {
+            throw new IllegalValueException(ProfileItemCategory.MESSAGE_CONSTRAINTS);
         }
-        final ProfileItemType itemProfileType = ProfileItemType.valueOf(profileType);
+        final ProfileItemCategory itemProfileType = ProfileItemCategory.valueOf(profileType);
 
         final Set<Descriptor> itemDescriptors = new HashSet<>();
 

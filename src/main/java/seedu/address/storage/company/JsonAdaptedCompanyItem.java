@@ -121,6 +121,6 @@ public class JsonAdaptedCompanyItem extends JsonAdaptedItem {
             itemInternships.add(internship.toModelType());
         }
 
-        return new CompanyItem(itemCompanyName, itemPhone, itemEmail, itemAddress, itemIndustries, itemInternships);
+        return new CompanyItem(itemCompanyName, itemPhone, itemEmail, itemAddress, itemIndustries);
     }
 }
