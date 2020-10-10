@@ -5,7 +5,6 @@ import java.nio.file.Path;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.company.CompanyItem;
-import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.ui.tabs.TabName;
@@ -54,11 +53,6 @@ public interface Model {
      * Gets the company list manager.
      */
     FilterableItemList<CompanyItem> getCompanyList();
-
-    /**
-     * Gets the internship list manager.
-     */
-    FilterableItemList<InternshipItem> getInternshipList();
 
     /**
      * Gets the application list manager.

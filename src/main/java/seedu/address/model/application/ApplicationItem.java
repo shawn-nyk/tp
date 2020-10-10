@@ -12,6 +12,8 @@ import java.util.Objects;
 
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.item.Item;
+import seedu.address.storage.application.JsonAdaptedApplicationItem;
+import seedu.address.storage.item.JsonAdaptedItem;
 
 /**
  * Represents an ApplicationItem in the InternHunter application.
@@ -76,6 +78,7 @@ public class ApplicationItem extends Item {
      *
      * @return Mapping of field names to fields for the ApplicationItem object.
      */
+    @Override
     public LinkedHashMap<String, Object> getMapping() {
         LinkedHashMap<String, Object> mapping = internshipItem.getMapping();
         mapping.put(STATUS_DISPLAY_NAME, status);
@@ -141,6 +144,11 @@ public class ApplicationItem extends Item {
                 .append(" Date: ")
                 .append(getStatusDate());
         return builder.toString();
+    }
+
+    @Override
+    public JsonAdaptedItem getJsonAdaptedItem() {
+        return new JsonAdaptedApplicationItem(this);
     }
 
 }

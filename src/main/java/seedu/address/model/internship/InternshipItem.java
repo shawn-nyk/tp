@@ -16,6 +16,7 @@ import java.util.Set;
 
 import seedu.address.model.company.CompanyName;
 import seedu.address.model.item.Item;
+import seedu.address.storage.internship.JsonAdaptedInternshipItem;
 
 /**
  * Represents an InternshipItem in the InternHunter application.
@@ -84,6 +85,7 @@ public class InternshipItem extends Item {
      *
      * @return Mapping of field names to fields for the InternshipItem.
      */
+    @Override
     public LinkedHashMap<String, Object> getMapping() {
         LinkedHashMap<String, Object> mapping = new LinkedHashMap<>();
         mapping.put(JOB_TITLE_DISPLAY_NAME, jobTitle);
@@ -159,5 +161,11 @@ public class InternshipItem extends Item {
         getRequirements().forEach(builder::append);
         return builder.toString();
     }
+
+    @Override
+    public JsonAdaptedInternshipItem getJsonAdaptedItem() {
+        return new JsonAdaptedInternshipItem(this);
+    }
+
 
 }
