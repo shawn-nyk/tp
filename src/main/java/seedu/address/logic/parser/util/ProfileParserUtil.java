@@ -48,7 +48,7 @@ public class ProfileParserUtil {
         String trimmedCategory = category.trim();
         String trimmedLowerCaseCategory = trimmedCategory.toLowerCase();
 
-        if (!ProfileItemCategory.isValidProfileItemCategory(trimmedCategory)) {
+        if (!ProfileItemCategory.isValidProfileItemCategory(trimmedLowerCaseCategory)) {
             throw new ParseException(ProfileItemCategory.MESSAGE_CONSTRAINTS);
         }
 
