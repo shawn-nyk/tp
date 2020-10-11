@@ -50,6 +50,12 @@ public class InternshipItem extends Item {
         return companyName;
     }
 
+    /*
+    public void setCompanyName(CompanyName companyName) {
+        this.companyName = companyName;
+    }
+     */
+
     public JobTitle getJobTitle() {
         return jobTitle;
     }
@@ -161,8 +167,8 @@ public class InternshipItem extends Item {
                 .append(" Wage: ")
                 .append(getWage())
                 .append(", ")
-                .append(" Requirements: ")
-                .append(getRequirements());
+                .append(" Requirements: ");
+        getRequirements().forEach(builder::append);
         return builder.toString();
     }
 

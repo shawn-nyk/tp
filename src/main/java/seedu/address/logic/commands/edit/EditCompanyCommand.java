@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.edit;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_EDIT_SUCCESS;
 import static seedu.address.logic.commands.util.CommandUtil.getCompany;
 import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_COMPANY_NAME;
@@ -13,6 +14,7 @@ import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -28,6 +30,7 @@ import seedu.address.model.company.CompanyName;
 import seedu.address.model.company.Email;
 import seedu.address.model.company.Industry;
 import seedu.address.model.company.Phone;
+import seedu.address.model.internship.InternshipItem;
 
 /** todo javadocs (shawn) */
 public class EditCompanyCommand extends EditCommandAbstract {
@@ -75,7 +78,7 @@ public class EditCompanyCommand extends EditCommandAbstract {
 
         model.getCompanyList().setItem(companyToEdit, editedCompany);
         model.getCompanyList().updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
-        return new CommandResult(String.format(Messages.MESSAGE_EDITED_ITEM, COMPANY_NAME, editedCompany));
+        return new CommandResult(String.format(MESSAGE_EDIT_SUCCESS, COMPANY_NAME, editedCompany));
     }
 
     /**
@@ -91,8 +94,12 @@ public class EditCompanyCommand extends EditCommandAbstract {
         Email updatedEmail = editCompanyDescriptor.getEmail().orElse(companyToEdit.getEmail());
         Address updatedAddress = editCompanyDescriptor.getAddress().orElse(companyToEdit.getAddress());
         Set<Industry> updatedIndustries = editCompanyDescriptor.getIndustries().orElse(companyToEdit.getIndustries());
+        List<InternshipItem> internships = companyToEdit.getInternships();
 
-        return new CompanyItem(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedIndustries);
+        CompanyItem updatedCompany = new CompanyItem(updatedName, updatedPhone, updatedEmail, updatedAddress,
+                updatedIndustries, internships);
+        // updatedCompany.updateAllInternshipsCompanyName();
+        return updatedCompany;
     }
 
     @Override
@@ -215,10 +222,5 @@ public class EditCompanyCommand extends EditCommandAbstract {
                     && getAddress().equals(e.getAddress())
                     && getIndustries().equals(e.getIndustries());
         }
-    }
-
-    @Override
-    public String getItemType() {
-        return COMPANY_NAME;
     }
 }

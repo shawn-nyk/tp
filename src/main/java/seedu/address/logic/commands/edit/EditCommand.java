@@ -224,9 +224,4 @@ public class EditCommand extends EditCommandAbstract {
                     && getTags().equals(e.getTags());
         }
     }
-
-    @Override
-    public String getItemType() {
-        return "person";
-    }
 }
