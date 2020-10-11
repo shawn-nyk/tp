@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_ADD_SUCCESS;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_JOB_TITLE;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_PERIOD;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_REQUIREMENT;
@@ -8,7 +9,6 @@ import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_WA
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -46,12 +46,8 @@ public class AddInternshipCommand extends AddCommandAbstract {
      * @throws CommandException If an error occurs during command execution.
      */
     @Override
-    public CommandResult execute(Model model) throws CommandException { // todo
-        return new CommandResult(String.format(Messages.MESSAGE_ADDED_ITEM, INTERNSHIP_NAME, toAdd));
+    public CommandResult execute(Model model) throws CommandException {
+        return new CommandResult(String.format(MESSAGE_ADD_SUCCESS, INTERNSHIP_NAME, toAdd));
     }
 
-    @Override
-    public String getItemType() {
-        return INTERNSHIP_NAME;
-    }
 }

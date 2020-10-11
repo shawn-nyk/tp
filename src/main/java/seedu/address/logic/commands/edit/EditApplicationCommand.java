@@ -1,4 +1,4 @@
-package seedu.address.logic.commands.delete;
+package seedu.address.logic.commands.edit;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_DELETED_ITEM;
@@ -13,14 +13,12 @@ import seedu.address.model.Model;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.ui.tabs.TabName;
 
-/**
- * Deletes the application from the Application list.
- */
-public class DeleteApplicationCommand extends DeleteCommandAbstract {
+public class EditApplicationCommand extends EditCommandAbstract {
+
 
     private final Index targetIndex;
 
-    public DeleteApplicationCommand(Index targetIndex) {
+    public EditApplicationCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
 
@@ -36,8 +34,8 @@ public class DeleteApplicationCommand extends DeleteCommandAbstract {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteApplicationCommand // instanceof handles nulls
-                && targetIndex.equals(((DeleteApplicationCommand) other).targetIndex)); // state check
+                || (other instanceof EditApplicationCommand // instanceof handles nulls
+                && targetIndex.equals(((EditApplicationCommand) other).targetIndex)); // state check
     }
 
 }

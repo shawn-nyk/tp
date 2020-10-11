@@ -1,4 +1,4 @@
-package seedu.address.logic.parser.delete;
+package seedu.address.logic.parser.edit;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getCommandDetails;
@@ -9,45 +9,42 @@ import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.delete.DeleteApplicationCommand;
-import seedu.address.logic.commands.delete.DeleteCommandAbstract;
-import seedu.address.logic.commands.delete.DeleteCompanyCommand;
+import seedu.address.logic.commands.edit.EditApplicationCommand;
+import seedu.address.logic.commands.edit.EditCommandAbstract;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.util.GeneralParserUtil;
 
-/**
- * Parses input arguments and creates a new DeleteCommand object
- */
-public class DeleteCommandParser implements Parser<DeleteCommandAbstract> {
+public class EditCommandParserWrapper implements Parser<EditCommandAbstract> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the DeleteCommand
-     * and returns a DeleteCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the EditCommand
+     * and returns a EditCommand object for execution.
      *
      * @throws ParseException if the user input does not conform the expected format
      */
-    public DeleteCommandAbstract parse(String args) throws ParseException {
+    public EditCommandAbstract parse(String args) throws ParseException {
 
-        String itemType = getItemType(args, DeleteCommandAbstract.MESSAGE_USAGE);
+        String itemType = getItemType(args, EditCommandAbstract.MESSAGE_USAGE);
         String commandDetails = getCommandDetails(args);
 
         // Internship has a different parse requirement
         if (itemType.equals(INTERNSHIP_ALIAS)) {
-            return new DeleteInternshipCommandParser().parse(commandDetails);
+            // TODO: return internship edit command
         }
 
         Index index = GeneralParserUtil.parseIndex(commandDetails);
 
         switch (itemType) {
         case COMPANY_ALIAS:
-            return new DeleteCompanyCommand(index);
+            //todo: return own edit command
+            return null;
 
         case APPLICATION_ALIAS:
-            return new DeleteApplicationCommand(index);
+            return new EditApplicationCommand(index);
 
         case PROFILE_ALIAS:
-            //todo: return own delete command
+            //todo: return own edit command
             return null;
 
         default:
