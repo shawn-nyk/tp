@@ -69,7 +69,8 @@ public class JsonAdaptedProfileItem extends JsonAdaptedItem {
         if (!ProfileItemCategory.isValidProfileItemCategory(profileType)) {
             throw new IllegalValueException(ProfileItemCategory.MESSAGE_CONSTRAINTS);
         }
-        final ProfileItemCategory itemProfileType = ProfileItemCategory.valueOf(profileType);
+
+        final ProfileItemCategory itemProfileType = ProfileItemCategory.valueOf(profileType.toUpperCase());
 
         final Set<Descriptor> itemDescriptors = new HashSet<>();
 

@@ -57,7 +57,7 @@ public class ApplicationCard extends Card<ApplicationItem> {
     private void initializeInternshipCardGui() {
         setId(displayedIndex);
         setName();
-        setTags();
+        setRequirements();
         setStatus();
         setPeriod();
         setWage();
@@ -76,7 +76,7 @@ public class ApplicationCard extends Card<ApplicationItem> {
     /**
      * todo Javadocs
      */
-    private void setTags() {
+    private void setRequirements() {
         Object requirements = mapping.get(REQUIREMENTS_DISPLAY_NAME);
         setTags(requirements.toString());
     }
@@ -86,7 +86,9 @@ public class ApplicationCard extends Card<ApplicationItem> {
      */
     private void setStatus() {
         Object status = mapping.get(STATUS_DISPLAY_NAME);
-        getStatusStyle(status.toString());
+        if (!status.toString().equals("[]")) {
+            getStatusStyle(status.toString());
+        }
     }
 
     /**
