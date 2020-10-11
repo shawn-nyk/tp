@@ -136,8 +136,8 @@ public class CompanyItem extends Item {
      * @param internshipItem to check against.
      * @return true if {@code internshipItem} exists in company.
      */
-    public boolean ifInternshipExists(InternshipItem internshipItem) {
-        return !internships.stream().filter(x -> x.isSameItem(internshipItem)).findAny().isEmpty();
+    public boolean containsInternship(InternshipItem internshipItem) {
+        return internships.stream().anyMatch(x -> x.isSameItem(internshipItem));
     }
 
     @Override

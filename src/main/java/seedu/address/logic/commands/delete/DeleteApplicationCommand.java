@@ -1,11 +1,11 @@
 package seedu.address.logic.commands.delete;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_DELETED_ITEM;
 import static seedu.address.logic.commands.util.CommandUtil.getApplication;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -29,14 +29,8 @@ public class DeleteApplicationCommand extends DeleteCommandAbstract {
         requireNonNull(model);
         ApplicationItem applicationToDelete = getApplication(model, targetIndex);
         model.getApplicationList().deleteItem(applicationToDelete);
-
-        String message = String.format(Messages.MESSAGE_DELETED_ITEM, APPLICATION_NAME, applicationToDelete);
-        return getCommandResult(model, message, TabName.APPLICATION);
-    }
-
-    @Override
-    public String getItemType() {
-        return APPLICATION_NAME;
+        String deleteSuccessMessage = String.format(MESSAGE_DELETED_ITEM, APPLICATION_NAME, applicationToDelete);
+        return getCommandResult(model, deleteSuccessMessage, TabName.APPLICATION);
     }
 
     @Override

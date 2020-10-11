@@ -42,10 +42,4 @@ public abstract class DeleteCommandAbstract extends Command {
             + COMMAND_WORD + " " + COMPANY_ALIAS + " 2\n"
             + COMMAND_WORD + " " + INTERNSHIP_ALIAS + " 1 " + PREFIX_INDEX + "3";
 
-    /**
-     * Obtains the name of item associated with Delete Command.
-     *
-     * @return Item name.
-     */
-    public abstract String getItemType();
 }

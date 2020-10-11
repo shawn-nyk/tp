@@ -65,13 +65,8 @@ public class DeleteInternshipCommand extends DeleteCommandAbstract {
         // Delete the internship
         companyItem.removeInternship(internshipIndex);
 
-        String message = String.format(Messages.MESSAGE_DELETED_ITEM, INTERNSHIP_NAME, internshipItem);
-        return getCommandResult(model, message, TabName.COMPANY);
-    }
-
-    @Override
-    public String getItemType() {
-        return INTERNSHIP_NAME;
+        String deleteSuccessMessage = String.format(Messages.MESSAGE_DELETED_ITEM, INTERNSHIP_NAME, internshipItem);
+        return getCommandResult(model, deleteSuccessMessage, TabName.COMPANY);
     }
 
     @Override

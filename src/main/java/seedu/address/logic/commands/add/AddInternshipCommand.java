@@ -3,18 +3,16 @@ package seedu.address.logic.commands.add;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
+import static seedu.address.logic.commands.util.CommandUtil.getCompany;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_JOB_TITLE;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_PERIOD;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_WAGE;
-import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
 
-import java.util.List;
 import java.util.Set;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -42,27 +40,27 @@ public class AddInternshipCommand extends AddCommandAbstract {
             + "Example: " + COMMAND_WORD + " " + INTERNSHIP_ALIAS
             + " 1 "
             + PREFIX_JOB_TITLE + "Software Engineer "
-            + PREFIX_PERIOD + "3 months "
             + PREFIX_WAGE + "3000 "
+            + PREFIX_PERIOD + "3 months "
             + PREFIX_REQUIREMENT + "React "
             + PREFIX_REQUIREMENT + "Vue ";
 
     private final Index companyIndex;
     private final JobTitle jobTitle;
-    private final Period period;
     private final Wage wage;
+    private final Period period;
     private final Set<Requirement> requirements;
 
     /**
      * Creates an AddCommand to add the specified {@code Internship}.
      */
     public AddInternshipCommand(Index companyIndex, JobTitle jobTitle,
-        Period period, Wage wage, Set<Requirement> requirements) {
-        requireAllNonNull(companyIndex, jobTitle, period, wage, requirements);
+            Wage wage, Period period, Set<Requirement> requirements) {
+        requireAllNonNull(companyIndex, jobTitle, wage, period, requirements);
         this.companyIndex = companyIndex;
         this.jobTitle = jobTitle;
-        this.period = period;
         this.wage = wage;
+        this.period = period;
         this.requirements = requirements;
     }
 
@@ -76,26 +74,18 @@ public class AddInternshipCommand extends AddCommandAbstract {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<CompanyItem> lastShownCompanyList = model.getCompanyList().getFilteredItemList();
-        if (companyIndex.getZeroBased() >= lastShownCompanyList.size()) {
-            throw new CommandException(String.format(Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, COMPANY_NAME));
-        }
-        CompanyItem companyItem = lastShownCompanyList.get(companyIndex.getZeroBased());
+        CompanyItem companyItem = getCompany(model, companyIndex);
+
         InternshipItem internshipItem = new InternshipItem(companyItem.getCompanyName(),
                 jobTitle, period, wage, requirements);
 
-        if (companyItem.ifInternshipExists(internshipItem)) {
+        if (companyItem.containsInternship(internshipItem)) {
             throw new CommandException(String.format(MESSAGE_DUPLICATE_ITEM,
-                INTERNSHIP_NAME, companyItem.getCompanyName().toString()));
+                    INTERNSHIP_NAME, companyItem.getCompanyName()));
         }
 
         companyItem.addInternship(internshipItem);
-        return getCommandResult(model, String.format(MESSAGE_SUCCESS, internshipItem),
-                TabName.COMPANY);
+        return getCommandResult(model, String.format(MESSAGE_SUCCESS, internshipItem), TabName.COMPANY);
     }
 
-    @Override
-    public String getItemType() {
-        return INTERNSHIP_NAME;
-    }
 }

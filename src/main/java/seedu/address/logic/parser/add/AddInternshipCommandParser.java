@@ -5,7 +5,11 @@ import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_JO
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_PERIOD;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_WAGE;
-import static seedu.address.logic.parser.util.Util.arePrefixesPresent;
+import static seedu.address.logic.parser.util.GeneralParserUtil.arePrefixesPresent;
+import static seedu.address.logic.parser.util.GeneralParserUtil.getIndexInPreamble;
+import static seedu.address.logic.parser.util.InternshipParserUtil.parseJobTitle;
+import static seedu.address.logic.parser.util.InternshipParserUtil.parseRequirements;
+import static seedu.address.logic.parser.util.InternshipParserUtil.parseWage;
 
 import java.util.Set;
 
@@ -14,7 +18,6 @@ import seedu.address.logic.commands.add.AddInternshipCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
-import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.util.InternshipParserUtil;
 import seedu.address.model.internship.JobTitle;
@@ -27,10 +30,6 @@ import seedu.address.model.internship.Wage;
  */
 public class AddInternshipCommandParser implements Parser<AddInternshipCommand> {
 
-    private static final int INDEX_FIRST = 0;
-    private static final int INDEX_SECOND = 1;
-    private static final int NUMBER_OF_ARGUMENTS_TYPES = 2;
-
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
      * and returns an AddCommand object for execution.
@@ -39,56 +38,36 @@ public class AddInternshipCommandParser implements Parser<AddInternshipCommand> 
      */
     public AddInternshipCommand parse(String args) throws ParseException {
 
-        String[] argumentArr = args.strip().split(" ", NUMBER_OF_ARGUMENTS_TYPES);
-        checkArgumentTypeSufficiency(argumentArr);
-        Index companyIndex = ParserUtil.parseIndex(argumentArr[INDEX_FIRST]);
-        String remainingTokens = " " + argumentArr[INDEX_SECOND];
-
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(remainingTokens, PREFIX_JOB_TITLE,
-                    PREFIX_PERIOD, PREFIX_WAGE, PREFIX_REQUIREMENT);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_JOB_TITLE,
+                PREFIX_PERIOD, PREFIX_WAGE, PREFIX_REQUIREMENT);
 
         // Todo: Wage will be compulsory until its status can be resolved
-        if (!arePrefixesPresent(argMultimap, PREFIX_JOB_TITLE, PREFIX_WAGE) || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddInternshipCommand.MESSAGE_USAGE));
+        if (!arePrefixesPresent(argMultimap, PREFIX_JOB_TITLE, PREFIX_WAGE)) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddInternshipCommand.MESSAGE_USAGE));
         }
-        JobTitle jobTitle = InternshipParserUtil
-            .parseJobTitle(argMultimap.getValue(PREFIX_JOB_TITLE).get());
-        Period period = getPeriod(argMultimap);
-        Wage wage = InternshipParserUtil.parseWage(argMultimap.getValue(PREFIX_WAGE).get());
-        Set<Requirement> requirements = InternshipParserUtil
-            .parseRequirements(argMultimap.getAllValues(PREFIX_REQUIREMENT));
 
-        return new AddInternshipCommand(companyIndex, jobTitle, period, wage, requirements);
+        Index companyIndex = getIndexInPreamble(argMultimap, AddInternshipCommand.MESSAGE_USAGE);
+        JobTitle jobTitle = parseJobTitle(argMultimap.getValue(PREFIX_JOB_TITLE).get());
+        Wage wage = parseWage(argMultimap.getValue(PREFIX_WAGE).get());
+        Period period = getPeriod(argMultimap);
+        Set<Requirement> requirements = parseRequirements(argMultimap.getAllValues(PREFIX_REQUIREMENT));
+
+        return new AddInternshipCommand(companyIndex, jobTitle, wage, period, requirements);
     }
 
     /**
-     * Obtains the period from the user input. Returns default unknown if unspecified.
+     * Obtains the period from the user input. Returns default "-" if unspecified.
      *
      * @param argMultimap ArgumentMultimap.
-     * @return StatusDate for this application.
-     * @throws ParseException if the given {@code StatusDate} is invalid.
+     * @return Period for this application.
+     * @throws ParseException if the given {@code Period} is invalid.
      */
     private Period getPeriod(ArgumentMultimap argMultimap) throws ParseException {
         if (argMultimap.getValue(PREFIX_PERIOD).isPresent()) {
             return InternshipParserUtil.parsePeriod(argMultimap.getValue(PREFIX_PERIOD).get());
         } else {
-            return new Period("unknown");
+            return new Period("-");
         }
     }
 
-    /**
-     * Checks if number of argument types are sufficient.
-     *
-     * @param argumentTypes is a list of arguments delimited by the
-     * first space in the user argument after stripping wrapping spaces.
-     * @throws ParseException if number of specified argument types are fewer than required.
-     */
-    private void checkArgumentTypeSufficiency(String[] argumentTypes) throws ParseException {
-        if (argumentTypes.length < NUMBER_OF_ARGUMENTS_TYPES) {
-            throw new ParseException(String.format(
-                    MESSAGE_INVALID_COMMAND_FORMAT, AddInternshipCommand.MESSAGE_USAGE));
-        }
-    }
 }

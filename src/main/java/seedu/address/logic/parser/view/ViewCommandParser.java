@@ -1,4 +1,4 @@
-package seedu.address.logic.parser.delete;
+package seedu.address.logic.parser.view;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getCommandDetails;
@@ -9,46 +9,47 @@ import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.delete.DeleteApplicationCommand;
-import seedu.address.logic.commands.delete.DeleteCommandAbstract;
-import seedu.address.logic.commands.delete.DeleteCompanyCommand;
-import seedu.address.logic.commands.delete.DeleteProfileCommand;
+import seedu.address.logic.commands.view.ViewApplicationCommand;
+import seedu.address.logic.commands.view.ViewCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.util.GeneralParserUtil;
 
 /**
- * Parses input arguments and creates a new DeleteCommand object
+ * Parses input arguments and creates a new ViewCommand object
  */
-public class DeleteCommandParser implements Parser<DeleteCommandAbstract> {
+public class ViewCommandParser implements Parser<ViewCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the DeleteCommand
-     * and returns a DeleteCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the ViewCommand
+     * and returns a ViewCommand object for execution.
      *
-     * @throws ParseException if the user input does not conform the expected format
+     * @throws ParseException if the user input does not conform to the expected format.
      */
-    public DeleteCommandAbstract parse(String args) throws ParseException {
+    public ViewCommand parse(String args) throws ParseException {
 
-        String itemType = getItemType(args, DeleteCommandAbstract.MESSAGE_USAGE);
+        String itemType = getItemType(args, ViewCommand.MESSAGE_USAGE);
         String commandDetails = getCommandDetails(args);
 
         // Internship has a different parse requirement
         if (itemType.equals(INTERNSHIP_ALIAS)) {
-            return new DeleteInternshipCommandParser().parse(commandDetails);
+            // todo: return view internship command
+            return null;
         }
 
         Index index = GeneralParserUtil.parseIndex(commandDetails);
 
         switch (itemType) {
         case COMPANY_ALIAS:
-            return new DeleteCompanyCommand(index);
+            //todo: return own delete command
+            return null;
 
         case APPLICATION_ALIAS:
-            return new DeleteApplicationCommand(index);
+            return new ViewApplicationCommand(index);
 
         case PROFILE_ALIAS:
-            return new DeleteProfileCommand(index);
+            //todo: return own delete command
+            return null;
 
         default:
             // Invalid item type
