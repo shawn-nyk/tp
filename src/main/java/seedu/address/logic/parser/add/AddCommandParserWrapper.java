@@ -9,7 +9,6 @@ import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
 import seedu.address.logic.commands.add.AddCommandAbstract;
-import seedu.address.logic.commands.add.AddInternshipCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -39,7 +38,7 @@ public class AddCommandParserWrapper implements Parser<AddCommandAbstract> {
         case COMPANY_ALIAS:
             return new AddCompanyCommandParser().parse(commandDetails);
         case INTERNSHIP_ALIAS:
-            return new AddInternshipCommand("Not an internship added");
+            return new AddInternshipCommandParser().parse(commandDetails);
         case APPLICATION_ALIAS:
             return new AddApplicationCommandParser().parse(commandDetails);
         case PROFILE_ALIAS:
