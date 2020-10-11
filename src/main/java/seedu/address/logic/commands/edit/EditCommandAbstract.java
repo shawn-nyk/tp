@@ -35,7 +35,7 @@ public abstract class EditCommandAbstract extends Command {
             + "'" + PROFILE_ALIAS + "'. "
             + "INDEX must be a positive integer. "
             + "Each ITEM_TYPE requires its own set of DETAILS.\n"
-            + "Example: " + COMMAND_WORD + " " + PROFILE_ALIAS + " 3\n" + " DETAILS";
+            + "Example: " + COMMAND_WORD + " " + PROFILE_ALIAS + " 3 DETAILS";
 
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
 

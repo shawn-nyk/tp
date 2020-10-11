@@ -2,7 +2,13 @@ package seedu.address.logic.commands.edit;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.commands.util.CommandUtil.getCompany;
+import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_COMPANY_NAME;
+import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_INDUSTRY;
+import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_PHONE;
 import static seedu.address.model.FilterableItemList.PREDICATE_SHOW_ALL_ITEMS;
+import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 
 import java.util.Collections;
@@ -25,6 +31,22 @@ import seedu.address.model.company.Phone;
 
 /** todo javadocs (shawn) */
 public class EditCompanyCommand extends EditCommandAbstract {
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " " + COMPANY_ALIAS
+            + ": Edits the details of a " + COMPANY_NAME + " from InternHunter accessed "
+            + "by the index number used in the displayed list.\n"
+            + "Existing values will be overwritten by the input values.\n"
+            + "Parameters: INDEX "
+            + "[" + PREFIX_COMPANY_NAME + "NAME] "
+            + "[" + PREFIX_PHONE + "PHONE] "
+            + "[" + PREFIX_EMAIL + "EMAIL] "
+            + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_INDUSTRY + "INDUSTRY_TYPE]...\n"
+            + "Example: " + COMMAND_WORD + " " + COMPANY_ALIAS + " 5 "
+            + PREFIX_COMPANY_NAME + "Amazon Inc "
+            + PREFIX_PHONE + "61234567 "
+            + PREFIX_INDUSTRY + "Commerce "
+            + PREFIX_INDUSTRY + "Cloud Computing";
 
     private final Index index;
     private final EditCompanyDescriptor editCompanyDescriptor;

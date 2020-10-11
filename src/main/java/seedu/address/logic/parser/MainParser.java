@@ -18,6 +18,7 @@ import seedu.address.logic.commands.delete.DeleteCommand;
 import seedu.address.logic.commands.edit.EditCommand;
 import seedu.address.logic.parser.add.AddCommandParserWrapper;
 import seedu.address.logic.parser.delete.DeleteCommandParser;
+import seedu.address.logic.parser.edit.EditCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
