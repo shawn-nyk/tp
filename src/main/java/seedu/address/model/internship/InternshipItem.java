@@ -37,7 +37,7 @@ public class InternshipItem extends Item {
      * Every field must be present and not null.
      */
     public InternshipItem(CompanyName companyName, JobTitle jobTitle, Period period, Wage wage,
-            Set<Requirement> requirements) {
+                          Set<Requirement> requirements) {
         requireAllNonNull(companyName, jobTitle, period, wage, requirements);
         this.companyName = companyName;
         this.jobTitle = jobTitle;

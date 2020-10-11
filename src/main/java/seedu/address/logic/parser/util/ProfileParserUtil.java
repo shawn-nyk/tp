@@ -15,7 +15,7 @@ import seedu.address.model.profile.ProfileItemCategory;
 import seedu.address.model.profile.Title;
 
 /**
- * Contains utility methods used for parsing fields in a ProfileItem.
+ * Contains utility methods used for parsing Strings to fields in a ProfileItem.
  */
 public class ProfileParserUtil {
 
