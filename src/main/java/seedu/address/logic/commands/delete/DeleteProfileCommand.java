@@ -40,11 +40,6 @@ public class DeleteProfileCommand extends DeleteCommandAbstract {
     }
 
     @Override
-    public String getItemType() {
-        return PROFILE_NAME;
-    }
-
-    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof DeleteProfileCommand // instanceof handles nulls
