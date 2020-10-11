@@ -41,7 +41,7 @@ public class AddApplicationCommandParser implements Parser<AddApplicationCommand
                     AddApplicationCommand.MESSAGE_USAGE));
         }
 
-        Index companyIndex = getIndexInPreamble(argMultimap);
+        Index companyIndex = getIndexInPreamble(argMultimap, AddApplicationCommand.MESSAGE_USAGE);
         Index internshipIndex = GeneralParserUtil.parseIndex(argMultimap.getValue(PREFIX_INDEX).get());
         Status status = getStatus(argMultimap);
         StatusDate statusDate = getStatusDate(argMultimap);

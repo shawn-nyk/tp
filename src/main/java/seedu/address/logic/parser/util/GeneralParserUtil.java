@@ -53,10 +53,14 @@ public class GeneralParserUtil {
         return argumentMultimap.getPreamble().isEmpty();
     }
 
-    public static Index getIndexInPreamble(ArgumentMultimap argumentMultimap)
+    public static Index getIndexInPreamble(ArgumentMultimap argumentMultimap, String messageUsage)
             throws ParseException {
 
-        return parseIndex(argumentMultimap.getPreamble());
+        try {
+            return parseIndex(argumentMultimap.getPreamble());
+        } catch (ParseException pe) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, messageUsage));
+        }
     }
 
     /**

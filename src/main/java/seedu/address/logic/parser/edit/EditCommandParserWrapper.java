@@ -8,12 +8,9 @@ import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.edit.EditApplicationCommand;
 import seedu.address.logic.commands.edit.EditCommandAbstract;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.util.GeneralParserUtil;
 
 public class EditCommandParserWrapper implements Parser<EditCommandAbstract> {
 
@@ -28,20 +25,17 @@ public class EditCommandParserWrapper implements Parser<EditCommandAbstract> {
         String itemType = getItemType(args, EditCommandAbstract.MESSAGE_USAGE);
         String commandDetails = getCommandDetails(args);
 
-        // Internship has a different parse requirement
-        if (itemType.equals(INTERNSHIP_ALIAS)) {
-            // TODO: return internship edit command
-        }
-
-        Index index = GeneralParserUtil.parseIndex(commandDetails);
-
         switch (itemType) {
         case COMPANY_ALIAS:
             //todo: return own edit command
             return null;
 
+        case INTERNSHIP_ALIAS:
+            // todo: Return own edit command
+            return null;
+
         case APPLICATION_ALIAS:
-            return new EditApplicationCommand(index);
+            return new EditApplicationCommandParser().parse(commandDetails);
 
         case PROFILE_ALIAS:
             //todo: return own edit command

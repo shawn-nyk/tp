@@ -5,7 +5,7 @@ package seedu.address.commons.core;
  */
 public class Messages {
 
-    /** AB3 messages */
+    /** Invalid commands */
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command";
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
     // To remove
@@ -26,8 +26,8 @@ public class Messages {
     /** Add message: First string refers to item type, second string refers to item added. */
     public static final String MESSAGE_ADD_SUCCESS = "New %1$s item added: %2$s\n";
 
-    /** Add message: First string refers to item type, second string refers to item added. */
-    public static final String MESSAGE_EDIT_SUCCESS = "New %1$s item added: %2$s\n";
+    /** Edit message: First string refers to item type, second string refers to item. */
+    public static final String MESSAGE_EDIT_SUCCESS = "Edited %1$s item: %2$s\n";
 
     /** View message: First string refers to item type, second string refers to the index. */
     public static final String MESSAGE_VIEW_SUCCESS = "Currently viewing %1$s item %2$s\n";
