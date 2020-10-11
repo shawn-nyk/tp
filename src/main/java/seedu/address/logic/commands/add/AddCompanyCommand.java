@@ -23,7 +23,8 @@ import seedu.address.ui.tabs.TabName;
  */
 public class AddCompanyCommand extends AddCommandAbstract {
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + " " + COMPANY_ALIAS + ": Adds a company to "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " " + COMPANY_ALIAS
+            + ": Adds a " + COMPANY_NAME + " to "
             + "InternHunter.\nParameters: "
             + PREFIX_COMPANY_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
@@ -57,6 +58,7 @@ public class AddCompanyCommand extends AddCommandAbstract {
         }
 
         model.getCompanyList().addItem(toAdd);
+
         String addSuccessMessage = String.format(MESSAGE_ADD_SUCCESS, COMPANY_NAME, toAdd);
         return getCommandResult(model, addSuccessMessage, TabName.COMPANY);
     }

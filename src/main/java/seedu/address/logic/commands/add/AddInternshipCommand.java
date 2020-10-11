@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_ADD_SUCCESS;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.commands.util.CommandUtil.getCompany;
@@ -27,16 +28,16 @@ import seedu.address.ui.tabs.TabName;
 
 public class AddInternshipCommand extends AddCommandAbstract {
 
-    public static final String MESSAGE_DUPLICATE_ITEM = "This %1$s already exists in %2$s";
-    public static final String MESSAGE_SUCCESS = "New internship added: %1$s";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + " " + INTERNSHIP_ALIAS + ": Adds an internship to "
-            + "InternHunter.\nParameters: "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " " + INTERNSHIP_ALIAS
+            + ": Adds an " + INTERNSHIP_NAME + " to InternHunter.\n"
+            + "Parameters: "
             + "INDEX "
             + PREFIX_JOB_TITLE + "JOB_TITLE "
             // Todo: Update Wage when its status is resolved.
             + PREFIX_WAGE + "WAGE "
             + "[" + PREFIX_PERIOD + "PERIOD] "
             + "[" + PREFIX_REQUIREMENT + "REQUIREMENT]...\n"
+            + "Note: Select a company to add an internship to using INDEX.\n"
             + "Example: " + COMMAND_WORD + " " + INTERNSHIP_ALIAS
             + " 1 "
             + PREFIX_JOB_TITLE + "Software Engineer "
@@ -44,6 +45,8 @@ public class AddInternshipCommand extends AddCommandAbstract {
             + PREFIX_PERIOD + "3 months "
             + PREFIX_REQUIREMENT + "React "
             + PREFIX_REQUIREMENT + "Vue ";
+
+    public static final String MESSAGE_DUPLICATE_ITEM = "This %1$s already exists in %2$s";
 
     private final Index companyIndex;
     private final JobTitle jobTitle;
@@ -72,12 +75,12 @@ public class AddInternshipCommand extends AddCommandAbstract {
      * @throws CommandException If an error occurs during command execution.
      */
     @Override
+
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         CompanyItem companyItem = getCompany(model, companyIndex);
-
-        InternshipItem internshipItem = new InternshipItem(companyItem.getCompanyName(),
-                jobTitle, period, wage, requirements);
+        InternshipItem internshipItem = new InternshipItem(companyItem.getCompanyName(), jobTitle, period, wage,
+                requirements);
 
         if (companyItem.containsInternship(internshipItem)) {
             throw new CommandException(String.format(MESSAGE_DUPLICATE_ITEM,
@@ -85,7 +88,9 @@ public class AddInternshipCommand extends AddCommandAbstract {
         }
 
         companyItem.addInternship(internshipItem);
-        return getCommandResult(model, String.format(MESSAGE_SUCCESS, internshipItem), TabName.COMPANY);
+
+        String addSuccessMessage = String.format(MESSAGE_ADD_SUCCESS, INTERNSHIP_NAME, internshipItem);
+        return getCommandResult(model, addSuccessMessage, TabName.COMPANY);
     }
 
 }

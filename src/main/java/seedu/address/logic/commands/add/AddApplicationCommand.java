@@ -29,7 +29,8 @@ import seedu.address.ui.tabs.TabName;
  */
 public class AddApplicationCommand extends AddCommandAbstract {
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + " " + APPLICATION_ALIAS + ": Adds an application to "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " " + APPLICATION_ALIAS
+            + ": Adds an " + APPLICATION_NAME + " to "
             + "InternHunter.\nParameters: "
             + "INDEX "
             + PREFIX_INDEX + "INDEX "

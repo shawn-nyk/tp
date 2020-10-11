@@ -29,7 +29,6 @@ public class DeleteCommandParser implements Parser<DeleteCommandAbstract> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public DeleteCommandAbstract parse(String args) throws ParseException {
-
         String itemType = getItemType(args, DeleteCommandAbstract.MESSAGE_USAGE);
         String commandDetails = getCommandDetails(args);
 
@@ -55,5 +54,4 @@ public class DeleteCommandParser implements Parser<DeleteCommandAbstract> {
             throw new ParseException(MESSAGE_INVALID_ITEM_TYPE);
         }
     }
-
 }
