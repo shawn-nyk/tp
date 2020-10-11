@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.company.CompanyItem;
 import seedu.address.model.item.ItemList;
@@ -16,6 +17,8 @@ import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.model.tab.Tab;
 import seedu.address.model.tab.TabManager;
+import seedu.address.model.view.View;
+import seedu.address.model.view.ViewManager;
 import seedu.address.ui.tabs.TabName;
 
 /**
@@ -30,6 +33,7 @@ public class ModelManager implements Model {
     private final FilterableItemList<ProfileItem> profileList;
     private final UserPrefs userPrefs;
     private final Tab tabControl;
+    private final View viewControl;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -55,6 +59,7 @@ public class ModelManager implements Model {
         this.profileList = new ItemListManager<>(new ItemList<>(profileList));
         this.userPrefs = new UserPrefs(userPrefs);
         this.tabControl = new TabManager();
+        this.viewControl = new ViewManager();
     }
 
     public ModelManager() {
@@ -136,6 +141,24 @@ public class ModelManager implements Model {
     @Override
     public void setTabName(TabName tabName) {
         tabControl.setTabName(tabName);
+    }
+
+    //=========== View Control Accessors =============================================================
+
+    /**
+     * Retrieves the current index.
+     */
+    @Override
+    public Index getViewIndex() {
+        return viewControl.getViewIndex();
+    }
+
+    /**
+     * Sets the current index with {@code index}.
+     */
+    @Override
+    public void setViewIndex(Index index) {
+        viewControl.setViewIndex(index);
     }
 
     @Override

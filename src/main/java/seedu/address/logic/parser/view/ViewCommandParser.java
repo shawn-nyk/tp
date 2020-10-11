@@ -5,12 +5,12 @@ import static seedu.address.logic.parser.util.GeneralParserUtil.getCommandDetail
 import static seedu.address.logic.parser.util.GeneralParserUtil.getItemType;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
-import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.view.ViewApplicationCommand;
 import seedu.address.logic.commands.view.ViewCommand;
+import seedu.address.logic.commands.view.ViewProfileCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.util.GeneralParserUtil;
@@ -31,28 +31,19 @@ public class ViewCommandParser implements Parser<ViewCommand> {
         String itemType = getItemType(args, ViewCommand.MESSAGE_USAGE);
         String commandDetails = getCommandDetails(args);
 
-        // Internship has a different parse requirement
-        if (itemType.equals(INTERNSHIP_ALIAS)) {
-            // todo: return view internship command
-            return null;
-        }
-
         Index index = GeneralParserUtil.parseIndex(commandDetails);
 
         switch (itemType) {
         case COMPANY_ALIAS:
-            //todo: return own delete command
             return null;
 
         case APPLICATION_ALIAS:
             return new ViewApplicationCommand(index);
 
         case PROFILE_ALIAS:
-            //todo: return own delete command
-            return null;
+            return new ViewProfileCommand(index);
 
         default:
-            // Invalid item type
             throw new ParseException(MESSAGE_INVALID_ITEM_TYPE);
         }
     }
