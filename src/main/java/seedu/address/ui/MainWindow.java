@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -59,8 +60,6 @@ public class MainWindow extends UiPart<Stage> {
     private HelpWindow helpWindow;
     private Tabs tabs;
 
-    //temporary datas, to be taken from model once ok!
-    private TempStubData tempStubData;
     private ObservableList<CompanyItem> companyItems;
     private ObservableList<ApplicationItem> applicationItems;
     private ObservableList<ProfileItem> profileItems;
@@ -90,11 +89,10 @@ public class MainWindow extends UiPart<Stage> {
         // Configure the UI
         initializeUi(primaryStage, logic);
 
-        // TO REMOVE TEMPORARY
-        this.tempStubData = new TempStubData();
-        companyItems = tempStubData.getFilteredCompanyItemList();
-        applicationItems = tempStubData.getFilteredApplicationItemList();
-        profileItems = tempStubData.getFilteredProfileItemList();
+        // linking to logic
+        companyItems = logic.getFilteredCompanyItemList();
+        applicationItems = logic.getFilteredApplicationItemList();
+        profileItems = logic.getFilteredProfileItemList();
     }
 
     /**
@@ -152,9 +150,10 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.setContent(resultDisplay.getRoot());
 
-        display.getChildren().clear();
-        informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
-        display.getChildren().add((Node) informationDisplay.getRoot());
+        if (companyItems.size() > 0) {
+            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
+            display.getChildren().add((Node) informationDisplay.getRoot());
+        }
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
@@ -222,7 +221,7 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             if (commandResult.isSwitchDisplay()) {
-                //changeDisplay();
+                changeDisplay();
             }
 
             return commandResult;
@@ -242,42 +241,62 @@ public class MainWindow extends UiPart<Stage> {
         listPanelPlaceholder.getChildren().clear();
         switch (tabName) {
         case COMPANY:
-            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
+            if (companyItems.size() > 0) {
+                informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
+                display.getChildren().add((Node) informationDisplay.getRoot());
+            }
             listPanel = new CompanyListPanel(companyItems);
             break;
         case APPLICATION:
-            informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(0));
+            if (applicationItems.size() > 0) {
+                informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(0));
+                display.getChildren().add((Node) informationDisplay.getRoot());
+            }
             listPanel = new ApplicationListPanel(applicationItems);
             break;
         case PROFILE:
-            informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(0));
+            if (profileItems.size() > 0) {
+                informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(0));
+                display.getChildren().add((Node) informationDisplay.getRoot());
+            }
             listPanel = new ProfileListPanel(profileItems);
             break;
         default:
             assert false;
             break;
         }
-        display.getChildren().add((Node) informationDisplay.getRoot());
+        logic.setViewIndex(Index.fromZeroBased(0));
         listPanelPlaceholder.getChildren().add((Node) listPanel.getRoot());
     }
 
     /**
      * todo javadocs
      */
-    public void changeDisplay(TabName tabName, int index) {
+    public void changeDisplay() {
+        TabName tabName = logic.getTabName();
+        int index = logic.getViewIndex().getZeroBased();
         switch (tabName) {
         case COMPANY:
-            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(index));
+            if (companyItems.size() > 0) {
+                informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(index));
+            }
             break;
         case APPLICATION:
-            informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(index));
+            if (applicationItems.size() > 0) {
+                informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage,
+                    applicationItems.get(index));
+            }
             break;
         case PROFILE:
-            informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index));
+            if (profileItems.size() > 0) {
+                informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index));
+            }
             break;
         default:
             assert false;
             break;
         }
+        display.getChildren().clear();
+        display.getChildren().add((Node) informationDisplay.getRoot());
     }
 }
