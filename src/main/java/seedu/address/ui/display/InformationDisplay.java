@@ -1,7 +1,6 @@
 package seedu.address.ui.display;
 
 import java.util.LinkedHashMap;
-import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -25,8 +24,8 @@ public abstract class InformationDisplay<T extends Item> extends UiPart<Region> 
     private static final String FXML = "InformationDisplay.fxml";
 
     //FXML properties
-    private static final int INFORMATION_HEIGHT_SHRINK = 155;
-
+    private static final int INFORMATION_HEIGHT_SHRINK = 175;
+    private static final int INFORMATION_WIDTH_SHRINK = 100;
     protected T item;
     protected LinkedHashMap<String, Object> mapping;
 
@@ -54,7 +53,7 @@ public abstract class InformationDisplay<T extends Item> extends UiPart<Region> 
      */
     private void initializeInformationDisplay(Stage primaryStage) {
         informationDisplay.prefHeightProperty().bind(primaryStage.heightProperty().subtract(INFORMATION_HEIGHT_SHRINK));
-        nameBar.maxWidthProperty().bind(informationDisplay.widthProperty().subtract(100));
+        nameBar.maxWidthProperty().bind(informationDisplay.widthProperty().subtract(INFORMATION_WIDTH_SHRINK));
     }
 
     /**

@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -264,6 +265,7 @@ public class MainWindow extends UiPart<Stage> {
             assert false;
             break;
         }
+        logic.setViewIndex(Index.fromZeroBased(1));
         listPanelPlaceholder.getChildren().add((Node) listPanel.getRoot());
     }
 
@@ -281,6 +283,7 @@ public class MainWindow extends UiPart<Stage> {
             informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(index));
             break;
         case PROFILE:
+            System.out.println(index);
             informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index));
             break;
         default:
