@@ -94,7 +94,7 @@ public class CompanyItem extends Item {
     }
 
     /**
-     * NOTE: May end up deleting this to prevent direct access to internship list. todo javadocs (shawn)
+     * todo javadocs (shawn)
      */
     public List<InternshipItem> getInternships() {
         return Collections.unmodifiableList(internships);
@@ -123,6 +123,13 @@ public class CompanyItem extends Item {
             throw new CommandException(String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, INTERNSHIP_NAME));
         }
         internships.remove(internshipIndex.getZeroBased());
+    }
+
+    /** todo javadocs (shawn) */
+    public void updateAllInternshipsCompanyName() {
+        for (InternshipItem internship : internships) {
+            internship.setCompanyName(companyName);
+        }
     }
 
     /** todo javadocs (shawn) */

@@ -25,7 +25,7 @@ import seedu.address.storage.internship.JsonAdaptedInternshipItem;
 public class InternshipItem extends Item {
 
     // Identity fields
-    private final CompanyName companyName;
+    private CompanyName companyName;
     private final JobTitle jobTitle;
     private final Period period;
 
@@ -48,6 +48,10 @@ public class InternshipItem extends Item {
 
     public CompanyName getCompanyName() {
         return companyName;
+    }
+
+    public void setCompanyName(CompanyName companyName) {
+        this.companyName = companyName;
     }
 
     public JobTitle getJobTitle() {
@@ -161,8 +165,8 @@ public class InternshipItem extends Item {
                 .append(" Wage: ")
                 .append(getWage())
                 .append(", ")
-                .append(" Requirements: ")
-                .append(getRequirements());
+                .append(" Requirements: ");
+        getRequirements().forEach(builder::append);
         return builder.toString();
     }
 
