@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_S
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
 import static seedu.address.logic.parser.util.GeneralParserUtil.arePrefixesPresent;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getIndexInPreamble;
+import static seedu.address.logic.parser.util.GeneralParserUtil.parseIndex;
 
 import java.time.LocalDateTime;
 
@@ -16,7 +17,6 @@ import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.util.ApplicationParserUtil;
-import seedu.address.logic.parser.util.GeneralParserUtil;
 import seedu.address.model.application.Status;
 import seedu.address.model.application.StatusDate;
 
@@ -42,7 +42,7 @@ public class AddApplicationCommandParser implements Parser<AddApplicationCommand
         }
 
         Index companyIndex = getIndexInPreamble(argMultimap, AddApplicationCommand.MESSAGE_USAGE);
-        Index internshipIndex = GeneralParserUtil.parseIndex(argMultimap.getValue(PREFIX_INDEX).get());
+        Index internshipIndex = parseIndex(argMultimap.getValue(PREFIX_INDEX).get());
         Status status = getStatus(argMultimap);
         StatusDate statusDate = getStatusDate(argMultimap);
 

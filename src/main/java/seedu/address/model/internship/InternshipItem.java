@@ -37,7 +37,7 @@ public class InternshipItem extends Item {
      * Every field must be present and not null.
      */
     public InternshipItem(CompanyName companyName, JobTitle jobTitle, Period period, Wage wage,
-                          Set<Requirement> requirements) {
+            Set<Requirement> requirements) {
         requireAllNonNull(companyName, jobTitle, period, wage, requirements);
         this.companyName = companyName;
         this.jobTitle = jobTitle;
@@ -150,15 +150,19 @@ public class InternshipItem extends Item {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getCompanyName())
-                .append(" Job title: ")
-                .append(getJobTitle())
+        builder.append(getJobTitle())
+                .append(", ")
+                .append(" Company Name: ")
+                .append(getCompanyName())
+                .append(", ")
                 .append(" Period: ")
                 .append(getPeriod())
+                .append(", ")
                 .append(" Wage: ")
                 .append(getWage())
-                .append(" Requirements: ");
-        getRequirements().forEach(builder::append);
+                .append(", ")
+                .append(" Requirements: ")
+                .append(getRequirements());
         return builder.toString();
     }
 
@@ -166,6 +170,5 @@ public class InternshipItem extends Item {
     public JsonAdaptedInternshipItem getJsonAdaptedItem() {
         return new JsonAdaptedInternshipItem(this);
     }
-
 
 }

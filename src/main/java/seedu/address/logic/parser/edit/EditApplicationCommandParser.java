@@ -2,10 +2,10 @@ package seedu.address.logic.parser.edit;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.ApplicationParserUtil.parseStatus;
-import static seedu.address.logic.parser.ApplicationParserUtil.parseStatusDate;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
+import static seedu.address.logic.parser.util.ApplicationParserUtil.parseStatus;
+import static seedu.address.logic.parser.util.ApplicationParserUtil.parseStatusDate;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getIndexInPreamble;
 
 import seedu.address.commons.core.index.Index;
