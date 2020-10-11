@@ -38,7 +38,6 @@ public class AddCommandParserWrapper implements Parser<AddCommandAbstract> {
             return new AddApplicationCommandParser().parse(commandDetails);
         case PROFILE_ALIAS:
             return new AddProfileCommandParser().parse(commandDetails);
-
         default:
             throw new ParseException(MESSAGE_INVALID_ITEM_TYPE);
         }

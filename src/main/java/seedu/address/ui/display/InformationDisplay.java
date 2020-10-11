@@ -1,17 +1,24 @@
 package seedu.address.ui.display;
 
+import java.util.LinkedHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import seedu.address.model.item.Item;
 import seedu.address.ui.UiPart;
+import seedu.address.ui.tabs.TabName;
 
 /**
  * A display that contains information.
  */
-public abstract class InformationDisplay extends UiPart<Region> {
+public abstract class InformationDisplay<T extends Item> extends UiPart<Region> {
 
     //FXML
     private static final String FXML = "InformationDisplay.fxml";
@@ -19,8 +26,11 @@ public abstract class InformationDisplay extends UiPart<Region> {
     //FXML properties
     private static final int INFORMATION_HEIGHT_SHRINK = 155;
 
+    protected T item;
+    protected LinkedHashMap<String, Object> mapping;
+
     @FXML
-    private VBox informationDisplay;
+    private ScrollPane informationDisplay;
     @FXML
     private HBox nameBar;
     @FXML
@@ -31,9 +41,11 @@ public abstract class InformationDisplay extends UiPart<Region> {
     /**
      * Constructs a {@code InformationDisplay} in the given {@code primaryStage}.
      */
-    public InformationDisplay(Stage primaryStage) {
+    public InformationDisplay(Stage primaryStage, T item) {
         super(FXML);
         initializeInformationDisplay(primaryStage);
+        this.item = item;
+        this.mapping = item.getMapping();
     }
 
     /**
@@ -52,9 +64,25 @@ public abstract class InformationDisplay extends UiPart<Region> {
     }
 
     /**
-     * Sets the title of the {@code InformationDisplay}.
+     * Adds {@code title} into {@code InformationDisplay}.
      */
-    void setInformationTitle(String title) {
+    protected void setInformationTitle(String title) {
         informationTitle.setText(title);
+    }
+
+    /**
+     * todo javadocs
+     */
+    protected void setInformation(Function<String, String> editString, Predicate<String> haveBrackets,
+        TabName tabName, String ... displayKeyList) {
+
+        for (String key : displayKeyList) {
+            Object object = mapping.get(key);
+            String detail = object.toString();
+            if (haveBrackets.test(key)) {
+                detail = editString.apply(detail);
+            }
+            addInformation(TitleDescriptionDisplay.addTitleDescriptionDisplay(key, detail, tabName));
+        }
     }
 }

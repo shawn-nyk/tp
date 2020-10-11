@@ -4,6 +4,12 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_DISPLAYED
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.ADDRESS_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.EMAIL_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.INDUSTRIES_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.INTERNSHIPS_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.PHONE_DISPLAY_NAME;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -203,12 +209,12 @@ public class CompanyItem extends Item {
     @Override
     public LinkedHashMap<String, Object> getMapping() {
         LinkedHashMap<String, Object> mapping = new LinkedHashMap<>();
-        mapping.put("Company name", companyName);
-        mapping.put("Phone", phone);
-        mapping.put("Email", email);
-        mapping.put("Address", address);
-        mapping.put("Industries", industries);
-        mapping.put("Internships", internships);
+        mapping.put(COMPANY_DISPLAY_NAME, companyName);
+        mapping.put(PHONE_DISPLAY_NAME, phone);
+        mapping.put(EMAIL_DISPLAY_NAME, email);
+        mapping.put(ADDRESS_DISPLAY_NAME, address);
+        mapping.put(INDUSTRIES_DISPLAY_NAME, industries);
+        mapping.put(INTERNSHIPS_DISPLAY_NAME, internships);
         return mapping;
     }
 
