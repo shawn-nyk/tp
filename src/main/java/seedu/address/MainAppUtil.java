@@ -88,8 +88,8 @@ public class MainAppUtil {
                     .findAny();
 
             if (correctInternshipItem.isEmpty()) {
-                //applicationItemList.getItemList().removeAll();
-                //companyItemList.getItemList().removeAll();
+                applicationItemList.getItemList().removeAll();
+                companyItemList.getItemList().removeAll();
                 throw new InconsistentInternshipException();
             }
 
@@ -113,11 +113,11 @@ public class MainAppUtil {
                 initItemList(storage.getApplicationItemListStorage());
         ReadOnlyItemList<ProfileItem> profileItemList = initItemList(storage.getProfileItemListStorage());
 
-        //        try {
-        //            matchInternships(applicationItemList, companyItemList);
-        //        } catch (InconsistentInternshipException e) {
-        //        logger.warning("Applications' internships are not matched with the ones in the companies' lists.");
-        //        }
+        try {
+            matchInternships(applicationItemList, companyItemList);
+        } catch (InconsistentInternshipException e) {
+            logger.warning("Applications' internships are not matched with the ones in the companies' lists.");
+        }
 
         return new ModelManager(addressBook, companyItemList, applicationItemList, profileItemList, userPrefs);
     }
