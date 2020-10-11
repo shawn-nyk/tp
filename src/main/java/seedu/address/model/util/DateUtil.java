@@ -78,7 +78,7 @@ public class DateUtil {
     }
 
     /**
-     * Converts the string status date to a LocalDateTime object.
+     * Converts the input status date from user to a LocalDateTime object.
      *
      * @param statusDate Input status date.
      * @return LocalDateTime object.
@@ -91,6 +91,31 @@ public class DateUtil {
         } else {
             assert false : ERROR_MESSAGE;
             return null;
+        }
+    }
+
+    /**
+     * Converts the string status date output format to a LocalDateTime object.
+     *
+     * @param statusDate Input status date.
+     * @return LocalDateTime object.
+     */
+    public static LocalDateTime convertOutputFormat(String statusDate) {
+        return LocalDateTime.parse(statusDate, formatterDateTime(DATE_TIME_LONG_FORMAT));
+    }
+
+    /**
+     * Checks if the input given matches the d MMM yyyy @ h.mm a format.
+     *
+     * @param input User input.
+     * @return True if input has the valid output date format, false otherwise.
+     */
+    public static boolean isValidOutputDate(String input) {
+        try {
+            LocalDateTime.parse(input, formatterDateTime(DATE_TIME_LONG_FORMAT));
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
         }
     }
 

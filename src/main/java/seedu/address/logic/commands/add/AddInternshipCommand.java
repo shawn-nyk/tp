@@ -1,7 +1,7 @@
 package seedu.address.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_ADDED_ITEM;
+import static seedu.address.commons.core.Messages.MESSAGE_ADD_SUCCESS;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.commands.util.CommandUtil.getCompany;
@@ -41,8 +41,8 @@ public class AddInternshipCommand extends AddCommandAbstract {
             + "Example: " + COMMAND_WORD + " " + INTERNSHIP_ALIAS
             + " 1 "
             + PREFIX_JOB_TITLE + "Software Engineer "
-            + PREFIX_PERIOD + "3 months "
             + PREFIX_WAGE + "3000 "
+            + PREFIX_PERIOD + "3 months "
             + PREFIX_REQUIREMENT + "React "
             + PREFIX_REQUIREMENT + "Vue ";
 
@@ -50,20 +50,20 @@ public class AddInternshipCommand extends AddCommandAbstract {
 
     private final Index companyIndex;
     private final JobTitle jobTitle;
-    private final Period period;
     private final Wage wage;
+    private final Period period;
     private final Set<Requirement> requirements;
 
     /**
      * Creates an AddCommand to add the specified {@code Internship}.
      */
     public AddInternshipCommand(Index companyIndex, JobTitle jobTitle,
-        Period period, Wage wage, Set<Requirement> requirements) {
-        requireAllNonNull(companyIndex, jobTitle, period, wage, requirements);
+            Wage wage, Period period, Set<Requirement> requirements) {
+        requireAllNonNull(companyIndex, jobTitle, wage, period, requirements);
         this.companyIndex = companyIndex;
         this.jobTitle = jobTitle;
-        this.period = period;
         this.wage = wage;
+        this.period = period;
         this.requirements = requirements;
     }
 
@@ -82,19 +82,15 @@ public class AddInternshipCommand extends AddCommandAbstract {
         InternshipItem internshipItem = new InternshipItem(companyItem.getCompanyName(), jobTitle, period, wage,
                 requirements);
 
-        if (companyItem.ifInternshipExists(internshipItem)) {
+        if (companyItem.containsInternship(internshipItem)) {
             throw new CommandException(String.format(MESSAGE_DUPLICATE_ITEM,
-                INTERNSHIP_NAME, companyItem.getCompanyName().toString()));
+                    INTERNSHIP_NAME, companyItem.getCompanyName()));
         }
 
         companyItem.addInternship(internshipItem);
 
-        String message = String.format(MESSAGE_ADDED_ITEM, INTERNSHIP_NAME, internshipItem);
-        return getCommandResult(model, message, TabName.COMPANY);
+        String addSuccessMessage = String.format(MESSAGE_ADD_SUCCESS, INTERNSHIP_NAME, internshipItem);
+        return getCommandResult(model, addSuccessMessage, TabName.COMPANY);
     }
 
-    @Override
-    public String getItemType() {
-        return INTERNSHIP_NAME;
-    }
 }

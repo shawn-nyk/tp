@@ -6,7 +6,7 @@ import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_COMPA
 import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_INDUSTRY;
 import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.util.Util.arePrefixesPresent;
+import static seedu.address.logic.parser.util.GeneralParserUtil.argumentsAreValid;
 
 import java.util.Set;
 
@@ -39,8 +39,7 @@ public class AddCompanyCommandParser implements Parser<AddCompanyCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
                         PREFIX_INDUSTRY);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_COMPANY_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS)
-                || !argMultimap.getPreamble().isEmpty()) {
+        if (!argumentsAreValid(argMultimap, PREFIX_COMPANY_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCompanyCommand.MESSAGE_USAGE));
         }
 

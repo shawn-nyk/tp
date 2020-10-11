@@ -47,11 +47,6 @@ public class DeleteCompanyCommand extends DeleteCommandAbstract {
     }
 
     @Override
-    public String getItemType() {
-        return COMPANY_NAME;
-    }
-
-    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof DeleteCompanyCommand // instanceof handles nulls

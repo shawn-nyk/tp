@@ -29,14 +29,8 @@ public class DeleteApplicationCommand extends DeleteCommandAbstract {
         requireNonNull(model);
         ApplicationItem applicationToDelete = getApplication(model, targetIndex);
         model.getApplicationList().deleteItem(applicationToDelete);
-
-        String message = String.format(MESSAGE_DELETED_ITEM, APPLICATION_NAME, applicationToDelete);
-        return getCommandResult(model, message, TabName.APPLICATION);
-    }
-
-    @Override
-    public String getItemType() {
-        return APPLICATION_NAME;
+        String deleteSuccessMessage = String.format(MESSAGE_DELETED_ITEM, APPLICATION_NAME, applicationToDelete);
+        return getCommandResult(model, deleteSuccessMessage, TabName.APPLICATION);
     }
 
     @Override

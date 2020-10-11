@@ -1,7 +1,7 @@
 package seedu.address.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_ADDED_ITEM;
+import static seedu.address.commons.core.Messages.MESSAGE_ADD_SUCCESS;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ITEM;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEGORY;
@@ -55,8 +55,8 @@ public class AddProfileCommand extends AddCommandAbstract {
 
         model.getProfileList().addItem(toAdd);
 
-        String message = String.format(MESSAGE_ADDED_ITEM, PROFILE_ITEM_NAME, toAdd);
-        return getCommandResult(model, message, TabName.PROFILE);
+        String addSuccessMessage = String.format(MESSAGE_ADD_SUCCESS, PROFILE_NAME, toAdd);
+        return getCommandResult(model, addSuccessMessage, TabName.PROFILE);
     }
 
     @Override
@@ -64,11 +64,6 @@ public class AddProfileCommand extends AddCommandAbstract {
         return other == this
                 || (other instanceof AddProfileCommand // instanceof handles nulls
                 && toAdd.equals(((AddProfileCommand) other).toAdd));
-    }
-
-    @Override
-    public String getItemType() {
-        return PROFILE_NAME;
     }
 
 }

@@ -1,7 +1,7 @@
 package seedu.address.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_ADDED_ITEM;
+import static seedu.address.commons.core.Messages.MESSAGE_ADD_SUCCESS;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ITEM;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
@@ -79,13 +79,8 @@ public class AddApplicationCommand extends AddCommandAbstract {
 
         applicationList.addItem(applicationToAdd);
 
-        String message = String.format(MESSAGE_ADDED_ITEM, APPLICATION_NAME, applicationToAdd);
-        return getCommandResult(model, message, TabName.APPLICATION);
-    }
-
-    @Override
-    public String getItemType() {
-        return APPLICATION_NAME;
+        String addSuccessMessage = String.format(MESSAGE_ADD_SUCCESS, APPLICATION_NAME, applicationToAdd);
+        return getCommandResult(model, addSuccessMessage, TabName.APPLICATION);
     }
 
     @Override
