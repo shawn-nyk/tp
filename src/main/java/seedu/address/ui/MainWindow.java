@@ -88,7 +88,7 @@ public class MainWindow extends UiPart<Stage> {
         this.logic = logic;
         // Configure the UI
         initializeUi(primaryStage, logic);
-        
+
         // linking to logic
         companyItems = logic.getFilteredCompanyItemList();
         applicationItems = logic.getFilteredApplicationItemList();
@@ -149,7 +149,7 @@ public class MainWindow extends UiPart<Stage> {
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.setContent(resultDisplay.getRoot());
-        
+
         if (companyItems.size() > 0) {
             informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
             display.getChildren().add((Node) informationDisplay.getRoot());
@@ -277,13 +277,20 @@ public class MainWindow extends UiPart<Stage> {
         int index = logic.getViewIndex().getZeroBased();
         switch (tabName) {
         case COMPANY:
-            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(index));
+            if (companyItems.size() > 0) {
+                informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(index));
+            }
             break;
         case APPLICATION:
-            informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(index));
+            if (applicationItems.size() > 0) {
+                informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage,
+                    applicationItems.get(index));
+            }
             break;
         case PROFILE:
-            informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index));
+            if (profileItems.size() > 0) {
+                informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index));
+            }
             break;
         default:
             assert false;
