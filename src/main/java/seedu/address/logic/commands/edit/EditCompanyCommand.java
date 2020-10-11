@@ -98,7 +98,7 @@ public class EditCompanyCommand extends EditCommandAbstract {
 
         CompanyItem updatedCompany = new CompanyItem(updatedName, updatedPhone, updatedEmail, updatedAddress,
                 updatedIndustries, internships);
-        // updatedCompany.updateAllInternshipsCompanyName();
+        updatedCompany.updateAllInternshipsCompanyName();
         return updatedCompany;
     }
 

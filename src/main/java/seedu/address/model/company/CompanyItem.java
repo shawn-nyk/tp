@@ -125,14 +125,12 @@ public class CompanyItem extends Item {
         internships.remove(internshipIndex.getZeroBased());
     }
 
-    /* todo javadocs (shawn) */
-    /*
+    /** todo javadocs (shawn) */
     public void updateAllInternshipsCompanyName() {
         for (InternshipItem internship : internships) {
             internship.setCompanyName(companyName);
         }
     }
-     */
 
     /** todo javadocs (shawn) */
     public int getNumberOfInternships() {
