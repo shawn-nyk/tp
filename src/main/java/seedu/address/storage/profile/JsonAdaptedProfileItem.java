@@ -40,7 +40,7 @@ public class JsonAdaptedProfileItem extends JsonAdaptedItem {
      */
     public JsonAdaptedProfileItem(ProfileItem source) {
         title = source.getTitle().value;
-        profileType = source.getType().toString();
+        profileType = source.getCategory().toString();
         descriptors.addAll(source.getDescriptors().stream()
                 .map(JsonAdaptedDescriptor::new)
                 .collect(Collectors.toList()));
