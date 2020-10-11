@@ -2,11 +2,11 @@ package seedu.address.model.internship;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
-import static seedu.address.ui.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
-import static seedu.address.ui.PanelDisplayKeyword.JOB_TITLE_DISPLAY_NAME;
-import static seedu.address.ui.PanelDisplayKeyword.PERIOD_DISPLAY_NAME;
-import static seedu.address.ui.PanelDisplayKeyword.REQUIREMENTS_DISPLAY_NAME;
-import static seedu.address.ui.PanelDisplayKeyword.WAGE_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.JOB_TITLE_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.PERIOD_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.REQUIREMENTS_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.WAGE_DISPLAY_NAME;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -150,15 +150,19 @@ public class InternshipItem extends Item {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getCompanyName())
-                .append(" Job title: ")
-                .append(getJobTitle())
+        builder.append(getJobTitle())
+                .append(", ")
+                .append(" Company Name: ")
+                .append(getCompanyName())
+                .append(", ")
                 .append(" Period: ")
                 .append(getPeriod())
+                .append(", ")
                 .append(" Wage: ")
                 .append(getWage())
-                .append(" Requirements: ");
-        getRequirements().forEach(builder::append);
+                .append(", ")
+                .append(" Requirements: ")
+                .append(getRequirements());
         return builder.toString();
     }
 
@@ -166,6 +170,5 @@ public class InternshipItem extends Item {
     public JsonAdaptedInternshipItem getJsonAdaptedItem() {
         return new JsonAdaptedInternshipItem(this);
     }
-
 
 }

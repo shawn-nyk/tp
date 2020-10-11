@@ -3,8 +3,8 @@ package seedu.address.model.application;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
-import static seedu.address.ui.PanelDisplayKeyword.DATE_DISPLAY_NAME;
-import static seedu.address.ui.PanelDisplayKeyword.STATUS_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.DATE_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.STATUS_DISPLAY_NAME;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
@@ -139,8 +139,10 @@ public class ApplicationItem extends Item {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getInternshipItem())
+                .append(", ")
                 .append(" Status: ")
                 .append(getStatus())
+                .append(", ")
                 .append(" Date: ")
                 .append(getStatusDate());
         return builder.toString();

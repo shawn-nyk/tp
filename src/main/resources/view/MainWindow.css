@@ -171,10 +171,17 @@
     -fx-alignment: baseline-center;
 }
 
+.information_display > .viewport {
+    -fx-background-color: transparent;
+}
+
 .information_display{
     -fx-background-color: #fdfdfd;
     -fx-pref-height: 510;
     -fx-translate-x: -4;
+    -fx-border-color: transparent;
+    -fx-fit-to-height: true;
+    -fx-fit-to-width: true;
 }
 
 .information_container {

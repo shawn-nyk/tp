@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_ADD_SUCCESS;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ITEM;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_ADDRESS;
@@ -37,8 +38,6 @@ public class AddCompanyCommand extends AddCommandAbstract {
             + PREFIX_INDUSTRY + "Cloud Computing "
             + PREFIX_INDUSTRY + "Artificial Intelligence";
 
-    public static final String MESSAGE_SUCCESS = "New company added: %1$s";
-
     private final CompanyItem toAdd;
 
     /**
@@ -58,8 +57,8 @@ public class AddCompanyCommand extends AddCommandAbstract {
         }
 
         model.getCompanyList().addItem(toAdd);
-
-        return getCommandResult(model, String.format(MESSAGE_SUCCESS, toAdd), TabName.COMPANY);
+        String addSuccessMessage = String.format(MESSAGE_ADD_SUCCESS, COMPANY_NAME, toAdd);
+        return getCommandResult(model, addSuccessMessage, TabName.COMPANY);
     }
 
     @Override
@@ -69,8 +68,4 @@ public class AddCompanyCommand extends AddCommandAbstract {
                 && toAdd.equals(((AddCompanyCommand) other).toAdd));
     }
 
-    @Override
-    public String getItemType() {
-        return COMPANY_NAME;
-    }
 }

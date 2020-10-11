@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_ADD_SUCCESS;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ITEM;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEGORY;
@@ -20,8 +21,6 @@ import seedu.address.ui.tabs.TabName;
  */
 public class AddProfileCommand extends AddCommandAbstract {
 
-    public static final String COMMAND_WORD = "add";
-
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + PROFILE_ALIAS
             + ": Adds a profile item to "
             + "InternHunter.\nParameters: "
@@ -34,8 +33,6 @@ public class AddProfileCommand extends AddCommandAbstract {
             + PREFIX_CATEGORY + "skill "
             + PREFIX_DESCRIPTORS + "Learn how to use div and classes. "
             + PREFIX_DESCRIPTORS + "Learn how to inject javascript. ";
-
-    public static final String MESSAGE_SUCCESS = "New profileItem added: %1$s";
 
     private final ProfileItem toAdd;
 
@@ -57,7 +54,7 @@ public class AddProfileCommand extends AddCommandAbstract {
 
         model.getProfileList().addItem(toAdd);
 
-        return getCommandResult(model, String.format(MESSAGE_SUCCESS, toAdd), TabName.PROFILE);
+        return getCommandResult(model, String.format(MESSAGE_ADD_SUCCESS, PROFILE_NAME, toAdd), TabName.PROFILE);
     }
 
     @Override
@@ -65,11 +62,6 @@ public class AddProfileCommand extends AddCommandAbstract {
         return other == this
                 || (other instanceof AddProfileCommand // instanceof handles nulls
                 && toAdd.equals(((AddProfileCommand) other).toAdd));
-    }
-
-    @Override
-    public String getItemType() {
-        return PROFILE_NAME;
     }
 
 }
