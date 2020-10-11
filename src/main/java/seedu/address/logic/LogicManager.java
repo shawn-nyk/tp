@@ -20,7 +20,6 @@ import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.storage.Storage;
-import seedu.address.ui.cards.ProfileCard;
 import seedu.address.ui.tabs.TabName;
 
 /**
