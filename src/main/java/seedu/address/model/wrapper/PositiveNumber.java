@@ -7,7 +7,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Represents a positive number object.
  * Guarantees: immutable; is valid as declared in {@link #isValidPositiveNumber(String)}
  */
-public class PositiveNumber {
+public abstract class PositiveNumber {
 
     public static final String VALIDATION_REGEX = "^[1-9]\\d*";
 

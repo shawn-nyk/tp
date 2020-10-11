@@ -68,7 +68,7 @@ public class JsonItemListStorageTest {
         Path filePath = testFolder.resolve("TempAddressBook.json");
         ItemList<Person> original = getTypicalAddressBook();
         JsonItemListStorage<Person, JsonAdaptedPerson> jsonItemListStorage =
-                new JsonItemListStorage(filePath, Person.class, JsonAdaptedPerson.class);
+                new JsonItemListStorage<>(filePath, Person.class, JsonAdaptedPerson.class);
 
         // Save in new file and read back
         jsonItemListStorage.saveItemList(original, filePath);
