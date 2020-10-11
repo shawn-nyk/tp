@@ -27,8 +27,7 @@ public class EditCommandParserWrapper implements Parser<EditCommandAbstract> {
 
         switch (itemType) {
         case COMPANY_ALIAS:
-            //todo: return own edit command
-            return null;
+            return new EditCompanyCommandParser().parse(commandDetails);
 
         case INTERNSHIP_ALIAS:
             // todo: Return own edit command

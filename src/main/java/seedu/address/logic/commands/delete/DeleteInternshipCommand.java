@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.delete;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_DELETED_ITEM;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.commands.util.CommandUtil.getCompany;
@@ -8,7 +9,6 @@ import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -65,7 +65,7 @@ public class DeleteInternshipCommand extends DeleteCommandAbstract {
         // Delete the internship
         companyItem.removeInternship(internshipIndex);
 
-        String deleteSuccessMessage = String.format(Messages.MESSAGE_DELETED_ITEM, INTERNSHIP_NAME, internshipItem);
+        String deleteSuccessMessage = String.format(MESSAGE_DELETED_ITEM, INTERNSHIP_NAME, internshipItem);
         return getCommandResult(model, deleteSuccessMessage, TabName.COMPANY);
     }
 
