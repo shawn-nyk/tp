@@ -89,7 +89,7 @@ public class MainWindow extends UiPart<Stage> {
         // Configure the UI
         initializeUi(primaryStage, logic);
         
-        // linking to model
+        // linking to logic
         companyItems = logic.getFilteredCompanyItemList();
         applicationItems = logic.getFilteredApplicationItemList();
         profileItems = logic.getFilteredProfileItemList();
@@ -265,7 +265,7 @@ public class MainWindow extends UiPart<Stage> {
             assert false;
             break;
         }
-        logic.setViewIndex(Index.fromZeroBased(1));
+        logic.setViewIndex(Index.fromZeroBased(0));
         listPanelPlaceholder.getChildren().add((Node) listPanel.getRoot());
     }
 
@@ -283,7 +283,6 @@ public class MainWindow extends UiPart<Stage> {
             informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(index));
             break;
         case PROFILE:
-            System.out.println(index);
             informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index));
             break;
         default:

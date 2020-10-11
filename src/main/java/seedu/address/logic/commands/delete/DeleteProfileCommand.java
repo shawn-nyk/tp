@@ -36,7 +36,7 @@ public class DeleteProfileCommand extends DeleteCommandAbstract {
         model.getProfileList().deleteItem(profileToDelete);
 
         return getCommandResult(model, String.format(Messages.MESSAGE_DELETED_ITEM,
-            PROFILE_NAME, profileToDelete), TabName.PROFILE, targetIndex);
+            PROFILE_NAME, profileToDelete), TabName.PROFILE);
     }
 
     @Override

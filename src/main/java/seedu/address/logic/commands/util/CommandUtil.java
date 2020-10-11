@@ -68,22 +68,4 @@ public class CommandUtil {
         }
     }
 
-
-    /**
-     * Gets the feedback message of the operation result for display and indicates whether tabs need to be switched or
-     * not.
-     *
-     * @param model Model of application.
-     * @param message Feedback message of the operation result for display.
-     * @return Feedback message of the operation result for display.
-     */
-    public static CommandResult getCommandResult(Model model, String message, TabName tabName, Index index) {
-        if (model.getTabName() != tabName) {
-            model.setTabName(tabName);
-            model.setViewIndex(index);
-            return new CommandResult(message, false, false, true, true);
-        } else {
-            return new CommandResult(message);
-        }
-    }
 }

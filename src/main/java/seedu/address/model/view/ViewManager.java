@@ -13,7 +13,7 @@ public class ViewManager implements View {
      * Initializes ViewManger which controls the current {@code index}. By default, it is always of Index 1.
      */
     public ViewManager() {
-        index = Index.fromOneBased(1); // default Index is 1
+        index = Index.fromOneBased(1); // default Index is 1 which is 0 ?
     }
 
     /**
