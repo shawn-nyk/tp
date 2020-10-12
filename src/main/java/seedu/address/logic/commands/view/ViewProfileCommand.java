@@ -3,6 +3,7 @@ package seedu.address.logic.commands.view;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_VIEW_SUCCESS;
+import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ITEM_NAME;
 import static seedu.address.model.util.ItemUtil.PROFILE_NAME;
@@ -54,21 +55,11 @@ public class ViewProfileCommand extends ViewCommand {
             throw new CommandException(String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, PROFILE_NAME));
         }
 
-        String resultMessage = messageViewSuccess;
-        boolean shouldSwitchTab = false;
-        boolean shouldSwitchDisplay = true;
-        if (model.getTabName() != TabName.PROFILE) {
-            model.setTabName(TabName.PROFILE);
-            shouldSwitchTab = true;
-        } else if (model.getViewIndex().equals(targetIndex)) {
-            resultMessage = messageAlreadyViewing;
-            shouldSwitchDisplay = false;
+        if (model.getTabName() == TabName.PROFILE && model.getViewIndex().equals(targetIndex)) {
+            return new CommandResult(messageAlreadyViewing, false, false , false, false);
         }
-
-        if (shouldSwitchDisplay) {
-            model.setViewIndex(targetIndex);
-        }
-        return new CommandResult(resultMessage, false, false , shouldSwitchTab, shouldSwitchDisplay);
+        model.setViewIndex(targetIndex);
+        return getCommandResult(model, messageViewSuccess, TabName.PROFILE);
     }
 
     @Override
