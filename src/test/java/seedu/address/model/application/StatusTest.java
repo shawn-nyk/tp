@@ -43,5 +43,4 @@ public class StatusTest {
         Status status2 = Status.valueOf(VALID_STATUS);
         assertEquals(status1.hashCode(), status2.hashCode());
     }
-    
 }
