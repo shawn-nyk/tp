@@ -25,10 +25,15 @@ public class ViewCompanyCommand extends ViewCommand {
             + COMPANY_ALIAS
             + " 3";
 
+    private final String messageViewSuccess;
+    private final String messageAlreadyViewing;
     private final Index targetIndex;
 
+    /** todo javadocs (shawn) */
     public ViewCompanyCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
+        this.messageViewSuccess = String.format(MESSAGE_VIEW_SUCCESS, COMPANY_NAME, targetIndex);
+        this.messageAlreadyViewing = String.format(MESSAGE_ALREADY_VIEWING, COMPANY_NAME, targetIndex);
     }
 
     /**
@@ -48,14 +53,21 @@ public class ViewCompanyCommand extends ViewCommand {
             throw new CommandException(String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, COMPANY_NAME));
         }
 
+        String resultMessage = messageViewSuccess;
         boolean shouldSwitchTab = false;
+        boolean shouldSwitchDisplay = true;
         if (model.getTabName() != TabName.COMPANY) {
             model.setTabName(TabName.COMPANY);
             shouldSwitchTab = true;
+        } else if (model.getViewIndex().equals(targetIndex)) {
+            resultMessage = messageAlreadyViewing;
+            shouldSwitchDisplay = false;
         }
-        model.setViewIndex(targetIndex);
-        String viewSuccessMessage = String.format(MESSAGE_VIEW_SUCCESS, COMPANY_NAME, targetIndex);
-        return new CommandResult(viewSuccessMessage, false, false , shouldSwitchTab, true);
+
+        if (shouldSwitchDisplay) {
+            model.setViewIndex(targetIndex);
+        }
+        return new CommandResult(resultMessage, false, false , shouldSwitchTab, shouldSwitchDisplay);
     }
 
     @Override

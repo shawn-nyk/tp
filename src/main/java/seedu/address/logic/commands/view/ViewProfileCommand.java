@@ -26,10 +26,15 @@ public class ViewProfileCommand extends ViewCommand {
             + PROFILE_ALIAS
             + " 5";
 
+    private final String messageViewSuccess;
+    private final String messageAlreadyViewing;
     private final Index targetIndex;
 
+    /** todo javadocs */
     public ViewProfileCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
+        this.messageViewSuccess = String.format(MESSAGE_VIEW_SUCCESS, PROFILE_ITEM_NAME, targetIndex);
+        this.messageAlreadyViewing = String.format(MESSAGE_ALREADY_VIEWING, PROFILE_ITEM_NAME, targetIndex);
     }
 
     /**
@@ -49,14 +54,21 @@ public class ViewProfileCommand extends ViewCommand {
             throw new CommandException(String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, PROFILE_NAME));
         }
 
+        String resultMessage = messageViewSuccess;
         boolean shouldSwitchTab = false;
+        boolean shouldSwitchDisplay = true;
         if (model.getTabName() != TabName.PROFILE) {
             model.setTabName(TabName.PROFILE);
             shouldSwitchTab = true;
+        } else if (model.getViewIndex().equals(targetIndex)) {
+            resultMessage = messageAlreadyViewing;
+            shouldSwitchDisplay = false;
         }
-        model.setViewIndex(targetIndex);
-        String viewSuccessMessage = String.format(MESSAGE_VIEW_SUCCESS, PROFILE_NAME, targetIndex);
-        return new CommandResult(viewSuccessMessage, false, false , shouldSwitchTab, true);
+
+        if (shouldSwitchDisplay) {
+            model.setViewIndex(targetIndex);
+        }
+        return new CommandResult(resultMessage, false, false , shouldSwitchTab, shouldSwitchDisplay);
     }
 
     @Override

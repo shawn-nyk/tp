@@ -25,10 +25,15 @@ public class ViewApplicationCommand extends ViewCommand {
             + APPLICATION_ALIAS
             + " 2";
 
+    private final String messageViewSuccess;
+    private final String messageAlreadyViewing;
     private final Index targetIndex;
 
+    /** todo javadocs */
     public ViewApplicationCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
+        this.messageViewSuccess = String.format(MESSAGE_VIEW_SUCCESS, APPLICATION_NAME, targetIndex);
+        this.messageAlreadyViewing = String.format(MESSAGE_ALREADY_VIEWING, APPLICATION_NAME, targetIndex);
     }
 
     /**
@@ -48,14 +53,21 @@ public class ViewApplicationCommand extends ViewCommand {
             throw new CommandException(String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, APPLICATION_NAME));
         }
 
+        String resultMessage = messageViewSuccess;
         boolean shouldSwitchTab = false;
+        boolean shouldSwitchDisplay = true;
         if (model.getTabName() != TabName.APPLICATION) {
             model.setTabName(TabName.APPLICATION);
             shouldSwitchTab = true;
+        } else if (model.getViewIndex().equals(targetIndex)) {
+            resultMessage = messageAlreadyViewing;
+            shouldSwitchDisplay = false;
         }
-        model.setViewIndex(targetIndex);
-        String viewSuccessMessage = String.format(MESSAGE_VIEW_SUCCESS, APPLICATION_NAME, targetIndex);
-        return new CommandResult(viewSuccessMessage, false, false , shouldSwitchTab, true);
+
+        if (shouldSwitchDisplay) {
+            model.setViewIndex(targetIndex);
+        }
+        return new CommandResult(resultMessage, false, false , shouldSwitchTab, shouldSwitchDisplay);
     }
 
     @Override
