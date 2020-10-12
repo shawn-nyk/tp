@@ -9,7 +9,7 @@
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
         </columnConstraints>
-        <VBox fx:id="informationDisplay" GridPane.columnIndex="0" styleClass="information_displaye">
+        <VBox fx:id="informationDisplay" GridPane.columnIndex="0" styleClass="information_display">
             <VBox fx:id="informationDisplayContainer"  styleClass="information_display_container">
                 <Label fx:id="informationTitle" styleClass="information_display_title"/>
                 <HBox fx:id="nameBar" styleClass="information_display_bar"/>
