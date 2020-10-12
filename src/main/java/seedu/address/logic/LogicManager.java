@@ -7,14 +7,18 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.AddressBookParser;
+import seedu.address.logic.parser.MainParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
+import seedu.address.model.application.ApplicationItem;
+import seedu.address.model.company.CompanyItem;
 import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
+import seedu.address.model.profile.ProfileItem;
 import seedu.address.storage.Storage;
 import seedu.address.ui.tabs.TabName;
 
@@ -27,7 +31,7 @@ public class LogicManager implements Logic {
 
     private final Model model;
     private final Storage storage;
-    private final AddressBookParser addressBookParser;
+    private final MainParser mainParser;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -35,7 +39,7 @@ public class LogicManager implements Logic {
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
-        addressBookParser = new AddressBookParser();
+        mainParser = new MainParser();
 
     }
 
@@ -44,11 +48,13 @@ public class LogicManager implements Logic {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
         CommandResult commandResult;
-        Command command = addressBookParser.parseCommand(commandText);
+        Command command = mainParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
         try {
-            storage.saveItemList(model.getAddressBook().getUnfilteredItemList());
+            storage.getCompanyItemListStorage().saveItemList(model.getCompanyList().getUnfilteredItemList());
+            storage.getApplicationItemListStorage().saveItemList(model.getApplicationList().getUnfilteredItemList());
+            storage.getProfileItemListStorage().saveItemList(model.getProfileList().getUnfilteredItemList());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
@@ -65,6 +71,22 @@ public class LogicManager implements Logic {
     public ObservableList<Person> getFilteredPersonList() {
         return model.getAddressBook().getFilteredItemList();
     }
+
+    @Override
+    public ObservableList<ApplicationItem> getFilteredApplicationItemList() {
+        return model.getApplicationList().getFilteredItemList();
+    }
+
+    @Override
+    public ObservableList<CompanyItem> getFilteredCompanyItemList() {
+        return model.getCompanyList().getFilteredItemList();
+    }
+
+    @Override
+    public ObservableList<ProfileItem> getFilteredProfileItemList() {
+        return model.getProfileList().getFilteredItemList();
+    }
+
 
     @Override
     public Path getAddressBookFilePath() {
@@ -89,5 +111,15 @@ public class LogicManager implements Logic {
     @Override
     public void setTabName(TabName tabName) {
         model.setTabName(tabName);
+    }
+
+    @Override
+    public Index getViewIndex() {
+        return model.getViewIndex();
+    }
+
+    @Override
+    public void setViewIndex(Index index) {
+        model.setViewIndex(index);
     }
 }

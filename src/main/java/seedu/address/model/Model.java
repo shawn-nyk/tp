@@ -3,9 +3,9 @@ package seedu.address.model;
 import java.nio.file.Path;
 
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.company.CompanyItem;
-import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.ui.tabs.TabName;
@@ -46,24 +46,19 @@ public interface Model {
     void setInternHunterFilePath(Path internHunterFilePath);
 
     /**
-     * Get person list manager.
+     * Gets the person list manager.
      */
     FilterableItemList<Person> getAddressBook();
 
     /**
-     * Get company list manager.
+     * Gets the company list manager.
      */
     FilterableItemList<CompanyItem> getCompanyList();
 
     /**
-     * Get internship list manager.
+     * Gets the application list manager.
      */
-    FilterableItemList<InternshipItem> getInternshipList();
-
-    /**
-     * Get internship application list manager.
-     */
-    FilterableItemList<ApplicationItem> getInternshipApplicationList();
+    FilterableItemList<ApplicationItem> getApplicationList();
 
     /**
      * Get profile list manager.
@@ -79,4 +74,14 @@ public interface Model {
      * Retrieves the current tab name
      */
     TabName getTabName();
+
+    /**
+     * Replaces the current index with {@code index}.
+     */
+    void setViewIndex(Index index);
+
+    /**
+     * Retrieves the current view Index.
+     */
+    Index getViewIndex();
 }

@@ -51,9 +51,9 @@ InternHunter allows the management of four data types:
 
 Data type | Alias | Attributes | What it represents
 ----------|-------|------------|-------------------
-Company | com | company name, industry, job title | A company offering internships
-Internship | int | company name, job title, industry, requirements, period, wage, status | An internship offered by a company
-Application | app | intership, status, status date | An internship application that you applied for
+Company | com | company name, phone number, email, address, industry types, internships | A company offering internships
+Internship | int | company name, job title, period, wage, requirements | An internship offered by a company
+Application | app | internship, status, status date | An internship application that you applied for
 Profile Item | me | category, title, descriptors | An item in your profile
 
 ## Quick start
@@ -201,7 +201,7 @@ Valid `STATUS_DATE` formats:
 #### Adding an application: `add app`
 
 Selects an internship from a company and adds it to your list of applications. If unspecified, the application’s
-`STATUS` will be `applied`, and it’s `STATUS_DATE` will be set as today’s date.
+`STATUS` will be `Applied`, and it’s `STATUS_DATE` will be set as today’s date.
 
 Format: `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
 - Where `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
@@ -265,7 +265,7 @@ Format: `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
 Examples:
 * `add me c/experience t/Internship at Govtech d/Implemented automate testing 
 using TravisCI d/Implemented dashboard to track code coverage`
-* `add me c/achievement t/special recognition in Hack n Roll!`
+* `add me c/achievement t/special recognition in Hack n Roll`
 * `add me c/skill t/HTML d/Learn how to create divs`
 
 #### Deleting item in profile: `delete me`

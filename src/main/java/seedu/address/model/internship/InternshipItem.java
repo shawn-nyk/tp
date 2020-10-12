@@ -2,6 +2,11 @@ package seedu.address.model.internship;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.JOB_TITLE_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.PERIOD_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.REQUIREMENTS_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.WAGE_DISPLAY_NAME;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -11,6 +16,7 @@ import java.util.Set;
 
 import seedu.address.model.company.CompanyName;
 import seedu.address.model.item.Item;
+import seedu.address.storage.internship.JsonAdaptedInternshipItem;
 
 /**
  * Represents an InternshipItem in the InternHunter application.
@@ -19,13 +25,13 @@ import seedu.address.model.item.Item;
 public class InternshipItem extends Item {
 
     // Identity fields
-    private final CompanyName companyName;
-    private final JobTitle jobTitle;
-    private final Period period;
+    private CompanyName companyName;
+    private JobTitle jobTitle;
+    private Period period;
 
     // Data fields
-    private final Wage wage;
-    private final Set<Requirement> requirements = new HashSet<>();
+    private Wage wage;
+    private Set<Requirement> requirements = new HashSet<>();
 
     /**
      * Every field must be present and not null.
@@ -44,16 +50,32 @@ public class InternshipItem extends Item {
         return companyName;
     }
 
+    public void setCompanyName(CompanyName companyName) {
+        this.companyName = companyName;
+    }
+
     public JobTitle getJobTitle() {
         return jobTitle;
+    }
+
+    public void setJobTitle(JobTitle jobTitle) {
+        this.jobTitle = jobTitle;
     }
 
     public Period getPeriod() {
         return period;
     }
 
+    public void setPeriod(Period period) {
+        this.period = period;
+    }
+
     public Wage getWage() {
         return wage;
+    }
+
+    public void setWage(Wage wage) {
+        this.wage = wage;
     }
 
     /**
@@ -62,6 +84,10 @@ public class InternshipItem extends Item {
      */
     public Set<Requirement> getRequirements() {
         return Collections.unmodifiableSet(requirements);
+    }
+
+    public void setRequirements(Set<Requirement> requirements) {
+        this.requirements = requirements;
     }
 
     /**
@@ -79,13 +105,14 @@ public class InternshipItem extends Item {
      *
      * @return Mapping of field names to fields for the InternshipItem.
      */
+    @Override
     public LinkedHashMap<String, Object> getMapping() {
         LinkedHashMap<String, Object> mapping = new LinkedHashMap<>();
-        mapping.put("Header", companyName);
-        mapping.put("Job title", jobTitle);
-        mapping.put("Period", period);
-        mapping.put("Wage", wage);
-        mapping.put("Requirements", requirements);
+        mapping.put(JOB_TITLE_DISPLAY_NAME, jobTitle);
+        mapping.put(COMPANY_DISPLAY_NAME, companyName);
+        mapping.put(PERIOD_DISPLAY_NAME, period);
+        mapping.put(WAGE_DISPLAY_NAME, wage);
+        mapping.put(REQUIREMENTS_DISPLAY_NAME, requirements);
         return mapping;
     }
 
@@ -143,16 +170,25 @@ public class InternshipItem extends Item {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getCompanyName())
-                .append(" Job title: ")
-                .append(getJobTitle())
+        builder.append(getJobTitle())
+                .append(", ")
+                .append(" Company Name: ")
+                .append(getCompanyName())
+                .append(", ")
                 .append(" Period: ")
                 .append(getPeriod())
+                .append(", ")
                 .append(" Wage: ")
                 .append(getWage())
+                .append(", ")
                 .append(" Requirements: ");
-        getRequirements().forEach(builder::append);
+        getRequirements().forEach(requirement -> builder.append(requirement + " "));
         return builder.toString();
+    }
+
+    @Override
+    public JsonAdaptedInternshipItem getJsonAdaptedItem() {
+        return new JsonAdaptedInternshipItem(this);
     }
 
 }

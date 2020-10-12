@@ -97,8 +97,8 @@ public class ItemList<T extends Item> implements ReadOnlyItemList<T> {
      * Removes {@code key} from this {@code ItemList}, removing the object based on the weaker notion of equality.
      * {@code key} need not be in this item list.
      */
-    public void deepRemoveItem(T key) {
-        items.deepRemove(key);
+    public void removeSameItem(T key) {
+        items.removeSameItem(key);
     }
 
     //// util methods

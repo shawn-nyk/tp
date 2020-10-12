@@ -1,7 +1,15 @@
 package seedu.address.model.company;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
+import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.ADDRESS_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.EMAIL_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.INDUSTRIES_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.INTERNSHIPS_DISPLAY_NAME;
+import static seedu.address.ui.panel.PanelDisplayKeyword.PHONE_DISPLAY_NAME;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,11 +19,16 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.item.Item;
+import seedu.address.storage.company.JsonAdaptedCompanyItem;
 
 /**
- * Represents a Person in the address book. TODO: Javadocs (Shawn)
+ * Represents a Person in the address book. todo javadocs (shawn)
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class CompanyItem extends Item {
@@ -28,13 +41,25 @@ public class CompanyItem extends Item {
     // Data fields
     private final Address address;
     private final Set<Industry> industries = new HashSet<>();
-    private final List<InternshipItem> internships = new ArrayList<>();
+    private final ObservableList<InternshipItem> internships = FXCollections.observableList(new ArrayList<>());
+
+    /**
+     * Every field must be present and not null.
+     */
+    public CompanyItem(CompanyName companyName, Phone phone, Email email, Address address, Set<Industry> industries) {
+        requireAllNonNull(companyName, phone, email, address, industries);
+        this.companyName = companyName;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.industries.addAll(industries);
+    }
 
     /**
      * Every field must be present and not null.
      */
     public CompanyItem(CompanyName companyName, Phone phone, Email email, Address address, Set<Industry> industries,
-                       List<InternshipItem> internships) {
+            List<InternshipItem> internships) {
         requireAllNonNull(companyName, phone, email, address, industries, internships);
         this.companyName = companyName;
         this.phone = phone;
@@ -69,16 +94,60 @@ public class CompanyItem extends Item {
     }
 
     /**
-     * TODO: Javadocs (Shawn)
+     * todo javadocs (shawn)
      */
     public List<InternshipItem> getInternships() {
         return Collections.unmodifiableList(internships);
     }
 
     /**
-     * Returns true if both persons of the same companyName have at least one other identity field that is the same.
-     * This defines a weaker notion of equality between two persons.
+     * todo javadocs (shawn)
      */
+    public InternshipItem getInternship(Index internshipIndex) throws CommandException {
+        if (internshipIndex.getZeroBased() >= internships.size()) {
+            throw new CommandException(String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, INTERNSHIP_NAME));
+        }
+        return internships.get(internshipIndex.getZeroBased());
+    }
+
+    /**
+     * todo javadocs (shawn)
+     */
+    public void addInternship(InternshipItem internship) {
+        internships.add(internship);
+    }
+
+    /** todo javadocs (shawn) */
+    public void removeInternship(Index internshipIndex) throws CommandException {
+        if (internshipIndex.getZeroBased() >= internships.size()) {
+            throw new CommandException(String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, INTERNSHIP_NAME));
+        }
+        internships.remove(internshipIndex.getZeroBased());
+    }
+
+    /** todo javadocs (shawn) */
+    public void updateAllInternshipsCompanyName() {
+        for (InternshipItem internship : internships) {
+            internship.setCompanyName(companyName);
+        }
+    }
+
+    /** todo javadocs (shawn) */
+    public int getNumberOfInternships() {
+        return internships.size();
+    }
+
+    /**
+     * Checks if matching internship has same identity fields.
+     *
+     * @param internshipItem to check against.
+     * @return true if {@code internshipItem} exists in company.
+     */
+    public boolean containsInternship(InternshipItem internshipItem) {
+        return internships.stream().anyMatch(x -> x.isSameItem(internshipItem));
+    }
+
+    @Override
     public boolean isSameItem(Item otherItem) {
         if (this == otherItem) {
             return true;
@@ -133,12 +202,15 @@ public class CompanyItem extends Item {
                 .append(" Email: ")
                 .append(getEmail())
                 .append(" Address: ")
-                .append(getAddress())
-                .append(" Industries: ");
-        getIndustries().forEach(builder::append);
-        builder.append(getInternships())
-                .append(" Internships: ");
-        getInternships().forEach(builder::append);
+                .append(getAddress());
+        if (!industries.isEmpty()) {
+            builder.append(" Industries: ");
+            getIndustries().forEach(industry -> builder.append(industry + " "));
+        }
+        if (!internships.isEmpty()) {
+            builder.append("Internships: ");
+            getInternships().forEach(builder::append);
+        }
         return builder.toString();
     }
 
@@ -150,13 +222,18 @@ public class CompanyItem extends Item {
     @Override
     public LinkedHashMap<String, Object> getMapping() {
         LinkedHashMap<String, Object> mapping = new LinkedHashMap<>();
-        mapping.put("Company name", companyName);
-        mapping.put("Phone", phone);
-        mapping.put("Email", email);
-        mapping.put("Address", address);
-        mapping.put("Industries", industries);
-        mapping.put("Internships", internships);
+        mapping.put(COMPANY_DISPLAY_NAME, companyName);
+        mapping.put(PHONE_DISPLAY_NAME, phone);
+        mapping.put(EMAIL_DISPLAY_NAME, email);
+        mapping.put(ADDRESS_DISPLAY_NAME, address);
+        mapping.put(INDUSTRIES_DISPLAY_NAME, industries);
+        mapping.put(INTERNSHIPS_DISPLAY_NAME, internships);
         return mapping;
+    }
+
+    @Override
+    public JsonAdaptedCompanyItem getJsonAdaptedItem() {
+        return new JsonAdaptedCompanyItem(this);
     }
 
 }
