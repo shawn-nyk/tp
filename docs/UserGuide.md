@@ -145,10 +145,10 @@ Note: You must be on the **Company** tab in order to execute these commands.
 
 Adds an internship to a company.
 
-Format: `add int INDEX j/JOB_TITLE [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
+Format: `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
 
 Examples:
-- `add int 1 j/Software Engineer`
+- `add int 1 j/Software Engineer w/1512`
 - `add int 3 j/Web Developer r/React w/3000 r/HTML5`
 
 #### Deleting an internship: `delete int`
@@ -336,7 +336,7 @@ Type            | Action     | Format
 &nbsp;          | **Delete** | `delete com INDEX`
 &nbsp;          | **Edit**   | `edit com INDEX [n/COMPANY_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/INDUSTRY]...`
 &nbsp;          | **View**   | `view com INDEX`
-**Internship**  | **Add**    | `add int INDEX j/JOB_TITLE [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
+**Internship**  | **Add**    | `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
 &nbsp;          | **Delete** | `delete int INDEX i/INDEX`
 &nbsp;          | **Edit**   | `edit int INDEX i/INDEX [j/JOB_TITLE] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
 **Application** | **Add**    | `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
