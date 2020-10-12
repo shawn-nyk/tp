@@ -20,7 +20,7 @@ and their own user profile, so that they can keep track of internships that they
 - [Developer Guide](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/docs/DeveloperGuide.md)
 - [About Us](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/docs/AboutUs.md)
  
- ## Acknowledgements
+## Acknowledgements
 - This project was extended from AddressBook-Level3 project created by [SE-EDU initiative](https://se-education.org).
 - Libraries Used: [JavaFX](https://github.com/openjdk/jfx), [Jackson](https://github.com/FasterXML/jackson),
 [JUnit5](https://github.com/junit-team/junit5)
