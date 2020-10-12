@@ -38,12 +38,13 @@ public class SwitchCommand extends Command {
 
         if (tabName.equals(currentTab)) {
             resultMessage = sameScreenText;
+            return new CommandResult(resultMessage, false, false, false, false);
         } else {
             resultMessage = switchedScreenText;
+            model.setViewIndex(Index.fromZeroBased(0));
             model.setTabName(tabName);
+            return new CommandResult(resultMessage, false, false, true, false);
         }
-        model.setViewIndex(Index.fromZeroBased(0));
-        return new CommandResult(resultMessage, false, false, true, false);
     }
 
     @Override

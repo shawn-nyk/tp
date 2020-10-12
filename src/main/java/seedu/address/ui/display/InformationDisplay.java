@@ -1,5 +1,7 @@
 package seedu.address.ui.display;
 
+import static seedu.address.ui.panel.PanelDisplayKeyword.INTERNSHIPS_DISPLAY_NAME;
+
 import java.util.LinkedHashMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -30,13 +32,17 @@ public abstract class InformationDisplay<T extends Item> extends UiPart<Region> 
     protected LinkedHashMap<String, Object> mapping;
 
     @FXML
-    private ScrollPane informationDisplay;
+    private ScrollPane scrollableInformationDisplay;
     @FXML
     private HBox nameBar;
     @FXML
     private Label informationTitle;
     @FXML
     private VBox information;
+    @FXML
+    private VBox informationDisplay;
+    @FXML
+    private VBox informationDisplayContainer;
 
     /**
      * Constructs a {@code InformationDisplay} in the given {@code primaryStage}.
@@ -52,7 +58,8 @@ public abstract class InformationDisplay<T extends Item> extends UiPart<Region> 
      * Sets the size of {@code InformationDisplay} in the given {@code primaryStage}.
      */
     private void initializeInformationDisplay(Stage primaryStage) {
-        informationDisplay.prefHeightProperty().bind(primaryStage.heightProperty().subtract(INFORMATION_HEIGHT_SHRINK));
+        scrollableInformationDisplay.prefHeightProperty()
+            .bind(primaryStage.heightProperty().subtract(INFORMATION_HEIGHT_SHRINK));
         nameBar.maxWidthProperty().bind(informationDisplay.widthProperty().subtract(INFORMATION_WIDTH_SHRINK));
     }
 
@@ -75,14 +82,46 @@ public abstract class InformationDisplay<T extends Item> extends UiPart<Region> 
      */
     protected void setInformation(Function<String, String> editString, Predicate<String> haveBrackets,
         TabName tabName, String ... displayKeyList) {
-
         for (String key : displayKeyList) {
             Object object = mapping.get(key);
             String detail = object.toString();
             if (haveBrackets.test(key)) {
                 detail = editString.apply(detail);
             }
+            if (detail.length() == 0) {
+                detail = "-";
+            }
+            if (key.equals(INTERNSHIPS_DISPLAY_NAME) && detail.length() > 0) {
+                detail = formatInternshipDetail(detail);
+            }
             addInformation(TitleDescriptionDisplay.addTitleDescriptionDisplay(key, detail, tabName));
         }
+    }
+
+    public String formatInternshipDetail(String string) {
+        String s =string.substring(0, string.length() - 1);
+        s = s.replaceAll("\n, ", "\n");
+        StringBuffer buffer = new StringBuffer(s);
+        buffer.insert(0, "1. ");
+        formatNumbering(buffer, "\n");
+        return formatBulletPoints(buffer);
+    }
+    
+    public void formatNumbering(StringBuffer buffer, String target) {
+        int index = buffer.indexOf(target);
+        int counter = 2;
+        while (index != -1) {
+            String replacement = target + counter + ". ";
+            buffer.replace(index, index + 1, replacement);
+            index += replacement.length();
+            index = buffer.indexOf(target, index);
+            counter++;
+        }
+    }
+    
+    public String formatBulletPoints(StringBuffer buffer) {
+        String string = buffer.toString();
+        string = string.replaceAll(", {2}",  "\n  \u2022 ");
+        return string;
     }
 }

@@ -2,6 +2,7 @@ package seedu.address.ui.cards;
 
 import static seedu.address.ui.textstyle.TitleDescription.createTitleDescription;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 
 import javafx.fxml.FXML;

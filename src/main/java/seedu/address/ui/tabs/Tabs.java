@@ -52,17 +52,15 @@ public class Tabs extends VBox {
     private ImageView companyIcon;
     @FXML
     private ImageView profileIcon;
-
-    private Stage stage;
+    
     private MainWindow mainWindow;
     private Logic logic;
 
     /**
      * Constructs the {@code Tabs} in the given {@code primaryStage} of the {@code mainWindow}.
      */
-    private Tabs(MainWindow mainWindow, Stage primaryStage, Logic logic) {
+    private Tabs(MainWindow mainWindow, Logic logic) {
         try {
-            stage = primaryStage;
             this.mainWindow = mainWindow;
             this.logic = logic;
 
@@ -83,8 +81,8 @@ public class Tabs extends VBox {
     /**
      * Creates the {@code Tabs} information in the {@code primaryStage} of the {@code mainWindow}.
      */
-    public static Tabs getTabs(MainWindow mainWindow, Stage primaryStage, Logic logic) {
-        return new Tabs(mainWindow, primaryStage, logic);
+    public static Tabs getTabs(MainWindow mainWindow, Logic logic) {
+        return new Tabs(mainWindow, logic);
     }
 
     /**
@@ -93,13 +91,13 @@ public class Tabs extends VBox {
     @FXML
     public void handleClick(ActionEvent event) {
         if (event.getSource() == applicationButton) {
-            selectApplication(stage);
+            selectApplication();
             logic.setTabName(TabName.APPLICATION);
         } else if (event.getSource() == companyButton) {
-            selectCompany(stage);
+            selectCompany();
             logic.setTabName(TabName.COMPANY);
         } else if (event.getSource() == profileButton) {
-            selectProfile(stage);
+            selectProfile();
             logic.setTabName(TabName.PROFILE);
         } else {
             assert false : "Invalid button";
@@ -113,13 +111,13 @@ public class Tabs extends VBox {
         TabName tabName = logic.getTabName();
         switch (tabName) {
         case COMPANY:
-            selectCompany(stage);
+            selectCompany();
             break;
         case APPLICATION:
-            selectApplication(stage);
+            selectApplication();
             break;
         case PROFILE:
-            selectProfile(stage);
+            selectProfile();
             break;
         default:
             assert false;
@@ -144,42 +142,42 @@ public class Tabs extends VBox {
      * Sets the display and tab to be of {@code application} in the {@code stage}
      * Currently it only switches the information display.
      */
-    public void selectApplication(Stage stage) {
+    public void selectApplication() {
         // adjust tab bar position
         setColor(application, APPLICATION_Y_TRANSLATE);
         setTransparent(company, COMPANY_Y_TRANSLATE);
         setTransparent(profile, PROFILE_Y_TRANSLATE);
 
         // adjust the display of the gui
-        mainWindow.changeTabView(TabName.APPLICATION, stage);
+        mainWindow.changeTabView(TabName.APPLICATION);
     }
 
     /**
      * Sets the display and tab to be of {@code company} in the {@code stage}
      * Currently it only switches the information display.
      */
-    public void selectCompany(Stage stage) {
+    public void selectCompany() {
         // adjust tab bar position
         setTransparent(application, APPLICATION_Y_TRANSLATE);
         setColor(company, COMPANY_Y_TRANSLATE);
         setTransparent(profile, PROFILE_Y_TRANSLATE);
 
         // adjust the display of the gui
-        mainWindow.changeTabView(TabName.COMPANY, stage);
+        mainWindow.changeTabView(TabName.COMPANY);
     }
 
     /**
      * Sets the display and tab to be of {@code profile} in the {@code stage}
      * Currently it only switches the information display.
      */
-    public void selectProfile(Stage stage) {
+    public void selectProfile() {
         // adjust tab bar position
         setTransparent(application, APPLICATION_Y_TRANSLATE);
         setTransparent(company, COMPANY_Y_TRANSLATE);
         setColor(profile, PROFILE_Y_TRANSLATE);
 
         // adjust the display of the gui
-        mainWindow.changeTabView(TabName.PROFILE, stage);
+        mainWindow.changeTabView(TabName.PROFILE);
     }
 
     /**

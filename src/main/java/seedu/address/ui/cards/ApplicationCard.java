@@ -7,6 +7,7 @@ import static seedu.address.model.util.StatusUtil.INTERVIEW_KEYWORD;
 import static seedu.address.model.util.StatusUtil.OFFERED_KEYWORD;
 import static seedu.address.model.util.StatusUtil.REJECTED_KEYWORD;
 import static seedu.address.model.util.StatusUtil.WAITING_KEYWORD;
+import static seedu.address.ui.GuardClauseUi.isEmptyListString;
 import static seedu.address.ui.panel.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.DATE_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.JOB_TITLE_DISPLAY_NAME;
@@ -78,7 +79,9 @@ public class ApplicationCard extends Card<ApplicationItem> {
      */
     private void setRequirements() {
         Object requirements = mapping.get(REQUIREMENTS_DISPLAY_NAME);
-        setTags(requirements.toString());
+        if (!isEmptyListString.test(requirements.toString())) {
+            setTags(requirements.toString());
+        }
     }
 
     /**
@@ -86,7 +89,7 @@ public class ApplicationCard extends Card<ApplicationItem> {
      */
     private void setStatus() {
         Object status = mapping.get(STATUS_DISPLAY_NAME);
-        if (!status.toString().equals("[]")) {
+        if (!isEmptyListString.test(status.toString())) {
             getStatusStyle(status.toString());
         }
     }
