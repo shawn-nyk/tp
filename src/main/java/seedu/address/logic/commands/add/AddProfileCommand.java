@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEG
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTORS;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_TITLE;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
+import static seedu.address.model.util.ItemUtil.PROFILE_ITEM_NAME;
 import static seedu.address.model.util.ItemUtil.PROFILE_NAME;
 
 import seedu.address.logic.commands.CommandResult;
@@ -22,7 +23,7 @@ import seedu.address.ui.tabs.TabName;
 public class AddProfileCommand extends AddCommandAbstract {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + PROFILE_ALIAS
-            + ": Adds a profile item to "
+            + ": Adds a " + PROFILE_ITEM_NAME + " item to "
             + "InternHunter.\nParameters: "
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
@@ -54,7 +55,8 @@ public class AddProfileCommand extends AddCommandAbstract {
 
         model.getProfileList().addItem(toAdd);
 
-        return getCommandResult(model, String.format(MESSAGE_ADD_SUCCESS, PROFILE_NAME, toAdd), TabName.PROFILE);
+        String addSuccessMessage = String.format(MESSAGE_ADD_SUCCESS, PROFILE_NAME, toAdd);
+        return getCommandResult(model, addSuccessMessage, TabName.PROFILE);
     }
 
     @Override

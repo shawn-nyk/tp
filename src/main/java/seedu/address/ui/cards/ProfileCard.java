@@ -50,7 +50,7 @@ public class ProfileCard extends Card<ProfileItem> {
      */
     protected void setImageType() {
         Image image;
-        switch (getItem().getType()) {
+        switch (getItem().getCategory()) {
         case ACHIEVEMENT:
             image = new Image(this.getClass().getResourceAsStream(ACHIEVEMENT_IMAGE_LINK));
             break;
