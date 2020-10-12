@@ -32,7 +32,7 @@ public class Messages {
 
     /** View message: First string refers to item type, second string refers to the index. */
     public static final String MESSAGE_VIEW_SUCCESS = "Currently viewing %1$s %2$s\n";
-    
+
     /** Switch message: First string refers to tab that is being switch to. */
     public static final String MESSAGE_SWITCH_SUCCESS = "Switching to %s tab";
     public static final String MESSAGE_SAME_SCREEN = "Already in %s tab";

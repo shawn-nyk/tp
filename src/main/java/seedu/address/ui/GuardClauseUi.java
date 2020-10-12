@@ -11,10 +11,21 @@ import seedu.address.ui.panel.ListPanel;
 
 public class GuardClauseUi {
 
-    public static Predicate<String> isEmptyListString = string -> string.equals("[]");
-    public static Predicate<ObservableList<? extends Item>> isEmptyDataList = list -> list.size() <= 0;
-    public static Predicate<Optional<InformationDisplay<? extends Item>>> isEmptyDisplay = Optional::isEmpty;
-    public static Predicate<Optional<ListPanel<? extends Item>>> isEmptyListPanel = Optional::isEmpty;
-    public static Predicate<String> isEmptyString = string -> string.length() <= 0;
-    public static BiPredicate<String, String> isSameString = String::equals;
+    /** Checks if the given string is an empty representation of a list */
+    public static final Predicate<String> IS_EMPTY_LIST_STRING = string -> string.equals("[]");
+
+    /** Checks if the given data list is empty */
+    public static final Predicate<ObservableList<? extends Item>> IS_EMPTY_DATA_LIST = list -> list.size() <= 0;
+
+    /** Checks if the given display is empty */
+    public static final Predicate<Optional<InformationDisplay<? extends Item>>> IS_EMPTY_DISPLAY = Optional::isEmpty;
+
+    /** Checks if the given list panel is empty */
+    public static final Predicate<Optional<ListPanel<? extends Item>>> IS_EMPTY_LIST_PANEL = Optional::isEmpty;
+
+    /** Checks if the given string is empty */
+    public static final Predicate<String> IS_EMPTY_STRING = string -> string.length() <= 0;
+
+    /** Checks if both strings are equal */
+    public static final BiPredicate<String, String> IS_SAME_STRING = String::equals;
 }

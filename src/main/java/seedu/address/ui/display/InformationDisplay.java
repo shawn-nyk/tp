@@ -1,7 +1,7 @@
 package seedu.address.ui.display;
 
-import static seedu.address.ui.GuardClauseUi.isEmptyString;
-import static seedu.address.ui.GuardClauseUi.isSameString;
+import static seedu.address.ui.GuardClauseUi.IS_EMPTY_STRING;
+import static seedu.address.ui.GuardClauseUi.IS_SAME_STRING;
 import static seedu.address.ui.panel.PanelDisplayKeyword.INTERNSHIPS_DISPLAY_NAME;
 
 import java.util.LinkedHashMap;
@@ -30,8 +30,7 @@ public abstract class InformationDisplay<T extends Item> extends UiPart<Region> 
     private static final String BULLET_WITH_TWO_SPACE = "  \u2022 ";
     private static final String DOT_SPACE = ". ";
     private static final String DASH = "-";
-    
-    
+
     //FXML
     private static final String FXML = "InformationDisplay.fxml";
 
@@ -98,10 +97,10 @@ public abstract class InformationDisplay<T extends Item> extends UiPart<Region> 
             if (haveBrackets.test(key)) {
                 detail = editString.apply(detail);
             }
-            if (isSameString.test(key, INTERNSHIPS_DISPLAY_NAME) && !isEmptyString.test(detail)) {
+            if (IS_SAME_STRING.test(key, INTERNSHIPS_DISPLAY_NAME) && !IS_EMPTY_STRING.test(detail)) {
                 detail = formatInternshipDetail(detail);
             }
-            if (isEmptyString.test(detail)) {
+            if (IS_EMPTY_STRING.test(detail)) {
                 detail = DASH;
             }
             addInformation(TitleDescriptionDisplay.addTitleDescriptionDisplay(key, detail, tabName));

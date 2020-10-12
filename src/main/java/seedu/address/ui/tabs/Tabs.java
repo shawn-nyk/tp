@@ -10,7 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import seedu.address.logic.Logic;
 import seedu.address.ui.MainWindow;
 
@@ -52,7 +51,7 @@ public class Tabs extends VBox {
     private ImageView companyIcon;
     @FXML
     private ImageView profileIcon;
-    
+
     private MainWindow mainWindow;
     private Logic logic;
 

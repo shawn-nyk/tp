@@ -1,8 +1,8 @@
 package seedu.address.ui;
 
-import static seedu.address.ui.GuardClauseUi.isEmptyDataList;
-import static seedu.address.ui.GuardClauseUi.isEmptyDisplay;
-import static seedu.address.ui.GuardClauseUi.isEmptyListPanel;
+import static seedu.address.ui.GuardClauseUi.IS_EMPTY_DATA_LIST;
+import static seedu.address.ui.GuardClauseUi.IS_EMPTY_DISPLAY;
+import static seedu.address.ui.GuardClauseUi.IS_EMPTY_LIST_PANEL;
 import static seedu.address.ui.tabs.TabName.APPLICATION;
 import static seedu.address.ui.tabs.TabName.COMPANY;
 import static seedu.address.ui.tabs.TabName.PROFILE;
@@ -282,7 +282,7 @@ public class MainWindow extends UiPart<Stage> {
             break;
         }
         changeDisplay();
-        if (!isEmptyListPanel.test(newListPanel)) {
+        if (!IS_EMPTY_LIST_PANEL.test(newListPanel)) {
             listPanelPlaceholder.getChildren().add(newListPanel.get().getRoot());
         }
     }
@@ -330,7 +330,7 @@ public class MainWindow extends UiPart<Stage> {
             break;
         }
         display.getChildren().clear();
-        if (!isEmptyDisplay.test(newInformationDisplay)) {
+        if (!IS_EMPTY_DISPLAY.test(newInformationDisplay)) {
             display.getChildren().add(newInformationDisplay.get().getRoot());
         }
     }
@@ -339,7 +339,7 @@ public class MainWindow extends UiPart<Stage> {
      * todo javadocs
      */
     private Optional<InformationDisplay<? extends Item>> getCompanyDisplay(int index) {
-        if (!isEmptyDataList.test(companyItems)) {
+        if (!IS_EMPTY_DATA_LIST.test(companyItems)) {
             return Optional.of(CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(index)));
         }
         return Optional.empty();
@@ -349,7 +349,7 @@ public class MainWindow extends UiPart<Stage> {
      * todo javadocs
      */
     private Optional<InformationDisplay<? extends Item>> getApplicationDisplay(int index) {
-        if (!isEmptyDataList.test(applicationItems)) {
+        if (!IS_EMPTY_DATA_LIST.test(applicationItems)) {
             return Optional.of(ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(index)));
         }
         return Optional.empty();
@@ -359,7 +359,7 @@ public class MainWindow extends UiPart<Stage> {
      * todo javadocs
      */
     private Optional<InformationDisplay<? extends Item>> getProfileDisplay(int index) {
-        if (!isEmptyDataList.test(profileItems)) {
+        if (!IS_EMPTY_DATA_LIST.test(profileItems)) {
             return Optional.of(ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index)));
         }
         return Optional.empty();

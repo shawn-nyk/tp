@@ -68,5 +68,5 @@ public class CommandUtil {
             return new CommandResult(message);
         }
     }
-    
+
 }
