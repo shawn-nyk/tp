@@ -2,6 +2,8 @@ package seedu.address.logic.commands.edit;
 
 //import static java.util.Objects.requireNonNull;
 //import static seedu.address.commons.core.Messages.MESSAGE_EDIT_SUCCESS;
+//import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+//import static seedu.address.logic.commands.util.CommandUtil.getCompany;
 //import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_JOB_TITLE;
 //import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_PERIOD;
 //import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_REQUIREMENT;
@@ -24,6 +26,7 @@ package seedu.address.logic.commands.edit;
 //import seedu.address.logic.commands.CommandResult;
 //import seedu.address.logic.commands.exceptions.CommandException;
 //import seedu.address.model.Model;
+//import seedu.address.model.company.CompanyItem;
 //import seedu.address.model.internship.InternshipItem;
 
 /** todo javadocs (shawn) */
@@ -50,30 +53,31 @@ public class EditInternshipCommand {
 //
 //    private final Index companyIndex;
 //    private final Index internshipIndex;
-//    private final EditCompanyDescriptor editCompanyDescriptor;
+//    private final EditInternshipDescriptor editInternshipDescriptor;
 //
-//    /** todo javadocs (shawn)
-//     * @param index of the person in the filtered person list to edit
-//     * @param editCompanyDescriptor details to edit the person with
-//     */
-//    public EditCompanyCommand(Index index, EditCompanyDescriptor editCompanyDescriptor) {
-//        requireNonNull(index);
-//        requireNonNull(editCompanyDescriptor);
+//    /** todo javadocs (shawn) */
+//    public EditInternshipCommand(Index companyIndex, Index internshipIndex,
+//                                 EditInternshipDescriptor editInternshipDescriptor) {
+//        requireAllNonNull(companyIndex, internshipIndex, editInternshipDescriptor);
 //
-//        this.index = index;
-//        this.editCompanyDescriptor = new EditCompanyDescriptor(editCompanyDescriptor);
+//        this.companyIndex = companyIndex;
+//        this.internshipIndex = internshipIndex;
+//        this.editInternshipDescriptor = new EditInternshipDescriptor(editInternshipDescriptor);
 //    }
 //
 //    @Override
 //    public CommandResult execute(Model model) throws CommandException {
 //        requireNonNull(model);
-//        CompanyItem companyToEdit = getCompany(model, index);
-//        CompanyItem editedCompany = createEditedCompany(companyToEdit, editCompanyDescriptor);
+//        CompanyItem companyItem = getCompany(model, companyIndex);
+//        InternshipItem internshipToEdit = companyItem.getInternship(internshipIndex);
+//        InternshipItem editedInternship = createEditedInternship(internshipToEdit, editInternshipDescriptor);
 //
-//        if (!companyToEdit.isSameItem(editedCompany) && model.getCompanyList().hasItem(editedCompany)) {
-//            throw new CommandException(String.format(Messages.MESSAGE_DUPLICATE_ITEM, COMPANY_NAME));
+//        if (!internshipToEdit.isSameItem(editedInternship) && companyItem.getInternships().stream()
+//                .anyMatch(editedInternship::isSameItem)) {
+//            throw new CommandException(String.format(Messages.MESSAGE_DUPLICATE_ITEM, INTERNSHIP_NAME));
 //        }
 //
+//        // just swap out internship's fields
 //        model.getCompanyList().setItem(companyToEdit, editedCompany);
 //        model.getCompanyList().updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
 //        return new CommandResult(String.format(MESSAGE_EDIT_SUCCESS, COMPANY_NAME, editedCompany));
@@ -83,7 +87,7 @@ public class EditInternshipCommand {
 //     * Creates and returns a {@code Person} with the details of {@code personToEdit}
 //     * edited with {@code editPersonDescriptor}.
 //     */
-//    private static CompanyItem createEditedCompany(CompanyItem companyToEdit,
+//    private static InternshipItem createEditedInternship(CompanyItem companyToEdit,
 //                                                   EditCompanyDescriptor editCompanyDescriptor) {
 //        assert companyToEdit != null;
 //
@@ -122,7 +126,7 @@ public class EditInternshipCommand {
 //     * Stores the details to edit the person with. Each non-empty field value will replace the
 //     * corresponding field value of the person.
 //     */
-//    public static class EditCompanyDescriptor {
+//    public static class EditInternshipDescriptor {
 //        private CompanyName name;
 //        private Phone phone;
 //        private Email email;
