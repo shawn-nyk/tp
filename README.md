@@ -11,9 +11,9 @@
 
 <p align="center"><img src="docs/images/Ui.png" width="100%"/></p>
 
-
 Welcome to **InternHunter**, a CLI-centric desktop application which aids university students in applying for tech
-internships. It tracks and leverages on key metrics and information to create an optimal internship hunting experience.
+internships. It lets users manage their own customizable collection of companies, internships, internship applications
+and their own user profile, so that they can keep track of internships that they are interested in.
 
 ## Site Map
 - [User Guide](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/docs/UserGuide.md)
