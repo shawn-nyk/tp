@@ -49,6 +49,6 @@ public class Descriptor {
      * Format descriptor as text for viewing.
      */
     public String toString() {
-        return "\u2022 " + descriptor;
+        return descriptor;
     }
 }

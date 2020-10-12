@@ -2,6 +2,7 @@ package seedu.address.ui.display;
 
 import static seedu.address.ui.GuardClauseUi.IS_EMPTY_STRING;
 import static seedu.address.ui.GuardClauseUi.IS_SAME_STRING;
+import static seedu.address.ui.panel.PanelDisplayKeyword.DESCRIPTORS_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.INTERNSHIPS_DISPLAY_NAME;
 
 import java.util.LinkedHashMap;
@@ -27,7 +28,8 @@ public abstract class InformationDisplay<T extends Item> extends UiPart<Region> 
     private static final String NEW_LINE = "\n";
     private static final String COMMA_ONE_SPACE = ", ";
     private static final String COMMA_TWO_SPACE = ", {2}";
-    private static final String BULLET_WITH_TWO_SPACE = "  \u2022 ";
+    private static final String BULLET_WITH_TWO_SPACE_FRONT_ONE_BACK = "  \u2022 ";
+    private static final String BULLET_WITH_ONE_SPACE = "\u2022 ";
     private static final String DOT_SPACE = ". ";
     private static final String DASH = "-";
 
@@ -100,11 +102,22 @@ public abstract class InformationDisplay<T extends Item> extends UiPart<Region> 
             if (IS_SAME_STRING.test(key, INTERNSHIPS_DISPLAY_NAME) && !IS_EMPTY_STRING.test(detail)) {
                 detail = formatInternshipDetail(detail);
             }
+            if (IS_SAME_STRING.test(key, DESCRIPTORS_DISPLAY_NAME) && !IS_EMPTY_STRING.test(detail)) {
+                detail = formatProfileDetail(detail);
+            }
             if (IS_EMPTY_STRING.test(detail)) {
                 detail = DASH;
             }
             addInformation(TitleDescriptionDisplay.addTitleDescriptionDisplay(key, detail, tabName));
         }
+    }
+
+    /**
+     * todo javadocs
+     */
+    public String formatProfileDetail(String string) {
+        string = BULLET_WITH_ONE_SPACE + string;
+        return string.replaceAll(NEW_LINE, NEW_LINE + BULLET_WITH_ONE_SPACE);
     }
 
     /**
@@ -139,7 +152,7 @@ public abstract class InformationDisplay<T extends Item> extends UiPart<Region> 
      */
     public String formatBulletPoints(StringBuffer buffer) {
         String string = buffer.toString();
-        string = string.replaceAll(COMMA_TWO_SPACE, NEW_LINE + BULLET_WITH_TWO_SPACE);
+        string = string.replaceAll(COMMA_TWO_SPACE, NEW_LINE + BULLET_WITH_TWO_SPACE_FRONT_ONE_BACK);
         return string;
     }
 }
