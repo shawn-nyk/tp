@@ -45,6 +45,7 @@ public class EditCompanyCommand extends EditCommandAbstract {
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_INDUSTRY + "INDUSTRY_TYPE]...\n"
+            + "Note: At least one of the optional fields must be provided. INDEX must be a positive integer.\n"
             + "Example: " + COMMAND_WORD + " " + COMPANY_ALIAS + " 5 "
             + PREFIX_COMPANY_NAME + "Amazon Inc "
             + PREFIX_PHONE + "61234567 "

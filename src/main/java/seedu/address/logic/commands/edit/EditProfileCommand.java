@@ -7,6 +7,8 @@ import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEG
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTORS;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_TITLE;
 import static seedu.address.model.FilterableItemList.PREDICATE_SHOW_ALL_ITEMS;
+import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
+import static seedu.address.model.util.ItemUtil.PROFILE_ITEM_NAME;
 import static seedu.address.model.util.ItemUtil.PROFILE_NAME;
 
 import java.util.Collections;
@@ -28,13 +30,15 @@ public class EditProfileCommand extends EditCommandAbstract {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the profile item identified "
-            + "by the index number used in the displayed profile list. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " " + PROFILE_ALIAS
+            + ": Edits the details of a " + PROFILE_ITEM_NAME + " from InternHunter accessed "
+            + "by the index number used in the displayed list.\n"
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
+            + "Parameters: INDEX "
             + "[" + PREFIX_TITLE + "TITLE] "
             + "[" + PREFIX_CATEGORY + "CATEGORY] "
             + "[" + PREFIX_DESCRIPTORS + "DESCRIPTOR]...\n"
+            + "Note: At least one of the optional fields must be provided. INDEX must be a positive integer.\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_CATEGORY + "achievement "
             + PREFIX_DESCRIPTORS + "Devised a mobile transaction solution. ";
