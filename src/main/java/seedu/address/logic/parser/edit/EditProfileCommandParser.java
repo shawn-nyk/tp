@@ -1,11 +1,11 @@
 package seedu.address.logic.parser.edit;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.edit.EditProfileCommand.EditProfileItemDescriptor;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEGORY;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTORS;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_TITLE;
+import static seedu.address.logic.parser.util.GeneralParserUtil.getIndexInPreamble;
 import static seedu.address.logic.parser.util.ProfileParserUtil.parseCategory;
 import static seedu.address.logic.parser.util.ProfileParserUtil.parseDescriptors;
 import static seedu.address.logic.parser.util.ProfileParserUtil.parseTitle;
@@ -20,7 +20,6 @@ import seedu.address.logic.commands.edit.EditProfileCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
-import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.profile.Descriptor;
 
@@ -40,14 +39,7 @@ public class EditProfileCommandParser implements Parser<EditProfileCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_CATEGORY,
                 PREFIX_DESCRIPTORS);
 
-        Index index;
-
-        try {
-            index = ParserUtil.parseIndex(argMultimap.getPreamble());
-        } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditProfileCommand.MESSAGE_USAGE),
-                    pe);
-        }
+        Index index = getIndexInPreamble(argMultimap, EditProfileCommand.MESSAGE_USAGE);
 
         EditProfileItemDescriptor editProfileDescriptor = new EditProfileItemDescriptor();
         // Update the setters

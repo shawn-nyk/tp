@@ -3,6 +3,7 @@ package seedu.address.logic.commands.edit;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_EDIT_SUCCESS;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.commands.util.CommandUtil.getCompany;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_JOB_TITLE;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_PERIOD;
@@ -32,6 +33,7 @@ import seedu.address.model.internship.JobTitle;
 import seedu.address.model.internship.Period;
 import seedu.address.model.internship.Requirement;
 import seedu.address.model.internship.Wage;
+import seedu.address.ui.tabs.TabName;
 
 /** todo javadocs (shawn) */
 public class EditInternshipCommand extends EditCommandAbstract {
@@ -81,7 +83,8 @@ public class EditInternshipCommand extends EditCommandAbstract {
 
         editInternship(internshipToEdit, editedInternship);
         model.getCompanyList().updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
-        return new CommandResult(String.format(MESSAGE_EDIT_SUCCESS, INTERNSHIP_NAME, editedInternship));
+        String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, INTERNSHIP_NAME, editedInternship);
+        return getCommandResult(model, editSuccessMessage, TabName.COMPANY);
     }
 
     /**

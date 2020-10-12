@@ -182,7 +182,7 @@ public class InternshipItem extends Item {
                 .append(getWage())
                 .append(", ")
                 .append(" Requirements: ");
-        getRequirements().forEach(builder::append);
+        getRequirements().forEach(requirement -> builder.append(requirement + " "));
         return builder.toString();
     }
 
