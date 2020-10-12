@@ -6,6 +6,7 @@ import static seedu.address.logic.commands.util.CommandUtil.getApplication;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
+import static seedu.address.model.FilterableItemList.PREDICATE_SHOW_ALL_ITEMS;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 
@@ -24,14 +25,16 @@ import seedu.address.ui.tabs.TabName;
 
 public class EditApplicationCommand extends EditCommandAbstract {
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the application item identified "
-            + "by the index number used in the displayed application list. "
-            + "Existing values will be overwritten by the input values. At least one of the prefixes must be present.\n"
-            + "Parameters: INDEX (must be a positive integer) "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " " + APPLICATION_ALIAS
+            + ": Edits the details of a " + APPLICATION_NAME + " from InternHunter accessed "
+            + "by the index number used in the displayed list.\n"
+            + "Existing values will be overwritten by the input values.\n"
+            + "Parameters: INDEX "
             + "[" + PREFIX_STATUS + "STATUS] "
             + "[" + PREFIX_STATUS_DATE + "STATUS_DATE]\n"
+            + "Note: At least one of the optional fields must be provided. INDEX must be a positive integer.\n"
             + "Example: " + COMMAND_WORD + " " + APPLICATION_ALIAS + " 1 "
-            + PREFIX_STATUS + "Offered";
+            + PREFIX_STATUS + "offered";
 
     private final Index targetIndex;
     private final EditApplicationDescriptor editApplicationDescriptor;
@@ -57,6 +60,7 @@ public class EditApplicationCommand extends EditCommandAbstract {
                 editApplicationDescriptor);
 
         model.getApplicationList().setItem(applicationItemToEdit, editedApplicationItem);
+        model.getApplicationList().updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, APPLICATION_NAME, editedApplicationItem);
         return getCommandResult(model, editSuccessMessage, TabName.APPLICATION);
     }
