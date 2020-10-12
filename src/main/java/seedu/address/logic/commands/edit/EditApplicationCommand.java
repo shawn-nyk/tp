@@ -6,6 +6,7 @@ import static seedu.address.logic.commands.util.CommandUtil.getApplication;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
+import static seedu.address.model.FilterableItemList.PREDICATE_SHOW_ALL_ITEMS;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 
@@ -59,6 +60,7 @@ public class EditApplicationCommand extends EditCommandAbstract {
                 editApplicationDescriptor);
 
         model.getApplicationList().setItem(applicationItemToEdit, editedApplicationItem);
+        model.getApplicationList().updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, APPLICATION_NAME, editedApplicationItem);
         return getCommandResult(model, editSuccessMessage, TabName.APPLICATION);
     }

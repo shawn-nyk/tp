@@ -1,7 +1,9 @@
 package seedu.address.logic.commands.edit;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_EDIT_SUCCESS;
 import static seedu.address.commons.util.CollectionUtil.isAnyNonNull;
+import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.commands.util.CommandUtil.getProfileItem;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEGORY;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTORS;
@@ -25,6 +27,7 @@ import seedu.address.model.profile.Descriptor;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.model.profile.ProfileItemCategory;
 import seedu.address.model.profile.Title;
+import seedu.address.ui.tabs.TabName;
 
 public class EditProfileCommand extends EditCommandAbstract {
 
@@ -71,7 +74,8 @@ public class EditProfileCommand extends EditCommandAbstract {
 
         model.getProfileList().setItem(profileItemToEdit, editedProfile);
         model.getProfileList().updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
-        return new CommandResult(String.format(Messages.MESSAGE_EDIT_SUCCESS, PROFILE_NAME, editedProfile));
+        String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, PROFILE_NAME, editedProfile);
+        return getCommandResult(model, editSuccessMessage, TabName.PROFILE);
     }
 
     /**

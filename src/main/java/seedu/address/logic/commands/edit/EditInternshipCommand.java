@@ -32,7 +32,6 @@ package seedu.address.logic.commands.edit;
 /** todo javadocs (shawn) */
 //public class EditInternshipCommand extends EditCommandAbstract {
 public class EditInternshipCommand {
-//
 //    public static final String MESSAGE_USAGE = COMMAND_WORD + " " + INTERNSHIP_ALIAS
 //            + ": Edits the " + INTERNSHIP_NAME + " identified by the index number used in the displayed "
 //            + INTERNSHIP_NAME + " list in a " + COMPANY_NAME + ".\n"
@@ -80,7 +79,7 @@ public class EditInternshipCommand {
 //        // just swap out internship's fields
 //        model.getCompanyList().setItem(companyToEdit, editedCompany);
 //        model.getCompanyList().updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
-//        return new CommandResult(String.format(MESSAGE_EDIT_SUCCESS, COMPANY_NAME, editedCompany));
+//        return new CommandResult(String.format(MESSAGE_EDIT_SUCCESS, INTERNSHIP_NAME, editedInternship));
 //    }
 //
 //    /**
