@@ -179,6 +179,8 @@ public class ModelManager implements Model {
                 && companyList.equals(other.companyList)
                 && applicationList.equals(other.applicationList)
                 && profileList.equals(other.profileList)
-                && userPrefs.equals(other.userPrefs);
+                && userPrefs.equals(other.userPrefs)
+                && tabControl.equals(other.tabControl)
+                && viewControl.equals(other.viewControl);
     }
 }

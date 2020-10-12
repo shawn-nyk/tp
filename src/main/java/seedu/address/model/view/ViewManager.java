@@ -30,4 +30,18 @@ public class ViewManager implements View {
         return index;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(obj instanceof ViewManager)) {
+            return false;
+        }
+
+        ViewManager other = (ViewManager) obj;
+        return index.equals(other.index);
+    }
 }
