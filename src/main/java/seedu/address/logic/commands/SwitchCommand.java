@@ -1,5 +1,8 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.commons.core.Messages.MESSAGE_SAME_SCREEN;
+import static seedu.address.commons.core.Messages.MESSAGE_SWITCH_SUCCESS;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
 import seedu.address.ui.tabs.TabName;
@@ -26,8 +29,8 @@ public class SwitchCommand extends Command {
      */
     public SwitchCommand(TabName tabName) {
         this.tabName = tabName;
-        sameScreenText = String.format("Already in %s tab", tabName.toString());
-        switchedScreenText = String.format("Switching to %s tab", tabName.toString());
+        sameScreenText = String.format(MESSAGE_SAME_SCREEN, tabName.toString());
+        switchedScreenText = String.format(MESSAGE_SWITCH_SUCCESS, tabName.toString());
     }
 
     @Override

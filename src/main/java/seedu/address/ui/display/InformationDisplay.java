@@ -1,5 +1,7 @@
 package seedu.address.ui.display;
 
+import static seedu.address.ui.GuardClauseUi.isEmptyString;
+import static seedu.address.ui.GuardClauseUi.isSameString;
 import static seedu.address.ui.panel.PanelDisplayKeyword.INTERNSHIPS_DISPLAY_NAME;
 
 import java.util.LinkedHashMap;
@@ -22,6 +24,14 @@ import seedu.address.ui.tabs.TabName;
  */
 public abstract class InformationDisplay<T extends Item> extends UiPart<Region> {
 
+    private static final String NEW_LINE = "\n";
+    private static final String COMMA_ONE_SPACE = ", ";
+    private static final String COMMA_TWO_SPACE = ", {2}";
+    private static final String BULLET_WITH_TWO_SPACE = "  \u2022 ";
+    private static final String DOT_SPACE = ". ";
+    private static final String DASH = "-";
+    
+    
     //FXML
     private static final String FXML = "InformationDisplay.fxml";
 
@@ -88,40 +98,49 @@ public abstract class InformationDisplay<T extends Item> extends UiPart<Region> 
             if (haveBrackets.test(key)) {
                 detail = editString.apply(detail);
             }
-            if (detail.length() == 0) {
-                detail = "-";
-            }
-            if (key.equals(INTERNSHIPS_DISPLAY_NAME) && detail.length() > 0) {
+            if (isSameString.test(key, INTERNSHIPS_DISPLAY_NAME) && !isEmptyString.test(detail)) {
                 detail = formatInternshipDetail(detail);
+            }
+            if (isEmptyString.test(detail)) {
+                detail = DASH;
             }
             addInformation(TitleDescriptionDisplay.addTitleDescriptionDisplay(key, detail, tabName));
         }
     }
 
+    /**
+     * todo javadocs
+     */
     public String formatInternshipDetail(String string) {
-        String s =string.substring(0, string.length() - 1);
-        s = s.replaceAll("\n, ", "\n");
+        String s = string.substring(0, string.length() - 1);
+        s = s.replaceAll(NEW_LINE + COMMA_ONE_SPACE, NEW_LINE);
         StringBuffer buffer = new StringBuffer(s);
-        buffer.insert(0, "1. ");
-        formatNumbering(buffer, "\n");
+        buffer.insert(0, 1 + DOT_SPACE);
+        formatNumbering(buffer, NEW_LINE);
         return formatBulletPoints(buffer);
     }
-    
+
+    /**
+     * todo javadocs
+     */
     public void formatNumbering(StringBuffer buffer, String target) {
         int index = buffer.indexOf(target);
         int counter = 2;
         while (index != -1) {
-            String replacement = target + counter + ". ";
+            String replacement = target + counter + DOT_SPACE;
             buffer.replace(index, index + 1, replacement);
             index += replacement.length();
             index = buffer.indexOf(target, index);
             counter++;
         }
     }
-    
+
+    /**
+     * todo javadocs
+     */
     public String formatBulletPoints(StringBuffer buffer) {
         String string = buffer.toString();
-        string = string.replaceAll(", {2}",  "\n  \u2022 ");
+        string = string.replaceAll(COMMA_TWO_SPACE, NEW_LINE + BULLET_WITH_TWO_SPACE);
         return string;
     }
 }
