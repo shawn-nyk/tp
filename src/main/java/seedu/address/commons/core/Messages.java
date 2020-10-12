@@ -31,6 +31,6 @@ public class Messages {
     public static final String MESSAGE_EDIT_SUCCESS = "Edited %1$s item: %2$s\n";
 
     /** View message: First string refers to item type, second string refers to the index. */
-    public static final String MESSAGE_VIEW_SUCCESS = "Currently viewing %1$s item %2$s\n";
+    public static final String MESSAGE_VIEW_SUCCESS = "Currently viewing %1$s %2$s\n";
 
 }
