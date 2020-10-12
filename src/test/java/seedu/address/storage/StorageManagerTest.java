@@ -11,9 +11,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.application.ApplicationItem;
+import seedu.address.model.company.CompanyItem;
+import seedu.address.model.item.ItemList;
+import seedu.address.model.item.ReadOnlyItemList;
+import seedu.address.model.person.Person;
+import seedu.address.model.profile.ProfileItem;
+import seedu.address.storage.application.JsonAdaptedApplicationItem;
+import seedu.address.storage.company.JsonAdaptedCompanyItem;
+import seedu.address.storage.person.JsonAdaptedPerson;
+import seedu.address.storage.profile.JsonAdaptedProfileItem;
 
 public class StorageManagerTest {
 
@@ -24,9 +32,21 @@ public class StorageManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonAddressBookStorage addressBookStorage = new JsonAddressBookStorage(getTempFilePath("ab"));
+        JsonItemListStorage<Person, JsonAdaptedPerson> addressBookStorage = new JsonItemListStorage<>(
+                getTempFilePath("ab"), Person.class, JsonAdaptedPerson.class);
+        JsonItemListStorage<ApplicationItem, JsonAdaptedApplicationItem> applicationItemListStorage =
+                new JsonItemListStorage<>(getTempFilePath("app"), ApplicationItem.class,
+                        JsonAdaptedApplicationItem.class);
+        JsonItemListStorage<CompanyItem, JsonAdaptedCompanyItem> companyItemListStorage =
+                new JsonItemListStorage<>(getTempFilePath("app"), CompanyItem.class,
+                        JsonAdaptedCompanyItem.class);
+        JsonItemListStorage<ProfileItem, JsonAdaptedProfileItem> profileItemListStorage =
+                new JsonItemListStorage<>(getTempFilePath("app"), ProfileItem.class,
+                        JsonAdaptedProfileItem.class);
+
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageManager = new StorageManager(addressBookStorage, userPrefsStorage);
+        storageManager = new StorageManager(addressBookStorage, applicationItemListStorage, companyItemListStorage,
+                profileItemListStorage, userPrefsStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -51,18 +71,18 @@ public class StorageManagerTest {
     public void addressBookReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
-         * {@link JsonAddressBookStorage} class.
-         * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBookStorageTest} class.
+         * {@link JsonItemListStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
          */
-        AddressBook original = getTypicalAddressBook();
-        storageManager.saveAddressBook(original);
-        ReadOnlyAddressBook retrieved = storageManager.readAddressBook().get();
-        assertEquals(original, new AddressBook(retrieved));
+        ItemList<Person> original = getTypicalAddressBook();
+        storageManager.getAddressBookStorage().saveItemList(original);
+        ReadOnlyItemList<Person> retrieved = storageManager.getAddressBookStorage().readItemList().get();
+        assertEquals(original, new ItemList<>(retrieved));
     }
 
     @Test
-    public void getAddressBookFilePath() {
-        assertNotNull(storageManager.getAddressBookFilePath());
+    public void getItemListFilePath() {
+        assertNotNull(storageManager.getAddressBookStorage().getItemListFilePath());
     }
 
 }

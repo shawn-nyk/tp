@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -8,19 +9,35 @@ import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.commons.util.TabUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.ui.tabs.TabName;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
  */
 public class ParserUtil {
 
-    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_MISSING_TAB_NAME = "Switch requires a tab name as well.";
+
+    /**
+     * Parses {@code selectedTab} into a {@code TabName} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     * @throws ParseException if the specified selectedTab is invalid (not com or int or me).
+     */
+    public static TabName parseTab(String selectedTab) throws ParseException {
+        requireNonNull(selectedTab);
+        String tab = selectedTab.trim();
+        if (TabUtil.isEmptyTab(tab)) {
+            throw new ParseException(MESSAGE_MISSING_TAB_NAME);
+        }
+        return TabUtil.getSwitchTabName(tab);
+    }
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -112,6 +129,7 @@ public class ParserUtil {
 
     /**
      * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
+     *
      */
     public static Set<Tag> parseTags(Collection<String> tags) throws ParseException {
         requireNonNull(tags);

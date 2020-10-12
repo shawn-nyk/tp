@@ -1,21 +1,38 @@
 package seedu.address.ui;
 
+import static seedu.address.ui.tabs.TabName.APPLICATION;
+import static seedu.address.ui.tabs.TabName.COMPANY;
+import static seedu.address.ui.tabs.TabName.PROFILE;
+
 import java.util.logging.Logger;
 
-import javafx.event.ActionEvent;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextInputControl;
-import javafx.scene.input.KeyCombination;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.application.ApplicationItem;
+import seedu.address.model.company.CompanyItem;
+import seedu.address.model.profile.ProfileItem;
+import seedu.address.ui.display.ApplicationDisplay;
+import seedu.address.ui.display.CompanyDisplay;
+import seedu.address.ui.display.InformationDisplay;
+import seedu.address.ui.display.ProfileDisplay;
+import seedu.address.ui.panel.ApplicationListPanel;
+import seedu.address.ui.panel.CompanyListPanel;
+import seedu.address.ui.panel.ListPanel;
+import seedu.address.ui.panel.ProfileListPanel;
+import seedu.address.ui.tabs.TabName;
+import seedu.address.ui.tabs.Tabs;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -23,7 +40,12 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class MainWindow extends UiPart<Stage> {
 
+    //FXML
     private static final String FXML = "MainWindow.fxml";
+
+    //FXML properties
+    private static final int PERSON_LIST_HEIGHT_SHRINK = 255;
+    private static final int RESULT_HEIGHT_SHRINK = 350;
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
@@ -31,24 +53,28 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private PersonListPanel personListPanel;
+    private ListPanel listPanel;
+    private InformationDisplay informationDisplay;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private Tabs tabs;
+
+    private ObservableList<CompanyItem> companyItems;
+    private ObservableList<ApplicationItem> applicationItems;
+    private ObservableList<ProfileItem> profileItems;
 
     @FXML
-    private StackPane commandBoxPlaceholder;
-
+    private VBox cardList;
     @FXML
-    private MenuItem helpMenuItem;
-
+    private StackPane listPanelPlaceholder;
     @FXML
-    private StackPane personListPanelPlaceholder;
-
+    private VBox display;
     @FXML
-    private StackPane resultDisplayPlaceholder;
-
+    private ScrollPane resultDisplayPlaceholder;
     @FXML
-    private StackPane statusbarPlaceholder;
+    private VBox commandBoxPlaceholder;
+    @FXML
+    private VBox tabsContainer;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -59,68 +85,46 @@ public class MainWindow extends UiPart<Stage> {
         // Set dependencies
         this.primaryStage = primaryStage;
         this.logic = logic;
-
         // Configure the UI
-        setWindowDefaultSize(logic.getGuiSettings());
+        initializeUi(primaryStage, logic);
 
-        setAccelerators();
-
-        helpWindow = new HelpWindow();
+        // linking to logic
+        companyItems = logic.getFilteredCompanyItemList();
+        applicationItems = logic.getFilteredApplicationItemList();
+        profileItems = logic.getFilteredProfileItemList();
     }
 
+    /**
+     * todo Javadocs
+     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
-    private void setAccelerators() {
-        setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
-    }
-
     /**
-     * Sets the accelerator of a MenuItem.
-     * @param keyCombination the KeyCombination value of the accelerator
+     * Sets up the GUI properties in the {@code primaryStage} using the stored user settings in {@code logic}.
      */
-    private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
-        menuItem.setAccelerator(keyCombination);
+    private void initializeUi(Stage primaryStage, Logic logic) {
+        setWindowDefaultSize(logic.getGuiSettings());
+        bindHeights(primaryStage);
+        helpWindow = new HelpWindow();
 
-        /*
-         * TODO: the code below can be removed once the bug reported here
-         * https://bugs.openjdk.java.net/browse/JDK-8131666
-         * is fixed in later version of SDK.
-         *
-         * According to the bug report, TextInputControl (TextField, TextArea) will
-         * consume function-key events. Because CommandBox contains a TextField, and
-         * ResultDisplay contains a TextArea, thus some accelerators (e.g F1) will
-         * not work when the focus is in them because the key event is consumed by
-         * the TextInputControl(s).
-         *
-         * For now, we add following event filter to capture such key events and open
-         * help window purposely so to support accelerators even when focus is
-         * in CommandBox or ResultDisplay.
-         */
-        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-            if (event.getTarget() instanceof TextInputControl && keyCombination.match(event)) {
-                menuItem.getOnAction().handle(new ActionEvent());
-                event.consume();
-            }
+        primaryStage.setOnCloseRequest(event -> {
+            GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
+                    (int) primaryStage.getX(), (int) primaryStage.getY());
+            logic.setGuiSettings(guiSettings);
+
+            ExitDialog exitDialog = new ExitDialog(event, helpWindow);
+            exitDialog.show();
         });
     }
 
     /**
-     * Fills up all the placeholders of this window.
+     * Binds the height of {@code personList} and {@code resultDisplayPlaceHolder} in the {@code primaryStage}
      */
-    void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
-
-        resultDisplay = new ResultDisplay();
-        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
-
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
-        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
-
-        CommandBox commandBox = new CommandBox(this::executeCommand);
-        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+    private void bindHeights(Stage primaryStage) {
+        cardList.prefWidthProperty().bind(primaryStage.widthProperty().subtract(PERSON_LIST_HEIGHT_SHRINK));
+        resultDisplayPlaceholder.prefWidthProperty().bind(primaryStage.widthProperty().subtract(RESULT_HEIGHT_SHRINK));
     }
 
     /**
@@ -136,6 +140,28 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Fills up all the placeholders of this window.
+     */
+    void fillInnerParts() {
+        listPanel = new CompanyListPanel(companyItems);
+        listPanelPlaceholder.getChildren().add((Node) listPanel.getRoot());
+
+        resultDisplay = new ResultDisplay();
+        resultDisplayPlaceholder.setContent(resultDisplay.getRoot());
+
+        if (companyItems.size() > 0) {
+            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
+            display.getChildren().add((Node) informationDisplay.getRoot());
+        }
+
+        CommandBox commandBox = new CommandBox(this::executeCommand);
+        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        tabs = Tabs.getTabs(this, primaryStage, logic);
+        tabsContainer.getChildren().add(tabs);
+    }
+
+    /**
      * Opens the help window or focuses on it if it's already opened.
      */
     @FXML
@@ -147,6 +173,9 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Displays the GUI.
+     */
     void show() {
         primaryStage.show();
     }
@@ -156,15 +185,14 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleExit() {
-        GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
-                (int) primaryStage.getX(), (int) primaryStage.getY());
-        logic.setGuiSettings(guiSettings);
-        helpWindow.hide();
-        primaryStage.hide();
+        primaryStage.fireEvent(new WindowEvent(primaryStage, WindowEvent.WINDOW_CLOSE_REQUEST));
     }
 
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
+    /**
+     * Switch the tabs of the application.
+     */
+    private void switchTab() {
+        tabs.switchTab();
     }
 
     /**
@@ -186,11 +214,87 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
+
+            if (commandResult.isSwitchTab()) {
+                switchTab();
+            }
+
+            if (commandResult.isSwitchDisplay()) {
+                changeDisplay();
+            }
+
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("Invalid command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
         }
+    }
+
+    /**
+     * Changes the display of screen, depending on {@code input}, in the {@code primaryStage}.
+     */
+    public void changeTabView(TabName tabName, Stage primaryStage) {
+        assert (tabName.equals(APPLICATION) || tabName.equals(COMPANY) || tabName.equals(PROFILE));
+        display.getChildren().clear();
+        listPanelPlaceholder.getChildren().clear();
+        switch (tabName) {
+        case COMPANY:
+            if (companyItems.size() > 0) {
+                informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
+                display.getChildren().add((Node) informationDisplay.getRoot());
+            }
+            listPanel = new CompanyListPanel(companyItems);
+            break;
+        case APPLICATION:
+            if (applicationItems.size() > 0) {
+                informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(0));
+                display.getChildren().add((Node) informationDisplay.getRoot());
+            }
+            listPanel = new ApplicationListPanel(applicationItems);
+            break;
+        case PROFILE:
+            if (profileItems.size() > 0) {
+                informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(0));
+                display.getChildren().add((Node) informationDisplay.getRoot());
+            }
+            listPanel = new ProfileListPanel(profileItems);
+            break;
+        default:
+            assert false;
+            break;
+        }
+        listPanelPlaceholder.getChildren().add((Node) listPanel.getRoot());
+    }
+
+    /**
+     * todo javadocs
+     */
+    public void changeDisplay() {
+        TabName tabName = logic.getTabName();
+        int index = logic.getViewIndex().getZeroBased();
+        switch (tabName) {
+        case COMPANY:
+            if (companyItems.size() > 0) {
+                informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(index));
+            }
+            break;
+        case APPLICATION:
+            if (applicationItems.size() > 0) {
+                informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage,
+                    applicationItems.get(index));
+            }
+            break;
+        case PROFILE:
+            if (profileItems.size() > 0) {
+                informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index));
+            }
+            break;
+        default:
+            assert false;
+            break;
+        }
+        display.getChildren().clear();
+        display.getChildren().add((Node) informationDisplay.getRoot());
     }
 }
