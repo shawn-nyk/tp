@@ -73,6 +73,7 @@ public class InternshipItemTest {
 
     }
 
+    @Test
     public void equals_true_success() {
         // same object -> returns true
         assertEquals(SHOPEE_SWE, SHOPEE_SWE);
