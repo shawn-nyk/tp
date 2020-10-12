@@ -2,7 +2,6 @@ package seedu.address.ui.tabs;
 
 import java.io.IOException;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -82,25 +81,6 @@ public class Tabs extends VBox {
      */
     public static Tabs getTabs(MainWindow mainWindow, Logic logic) {
         return new Tabs(mainWindow, logic);
-    }
-
-    /**
-     * Handles the click {@code event} on the tabs.
-     */
-    @FXML
-    public void handleClick(ActionEvent event) {
-        if (event.getSource() == applicationButton) {
-            selectApplication();
-            logic.setTabName(TabName.APPLICATION);
-        } else if (event.getSource() == companyButton) {
-            selectCompany();
-            logic.setTabName(TabName.COMPANY);
-        } else if (event.getSource() == profileButton) {
-            selectProfile();
-            logic.setTabName(TabName.PROFILE);
-        } else {
-            assert false : "Invalid button";
-        }
     }
 
     /**
