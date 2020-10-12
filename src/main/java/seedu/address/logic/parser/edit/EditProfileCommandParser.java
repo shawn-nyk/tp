@@ -37,8 +37,8 @@ public class EditProfileCommandParser implements Parser<EditProfileCommand> {
      */
     public EditProfileCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args,
-             PREFIX_TITLE, PREFIX_CATEGORY, PREFIX_DESCRIPTORS);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_CATEGORY,
+                PREFIX_DESCRIPTORS);
 
         Index index;
 
@@ -62,8 +62,7 @@ public class EditProfileCommandParser implements Parser<EditProfileCommand> {
                 .ifPresent(editProfileDescriptor::setDescriptors);
 
         if (!editProfileDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    EditProfileCommand.MESSAGE_USAGE));
+            throw new ParseException(EditProfileCommand.MESSAGE_USAGE);
         }
 
         return new EditProfileCommand(index, editProfileDescriptor);

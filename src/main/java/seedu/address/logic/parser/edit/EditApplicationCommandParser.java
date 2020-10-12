@@ -42,8 +42,7 @@ public class EditApplicationCommandParser implements Parser<EditApplicationComma
         }
 
         if (!editApplicationDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    EditApplicationCommand.MESSAGE_USAGE));
+            throw new ParseException(EditApplicationCommand.MESSAGE_USAGE);
         }
 
         return new EditApplicationCommand(index, editApplicationDescriptor);
