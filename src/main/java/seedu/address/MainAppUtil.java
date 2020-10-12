@@ -88,8 +88,8 @@ public class MainAppUtil {
                     .findAny();
 
             if (correctInternshipItem.isEmpty()) {
-                applicationItemList.getItemList().clear();
-                companyItemList.getItemList().clear();
+                applicationItemList.resetData(new ItemList<>());
+                companyItemList.resetData(new ItemList<>());
                 throw new InconsistentInternshipException();
             }
 
