@@ -2,7 +2,6 @@ package seedu.address.model.application;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.util.DateUtil.DATE_TIME_LONG_FORMAT;
-import static seedu.address.model.util.DateUtil.DATE_TIME_SHORT_FORMAT;
 import static seedu.address.model.util.DateUtil.formatterDateTime;
 import static seedu.address.model.util.DateUtil.isDateFormat;
 import static seedu.address.model.util.DateUtil.isDateTimeFormat;
@@ -50,15 +49,6 @@ public class StatusDate {
         boolean sameYear = statusDate.getYear() == otherDate.getYear();
         boolean sameDay = statusDate.getDayOfYear() == otherDate.getDayOfYear();
         return sameYear && sameDay;
-    }
-
-    /**
-     * Returns the short statusDate format for main screen view.
-     *
-     * @return Short statusDate format.
-     */
-    public String getShortDate() {
-        return statusDate.format(formatterDateTime(DATE_TIME_SHORT_FORMAT));
     }
 
     @Override
