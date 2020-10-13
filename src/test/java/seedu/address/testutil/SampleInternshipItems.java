@@ -73,7 +73,7 @@ public abstract class SampleInternshipItems {
             .build();
 
     /**
-     * Returns an {@code AddressBook} with all the sample internship items.
+     * Returns an {@code ItemList<InternshipItem>} with all the sample internship items.
      */
     public static ItemList<InternshipItem> getSampleInternshipList() {
         ItemList<InternshipItem> internshipItemList = new ItemList<>();

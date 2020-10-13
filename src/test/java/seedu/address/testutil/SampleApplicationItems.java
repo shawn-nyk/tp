@@ -6,7 +6,7 @@ import static seedu.address.testutil.SampleInternshipItems.SHOPEE_SWE;
 
 import seedu.address.model.application.ApplicationItem;
 
-public class SampleApplicationItems {
+public abstract class SampleApplicationItems {
     public static final String STATUS_REJECTED = "REJECTED";
     public static final String STATUS_OFFERED = "OFFERED";
 

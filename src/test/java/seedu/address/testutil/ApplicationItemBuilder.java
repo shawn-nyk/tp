@@ -38,7 +38,7 @@ public class ApplicationItemBuilder {
     /**
      * Sets the {@code Status} of the {@code ApplicationItem} that we are building.
      */
-    public seedu.address.testutil.ApplicationItemBuilder withStatus(String status) {
+    public ApplicationItemBuilder withStatus(String status) {
         this.status = Status.valueOf(status);
         return this;
     }
@@ -46,7 +46,7 @@ public class ApplicationItemBuilder {
     /**
      * Sets the {@code StatusDate} of the {@code ApplicationItem} that we are building.
      */
-    public seedu.address.testutil.ApplicationItemBuilder withStatusDate(String statusDate) {
+    public ApplicationItemBuilder withStatusDate(String statusDate) {
         this.statusDate = new StatusDate(DateUtil.convertToDateTime(statusDate));
         return this;
     }
@@ -54,7 +54,7 @@ public class ApplicationItemBuilder {
     /**
      * Sets the {@code InternshipItem} of the {@code ApplicationItem} that we are building.
      */
-    public seedu.address.testutil.ApplicationItemBuilder withInternshipItem(InternshipItem internshipItem) {
+    public ApplicationItemBuilder withInternshipItem(InternshipItem internshipItem) {
         this.internshipItem = internshipItem;
         return this;
     }
