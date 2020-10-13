@@ -2,6 +2,7 @@ package seedu.address.logic.commands.delete;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_DELETED_ITEM;
+import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.commands.util.CommandUtil.getCompany;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
@@ -37,7 +38,7 @@ public class DeleteCompanyCommand extends DeleteCommandAbstract {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         CompanyItem companyToDelete = getCompany(model, targetIndex);
-        TabName currentTab = model.getTabName();
+        TabName currentTabName = model.getTabName();
 
         // Delete all internships in the company
         deleteAllInternshipsInCompany(model, companyToDelete);
@@ -46,12 +47,7 @@ public class DeleteCompanyCommand extends DeleteCommandAbstract {
         model.getCompanyList().deleteItem(companyToDelete);
 
         String deleteSuccessMessage = String.format(MESSAGE_DELETED_ITEM, COMPANY_NAME, companyToDelete);
-        if (currentTab != TabName.COMPANY) {
-            model.setTabName(TabName.COMPANY);
-            return new CommandResult(deleteSuccessMessage, false, false, true, true);
-        } else {
-            return new CommandResult(deleteSuccessMessage);
-        }
+        return getCommandResult(model, deleteSuccessMessage, currentTabName, TabName.COMPANY, targetIndex);
     }
 
     private void deleteAllInternshipsInCompany(Model model, CompanyItem company) throws CommandException {

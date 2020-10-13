@@ -54,10 +54,10 @@ public class ViewCompanyCommand extends ViewCommand {
             throw new CommandException(String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, COMPANY_NAME));
         }
 
-        if (model.getTabName() == TabName.COMPANY && model.getViewIndex().equals(targetIndex)) {
+        if (model.getTabName() == TabName.COMPANY && model.getCompanyViewIndex().equals(targetIndex)) {
             return new CommandResult(messageAlreadyViewing, false, false , false, false);
         }
-        model.setViewIndex(targetIndex);
+        model.setCompanyViewIndex(targetIndex);
         return getCommandResult(model, messageViewSuccess, TabName.COMPANY);
     }
 

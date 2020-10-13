@@ -2,8 +2,8 @@ package seedu.address.logic.commands;
 
 import static seedu.address.commons.core.Messages.MESSAGE_SAME_SCREEN;
 import static seedu.address.commons.core.Messages.MESSAGE_SWITCH_SUCCESS;
+import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 
-import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
 import seedu.address.ui.tabs.TabName;
 
@@ -41,13 +41,10 @@ public class SwitchCommand extends Command {
 
         if (tabName.equals(currentTab)) {
             resultMessage = sameScreenText;
-            return new CommandResult(resultMessage, false, false, false, false);
         } else {
             resultMessage = switchedScreenText;
-            model.setViewIndex(Index.fromZeroBased(0));
-            model.setTabName(tabName);
-            return new CommandResult(resultMessage, false, false, true, false);
         }
+        return getCommandResult(model, resultMessage, tabName);
     }
 
     @Override

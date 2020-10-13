@@ -55,10 +55,10 @@ public class ViewProfileCommand extends ViewCommand {
             throw new CommandException(String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, PROFILE_NAME));
         }
 
-        if (model.getTabName() == TabName.PROFILE && model.getViewIndex().equals(targetIndex)) {
+        if (model.getTabName() == TabName.PROFILE && model.getProfileViewIndex().equals(targetIndex)) {
             return new CommandResult(messageAlreadyViewing, false, false , false, false);
         }
-        model.setViewIndex(targetIndex);
+        model.setProfileViewIndex(targetIndex);
         return getCommandResult(model, messageViewSuccess, TabName.PROFILE);
     }
 

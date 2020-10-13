@@ -187,7 +187,7 @@ public class MainWindow extends UiPart<Stage> {
      * todo javadocs
      */
     void addListPanel() {
-        changeTabView(COMPANY);
+        changeListPanelView(COMPANY);
     }
 
     /**
@@ -220,8 +220,8 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Switch the tabs of the application.
      */
-    private void switchTab() {
-        tabs.switchTab();
+    private void switchTab(TabName tabName) {
+        tabs.switchTab(tabName);
     }
 
     /**
@@ -243,9 +243,9 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
-
             if (commandResult.isSwitchTab()) {
-                switchTab();
+                switchTab(logic.getTabName());
+                changeListPanelView(logic.getTabName());
             }
 
             if (commandResult.isSwitchDisplay()) {
@@ -263,7 +263,7 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Changes the display of screen, depending on {@code input}, in the {@code primaryStage}.
      */
-    public void changeTabView(TabName tabName) {
+    public void changeListPanelView(TabName tabName) {
         assert (tabName.equals(APPLICATION) || tabName.equals(COMPANY) || tabName.equals(PROFILE));
         listPanelPlaceholder.getChildren().clear();
         Optional<ListPanel<? extends Item>> newListPanel = Optional.empty();
@@ -313,16 +313,19 @@ public class MainWindow extends UiPart<Stage> {
      */
     public void changeDisplay() {
         TabName tabName = logic.getTabName();
-        int index = logic.getViewIndex().getZeroBased();
+        int index;
         Optional<InformationDisplay<? extends Item>> newInformationDisplay = Optional.empty();
         switch (tabName) {
         case COMPANY:
+            index = logic.getCompanyViewIndex().getZeroBased();
             newInformationDisplay = getCompanyDisplay(index);
             break;
         case APPLICATION:
+            index = logic.getApplicationViewIndex().getZeroBased();
             newInformationDisplay = getApplicationDisplay(index);
             break;
         case PROFILE:
+            index = logic.getProfileViewIndex().getZeroBased();
             newInformationDisplay = getProfileDisplay(index);
             break;
         default:

@@ -86,8 +86,7 @@ public class Tabs extends VBox {
     /**
      * Switch tabs.
      */
-    public void switchTab() {
-        TabName tabName = logic.getTabName();
+    public void switchTab(TabName tabName) {
         switch (tabName) {
         case COMPANY:
             selectCompany();
@@ -126,9 +125,6 @@ public class Tabs extends VBox {
         setColor(application, APPLICATION_Y_TRANSLATE);
         setTransparent(company, COMPANY_Y_TRANSLATE);
         setTransparent(profile, PROFILE_Y_TRANSLATE);
-
-        // adjust the display of the gui
-        mainWindow.changeTabView(TabName.APPLICATION);
     }
 
     /**
@@ -140,9 +136,6 @@ public class Tabs extends VBox {
         setTransparent(application, APPLICATION_Y_TRANSLATE);
         setColor(company, COMPANY_Y_TRANSLATE);
         setTransparent(profile, PROFILE_Y_TRANSLATE);
-
-        // adjust the display of the gui
-        mainWindow.changeTabView(TabName.COMPANY);
     }
 
     /**
@@ -154,9 +147,6 @@ public class Tabs extends VBox {
         setTransparent(application, APPLICATION_Y_TRANSLATE);
         setTransparent(company, COMPANY_Y_TRANSLATE);
         setColor(profile, PROFILE_Y_TRANSLATE);
-
-        // adjust the display of the gui
-        mainWindow.changeTabView(TabName.PROFILE);
     }
 
     /**

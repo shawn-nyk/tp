@@ -5,6 +5,7 @@ import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 import static seedu.address.model.util.ItemUtil.PROFILE_NAME;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -57,15 +58,82 @@ public class CommandUtil {
      *
      * @param model Model of application.
      * @param message Feedback message of the operation result for display.
+     * @param tabName The tab that is being switched to.
      * @return Feedback message of the operation result for display.
      */
     public static CommandResult getCommandResult(Model model, String message, TabName tabName) {
         if (model.getTabName() != tabName) {
             model.setTabName(tabName);
-            model.setViewIndex(Index.fromZeroBased(0));
             return new CommandResult(message, false, false, true, true);
         } else {
             return new CommandResult(message);
+        }
+    }
+
+    /**
+     * Gets the feedback message of the operation result for display and indicates whether tabs and display view.
+     * need to be switched or not.
+     *
+     * @param model Model of application.
+     * @param message Feedback message of the operation result for display.
+     * @param currentTabName The current tab of the application.
+     * @param changedTabName The tab that is being switched to.
+     * @param index The desired index of the tab that is being switch to.
+     * @return Feedback message of the operation result for display.
+     */
+    public static CommandResult getCommandResult(Model model, String message, TabName currentTabName,
+        TabName changedTabName, Index index) {
+
+        handleDeleteDisplaySwitchIndex(model, changedTabName, index);
+        if (currentTabName != changedTabName) {
+            model.setTabName(changedTabName);
+            return new CommandResult(message, false, false, true, true);
+        } else {
+            return new CommandResult(message);
+        }
+    }
+
+    /**
+     * Checks which tab's display needs to be switch.
+     *
+     * @param model Model of application.
+     * @param tabName The tab that is being switched to.
+     * @param index The desired index of the tab that is being switch to.
+     */
+    private static void handleDeleteDisplaySwitchIndex(Model model, TabName tabName, Index index) {
+        Index currentIndex;
+        switch (tabName) {
+        case COMPANY:
+            currentIndex = model.getCompanyViewIndex();
+            handleViewIndex(model::setCompanyViewIndex, currentIndex, index);
+            break;
+        case APPLICATION:
+            currentIndex = model.getApplicationViewIndex();
+            handleViewIndex(model::setApplicationViewIndex, currentIndex, index);
+            break;
+        case PROFILE:
+            currentIndex = model.getProfileViewIndex();
+            handleViewIndex(model::setProfileViewIndex, currentIndex, index);
+            break;
+        default:
+            assert false;
+        }
+    }
+
+    /**
+     * Checks whether there is a need for a switch in the view index.
+     *
+     * @param changeViewIndex Handles the switching of the view index in the respective tab.
+     * @param currentIndex The current view index in the respective tab.
+     * @param newIndex The new view index to be switched to in the respective tab.
+     */
+    private static void handleViewIndex(Consumer<Index> changeViewIndex, Index currentIndex, Index newIndex) {
+        if (currentIndex.getOneBased() >= newIndex.getOneBased()) {
+            // currentIndex have to minus 1
+            int shiftIndex = currentIndex.getOneBased();
+            if (!(shiftIndex - 1 == 0)) {
+                changeViewIndex.accept(Index.fromOneBased(shiftIndex - 1));
+            }
         }
     }
 
