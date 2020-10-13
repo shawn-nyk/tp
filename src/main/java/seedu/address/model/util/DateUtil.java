@@ -10,7 +10,7 @@ import java.time.format.DateTimeParseException;
  * DateUtil class which provides the input and output formats for all dates, as well as methods for date format
  * matching.
  */
-public class DateUtil {
+public abstract class DateUtil {
 
     // Output date formats
     public static final String DATE_TIME_LONG_FORMAT = "d MMM yyyy @ h.mm a";
@@ -22,6 +22,7 @@ public class DateUtil {
     // Default timing if user does not input a time
     private static final String DEFAULT_TIME = "23:59";
 
+    // Error message
     private static final String ERROR_MESSAGE = "Checks for status date validity failed";
 
     /**
@@ -131,7 +132,7 @@ public class DateUtil {
     /**
      * todo Javadocs
      */
-    public static String extractDayAndMonth(String ... dateInformation) {
+    public static String extractDayAndMonth(String... dateInformation) {
         return dateInformation[0] + " " + dateInformation[1];
     }
 
