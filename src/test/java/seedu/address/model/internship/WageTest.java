@@ -7,6 +7,12 @@ import org.junit.jupiter.api.Test;
 
 public class WageTest {
 
+    private static final String INVALID_WAGE_ZERO = "0";
+    private static final String INVALID_WAGE_NEGATIVE = "-5";
+    private static final String INVALID_WAGE_DECIMAL = "3555.4";
+    private static final String VALID_WAGE_THOUSAND = "1000";
+    private static final String EXPECTED_WAGE_THOUSAND = "$1000";
+
     @Test
     public void constructor_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new Wage(null));
@@ -14,29 +20,28 @@ public class WageTest {
 
     @Test
     public void constructor_invalidWage_throwsIllegalArgumentException() {
-        String invalidWage = "3555.4";
-        assertThrows(IllegalArgumentException.class, () -> new Wage(invalidWage));
-        String invalidWage2 = "-5";
-        assertThrows(IllegalArgumentException.class, () -> new Wage(invalidWage2));
+        assertThrows(IllegalArgumentException.class, () -> new Wage(INVALID_WAGE_ZERO));
+        assertThrows(IllegalArgumentException.class, () -> new Wage(INVALID_WAGE_NEGATIVE));
+        assertThrows(IllegalArgumentException.class, () -> new Wage(INVALID_WAGE_DECIMAL));
     }
 
     @Test
     public void toString_validFormats_success() {
-        Wage wage1 = new Wage("1000");
-        assertEquals("$1000", wage1.toString());
+        Wage wage1 = new Wage(VALID_WAGE_THOUSAND);
+        assertEquals(EXPECTED_WAGE_THOUSAND, wage1.toString());
     }
 
     @Test
     public void equals_equalityTest_success() {
-        Wage wage1 = new Wage("2500");
-        Wage wage2 = new Wage("2500");
+        Wage wage1 = new Wage(VALID_WAGE_THOUSAND);
+        Wage wage2 = new Wage(VALID_WAGE_THOUSAND);
         assertEquals(wage1, wage2);
     }
 
     @Test
     public void hashCode_equalityTest_success() {
-        Wage wage1 = new Wage("2500");
-        Wage wage2 = new Wage("2500");
+        Wage wage1 = new Wage(VALID_WAGE_THOUSAND);
+        Wage wage2 = new Wage(VALID_WAGE_THOUSAND);
         assertEquals(wage1.hashCode(), wage2.hashCode());
     }
 
