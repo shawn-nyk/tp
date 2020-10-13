@@ -82,7 +82,7 @@ The tab you must be on to execute a certain command is stated under each relevan
   are parameters which can be used as `add com n/Google p/65218000 e/GoogleHire@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Industry`.
 
 * Items in square brackets are optional.<br>
-  e.g `add int INDEX j/JOB_TITLE [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...` can be used as <br/> `add int 1 j/Software Engineer` or
+  e.g `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...` can be used as <br/> `add int 1 j/Software Engineer` or
   `add int 3 j/Web Developer r/React w/3000 r/HTML5`.
 
 * Items with `...`​ after them can be used multiple times including zero times.<br>
