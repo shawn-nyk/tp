@@ -39,7 +39,9 @@ public class JsonAdaptedInternshipItem extends JsonAdaptedItem {
         this.jobTitle = jobTitle;
         this.period = period;
         this.wage = wage;
-        this.requirements.addAll(requirements);
+        if (requirements != null) {
+            this.requirements.addAll(requirements);
+        }
     }
 
     /**

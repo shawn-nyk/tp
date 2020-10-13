@@ -1,4 +1,4 @@
-package seedu.address.storage;
+package seedu.address.storage.person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -19,9 +19,9 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.item.ItemList;
 import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
-import seedu.address.storage.person.JsonAdaptedPerson;
+import seedu.address.storage.JsonItemListStorage;
 
-public class JsonItemListStorageTest {
+public class JsonAddressBookStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
 
     @TempDir
