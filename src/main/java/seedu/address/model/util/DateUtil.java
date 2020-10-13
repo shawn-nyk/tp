@@ -10,7 +10,7 @@ import java.time.format.DateTimeParseException;
  * DateUtil class which provides the input and output formats for all dates, as well as methods for date format
  * matching.
  */
-public class DateUtil {
+public abstract class DateUtil {
 
     // Output date formats
     public static final String DATE_TIME_LONG_FORMAT = "d MMM yyyy @ h.mm a";
