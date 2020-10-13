@@ -54,10 +54,10 @@ public class ViewApplicationCommand extends ViewCommand {
             throw new CommandException(String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, APPLICATION_NAME));
         }
 
-        if (model.getTabName() == TabName.APPLICATION && model.getViewIndex().equals(targetIndex)) {
+        if (model.getTabName() == TabName.APPLICATION && model.getApplicationViewIndex().equals(targetIndex)) {
             return new CommandResult(messageAlreadyViewing, false, false , false, false);
         }
-        model.setViewIndex(targetIndex);
+        model.setApplicationViewIndex(targetIndex);
         return getCommandResult(model, messageViewSuccess, TabName.APPLICATION);
     }
 

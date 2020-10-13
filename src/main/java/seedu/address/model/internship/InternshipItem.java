@@ -181,8 +181,9 @@ public class InternshipItem extends Item {
                 .append(" Wage: ")
                 .append(getWage())
                 .append(", ")
-                .append(" Requirements: ");
-        getRequirements().forEach(requirement -> builder.append(requirement + " "));
+                .append(" Requirements: ")
+                .append(getRequirements().size() <= 0 ? "-" : getRequirements())
+                .append("\n");
         return builder.toString();
     }
 
