@@ -9,7 +9,8 @@ package seedu.address.commons.core.index;
  * convert it back to an int if the index will not be passed to a different component again.
  */
 public class Index {
-    private int zeroBasedIndex;
+
+    private final int zeroBasedIndex;
 
     /**
      * Index can only be created by calling {@link Index#fromZeroBased(int)} or
@@ -51,4 +52,15 @@ public class Index {
                 || (other instanceof Index // instanceof handles nulls
                 && zeroBasedIndex == ((Index) other).zeroBasedIndex); // state check
     }
+
+    /**
+     * Represents an Index in using the one-based indexing.
+     *
+     * @return String representation of one-based index.
+     */
+    @Override
+    public String toString() {
+        return String.valueOf(getOneBased());
+    }
+
 }
