@@ -22,6 +22,7 @@ public abstract class DateUtil {
     // Default timing if user does not input a time
     private static final String DEFAULT_TIME = "23:59";
 
+    // Error message
     private static final String ERROR_MESSAGE = "Checks for status date validity failed";
 
     /**
@@ -131,7 +132,7 @@ public abstract class DateUtil {
     /**
      * todo Javadocs
      */
-    public static String extractDayAndMonth(String ... dateInformation) {
+    public static String extractDayAndMonth(String... dateInformation) {
         return dateInformation[0] + " " + dateInformation[1];
     }
 
