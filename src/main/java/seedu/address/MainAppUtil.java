@@ -75,8 +75,8 @@ public class MainAppUtil {
      * @throws InconsistentInternshipException an application has an internship
      *                                         that does not exist in any company's list of internships.
      */
-    private static void matchInternships(ReadOnlyItemList<ApplicationItem> applicationItemList,
-            ReadOnlyItemList<CompanyItem> companyItemList) throws InconsistentInternshipException {
+    private static void matchInternships(ItemList<ApplicationItem> applicationItemList,
+            ItemList<CompanyItem> companyItemList) throws InconsistentInternshipException {
         for (ApplicationItem applicationItem : applicationItemList.getItemList()) {
             final InternshipItem applicationInternshipItem = applicationItem.getInternshipItem();
 
@@ -88,14 +88,13 @@ public class MainAppUtil {
                     .findAny();
 
             if (correctInternshipItem.isEmpty()) {
-                applicationItemList.getItemList().removeAll();
-                companyItemList.getItemList().removeAll();
+                applicationItemList.resetData(new ItemList<>());
+                companyItemList.resetData(new ItemList<>());
                 throw new InconsistentInternshipException();
             }
 
             //Changes the current application item with the one with the correct internship object.
-            applicationItemList.getItemList().remove(applicationItem);
-            applicationItemList.getItemList().add(new ApplicationItem(correctInternshipItem.get(),
+            applicationItemList.setItem(applicationItem, new ApplicationItem(correctInternshipItem.get(),
                     applicationItem.getStatus(), applicationItem.getStatusDate()));
         }
     }
@@ -107,11 +106,11 @@ public class MainAppUtil {
      */
     public static Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
 
-        ReadOnlyItemList<Person> addressBook = initItemList(storage.getAddressBookStorage());
-        ReadOnlyItemList<CompanyItem> companyItemList = initItemList(storage.getCompanyItemListStorage());
-        ReadOnlyItemList<ApplicationItem> applicationItemList =
-                initItemList(storage.getApplicationItemListStorage());
-        ReadOnlyItemList<ProfileItem> profileItemList = initItemList(storage.getProfileItemListStorage());
+        ItemList<Person> addressBook = new ItemList<>(initItemList(storage.getAddressBookStorage()));
+        ItemList<CompanyItem> companyItemList = new ItemList<>(initItemList(storage.getCompanyItemListStorage()));
+        ItemList<ApplicationItem> applicationItemList =
+                new ItemList<>(initItemList(storage.getApplicationItemListStorage()));
+        ItemList<ProfileItem> profileItemList = new ItemList<>(initItemList(storage.getProfileItemListStorage()));
 
         try {
             matchInternships(applicationItemList, companyItemList);

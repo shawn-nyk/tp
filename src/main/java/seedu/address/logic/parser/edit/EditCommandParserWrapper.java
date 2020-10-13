@@ -30,15 +30,13 @@ public class EditCommandParserWrapper implements Parser<EditCommandAbstract> {
             return new EditCompanyCommandParser().parse(commandDetails);
 
         case INTERNSHIP_ALIAS:
-            // todo: Return own edit command
-            return null;
+            return new EditInternshipCommandParser().parse(commandDetails);
 
         case APPLICATION_ALIAS:
             return new EditApplicationCommandParser().parse(commandDetails);
 
         case PROFILE_ALIAS:
-            //todo: return own edit command
-            return null;
+            return new EditProfileCommandParser().parse(commandDetails);
 
         default:
             // Invalid item type
