@@ -19,7 +19,7 @@ public enum ProfileItemCategory {
     /**
      * Returns true if the profile item category is valid.
      *
-     * @param profileItemCategory Input status.
+     * @param profileItemCategory Input category as lower case.
      * @return True if status is valid, false otherwise.
      */
     public static boolean isValidProfileItemCategory(String profileItemCategory) {
@@ -27,15 +27,4 @@ public enum ProfileItemCategory {
                 || profileItemCategory.equals(ACHIEVEMENT_KEYWORD)
                 || profileItemCategory.equals(SKILL_KEYWORD);
     }
-
-    /**
-     * Returns a string representation of the {@code ProfileItemCategory}.
-     *
-     * @return String representation of the {@code ProfileItemCategory} in lower case.
-     */
-    @Override
-    public String toString() {
-        return super.toString().toLowerCase();
-    }
-
 }

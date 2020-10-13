@@ -1,5 +1,6 @@
 package seedu.address.ui.cards;
 
+import static seedu.address.ui.GuardClauseUi.IS_EMPTY_LIST_STRING;
 import static seedu.address.ui.panel.PanelDisplayKeyword.ADDRESS_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.EMAIL_DISPLAY_NAME;
@@ -46,7 +47,9 @@ public class CompanyCard extends Card<CompanyItem> {
      */
     private void setIndustries() {
         Object industries = mapping.get(INDUSTRIES_DISPLAY_NAME);
-        setTags(industries.toString());
+        if (!IS_EMPTY_LIST_STRING.test(industries.toString())) {
+            setTags(industries.toString());
+        }
     }
 
     /**

@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.company.CompanyItem;
 import seedu.address.model.item.ItemList;
@@ -16,6 +17,8 @@ import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.model.tab.Tab;
 import seedu.address.model.tab.TabManager;
+import seedu.address.model.view.View;
+import seedu.address.model.view.ViewManager;
 import seedu.address.ui.tabs.TabName;
 
 /**
@@ -30,6 +33,7 @@ public class ModelManager implements Model {
     private final FilterableItemList<ProfileItem> profileList;
     private final UserPrefs userPrefs;
     private final Tab tabControl;
+    private final View viewControl;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -55,6 +59,7 @@ public class ModelManager implements Model {
         this.profileList = new ItemListManager<>(new ItemList<>(profileList));
         this.userPrefs = new UserPrefs(userPrefs);
         this.tabControl = new TabManager();
+        this.viewControl = new ViewManager();
     }
 
     public ModelManager() {
@@ -138,6 +143,56 @@ public class ModelManager implements Model {
         tabControl.setTabName(tabName);
     }
 
+    //=========== View Control Accessors =============================================================
+
+    /**
+     * Retrieves the current index of company view.
+     */
+    @Override
+    public Index getCompanyViewIndex() {
+        return viewControl.getCompanyViewIndex();
+    }
+
+    /**
+     * Retrieves the current index of application view.
+     */
+    @Override
+    public Index getApplicationViewIndex() {
+        return viewControl.getApplicationViewIndex();
+    }
+
+    /**
+     * Retrieves the current index of profile view.
+     */
+    @Override
+    public Index getProfileViewIndex() {
+        return viewControl.getProfileViewIndex();
+    }
+
+    /**
+     * Sets the current company view index with {@code index}.
+     */
+    @Override
+    public void setCompanyViewIndex(Index index) {
+        viewControl.setCompanyViewIndex(index);
+    }
+
+    /**
+     * Sets the current application view index with {@code index}.
+     */
+    @Override
+    public void setApplicationViewIndex(Index index) {
+        viewControl.setApplicationViewIndex(index);
+    }
+
+    /**
+     * Sets the current profile view index with {@code index}.
+     */
+    @Override
+    public void setProfileViewIndex(Index index) {
+        viewControl.setProfileViewIndex(index);
+    }
+
     @Override
     public boolean equals(Object obj) {
         // short circuit if same object
@@ -156,6 +211,8 @@ public class ModelManager implements Model {
                 && companyList.equals(other.companyList)
                 && applicationList.equals(other.applicationList)
                 && profileList.equals(other.profileList)
-                && userPrefs.equals(other.userPrefs);
+                && userPrefs.equals(other.userPrefs)
+                && tabControl.equals(other.tabControl)
+                && viewControl.equals(other.viewControl);
     }
 }

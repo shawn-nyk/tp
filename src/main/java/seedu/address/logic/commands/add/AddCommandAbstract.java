@@ -34,10 +34,4 @@ public abstract class AddCommandAbstract extends Command {
             + "Each ITEM_TYPE requires its own set of DETAILS.\n"
             + "Example: " + COMMAND_WORD + " " + INTERNSHIP_ALIAS + " DETAILS";
 
-    /**
-     * Obtains the name of item associated with Add Command.
-     *
-     * @return Item name.
-     */
-    public abstract String getItemType();
 }

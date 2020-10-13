@@ -1,14 +1,17 @@
 package seedu.address.ui;
 
+import static seedu.address.ui.GuardClauseUi.IS_EMPTY_DATA_LIST;
+import static seedu.address.ui.GuardClauseUi.IS_EMPTY_DISPLAY;
+import static seedu.address.ui.GuardClauseUi.IS_EMPTY_LIST_PANEL;
 import static seedu.address.ui.tabs.TabName.APPLICATION;
 import static seedu.address.ui.tabs.TabName.COMPANY;
 import static seedu.address.ui.tabs.TabName.PROFILE;
 
+import java.util.Optional;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -22,6 +25,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.company.CompanyItem;
+import seedu.address.model.item.Item;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.ui.display.ApplicationDisplay;
 import seedu.address.ui.display.CompanyDisplay;
@@ -52,19 +56,15 @@ public class MainWindow extends UiPart<Stage> {
     private Stage primaryStage;
     private Logic logic;
 
-    // Independent Ui parts residing in this Ui container
-    private ListPanel listPanel;
-    private InformationDisplay informationDisplay;
-    private ResultDisplay resultDisplay;
-    private HelpWindow helpWindow;
-    private Tabs tabs;
-
-    //temporary datas, to be taken from model once ok!
-    private TempStubData tempStubData;
+    // data portion
     private ObservableList<CompanyItem> companyItems;
     private ObservableList<ApplicationItem> applicationItems;
     private ObservableList<ProfileItem> profileItems;
 
+    // Independent Ui parts residing in this Ui container
+    private ResultDisplay resultDisplay;
+    private HelpWindow helpWindow;
+    private Tabs tabs;
     @FXML
     private VBox cardList;
     @FXML
@@ -90,11 +90,10 @@ public class MainWindow extends UiPart<Stage> {
         // Configure the UI
         initializeUi(primaryStage, logic);
 
-        // TO REMOVE TEMPORARY
-        this.tempStubData = new TempStubData();
-        companyItems = tempStubData.getFilteredCompanyItemList();
-        applicationItems = tempStubData.getFilteredApplicationItemList();
-        profileItems = tempStubData.getFilteredProfileItemList();
+        // linking to logic
+        companyItems = logic.getFilteredCompanyItemList();
+        applicationItems = logic.getFilteredApplicationItemList();
+        profileItems = logic.getFilteredProfileItemList();
     }
 
     /**
@@ -146,21 +145,49 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        listPanel = new CompanyListPanel(companyItems);
-        listPanelPlaceholder.getChildren().add((Node) listPanel.getRoot());
+        addResultDisplay();
+        addListPanel();
+        addCommandBox();
+        addInformationDisplay();
+        addTabs();
+    }
 
+    /**
+     * todo javadocs
+     */
+    void addTabs() {
+        tabs = Tabs.getTabs(this, logic);
+        tabsContainer.getChildren().add(tabs);
+    }
+
+    /**
+     * todo javadocs
+     */
+    void addResultDisplay() {
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.setContent(resultDisplay.getRoot());
+    }
 
-        display.getChildren().clear();
-        informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
-        display.getChildren().add((Node) informationDisplay.getRoot());
+    /**
+     * todo javadocs
+     */
+    void addInformationDisplay() {
+        changeDisplay();
+    }
 
+    /**
+     * todo javadocs
+     */
+    void addCommandBox() {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+    }
 
-        tabs = Tabs.getTabs(this, primaryStage, logic);
-        tabsContainer.getChildren().add(tabs);
+    /**
+     * todo javadocs
+     */
+    void addListPanel() {
+        changeListPanelView(COMPANY);
     }
 
     /**
@@ -193,8 +220,8 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Switch the tabs of the application.
      */
-    private void switchTab() {
-        tabs.switchTab();
+    private void switchTab(TabName tabName) {
+        tabs.switchTab(tabName);
     }
 
     /**
@@ -216,13 +243,13 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
-
             if (commandResult.isSwitchTab()) {
-                switchTab();
+                switchTab(logic.getTabName());
+                changeListPanelView(logic.getTabName());
             }
 
             if (commandResult.isSwitchDisplay()) {
-                //changeDisplay();
+                changeDisplay();
             }
 
             return commandResult;
@@ -236,48 +263,108 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Changes the display of screen, depending on {@code input}, in the {@code primaryStage}.
      */
-    public void changeTabView(TabName tabName, Stage primaryStage) {
+    public void changeListPanelView(TabName tabName) {
         assert (tabName.equals(APPLICATION) || tabName.equals(COMPANY) || tabName.equals(PROFILE));
-        display.getChildren().clear();
         listPanelPlaceholder.getChildren().clear();
+        Optional<ListPanel<? extends Item>> newListPanel = Optional.empty();
         switch (tabName) {
         case COMPANY:
-            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
-            listPanel = new CompanyListPanel(companyItems);
+            newListPanel = getCompanyTabView();
             break;
         case APPLICATION:
-            informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(0));
-            listPanel = new ApplicationListPanel(applicationItems);
+            newListPanel = setApplicationTabView();
             break;
         case PROFILE:
-            informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(0));
-            listPanel = new ProfileListPanel(profileItems);
+            newListPanel = setProfileTabView();
             break;
         default:
             assert false;
             break;
         }
-        display.getChildren().add((Node) informationDisplay.getRoot());
-        listPanelPlaceholder.getChildren().add((Node) listPanel.getRoot());
+        changeDisplay();
+        if (!IS_EMPTY_LIST_PANEL.test(newListPanel)) {
+            listPanelPlaceholder.getChildren().add(newListPanel.get().getRoot());
+        }
     }
 
     /**
      * todo javadocs
      */
-    public void changeDisplay(TabName tabName, int index) {
+    private Optional<ListPanel<? extends Item>> getCompanyTabView() {
+        return Optional.of(new CompanyListPanel(companyItems));
+    }
+
+    /**
+     * todo javadocs
+     */
+    private Optional<ListPanel<? extends Item>> setApplicationTabView() {
+        return Optional.of(new ApplicationListPanel(applicationItems));
+    }
+
+    /**
+     * todo javadocs
+     */
+    private Optional<ListPanel<? extends Item>> setProfileTabView() {
+        return Optional.of(new ProfileListPanel(profileItems));
+    }
+
+    /**
+     * todo javadocs
+     */
+    public void changeDisplay() {
+        TabName tabName = logic.getTabName();
+        int index;
+        Optional<InformationDisplay<? extends Item>> newInformationDisplay = Optional.empty();
         switch (tabName) {
         case COMPANY:
-            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(index));
+            index = logic.getCompanyViewIndex().getZeroBased();
+            newInformationDisplay = getCompanyDisplay(index);
             break;
         case APPLICATION:
-            informationDisplay = ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(index));
+            index = logic.getApplicationViewIndex().getZeroBased();
+            newInformationDisplay = getApplicationDisplay(index);
             break;
         case PROFILE:
-            informationDisplay = ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index));
+            index = logic.getProfileViewIndex().getZeroBased();
+            newInformationDisplay = getProfileDisplay(index);
             break;
         default:
             assert false;
             break;
         }
+        display.getChildren().clear();
+        if (!IS_EMPTY_DISPLAY.test(newInformationDisplay)) {
+            display.getChildren().add(newInformationDisplay.get().getRoot());
+        }
+    }
+
+    /**
+     * todo javadocs
+     */
+    private Optional<InformationDisplay<? extends Item>> getCompanyDisplay(int index) {
+        if (!IS_EMPTY_DATA_LIST.test(companyItems)) {
+            return Optional.of(CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(index)));
+        }
+        return Optional.empty();
+    }
+
+    /**
+     * todo javadocs
+     */
+    private Optional<InformationDisplay<? extends Item>> getApplicationDisplay(int index) {
+        if (!IS_EMPTY_DATA_LIST.test(applicationItems)) {
+            return Optional.of(ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(index)));
+        }
+        return Optional.empty();
+    }
+
+    /**
+     * todo javadocs
+     */
+    private Optional<InformationDisplay<? extends Item>> getProfileDisplay(int index) {
+        if (!IS_EMPTY_DATA_LIST.test(profileItems)) {
+            return Optional.of(ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index)));
+        }
+        return Optional.empty();
     }
 }

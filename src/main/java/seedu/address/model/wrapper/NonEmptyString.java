@@ -7,7 +7,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Represents a non empty string object.
  * Guarantees: immutable; is valid as declared in {@link #isValidNonEmptyString(String)}
  */
-public class NonEmptyString {
+public abstract class NonEmptyString {
 
     /*
      * Represents a string that contains at least one non-space character.

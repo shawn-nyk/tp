@@ -139,8 +139,10 @@ public class ApplicationItem extends Item {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getInternshipItem())
+                .append(", ")
                 .append(" Status: ")
                 .append(getStatus())
+                .append(", ")
                 .append(" Date: ")
                 .append(getStatusDate());
         return builder.toString();

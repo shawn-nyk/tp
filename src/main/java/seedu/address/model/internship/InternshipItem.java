@@ -25,13 +25,13 @@ import seedu.address.storage.internship.JsonAdaptedInternshipItem;
 public class InternshipItem extends Item {
 
     // Identity fields
-    private final CompanyName companyName;
-    private final JobTitle jobTitle;
-    private final Period period;
+    private CompanyName companyName;
+    private JobTitle jobTitle;
+    private Period period;
 
     // Data fields
-    private final Wage wage;
-    private final Set<Requirement> requirements = new HashSet<>();
+    private Wage wage;
+    private Set<Requirement> requirements = new HashSet<>();
 
     /**
      * Every field must be present and not null.
@@ -50,16 +50,32 @@ public class InternshipItem extends Item {
         return companyName;
     }
 
+    public void setCompanyName(CompanyName companyName) {
+        this.companyName = companyName;
+    }
+
     public JobTitle getJobTitle() {
         return jobTitle;
+    }
+
+    public void setJobTitle(JobTitle jobTitle) {
+        this.jobTitle = jobTitle;
     }
 
     public Period getPeriod() {
         return period;
     }
 
+    public void setPeriod(Period period) {
+        this.period = period;
+    }
+
     public Wage getWage() {
         return wage;
+    }
+
+    public void setWage(Wage wage) {
+        this.wage = wage;
     }
 
     /**
@@ -68,6 +84,10 @@ public class InternshipItem extends Item {
      */
     public Set<Requirement> getRequirements() {
         return Collections.unmodifiableSet(requirements);
+    }
+
+    public void setRequirements(Set<Requirement> requirements) {
+        this.requirements = requirements;
     }
 
     /**
@@ -150,15 +170,20 @@ public class InternshipItem extends Item {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getCompanyName())
-                .append(" Job title: ")
-                .append(getJobTitle())
+        builder.append(getJobTitle())
+                .append(", ")
+                .append(" Company Name: ")
+                .append(getCompanyName())
+                .append(", ")
                 .append(" Period: ")
                 .append(getPeriod())
+                .append(", ")
                 .append(" Wage: ")
                 .append(getWage())
-                .append(" Requirements: ");
-        getRequirements().forEach(builder::append);
+                .append(", ")
+                .append(" Requirements: ")
+                .append(getRequirements().size() <= 0 ? "-" : getRequirements())
+                .append("\n");
         return builder.toString();
     }
 
@@ -166,6 +191,5 @@ public class InternshipItem extends Item {
     public JsonAdaptedInternshipItem getJsonAdaptedItem() {
         return new JsonAdaptedInternshipItem(this);
     }
-
 
 }

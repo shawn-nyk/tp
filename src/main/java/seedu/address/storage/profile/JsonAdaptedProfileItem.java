@@ -40,7 +40,7 @@ public class JsonAdaptedProfileItem extends JsonAdaptedItem {
      */
     public JsonAdaptedProfileItem(ProfileItem source) {
         title = source.getTitle().value;
-        profileType = source.getType().toString();
+        profileType = source.getCategory().toString();
         descriptors.addAll(source.getDescriptors().stream()
                 .map(JsonAdaptedDescriptor::new)
                 .collect(Collectors.toList()));
@@ -69,7 +69,8 @@ public class JsonAdaptedProfileItem extends JsonAdaptedItem {
         if (!ProfileItemCategory.isValidProfileItemCategory(profileType)) {
             throw new IllegalValueException(ProfileItemCategory.MESSAGE_CONSTRAINTS);
         }
-        final ProfileItemCategory itemProfileType = ProfileItemCategory.valueOf(profileType);
+
+        final ProfileItemCategory itemProfileType = ProfileItemCategory.valueOf(profileType.toUpperCase());
 
         final Set<Descriptor> itemDescriptors = new HashSet<>();
 

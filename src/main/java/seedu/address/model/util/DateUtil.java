@@ -10,11 +10,10 @@ import java.time.format.DateTimeParseException;
  * DateUtil class which provides the input and output formats for all dates, as well as methods for date format
  * matching.
  */
-public class DateUtil {
+public abstract class DateUtil {
 
     // Output date formats
     public static final String DATE_TIME_LONG_FORMAT = "d MMM yyyy @ h.mm a";
-    public static final String DATE_TIME_SHORT_FORMAT = "d MMM";
 
     // Input date formats
     public static final String DATE_INPUT_FORMAT = "d-M-yy";
@@ -23,6 +22,7 @@ public class DateUtil {
     // Default timing if user does not input a time
     private static final String DEFAULT_TIME = "23:59";
 
+    // Error message
     private static final String ERROR_MESSAGE = "Checks for status date validity failed";
 
     /**
@@ -78,7 +78,7 @@ public class DateUtil {
     }
 
     /**
-     * Converts the string status date to a LocalDateTime object.
+     * Converts the input status date from user to a LocalDateTime object.
      *
      * @param statusDate Input status date.
      * @return LocalDateTime object.
@@ -95,6 +95,31 @@ public class DateUtil {
     }
 
     /**
+     * Converts the string status date output format to a LocalDateTime object.
+     *
+     * @param statusDate Input status date.
+     * @return LocalDateTime object.
+     */
+    public static LocalDateTime convertOutputFormat(String statusDate) {
+        return LocalDateTime.parse(statusDate, formatterDateTime(DATE_TIME_LONG_FORMAT));
+    }
+
+    /**
+     * Checks if the input given matches the d MMM yyyy @ h.mm a format.
+     *
+     * @param input User input.
+     * @return True if input has the valid output date format, false otherwise.
+     */
+    public static boolean isValidOutputDate(String input) {
+        try {
+            LocalDateTime.parse(input, formatterDateTime(DATE_TIME_LONG_FORMAT));
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
+    /**
      * Creates a DateTimeFormatter using the input pattern.
      *
      * @param pattern String pattern.
@@ -107,7 +132,7 @@ public class DateUtil {
     /**
      * todo Javadocs
      */
-    public static String extractDayAndMonth(String ... dateInformation) {
+    public static String extractDayAndMonth(String... dateInformation) {
         return dateInformation[0] + " " + dateInformation[1];
     }
 
