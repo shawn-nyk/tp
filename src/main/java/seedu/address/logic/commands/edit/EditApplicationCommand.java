@@ -9,11 +9,9 @@ import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_S
 import static seedu.address.model.FilterableItemList.PREDICATE_SHOW_ALL_ITEMS;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
-import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 
 import java.util.Optional;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.CommandResult;
