@@ -11,6 +11,11 @@
 
 <p align="center"><img src="images/Ui.png" width="100%"/></p>
 
+<div>
+  <img src="images/App.png" width="49.7%"/>
+  <img src="images/Profile.png" width="49.7%"/>
+</div>
+
 Welcome to **InternHunter**, a CLI-centric desktop application which aids university students in applying for tech
 internships. It lets users manage their own customisable collection of companies, internships, internship applications
 and their own user profile, so that they can keep track of internships that they are interested in.
