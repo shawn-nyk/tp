@@ -1,9 +1,5 @@
 package seedu.address.model.profile;
 
-import static seedu.address.model.util.ProfileItemCategoryUtil.ACHIEVEMENT_KEYWORD;
-import static seedu.address.model.util.ProfileItemCategoryUtil.EXPERIENCE_KEYWORD;
-import static seedu.address.model.util.ProfileItemCategoryUtil.SKILL_KEYWORD;
-
 /**
  * UserProfileCategory class contains the valid category for user profile.
  */
@@ -23,8 +19,8 @@ public enum ProfileItemCategory {
      * @return True if status is valid, false otherwise.
      */
     public static boolean isValidProfileItemCategory(String profileItemCategory) {
-        return profileItemCategory.equals(EXPERIENCE_KEYWORD)
-                || profileItemCategory.equals(ACHIEVEMENT_KEYWORD)
-                || profileItemCategory.equals(SKILL_KEYWORD);
+        return profileItemCategory.equals(EXPERIENCE.toString())
+                || profileItemCategory.equals(ACHIEVEMENT.toString())
+                || profileItemCategory.equals(SKILL.toString());
     }
 }

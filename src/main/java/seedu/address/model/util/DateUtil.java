@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Locale;
 
 /**
  * DateUtil class which provides the input and output formats for all dates, as well as methods for date format
@@ -126,7 +127,7 @@ public abstract class DateUtil {
      * @return The DateTimeFormatter based the pattern.
      */
     public static DateTimeFormatter formatterDateTime(String pattern) {
-        return DateTimeFormatter.ofPattern(pattern);
+        return DateTimeFormatter.ofPattern(pattern, Locale.ENGLISH);
     }
 
     /**
