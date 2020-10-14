@@ -16,6 +16,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.FilterableItemList;
 import seedu.address.model.Model;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.application.Status;
@@ -59,8 +60,9 @@ public class EditApplicationCommand extends EditCommandAbstract {
         ApplicationItem editedApplicationItem = createEditedApplicationItem(applicationItemToEdit,
                 editApplicationDescriptor);
 
-        model.getApplicationList().setItem(applicationItemToEdit, editedApplicationItem);
-        model.getApplicationList().updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
+        FilterableItemList<ApplicationItem> applicationList = model.getApplicationList();
+        applicationList.setItem(applicationItemToEdit, editedApplicationItem);
+        applicationList.updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, APPLICATION_NAME, editedApplicationItem);
         return getCommandResult(model, editSuccessMessage, TabName.APPLICATION);
     }

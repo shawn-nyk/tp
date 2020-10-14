@@ -22,6 +22,7 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.FilterableItemList;
 import seedu.address.model.Model;
 import seedu.address.model.profile.Descriptor;
 import seedu.address.model.profile.ProfileItem;
@@ -68,12 +69,14 @@ public class EditProfileCommand extends EditCommandAbstract {
         ProfileItem profileItemToEdit = getProfileItem(model, targetIndex);
         ProfileItem editedProfile = createEditedProfileItem(profileItemToEdit, editProfileItemDescriptor);
 
-        if (!profileItemToEdit.isSameItem(editedProfile) && model.getProfileList().hasItem(editedProfile)) {
+        FilterableItemList<ProfileItem> profileItemList = model.getProfileList();
+
+        if (!profileItemToEdit.isSameItem(editedProfile) && profileItemList.hasItem(editedProfile)) {
             throw new CommandException(String.format(Messages.MESSAGE_DUPLICATE_ITEM, PROFILE_NAME));
         }
 
-        model.getProfileList().setItem(profileItemToEdit, editedProfile);
-        model.getProfileList().updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
+        profileItemList.setItem(profileItemToEdit, editedProfile);
+        profileItemList.updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, PROFILE_NAME, editedProfile);
         return getCommandResult(model, editSuccessMessage, TabName.PROFILE);
     }
@@ -83,15 +86,15 @@ public class EditProfileCommand extends EditCommandAbstract {
      * edited with {@code editProfileItemDescriptor}.
      */
     private static ProfileItem createEditedProfileItem(ProfileItem profileItemToEdit,
-        EditProfileItemDescriptor editProfileItemDescriptor) {
+            EditProfileItemDescriptor editProfileItemDescriptor) {
         assert profileItemToEdit != null;
 
         Title updatedTitle = editProfileItemDescriptor.getTitle()
-            .orElse(profileItemToEdit.getTitle());
+                .orElse(profileItemToEdit.getTitle());
         ProfileItemCategory updatedCategory = editProfileItemDescriptor
-            .getProfileItemCategory().orElse(profileItemToEdit.getCategory());
+                .getProfileItemCategory().orElse(profileItemToEdit.getCategory());
         Set<Descriptor> updatedDescriptor = editProfileItemDescriptor
-            .getDescriptors().orElse(profileItemToEdit.getDescriptors());
+                .getDescriptors().orElse(profileItemToEdit.getDescriptors());
 
         return new ProfileItem(updatedTitle, updatedCategory, updatedDescriptor);
     }
