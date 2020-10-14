@@ -52,6 +52,11 @@ public class JsonAdaptedApplicationItem extends JsonAdaptedItem {
     @Override
     public ApplicationItem toModelType() throws IllegalValueException {
 
+        if (internshipItem == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    InternshipItem.class.getSimpleName()));
+        }
+
         final InternshipItem itemInternship = internshipItem.toModelType();
 
         if (status == null) {
