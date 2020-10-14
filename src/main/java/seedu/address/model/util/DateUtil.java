@@ -5,16 +5,16 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Locale;
 
 /**
  * DateUtil class which provides the input and output formats for all dates, as well as methods for date format
  * matching.
  */
-public class DateUtil {
+public abstract class DateUtil {
 
     // Output date formats
     public static final String DATE_TIME_LONG_FORMAT = "d MMM yyyy @ h.mm a";
-    public static final String DATE_TIME_SHORT_FORMAT = "d MMM";
 
     // Input date formats
     public static final String DATE_INPUT_FORMAT = "d-M-yy";
@@ -23,6 +23,7 @@ public class DateUtil {
     // Default timing if user does not input a time
     private static final String DEFAULT_TIME = "23:59";
 
+    // Error message
     private static final String ERROR_MESSAGE = "Checks for status date validity failed";
 
     /**
@@ -126,13 +127,13 @@ public class DateUtil {
      * @return The DateTimeFormatter based the pattern.
      */
     public static DateTimeFormatter formatterDateTime(String pattern) {
-        return DateTimeFormatter.ofPattern(pattern);
+        return DateTimeFormatter.ofPattern(pattern, Locale.ENGLISH);
     }
 
     /**
      * todo Javadocs
      */
-    public static String extractDayAndMonth(String ... dateInformation) {
+    public static String extractDayAndMonth(String... dateInformation) {
         return dateInformation[0] + " " + dateInformation[1];
     }
 

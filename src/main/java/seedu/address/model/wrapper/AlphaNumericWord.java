@@ -7,7 +7,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Represents a alphanumeric word object.
  * Guarantees: immutable; is valid as declared in {@link #isValidAlphaNumericWord(String)}
  */
-public class AlphaNumericWord {
+public abstract class AlphaNumericWord {
 
     /*
      * The first character of the address must not be a whitespace,
@@ -34,7 +34,6 @@ public class AlphaNumericWord {
     public static boolean isValidAlphaNumericWord(String test) {
         return test.matches(VALIDATION_REGEX);
     }
-
 
     @Override
     public String toString() {

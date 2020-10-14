@@ -18,17 +18,23 @@ import seedu.address.ui.tabs.TabName;
 
 public class ViewApplicationCommand extends ViewCommand {
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + " " + APPLICATION_ALIAS + ": Views a profile in "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + " " + APPLICATION_ALIAS + ": Views an " + APPLICATION_NAME + " in "
             + "InternHunter.\nParameters: "
-            + "INDEX (must be a positive integer) "
+            + "INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " "
             + APPLICATION_ALIAS
             + " 2";
 
+    private final String messageViewSuccess;
+    private final String messageAlreadyViewing;
     private final Index targetIndex;
 
+    /** todo javadocs */
     public ViewApplicationCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
+        this.messageViewSuccess = String.format(MESSAGE_VIEW_SUCCESS, APPLICATION_NAME, targetIndex);
+        this.messageAlreadyViewing = String.format(MESSAGE_ALREADY_VIEWING, APPLICATION_NAME, targetIndex);
     }
 
     /**
@@ -48,11 +54,11 @@ public class ViewApplicationCommand extends ViewCommand {
             throw new CommandException(String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, APPLICATION_NAME));
         }
 
-        // TODO after model/ui methods are done: Check if current item is already in view
-        // TODO: Set model to show view
-
-        String viewSuccessMessage = String.format(MESSAGE_VIEW_SUCCESS, APPLICATION_NAME, targetIndex);
-        return getCommandResult(model, viewSuccessMessage, TabName.APPLICATION);
+        if (model.getTabName() == TabName.APPLICATION && model.getApplicationViewIndex().equals(targetIndex)) {
+            return new CommandResult(messageAlreadyViewing, false, false , false, false);
+        }
+        model.setApplicationViewIndex(targetIndex);
+        return getCommandResult(model, messageViewSuccess, TabName.APPLICATION);
     }
 
     @Override
