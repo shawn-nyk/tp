@@ -12,7 +12,7 @@ import seedu.address.ui.panel.ListPanel;
 public class GuardClauseUi {
 
     /** Checks if the given string is an empty representation of a list */
-    public static final Predicate<String> IS_EMPTY_LIST_STRING = string -> string.equals("[]");
+    public static final Predicate<String> IS_EMPTY_LIST_STRING = string -> string != null && string.equals("[]");
 
     /** Checks if the given data list is empty */
     public static final Predicate<ObservableList<? extends Item>> IS_EMPTY_DATA_LIST = list -> list.size() <= 0;
