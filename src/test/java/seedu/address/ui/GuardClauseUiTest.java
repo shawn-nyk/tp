@@ -86,6 +86,9 @@ public class GuardClauseUiTest {
 
         // application item list
         assertFalse(IS_EMPTY_DATA_LIST.test(companyItemStubList));
+
+        // null test
+        assertFalse(IS_EMPTY_DATA_LIST.test(null));
     }
 
     @Test
@@ -103,6 +106,9 @@ public class GuardClauseUiTest {
 
         // non empty list string representation
         assertFalse(IS_EMPTY_STRING.test(NON_EMPTY_LIST_STRING));
+
+        // null test
+        assertFalse(IS_EMPTY_STRING.test(null));
     }
 
     @Test
@@ -139,6 +145,15 @@ public class GuardClauseUiTest {
 
         // empty list string against non empty list string
         assertFalse(IS_SAME_STRING.test(EMPTY_LIST_STRING, NON_EMPTY_LIST_STRING));
+
+        // one null case in first param
+        assertFalse(IS_SAME_STRING.test(null, EMPTY_STRING));
+
+        // one null case in second param
+        assertFalse(IS_SAME_STRING.test(EMPTY_STRING, null));
+
+        // both null
+        assertFalse(IS_SAME_STRING.test(null, null));
     }
 
     static class ApplicationItemStub extends Item {
