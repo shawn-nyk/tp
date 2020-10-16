@@ -48,9 +48,9 @@ public class JsonAdaptedInternshipItem extends JsonAdaptedItem {
      * Converts a given {@code InternshipItem} into this class for Jackson use.
      */
     public JsonAdaptedInternshipItem(InternshipItem source) {
-        companyName = source.getCompanyName().value;
-        jobTitle = source.getJobTitle().value;
-        period = source.getPeriod().value;
+        companyName = source.getCompanyName().getValue();
+        jobTitle = source.getJobTitle().getValue();
+        period = source.getPeriod().getValue();
         wage = source.getWage().value;
         requirements.addAll(source.getRequirements().stream()
                 .map(JsonAdaptedRequirement::new)

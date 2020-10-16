@@ -43,7 +43,7 @@ public class InternshipParserUtil {
     public static Period parsePeriod(String period) throws ParseException {
         requireNonNull(period);
         String trimmedPeriod = period.trim();
-        if (!Period.isValidNonEmptyString(trimmedPeriod)) {
+        if (!Period.isValidPeriod(trimmedPeriod)) {
             throw new ParseException(Period.MESSAGE_CONSTRAINTS);
         }
         return new Period(trimmedPeriod);
@@ -73,7 +73,7 @@ public class InternshipParserUtil {
     public static Requirement parseRequirement(String requirement) throws ParseException {
         requireNonNull(requirement);
         String trimmedRequirement = requirement.trim();
-        if (!Requirement.isValidNonEmptyString(trimmedRequirement)) {
+        if (!Requirement.isValidRequirement(trimmedRequirement)) {
             throw new ParseException(Requirement.MESSAGE_CONSTRAINTS);
         }
         return new Requirement(trimmedRequirement);
