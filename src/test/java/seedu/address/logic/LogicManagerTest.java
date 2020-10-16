@@ -125,6 +125,21 @@ public class LogicManagerTest {
     }
 
     @Test
+    public void getFilteredApplicationItemList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredApplicationItemList().remove(0));
+    }
+
+    @Test
+    public void getFilteredProfileItemList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredProfileItemList().remove(0));
+    }
+
+    @Test
+    public void getFilteredCompanyItemList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredCompanyItemList().remove(0));
+    }
+
+    @Test
     public void getProfileViewIndex_equals_success() {
         assertEquals(logic.getProfileViewIndex(), Index.fromOneBased(1));
     }
