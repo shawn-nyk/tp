@@ -89,7 +89,7 @@ public class MainParserTest {
     public void parseCommand_unknownCommand_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand("unknownCommand"));
     }
-    
+
     @Test
     public void parseCommand_switch_returnsTrue() throws Exception {
         assertTrue(parser.parseCommand(SwitchCommand.COMMAND_WORD + " me") instanceof SwitchCommand);
@@ -99,13 +99,10 @@ public class MainParserTest {
 
     @Test
     public void parseCommand_switch_throwsParseException() {
-        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, SwitchCommand.MESSAGE_USAGE),
-            () -> parser.parseCommand("switch"));
-        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, SwitchCommand.MESSAGE_USAGE),
-            () -> parser.parseCommand("switch hello"));
-        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, SwitchCommand.MESSAGE_USAGE),
-            () -> parser.parseCommand("switch 1"));
-        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, SwitchCommand.MESSAGE_USAGE),
-            () -> parser.parseCommand("switch "));
+        String invalidMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, SwitchCommand.MESSAGE_USAGE);
+        assertThrows(ParseException.class, invalidMessage, () -> parser.parseCommand("switch"));
+        assertThrows(ParseException.class, invalidMessage, () -> parser.parseCommand("switch hello"));
+        assertThrows(ParseException.class, invalidMessage, () -> parser.parseCommand("switch 1"));
+        assertThrows(ParseException.class, invalidMessage, () -> parser.parseCommand("switch "));
     }
 }

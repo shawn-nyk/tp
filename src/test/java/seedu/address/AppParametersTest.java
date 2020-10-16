@@ -20,7 +20,7 @@ public class AppParametersTest {
 
     private ParametersStub parametersStub;
     private AppParameters expected;
-    
+
     @BeforeEach
     public void setUp() {
         parametersStub = new ParametersStub();
@@ -46,7 +46,7 @@ public class AppParametersTest {
         expected.setConfigPath(null);
         assertEquals(expected, AppParameters.parse(parametersStub));
     }
-    
+
     @Test
     public void equals() {
         // same object -> returns true
@@ -58,7 +58,7 @@ public class AppParametersTest {
         // different types -> returns false
         assertFalse(expected.equals(0.5f));
     }
-    
+
     @Test
     public void hashCode_equalHashCode_success() {
         // set json

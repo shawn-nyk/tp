@@ -123,7 +123,7 @@ public class LogicManagerTest {
     public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredPersonList().remove(0));
     }
-    
+
     @Test
     public void getProfileViewIndex_equals_success() {
         assertEquals(logic.getProfileViewIndex(), Index.fromOneBased(1));
@@ -138,7 +138,7 @@ public class LogicManagerTest {
     public void getApplicationViewIndex_equals_success() {
         assertEquals(logic.getApplicationViewIndex(), Index.fromOneBased(1));
     }
-    
+
     @Test
     public void setProfileViewIndex_equals_success() {
         logic.setProfileViewIndex(Index.fromOneBased(10));
@@ -156,7 +156,7 @@ public class LogicManagerTest {
         logic.setApplicationViewIndex(Index.fromOneBased(10));
         assertEquals(logic.getApplicationViewIndex(), Index.fromOneBased(10));
     }
-    
+
     @Test
     public void getTabName_equals_success() {
         assertEquals(logic.getTabName(), TabName.COMPANY);
