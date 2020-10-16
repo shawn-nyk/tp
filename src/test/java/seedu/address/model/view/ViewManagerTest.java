@@ -37,7 +37,7 @@ public class ViewManagerTest {
     public void setApplicationViewIndex_false_success() {
         // different company index
         ViewManager viewManagerDifferentApplicationIndex = new ViewManager();
-        viewManagerDifferentApplicationIndex.setCompanyViewIndex(Index.fromOneBased(3));
+        viewManagerDifferentApplicationIndex.setApplicationViewIndex(Index.fromOneBased(3));
         assertFalse(viewManager.equals(viewManagerDifferentApplicationIndex));
     }
 
@@ -45,7 +45,7 @@ public class ViewManagerTest {
     public void setApplicationViewIndex_true_success() {
         // different company index
         ViewManager viewManagerDifferentApplicationIndex = new ViewManager();
-        viewManagerDifferentApplicationIndex.setCompanyViewIndex(Index.fromOneBased(1));
+        viewManagerDifferentApplicationIndex.setApplicationViewIndex(Index.fromOneBased(1));
         assertTrue(viewManager.equals(viewManagerDifferentApplicationIndex));
     }
 
@@ -53,7 +53,7 @@ public class ViewManagerTest {
     public void setProfileViewIndex_false_success() {
         // different company index
         ViewManager viewManagerDifferentProfileIndex = new ViewManager();
-        viewManagerDifferentProfileIndex.setCompanyViewIndex(Index.fromOneBased(3));
+        viewManagerDifferentProfileIndex.setProfileViewIndex(Index.fromOneBased(3));
         assertFalse(viewManager.equals(viewManagerDifferentProfileIndex));
     }
 
@@ -61,7 +61,7 @@ public class ViewManagerTest {
     public void setProfileViewIndex_true_success() {
         // different company index
         ViewManager viewManagerDifferentProfileIndex = new ViewManager();
-        viewManagerDifferentProfileIndex.setCompanyViewIndex(Index.fromOneBased(1));
+        viewManagerDifferentProfileIndex.setProfileViewIndex(Index.fromOneBased(1));
         assertTrue(viewManager.equals(viewManagerDifferentProfileIndex));
     }
 
