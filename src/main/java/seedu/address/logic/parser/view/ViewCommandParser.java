@@ -1,6 +1,5 @@
 package seedu.address.logic.parser.view;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
 import static seedu.address.logic.parser.util.GeneralParserUtil.checkCommandDetailsIsNotBlank;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getCommandDetails;
