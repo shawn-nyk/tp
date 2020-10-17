@@ -3,7 +3,7 @@ package seedu.address.storage.internship;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.storage.internship.JsonAdaptedInternshipItem.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.SampleInternshipItems.SHOPEE_SWE;
+import static seedu.address.testutil.internship.SampleInternshipItems.SHOPEE_SWE;
 
 import java.util.HashSet;
 import java.util.Set;

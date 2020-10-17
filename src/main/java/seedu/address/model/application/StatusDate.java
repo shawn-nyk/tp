@@ -51,6 +51,12 @@ public class StatusDate {
         return sameYear && sameDay;
     }
 
+    /**
+     * Returns true if both StatusDates have the same year and day.
+     *
+     * @param other Object object to compare to.
+     * @return True if the other StatusDate object has the same year and day as this one.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -58,15 +64,20 @@ public class StatusDate {
                 && sameDate(((StatusDate) other).statusDate)); // state check
     }
 
+    /**
+     * Returns the hashcode of this StatusDate object, which is the hashcode of its statusDate field.
+     *
+     * @return Hashcode of this StatusDate object.
+     */
     @Override
     public int hashCode() {
         return statusDate.hashCode();
     }
 
     /**
-     * Returns the long statusDate format for right pane view.
+     * Returns the string representation of this StatusDate object.
      *
-     * @return Long statusDate format.
+     * @return String representation of this StatusDate object.
      */
     @Override
     public String toString() {
