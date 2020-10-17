@@ -54,7 +54,7 @@ public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
      */
     private void initializeApplicationDisplayGui() {
         setJobTitle();
-        setInformation();
+        setApplicationInformation();
     }
 
     /**
@@ -68,7 +68,7 @@ public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
     /**
      * Sets the information of the {@code applicationItem} for display.
      */
-    private void setInformation() {
+    private void setApplicationInformation() {
         setInformation(editString, returnSameString, isRequirements, TabName.APPLICATION, APPLICATION_DISPLAY_KEY_LIST);
     }
 

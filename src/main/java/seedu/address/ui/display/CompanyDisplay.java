@@ -64,7 +64,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
      */
     private void initializeCompanyDisplayGui() {
         setCompanyName();
-        setInformation();
+        setCompanyInformation();;
     }
 
     /**
@@ -78,7 +78,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
     /**
      * Sets the information of the {@code companyItem} for display.
      */
-    private void setInformation() {
+    private void setCompanyInformation() {
         setInformation(editString, formatInternshipDetail, isIndustriesOrInternship, TabName.COMPANY,
             COMPANY_DISPLAY_KEY_LIST);
     }
