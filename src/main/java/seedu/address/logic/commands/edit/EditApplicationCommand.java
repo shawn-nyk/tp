@@ -2,6 +2,7 @@ package seedu.address.logic.commands.edit;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_EDIT_SUCCESS;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.commands.util.CommandUtil.getApplication;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
@@ -45,8 +46,7 @@ public class EditApplicationCommand extends EditCommandAbstract {
      * @param editApplicationDescriptor details to edit the application with.
      */
     public EditApplicationCommand(Index targetIndex, EditApplicationDescriptor editApplicationDescriptor) {
-        requireNonNull(targetIndex);
-        requireNonNull(editApplicationDescriptor);
+        requireAllNonNull(targetIndex, editApplicationDescriptor);
 
         this.targetIndex = targetIndex;
         this.editApplicationDescriptor = new EditApplicationDescriptor(editApplicationDescriptor);
@@ -74,7 +74,7 @@ public class EditApplicationCommand extends EditCommandAbstract {
     private static ApplicationItem createEditedApplicationItem(ApplicationItem applicationItemToEdit,
             EditApplicationDescriptor editApplicationDescriptor) {
 
-        assert applicationItemToEdit != null;
+        requireNonNull(applicationItemToEdit);
 
         // Keeps the same internship item
         InternshipItem internshipItem = applicationItemToEdit.getInternshipItem();
