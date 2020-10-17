@@ -12,7 +12,7 @@ import seedu.address.ui.cards.CompanyCard;
 public class CompanyListPanel extends ListPanel<CompanyItem> {
 
     /**
-     * Initializes a scrollable list panel with information of {@code CompanyItem}.
+     * Creates a scrollable list panel with information of {@code CompanyItem}.
      *
      * @param companyItemList List containing all the company item in the storage.
      */
@@ -22,7 +22,7 @@ public class CompanyListPanel extends ListPanel<CompanyItem> {
     }
 
     /**
-     * Initializes each cell in the list panel with information of {@code CompanyItem}.
+     * Creates each cell in the list panel with information of {@code CompanyItem}.
      */
     class CompanyListViewCell extends ListCell<CompanyItem> {
         @Override

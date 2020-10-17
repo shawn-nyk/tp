@@ -37,7 +37,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
     };
 
     /**
-     * Initializes a {@code CompanyDisplay} in the given {@code primaryStage}.
+     * Creates a {@code CompanyDisplay} in the given {@code primaryStage}.
      *
      * @param primaryStage The main stage of the app.
      * @param companyItem The company item to be displayed.

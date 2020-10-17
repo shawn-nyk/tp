@@ -35,7 +35,7 @@ public class TitleDescriptionDisplay extends HBox {
     private VBox descriptionInformation;
 
     /**
-     * Initializes a {@code TitleDescriptionDisplay} with {@code displayTitle}, {@code displayDescription} for
+     * Creates a {@code TitleDescriptionDisplay} with {@code displayTitle}, {@code displayDescription} for
      * {@code tab} display.
      *
      * @param displayTitle A string representing the title for the display.

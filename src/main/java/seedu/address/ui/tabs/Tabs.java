@@ -55,7 +55,7 @@ public class Tabs extends VBox {
     private Logic logic;
 
     /**
-     * Initializes the {@code Tabs} in the given {@code primaryStage} of the {@code mainWindow}.
+     * Creates the {@code Tabs} in the given {@code primaryStage} of the {@code mainWindow}.
      *
      * @param mainWindow The Main Window of the app.
      * @param logic The logic unit of the app.

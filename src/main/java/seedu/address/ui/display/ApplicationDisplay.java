@@ -27,7 +27,7 @@ public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
     private final Function<String, String> returnSameString = string -> string;
 
     /**
-     * Initializes a {@code ApplicationDisplay} in the given {@code primaryStage}.
+     * Creates a {@code ApplicationDisplay} in the given {@code primaryStage}.
      *
      * @param primaryStage The main stage of the app.
      * @param applicationItem The application item to be displayed.

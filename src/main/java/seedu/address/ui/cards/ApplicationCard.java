@@ -45,7 +45,7 @@ public class ApplicationCard extends Card<ApplicationItem> {
     private static final int IMAGE_HEIGHT_WIDTH = 23;
 
     /**
-     * Initializes a card display with information of {@code ApplicationItem} and with a index of {@code displayIndex}.
+     * Creates a card display with information of {@code ApplicationItem} and with a index of {@code displayIndex}.
      *
      * @param applicationItem The application item to be displayed.
      * @param displayedIndex The index of the profile item.

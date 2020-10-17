@@ -13,7 +13,7 @@ import seedu.address.ui.cards.ApplicationCard;
 public class ApplicationListPanel extends ListPanel<ApplicationItem> {
 
     /**
-     * Initializes a scrollable list panel with information of {@code ApplicationItem}.
+     * Creates a scrollable list panel with information of {@code ApplicationItem}.
      *
      * @param applicationItemList List containing all the application item in the storage.
      */
@@ -23,7 +23,7 @@ public class ApplicationListPanel extends ListPanel<ApplicationItem> {
     }
 
     /**
-     * Initializes each cell in the list panel with information of {@code ApplicationItem}.
+     * Creates each cell in the list panel with information of {@code ApplicationItem}.
      */
     class ApplicationListViewCell extends ListCell<ApplicationItem> {
         @Override

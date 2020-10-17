@@ -12,7 +12,7 @@ import seedu.address.ui.cards.ProfileCard;
 public class ProfileListPanel extends ListPanel<ProfileItem> {
 
     /**
-     * Initializes a scrollable list panel with information of {@code ProfileItem}.
+     * Creates a scrollable list panel with information of {@code ProfileItem}.
      *
      * @param profileItemsList List containing all the profile item in the storage.
      */
@@ -22,7 +22,7 @@ public class ProfileListPanel extends ListPanel<ProfileItem> {
     }
 
     /**
-     * Initializes each cell in the list panel with information of {@code ProfileItem}.
+     * Creates each cell in the list panel with information of {@code ProfileItem}.
      */
     class ProfileListViewCell extends ListCell<ProfileItem> {
 

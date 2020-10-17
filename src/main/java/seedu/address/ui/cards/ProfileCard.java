@@ -21,7 +21,7 @@ public class ProfileCard extends Card<ProfileItem> {
     private static final int IMAGE_TRANSLATE_Y = -25;
 
     /**
-     * Initializes a card display with information of {@code profileItem} and with a index of {@code displayIndex}.
+     * Creates a card display with information of {@code profileItem} and with a index of {@code displayIndex}.
      *
      * @param profileItem The profile item to be displayed.
      * @param displayedIndex The index of the profile item.

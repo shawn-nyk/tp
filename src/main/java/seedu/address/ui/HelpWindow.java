@@ -28,7 +28,7 @@ public class HelpWindow extends UiPart<Stage> {
     private Label helpMessage;
 
     /**
-     * Initializes a new HelpWindow.
+     * Creates a new HelpWindow.
      *
      * @param root Stage to use as the root of the HelpWindow.
      */
@@ -38,7 +38,7 @@ public class HelpWindow extends UiPart<Stage> {
     }
 
     /**
-     * Initializes a new HelpWindow.
+     * Creates a new HelpWindow.
      */
     public HelpWindow() {
         this(new Stage());

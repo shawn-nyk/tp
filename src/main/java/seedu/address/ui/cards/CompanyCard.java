@@ -15,7 +15,7 @@ import seedu.address.model.company.CompanyItem;
 public class CompanyCard extends Card<CompanyItem> {
 
     /**
-     * Initializes a card display with information of {@code companyItem} and with a index of {@code displayIndex}.
+     * Creates a card display with information of {@code companyItem} and with a index of {@code displayIndex}.
      *
      * @param companyItem The company item to be displayed.
      * @param displayedIndex The index of the profile item.

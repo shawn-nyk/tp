@@ -26,7 +26,7 @@ public class UiManager implements Ui {
     private MainWindow mainWindow;
 
     /**
-     * Initializes a {@code UiManager} with the given {@code Logic}.
+     * Creates a {@code UiManager} with the given {@code Logic}.
      *
      * @param logic The logic unit of the app.
      */

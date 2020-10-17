@@ -54,7 +54,7 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
     private TextFlow l3;
 
     /**
-     * Initializes a card with information regarding {@code item} with index of {@code displayedIndex}.
+     * Creates a card with information regarding {@code item} with index of {@code displayedIndex}.
      *
      * @param item The item to be displayed.
      * @param displayedIndex The index of the item.

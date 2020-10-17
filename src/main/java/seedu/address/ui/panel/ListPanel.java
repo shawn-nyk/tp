@@ -27,7 +27,7 @@ public abstract class ListPanel<T extends Item> extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(ListPanel.class);
 
     /**
-     * Initializes a scrollable list panel with information of {@code Item}.
+     * Creates a scrollable list panel with information of {@code Item}.
      *
      * @param itemList List containing all the item in the storage.
      */

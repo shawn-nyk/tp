@@ -20,7 +20,7 @@ public abstract class UiPart<T> {
     private final FXMLLoader fxmlLoader = new FXMLLoader();
 
     /**
-     * Constructs a UiPart with the specified FXML file URL.
+     * Creates a UiPart with the specified FXML file URL.
      * The FXML file must not specify the {@code fx:controller} attribute.
      *
      * @param fxmlFileUrl A URL representation of the fxml file url.
@@ -30,7 +30,7 @@ public abstract class UiPart<T> {
     }
 
     /**
-     * Constructs a UiPart using the specified FXML file within {@link #FXML_FILE_FOLDER}.
+     * Creates a UiPart using the specified FXML file within {@link #FXML_FILE_FOLDER}.
      *
      * @param fxmlFileName String representation of the fxml file name.
      */
@@ -39,7 +39,7 @@ public abstract class UiPart<T> {
     }
 
     /**
-     * Constructs a UiPart with the specified FXML file URL and root object.
+     * Creates a UiPart with the specified FXML file URL and root object.
      * The FXML file must not specify the {@code fx:controller} attribute.
      *
      * @param fxmlFileUrl A URL representation of the fxml file url.
@@ -50,7 +50,7 @@ public abstract class UiPart<T> {
     }
 
     /**
-     * Constructs a UiPart with the specified FXML file within {@link #FXML_FILE_FOLDER} and root object.
+     * Creates a UiPart with the specified FXML file within {@link #FXML_FILE_FOLDER} and root object.
      *
      * @param fxmlFileName String representation of the fxml file name.
      * @param root The root object of the scene graph of this UiPart.

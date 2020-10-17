@@ -79,7 +79,7 @@ public class MainWindow extends UiPart<Stage> {
     private VBox tabsContainer;
 
     /**
-     * Initializes a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
+     * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      * @param primaryStage The main stage of the app.
      * @param logic The logic unit of the app.
      */

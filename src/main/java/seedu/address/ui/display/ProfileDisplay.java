@@ -36,7 +36,7 @@ public class ProfileDisplay extends InformationDisplay<ProfileItem> {
     };
 
     /**
-     * Initializes a {@code ProfileDisplay} in the given {@code primaryStage}.
+     * Creates a {@code ProfileDisplay} in the given {@code primaryStage}.
      *
      * @param primaryStage The main stage of the app.
      * @param profileItem The profile item to be displayed.

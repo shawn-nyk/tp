@@ -25,7 +25,7 @@ public class ResultDisplay extends UiPart<Region> {
     private TextFlow resultDisplay;
 
     /**
-     * Initializes a display containing the results of the command.
+     * Creates a display containing the results of the command.
      */
     public ResultDisplay() {
         super(FXML);

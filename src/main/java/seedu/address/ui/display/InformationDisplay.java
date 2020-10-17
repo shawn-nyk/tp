@@ -61,7 +61,7 @@ public abstract class InformationDisplay<T extends Item> extends UiPart<Region> 
     private VBox informationDisplayContainer;
 
     /**
-     * Initializes a {@code InformationDisplay} in the given {@code primaryStage}.
+     * Creates a {@code InformationDisplay} in the given {@code primaryStage}.
      *
      * @param primaryStage The main stage of the app.
      * @param item The item to be displayed.
