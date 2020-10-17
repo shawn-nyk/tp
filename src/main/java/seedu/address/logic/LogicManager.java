@@ -87,7 +87,6 @@ public class LogicManager implements Logic {
         return model.getProfileList().getFilteredItemList();
     }
 
-
     @Override
     public Path getAddressBookFilePath() {
         return model.getInternHunterFilePath();

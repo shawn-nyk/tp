@@ -1,5 +1,7 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -99,5 +101,27 @@ public class SwitchCommandTest {
         model.setTabName(TabName.PROFILE);
         expectedModel.setTabName(TabName.PROFILE);
         assertCommandSuccess(new SwitchCommand(TabName.PROFILE), model, expectedCommandResult, expectedModel);
+    }
+
+    @Test
+    public void equals() {
+        SwitchCommand switchCommand = new SwitchCommand(TabName.COMPANY);
+        // same values -> returns true
+        assertTrue(switchCommand.equals(new SwitchCommand(TabName.COMPANY)));
+
+        // same object -> returns true
+        assertTrue(switchCommand.equals(switchCommand));
+
+        // null -> returns false
+        assertFalse(switchCommand.equals(null));
+
+        // different types -> returns false
+        assertFalse(switchCommand.equals(0.5f));
+
+        // different values (Profile tab) -> returns false
+        assertFalse(switchCommand.equals(new SwitchCommand(TabName.PROFILE)));
+
+        // different values (Application tab) -> returns false
+        assertFalse(switchCommand.equals(new SwitchCommand(TabName.APPLICATION)));
     }
 }
