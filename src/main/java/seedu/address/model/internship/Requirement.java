@@ -3,7 +3,8 @@ package seedu.address.model.internship;
 import seedu.address.model.wrapper.NonEmptyString;
 
 /**
- * Requirement is an optional field in an InternshipItem. It can only hold a non-empty string.
+ * Requirement is an optional field in an InternshipItem.
+ * Guarantees: immutable; is valid as declared in {@link #isValidRequirement(String)}
  */
 public class Requirement extends NonEmptyString {
 

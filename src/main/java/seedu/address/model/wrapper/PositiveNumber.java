@@ -11,7 +11,7 @@ public abstract class PositiveNumber {
 
     public static final String VALIDATION_REGEX = "^[1-9]\\d*";
 
-    public final String value;
+    private final String value;
 
     /**
      * Constructs a {@code PositiveNumber}.
@@ -30,6 +30,10 @@ public abstract class PositiveNumber {
      */
     public static boolean isValidPositiveNumber(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    public String getValue() {
+        return value;
     }
 
     @Override

@@ -39,7 +39,7 @@ public class JsonAdaptedRequirement {
      * @throws IllegalValueException if there were any data constraints violated in the adapted requirement.
      */
     public Requirement toModelType() throws IllegalValueException {
-        if (!Requirement.isValidNonEmptyString(requirement)) {
+        if (!Requirement.isValidRequirement(requirement)) {
             throw new IllegalValueException(Requirement.MESSAGE_CONSTRAINTS);
         }
         return new Requirement(requirement);

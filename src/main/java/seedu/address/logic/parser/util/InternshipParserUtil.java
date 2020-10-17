@@ -28,7 +28,7 @@ public class InternshipParserUtil {
     public static JobTitle parseJobTitle(String title) throws ParseException {
         requireNonNull(title);
         String trimmedTitle = title.trim();
-        if (!JobTitle.isValidAlphaNumericWord(trimmedTitle)) {
+        if (!JobTitle.isValidJobTitle(trimmedTitle)) {
             throw new ParseException(JobTitle.MESSAGE_CONSTRAINTS);
         }
         return new JobTitle(trimmedTitle);
@@ -58,7 +58,7 @@ public class InternshipParserUtil {
     public static Wage parseWage(String wage) throws ParseException {
         requireNonNull(wage);
         String trimmedWage = wage.trim();
-        if (!Wage.isValidPositiveNumber(trimmedWage)) {
+        if (!Wage.isValidWage(trimmedWage)) {
             throw new ParseException(Wage.MESSAGE_CONSTRAINTS);
         }
         return new Wage(trimmedWage);

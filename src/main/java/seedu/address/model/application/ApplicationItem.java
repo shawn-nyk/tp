@@ -2,6 +2,9 @@ package seedu.address.model.application;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.commons.util.GeneralStringUtil.COMMA_WITH_SPACE;
+import static seedu.address.model.util.ApplicationItemUtil.DATE_OUTPUT_NAME;
+import static seedu.address.model.util.ApplicationItemUtil.STATUS_OUTPUT_NAME;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.DATE_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.STATUS_DISPLAY_NAME;
@@ -30,6 +33,9 @@ public class ApplicationItem extends Item {
 
     /**
      * Every field must be present and not null.
+     * @param internshipItem Internship item.
+     * @param status Status.
+     * @param statusDate Status date.
      */
     public ApplicationItem(InternshipItem internshipItem, Status status, StatusDate statusDate) {
         requireAllNonNull(internshipItem, status, statusDate);
@@ -40,7 +46,7 @@ public class ApplicationItem extends Item {
 
     /**
      * Creates an application item using the internship item.
-     * Method is used to match internships with their application.
+     * Constructor is used to match internships with their application.
      *
      * @param internshipItem Internship item.
      */
@@ -166,10 +172,10 @@ public class ApplicationItem extends Item {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getInternshipItem())
-                .append("Status: ")
+                .append(STATUS_OUTPUT_NAME)
                 .append(getStatus())
-                .append(", ")
-                .append(" Date: ")
+                .append(COMMA_WITH_SPACE)
+                .append(DATE_OUTPUT_NAME)
                 .append(getStatusDate());
         return builder.toString();
     }

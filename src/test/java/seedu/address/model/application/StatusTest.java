@@ -16,7 +16,6 @@ public class StatusTest {
 
     private static final String BLANK_STATUS = "";
     private static final String VALID_STATUS = "APPLIED";
-    private static final String VALID_STATUS_TO_STRING = "Applied";
     private static final String INVALID_STATUS = "DEAD";
 
     @Test
@@ -41,9 +40,9 @@ public class StatusTest {
     }
 
     @Test
-    public void toString_validFormats_success() {
+    public void toString_validFormat_success() {
         Status status1 = Status.valueOf(VALID_STATUS);
-        assertEquals(VALID_STATUS_TO_STRING, status1.toString());
+        assertEquals(APPLIED_KEYWORD, status1.toString());
     }
 
     @Test

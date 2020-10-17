@@ -1,4 +1,6 @@
-package seedu.address.testutil;
+package seedu.address.testutil.internship;
+
+import static java.util.Objects.requireNonNull;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -18,9 +20,9 @@ import seedu.address.model.internship.Wage;
 public class InternshipItemBuilder {
 
     public static final String DEFAULT_COMPANY_NAME = "Google";
-    public static final String DEFAULT_JOB_TITLE = "Software Engineer";
+    public static final String DEFAULT_JOB_TITLE = "Software Tester";
     public static final String DEFAULT_PERIOD = "Summer break, 3 months";
-    public static final String DEFAULT_WAGE = "3000";
+    public static final String DEFAULT_WAGE = "3500";
 
     private CompanyName companyName;
     private JobTitle jobTitle;
@@ -43,6 +45,7 @@ public class InternshipItemBuilder {
      * Initializes the InternshipItemBuilder with the data of {@code internshipToCopy}.
      */
     public InternshipItemBuilder(InternshipItem internshipToCopy) {
+        requireNonNull(internshipToCopy);
         companyName = internshipToCopy.getCompanyName();
         jobTitle = internshipToCopy.getJobTitle();
         period = internshipToCopy.getPeriod();
@@ -54,6 +57,7 @@ public class InternshipItemBuilder {
      * Sets the {@code CompanyName} of the {@code InternshipItem} that we are building.
      */
     public InternshipItemBuilder withCompanyName(String companyName) {
+        requireNonNull(companyName);
         this.companyName = new CompanyName(companyName);
         return this;
     }
@@ -62,6 +66,7 @@ public class InternshipItemBuilder {
      * Sets the {@code JobTitle} of the {@code InternshipItem} that we are building.
      */
     public InternshipItemBuilder withJobTitle(String jobTitle) {
+        requireNonNull(jobTitle);
         this.jobTitle = new JobTitle(jobTitle);
         return this;
     }
@@ -70,6 +75,7 @@ public class InternshipItemBuilder {
      * Sets the {@code Period} of the {@code InternshipItem} that we are building.
      */
     public InternshipItemBuilder withPeriod(String period) {
+        requireNonNull(period);
         this.period = new Period(period);
         return this;
     }
@@ -78,6 +84,7 @@ public class InternshipItemBuilder {
      * Sets the {@code Wage} of the {@code InternshipItem} that we are building.
      */
     public InternshipItemBuilder withWage(String wage) {
+        requireNonNull(wage);
         this.wage = new Wage(wage);
         return this;
     }
@@ -87,6 +94,7 @@ public class InternshipItemBuilder {
      * and set it to the {@code InternshipItem} that we are building.
      */
     public InternshipItemBuilder withRequirements(String... requirements) {
+        requireNonNull(requirements);
         this.requirements = getRequirementSet(requirements);
         return this;
     }

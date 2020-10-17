@@ -1,6 +1,12 @@
 package seedu.address.model.internship;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.commons.util.GeneralStringUtil.COMMA_WITH_SPACE;
+import static seedu.address.commons.util.GeneralStringUtil.DASH;
+import static seedu.address.model.util.InternshipItemUtil.COMPANY_OUTPUT_NAME;
+import static seedu.address.model.util.InternshipItemUtil.PERIOD_OUTPUT_NAME;
+import static seedu.address.model.util.InternshipItemUtil.REQUIREMENTS_OUTPUT_NAME;
+import static seedu.address.model.util.InternshipItemUtil.WAGE_OUTPUT_NAME;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.JOB_TITLE_DISPLAY_NAME;
@@ -61,6 +67,11 @@ public class InternshipItem extends Item {
         return companyName;
     }
 
+    /**
+     * Sets the company name of this InternshipItem.
+     *
+     * @param companyName Company name to set.
+     */
     public void setCompanyName(CompanyName companyName) {
         this.companyName = companyName;
     }
@@ -231,19 +242,19 @@ public class InternshipItem extends Item {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getJobTitle())
-                .append(", ")
-                .append(" Company Name: ")
+                .append(COMMA_WITH_SPACE)
+                .append(COMPANY_OUTPUT_NAME)
                 .append(getCompanyName())
-                .append(", ")
-                .append(" Period: ")
+                .append(COMMA_WITH_SPACE)
+                .append(PERIOD_OUTPUT_NAME)
                 .append(getPeriod())
-                .append(", ")
-                .append(" Wage: ")
+                .append(COMMA_WITH_SPACE)
+                .append(WAGE_OUTPUT_NAME)
                 .append(getWage())
-                .append(", ")
-                .append(" Requirements: ")
-                .append(getRequirements().size() <= 0 ? "-" : getRequirements())
-                .append("\n");
+                .append(COMMA_WITH_SPACE)
+                .append(REQUIREMENTS_OUTPUT_NAME)
+                .append(getRequirements().isEmpty() ? DASH : getRequirements())
+                .append(System.lineSeparator());
         return builder.toString();
     }
 

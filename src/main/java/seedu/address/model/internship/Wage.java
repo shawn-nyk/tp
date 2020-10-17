@@ -4,10 +4,11 @@ import seedu.address.model.wrapper.PositiveNumber;
 
 /**
  * Represents an InternshipItem's wage.
- * Guarantees: immutable; is valid as declared in {@link #isValidPositiveNumber(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidWage(String)}
  */
 public class Wage extends PositiveNumber {
 
+    public static final String WAGE_SYMBOL = "$";
     public static final String MESSAGE_CONSTRAINTS = "Wage should only contain a positive number";
 
     /**
@@ -25,7 +26,7 @@ public class Wage extends PositiveNumber {
      * @param wage String to test.
      * @return True if the given string is a valid wage, false otherwise.
      */
-    public static boolean isValidJobTitle(String wage) {
+    public static boolean isValidWage(String wage) {
         return isValidPositiveNumber(wage);
     }
 
@@ -36,7 +37,7 @@ public class Wage extends PositiveNumber {
      */
     @Override
     public String toString() {
-        return String.format("$%s", value);
+        return WAGE_SYMBOL + getValue();
     }
 
 }
