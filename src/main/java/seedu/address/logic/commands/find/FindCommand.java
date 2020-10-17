@@ -13,8 +13,8 @@ public abstract class FindCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Finds if an item is contained in "
-        + COMPANY_NAME + " or"
-        + APPLICATION_NAME + " or"
+        + COMPANY_NAME + " or "
+        + APPLICATION_NAME + " or "
         + PROFILE_NAME + ".\n"
         + "Parameters: find ITEM_TYPE description\n" // NOTE THAT THIS NAMING IS JUST TEMPORARY WILL CHANGE IF CAN
         + "Example: "
