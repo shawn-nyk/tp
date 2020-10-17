@@ -1,5 +1,6 @@
 package seedu.address.logic.commands.util;
 
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 import static seedu.address.model.util.ItemUtil.PROFILE_NAME;
@@ -65,7 +66,8 @@ public class CommandUtil {
      * @return Feedback message of the operation result for display.
      */
     public static CommandResult getCommandResult(Model model, String message, TabName tabName) {
-        assert model != null && message != null && tabName != null;
+        requireAllNonNull(model, message, tabName);
+
         if (model.getTabName() != tabName) {
             model.setTabName(tabName);
             return new CommandResult(message, false, false, true, true);
@@ -88,8 +90,7 @@ public class CommandUtil {
     public static CommandResult getCommandResult(Model model, String message, TabName currentTabName,
         TabName changedTabName, Index index) {
 
-        assert model != null && message != null && currentTabName != null && changedTabName != null && index != null;
-
+        requireAllNonNull(model, message, currentTabName, changedTabName, index);
         handleDeleteDisplaySwitchIndex(model, changedTabName, index);
         if (currentTabName != changedTabName) {
             model.setTabName(changedTabName);

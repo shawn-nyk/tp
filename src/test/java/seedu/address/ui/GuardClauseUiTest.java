@@ -23,7 +23,6 @@ public class GuardClauseUiTest {
     private static final String NON_EMPTY_STRING = "a";
     private static final String EMPTY_LIST_STRING = "[]";
     private static final String NON_EMPTY_LIST_STRING = "[a]";
-
     private ObservableList<ApplicationItemStub> applicationItemStubList;
     private ObservableList<ProfileItemStub> profileItemStubList;
     private ObservableList<CompanyItemStub> companyItemStubList;
@@ -118,30 +117,12 @@ public class GuardClauseUiTest {
 
         // non empty string
         assertTrue(IS_SAME_STRING.test(NON_EMPTY_STRING, NON_EMPTY_STRING));
-
-        // empty list string representation
-        assertTrue(IS_SAME_STRING.test(EMPTY_LIST_STRING, EMPTY_LIST_STRING));
-
-        // non empty list string representation
-        assertTrue(IS_SAME_STRING.test(NON_EMPTY_LIST_STRING, NON_EMPTY_LIST_STRING));
     }
 
     @Test
     public void isSameString_false_success() {
         // empty string against non empty string
         assertFalse(IS_SAME_STRING.test(EMPTY_STRING, NON_EMPTY_STRING));
-
-        // empty string against empty list string
-        assertFalse(IS_SAME_STRING.test(EMPTY_STRING, EMPTY_LIST_STRING));
-
-        // empty string against non empty list string
-        assertFalse(IS_SAME_STRING.test(EMPTY_STRING, NON_EMPTY_LIST_STRING));
-
-        // non empty string against empty list string
-        assertFalse(IS_SAME_STRING.test(NON_EMPTY_STRING, EMPTY_LIST_STRING));
-
-        // non empty string against non empty list string
-        assertFalse(IS_SAME_STRING.test(NON_EMPTY_STRING, NON_EMPTY_LIST_STRING));
 
         // empty list string against non empty list string
         assertFalse(IS_SAME_STRING.test(EMPTY_LIST_STRING, NON_EMPTY_LIST_STRING));
@@ -156,6 +137,11 @@ public class GuardClauseUiTest {
         assertFalse(IS_SAME_STRING.test(null, null));
     }
 
+
+    /**
+     * TODO Note that all stub class to be removed after all the sample is made
+     * SampleApplicationItems, SampleInternshipItems, SampleCompanyItems, SampleProfileItems.
+     */
     static class ApplicationItemStub extends Item {
 
         @Override
