@@ -1,7 +1,7 @@
 package seedu.address.ui.panel;
 
 /**
- * A class that holds all magic strings related to the UI.
+ * Holds all magic strings related to the UI.
  */
 public class PanelDisplayKeyword {
 

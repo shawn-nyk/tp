@@ -13,7 +13,7 @@ import seedu.address.model.company.CompanyItem;
 import seedu.address.ui.tabs.TabName;
 
 /**
- * A display containing information about the chosen company.
+ * A UI component that displays all the information of a {@code CompanyItem}.
  */
 public class CompanyDisplay extends InformationDisplay<CompanyItem> {
 
@@ -49,7 +49,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
     }
 
     /**
-     * Initializes a {@code CompanyDisplay} in the given {@code primaryStage}.
+     * Creates a {@code CompanyDisplay} in the given {@code primaryStage}.
      *
      * @param primaryStage The main stage of the app.
      * @param companyItem The company item to be displayed.
@@ -60,7 +60,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
     }
 
     /**
-     * Set the title and information of the {@code companyItem} for display.
+     * Sets the title and information of the {@code companyItem} for display.
      */
     private void initializeCompanyDisplayGui() {
         setInformationTitle();
@@ -68,7 +68,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
     }
 
     /**
-     * Set the title of the {@code companyItem} for display.
+     * Sets the title of the {@code companyItem} for display.
      */
     private void setInformationTitle() {
         Object jobTitle = mapping.get(COMPANY_DISPLAY_NAME);
@@ -76,7 +76,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
     }
 
     /**
-     * Set the information of the {@code companyItem} for display.
+     * Sets the information of the {@code companyItem} for display.
      */
     private void setInformation() {
         setInformation(editString, formatInternshipDetail, isIndustriesOrInternship, TabName.COMPANY,

@@ -20,7 +20,7 @@ import javafx.scene.image.Image;
 import seedu.address.model.application.ApplicationItem;
 
 /**
- * An Application display that contains information of {@code ApplicationItem}.
+ * A UI component that displays some information of a {@code ApplicationItem}.
  */
 public class ApplicationCard extends Card<ApplicationItem> {
 
@@ -153,7 +153,7 @@ public class ApplicationCard extends Card<ApplicationItem> {
     }
 
     /**
-     * Set the period on the card.
+     * Sets the period on the card.
      */
     private void setPeriod() {
         Object period = mapping.get(PERIOD_DISPLAY_NAME);

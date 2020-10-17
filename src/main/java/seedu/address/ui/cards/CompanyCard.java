@@ -10,7 +10,7 @@ import static seedu.address.ui.panel.PanelDisplayKeyword.PHONE_DISPLAY_NAME;
 import seedu.address.model.company.CompanyItem;
 
 /**
- * A company display that contains information of {@code CompanyItem}.
+ * A UI component that displays some information of a {@code CompanyItem}.
  */
 public class CompanyCard extends Card<CompanyItem> {
 

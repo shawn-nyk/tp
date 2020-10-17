@@ -21,7 +21,7 @@ import seedu.address.ui.UiPart;
 import seedu.address.ui.tabs.TabName;
 
 /**
- * A display that contains information.
+ * A UI component that displays all information of a {@code Item}.
  */
 public abstract class InformationDisplay<T extends Item> extends UiPart<Region> {
 

@@ -91,7 +91,7 @@ public class Tabs extends VBox {
     }
 
     /**
-     * Switch the tab display depending on {@code tabName}.
+     * Switches the tab display depending on {@code tabName}.
      *
      * @param tabName The tab to be switched to.
      */

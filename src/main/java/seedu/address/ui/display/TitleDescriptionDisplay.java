@@ -14,7 +14,7 @@ import seedu.address.ui.tabs.TabName;
 import seedu.address.ui.textstyle.TitleDescription;
 
 /**
- * A display containing a title and a description.
+ * A UI component that displays the {@code title} and {@code description} of an {@code Item}.
  */
 public class TitleDescriptionDisplay extends HBox {
 
@@ -56,7 +56,7 @@ public class TitleDescriptionDisplay extends HBox {
     }
 
     /**
-     * Accessor to add a {@code TitleDescriptionDisplay} with {@code displayTitle}, {@code displayDescription} for
+     * An accessor to add a {@code TitleDescriptionDisplay} with {@code displayTitle}, {@code displayDescription} for
      * {@code tab} display.
      *
      * @param displayTitle A string representing the title for the display.
@@ -83,7 +83,7 @@ public class TitleDescriptionDisplay extends HBox {
     }
 
     /**
-     * Adjust the width of the title based on which {@code tab} display.
+     * Adjusts the width of the title based on which {@code tab} display.
      *
      * @param tab The tab that the display is currently at.
      */

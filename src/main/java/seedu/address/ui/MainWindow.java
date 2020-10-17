@@ -325,7 +325,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Depending on the {@code tabName}, it will switch to a display based on the {@code index}.
+     * Switches the display based on the {@code index} and {@code tabName}.
      */
     public void changeDisplay() {
         TabName tabName = logic.getTabName();

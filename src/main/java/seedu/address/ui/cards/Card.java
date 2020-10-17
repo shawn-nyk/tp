@@ -19,7 +19,7 @@ import seedu.address.ui.UiPart;
 import seedu.address.ui.textstyle.TitleDescription;
 
 /**
- * A UI component that displays information of a {@code Item}.
+ * A UI component that displays some information of a {@code Item}.
  */
 public abstract class Card<T extends Item> extends UiPart<Region> {
 

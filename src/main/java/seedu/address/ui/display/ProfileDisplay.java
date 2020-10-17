@@ -12,7 +12,7 @@ import seedu.address.model.profile.ProfileItem;
 import seedu.address.ui.tabs.TabName;
 
 /**
- * A display containing information about the chosen profile's item.
+ * A UI component that displays all the information of a {@code ProfileItem}.
  */
 public class ProfileDisplay extends InformationDisplay<ProfileItem> {
 
@@ -48,7 +48,7 @@ public class ProfileDisplay extends InformationDisplay<ProfileItem> {
     }
 
     /**
-     * Initializes a {@code ProfileDisplay} in the given {@code primaryStage}.
+     * Creates a {@code ProfileDisplay} in the given {@code primaryStage}.
      *
      * @param primaryStage The main stage of the app.
      * @param profileItem The profile item to be displayed.
@@ -59,7 +59,7 @@ public class ProfileDisplay extends InformationDisplay<ProfileItem> {
     }
 
     /**
-     * Set the title and information of the {@code profileItem} for display.
+     * Sets the title and information of the {@code profileItem} for display.
      */
     private void initializeProfileDisplayGui() {
         setInformationTitle();
@@ -67,7 +67,7 @@ public class ProfileDisplay extends InformationDisplay<ProfileItem> {
     }
 
     /**
-     * Set the title of the {@code profileItem} for display.
+     * Sets the title of the {@code profileItem} for display.
      */
     private void setInformationTitle() {
         Object jobTitle = mapping.get(TITLE_DISPLAY_NAME);
@@ -75,7 +75,7 @@ public class ProfileDisplay extends InformationDisplay<ProfileItem> {
     }
 
     /**
-     * Set the information of the {@code profileItem} for display.
+     * Sets the information of the {@code profileItem} for display.
      */
     private void setAllInformation() {
         setInformation(editString, formatProfileDetail, isDescriptors, TabName.PROFILE, PROFILE_DISPLAY_KEY_LIST);

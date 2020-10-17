@@ -12,7 +12,7 @@ import seedu.address.model.application.ApplicationItem;
 import seedu.address.ui.tabs.TabName;
 
 /**
- * A display containing information about the chosen application.
+ * A UI component that displays all the information of a {@code ApplicationItem}.
  */
 public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
 
@@ -39,7 +39,7 @@ public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
     }
 
     /**
-     * Initializes a {@code ApplicationDisplay} in the given {@code primaryStage}.
+     * Creates a {@code ApplicationDisplay} in the given {@code primaryStage}.
      *
      * @param primaryStage The main stage of the app.
      * @param applicationItem The application item to be displayed.
@@ -50,7 +50,7 @@ public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
     }
 
     /**
-     * Set the title and information of the {@code applicationItem} for display.
+     * Sets the title and information of the {@code applicationItem} for display.
      */
     private void initializeApplicationDisplayGui() {
         setInformationTitle();
@@ -58,7 +58,7 @@ public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
     }
 
     /**
-     * Set the title of the {@code applicationItem} for display.
+     * Sets the title of the {@code applicationItem} for display.
      */
     private void setInformationTitle() {
         Object jobTitle = mapping.get(JOB_TITLE_DISPLAY_NAME);
@@ -66,7 +66,7 @@ public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
     }
 
     /**
-     * Set the information of the {@code applicationItem} for display.
+     * Sets the information of the {@code applicationItem} for display.
      */
     private void setInformation() {
         setInformation(editString, returnSameString, isRequirements, TabName.APPLICATION, APPLICATION_DISPLAY_KEY_LIST);

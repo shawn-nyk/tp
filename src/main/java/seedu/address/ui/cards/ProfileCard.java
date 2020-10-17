@@ -7,7 +7,7 @@ import javafx.scene.transform.Translate;
 import seedu.address.model.profile.ProfileItem;
 
 /**
- * A card display that contains information of {@code ProfileItem}.
+ * A UI component that displays some information of a {@code ProfileItem}.
  */
 public class ProfileCard extends Card<ProfileItem> {
 
