@@ -4,6 +4,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
 import static seedu.address.logic.parser.util.GeneralParserUtil.arePrefixesPresent;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getIndexInPreamble;
+import static seedu.address.logic.parser.util.GeneralParserUtil.parseIndex;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.delete.DeleteInternshipCommand;
@@ -11,7 +12,6 @@ import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.util.GeneralParserUtil;
 
 /**
  * Parses input arguments and creates a new DeleteInternshipCommand object.
@@ -34,7 +34,7 @@ public class DeleteInternshipCommandParser implements Parser<DeleteInternshipCom
         }
 
         Index companyIndex = getIndexInPreamble(argMultimap, DeleteInternshipCommand.MESSAGE_USAGE);
-        Index internshipIndex = GeneralParserUtil.parseIndex(argMultimap.getValue(PREFIX_INDEX).get());
+        Index internshipIndex = parseIndex(argMultimap.getValue(PREFIX_INDEX).get());
 
         return new DeleteInternshipCommand(companyIndex, internshipIndex);
     }
