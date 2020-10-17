@@ -1,8 +1,12 @@
 package seedu.address.logic.commands.util;
 
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 import static seedu.address.model.util.ItemUtil.PROFILE_NAME;
+import static seedu.address.ui.tabs.TabName.APPLICATION;
+import static seedu.address.ui.tabs.TabName.COMPANY;
+import static seedu.address.ui.tabs.TabName.PROFILE;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -62,6 +66,8 @@ public class CommandUtil {
      * @return Feedback message of the operation result for display.
      */
     public static CommandResult getCommandResult(Model model, String message, TabName tabName) {
+        requireAllNonNull(model, message, tabName);
+
         if (model.getTabName() != tabName) {
             model.setTabName(tabName);
             return new CommandResult(message, false, false, true, true);
@@ -84,6 +90,7 @@ public class CommandUtil {
     public static CommandResult getCommandResult(Model model, String message, TabName currentTabName,
         TabName changedTabName, Index index) {
 
+        requireAllNonNull(model, message, currentTabName, changedTabName, index);
         handleDeleteDisplaySwitchIndex(model, changedTabName, index);
         if (currentTabName != changedTabName) {
             model.setTabName(changedTabName);
@@ -102,6 +109,8 @@ public class CommandUtil {
      */
     private static void handleDeleteDisplaySwitchIndex(Model model, TabName tabName, Index index) {
         Index currentIndex;
+        assert (tabName.equals(COMPANY) || tabName.equals(APPLICATION) || tabName.equals(PROFILE));
+
         switch (tabName) {
         case COMPANY:
             currentIndex = model.getCompanyViewIndex();
