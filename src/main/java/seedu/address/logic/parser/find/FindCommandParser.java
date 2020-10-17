@@ -12,6 +12,9 @@ import seedu.address.logic.commands.find.FindCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+/**
+ * todo javadocs
+ */
 public class FindCommandParser implements Parser<FindCommand> {
 
     /**
@@ -47,6 +50,9 @@ public class FindCommandParser implements Parser<FindCommand> {
         }
     }
 
+    /**
+     * todo javadocs
+     */
     private void checkCommandDetailsIsNotBlank(String commandDetails, String itemType) throws ParseException {
         if (commandDetails.isBlank()) {
             switch (itemType) {

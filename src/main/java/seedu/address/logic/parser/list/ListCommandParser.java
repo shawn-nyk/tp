@@ -11,6 +11,9 @@ import seedu.address.logic.commands.list.ListCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+/**
+ * todo javadocs
+ */
 public class ListCommandParser implements Parser<ListCommand> {
 
     /**
