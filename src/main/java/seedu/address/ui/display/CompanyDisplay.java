@@ -63,14 +63,14 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
      * Sets the title and information of the {@code companyItem} for display.
      */
     private void initializeCompanyDisplayGui() {
-        setInformationTitle();
+        setCompanyName();
         setInformation();
     }
 
     /**
      * Sets the title of the {@code companyItem} for display.
      */
-    private void setInformationTitle() {
+    private void setCompanyName() {
         Object jobTitle = mapping.get(COMPANY_DISPLAY_NAME);
         setInformationTitle(jobTitle.toString());
     }

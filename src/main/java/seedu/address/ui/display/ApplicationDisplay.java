@@ -53,14 +53,14 @@ public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
      * Sets the title and information of the {@code applicationItem} for display.
      */
     private void initializeApplicationDisplayGui() {
-        setInformationTitle();
+        setJobTitle();
         setInformation();
     }
 
     /**
      * Sets the title of the {@code applicationItem} for display.
      */
-    private void setInformationTitle() {
+    private void setJobTitle() {
         Object jobTitle = mapping.get(JOB_TITLE_DISPLAY_NAME);
         setInformationTitle(jobTitle.toString());
     }

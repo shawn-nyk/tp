@@ -129,7 +129,7 @@ public class Tabs extends VBox {
      * Sets the display and tab to be of {@code application} in the {@code stage}
      * Currently it only switches the information display.
      */
-    public void selectApplication() {
+    private void selectApplication() {
         // adjust tab bar position
         setColor(application, APPLICATION_Y_TRANSLATE);
         setTransparent(company, COMPANY_Y_TRANSLATE);
@@ -140,7 +140,7 @@ public class Tabs extends VBox {
      * Sets the display and tab to be of {@code company} in the {@code stage}
      * Currently it only switches the information display.
      */
-    public void selectCompany() {
+    private void selectCompany() {
         // adjust tab bar position
         setTransparent(application, APPLICATION_Y_TRANSLATE);
         setColor(company, COMPANY_Y_TRANSLATE);
@@ -151,7 +151,7 @@ public class Tabs extends VBox {
      * Sets the display and tab to be of {@code profile} in the {@code stage}
      * Currently it only switches the information display.
      */
-    public void selectProfile() {
+    private void selectProfile() {
         // adjust tab bar position
         setTransparent(application, APPLICATION_Y_TRANSLATE);
         setTransparent(company, COMPANY_Y_TRANSLATE);

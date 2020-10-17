@@ -62,14 +62,14 @@ public class ProfileDisplay extends InformationDisplay<ProfileItem> {
      * Sets the title and information of the {@code profileItem} for display.
      */
     private void initializeProfileDisplayGui() {
-        setInformationTitle();
-        setAllInformation();
+        setDisplayName();
+        setProfileInformation();
     }
 
     /**
      * Sets the title of the {@code profileItem} for display.
      */
-    private void setInformationTitle() {
+    private void setDisplayName() {
         Object jobTitle = mapping.get(TITLE_DISPLAY_NAME);
         setInformationTitle(jobTitle.toString());
     }
@@ -77,7 +77,7 @@ public class ProfileDisplay extends InformationDisplay<ProfileItem> {
     /**
      * Sets the information of the {@code profileItem} for display.
      */
-    private void setAllInformation() {
+    private void setProfileInformation() {
         setInformation(editString, formatProfileDetail, isDescriptors, TabName.PROFILE, PROFILE_DISPLAY_KEY_LIST);
     }
 
