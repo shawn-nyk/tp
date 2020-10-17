@@ -35,8 +35,12 @@ public class TitleDescriptionDisplay extends HBox {
     private VBox descriptionInformation;
 
     /**
-     * Constructs a {@code TitleDescriptionDisplay} with {@code displayTitle}, {@code displayDescription} for
+     * Initializes a {@code TitleDescriptionDisplay} with {@code displayTitle}, {@code displayDescription} for
      * {@code tab} display.
+     *
+     * @param displayTitle A string representing the title for the display.
+     * @param displayDescription A string representing the description for the display.
+     * @param tab The tab that this displayed should be shown at.
      */
     private TitleDescriptionDisplay(String displayTitle, String displayDescription, TabName tab) {
         try {
@@ -54,6 +58,11 @@ public class TitleDescriptionDisplay extends HBox {
     /**
      * Accessor to add a {@code TitleDescriptionDisplay} with {@code displayTitle}, {@code displayDescription} for
      * {@code tab} display.
+     *
+     * @param displayTitle A string representing the title for the display.
+     * @param displayDescription A string representing the description for the display.
+     * @param tab The tab that this displayed should be shown at.
+     * @return A TitleDescriptionDisplay.
      */
     public static TitleDescriptionDisplay addTitleDescriptionDisplay(String displayTitle, String displayDescription,
         TabName tab) {
@@ -63,6 +72,9 @@ public class TitleDescriptionDisplay extends HBox {
 
     /**
      * Adds a title and description into the {@code TitleDescriptionDisplay}.
+     *
+     * @param displayTitle A string representing the title for the display.
+     * @param displayDescription A string representing the description for the display.
      */
     private void addDisplayInformation(String displayTitle, String displayDescription) {
         TitleDescription titleDescription = createTitleDescription(displayTitle, displayDescription);
@@ -72,6 +84,8 @@ public class TitleDescriptionDisplay extends HBox {
 
     /**
      * Adjust the width of the title based on which {@code tab} display.
+     *
+     * @param tab The tab that the display is currently at.
      */
     private void setWidth(TabName tab) {
         switch (tab) {

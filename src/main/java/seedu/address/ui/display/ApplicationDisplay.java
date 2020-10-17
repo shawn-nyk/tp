@@ -17,7 +17,20 @@ import seedu.address.ui.tabs.TabName;
 public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
 
     /**
-     * Constructs a {@code ApplicationDisplay} in the given {@code primaryStage}.
+     * A predicate that checks whether the current key is requirements.
+     */
+    private final Predicate<String> isRequirements = key -> key.equals(REQUIREMENTS_DISPLAY_NAME);
+
+    /**
+     * A function that returns back the same string. Mainly for polymorphism usage.
+     */
+    private final Function<String, String> returnSameString = string -> string;
+
+    /**
+     * Initializes a {@code ApplicationDisplay} in the given {@code primaryStage}.
+     *
+     * @param primaryStage The main stage of the app.
+     * @param applicationItem The application item to be displayed.
      */
     private ApplicationDisplay(Stage primaryStage, ApplicationItem applicationItem) {
         super(primaryStage, applicationItem);
@@ -26,14 +39,18 @@ public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
     }
 
     /**
-     * Creates the {@code ApplicationDisplay} information in the {@code primaryStage}.
+     * Initializes a {@code ApplicationDisplay} in the given {@code primaryStage}.
+     *
+     * @param primaryStage The main stage of the app.
+     * @param applicationItem The application item to be displayed.
+     * @return An Application Display with information of the {@code applicationItem} in {@code primaryStage}.
      */
     public static ApplicationDisplay getApplicationDisplay(Stage primaryStage, ApplicationItem applicationItem) {
         return new ApplicationDisplay(primaryStage, applicationItem);
     }
 
     /**
-     * todo Javadocs
+     * Set the title and information of the {@code applicationItem} for display.
      */
     private void initializeApplicationDisplayGui() {
         setInformationTitle();
@@ -41,7 +58,7 @@ public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
     }
 
     /**
-     * todo Javadocs
+     * Set the title of the {@code applicationItem} for display.
      */
     private void setInformationTitle() {
         Object jobTitle = mapping.get(JOB_TITLE_DISPLAY_NAME);
@@ -49,12 +66,10 @@ public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
     }
 
     /**
-     * todo Javadocs
+     * Set the information of the {@code applicationItem} for display.
      */
     private void setInformation() {
-        Predicate<String> isRequirements = key -> key.equals(REQUIREMENTS_DISPLAY_NAME);
-        Function<String, String> editString = string -> string.substring(1, string.length() - 1);
-        setInformation(editString, isRequirements, TabName.APPLICATION, APPLICATION_DISPLAY_KEY_LIST);
+        setInformation(editString, returnSameString, isRequirements, TabName.APPLICATION, APPLICATION_DISPLAY_KEY_LIST);
     }
 
 }

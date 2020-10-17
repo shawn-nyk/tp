@@ -22,6 +22,8 @@ public abstract class UiPart<T> {
     /**
      * Constructs a UiPart with the specified FXML file URL.
      * The FXML file must not specify the {@code fx:controller} attribute.
+     *
+     * @param fxmlFileUrl A URL representation of the fxml file url.
      */
     public UiPart(URL fxmlFileUrl) {
         loadFxmlFile(fxmlFileUrl, null);
@@ -29,7 +31,8 @@ public abstract class UiPart<T> {
 
     /**
      * Constructs a UiPart using the specified FXML file within {@link #FXML_FILE_FOLDER}.
-     * @see #UiPart(URL)
+     *
+     * @param fxmlFileName String representation of the fxml file name.
      */
     public UiPart(String fxmlFileName) {
         this(getFxmlFileUrl(fxmlFileName));
@@ -38,6 +41,9 @@ public abstract class UiPart<T> {
     /**
      * Constructs a UiPart with the specified FXML file URL and root object.
      * The FXML file must not specify the {@code fx:controller} attribute.
+     *
+     * @param fxmlFileUrl A URL representation of the fxml file url.
+     * @param root The root object of the scene graph of this UiPart.
      */
     public UiPart(URL fxmlFileUrl, T root) {
         loadFxmlFile(fxmlFileUrl, root);
@@ -45,14 +51,16 @@ public abstract class UiPart<T> {
 
     /**
      * Constructs a UiPart with the specified FXML file within {@link #FXML_FILE_FOLDER} and root object.
-     * @see #UiPart(URL, T)
+     *
+     * @param fxmlFileName String representation of the fxml file name.
+     * @param root The root object of the scene graph of this UiPart.
      */
     public UiPart(String fxmlFileName, T root) {
         this(getFxmlFileUrl(fxmlFileName), root);
     }
 
     /**
-     * Returns the root object of the scene graph of this UiPart.
+     * @return the root object of the scene graph of this UiPart.
      */
     public T getRoot() {
         return fxmlLoader.getRoot();
@@ -76,7 +84,10 @@ public abstract class UiPart<T> {
     }
 
     /**
-     * Returns the FXML file URL for the specified FXML file name within {@link #FXML_FILE_FOLDER}.
+     * Converts the String fxml file name into an URL.
+     *
+     * @param fxmlFileName The String representing the fxml file name directory.
+     * @return the URL of the fxml file.
      */
     private static URL getFxmlFileUrl(String fxmlFileName) {
         requireNonNull(fxmlFileName);

@@ -26,7 +26,7 @@ public class ExitDialog extends UiPart<DialogPane> {
     private HelpWindow helpWindow;
 
     /**
-     * Creates a new Exit dialog.
+     * Initializes a new Exit dialog.
      *
      * @param event event that triggers the creation of exit dialog.
      */
