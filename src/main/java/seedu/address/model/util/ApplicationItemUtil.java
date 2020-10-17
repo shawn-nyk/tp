@@ -1,7 +1,7 @@
 package seedu.address.model.util;
 
 /**
- * ApplicationItemFieldsUtil class which provides the strings used in the ApplicationItem.
+ * Contains strings used in the ApplicationItem.
  */
 public class ApplicationItemUtil {
 
