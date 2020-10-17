@@ -92,10 +92,16 @@ public class DateUtilTest {
 
     @Test
     public void convertToDateTime_invalidFormats_throwsAssertionError() {
-        assertThrows(AssertionError.class, () -> convertToDateTime(INVALID_DATE_TIME_ONE), ERROR_MESSAGE);
-        assertThrows(AssertionError.class, () -> convertToDateTime(INVALID_DATE_TIME_TWO), ERROR_MESSAGE);
-        assertThrows(AssertionError.class, () -> convertToDateTime(INVALID_DATE_ONE), ERROR_MESSAGE);
-        assertThrows(AssertionError.class, () -> convertToDateTime(INVALID_DATE_TWO), ERROR_MESSAGE);
+        assertThrows(AssertionError.class, () -> convertToDateTime(INVALID_DATE_TIME_ONE));
+        assertThrows(AssertionError.class, () -> convertToDateTime(INVALID_DATE_TIME_TWO));
+        assertThrows(AssertionError.class, () -> convertToDateTime(INVALID_DATE_ONE));
+        assertThrows(AssertionError.class, () -> convertToDateTime(INVALID_DATE_TWO));
+    }
+
+    @Test
+    public void convertToDateTime_invalidFormatsErrorMessage_success() {
+        AssertionError ae = assertThrows(AssertionError.class, () -> convertToDateTime(INVALID_DATE_TIME_ONE));
+        assertEquals(ERROR_MESSAGE, ae.getMessage());
     }
 
     @Test

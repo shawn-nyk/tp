@@ -62,6 +62,8 @@ public class StatusDateTest {
     @Test
     public void equals_equalityTest_success() {
         assertEquals(VALID_STATUS_DATE_JUNE_2021, VALID_STATUS_DATE_JUNE_2021);
+        final StatusDate statusDateCopy = new StatusDate(DateUtil.convertToDateTime(STATUS_DATE_JUNE_2021));
+        assertEquals(VALID_STATUS_DATE_JUNE_2021, statusDateCopy);
     }
 
     @Test
