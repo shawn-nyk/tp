@@ -59,14 +59,9 @@ public class GeneralParserUtil {
         return argumentMultimap.getPreamble().isEmpty();
     }
 
-    public static Index getIndexInPreamble(ArgumentMultimap argumentMultimap, String messageUsage)
-            throws ParseException {
-
-        try {
-            return parseIndex(argumentMultimap.getPreamble());
-        } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, messageUsage));
-        }
+    public static Index getIndexInPreamble(ArgumentMultimap argumentMultimap) throws ParseException {
+        System.out.println(argumentMultimap.getPreamble());
+        return parseIndex(argumentMultimap.getPreamble());
     }
 
     /**
@@ -88,7 +83,9 @@ public class GeneralParserUtil {
         return itemType;
     }
 
-    /** todo javadocs */
+    /**
+     * todo javadocs
+     */
     public static void isValidItemType(String itemType) throws ParseException {
         if (!itemType.equals(COMPANY_ALIAS)
                 && !itemType.equals(INTERNSHIP_ALIAS)

@@ -26,10 +26,14 @@ import seedu.address.logic.parser.util.GeneralParserUtil;
 import seedu.address.logic.parser.util.InternshipParserUtil;
 import seedu.address.model.internship.Requirement;
 
-/** todo javadocs (shawn) */
+/**
+ * todo javadocs (shawn)
+ */
 public class EditInternshipCommandParser implements Parser<EditCommandAbstract> {
 
-    /** todo javadocs (shawn) */
+    /**
+     * todo javadocs (shawn)
+     */
     public EditInternshipCommand parse(String args) throws ParseException {
 
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_INDEX, PREFIX_JOB_TITLE, PREFIX_WAGE,
@@ -40,8 +44,8 @@ public class EditInternshipCommandParser implements Parser<EditCommandAbstract> 
                     EditInternshipCommand.MESSAGE_USAGE));
         }
 
-        Index companyIndex = getIndexInPreamble(argMultimap, EditInternshipCommand.MESSAGE_USAGE);
         Index internshipIndex = GeneralParserUtil.parseIndex(argMultimap.getValue(PREFIX_INDEX).get());
+        Index companyIndex = getIndexInPreamble(argMultimap);
 
         EditInternshipDescriptor editInternshipDescriptor = new EditInternshipDescriptor();
         if (argMultimap.getValue(PREFIX_JOB_TITLE).isPresent()) {

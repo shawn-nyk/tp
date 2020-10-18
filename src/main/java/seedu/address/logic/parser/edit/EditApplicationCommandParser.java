@@ -32,8 +32,6 @@ public class EditApplicationCommandParser implements Parser<EditApplicationComma
     public EditApplicationCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_STATUS, PREFIX_STATUS_DATE);
-
-        Index index = getIndexInPreamble(argMultimap, EditApplicationCommand.MESSAGE_USAGE);
         EditApplicationDescriptor editApplicationDescriptor = new EditApplicationDescriptor();
 
         if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {
@@ -51,6 +49,9 @@ public class EditApplicationCommandParser implements Parser<EditApplicationComma
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     EditApplicationCommand.MESSAGE_USAGE));
         }
+
+        Index index = getIndexInPreamble(argMultimap);
+
         return new EditApplicationCommand(index, editApplicationDescriptor);
     }
 

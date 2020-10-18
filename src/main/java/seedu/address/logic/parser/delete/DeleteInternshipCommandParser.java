@@ -34,7 +34,7 @@ public class DeleteInternshipCommandParser implements Parser<DeleteInternshipCom
                     DeleteInternshipCommand.MESSAGE_USAGE));
         }
 
-        Index companyIndex = getIndexInPreamble(argMultimap, DeleteInternshipCommand.MESSAGE_USAGE);
+        Index companyIndex = getIndexInPreamble(argMultimap);
         Index internshipIndex = parseIndex(argMultimap.getValue(PREFIX_INDEX).get());
 
         return new DeleteInternshipCommand(companyIndex, internshipIndex);

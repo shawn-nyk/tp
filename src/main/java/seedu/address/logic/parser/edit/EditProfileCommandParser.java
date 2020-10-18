@@ -39,7 +39,7 @@ public class EditProfileCommandParser implements Parser<EditProfileCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_CATEGORY,
                 PREFIX_DESCRIPTORS);
 
-        Index index = getIndexInPreamble(argMultimap, EditProfileCommand.MESSAGE_USAGE);
+        Index index = getIndexInPreamble(argMultimap);
 
         EditProfileItemDescriptor editProfileDescriptor = new EditProfileItemDescriptor();
         // Update the setters

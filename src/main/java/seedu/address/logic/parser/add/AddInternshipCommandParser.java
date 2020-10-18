@@ -41,12 +41,11 @@ public class AddInternshipCommandParser implements Parser<AddInternshipCommand> 
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_JOB_TITLE,
                 PREFIX_PERIOD, PREFIX_WAGE, PREFIX_REQUIREMENT);
 
-        // Todo: Wage will be compulsory until its status can be resolved
         if (!arePrefixesPresent(argMultimap, PREFIX_JOB_TITLE, PREFIX_WAGE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddInternshipCommand.MESSAGE_USAGE));
         }
 
-        Index companyIndex = getIndexInPreamble(argMultimap, AddInternshipCommand.MESSAGE_USAGE);
+        Index companyIndex = getIndexInPreamble(argMultimap);
         JobTitle jobTitle = parseJobTitle(argMultimap.getValue(PREFIX_JOB_TITLE).get());
         Wage wage = parseWage(argMultimap.getValue(PREFIX_WAGE).get());
         Period period = getPeriod(argMultimap);
