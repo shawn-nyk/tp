@@ -45,7 +45,7 @@ public class ApplicationItemBuilder {
      */
     public ApplicationItemBuilder withStatus(String status) {
         requireNonNull(status);
-        this.status = Status.valueOf(status);
+        this.status = Status.valueOf(status.toUpperCase());
         return this;
     }
 

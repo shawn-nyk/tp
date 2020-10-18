@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.model.internship.Wage.WAGE_SYMBOL;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.internship.InternshipItemFieldsUtil.INVALID_WAGE_DECIMAL;
+import static seedu.address.testutil.internship.InternshipItemFieldsUtil.INVALID_WAGE_NEGATIVE;
+import static seedu.address.testutil.internship.InternshipItemFieldsUtil.INVALID_WAGE_ZERO;
 import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_WAGE_2000;
 import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_WAGE_3000;
 
@@ -13,9 +16,7 @@ import org.junit.jupiter.api.Test;
 
 public class WageTest {
 
-    private static final String INVALID_WAGE_ZERO = "0";
-    private static final String INVALID_WAGE_NEGATIVE = "-5";
-    private static final String INVALID_WAGE_DECIMAL = "3555.4";
+
 
     private static final Wage VALID_WAGE_ONE = new Wage(VALID_WAGE_2000);
     private static final Wage VALID_WAGE_TWO = new Wage(VALID_WAGE_3000);

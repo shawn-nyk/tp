@@ -11,20 +11,17 @@ import static seedu.address.model.util.StatusUtil.OFFERED_KEYWORD;
 import static seedu.address.model.util.StatusUtil.REJECTED_KEYWORD;
 import static seedu.address.model.util.StatusUtil.WAITING_KEYWORD;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.application.ApplicationItemFieldsUtil.INVALID_STATUS;
+import static seedu.address.testutil.application.ApplicationItemFieldsUtil.STATUS_BLANK;
+import static seedu.address.testutil.application.ApplicationItemFieldsUtil.VALID_STATUS_APPLIED_MIX_CASE;
+import static seedu.address.testutil.application.ApplicationItemFieldsUtil.VALID_STATUS_REJECTED_MIX_CASE;
 
 import org.junit.jupiter.api.Test;
 
 public class StatusTest {
 
-    private static final String STATUS_BLANK = "";
-    private static final String INVALID_STATUS = "DEAD";
-    private static final String VALID_STATUS_APPLIED = "APPLIED";
-    private static final String VALID_STATUS_REJECTED = "REJECTED";
-    private static final String VALID_STATUS_APPLIED_MIX_CASE = "applIed";
-    private static final String VALID_STATUS_REJECTED_MIX_CASE = "rejected";
-
-    private static final Status VALID_STATUS_ONE = Status.valueOf(VALID_STATUS_APPLIED);
-    private static final Status VALID_STATUS_TWO = Status.valueOf(VALID_STATUS_REJECTED);
+    private static final Status VALID_STATUS_ONE = Status.valueOf(APPLIED_KEYWORD.toUpperCase());
+    private static final Status VALID_STATUS_TWO = Status.valueOf(REJECTED_KEYWORD.toUpperCase());
 
     @Test
     public void valueOf_null_throwsNullPointerException() {
@@ -67,7 +64,7 @@ public class StatusTest {
     @Test
     public void equals_equalityTest_success() {
         assertEquals(VALID_STATUS_ONE, VALID_STATUS_ONE);
-        Status statusCopy = Status.valueOf(VALID_STATUS_APPLIED);
+        Status statusCopy = Status.valueOf(APPLIED_KEYWORD.toUpperCase());
         assertEquals(VALID_STATUS_ONE, statusCopy);
     }
 

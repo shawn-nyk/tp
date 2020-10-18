@@ -7,5 +7,7 @@ public class GeneralStringUtil {
 
     public static final String COMMA_WITH_SPACE = ", ";
     public static final String DASH = "-";
+    public static final String SPACE = " ";
+    public static final String BLANK = " ";
 
 }
