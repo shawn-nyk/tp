@@ -3,7 +3,7 @@ package seedu.address.logic.parser.delete;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
-import static seedu.address.logic.parser.util.GeneralParserUtil.arePrefixesPresent;
+import static seedu.address.logic.parser.util.GeneralParserUtil.argumentsAreValid;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getIndexInPreamble;
 import static seedu.address.logic.parser.util.GeneralParserUtil.parseIndex;
 
@@ -29,7 +29,7 @@ public class DeleteInternshipCommandParser implements Parser<DeleteInternshipCom
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_INDEX);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_INDEX)) {
+        if (!argumentsAreValid(true, argMultimap, PREFIX_INDEX)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     DeleteInternshipCommand.MESSAGE_USAGE));
         }
