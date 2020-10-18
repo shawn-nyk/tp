@@ -12,7 +12,7 @@ import seedu.address.model.util.DateUtil;
 /**
  * ApplicationParserUtil class which parses all the fields in an ApplicationItem.
  */
-public class ApplicationParserUtil {
+public abstract class ApplicationParserUtil {
 
     /**
      * Parses a {@code String status} into a {@code Status}.

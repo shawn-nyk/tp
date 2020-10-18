@@ -19,9 +19,9 @@ import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
  * Handles the general parsing of all commands.
- * TODO: Javadocs keane
+ * TODO: Javadocs
  */
-public class GeneralParserUtil {
+public abstract class GeneralParserUtil {
 
     private static final int ITEM_TYPE_INDEX = 0;
     private static final int COMMAND_DETAILS_INDEX = 1;
@@ -60,7 +60,6 @@ public class GeneralParserUtil {
     }
 
     public static Index getIndexInPreamble(ArgumentMultimap argumentMultimap) throws ParseException {
-        System.out.println(argumentMultimap.getPreamble());
         return parseIndex(argumentMultimap.getPreamble());
     }
 
