@@ -31,22 +31,24 @@ public abstract class GeneralParserUtil {
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
      * {@code ArgumentMultimap}.
      */
-    public static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 
     /**
-     * Checks if the arguments provided by the user are valid. Arguments are valid if prefixes are all present and
-     * there is no text before the preamble.
-     *
+     * Checks if the arguments provided by the user are valid. Arguments are valid if prefixes are all present and a
+     * preamble is present when {@code isPreambleNeeded} is true, or that a preamble is absent when
+     * {@code isPreambleNeeded} is false.
+     * @param isPreambleNeeded Indicates if there should be a preamble or not.
      * @param argumentMultimap Argument multimap.
      * @param prefixes Prefixes required in the multimap.
      * @return True if and only if the prefixes are valid.
      */
-    public static boolean argumentsAreValid(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+    public static boolean argumentsAreValid(boolean isPreambleNeeded, ArgumentMultimap argumentMultimap,
+                                            Prefix... prefixes) {
         boolean prefixesArePresent = arePrefixesPresent(argumentMultimap, prefixes);
         boolean preambleIsEmpty = isPreambleEmpty(argumentMultimap);
-        return prefixesArePresent && preambleIsEmpty;
+        return prefixesArePresent && (preambleIsEmpty != isPreambleNeeded);
     }
 
     /**

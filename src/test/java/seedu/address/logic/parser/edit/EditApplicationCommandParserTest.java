@@ -3,6 +3,7 @@ package seedu.address.logic.parser.edit;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.commons.util.GeneralStringUtil.BLANK;
+import static seedu.address.logic.commands.edit.EditCommandAbstract.MESSAGE_NOT_EDITED;
 import static seedu.address.logic.commands.util.application.ApplicationCommandTestUtil.INVALID_STATUS_DATE_DESC;
 import static seedu.address.logic.commands.util.application.ApplicationCommandTestUtil.INVALID_STATUS_DESC;
 import static seedu.address.logic.commands.util.application.ApplicationCommandTestUtil.STATUS_DATE_DESC_JUNE_2021;
@@ -40,10 +41,10 @@ public class EditApplicationCommandParserTest {
     @Test
     public void parse_missingParts_failure() {
         // no index specified
-        assertParseFailure(parser, STATUS_DESC_ACCEPTED, MESSAGE_INVALID_INDEX);
+        assertParseFailure(parser, STATUS_DESC_ACCEPTED, MESSAGE_INVALID_FORMAT);
 
         // no field specified
-        assertParseFailure(parser, "1", MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "1", MESSAGE_NOT_EDITED);
 
         // no index and no field specified
         assertParseFailure(parser, BLANK, MESSAGE_INVALID_FORMAT);
@@ -58,10 +59,10 @@ public class EditApplicationCommandParserTest {
         assertParseFailure(parser, "0" + STATUS_DESC_REJECTED, MESSAGE_INVALID_INDEX);
 
         // invalid arguments being parsed as preamble
-        assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_INDEX);
 
         // invalid prefix being parsed as preamble
-        assertParseFailure(parser, "1 i/string", MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "1 i/string", MESSAGE_INVALID_INDEX);
     }
 
     @Test

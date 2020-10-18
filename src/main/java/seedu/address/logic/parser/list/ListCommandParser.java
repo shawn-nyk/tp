@@ -1,8 +1,8 @@
 package seedu.address.logic.parser.list;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getItemType;
-import static seedu.address.logic.parser.util.GeneralParserUtil.isValidItemType;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
@@ -25,7 +25,7 @@ public class ListCommandParser implements Parser<ListCommand> {
     public ListCommand parse(String args) throws ParseException {
 
         String itemType = getItemType(args, ListCommand.MESSAGE_USAGE);
-        isValidItemType(itemType);
+        checkIfHaveExcessMessage(args);
 
         switch (itemType) {
         case COMPANY_ALIAS:
@@ -43,6 +43,18 @@ public class ListCommandParser implements Parser<ListCommand> {
         default:
             // Invalid item type
             throw new ParseException(MESSAGE_INVALID_ITEM_TYPE);
+        }
+    }
+
+    /**
+     * todo javadocs
+     */
+    private void checkIfHaveExcessMessage(String args) throws ParseException {
+        // allows white space behind the list ITEM TYPE.
+        // Strictly no other extra words behind list ITEM TYPE.
+        String[] argsArray = args.split(" ");
+        if (argsArray.length > 2) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.EXCESS_MESSAGE));
         }
     }
 
