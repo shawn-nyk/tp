@@ -35,7 +35,8 @@ public class MainParser {
      * Used for initial separation of command word and args.
      */
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
-
+    private static final String COMMAND_WORD = "commandWord";
+    private static final String ARGUMENTS = "arguments";
     /**
      * Parses user input into command for execution.
      *
@@ -49,8 +50,8 @@ public class MainParser {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
 
-        final String commandWord = matcher.group("commandWord");
-        final String arguments = matcher.group("arguments");
+        final String commandWord = matcher.group(COMMAND_WORD);
+        final String arguments = matcher.group(ARGUMENTS);
         switch (commandWord) {
         case AddCommand.COMMAND_WORD:
             return new AddCommandParserWrapper().parse(arguments);

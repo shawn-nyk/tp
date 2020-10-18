@@ -3,6 +3,7 @@ package seedu.address.logic.parser.util;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
+import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
@@ -18,9 +19,9 @@ import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
  * Handles the general parsing of all commands.
- * TODO: Javadocs keane
+ * TODO: Javadocs
  */
-public class GeneralParserUtil {
+public abstract class GeneralParserUtil {
 
     private static final int ITEM_TYPE_INDEX = 0;
     private static final int COMMAND_DETAILS_INDEX = 1;
@@ -30,22 +31,24 @@ public class GeneralParserUtil {
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
      * {@code ArgumentMultimap}.
      */
-    public static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 
     /**
-     * Checks if the arguments provided by the user are valid. Arguments are valid if prefixes are all present and
-     * there is no text before the preamble.
-     *
+     * Checks if the arguments provided by the user are valid. Arguments are valid if prefixes are all present and a
+     * preamble is present when {@code isPreambleNeeded} is true, or that a preamble is absent when
+     * {@code isPreambleNeeded} is false.
+     * @param isPreambleNeeded Indicates if there should be a preamble or not.
      * @param argumentMultimap Argument multimap.
      * @param prefixes Prefixes required in the multimap.
      * @return True if and only if the prefixes are valid.
      */
-    public static boolean argumentsAreValid(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+    public static boolean argumentsAreValid(boolean isPreambleNeeded, ArgumentMultimap argumentMultimap,
+                                            Prefix... prefixes) {
         boolean prefixesArePresent = arePrefixesPresent(argumentMultimap, prefixes);
         boolean preambleIsEmpty = isPreambleEmpty(argumentMultimap);
-        return prefixesArePresent && preambleIsEmpty;
+        return prefixesArePresent && (preambleIsEmpty != isPreambleNeeded);
     }
 
     /**
@@ -58,14 +61,8 @@ public class GeneralParserUtil {
         return argumentMultimap.getPreamble().isEmpty();
     }
 
-    public static Index getIndexInPreamble(ArgumentMultimap argumentMultimap, String messageUsage)
-            throws ParseException {
-
-        try {
-            return parseIndex(argumentMultimap.getPreamble());
-        } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, messageUsage));
-        }
+    public static Index getIndexInPreamble(ArgumentMultimap argumentMultimap) throws ParseException {
+        return parseIndex(argumentMultimap.getPreamble());
     }
 
     /**
@@ -87,7 +84,9 @@ public class GeneralParserUtil {
         return itemType;
     }
 
-    /** todo javadocs */
+    /**
+     * todo javadocs
+     */
     public static void isValidItemType(String itemType) throws ParseException {
         if (!itemType.equals(COMPANY_ALIAS)
                 && !itemType.equals(INTERNSHIP_ALIAS)
@@ -114,8 +113,8 @@ public class GeneralParserUtil {
         }
     }
 
-    public static String[] getArgumentsArr(String args) {
-        return args.strip().split(" ", NUMBER_OF_ARGUMENTS);
+    private static String[] getArgumentsArr(String args) {
+        return args.strip().split(SPACE, NUMBER_OF_ARGUMENTS);
     }
 
     /**

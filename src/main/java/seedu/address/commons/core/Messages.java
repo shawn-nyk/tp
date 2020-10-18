@@ -17,7 +17,9 @@ public class Messages {
     public static final String MESSAGE_DUPLICATE_ITEM = "This %s item already exists in InternHunter";
 
     /** Index error */
-    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.\nTip: If you are "
+            + "certain that you have input a non-zero unsigned integer, check that you are following the valid "
+            + "command format";
 
     /** Delete message: First string refers to item type, second string refers to item deleted. */
     public static final String MESSAGE_DELETED_ITEM = "Deleted %1$s item: %2$s";
