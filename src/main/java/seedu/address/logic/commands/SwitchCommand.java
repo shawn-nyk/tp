@@ -16,7 +16,7 @@ public class SwitchCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Switch to the desired tab.\n"
-        + "Parameters: Tab name.\n"
+        + "Parameters: TAB_NAME.\n"
         + "Example: " + COMMAND_WORD + " com";
 
     public final String sameScreenText;
