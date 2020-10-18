@@ -18,17 +18,17 @@ import seedu.address.logic.parser.switchparser.SwitchCommandParser;
 import seedu.address.ui.tabs.TabName;
 
 public class SwitchCommandParserTest {
-    
+
     private static final String EXPECTED_MESSAGE = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
         SwitchCommand.MESSAGE_USAGE);
-    
+
     private SwitchCommandParser switchCommandParser;
-    
+
     @BeforeEach
     public void setUp() {
         switchCommandParser = new SwitchCommandParser();
     }
-    
+
     @Test
     public void parse_missingTabNames_failure() {
         // no tab name input
@@ -48,8 +48,8 @@ public class SwitchCommandParserTest {
         assertParseFailure(switchCommandParser, "1", MESSAGE_INVALID_ITEM_TYPE);
 
         // almost correct tab name
-        assertParseFailure(switchCommandParser, "com1",MESSAGE_INVALID_ITEM_TYPE);
-        
+        assertParseFailure(switchCommandParser, "com1", MESSAGE_INVALID_ITEM_TYPE);
+
         // adopting a strict case sensitive for parsers
         assertParseFailure(switchCommandParser, "Com", MESSAGE_INVALID_ITEM_TYPE);
 
@@ -59,15 +59,15 @@ public class SwitchCommandParserTest {
         // adopting a strict case sensitive for parsers
         assertParseFailure(switchCommandParser, "Me", MESSAGE_INVALID_ITEM_TYPE);
     }
-    
+
     @Test
     public void parse_validTabNames_success() {
         // Valid tab name - com
         assertParseSuccess(switchCommandParser, COMPANY_ALIAS, new SwitchCommand(TabName.COMPANY));
-        
+
         // valid tab name - app
         assertParseSuccess(switchCommandParser, APPLICATION_ALIAS, new SwitchCommand(TabName.APPLICATION));
-        
+
         // valid tab name - me
         assertParseSuccess(switchCommandParser, PROFILE_ALIAS, new SwitchCommand(TabName.PROFILE));
     }

@@ -1,8 +1,8 @@
 package seedu.address.ui.display;
 
 import static seedu.address.commons.util.GeneralStringUtil.COMMA_WITH_SPACE;
-import static seedu.address.commons.util.GeneralStringUtil.NEW_LINE;
 import static seedu.address.commons.util.GeneralStringUtil.DOT_WITH_SPACE;
+import static seedu.address.commons.util.GeneralStringUtil.NEW_LINE;
 import static seedu.address.ui.display.DisplayKeyList.COMPANY_DISPLAY_KEY_LIST;
 import static seedu.address.ui.panel.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.INDUSTRIES_DISPLAY_NAME;

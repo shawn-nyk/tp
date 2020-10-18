@@ -19,9 +19,9 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * todo javadocs
  */
 public class FindCommandParserTest {
-    
+
     private FindCommandParser findCommandParser;
-    
+
     @BeforeEach
     public void setUp() {
         findCommandParser = new FindCommandParser();

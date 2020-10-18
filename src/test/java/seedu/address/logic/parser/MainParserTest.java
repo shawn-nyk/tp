@@ -82,7 +82,7 @@ public class MainParserTest {
     }
 
     @Nested
-    class mainParserToFindParserTest {
+    class MainParserToFindParserTest {
 
         @Test
         public void parseCommand_findValidTypes_returnsTrue() throws ParseException {
@@ -91,56 +91,63 @@ public class MainParserTest {
             // assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + " me 3") instanceof FindCommand);
             // assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + " com hardware") instanceof FindCommand);
             // assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + " com 4") instanceof FindCommand);
-            assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " developers") instanceof FindCommand);
-            assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " 2") instanceof FindCommand);
+            assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " developers")
+                instanceof FindCommand);
+
+            assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " 2")
+                instanceof FindCommand);
         }
 
         @Test
         public void parseCommand_findMissingTypes_throwsParseException() {
             String invalidMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE);
             assertThrows(ParseException.class, invalidMessage, () -> parser.parseCommand(FindCommand.COMMAND_WORD));
-            assertThrows(ParseException.class, invalidMessage, () -> parser.parseCommand(FindCommand.COMMAND_WORD + SPACE));
+            assertThrows(ParseException.class, invalidMessage, ()
+                -> parser.parseCommand(FindCommand.COMMAND_WORD + SPACE));
         }
-        
+
         @Test
         public void parseCommand_findInvalidTypes_throwsParseException() {
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE,
-                () -> parser.parseCommand(FindCommand.COMMAND_WORD + " Com"));
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+                -> parser.parseCommand(FindCommand.COMMAND_WORD + " Com"));
 
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE,
-                () -> parser.parseCommand(FindCommand.COMMAND_WORD + " App"));
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+                -> parser.parseCommand(FindCommand.COMMAND_WORD + " App"));
 
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE,
-                () -> parser.parseCommand(FindCommand.COMMAND_WORD + " Me"));
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+                -> parser.parseCommand(FindCommand.COMMAND_WORD + " Me"));
 
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE,
-                () -> parser.parseCommand(FindCommand.COMMAND_WORD + " Hello"));
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+                -> parser.parseCommand(FindCommand.COMMAND_WORD + " Hello"));
 
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE,
-                () -> parser.parseCommand(FindCommand.COMMAND_WORD + " 1"));
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+                -> parser.parseCommand(FindCommand.COMMAND_WORD + " 1"));
         }
-        
+
         @Test
         public void parseCommand_missingDescription_throwsParseException() {
             // missing description for app
             String appMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindApplicationCommand.MESSAGE_USAGE);
-            assertThrows(ParseException.class, appMessage, () -> parser.parseCommand(FindCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + SPACE));
-            assertThrows(ParseException.class, appMessage, () -> parser.parseCommand(FindCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC));
-            
+            assertThrows(ParseException.class, appMessage, ()
+                -> parser.parseCommand(FindCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + SPACE));
+
+            assertThrows(ParseException.class, appMessage, ()
+                -> parser.parseCommand(FindCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC));
+
             // missing description for com
             // String comMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCompanyCommand.MESSAGE_USAGE);
             // assertThrows(ParseException.class, comMessage, () -> parser.parseCommand("find com "));
             // assertThrows(ParseException.class, comMessage, () -> parser.parseCommand("find com"));
-            
+
             // missing description for me
             // String meMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindProfileCommand.MESSAGE_USAGE);
             // assertThrows(ParseException.class, meMessage, () -> parser.parseCommand("find me "));
             // assertThrows(ParseException.class, meMessage, () -> parser.parseCommand("find me"));
         }
     }
-    
+
     @Nested
-    class mainParserToListParserTest {
+    class MainParserToListParserTest {
 
         @Test
         public void parseCommand_listValidTypes_returnsTrue() throws ParseException {
@@ -155,45 +162,52 @@ public class MainParserTest {
         public void parseCommand_listMissingTypes_throwsParseException() {
             String invalidMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE);
             assertThrows(ParseException.class, invalidMessage, () -> parser.parseCommand(ListCommand.COMMAND_WORD));
-            assertThrows(ParseException.class, invalidMessage, () -> parser.parseCommand(ListCommand.COMMAND_WORD + SPACE));
+            assertThrows(ParseException.class, invalidMessage, ()
+                -> parser.parseCommand(ListCommand.COMMAND_WORD + SPACE));
         }
 
         @Test
         public void parseCommand_listInvalidTypes_throwsParseException() {
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE,
-                () -> parser.parseCommand(ListCommand.COMMAND_WORD + " Com"));
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+                -> parser.parseCommand(ListCommand.COMMAND_WORD + " Com"));
 
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE,
-                () -> parser.parseCommand(ListCommand.COMMAND_WORD + " App"));
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+                -> parser.parseCommand(ListCommand.COMMAND_WORD + " App"));
 
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE,
-                () -> parser.parseCommand(ListCommand.COMMAND_WORD + " Me"));
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+                -> parser.parseCommand(ListCommand.COMMAND_WORD + " Me"));
 
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE,
-                () -> parser.parseCommand(ListCommand.COMMAND_WORD + " hello"));
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+                -> parser.parseCommand(ListCommand.COMMAND_WORD + " hello"));
 
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE,
-                () -> parser.parseCommand(ListCommand.COMMAND_WORD + " 1"));
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+                -> parser.parseCommand(ListCommand.COMMAND_WORD + " 1"));
         }
 
         @Test
         public void parseCommand_listExcessInput_throwsParseException() {
             String message = String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.EXCESS_MESSAGE);
-            assertThrows(ParseException.class, message, () -> parser.parseCommand(ListCommand.COMMAND_WORD + " com hello"));
-            assertThrows(ParseException.class, message, () -> parser.parseCommand(ListCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " 1"));
-            assertThrows(ParseException.class, message, () -> parser.parseCommand(ListCommand.COMMAND_WORD + " me great"));
+            assertThrows(ParseException.class, message, ()
+                -> parser.parseCommand(ListCommand.COMMAND_WORD + " com hello"));
+
+            assertThrows(ParseException.class, message, ()
+                -> parser.parseCommand(ListCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " 1"));
+
+            assertThrows(ParseException.class, message, ()
+                -> parser.parseCommand(ListCommand.COMMAND_WORD + " me great"));
         }
 
     }
 
     @Nested
-    class mainParserToSwitchParserTest {
+    class MainParserToSwitchParserTest {
 
         @Test
         public void parseCommand_switchValidTypes_returnsTrue() throws ParseException {
             assertTrue(parser.parseCommand(SwitchCommand.COMMAND_WORD + " me") instanceof SwitchCommand);
             assertTrue(parser.parseCommand(SwitchCommand.COMMAND_WORD + " com") instanceof SwitchCommand);
-            assertTrue(parser.parseCommand(SwitchCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC) instanceof SwitchCommand);
+            assertTrue(parser.parseCommand(SwitchCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC)
+                instanceof SwitchCommand);
         }
 
         @Test
@@ -205,32 +219,32 @@ public class MainParserTest {
 
         @Test
         public void parseCommand_switchInvalidTypes_throwsParseException() {
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE,
-                () -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " hello"));
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+                -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " hello"));
 
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE,
-                () -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " 1"));
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+                -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " 1"));
 
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE,
-                () -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " Com"));
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+                -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " Com"));
 
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE,
-                () -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " App"));
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+                -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " App"));
 
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE,
-                () -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " Me"));
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+                -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " Me"));
         }
 
         @Test
         public void parseCommand_switchExcessInput_throwsParseException() {
-            assertThrows(ParseException.class, SwitchCommand.EXCESS_MESSAGE,
-                () -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " com hello"));
+            assertThrows(ParseException.class, SwitchCommand.EXCESS_MESSAGE, ()
+                -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " com hello"));
 
-            assertThrows(ParseException.class, SwitchCommand.EXCESS_MESSAGE,
-                () -> parser.parseCommand(SwitchCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " great"));
+            assertThrows(ParseException.class, SwitchCommand.EXCESS_MESSAGE, ()
+                -> parser.parseCommand(SwitchCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " great"));
 
-            assertThrows(ParseException.class, SwitchCommand.EXCESS_MESSAGE,
-                () -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " me ok"));
+            assertThrows(ParseException.class, SwitchCommand.EXCESS_MESSAGE, ()
+                -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " me ok"));
         }
     }
 

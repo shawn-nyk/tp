@@ -19,9 +19,9 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * todo javadocs
  */
 public class ListCommandParserTest {
-    
+
     private ListCommandParser listCommandParser;
-    
+
     @BeforeEach
     public void setUp() {
         listCommandParser = new ListCommandParser();
@@ -38,7 +38,7 @@ public class ListCommandParserTest {
         assertThrows(ParseException.class, () -> listCommandParser.parse("1"));
         assertThrows(ParseException.class, () -> listCommandParser.parse(BLANK));
     }
-    
+
     @Test
     public void parse_listAppTrue_success() throws ParseException {
         assertTrue(listCommandParser.parse(APPLICATION_ALIAS) instanceof ListApplicationCommand);
@@ -49,7 +49,7 @@ public class ListCommandParserTest {
         assertFalse(listCommandParser.parse(COMPANY_ALIAS) instanceof ListApplicationCommand);
         assertFalse(listCommandParser.parse(PROFILE_ALIAS) instanceof ListApplicationCommand);
     }
-    
+
     @Test
     public void parse_listExcessInput_throwsParseException() {
         assertThrows(ParseException.class, () -> listCommandParser.parse(SPACE + APPLICATION_ALIAS + "great"));

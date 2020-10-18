@@ -13,22 +13,22 @@ import seedu.address.logic.commands.find.FindApplicationCommand;
 import seedu.address.model.application.ApplicationNameContainsKeyWordsPredicate;
 
 public class FindApplicationCommandParserTest {
-    
-    private FindApplicationCommandParser findApplicationCommandParser;
+
     private static final String MESSAGE = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-        FindApplicationCommand.MESSAGE_USAGE); 
-    
+        FindApplicationCommand.MESSAGE_USAGE);
+    private FindApplicationCommandParser findApplicationCommandParser;
+
     @BeforeEach
     public void setUp() {
         findApplicationCommandParser = new FindApplicationCommandParser();
     }
-    
+
     @Test
     public void parse_missingDescription_throwsParseException() {
         assertParseFailure(findApplicationCommandParser, "    ", MESSAGE);
         assertParseFailure(findApplicationCommandParser, " ", MESSAGE);
     }
-    
+
     @Test
     public void parse_validArguments_returnsFindApplicationCommand() {
         FindApplicationCommand expectedCommand = new FindApplicationCommand(
