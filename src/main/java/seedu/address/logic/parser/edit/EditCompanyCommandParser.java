@@ -48,7 +48,6 @@ public class EditCompanyCommandParser implements Parser<EditCommandAbstract> {
         }
 
         Index index = getIndexInPreamble(argMultimap);
-
         EditCompanyDescriptor editCompanyDescriptor = new EditCompanyDescriptor();
         if (argMultimap.getValue(PREFIX_COMPANY_NAME).isPresent()) {
             editCompanyDescriptor.setName(CompanyParserUtil.parseCompanyName(argMultimap.getValue(PREFIX_COMPANY_NAME)

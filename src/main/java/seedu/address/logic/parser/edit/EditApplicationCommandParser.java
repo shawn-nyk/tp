@@ -17,6 +17,8 @@ import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.application.Status;
+import seedu.address.model.application.StatusDate;
 
 /**
  * Parses input arguments and creates a new EditApplicationCommand object.
@@ -41,11 +43,16 @@ public class EditApplicationCommandParser implements Parser<EditApplicationComma
         Index index = getIndexInPreamble(argMultimap);
 
         EditApplicationDescriptor editApplicationDescriptor = new EditApplicationDescriptor();
+
         if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {
-            editApplicationDescriptor.setStatus(parseStatus(argMultimap.getValue(PREFIX_STATUS).get()));
+            String inputStatus = argMultimap.getValue(PREFIX_STATUS).get();
+            Status editedStatus = parseStatus(inputStatus);
+            editApplicationDescriptor.setStatus(editedStatus);
         }
         if (argMultimap.getValue(PREFIX_STATUS_DATE).isPresent()) {
-            editApplicationDescriptor.setStatusDate(parseStatusDate(argMultimap.getValue(PREFIX_STATUS_DATE).get()));
+            String inputStatusDate = argMultimap.getValue(PREFIX_STATUS_DATE).get();
+            StatusDate editedStatusDate = parseStatusDate(inputStatusDate);
+            editApplicationDescriptor.setStatusDate(editedStatusDate);
         }
 
         if (!editApplicationDescriptor.isAnyFieldEdited()) {

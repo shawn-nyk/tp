@@ -3,6 +3,7 @@ package seedu.address.logic.parser.util;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
+import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
@@ -18,9 +19,9 @@ import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
  * Handles the general parsing of all commands.
- * TODO: Javadocs keane
+ * TODO: Javadocs
  */
-public class GeneralParserUtil {
+public abstract class GeneralParserUtil {
 
     private static final int ITEM_TYPE_INDEX = 0;
     private static final int COMMAND_DETAILS_INDEX = 1;
@@ -60,8 +61,7 @@ public class GeneralParserUtil {
         return argumentMultimap.getPreamble().isEmpty();
     }
 
-    public static Index getIndexInPreamble(ArgumentMultimap argumentMultimap)
-            throws ParseException {
+    public static Index getIndexInPreamble(ArgumentMultimap argumentMultimap) throws ParseException {
         return parseIndex(argumentMultimap.getPreamble());
     }
 
@@ -84,7 +84,9 @@ public class GeneralParserUtil {
         return itemType;
     }
 
-    /** todo javadocs */
+    /**
+     * todo javadocs
+     */
     public static void isValidItemType(String itemType) throws ParseException {
         if (!itemType.equals(COMPANY_ALIAS)
                 && !itemType.equals(INTERNSHIP_ALIAS)
@@ -111,8 +113,8 @@ public class GeneralParserUtil {
         }
     }
 
-    public static String[] getArgumentsArr(String args) {
-        return args.strip().split(" ", NUMBER_OF_ARGUMENTS);
+    private static String[] getArgumentsArr(String args) {
+        return args.strip().split(SPACE, NUMBER_OF_ARGUMENTS);
     }
 
     /**
@@ -129,4 +131,20 @@ public class GeneralParserUtil {
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
 
+    /**
+     * todo javadocs
+     */
+    public static void checkCommandDetailsIsNotBlank(String commandDetails, String message) throws ParseException {
+        if (commandDetails.isBlank()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, message));
+        }
+    }
+
+    /**
+     * todo javadocs
+     */
+    public static String[] getTrimmedArgsKeywords(String args) {
+        String trimmedArgs = args.trim();
+        return trimmedArgs.split("\\s+");
+    }
 }

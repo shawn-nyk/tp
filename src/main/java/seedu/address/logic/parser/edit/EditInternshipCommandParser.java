@@ -28,10 +28,14 @@ import seedu.address.logic.parser.util.GeneralParserUtil;
 import seedu.address.logic.parser.util.InternshipParserUtil;
 import seedu.address.model.internship.Requirement;
 
-/** todo javadocs (shawn) */
+/**
+ * todo javadocs (shawn)
+ */
 public class EditInternshipCommandParser implements Parser<EditCommandAbstract> {
 
-    /** todo javadocs (shawn) */
+    /**
+     * todo javadocs (shawn)
+     */
     public EditInternshipCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_INDEX, PREFIX_JOB_TITLE, PREFIX_WAGE,

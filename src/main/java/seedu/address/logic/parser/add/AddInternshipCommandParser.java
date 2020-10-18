@@ -1,5 +1,6 @@
 package seedu.address.logic.parser.add;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_JOB_TITLE;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_PERIOD;
@@ -37,6 +38,7 @@ public class AddInternshipCommandParser implements Parser<AddInternshipCommand> 
      * @throws ParseException if the user input does not conform to the expected format
      */
     public AddInternshipCommand parse(String args) throws ParseException {
+        requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_JOB_TITLE,
                 PREFIX_PERIOD, PREFIX_WAGE, PREFIX_REQUIREMENT);
 
