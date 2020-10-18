@@ -141,4 +141,11 @@ public class GeneralParserUtil {
         }
     }
 
+    /**
+     * todo javadocs
+     */
+    public static String[] getTrimmedArgsKeywords(String args) {
+        String trimmedArgs = args.trim();
+        return trimmedArgs.split("\\s+");
+    }
 }
