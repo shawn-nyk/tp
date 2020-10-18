@@ -14,8 +14,6 @@ import org.junit.jupiter.api.Test;
 
 public class JobTitleTest {
 
-
-
     private static final JobTitle VALID_JOB_TITLE_ONE = new JobTitle(VALID_JOB_TITLE_SWE);
     private static final JobTitle VALID_JOB_TITLE_TWO = new JobTitle(VALID_JOB_TITLE_FE);
 

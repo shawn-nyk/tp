@@ -40,7 +40,7 @@ public class ApplicationParserUtil {
         requireNonNull(statusDate);
         String trimmedStatusDate = statusDate.trim();
 
-        if (!StatusDate.isValidDate(statusDate)) {
+        if (!StatusDate.isValidDate(trimmedStatusDate)) {
             throw new ParseException(StatusDate.MESSAGE_CONSTRAINTS);
         }
 
