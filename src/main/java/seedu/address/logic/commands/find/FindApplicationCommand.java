@@ -30,7 +30,7 @@ public class FindApplicationCommand extends FindCommand {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         model.getApplicationList().updateFilteredItemList(predicate);
-        model.setApplicationViewIndex(Index.fromZeroBased(1));
+        model.setApplicationViewIndex(Index.fromOneBased(1));
         return new CommandResult(
             String.format(Messages.MESSAGE_FIND_APPLICATION_SUCCESS,
                 model.getApplicationList().getFilteredItemList().size()));
