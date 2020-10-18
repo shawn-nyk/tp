@@ -10,10 +10,10 @@ import static seedu.address.commons.util.NumberUtil.NUMBER_SEVEN;
 import static seedu.address.model.util.ApplicationItemUtil.DATE_OUTPUT_NAME;
 import static seedu.address.model.util.ApplicationItemUtil.STATUS_OUTPUT_NAME;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
+import static seedu.address.model.util.StatusUtil.APPLIED_KEYWORD;
 import static seedu.address.model.util.StatusUtil.OFFERED_KEYWORD;
 import static seedu.address.testutil.application.ApplicationItemFieldsUtil.EXPECTED_DATE_JUNE_2021;
 import static seedu.address.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_JUNE_2022;
-import static seedu.address.testutil.application.ApplicationItemFieldsUtil.STATUS_REJECTED;
 import static seedu.address.testutil.application.SampleApplicationItems.LAZADA_REJECTED;
 import static seedu.address.testutil.application.SampleApplicationItems.SHOPEE_OFFERED;
 import static seedu.address.testutil.internship.SampleInternshipItems.GOLDMAN_DA;
@@ -65,7 +65,7 @@ public class ApplicationItemTest {
         assertTrue(SHOPEE_OFFERED.isSameItem(editedShopeeOffered));
 
         // different status, everything else the same -> returns true
-        editedShopeeOffered = new ApplicationItemBuilder(SHOPEE_OFFERED).withStatus(STATUS_REJECTED).build();
+        editedShopeeOffered = new ApplicationItemBuilder(SHOPEE_OFFERED).withStatus(APPLIED_KEYWORD).build();
         assertTrue(SHOPEE_OFFERED.isSameItem(editedShopeeOffered));
 
         // different status date, everything else the same -> returns true
@@ -124,7 +124,7 @@ public class ApplicationItemTest {
         assertNotEquals(editedShopeeOffered, SHOPEE_OFFERED);
 
         // different status -> returns false
-        editedShopeeOffered = new ApplicationItemBuilder(SHOPEE_OFFERED).withStatus(STATUS_REJECTED).build();
+        editedShopeeOffered = new ApplicationItemBuilder(SHOPEE_OFFERED).withStatus(APPLIED_KEYWORD).build();
         assertNotEquals(editedShopeeOffered, SHOPEE_OFFERED);
 
         // different status date -> returns false
