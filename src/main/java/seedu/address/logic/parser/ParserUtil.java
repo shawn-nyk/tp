@@ -1,7 +1,9 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -10,6 +12,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.commons.util.TabUtil;
+import seedu.address.logic.commands.SwitchCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
@@ -23,8 +26,6 @@ import seedu.address.ui.tabs.TabName;
  */
 public class ParserUtil {
 
-    public static final String MESSAGE_MISSING_TAB_NAME = "Switch requires a tab name as well.";
-
     /**
      * Parses {@code selectedTab} into a {@code TabName} and returns it. Leading and trailing whitespaces will be
      * trimmed.
@@ -33,8 +34,12 @@ public class ParserUtil {
     public static TabName parseTab(String selectedTab) throws ParseException {
         requireNonNull(selectedTab);
         String tab = selectedTab.trim();
-        if (TabUtil.isEmptyTab(tab)) {
-            throw new ParseException(MESSAGE_MISSING_TAB_NAME);
+        if (tab.length() == 0) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SwitchCommand.MESSAGE_USAGE));
+        }
+        String[] tabArray = tab.split(" ");
+        if (tabArray.length > 1) {
+            throw new ParseException(SwitchCommand.EXCESS_MESSAGE);
         }
         return TabUtil.getSwitchTabName(tab);
     }

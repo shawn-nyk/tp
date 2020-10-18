@@ -37,4 +37,11 @@ public class FindApplicationCommand extends FindCommand {
             model.getApplicationList().getFilteredItemList().size());
         return getCommandResult(model, message, TabName.APPLICATION);
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+            || (other instanceof FindApplicationCommand // instanceof handles nulls
+            && predicate.equals(((FindApplicationCommand) other).predicate)); // state check
+    }
 }
