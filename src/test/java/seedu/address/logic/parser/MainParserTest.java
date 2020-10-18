@@ -18,6 +18,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SwitchCommand;
+import seedu.address.logic.commands.view.ViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -36,27 +37,28 @@ public class MainParserTest {
         //        assertEquals(new AddCommand(person), command);
     }
 
+    // todo: add delete test (Issac)
+
+    // todo: add edit test (Keane)
+    // @Test
+    // public void parseCommand_edit() throws Exception {
+    //     assertTrue(parser.parseCommand(EditCommandAbstract.COMMAND_WORD + " me 2") instanceof EditCommandAbstract);
+    //     assertTrue(parser.parseCommand(EditCommandAbstract.COMMAND_WORD + " com 2") instanceof EditCommandAbstract);
+    //     assertTrue(parser.parseCommand(EditCommandAbstract.COMMAND_WORD + " app 2") instanceof EditCommandAbstract);
+    // }
+
+
+    @Test
+    public void parseCommand_view_success() throws Exception {
+        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " me 2") instanceof ViewCommand);
+        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " com 2") instanceof ViewCommand);
+        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " app 2") instanceof ViewCommand);
+    }
+
     @Test
     public void parseCommand_clear() throws Exception {
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
-    }
-
-    /* todo: add test
-    @Test
-    public void parseCommand_edit() throws Exception {
-        Person person = new PersonBuilder().build();
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
-        EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
-        assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
-    }
-    */
-
-    @Test
-    public void parseCommand_exit() throws Exception {
-        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);
-        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + " 3") instanceof ExitCommand);
     }
 
     @Test
@@ -68,26 +70,21 @@ public class MainParserTest {
     }
 
     @Test
-    public void parseCommand_help() throws Exception {
-        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
-        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
-    }
-
-    @Test
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
     }
 
     @Test
-    public void parseCommand_unrecognisedInput_throwsParseException() {
-        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
-            -> parser.parseCommand(""));
+    public void parseCommand_exit() throws Exception {
+        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);
+        assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + " 3") instanceof ExitCommand);
     }
 
     @Test
-    public void parseCommand_unknownCommand_throwsParseException() {
-        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand("unknownCommand"));
+    public void parseCommand_help() throws Exception {
+        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
+        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
     }
 
     @Test
@@ -105,4 +102,16 @@ public class MainParserTest {
         assertThrows(ParseException.class, invalidMessage, () -> parser.parseCommand("switch 1"));
         assertThrows(ParseException.class, invalidMessage, () -> parser.parseCommand("switch "));
     }
+
+    @Test
+    public void parseCommand_unrecognisedInput_throwsParseException() {
+        String errorMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE);
+        assertThrows(ParseException.class, errorMessage, () -> parser.parseCommand(""));
+    }
+
+    @Test
+    public void parseCommand_unknownCommand_throwsParseException() {
+        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand("unknownCommand"));
+    }
+
 }

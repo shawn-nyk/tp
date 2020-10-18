@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDateTime;
 
-import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.Status;
 import seedu.address.model.application.StatusDate;
