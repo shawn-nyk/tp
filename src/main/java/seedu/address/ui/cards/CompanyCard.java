@@ -1,5 +1,6 @@
 package seedu.address.ui.cards;
 
+import static seedu.address.ui.GuardClauseUi.IS_EMPTY_LIST_STRING;
 import static seedu.address.ui.panel.PanelDisplayKeyword.ADDRESS_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.EMAIL_DISPLAY_NAME;
@@ -9,12 +10,15 @@ import static seedu.address.ui.panel.PanelDisplayKeyword.PHONE_DISPLAY_NAME;
 import seedu.address.model.company.CompanyItem;
 
 /**
- * todo Javadocs
+ * A UI component that displays some information of a {@code CompanyItem}.
  */
 public class CompanyCard extends Card<CompanyItem> {
 
     /**
-     * todo Javadocs
+     * Creates a card display with information of {@code companyItem} and with a index of {@code displayIndex}.
+     *
+     * @param companyItem The company item to be displayed.
+     * @param displayedIndex The index of the profile item.
      */
     public CompanyCard(CompanyItem companyItem, int displayedIndex) {
         super(companyItem, displayedIndex);
@@ -22,7 +26,7 @@ public class CompanyCard extends Card<CompanyItem> {
     }
 
     /**
-     * todo Javadocs
+     * Sets the id, name, industries, phone, email, address on the card.
      */
     private void initializeCompanyCardGui() {
         setId(displayedIndex);
@@ -34,7 +38,7 @@ public class CompanyCard extends Card<CompanyItem> {
     }
 
     /**
-     * todo Javadocs
+     * Sets the name on the card.
      */
     private void setName() {
         Object companyName = mapping.get(COMPANY_DISPLAY_NAME);
@@ -42,17 +46,17 @@ public class CompanyCard extends Card<CompanyItem> {
     }
 
     /**
-     * todo Javadocs
+     * Sets the industries information on the card.
      */
     private void setIndustries() {
         Object industries = mapping.get(INDUSTRIES_DISPLAY_NAME);
-        if (!industries.toString().equals("[]")) {
+        if (!IS_EMPTY_LIST_STRING.test(industries.toString())) {
             setTags(industries.toString());
         }
     }
 
     /**
-     * todo Javadocs
+     * Sets the phone information on the card.
      */
     private void setPhone() {
         Object phone = mapping.get(PHONE_DISPLAY_NAME);
@@ -60,7 +64,7 @@ public class CompanyCard extends Card<CompanyItem> {
     }
 
     /**
-     * todo Javadocs
+     * Sets the email on the card.
      */
     private void setEmail() {
         Object email = mapping.get(EMAIL_DISPLAY_NAME);
@@ -68,7 +72,7 @@ public class CompanyCard extends Card<CompanyItem> {
     }
 
     /**
-     * todo Javadocs
+     * Sets the address on the card.
      */
     private void setAddress() {
         Object address = mapping.get(ADDRESS_DISPLAY_NAME);
