@@ -23,7 +23,7 @@ public class ApplicationParserUtil {
      */
     public static Status parseStatus(String status) throws ParseException {
         requireNonNull(status);
-        String trimmedStatus = StringUtil.toTitleCase(status.trim());
+        String trimmedStatus = status.trim();
 
         if (!Status.isValidStatus(trimmedStatus)) {
             throw new ParseException(Status.MESSAGE_CONSTRAINTS);

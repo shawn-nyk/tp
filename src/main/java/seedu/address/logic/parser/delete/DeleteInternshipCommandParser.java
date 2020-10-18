@@ -1,5 +1,6 @@
 package seedu.address.logic.parser.delete;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
 import static seedu.address.logic.parser.util.GeneralParserUtil.arePrefixesPresent;
@@ -25,7 +26,7 @@ public class DeleteInternshipCommandParser implements Parser<DeleteInternshipCom
      * @throws ParseException if the user input does not conform the expected format
      */
     public DeleteInternshipCommand parse(String args) throws ParseException {
-
+        requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_INDEX);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_INDEX)) {
