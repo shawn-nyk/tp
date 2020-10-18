@@ -4,7 +4,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
-import static seedu.address.logic.parser.util.GeneralParserUtil.arePrefixesPresent;
+import static seedu.address.logic.parser.util.GeneralParserUtil.argumentsAreValid;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getIndexInPreamble;
 import static seedu.address.logic.parser.util.GeneralParserUtil.parseIndex;
 
@@ -32,23 +32,16 @@ public class AddApplicationCommandParser implements Parser<AddApplicationCommand
      * @throws ParseException if the user input does not conform to the expected format
      */
     public AddApplicationCommand parse(String args) throws ParseException {
-
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_INDEX, PREFIX_STATUS, PREFIX_STATUS_DATE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_INDEX)) {
+        if (!argumentsAreValid(true, argMultimap, PREFIX_INDEX)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddApplicationCommand.MESSAGE_USAGE));
         }
 
-        Index companyIndex = getIndexInPreamble(argMultimap, AddApplicationCommand.MESSAGE_USAGE);
-        Index internshipIndex;
-        try {
-            internshipIndex = parseIndex(argMultimap.getValue(PREFIX_INDEX).get());
-        } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddApplicationCommand.MESSAGE_USAGE));
-        }
+        Index companyIndex = getIndexInPreamble(argMultimap);
+        Index internshipIndex = parseIndex(argMultimap.getValue(PREFIX_INDEX).get());
         Status status = getStatus(argMultimap);
         StatusDate statusDate = getStatusDate(argMultimap);
 

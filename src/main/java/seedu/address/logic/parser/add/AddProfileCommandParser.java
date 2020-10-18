@@ -35,7 +35,7 @@ public class AddProfileCommandParser implements Parser<AddProfileCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_CATEGORY, PREFIX_DESCRIPTORS);
 
-        if (!argumentsAreValid(argMultimap, PREFIX_TITLE, PREFIX_CATEGORY)) {
+        if (!argumentsAreValid(false, argMultimap, PREFIX_TITLE, PREFIX_CATEGORY)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddProfileCommand.MESSAGE_USAGE));
         }
 

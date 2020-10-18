@@ -2,7 +2,7 @@ package seedu.address.logic.parser.delete;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
-import static seedu.address.logic.parser.util.GeneralParserUtil.arePrefixesPresent;
+import static seedu.address.logic.parser.util.GeneralParserUtil.argumentsAreValid;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getIndexInPreamble;
 
 import seedu.address.commons.core.index.Index;
@@ -25,15 +25,14 @@ public class DeleteInternshipCommandParser implements Parser<DeleteInternshipCom
      * @throws ParseException if the user input does not conform the expected format
      */
     public DeleteInternshipCommand parse(String args) throws ParseException {
-
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_INDEX);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_INDEX)) {
+        if (!argumentsAreValid(true, argMultimap, PREFIX_INDEX)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     DeleteInternshipCommand.MESSAGE_USAGE));
         }
 
-        Index companyIndex = getIndexInPreamble(argMultimap, DeleteInternshipCommand.MESSAGE_USAGE);
+        Index companyIndex = getIndexInPreamble(argMultimap);
         Index internshipIndex = GeneralParserUtil.parseIndex(argMultimap.getValue(PREFIX_INDEX).get());
 
         return new DeleteInternshipCommand(companyIndex, internshipIndex);

@@ -5,7 +5,7 @@ import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_JO
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_PERIOD;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_WAGE;
-import static seedu.address.logic.parser.util.GeneralParserUtil.arePrefixesPresent;
+import static seedu.address.logic.parser.util.GeneralParserUtil.argumentsAreValid;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getIndexInPreamble;
 import static seedu.address.logic.parser.util.InternshipParserUtil.parseJobTitle;
 import static seedu.address.logic.parser.util.InternshipParserUtil.parseRequirements;
@@ -37,16 +37,15 @@ public class AddInternshipCommandParser implements Parser<AddInternshipCommand> 
      * @throws ParseException if the user input does not conform to the expected format
      */
     public AddInternshipCommand parse(String args) throws ParseException {
-
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_JOB_TITLE,
                 PREFIX_PERIOD, PREFIX_WAGE, PREFIX_REQUIREMENT);
 
         // Todo: Wage will be compulsory until its status can be resolved
-        if (!arePrefixesPresent(argMultimap, PREFIX_JOB_TITLE, PREFIX_WAGE)) {
+        if (!argumentsAreValid(true, argMultimap, PREFIX_JOB_TITLE, PREFIX_WAGE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddInternshipCommand.MESSAGE_USAGE));
         }
 
-        Index companyIndex = getIndexInPreamble(argMultimap, AddInternshipCommand.MESSAGE_USAGE);
+        Index companyIndex = getIndexInPreamble(argMultimap);
         JobTitle jobTitle = parseJobTitle(argMultimap.getValue(PREFIX_JOB_TITLE).get());
         Wage wage = parseWage(argMultimap.getValue(PREFIX_WAGE).get());
         Period period = getPeriod(argMultimap);
