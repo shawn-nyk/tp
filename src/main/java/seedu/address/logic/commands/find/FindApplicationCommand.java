@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.find;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 
 import seedu.address.commons.core.Messages;
@@ -9,6 +10,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.application.ApplicationNameContainsKeyWordsPredicate;
+import seedu.address.ui.tabs.TabName;
 
 /**
  * todo javadocs
@@ -31,8 +33,8 @@ public class FindApplicationCommand extends FindCommand {
         requireNonNull(model);
         model.getApplicationList().updateFilteredItemList(predicate);
         model.setApplicationViewIndex(Index.fromOneBased(1));
-        return new CommandResult(
-            String.format(Messages.MESSAGE_FIND_APPLICATION_SUCCESS,
-                model.getApplicationList().getFilteredItemList().size()));
+        String message = String.format(Messages.MESSAGE_FIND_APPLICATION_SUCCESS,
+            model.getApplicationList().getFilteredItemList().size());
+        return getCommandResult(model, message, TabName.APPLICATION);
     }
 }
