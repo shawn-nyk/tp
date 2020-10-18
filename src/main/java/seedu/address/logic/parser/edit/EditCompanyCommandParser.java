@@ -39,8 +39,7 @@ public class EditCompanyCommandParser implements Parser<EditCommandAbstract> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_COMPANY_NAME, PREFIX_PHONE,
                 PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_INDUSTRY);
 
-        Index index = getIndexInPreamble(argMultimap, EditCompanyCommand.MESSAGE_USAGE);
-
+        Index index = getIndexInPreamble(argMultimap);
         EditCompanyDescriptor editCompanyDescriptor = new EditCompanyDescriptor();
         if (argMultimap.getValue(PREFIX_COMPANY_NAME).isPresent()) {
             editCompanyDescriptor.setName(CompanyParserUtil.parseCompanyName(argMultimap.getValue(PREFIX_COMPANY_NAME)
