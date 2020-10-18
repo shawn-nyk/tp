@@ -30,6 +30,11 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
+/**
+ * todo javadocs
+ * todo UPDATE ALL THE STRINGS(@shawn, @isaac). Abstract it like @ApplicationCommandTestUtil
+ * like the " com" and " me"
+ */
 public class MainParserTest {
 
     private final MainParser parser = new MainParser();

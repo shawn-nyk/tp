@@ -17,6 +17,9 @@ import seedu.address.logic.commands.SwitchCommand;
 import seedu.address.logic.parser.switchparser.SwitchCommandParser;
 import seedu.address.ui.tabs.TabName;
 
+/**
+ * todo javadocs
+ */
 public class SwitchCommandParserTest {
 
     private static final String EXPECTED_MESSAGE = String.format(MESSAGE_INVALID_COMMAND_FORMAT,

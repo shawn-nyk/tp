@@ -12,6 +12,9 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.find.FindApplicationCommand;
 import seedu.address.model.application.ApplicationNameContainsKeyWordsPredicate;
 
+/**
+ * todo javadocs
+ */
 public class FindApplicationCommandParserTest {
 
     private static final String MESSAGE = String.format(MESSAGE_INVALID_COMMAND_FORMAT,

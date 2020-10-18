@@ -9,6 +9,9 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
 import seedu.address.ui.tabs.TabName;
 
+/**
+ * todo javadocs
+ */
 public class ListApplicationCommand extends ListCommand {
 
     public static final String COMMAND_WORD = "list";
