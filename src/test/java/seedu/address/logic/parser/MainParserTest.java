@@ -4,7 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.commons.util.GeneralStringUtil.SPACE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INDEX_ONE;
+import static seedu.address.logic.commands.util.application.ApplicationCommandTestUtil.APPLICATION_ALIAS_DESC;
+import static seedu.address.logic.commands.util.application.ApplicationCommandTestUtil.STATUS_DESC_ACCEPTED;
+import static seedu.address.logic.commands.util.internship.InternshipCommandTestUtil.INTERNSHIP_ALIAS_DESC;
+import static seedu.address.logic.commands.util.internship.InternshipCommandTestUtil.JOB_TITLE_DESC_SWE;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +25,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SwitchCommand;
+import seedu.address.logic.commands.edit.EditCommandAbstract;
 import seedu.address.logic.commands.view.ViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
@@ -38,21 +46,35 @@ public class MainParserTest {
     }
 
     // todo: add delete test (Issac)
-
-    // todo: add edit test (Keane)
     // @Test
-    // public void parseCommand_edit() throws Exception {
-    //     assertTrue(parser.parseCommand(EditCommandAbstract.COMMAND_WORD + " me 2") instanceof EditCommandAbstract);
-    //     assertTrue(parser.parseCommand(EditCommandAbstract.COMMAND_WORD + " com 2") instanceof EditCommandAbstract);
-    //     assertTrue(parser.parseCommand(EditCommandAbstract.COMMAND_WORD + " app 2") instanceof EditCommandAbstract);
+    // public void parseCommand_delete() throws Exception {
+    //     DeleteCommand command = (DeleteCommand) parser.parseCommand(
+    //             DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST.getOneBased());
+    //     assertEquals(new DeleteCommand(INDEX_FIRST), command);
     // }
 
+    // todo: When com, profile has their prefixes and syntax ready
+    @Test
+    public void parseCommand_edit() throws Exception {
+        // assertTrue(parser.parseCommand(EditCommandAbstract.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + SPACE
+        //         + INDEX_FIRST.getOneBased() + JOB_TITLE_DESC_SWE) instanceof EditCommandAbstract);
+        assertTrue(parser.parseCommand(EditCommandAbstract.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + SPACE
+                + INDEX_FIRST.getOneBased() + VALID_INDEX_ONE + JOB_TITLE_DESC_SWE) instanceof EditCommandAbstract);
+        assertTrue(parser.parseCommand(EditCommandAbstract.COMMAND_WORD + APPLICATION_ALIAS_DESC + SPACE
+                + INDEX_FIRST.getOneBased() + STATUS_DESC_ACCEPTED) instanceof EditCommandAbstract);
+        // assertTrue(parser.parseCommand(EditCommandAbstract.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + SPACE
+        //         + INDEX_FIRST.getOneBased() + JOB_TITLE_DESC_SWE) instanceof EditCommandAbstract);
+    }
 
+    // todo: When com, profile has their prefixes and syntax ready
     @Test
     public void parseCommand_view_success() throws Exception {
-        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " me 2") instanceof ViewCommand);
-        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " com 2") instanceof ViewCommand);
-        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " app 2") instanceof ViewCommand);
+        // assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD +  + SPACE
+        //         + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
+        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + SPACE
+                + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
+        // assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + SPACE + PROFILE_ALIAS + SPACE
+        //         + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
     }
 
     @Test
