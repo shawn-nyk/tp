@@ -1,5 +1,10 @@
 package seedu.address.logic.commands.find;
 
+import static seedu.address.commons.util.GeneralStringUtil.COMMA_WITH_SPACE;
+import static seedu.address.commons.util.GeneralStringUtil.DOT;
+import static seedu.address.commons.util.GeneralStringUtil.DOT_WITH_SPACE;
+import static seedu.address.commons.util.GeneralStringUtil.NEW_LINE;
+import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
@@ -20,12 +25,12 @@ public abstract class FindCommand extends Command {
         + ": Find if an item exist in the list of "
         + COMPANY_NAME + " or "
         + APPLICATION_NAME + " or "
-        + PROFILE_NAME + ".\n"
+        + PROFILE_NAME + DOT + NEW_LINE
         + "Parameters: ITEM_TYPE DESCRIPTION\n" // note that the name description can be change in the future
         + "Note: Valid ITEM_TYPEs are "
-        + "'" + COMPANY_ALIAS + "', "
-        + "'" + APPLICATION_ALIAS + "' or "
-        + "'" + PROFILE_ALIAS + "'. "
+        + SPACE + COMPANY_ALIAS + COMMA_WITH_SPACE
+        + SPACE + APPLICATION_ALIAS + " or "
+        + SPACE + PROFILE_ALIAS + DOT_WITH_SPACE
         + "Example: "
-        + COMMAND_WORD + " " + COMPANY_ALIAS + " " + "Google" + "\n";
+        + COMMAND_WORD + SPACE + COMPANY_ALIAS + SPACE + "Google" + NEW_LINE;
 }

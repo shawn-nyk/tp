@@ -1,5 +1,8 @@
 package seedu.address.ui.cards;
 
+import static seedu.address.commons.util.GeneralStringUtil.COLON_WITH_SPACE;
+import static seedu.address.commons.util.GeneralStringUtil.COMMA;
+import static seedu.address.commons.util.GeneralStringUtil.DOT_WITH_SPACE;
 import static seedu.address.ui.textstyle.TitleDescription.createTitleDescription;
 
 import java.util.LinkedHashMap;
@@ -100,7 +103,7 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
      */
     private String[] generateTags(String tagNames) {
         int length = tagNames.length();
-        return tagNames.substring(1, length - 1).split(",");
+        return tagNames.substring(1, length - 1).split(COMMA);
     }
 
     /**
@@ -121,7 +124,7 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
      * @param displayedIndex The index of the card.
      */
     protected void setId(int displayedIndex) {
-        id.setText(displayedIndex + ". ");
+        id.setText(displayedIndex + DOT_WITH_SPACE);
     }
 
     /**
@@ -133,7 +136,7 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
      * @param lineNumber The linenumber to denote the position of the information.
      */
     protected void setTextAt(String title, String description, LineNumber lineNumber) {
-        TitleDescription titleDescription = createTitleDescription(title + ": ", description);
+        TitleDescription titleDescription = createTitleDescription(title + COLON_WITH_SPACE, description);
         Text styledTitle = titleDescription.getTitle();
         Text styledDescription = titleDescription.getDescription();
         switch(lineNumber) {

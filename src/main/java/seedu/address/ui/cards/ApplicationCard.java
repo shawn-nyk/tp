@@ -1,5 +1,6 @@
 package seedu.address.ui.cards;
 
+import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 import static seedu.address.model.util.DateUtil.extractDayAndMonth;
 import static seedu.address.model.util.StatusUtil.ACCEPTED_KEYWORD;
 import static seedu.address.model.util.StatusUtil.APPLIED_KEYWORD;
@@ -169,7 +170,7 @@ public class ApplicationCard extends Card<ApplicationItem> {
         setImageStyling();
 
         Object dateInformation = mapping.get(DATE_DISPLAY_NAME);
-        String[] dateInformationArray = dateInformation.toString().split(" ");
+        String[] dateInformationArray = dateInformation.toString().split(SPACE);
         date.setText(extractDayAndMonth(dateInformationArray));
     }
 

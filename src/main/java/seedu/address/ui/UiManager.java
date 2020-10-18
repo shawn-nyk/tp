@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import static seedu.address.commons.util.GeneralStringUtil.SPACE;
+
 import java.util.logging.Logger;
 
 import javafx.application.Platform;
@@ -105,7 +107,7 @@ public class UiManager implements Ui {
      * @param e The information of the error.
      */
     private void showFatalErrorDialogAndShutdown(String title, Throwable e) {
-        logger.severe(title + " " + e.getMessage() + StringUtil.getDetails(e));
+        logger.severe(title + SPACE + e.getMessage() + StringUtil.getDetails(e));
         showAlertDialogAndWait(Alert.AlertType.ERROR, title, e.getMessage(), e.toString());
         Platform.exit();
         System.exit(1);

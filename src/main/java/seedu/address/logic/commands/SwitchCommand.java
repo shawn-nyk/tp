@@ -2,6 +2,8 @@ package seedu.address.logic.commands;
 
 import static seedu.address.commons.core.Messages.MESSAGE_SAME_SCREEN;
 import static seedu.address.commons.core.Messages.MESSAGE_SWITCH_SUCCESS;
+import static seedu.address.commons.util.GeneralStringUtil.DOT;
+import static seedu.address.commons.util.GeneralStringUtil.NEW_LINE;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 
 import seedu.address.model.Model;
@@ -15,8 +17,8 @@ public class SwitchCommand extends Command {
     public static final String COMMAND_WORD = "switch";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-        + ": Switch to the desired tab.\n"
-        + "Parameters: TAB_NAME.\n"
+        + ": Switch to the desired tab" + DOT + NEW_LINE
+        + "Parameters: TAB_NAME" + DOT + NEW_LINE
         + "Example: " + COMMAND_WORD + " com";
 
     public static final String EXCESS_MESSAGE = "Note that that should not be anything inputs after the ITEM_TYPE";

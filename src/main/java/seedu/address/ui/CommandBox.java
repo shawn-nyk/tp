@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import static seedu.address.commons.util.GeneralStringUtil.BLANK;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -80,7 +82,7 @@ public class CommandBox extends UiPart<Region> {
     private void handleCommandEntered() {
         try {
             commandExecutor.execute(commandTextField.getText());
-            commandTextField.setText("");
+            commandTextField.setText(BLANK);
         } catch (CommandException | ParseException e) {
             setStyleToIndicateCommandFailure();
         }

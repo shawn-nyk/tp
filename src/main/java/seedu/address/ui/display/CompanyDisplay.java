@@ -1,5 +1,8 @@
 package seedu.address.ui.display;
 
+import static seedu.address.commons.util.GeneralStringUtil.COMMA_WITH_SPACE;
+import static seedu.address.commons.util.GeneralStringUtil.NEW_LINE;
+import static seedu.address.commons.util.GeneralStringUtil.DOT_WITH_SPACE;
 import static seedu.address.ui.display.DisplayKeyList.COMPANY_DISPLAY_KEY_LIST;
 import static seedu.address.ui.panel.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.INDUSTRIES_DISPLAY_NAME;
@@ -29,9 +32,9 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
      */
     private final Function<String, String> formatInternshipDetail = string -> {
         String s = string.substring(0, string.length() - 1);
-        s = s.replaceAll(NEW_LINE + COMMA_ONE_SPACE, NEW_LINE);
+        s = s.replaceAll(NEW_LINE + COMMA_WITH_SPACE, NEW_LINE);
         StringBuffer buffer = new StringBuffer(s);
-        buffer.insert(0, 1 + DOT_SPACE);
+        buffer.insert(0, 1 + DOT_WITH_SPACE);
         formatNumbering(buffer);
         return formatBulletPoints(buffer);
     };
@@ -64,7 +67,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
      */
     private void initializeCompanyDisplayGui() {
         setCompanyName();
-        setCompanyInformation();;
+        setCompanyInformation();
     }
 
     /**
@@ -92,7 +95,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
         int index = buffer.indexOf(NEW_LINE);
         int counter = 2;
         while (index != -1) {
-            String replacement = NEW_LINE + counter + DOT_SPACE;
+            String replacement = NEW_LINE + counter + DOT_WITH_SPACE;
             buffer.replace(index, index + 1, replacement);
             index += replacement.length();
             index = buffer.indexOf(NEW_LINE, index);
@@ -103,7 +106,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
     /**
      * Formats the {@code buffer} to have bullet points for each attributes.
      *
-     * @param buffer A stringbuffer containing information of the intnership.
+     * @param buffer A stringbuffer containing information of the internship.
      * @return A string that is formatted with bullet points.
      */
     private String formatBulletPoints(StringBuffer buffer) {

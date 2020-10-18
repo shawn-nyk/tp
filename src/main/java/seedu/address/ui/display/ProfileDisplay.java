@@ -1,5 +1,7 @@
 package seedu.address.ui.display;
 
+import static seedu.address.commons.util.GeneralStringUtil.COMMA_WITH_SPACE;
+import static seedu.address.commons.util.GeneralStringUtil.NEW_LINE;
 import static seedu.address.ui.display.DisplayKeyList.PROFILE_DISPLAY_KEY_LIST;
 import static seedu.address.ui.panel.PanelDisplayKeyword.DESCRIPTORS_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.TITLE_DISPLAY_NAME;
@@ -20,7 +22,7 @@ public class ProfileDisplay extends InformationDisplay<ProfileItem> {
      * A function that removes the bracket of the string and indent each attribute.
      */
     private final Function<String, String> editString = string
-        -> string.substring(1, string.length() - 1).replaceAll(", ", "\n");
+        -> string.substring(1, string.length() - 1).replaceAll(COMMA_WITH_SPACE, NEW_LINE);
 
     /**
      * A predicate that checks if the current key is a descriptor.
