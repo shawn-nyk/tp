@@ -12,8 +12,19 @@ import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+/**
+ * Parses input arguments and creates a new ViewCompanyCommand object.
+ */
 public class ViewCompanyCommandParser implements Parser<ViewCompanyCommand> {
 
+    /**
+     * Parses the given {@code String} of arguments in the context of the ViewCompanyCommand
+     * and returns a ViewCompanyCommand object for execution.
+     *
+     * @param args Arguments to be parsed.
+     * @return ViewCompanyCommand object for execution
+     * @throws ParseException if the user input does not conform to the expected format.
+     */
     public ViewCompanyCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args);
