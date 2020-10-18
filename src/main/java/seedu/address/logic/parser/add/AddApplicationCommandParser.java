@@ -5,7 +5,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
-import static seedu.address.logic.parser.util.GeneralParserUtil.arePrefixesPresent;
+import static seedu.address.logic.parser.util.GeneralParserUtil.argumentsAreValid;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getIndexInPreamble;
 import static seedu.address.logic.parser.util.GeneralParserUtil.parseIndex;
 
@@ -36,7 +36,7 @@ public class AddApplicationCommandParser implements Parser<AddApplicationCommand
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_INDEX, PREFIX_STATUS, PREFIX_STATUS_DATE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_INDEX)) {
+        if (!argumentsAreValid(true, argMultimap, PREFIX_INDEX)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddApplicationCommand.MESSAGE_USAGE));
         }
