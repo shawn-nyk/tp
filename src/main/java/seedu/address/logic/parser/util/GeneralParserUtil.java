@@ -132,4 +132,20 @@ public class GeneralParserUtil {
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
 
+    /**
+     * todo javadocs
+     */
+    public static void checkCommandDetailsIsNotBlank(String commandDetails, String message) throws ParseException {
+        if (commandDetails.isBlank()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, message));
+        }
+    }
+
+    /**
+     * todo javadocs
+     */
+    public static String[] getTrimmedArgsKeywords(String args) {
+        String trimmedArgs = args.trim();
+        return trimmedArgs.split("\\s+");
+    }
 }
