@@ -2,8 +2,6 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
-import static seedu.address.commons.util.GeneralStringUtil.BLANK;
-import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
@@ -35,10 +33,10 @@ public class SwitchCommandParserTest {
     @Test
     public void parse_missingTabNames_failure() {
         // no tab name input
-        assertParseFailure(switchCommandParser, BLANK, EXPECTED_MESSAGE);
+        assertParseFailure(switchCommandParser, "", EXPECTED_MESSAGE);
 
         // space
-        assertParseFailure(switchCommandParser, SPACE, EXPECTED_MESSAGE);
+        assertParseFailure(switchCommandParser, " ", EXPECTED_MESSAGE);
 
     }
 

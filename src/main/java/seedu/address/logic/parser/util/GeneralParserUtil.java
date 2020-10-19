@@ -3,7 +3,6 @@ package seedu.address.logic.parser.util;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
-import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
@@ -114,7 +113,7 @@ public abstract class GeneralParserUtil {
     }
 
     private static String[] getArgumentsArr(String args) {
-        return args.strip().split(SPACE, NUMBER_OF_ARGUMENTS);
+        return args.strip().split(" ", NUMBER_OF_ARGUMENTS);
     }
 
     /**

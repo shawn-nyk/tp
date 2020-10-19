@@ -2,7 +2,6 @@ package seedu.address.logic.parser.list;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
-import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getItemType;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
@@ -52,7 +51,7 @@ public class ListCommandParser implements Parser<ListCommand> {
     private void checkIfHaveExcessMessage(String args) throws ParseException {
         // allows white space behind the list ITEM TYPE.
         // Strictly no other extra words behind list ITEM TYPE.
-        String[] argsArray = args.split(SPACE);
+        String[] argsArray = args.split(" ");
         if (argsArray.length > 2) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.EXCESS_MESSAGE));
         }

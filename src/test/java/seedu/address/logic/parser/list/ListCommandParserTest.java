@@ -3,8 +3,6 @@ package seedu.address.logic.parser.list;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.commons.util.GeneralStringUtil.BLANK;
-import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
@@ -36,7 +34,7 @@ public class ListCommandParserTest {
     public void parse_invalidTypes_throwsParseException() {
         assertThrows(ParseException.class, () -> listCommandParser.parse("hello"));
         assertThrows(ParseException.class, () -> listCommandParser.parse("1"));
-        assertThrows(ParseException.class, () -> listCommandParser.parse(BLANK));
+        assertThrows(ParseException.class, () -> listCommandParser.parse(""));
     }
 
     @Test
@@ -52,8 +50,8 @@ public class ListCommandParserTest {
 
     @Test
     public void parse_listExcessInput_throwsParseException() {
-        assertThrows(ParseException.class, () -> listCommandParser.parse(SPACE + APPLICATION_ALIAS + "great"));
-        assertThrows(ParseException.class, () -> listCommandParser.parse(SPACE + APPLICATION_ALIAS + "1"));
+        assertThrows(ParseException.class, () -> listCommandParser.parse(" " + APPLICATION_ALIAS + "great"));
+        assertThrows(ParseException.class, () -> listCommandParser.parse(" " + APPLICATION_ALIAS + "1"));
     }
 
 }

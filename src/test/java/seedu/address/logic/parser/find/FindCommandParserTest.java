@@ -3,8 +3,6 @@ package seedu.address.logic.parser.find;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.commons.util.GeneralStringUtil.BLANK;
-import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
@@ -36,21 +34,21 @@ public class FindCommandParserTest {
         // invalid item type
         assertThrows(ParseException.class, () -> findCommandParser.parse("hello"));
         assertThrows(ParseException.class, () -> findCommandParser.parse("1"));
-        assertThrows(ParseException.class, () -> findCommandParser.parse(BLANK));
+        assertThrows(ParseException.class, () -> findCommandParser.parse(""));
     }
 
     @Test
     public void parse_missingInput_throwsParseException() {
         // missing description as input
         assertThrows(ParseException.class, () -> findCommandParser.parse(APPLICATION_ALIAS));
-        assertThrows(ParseException.class, () -> findCommandParser.parse(APPLICATION_ALIAS + SPACE));
+        assertThrows(ParseException.class, () -> findCommandParser.parse(APPLICATION_ALIAS + " "));
     }
 
     @Test
     public void parse_listAppTrue_success() throws ParseException {
         // item type app, description present -> FindApplicationCommand
-        assertTrue(findCommandParser.parse(APPLICATION_ALIAS + SPACE + "3") instanceof FindApplicationCommand);
-        assertTrue(findCommandParser.parse(APPLICATION_ALIAS + SPACE + "developers") instanceof FindApplicationCommand);
+        assertTrue(findCommandParser.parse(APPLICATION_ALIAS + " 3") instanceof FindApplicationCommand);
+        assertTrue(findCommandParser.parse(APPLICATION_ALIAS + " developers") instanceof FindApplicationCommand);
     }
 
     @Test

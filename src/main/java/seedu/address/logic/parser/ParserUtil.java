@@ -3,7 +3,6 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
-import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -37,7 +36,7 @@ public class ParserUtil {
         if (tab.length() == 0) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SwitchCommand.MESSAGE_USAGE));
         }
-        String[] tabArray = tab.split(SPACE);
+        String[] tabArray = tab.split(" ");
         if (tabArray.length > 1) {
             throw new ParseException(SwitchCommand.EXCESS_MESSAGE);
         }

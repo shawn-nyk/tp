@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.commons.util.GeneralStringUtil.COMMA_WITH_SPACE;
 import static seedu.address.commons.util.NumberUtil.NUMBER_FIVE;
 import static seedu.address.commons.util.NumberUtil.NUMBER_SEVEN;
 import static seedu.address.model.util.ApplicationItemUtil.DATE_OUTPUT_NAME;
@@ -145,7 +144,7 @@ public class ApplicationItemTest {
         builder.append(SHOPEE_OFFERED.getInternshipItem())
                 .append(STATUS_OUTPUT_NAME)
                 .append(OFFERED_KEYWORD)
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(DATE_OUTPUT_NAME)
                 .append(EXPECTED_DATE_JUNE_2021);
         assertEquals(builder.toString(), SHOPEE_OFFERED.toString());

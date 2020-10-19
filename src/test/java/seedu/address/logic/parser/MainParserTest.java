@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.commons.util.GeneralStringUtil.BLANK;
-import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INDEX_ONE;
 import static seedu.address.logic.commands.util.application.ApplicationCommandTestUtil.APPLICATION_ALIAS_DESC;
 import static seedu.address.logic.commands.util.application.ApplicationCommandTestUtil.STATUS_DESC_ACCEPTED;
@@ -61,9 +59,9 @@ public class MainParserTest {
     public void parseCommand_edit() throws Exception {
         // assertTrue(parser.parseCommand(EditCommandAbstract.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + SPACE
         //         + INDEX_FIRST.getOneBased() + JOB_TITLE_DESC_SWE) instanceof EditCommandAbstract);
-        assertTrue(parser.parseCommand(EditCommandAbstract.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + SPACE
+        assertTrue(parser.parseCommand(EditCommandAbstract.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + " "
                 + INDEX_FIRST.getOneBased() + VALID_INDEX_ONE + JOB_TITLE_DESC_SWE) instanceof EditCommandAbstract);
-        assertTrue(parser.parseCommand(EditCommandAbstract.COMMAND_WORD + APPLICATION_ALIAS_DESC + SPACE
+        assertTrue(parser.parseCommand(EditCommandAbstract.COMMAND_WORD + APPLICATION_ALIAS_DESC + " "
                 + INDEX_FIRST.getOneBased() + STATUS_DESC_ACCEPTED) instanceof EditCommandAbstract);
         // assertTrue(parser.parseCommand(EditCommandAbstract.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + SPACE
         //         + INDEX_FIRST.getOneBased() + JOB_TITLE_DESC_SWE) instanceof EditCommandAbstract);
@@ -74,7 +72,7 @@ public class MainParserTest {
     public void parseCommand_view_success() throws Exception {
         // assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD +  + SPACE
         //         + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
-        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + SPACE
+        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " "
                 + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
         // assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + SPACE + PROFILE_ALIAS + SPACE
         //         + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
@@ -108,7 +106,7 @@ public class MainParserTest {
             String invalidMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE);
             assertThrows(ParseException.class, invalidMessage, () -> parser.parseCommand(FindCommand.COMMAND_WORD));
             assertThrows(ParseException.class, invalidMessage, ()
-                -> parser.parseCommand(FindCommand.COMMAND_WORD + SPACE));
+                -> parser.parseCommand(FindCommand.COMMAND_WORD + " "));
         }
 
         @Test
@@ -134,7 +132,7 @@ public class MainParserTest {
             // missing description for app
             String appMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindApplicationCommand.MESSAGE_USAGE);
             assertThrows(ParseException.class, appMessage, ()
-                -> parser.parseCommand(FindCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + SPACE));
+                -> parser.parseCommand(FindCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " "));
 
             assertThrows(ParseException.class, appMessage, ()
                 -> parser.parseCommand(FindCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC));
@@ -168,7 +166,7 @@ public class MainParserTest {
             String invalidMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE);
             assertThrows(ParseException.class, invalidMessage, () -> parser.parseCommand(ListCommand.COMMAND_WORD));
             assertThrows(ParseException.class, invalidMessage, ()
-                -> parser.parseCommand(ListCommand.COMMAND_WORD + SPACE));
+                -> parser.parseCommand(ListCommand.COMMAND_WORD + " "));
         }
 
         @Test
@@ -268,7 +266,7 @@ public class MainParserTest {
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
         String errorMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE);
-        assertThrows(ParseException.class, errorMessage, () -> parser.parseCommand(BLANK));
+        assertThrows(ParseException.class, errorMessage, () -> parser.parseCommand(""));
     }
 
     @Test

@@ -1,8 +1,6 @@
 package seedu.address.logic.commands.find;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.GeneralStringUtil.NEW_LINE;
-import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 
@@ -19,11 +17,10 @@ import seedu.address.ui.tabs.TabName;
  */
 public class FindApplicationCommand extends FindCommand {
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-        + " " + APPLICATION_ALIAS + ": Finds if an application exist in the list of application in InternHunter"
-        + NEW_LINE
-        + "Parameters: ITEM_TYPE DESCRIPTION" + NEW_LINE // THE WORD DESCRIPTION CAN BE CHANGE IN THE FUTURE.
-        + "Example: " + COMMAND_WORD + SPACE + APPLICATION_ALIAS + SPACE + "software engineering" + NEW_LINE;
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " "
+        + APPLICATION_ALIAS + ": Finds if an application exist in the list of application in InternHunter\n"
+        + "Parameters: ITEM_TYPE DESCRIPTION\n" // THE WORD DESCRIPTION CAN BE CHANGE IN THE FUTURE.
+        + "Example: " + COMMAND_WORD + " " + APPLICATION_ALIAS + " " + "software engineering\n";
 
     private final ApplicationNameContainsKeyWordsPredicate predicate;
 

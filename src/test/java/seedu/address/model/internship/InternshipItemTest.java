@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.commons.util.GeneralStringUtil.COMMA_WITH_SPACE;
-import static seedu.address.commons.util.GeneralStringUtil.DASH;
 import static seedu.address.commons.util.NumberUtil.NUMBER_FIVE;
 import static seedu.address.commons.util.NumberUtil.NUMBER_ZERO;
 import static seedu.address.model.internship.Wage.WAGE_SYMBOL;
@@ -221,17 +219,17 @@ public class InternshipItemTest {
     public void toString_nonEmptyRequirements_success() {
         final StringBuilder builder = new StringBuilder();
         builder.append(VALID_JOB_TITLE_SWE)
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(COMPANY_OUTPUT_NAME)
                 .append(VALID_COMPANY_NAME_SHOPEE)
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(PERIOD_OUTPUT_NAME)
                 .append(VALID_PERIOD_TWO_MONTHS)
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(WAGE_OUTPUT_NAME)
                 .append(WAGE_SYMBOL)
                 .append(VALID_WAGE_2000)
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(REQUIREMENTS_OUTPUT_NAME)
                 .append(SHOPEE_SWE.getRequirements())
                 .append(System.lineSeparator());
@@ -242,19 +240,19 @@ public class InternshipItemTest {
     public void toString_noRequirements_success() {
         final StringBuilder builder = new StringBuilder();
         builder.append(VALID_JOB_TITLE_FE)
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(COMPANY_OUTPUT_NAME)
                 .append(VALID_COMPANY_NAME_FACEBOOK)
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(PERIOD_OUTPUT_NAME)
                 .append(VALID_PERIOD_MAY_TO_JULY)
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(WAGE_OUTPUT_NAME)
                 .append(WAGE_SYMBOL)
                 .append(VALID_WAGE_3500)
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(REQUIREMENTS_OUTPUT_NAME)
-                .append(DASH)
+                .append("-")
                 .append(System.lineSeparator());
         assertEquals(builder.toString(), FACEBOOK_FE.toString());
     }

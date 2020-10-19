@@ -1,8 +1,5 @@
 package seedu.address.ui.display;
 
-import static seedu.address.commons.util.GeneralStringUtil.COMMA_WITH_SPACE;
-import static seedu.address.commons.util.GeneralStringUtil.DOT_WITH_SPACE;
-import static seedu.address.commons.util.GeneralStringUtil.NEW_LINE;
 import static seedu.address.ui.display.DisplayKeyList.COMPANY_DISPLAY_KEY_LIST;
 import static seedu.address.ui.panel.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.INDUSTRIES_DISPLAY_NAME;
@@ -32,9 +29,9 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
      */
     private final Function<String, String> formatInternshipDetail = string -> {
         String s = string.substring(0, string.length() - 1);
-        s = s.replaceAll(NEW_LINE + COMMA_WITH_SPACE, NEW_LINE);
+        s = s.replaceAll("\n, ", "\n");
         StringBuffer buffer = new StringBuffer(s);
-        buffer.insert(0, 1 + DOT_WITH_SPACE);
+        buffer.insert(0, 1 + ". ");
         formatNumbering(buffer);
         return formatBulletPoints(buffer);
     };
@@ -92,13 +89,13 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
      * @param buffer A stringbuffer containing information of the internships.
      */
     private void formatNumbering(StringBuffer buffer) {
-        int index = buffer.indexOf(NEW_LINE);
+        int index = buffer.indexOf("\n");
         int counter = 2;
         while (index != -1) {
-            String replacement = NEW_LINE + counter + DOT_WITH_SPACE;
+            String replacement = "\n" + counter + ". ";
             buffer.replace(index, index + 1, replacement);
             index += replacement.length();
-            index = buffer.indexOf(NEW_LINE, index);
+            index = buffer.indexOf("\n", index);
             counter++;
         }
     }
@@ -111,7 +108,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
      */
     private String formatBulletPoints(StringBuffer buffer) {
         String string = buffer.toString();
-        string = string.replaceAll(COMMA_TWO_SPACE, NEW_LINE + BULLET_WITH_TWO_SPACE_FRONT_ONE_BACK);
+        string = string.replaceAll(COMMA_TWO_SPACE, "\n" + BULLET_WITH_TWO_SPACE_FRONT_ONE_BACK);
         return string;
     }
 }
