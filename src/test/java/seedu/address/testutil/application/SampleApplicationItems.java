@@ -9,7 +9,12 @@ import static seedu.address.testutil.internship.SampleInternshipItems.FACEBOOK_F
 import static seedu.address.testutil.internship.SampleInternshipItems.LAZADA_DS;
 import static seedu.address.testutil.internship.SampleInternshipItems.SHOPEE_SWE;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import seedu.address.model.application.ApplicationItem;
+import seedu.address.model.item.ItemList;
 
 public abstract class SampleApplicationItems {
 
@@ -29,4 +34,15 @@ public abstract class SampleApplicationItems {
             .withStatusDate(STATUS_DATE_JUNE_2022)
             .build();
 
+    public static ItemList<ApplicationItem> getSampleApplicationItemList() {
+        ItemList<ApplicationItem> applicationItemItemList = new ItemList<>();
+        for (ApplicationItem applicationItem : getApplicationItems()) {
+            applicationItemItemList.addItem(applicationItem);
+        }
+        return applicationItemItemList;
+    }
+
+    private static List<ApplicationItem> getApplicationItems() {
+        return new ArrayList<>(Arrays.asList(SHOPEE_OFFERED, LAZADA_REJECTED, FACEBOOK_ACCEPTED));
+    }
 }

@@ -16,12 +16,13 @@ import seedu.address.ui.tabs.TabName;
  */
 public class ListApplicationCommand extends ListCommand {
 
+    public static final String MESSAGE_SUCCESS = String.format(MESSAGE_LIST_SUCCESS, APPLICATION_NAME);
+
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.getApplicationList().updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
         model.setApplicationViewIndex(Index.fromOneBased(1)); // reset to zero for consistency
-        String messageSuccess = String.format(MESSAGE_LIST_SUCCESS, APPLICATION_NAME);
-        return getCommandResult(model, messageSuccess, TabName.APPLICATION);
+        return getCommandResult(model, MESSAGE_SUCCESS, TabName.APPLICATION);
     }
 }

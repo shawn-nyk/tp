@@ -20,6 +20,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.edit.EditCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.application.ApplicationItem;
+import seedu.address.model.application.ApplicationNameContainsKeyWordsPredicate;
 import seedu.address.model.item.ItemList;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -133,6 +135,22 @@ public class CommandTestUtil {
         model.getAddressBook().updateFilteredItemList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getAddressBook().getFilteredItemList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the application at the given {@code targetIndex} in the
+     * {@code model}'s application list.
+     */
+    public static void showApplicationAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getApplicationList().getFilteredItemList().size());
+
+        ApplicationItem applicationItem = model.getApplicationList().getFilteredItemList().get(
+            targetIndex.getZeroBased());
+        final String[] splitJobTitle = applicationItem.getInternshipItem().getJobTitle().toString().split("\\s+");
+        model.getApplicationList().updateFilteredItemList(
+            new ApplicationNameContainsKeyWordsPredicate(Arrays.asList(splitJobTitle[0])));
+
+        assertEquals(1, model.getApplicationList().getFilteredItemList().size());
     }
 
 }
