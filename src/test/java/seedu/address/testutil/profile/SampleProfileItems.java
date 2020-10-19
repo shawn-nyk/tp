@@ -62,7 +62,7 @@ public abstract class SampleProfileItems {
     }
 
     private static List<ProfileItem> getProfileItems() {
-        return new ArrayList<>(Arrays.asList(HTML_SKILL, HACKATHON_ACHIEVEMENT, GOVTECH_EXPERIENCE,
-                GRAPHQL_SKILL, NUS_MODS_EXPERIENCE, MS_HACKATHON_ACHIEVEMENT));
+        return new ArrayList<>(Arrays.asList(HTML_SKILL, GOVTECH_EXPERIENCE, NUS_MODS_EXPERIENCE,
+                MS_HACKATHON_ACHIEVEMENT));
     }
 }
