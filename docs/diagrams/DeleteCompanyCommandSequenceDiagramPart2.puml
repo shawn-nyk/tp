@@ -1,0 +1,64 @@
+@startuml
+!include InternHunterStyle.puml
+
+box Logic LOGIC_COLOR_T1
+participant "d:DeleteCompanyCommand" as DeleteCompanyCommand LOGIC_COLOR
+participant ":CommandUtil" as CommandUtil LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+end box
+
+mainframe sd execute delete company 3 command
+
+[-> DeleteCompanyCommand : execute(model)
+activate DeleteCompanyCommand
+
+DeleteCompanyCommand -> Model : getTabName()
+activate Model
+
+Model --> DeleteCompanyCommand : currentTabName
+deactivate Model
+
+DeleteCompanyCommand -> CommandUtil : getCompany(model, 3)
+activate CommandUtil
+
+CommandUtil -> Model : getFilteredCompanyList()
+activate Model
+
+Model --> CommandUtil
+deactivate Model
+
+CommandUtil --> DeleteCompanyCommand : companyToDelete
+deactivate CommandUtil
+
+DeleteCompanyCommand -> DeleteCompanyCommand : deleteAllInternshipsInCompany(\nmodel, companyToDelete)
+activate DeleteCompanyCommand
+
+DeleteCompanyCommand --> DeleteCompanyCommand
+deactivate DeleteCompanyCommand
+
+DeleteCompanyCommand -> Model : deleteCompany(companyToDelete)
+activate Model
+
+Model --> DeleteCompanyCommand
+deactivate Model
+
+DeleteCompanyCommand -> CommandUtil : getCommandResult()
+activate CommandUtil
+
+create CommandResult
+CommandUtil -> CommandResult
+activate CommandResult
+
+CommandResult --> CommandUtil
+deactivate CommandResult
+
+CommandUtil --> DeleteCompanyCommand : result
+deactivate CommandUtil
+
+[<-- DeleteCompanyCommand : result
+deactivate DeleteCompanyCommand
+@enduml

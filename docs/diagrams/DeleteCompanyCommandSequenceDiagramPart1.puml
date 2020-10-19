@@ -5,11 +5,9 @@ box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":MainParser" as MainParser LOGIC_COLOR
 participant ":DeleteCommandParser" as DeleteCommandParser LOGIC_COLOR
-participant ":GeneralParserUtil" as GeneralParserUtil LOGIC_COLOR
 participant ":DeleteCompanyCommandParser" as DeleteCompanyCommandParser LOGIC_COLOR
 participant "d:DeleteCompanyCommand" as DeleteCompanyCommand LOGIC_COLOR
 participant ":CommandUtil" as CommandUtil LOGIC_COLOR
-participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
@@ -31,18 +29,6 @@ deactivate DeleteCommandParser
 
 MainParser -> DeleteCommandParser : parse(" com 3")
 activate DeleteCommandParser
-
-DeleteCommandParser -> GeneralParserUtil : getItemType(" com 3", DeleteCommandAbstract.MESSAGE_USAGE)
-activate GeneralParserUtil
-
-GeneralParserUtil --> DeleteCommandParser : "com"
-deactivate GeneralParserUtil
-
-DeleteCommandParser -> GeneralParserUtil : getCommandDetails(args)
-activate GeneralParserUtil
-
-GeneralParserUtil --> DeleteCommandParser : " 3"
-deactivate GeneralParserUtil
 
 create DeleteCompanyCommandParser
 DeleteCommandParser -> DeleteCompanyCommandParser
@@ -73,26 +59,10 @@ deactivate MainParser
 LogicManager -> DeleteCompanyCommand : execute(model)
 activate DeleteCompanyCommand
 
-DeleteCompanyCommand -> CommandUtil : getCompany(Model model, Index companyIndex)
-activate Model
+ref over DeleteCompanyCommand, CommandUtil, Model : execute delete company 3 command
 
-public static CompanyItem getCompany(Model model, Index companyIndex)
-
-DeleteCompanyCommand -> Model : deletePerson(1)
-activate Model
-
-Model --> DeleteCommand
-deactivate Model
-
-create CommandResult
-DeleteCommand -> CommandResult
-activate CommandResult
-
-CommandResult --> DeleteCommand
-deactivate CommandResult
-
-DeleteCommand --> LogicManager : result
-deactivate DeleteCommand
+DeleteCompanyCommand --> LogicManager : result
+deactivate DeleteCompanyCommand
 
 [<--LogicManager
 deactivate LogicManager
