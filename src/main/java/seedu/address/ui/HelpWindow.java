@@ -95,11 +95,11 @@ public class HelpWindow extends UiPart<Stage> {
     }
 
     /**
-     * Closes the help window when the escape button is released.
+     * Closes the help window when the escape button is pressed and released.
      *
      * @param stage Current stage.
      */
-    public void addCloseWindowOnEsc(Stage stage) {
+    private void addCloseWindowOnEsc(Stage stage) {
         stage.addEventHandler(KeyEvent.KEY_RELEASED, (KeyEvent event) -> {
             if (KeyCode.ESCAPE == event.getCode()) {
                 stage.close();
