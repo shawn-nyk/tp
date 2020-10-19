@@ -44,7 +44,7 @@ public class DeleteCompanyCommand extends DeleteCommandAbstract {
         deleteAllInternshipsInCompany(model, companyToDelete);
 
         // Delete the company
-        model.getCompanyList().deleteItem(companyToDelete);
+        model.deleteCompany(companyToDelete);
 
         String deleteSuccessMessage = String.format(MESSAGE_DELETED_ITEM, COMPANY_NAME, companyToDelete);
         return getCommandResult(model, deleteSuccessMessage, currentTabName, TabName.COMPANY, targetIndex);

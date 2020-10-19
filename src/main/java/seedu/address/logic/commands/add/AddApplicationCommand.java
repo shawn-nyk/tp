@@ -15,7 +15,6 @@ import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.FilterableItemList;
 import seedu.address.model.Model;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.application.Status;
@@ -71,13 +70,11 @@ public class AddApplicationCommand extends AddCommandAbstract {
         InternshipItem internshipItem = companyItem.getInternship(internshipIndex);
         ApplicationItem applicationToAdd = new ApplicationItem(internshipItem, status, statusDate);
 
-        FilterableItemList<ApplicationItem> applicationList = model.getApplicationList();
-
-        if (applicationList.hasItem(applicationToAdd)) {
+        if (model.hasApplication(applicationToAdd)) {
             throw new CommandException(String.format(MESSAGE_DUPLICATE_ITEM, APPLICATION_NAME));
         }
 
-        applicationList.addItem(applicationToAdd);
+        model.addApplication(applicationToAdd);
 
         String addSuccessMessage = String.format(MESSAGE_ADD_SUCCESS, APPLICATION_NAME, applicationToAdd);
         return getCommandResult(model, addSuccessMessage, TabName.APPLICATION);

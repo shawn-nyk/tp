@@ -27,7 +27,7 @@ import seedu.address.ui.tabs.TabName;
 public abstract class CommandUtil {
 
     public static CompanyItem getCompany(Model model, Index companyIndex) throws CommandException {
-        List<CompanyItem> lastShownList = model.getCompanyList().getFilteredItemList();
+        List<CompanyItem> lastShownList = model.getFilteredCompanyList();
 
         if (companyIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, COMPANY_NAME));
@@ -37,7 +37,7 @@ public abstract class CommandUtil {
     }
 
     public static ApplicationItem getApplication(Model model, Index applicationIndex) throws CommandException {
-        List<ApplicationItem> lastShownList = model.getApplicationList().getFilteredItemList();
+        List<ApplicationItem> lastShownList = model.getFilteredApplicationList();
 
         if (applicationIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, APPLICATION_NAME));
@@ -47,7 +47,7 @@ public abstract class CommandUtil {
     }
 
     public static ProfileItem getProfileItem(Model model, Index profileItemIndex) throws CommandException {
-        List<ProfileItem> lastShownList = model.getProfileList().getFilteredItemList();
+        List<ProfileItem> lastShownList = model.getFilteredProfileList();
 
         if (profileItemIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, PROFILE_NAME));
