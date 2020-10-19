@@ -52,18 +52,18 @@ public class JsonProfileItemListStorageTest {
     @Test
     public void read_notJsonFormat_exceptionThrown() {
         assertThrows(DataConversionException.class, () -> readProfileItemList(
-                "notJsonFormatApplicationItemList.json"));
+                "notJsonFormatProfileItemList.json"));
     }
 
     @Test
     public void readProfileItemList_invalidProfileItemProfileItemList_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readProfileItemList("invalidApplicationItemList.json"));
+        assertThrows(DataConversionException.class, () -> readProfileItemList("invalidProfileItemList.json"));
     }
 
     @Test
     public void readProfileItemList_invalidAndValidProfileItemProfileItemList_throwDataConversionException() {
         assertThrows(DataConversionException.class, () -> readProfileItemList(
-                "invalidAndValidApplicationItemList.json"));
+                "invalidAndValidProfileItemList.json"));
     }
 
     @Test

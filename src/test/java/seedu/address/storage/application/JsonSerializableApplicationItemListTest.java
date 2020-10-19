@@ -31,7 +31,8 @@ public class JsonSerializableApplicationItemListTest {
         JsonSerializableItemList<ApplicationItem, JsonAdaptedApplicationItem> dataFromFile = JsonUtil.readJsonFile(
                 SAMPLE_APPLICATION_ITEMS_FILE, ApplicationItem.class, JsonAdaptedApplicationItem.class).get();
         ItemList<ApplicationItem> addressBookFromFile = dataFromFile.toModelType();
-        ItemList<ApplicationItem> sampleApplicationItemListStorage = SampleApplicationItems.getSampleApplicationItemList();
+        ItemList<ApplicationItem> sampleApplicationItemListStorage =
+                SampleApplicationItems.getSampleApplicationItemList();
         assertEquals(addressBookFromFile, sampleApplicationItemListStorage);
     }
 

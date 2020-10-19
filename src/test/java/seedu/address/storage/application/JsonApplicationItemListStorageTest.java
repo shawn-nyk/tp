@@ -58,13 +58,13 @@ public class JsonApplicationItemListStorageTest {
     }
 
     @Test
-    public void readApplicationItemList_invalidApplicationItemApplicationItemList_throwDataConversionException() {
+    public void readApplicationItemList_invalidApplicationItemList_throwDataConversionException() {
         assertThrows(DataConversionException.class, () -> readApplicationItemList(
                 "invalidApplicationItemList.json"));
     }
 
     @Test
-    public void readApplicationItemList_invalidAndValidApplicationItemApplicationItemList_throwDataConversionException() {
+    public void readApplicationItemList_invalidAndValidApplicationItemList_throwDataConversionException() {
         assertThrows(DataConversionException.class, () -> readApplicationItemList(
                 "invalidAndValidApplicationItemList.json"));
     }
