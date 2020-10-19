@@ -1,5 +1,6 @@
 package seedu.address.testutil.profile;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,6 +8,8 @@ import java.util.List;
 import seedu.address.model.item.ItemList;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.model.profile.ProfileItemCategory;
+import seedu.address.storage.JsonItemListStorage;
+import seedu.address.storage.profile.JsonAdaptedProfileItem;
 
 /**
  * A utility class containing a list of {@code ProfileItem} objects to be used in tests.
@@ -62,7 +65,12 @@ public abstract class SampleProfileItems {
     }
 
     private static List<ProfileItem> getProfileItems() {
-        return new ArrayList<>(Arrays.asList(HTML_SKILL, HACKATHON_ACHIEVEMENT, GOVTECH_EXPERIENCE,
-                GRAPHQL_SKILL, NUS_MODS_EXPERIENCE, MS_HACKATHON_ACHIEVEMENT));
+        return new ArrayList<>(Arrays.asList(HTML_SKILL, GOVTECH_EXPERIENCE, NUS_MODS_EXPERIENCE,
+                MS_HACKATHON_ACHIEVEMENT));
+    }
+
+    public static void main(String[] args) throws Exception {
+        new JsonItemListStorage<ProfileItem, JsonAdaptedProfileItem>(Paths.get("test.json"),
+                ProfileItem.class, JsonAdaptedProfileItem.class).saveItemList(getSampleProfileItemList());
     }
 }
