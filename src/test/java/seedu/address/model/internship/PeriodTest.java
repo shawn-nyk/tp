@@ -1,15 +1,22 @@
 package seedu.address.model.internship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.internship.InternshipItemFieldsUtil.INVALID_PERIOD_EMPTY;
+import static seedu.address.testutil.internship.InternshipItemFieldsUtil.INVALID_PERIOD_SPACES;
+import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_PERIOD_SUMMER;
+import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_PERIOD_THREE_MONTHS;
 
 import org.junit.jupiter.api.Test;
 
 public class PeriodTest {
 
-    private static final String INVALID_PERIOD_EMPTY = "";
-    private static final String INVALID_PERIOD_SPACES = "   ";
-    private static final String VALID_PERIOD = "3 months, summer break";
+    private static final Period VALID_PERIOD_ONE = new Period(VALID_PERIOD_SUMMER);
+    private static final Period VALID_PERIOD_TWO = new Period(VALID_PERIOD_THREE_MONTHS);
+
 
     @Test
     public void constructor_null_throwsNullPointerException() {
@@ -23,23 +30,37 @@ public class PeriodTest {
     }
 
     @Test
-    public void toString_validFormats_success() {
-        Period period1 = new Period(VALID_PERIOD);
-        assertEquals(VALID_PERIOD, period1.toString());
+    public void isValidPeriod_invalidFormats_success() {
+        assertFalse(Period.isValidPeriod(INVALID_PERIOD_EMPTY));
+        assertFalse(Period.isValidPeriod(INVALID_PERIOD_SPACES));
+    }
+
+    @Test
+    public void isValidPeriod_validFormats_success() {
+        assertTrue(Period.isValidPeriod(VALID_PERIOD_SUMMER));
+        assertTrue(Period.isValidPeriod(VALID_PERIOD_THREE_MONTHS));
+    }
+
+    @Test
+    public void getValue_equalityTest_success() {
+        assertEquals(VALID_PERIOD_SUMMER, VALID_PERIOD_ONE.getValue());
     }
 
     @Test
     public void equals_equalityTest_success() {
-        Period period1 = new Period(VALID_PERIOD);
-        Period period2 = new Period(VALID_PERIOD);
-        assertEquals(period1, period2);
+        assertEquals(VALID_PERIOD_ONE, VALID_PERIOD_ONE);
+        Period periodCopy = new Period(VALID_PERIOD_SUMMER);
+        assertEquals(VALID_PERIOD_ONE, periodCopy);
+    }
+
+    @Test
+    public void equals_nonEqualityTest_success() {
+        assertNotEquals(VALID_PERIOD_ONE, VALID_PERIOD_TWO);
     }
 
     @Test
     public void hashCode_equalityTest_success() {
-        Period period1 = new Period(VALID_PERIOD);
-        Period period2 = new Period(VALID_PERIOD);
-        assertEquals(period1.hashCode(), period2.hashCode());
+        assertEquals(VALID_PERIOD_ONE.hashCode(), VALID_PERIOD_ONE.hashCode());
     }
 
 }

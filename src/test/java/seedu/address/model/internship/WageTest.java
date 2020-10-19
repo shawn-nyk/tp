@@ -1,17 +1,25 @@
 package seedu.address.model.internship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.model.internship.Wage.WAGE_SYMBOL;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.internship.InternshipItemFieldsUtil.INVALID_WAGE_DECIMAL;
+import static seedu.address.testutil.internship.InternshipItemFieldsUtil.INVALID_WAGE_NEGATIVE;
+import static seedu.address.testutil.internship.InternshipItemFieldsUtil.INVALID_WAGE_ZERO;
+import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_WAGE_2000;
+import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_WAGE_3000;
 
 import org.junit.jupiter.api.Test;
 
 public class WageTest {
 
-    private static final String INVALID_WAGE_ZERO = "0";
-    private static final String INVALID_WAGE_NEGATIVE = "-5";
-    private static final String INVALID_WAGE_DECIMAL = "3555.4";
-    private static final String VALID_WAGE_THOUSAND = "1000";
-    private static final String EXPECTED_WAGE_THOUSAND = "$1000";
+
+
+    private static final Wage VALID_WAGE_ONE = new Wage(VALID_WAGE_2000);
+    private static final Wage VALID_WAGE_TWO = new Wage(VALID_WAGE_3000);
 
     @Test
     public void constructor_null_throwsNullPointerException() {
@@ -26,23 +34,59 @@ public class WageTest {
     }
 
     @Test
-    public void toString_validFormats_success() {
-        Wage wage1 = new Wage(VALID_WAGE_THOUSAND);
-        assertEquals(EXPECTED_WAGE_THOUSAND, wage1.toString());
+    public void isValidWage_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> Wage.isValidWage(null));
+    }
+
+    @Test
+    public void isValidWage_validInput_success() {
+        assertTrue(Wage.isValidWage("2"));
+        assertTrue(Wage.isValidWage("12345"));
+        assertTrue(Wage.isValidWage("243"));
+    }
+
+    @Test
+    public void isValidWage_invalidDigits_success() {
+        assertFalse(Wage.isValidWage("0")); // Zero
+        assertFalse(Wage.isValidWage("-4")); // Negative number
+        assertFalse(Wage.isValidWage("400.00")); // Decimals
+        assertFalse(Wage.isValidWage("0.400")); // Decimals
+    }
+
+    @Test
+    public void isValidWage_invalidInput_success() {
+        assertFalse(Wage.isValidWage("")); // empty string
+        assertFalse(Wage.isValidWage("    ")); // spaces only
+        assertFalse(Wage.isValidWage("   213")); // space then number
+        assertFalse(Wage.isValidWage("1221abc2131")); // alphabets within digits
+        assertFalse(Wage.isValidWage("90 41")); // spaces within digits
+    }
+
+    @Test
+    public void getValue_equalityTest_success() {
+        assertEquals(VALID_WAGE_2000, VALID_WAGE_ONE.getValue());
+    }
+
+    @Test
+    public void toString_validFormat_success() {
+        assertEquals(WAGE_SYMBOL + VALID_WAGE_2000, VALID_WAGE_ONE.toString());
     }
 
     @Test
     public void equals_equalityTest_success() {
-        Wage wage1 = new Wage(VALID_WAGE_THOUSAND);
-        Wage wage2 = new Wage(VALID_WAGE_THOUSAND);
-        assertEquals(wage1, wage2);
+        assertEquals(VALID_WAGE_ONE, VALID_WAGE_ONE);
+        Wage wageCopy = new Wage(VALID_WAGE_2000);
+        assertEquals(VALID_WAGE_ONE, wageCopy);
+    }
+
+    @Test
+    public void equals_nonEqualityTest_success() {
+        assertNotEquals(VALID_WAGE_ONE, VALID_WAGE_TWO);
     }
 
     @Test
     public void hashCode_equalityTest_success() {
-        Wage wage1 = new Wage(VALID_WAGE_THOUSAND);
-        Wage wage2 = new Wage(VALID_WAGE_THOUSAND);
-        assertEquals(wage1.hashCode(), wage2.hashCode());
+        assertEquals(VALID_WAGE_ONE.hashCode(), VALID_WAGE_ONE.hashCode());
     }
 
 }
