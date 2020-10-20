@@ -49,11 +49,11 @@ public class AddProfileCommand extends AddCommandAbstract {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (model.getProfileList().hasItem(toAdd)) {
+        if (model.hasProfileItem(toAdd)) {
             throw new CommandException(String.format(MESSAGE_DUPLICATE_ITEM, PROFILE_NAME));
         }
 
-        model.getProfileList().addItem(toAdd);
+        model.addProfileItem(toAdd);
 
         String addSuccessMessage = String.format(MESSAGE_ADD_SUCCESS, PROFILE_NAME, toAdd);
         return getCommandResult(model, addSuccessMessage, TabName.PROFILE);

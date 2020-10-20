@@ -58,7 +58,7 @@ public class JsonAdaptedCompanyItem extends JsonAdaptedItem {
         companyName = source.getCompanyName().getValue();
         phone = source.getPhone().value;
         email = source.getEmail().value;
-        address = source.getEmail().value;
+        address = source.getAddress().value;
 
         industries.addAll(source.getIndustries().stream()
                 .map(JsonAdaptedIndustry::new)
