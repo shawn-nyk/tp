@@ -14,7 +14,7 @@ public abstract class NonEmptyString {
      */
     public static final String VALIDATION_REGEX = "^(?!\\s*$).+";
 
-    public final String value;
+    private final String value;
 
     /**
      * Constructs a {@code AlNumWord}.

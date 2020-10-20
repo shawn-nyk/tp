@@ -76,12 +76,26 @@ public class ApplicationItem extends Item {
     }
 
     /**
+     * todo javadocs
+     */
+    public String getStatusString() {
+        return status.toString();
+    }
+
+    /**
      * Retrieves the status date of this ApplicationItem.
      *
      * @return Status date of this ApplicationItem.
      */
     public StatusDate getStatusDate() {
         return statusDate;
+    }
+
+    /**
+     * todo javadocs
+     */
+    public String getStatusDateString() {
+        return statusDate.toString();
     }
 
     /**
