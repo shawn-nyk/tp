@@ -12,7 +12,7 @@ class AddApplicationCommand
 class AddInternshipCommand
 class AddCompanyCommand
 class AddProfileCommand
-class SwitchCommand
+class HelpCommand
 
 }
 
@@ -23,6 +23,6 @@ AddCommand <|-- AddCompanyCommand
 AddCommand <|-- AddInternshipCommand
 AddCommand <|-- AddApplicationCommand
 AddCommand <|-- AddProfileCommand
-Command <|-- SwitchCommand
+Command <|-- HelpCommand
 
 @enduml
