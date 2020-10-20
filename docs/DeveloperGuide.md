@@ -52,7 +52,7 @@ The following sequence diagrams show how the delete company feature works succes
 ![DeleteCompanyCommandSequenceDiagram](images/DeleteCompanyCommandSequenceDiagram.png)
 ![ExecuteDeleteCompany3CommandSequenceDiagram](images/ExecuteDeleteCompany3CommandSequenceDiagram.png)
 ![GetDeleteCommandResultSequenceDiagram](images/GetDeleteCommandResultSequenceDiagram.png)
-![HandleDeleteDisplaySwitchIndexSequenceDiagram](images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png)
+HandleDeleteDisplaySwitchIndexSequenceDiagram can be found [here](#handle-delete-display-switch-index-sequence-diagram)
 
 #### Design considerations
 * Obtaining the tab that the user is currently viewing has to be done before deleting all the company’s internships 
@@ -125,9 +125,12 @@ This is how the `SwitchCommand#execute()` method works upon execution:
  2a. If both the tabs are the same, a `CommandResult` with a same tab message is return via the `CommandUtil#getCommandResult()` method. <br/>
  2b. If the tabs are different, a `CommandResult` with a success message is return via the `CommandUtil#getCommandResult()`method. <br/>
 3. The `CommandResult` also indicates whether the tab needs to be switched or not.
+
 ![SwitchCommandSequenceDiagram](images/SwitchCommandSequenceDiagram.png)
+The overall process of how `SwitchCommand` was generated. <br />
 ![ExecuteSwitchMeCommandSequenceDiagram](images/ExecuteSwitchMeCommandSequenceDiagram.png)
-![GetCommandResultSequenceDiagram](images/GetCommandResultSequenceDiagram.png)
+The process of how `SwitchCommand` interacts with the model. <br />
+GetCommandResultSequenceDiagram can be found [here](#get-command-result-sequence-diagram)
 
 The following activity diagram summarizes what happens when a user executes a switch command:
 
@@ -563,5 +566,15 @@ using commands than using the mouse.
 
 * **OS**: Operating System
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
+
+### Appendix F: Sequence Diagrams
+
+<h4 id="get-command-result-sequence-diagram">
+![GetCommandResultSequenceDiagram](images/GetCommandResultSequenceDiagram.png)
+<h4 />
+<h4 id="handle-delete-display-switch-index-sequence-diagram">
+![HandleDeleteDisplaySwitchIndexSequenceDiagram](images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png)
+<h4 />
+
 
 --------------------------------------------------------------------------------------------------------------------
