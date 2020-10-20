@@ -72,12 +72,6 @@ public interface Model {
     void deleteCompany(CompanyItem target);
 
     /**
-     * Deletes the given Company according to the weaker notion of equality.
-     * The Company may not necessarily exist in the company list.
-     */
-    void deleteSameCompany(CompanyItem target);
-
-    /**
      * Adds the given Company.
      * {@code companyItem} must not already exist in the company list.
      */
@@ -172,12 +166,6 @@ public interface Model {
      * The Profile item must exist in the profile list.
      */
     void deleteProfileItem(ProfileItem target);
-
-    /**
-     * Deletes the given Profile item according to the weaker notion of equality.
-     * The Profile item may not necessarily exist in the profile list.
-     */
-    void deleteSameProfileItem(ProfileItem target);
 
     /**
      * Adds the given Profile item.

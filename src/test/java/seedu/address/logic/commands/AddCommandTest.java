@@ -142,11 +142,6 @@ public class AddCommandTest {
         }
 
         @Override
-        public void deleteSameCompany(CompanyItem target) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public void addCompany(CompanyItem companyItem) {
             throw new AssertionError("This method should not be called.");
         }
@@ -238,11 +233,6 @@ public class AddCommandTest {
 
         @Override
         public void deleteProfileItem(ProfileItem target) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void deleteSameProfileItem(ProfileItem target) {
             throw new AssertionError("This method should not be called.");
         }
 

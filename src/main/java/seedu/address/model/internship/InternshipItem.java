@@ -24,7 +24,7 @@ import seedu.address.model.company.CompanyName;
 import seedu.address.model.item.Item;
 import seedu.address.storage.internship.JsonAdaptedInternshipItem;
 
-/**
+/** todo: javadocs
  * Represents an InternshipItem in the InternHunter application.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
@@ -67,6 +67,10 @@ public class InternshipItem extends Item {
         return companyName;
     }
 
+    public String getCompanyNameValue() {
+        return companyName.getValue();
+    }
+
     /**
      * Sets the company name of this InternshipItem.
      *
@@ -83,6 +87,10 @@ public class InternshipItem extends Item {
      */
     public JobTitle getJobTitle() {
         return jobTitle;
+    }
+
+    public String getJobTitleValue() {
+        return jobTitle.getValue();
     }
 
     /**
@@ -103,6 +111,10 @@ public class InternshipItem extends Item {
         return period;
     }
 
+    public String getPeriodValue() {
+        return period.getValue();
+    }
+
     /**
      * Sets the period of this InternshipItem.
      *
@@ -119,6 +131,10 @@ public class InternshipItem extends Item {
      */
     public Wage getWage() {
         return wage;
+    }
+
+    public String getWageValue() {
+        return wage.getValue();
     }
 
     /**
