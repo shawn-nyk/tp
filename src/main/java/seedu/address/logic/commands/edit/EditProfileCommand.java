@@ -22,7 +22,6 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.FilterableItemList;
 import seedu.address.model.Model;
 import seedu.address.model.profile.Descriptor;
 import seedu.address.model.profile.ProfileItem;
@@ -69,14 +68,12 @@ public class EditProfileCommand extends EditCommandAbstract {
         ProfileItem profileItemToEdit = getProfileItem(model, targetIndex);
         ProfileItem editedProfile = createEditedProfileItem(profileItemToEdit, editProfileItemDescriptor);
 
-        FilterableItemList<ProfileItem> profileItemList = model.getProfileList();
-
-        if (!profileItemToEdit.isSameItem(editedProfile) && profileItemList.hasItem(editedProfile)) {
+        if (!profileItemToEdit.isSameItem(editedProfile) && model.hasProfileItem(editedProfile)) {
             throw new CommandException(String.format(Messages.MESSAGE_DUPLICATE_ITEM, PROFILE_NAME));
         }
 
-        profileItemList.setItem(profileItemToEdit, editedProfile);
-        profileItemList.updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
+        model.setProfileItem(profileItemToEdit, editedProfile);
+        model.updateFilteredProfileList(PREDICATE_SHOW_ALL_ITEMS);
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, PROFILE_NAME, editedProfile);
         return getCommandResult(model, editSuccessMessage, TabName.PROFILE);
     }
