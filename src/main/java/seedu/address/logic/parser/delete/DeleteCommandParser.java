@@ -11,7 +11,6 @@ import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.delete.DeleteApplicationCommand;
 import seedu.address.logic.commands.delete.DeleteCommandAbstract;
-import seedu.address.logic.commands.delete.DeleteProfileCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.util.GeneralParserUtil;
@@ -47,8 +46,7 @@ public class DeleteCommandParser implements Parser<DeleteCommandAbstract> {
             return new DeleteApplicationCommand(index);
 
         case PROFILE_ALIAS:
-            // todo: return delete profile command parser
-            return new DeleteProfileCommand(index);
+            return new DeleteProfileCommandParser().parse(commandDetails);
 
         default:
             // Invalid item type

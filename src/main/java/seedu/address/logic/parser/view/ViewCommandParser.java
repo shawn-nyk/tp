@@ -9,7 +9,6 @@ import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.view.ViewApplicationCommand;
 import seedu.address.logic.commands.view.ViewCommand;
-import seedu.address.logic.commands.view.ViewProfileCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.util.GeneralParserUtil;
@@ -44,8 +43,7 @@ public class ViewCommandParser implements Parser<ViewCommand> {
             return new ViewApplicationCommand(index);
 
         case PROFILE_ALIAS:
-            // todo: return view profile command parser
-            return new ViewProfileCommand(index);
+            return new ViewProfileCommandParser().parse(commandDetails);
 
         default:
             // Invalid item type
