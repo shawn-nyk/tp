@@ -11,7 +11,7 @@ participant ":Model" as Model MODEL_COLOR
 participant ":TabManager" as TabManager MODEL_COLOR
 end box
 
-mainframe sd get command result
+mainframe sd get delete command result
 
 [-> CommandUtil : getCommandResult(model, deleteSuccessMessage, currentTabName, TabName.COMPANY, targetIndex)
 activate CommandUtil
