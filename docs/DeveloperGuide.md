@@ -34,7 +34,7 @@ Upon a user’s entry of a valid delete company command, a `DeleteCompanyCommand
 `DeleteCompanyCommand` implements the `execute()` method from the `Command` abstract class whereby upon execution, the 
 method will delete the respective company in the model’s list of companies if a valid index is given.
 
-This is how the DeleteCompanyCommand#execute() method works upon execution:
+This is how the `DeleteCompanyCommand#execute()` method works upon execution:
 
 1. The tab that the user is currently viewing is obtained via the `Model#getTabName()` method.
 2. The company to be deleted is retrieved from the model’s `companyList` via the `CommandUtil#getCompany()` method.
