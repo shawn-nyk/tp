@@ -64,7 +64,7 @@ class AddProfileCommandParserTest {
 
     @Test
     public void parse_optionalFieldsMissing_success() {
-        // zero tags
+        // zero descriptors
         ProfileItem expectedProfileItem = new ProfileItemBuilder(ORBITAL_ACHIEVEMENT).withDescriptors().build();
         assertParseSuccess(parser, TITLE_DESC_COMPETITION + CATEGORY_DESC_ACHIEVEMENT,
                 new AddProfileCommand(expectedProfileItem));

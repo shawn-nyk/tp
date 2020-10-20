@@ -93,7 +93,7 @@ public class EditProfileCommandParserTest {
 
         // while parsing {@code PREFIX_DESCRIPTOR} alone will reset the descriptor of the {@code ProfileItem} being
         // edited,
-        // parsing it together with a valid tag results in error
+        // parsing it together with a valid descriptor results in error
         assertParseFailure(parser, "1" + DESCRIPTOR_DESC_IMPLEMENT + DESCRIPTOR_DESC_LEARN + DESCRIPTOR_EMPTY,
                 Descriptor.MESSAGE_CONSTRAINTS);
         assertParseFailure(parser, "1" + DESCRIPTOR_DESC_IMPLEMENT + DESCRIPTOR_EMPTY + DESCRIPTOR_DESC_LEARN,
@@ -195,7 +195,7 @@ public class EditProfileCommandParserTest {
     }
 
     @Test
-    public void parse_resetTags_success() {
+    public void parse_resetDescriptors_success() {
         Index targetIndex = INDEX_THIRD;
         String userInput = targetIndex.getOneBased() + DESCRIPTOR_EMPTY;
 
