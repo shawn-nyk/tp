@@ -1,5 +1,7 @@
 package seedu.address.model.util;
 
+import static java.util.Objects.requireNonNull;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -21,39 +23,44 @@ public abstract class DateUtil {
     public static final String DATE_TIME_INPUT_FORMAT = "d-M-yy HHmm";
 
     // Default timing if user does not input a time
-    private static final String DEFAULT_TIME = "23:59";
+    public static final String DEFAULT_TIME = "23:59";
 
     // Error message
-    private static final String ERROR_MESSAGE = "Checks for status date validity failed";
+    public static final String ERROR_MESSAGE = "Checks for status date validity failed";
 
     /**
-     * Checks if the input given matches the d-M-yy HHmm format.
+     * Checks if the input given matches the d-M-yy HHmm format and is a dateTime that is not before the current
+     * dateTime.
      *
      * @param input User input.
      * @return True if input has the date and time format, false otherwise.
      */
-    public static boolean isDateTimeFormat(String input) {
+    public static boolean isValidDateTimeFormat(String input) {
+        requireNonNull(input);
         try {
-            LocalDateTime.parse(input, formatterDateTime(DATE_TIME_INPUT_FORMAT));
+            LocalDateTime inputDateTime = LocalDateTime.parse(input, formatterDateTime(DATE_TIME_INPUT_FORMAT));
+            LocalDateTime currentDateTime = LocalDateTime.now();
+            return !inputDateTime.isBefore(currentDateTime);
         } catch (DateTimeParseException e) {
             return false;
         }
-        return true;
     }
 
     /**
-     * Checks if the input given matches the d-M-yy format.
+     * Checks if the input given matches the d-M-yy format and is a date that is not before the current date.
      *
      * @param input User input.
      * @return True if input has the date format, false otherwise.
      */
-    public static boolean isDateFormat(String input) {
+    public static boolean isValidDateFormat(String input) {
+        requireNonNull(input);
         try {
-            LocalDate.parse(input, formatterDateTime(DATE_INPUT_FORMAT));
+            LocalDate inputDate = LocalDate.parse(input, formatterDateTime(DATE_INPUT_FORMAT));
+            LocalDate currentDate = LocalDate.now();
+            return !inputDate.isBefore(currentDate);
         } catch (DateTimeParseException e) {
             return false;
         }
-        return true;
     }
 
     /**
@@ -85,14 +92,26 @@ public abstract class DateUtil {
      * @return LocalDateTime object.
      */
     public static LocalDateTime convertToDateTime(String statusDate) {
-        if (isDateTimeFormat(statusDate)) {
+        requireNonNull(statusDate);
+        if (isValidDateTimeFormat(statusDate)) {
             return formatDateTime(statusDate);
-        } else if (isDateFormat(statusDate)) {
+        } else if (isValidDateFormat(statusDate)) {
             return formatDate(statusDate);
         } else {
             assert false : ERROR_MESSAGE;
             return null;
         }
+    }
+
+    /**
+     * Obtains a LocalDateTime object of today's date and time of 2359.
+     *
+     * @return LocalDateTime object of today's date and time of 2359.
+     */
+    public static LocalDateTime getTodayDate() {
+        LocalDate todayDate = LocalDate.now();
+        LocalTime defaultTime = LocalTime.parse(DEFAULT_TIME);
+        return LocalDateTime.of(todayDate, defaultTime);
     }
 
     /**
@@ -102,6 +121,7 @@ public abstract class DateUtil {
      * @return LocalDateTime object.
      */
     public static LocalDateTime convertOutputFormat(String statusDate) {
+        requireNonNull(statusDate);
         return LocalDateTime.parse(statusDate, formatterDateTime(DATE_TIME_LONG_FORMAT));
     }
 
@@ -112,6 +132,7 @@ public abstract class DateUtil {
      * @return True if input has the valid output date format, false otherwise.
      */
     public static boolean isValidOutputDate(String input) {
+        requireNonNull(input);
         try {
             LocalDateTime.parse(input, formatterDateTime(DATE_TIME_LONG_FORMAT));
             return true;
@@ -121,12 +142,13 @@ public abstract class DateUtil {
     }
 
     /**
-     * Creates a DateTimeFormatter using the input pattern.
+     * Creates a DateTimeFormatter using the input pattern, set to Locale.English.
      *
      * @param pattern String pattern.
      * @return The DateTimeFormatter based the pattern.
      */
     public static DateTimeFormatter formatterDateTime(String pattern) {
+        requireNonNull(pattern);
         return DateTimeFormatter.ofPattern(pattern, Locale.ENGLISH);
     }
 

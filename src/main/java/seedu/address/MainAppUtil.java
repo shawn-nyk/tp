@@ -118,8 +118,7 @@ public class MainAppUtil {
         try {
             matchInternships(applicationItemList, companyItemList);
         } catch (InconsistentInternshipException e) {
-            logger.warning("Applications' internships are not matched with the ones in the companies' lists.\n"
-                    + "Starting from an empty company and application list.");
+            logger.warning(e.getMessage());
         }
 
         return new ModelManager(addressBook, companyItemList, applicationItemList, profileItemList, userPrefs);

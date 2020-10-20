@@ -1,6 +1,5 @@
 package seedu.address.logic.parser.view;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getCommandDetails;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getItemType;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
@@ -10,7 +9,6 @@ import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.view.ViewApplicationCommand;
 import seedu.address.logic.commands.view.ViewCommand;
-import seedu.address.logic.commands.view.ViewCompanyCommand;
 import seedu.address.logic.commands.view.ViewProfileCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -30,22 +28,23 @@ public class ViewCommandParser implements Parser<ViewCommand> {
      * @throws ParseException if the user input does not conform to the expected format.
      */
     public ViewCommand parse(String args) throws ParseException {
-
         String itemType = getItemType(args, ViewCommand.MESSAGE_USAGE);
         String commandDetails = getCommandDetails(args);
 
-        isValidItemType(itemType);
-        checkCommandDetailsIsNotBlank(commandDetails, itemType);
-
+        // todo: delete the line below when all command parsers have been written; note that with this line still
+        //  present, error messages will appear inappropriate for commands like "view ITEM_TYPE" (args are missing)
         Index index = GeneralParserUtil.parseIndex(commandDetails);
+
         switch (itemType) {
         case COMPANY_ALIAS:
-            return new ViewCompanyCommand(index);
+            return new ViewCompanyCommandParser().parse(commandDetails);
 
         case APPLICATION_ALIAS:
+            // todo: return view application command parser
             return new ViewApplicationCommand(index);
 
         case PROFILE_ALIAS:
+            // todo: return view profile command parser
             return new ViewProfileCommand(index);
 
         default:
@@ -54,33 +53,4 @@ public class ViewCommandParser implements Parser<ViewCommand> {
         }
     }
 
-    private void isValidItemType(String itemType) throws ParseException {
-        if (!itemType.equals(COMPANY_ALIAS)
-                && !itemType.equals(APPLICATION_ALIAS)
-                && !itemType.equals(PROFILE_ALIAS)) {
-            throw new ParseException(MESSAGE_INVALID_ITEM_TYPE);
-        }
-    }
-
-    private void checkCommandDetailsIsNotBlank(String commandDetails, String itemType) throws ParseException {
-        if (commandDetails.isBlank()) {
-            switch (itemType) {
-            case COMPANY_ALIAS:
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                        ViewCompanyCommand.MESSAGE_USAGE));
-
-            case APPLICATION_ALIAS:
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                        ViewApplicationCommand.MESSAGE_USAGE));
-
-            case PROFILE_ALIAS:
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                        ViewProfileCommand.MESSAGE_USAGE));
-
-            default:
-                // Invalid item type
-                throw new ParseException(MESSAGE_INVALID_ITEM_TYPE);
-            }
-        }
-    }
 }
