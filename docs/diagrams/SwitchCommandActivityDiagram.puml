@@ -35,8 +35,8 @@ if () then ([command starts with switch, with item type])
             endif
         endif
     endif
-else ([command starts with switch, without any input behind])   
-:Returns failure message(Invalid Command message for switch); 
+else ([command starts with switch, without any input behind])
+:Returns failure message(Invalid Command message for switch);
 endif
 :InternHunter app prints message to user;
 
