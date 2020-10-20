@@ -35,7 +35,6 @@ alt TAB_NAME != currentTabName
     activate TabManager
     deactivate TabManager
     deactivate Model
-
     create CommandResult
     CommandUtil -> CommandResult : getCommandResult(message, false, false, true, true)
     activate CommandResult
