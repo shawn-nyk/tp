@@ -39,8 +39,8 @@ public class JsonAdaptedApplicationItem extends JsonAdaptedItem {
      * Converts a given {@code ApplicationItem} into this class for Jackson use.
      */
     public JsonAdaptedApplicationItem(ApplicationItem source) {
-        status = source.getStatus().toString();
-        statusDate = source.getStatusDate().toString();
+        status = source.getStatusString();
+        statusDate = source.getStatusDateString();
         internshipItem = new JsonAdaptedInternshipItem(source.getInternshipItem());
     }
 
