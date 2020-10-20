@@ -570,10 +570,10 @@ using commands than using the mouse.
 ### Appendix F: Sequence Diagrams
 
 <h4 id="get-command-result-sequence-diagram">
-![GetCommandResultSequenceDiagram](images/GetCommandResultSequenceDiagram.png)
+ <img src="images/GetCommandResultSequenceDiagram.png"/>
 <h4 />
 <h4 id="handle-delete-display-switch-index-sequence-diagram">
-![HandleDeleteDisplaySwitchIndexSequenceDiagram](images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png)
+ <img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png"/>
 <h4 />
 
 
