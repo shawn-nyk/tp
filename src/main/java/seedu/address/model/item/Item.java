@@ -1,15 +1,12 @@
 package seedu.address.model.item;
 
-import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
-import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
-import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
-import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
-
 import java.util.LinkedHashMap;
+
+import seedu.address.storage.item.JsonAdaptedItem;
 
 /**
  * Represents an Item in the InternHunter application.
- * There are 4 types of items, CompanyItem, InternshipItem, InternshipApplicationItem, ProfileItem.
+ * There are 4 types of items, CompanyItem, InternshipItem, ApplicationItem, ProfileItem.
  */
 public abstract class Item {
 
@@ -37,16 +34,10 @@ public abstract class Item {
     public abstract LinkedHashMap<String, Object> getMapping();
 
     /**
-     * Returns true if a given string is a valid item type.
+     * Gets the json adapted version of item.
      *
-     * @param type Input type.
-     * @return True if given string is a valid item type, false otherwise.
+     * @return json adapted item.
      */
-    public static boolean isValidItem(String type) {
-        return type.equals(COMPANY_ALIAS)
-                || type.equals(INTERNSHIP_ALIAS)
-                || type.equals(APPLICATION_ALIAS)
-                || type.equals(PROFILE_ALIAS);
-    }
+    public abstract JsonAdaptedItem getJsonAdaptedItem();
 
 }

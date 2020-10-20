@@ -8,40 +8,227 @@ import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
+import seedu.address.model.application.ApplicationItem;
+import seedu.address.model.company.CompanyItem;
+import seedu.address.model.item.ItemList;
+import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
+import seedu.address.model.profile.ProfileItem;
+import seedu.address.model.tab.Tab;
+import seedu.address.model.tab.TabManager;
+import seedu.address.model.view.View;
+import seedu.address.model.view.ViewManager;
 import seedu.address.ui.tabs.TabName;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the InternHunter app data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final FilterableItemList<Person> addressBook;
+    private final FilterableItemList<CompanyItem> companyList;
+    private final FilterableItemList<ApplicationItem> applicationList;
+    private final FilterableItemList<ProfileItem> profileList;
     private final UserPrefs userPrefs;
-    private final FilteredList<Person> filteredPersons;
     private final Tab tabControl;
+    private final View viewControl;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(
+            ReadOnlyItemList<Person> addressBook,
+            ReadOnlyItemList<CompanyItem> companyList,
+            ReadOnlyItemList<ApplicationItem> applicationList,
+            ReadOnlyItemList<ProfileItem> profileList,
+            ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(addressBook, userPrefs);
+        requireAllNonNull(addressBook, companyList, applicationList, profileList, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with address book: " + addressBook
+                + " and company list " + companyList
+                + " and application list " + applicationList
+                + " and profile list " + profileList
+                + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.addressBook = new ItemListManager<>(new ItemList<>(addressBook));
+        this.companyList = new ItemListManager<>(new ItemList<>(companyList));
+        this.applicationList = new ItemListManager<>(new ItemList<>(applicationList));
+        this.profileList = new ItemListManager<>(new ItemList<>(profileList));
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.tabControl = new TabManager();
+        this.viewControl = new ViewManager();
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new ItemList<>(), new ItemList<>(), new ItemList<>(), new ItemList<>(), new UserPrefs());
+    }
+
+    //=========== Models Getters =============================================================================
+
+    @Override
+    public FilterableItemList<Person> getAddressBook() {
+        return addressBook;
+    }
+
+    //=========== Company Methods ============================================================================
+
+    @Override
+    public FilterableItemList<CompanyItem> getCompanyList() {
+        return companyList;
+    }
+
+    @Override
+    public ObservableList<CompanyItem> getFilteredCompanyList() {
+        return companyList.getFilteredItemList();
+    }
+
+    @Override
+    public ItemList<CompanyItem> getUnfilteredCompanyList() {
+        return companyList.getUnfilteredItemList();
+    }
+
+    @Override
+    public boolean hasCompany(CompanyItem companyItem) {
+        return companyList.hasItem(companyItem);
+    }
+
+    @Override
+    public void deleteCompany(CompanyItem target) {
+        companyList.deleteItem(target);
+    }
+
+    @Override
+    public void deleteSameCompany(CompanyItem target) {
+        companyList.deleteSameItem(target);
+    }
+
+    @Override
+    public void addCompany(CompanyItem companyItem) {
+        companyList.addItem(companyItem);
+    }
+
+    @Override
+    public void setCompany(CompanyItem target, CompanyItem editedCompanyItem) {
+        companyList.setItem(target, editedCompanyItem);
+    }
+
+    @Override
+    public void updateFilteredCompanyList(Predicate<? super CompanyItem> predicate) {
+        companyList.updateFilteredItemList(predicate);
+    }
+
+    @Override
+    public void setCompanyList(ItemList<CompanyItem> companyList) {
+        this.companyList.setItemList(companyList);
+    }
+
+    //=========== Application Methods ========================================================================
+
+    @Override
+    public FilterableItemList<ApplicationItem> getApplicationList() {
+        return applicationList;
+    }
+
+    @Override
+    public ObservableList<ApplicationItem> getFilteredApplicationList() {
+        return applicationList.getFilteredItemList();
+    }
+
+    @Override
+    public ItemList<ApplicationItem> getUnfilteredApplicationList() {
+        return applicationList.getUnfilteredItemList();
+    }
+
+    @Override
+    public boolean hasApplication(ApplicationItem applicationItem) {
+        return applicationList.hasItem(applicationItem);
+    }
+
+    @Override
+    public void deleteApplication(ApplicationItem target) {
+        applicationList.deleteItem(target);
+    }
+
+    @Override
+    public void deleteSameApplication(ApplicationItem target) {
+        applicationList.deleteSameItem(target);
+    }
+
+    @Override
+    public void addApplication(ApplicationItem applicationItem) {
+        applicationList.addItem(applicationItem);
+    }
+
+    @Override
+    public void setApplication(ApplicationItem target, ApplicationItem editedApplicationItem) {
+        applicationList.setItem(target, editedApplicationItem);
+    }
+
+    @Override
+    public void updateFilteredApplicationList(Predicate<? super ApplicationItem> predicate) {
+        applicationList.updateFilteredItemList(predicate);
+    }
+
+    @Override
+    public void setApplicationList(ItemList<ApplicationItem> applicationList) {
+        this.applicationList.setItemList(applicationList);
+    }
+
+    //=========== Profile Methods ============================================================================
+
+    @Override
+    public FilterableItemList<ProfileItem> getProfileList() {
+        return profileList;
+    }
+
+    @Override
+    public ObservableList<ProfileItem> getFilteredProfileList() {
+        return profileList.getFilteredItemList();
+    }
+
+    @Override
+    public ItemList<ProfileItem> getUnfilteredProfileList() {
+        return profileList.getUnfilteredItemList();
+    }
+
+    @Override
+    public boolean hasProfileItem(ProfileItem profileItem) {
+        return profileList.hasItem(profileItem);
+    }
+
+    @Override
+    public void deleteProfileItem(ProfileItem target) {
+        profileList.deleteItem(target);
+    }
+
+    @Override
+    public void deleteSameProfileItem(ProfileItem target) {
+        profileList.deleteSameItem(target);
+    }
+
+    @Override
+    public void addProfileItem(ProfileItem profileItem) {
+        profileList.addItem(profileItem);
+    }
+
+    @Override
+    public void setProfileItem(ProfileItem target, ProfileItem editedProfileItem) {
+        profileList.setItem(target, editedProfileItem);
+    }
+
+    @Override
+    public void updateFilteredProfileList(Predicate<? super ProfileItem> predicate) {
+        profileList.updateFilteredItemList(predicate);
+    }
+
+    @Override
+    public void setProfileList(ItemList<ProfileItem> profileList) {
+        this.profileList.setItemList(profileList);
     }
 
     //=========== UserPrefs ==================================================================================
@@ -69,67 +256,83 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
+    public Path getInternHunterFilePath() {
         return userPrefs.getAddressBookFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setInternHunterFilePath(Path internHunterFilePath) {
+        requireNonNull(internHunterFilePath);
+        userPrefs.setAddressBookFilePath(internHunterFilePath);
     }
 
-    //=========== AddressBook ================================================================================
 
-    @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
-    }
-
-    @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
-    }
-
-    @Override
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return addressBook.hasPerson(person);
-    }
-
-    @Override
-    public void deletePerson(Person target) {
-        addressBook.removePerson(target);
-    }
-
-    @Override
-    public void addPerson(Person person) {
-        addressBook.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-    }
-
-    @Override
-    public void setPerson(Person target, Person editedPerson) {
-        requireAllNonNull(target, editedPerson);
-
-        addressBook.setPerson(target, editedPerson);
-    }
-
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Tab Control Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
+     * Retrieves the current tab name.
      */
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return filteredPersons;
+    public TabName getTabName() {
+        return tabControl.getTabName();
     }
 
+    /**
+     * Sets the current tab name with {@code tabName}.
+     */
     @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
-        requireNonNull(predicate);
-        filteredPersons.setPredicate(predicate);
+    public void setTabName(TabName tabName) {
+        tabControl.setTabName(tabName);
+    }
+
+    //=========== View Control Accessors =============================================================
+
+    /**
+     * Retrieves the current index of company view.
+     */
+    @Override
+    public Index getCompanyViewIndex() {
+        return viewControl.getCompanyViewIndex();
+    }
+
+    /**
+     * Retrieves the current index of application view.
+     */
+    @Override
+    public Index getApplicationViewIndex() {
+        return viewControl.getApplicationViewIndex();
+    }
+
+    /**
+     * Retrieves the current index of profile view.
+     */
+    @Override
+    public Index getProfileViewIndex() {
+        return viewControl.getProfileViewIndex();
+    }
+
+    /**
+     * Sets the current company view index with {@code index}.
+     */
+    @Override
+    public void setCompanyViewIndex(Index index) {
+        viewControl.setCompanyViewIndex(index);
+    }
+
+    /**
+     * Sets the current application view index with {@code index}.
+     */
+    @Override
+    public void setApplicationViewIndex(Index index) {
+        viewControl.setApplicationViewIndex(index);
+    }
+
+    /**
+     * Sets the current profile view index with {@code index}.
+     */
+    @Override
+    public void setProfileViewIndex(Index index) {
+        viewControl.setProfileViewIndex(index);
     }
 
     @Override
@@ -147,23 +350,11 @@ public class ModelManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
+                && companyList.equals(other.companyList)
+                && applicationList.equals(other.applicationList)
+                && profileList.equals(other.profileList)
                 && userPrefs.equals(other.userPrefs)
-                && filteredPersons.equals(other.filteredPersons);
-    }
-
-    //=========== Tab Control Accessors =============================================================
-
-    /**
-     * Retrieves the current tab name.
-     */
-    public TabName getTabName() {
-        return tabControl.getTabName();
-    }
-
-    /**
-     * Sets the current tab name with {@code tabName}.
-     */
-    public void setTabName(TabName tabName) {
-        tabControl.setTabName(tabName);
+                && tabControl.equals(other.tabControl)
+                && viewControl.equals(other.viewControl);
     }
 }
