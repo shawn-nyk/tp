@@ -82,7 +82,7 @@ public class EditInternshipCommand extends EditCommandAbstract {
         }
 
         editInternship(internshipToEdit, editedInternship);
-        model.getCompanyList().updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
+        model.updateFilteredCompanyList(PREDICATE_SHOW_ALL_ITEMS);
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, INTERNSHIP_NAME, editedInternship);
         return getCommandResult(model, editSuccessMessage, TabName.COMPANY);
     }
