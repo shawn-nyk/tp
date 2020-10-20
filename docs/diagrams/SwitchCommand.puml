@@ -28,7 +28,7 @@ class TabName <<enumeration>> {
 class Model <<interface>> {
     +getTabName(): void
 }
- 
+
 TabName <-- SwitchCommand
 Command <|-- SwitchCommand
 Model <.. SwitchCommand
