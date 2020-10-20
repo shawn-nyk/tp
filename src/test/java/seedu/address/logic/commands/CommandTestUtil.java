@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
@@ -64,8 +63,8 @@ public class CommandTestUtil {
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
     // Valid indexes
-    public static final String VALID_INDEX_ONE = SPACE + PREFIX_INDEX + INDEX_FIRST;
-    public static final String VALID_INDEX_TWO = SPACE + PREFIX_INDEX + INDEX_SECOND;
+    public static final String VALID_INDEX_ONE = " " + PREFIX_INDEX + INDEX_FIRST;
+    public static final String VALID_INDEX_TWO = " " + PREFIX_INDEX + INDEX_SECOND;
 
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;

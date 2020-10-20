@@ -6,7 +6,7 @@ import static seedu.address.commons.util.CollectionUtil.isAnyNonNull;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.commands.util.CommandUtil.getProfileItem;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEGORY;
-import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTORS;
+import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTOR;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_TITLE;
 import static seedu.address.model.FilterableItemList.PREDICATE_SHOW_ALL_ITEMS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
@@ -41,11 +41,11 @@ public class EditProfileCommand extends EditCommandAbstract {
             + "Parameters: INDEX "
             + "[" + PREFIX_TITLE + "TITLE] "
             + "[" + PREFIX_CATEGORY + "CATEGORY] "
-            + "[" + PREFIX_DESCRIPTORS + "DESCRIPTOR]...\n"
+            + "[" + PREFIX_DESCRIPTOR + "DESCRIPTOR]...\n"
             + "Note: At least one of the optional fields must be provided. INDEX must be a positive integer.\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_CATEGORY + "achievement "
-            + PREFIX_DESCRIPTORS + "Devised a mobile transaction solution. ";
+            + PREFIX_DESCRIPTOR + "Devised a mobile transaction solution. ";
 
 
     private final Index targetIndex;
