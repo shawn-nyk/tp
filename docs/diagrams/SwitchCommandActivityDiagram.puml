@@ -1,32 +1,37 @@
 @startuml
 !include InternHunterStyle.puml
-
+!pragma useVerticalIf on
 start
-
 :user enters switch command;
 :InternHunter parse the user input;
 if () then ([command starts with switch, with item type])
     if () then ([Command is "switch com"])
         if () then ([current tab is already at company])
-            :Returns already in same tab message;
+            :Returns already
+            in same tab message;
         else ([current tab is not at company])
-            :Switch the current tab to company screen;
+            :Switch the current tab
+            to company screen;
             :Returns success message;
         endif
     else ([Command is not "switch com"])
         if () then ([Command is "switch app"])
             if () then ([current tab is already at application])
-                :Returns already in same tab message;
+                :Returns already
+                in same tab message;
             else ([current tab is not at application])
-                :Switch the current tab to application screen;
+                :Switch the current tab
+                to application screen;
                 :Returns success message;
             endif
         else ([Command is not "switch app"])
             if () then ([Command is "switch me"])
                 if () then ([current tab is already at profile])
-                    :Returns already in same tab message;
+                    :Returns already
+                    in same tab message;
                 else ([current tab is not at profile])
-                    :Switch the current tab to profile screen;
+                    :Switch the current tab
+                    to profile screen;
                     :Returns success message;
                 endif
             else ([Command is neither of the three commands])
@@ -36,7 +41,8 @@ if () then ([command starts with switch, with item type])
         endif
     endif
 else ([command starts with switch, without any input behind])
-:Returns failure message(Invalid Command message for switch);
+:Returns failure message
+(Invalid Command message for switch);
 endif
 :InternHunter app prints message to user;
 
