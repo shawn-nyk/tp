@@ -6,8 +6,99 @@ title: Developer Guide
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
+## **Implementation**
 
-## Appendix A: Product Scope
+This section describes some noteworthy details on how certain features are implemented.
+
+### Delete company feature
+
+#### What it is
+Users are able to execute a command to delete a company from their list of companies in InterHunter. Upon the 
+successful deletion of a company, all internships within that company, if any, will also be deleted (as they are a 
+part of the company, i.e. companies and the internships that they offer have a whole-part / composition relationship). 
+As a result, all applications made to internships from the company to be deleted, if any, will also be deleted as per 
+the delete internship feature. This feature is intended to be used when the user is viewing the Company tab. However, 
+the user is free to execute the delete company command while they are on another tab, and InternHunter will simply 
+switch over to the Company tab if and when the command has finished executing successfully.
+
+**Command format**: `delete com INDEX`
+* Where `INDEX` is the index of the company to be deleted in the list of companies
+
+#### Implementation
+Upon a user’s entry of a valid delete company command, a `DeleteCompanyCommand` object is created. 
+`DeleteCompanyCommand` is a class that extends the `DeleteCommandAbstract` abstract class that in turn extends the 
+`Command` abstract class.
+
+![DeleteCompanyCommandClassDiagram](images/DeleteCompanyCommandClassDiagram.png)
+
+`DeleteCompanyCommand` implements the `execute()` method from the `Command` abstract class whereby upon execution, the 
+method will delete the respective company in the model’s list of companies if a valid index is given.
+
+This is how the DeleteCompanyCommand#execute() method works upon execution:
+
+1. The tab that the user is currently viewing is obtained via the `Model#getTabName()` method.
+2. The company to be deleted is retrieved from the model’s `companyList` via the `CommandUtil#getCompany()` method.
+3. All the internships within the company, if any, are deleted via a self-invocation to `DeleteCompanyCommand`’s own 
+ `deleteAllInternshipsInCompany()` method.
+4. The company is then deleted from the model via the `model#deleteCompany()` method.
+5. The deletion is successful and a `CommandResult` is returned with an appropriate success message to indicate 
+ operation success via the `CommandUtil#getCommandResult()` method. The `CommandResult` also indicates whether the tab 
+ needs to be switched to the Company tab or not, based on if the user was already viewing the Company tab or not as 
+ retrieved in Step 1.
+
+The following sequence diagrams show how the delete company feature works successfully, using the example command 
+`delete com 3`:
+
+![DeleteCompanyCommandSequenceDiagram](images/DeleteCompanyCommandSequenceDiagram.png)
+![ExecuteDeleteCompany3CommandSequenceDiagram](images/ExecuteDeleteCompany3CommandSequenceDiagram.png)
+to add: \!\[GetDeleteCommandResultSequenceDiagram](images/GetDeleteCommandResultSequenceDiagram.png)
+
+#### Design considerations
+* Obtaining the tab that the user is currently viewing has to be done before deleting all the company’s internships 
+via the `DeleteCompanyCommand#deleteAllInternshipsInCompany()` method. This is because the 
+`DeleteCompanyCommand#deleteAllInternshipsInCompany()` method executes `DeleteInternshipCommands`, and 
+`DeleteInternshipCommands` will cause the model to switch tabs to the Company tab internally (i.e. updates are made to 
+the relevant objects’ fields but this change is not reflected via the GUI). The implication of this behaviour is that 
+if the model’s tab is obtained after the `DeleteCompanyCommand#deleteAllInternshipsInCompany()` method is executed, 
+then it will always reflect that the model is on the Company tab and hence no switching of tabs is necessary GUI-wise. 
+In other words, if the user successfully executes the delete company command whilst not on the Company tab, the tab 
+will not be switched to the Company tab in the GUI, which is undesirable. Our implementation resolves this issue.
+* The `DeleteCompanyCommand#deleteAllInternshipsInCompany()` method works by creating and executing a 
+`DeleteInternshipCommand` for every internship in the company’s list of internships. This implementation was chosen 
+because `DeleteInternshipCommand` handles deleting any application made to the internship that is being deleted. As 
+such, the delete company command will exhibit the behaviour whereby any applications made to internships offered by a 
+company that is being deleted will also be deleted, which is the behaviour we believe is appropriate and hence wanted 
+to achieve.
+
+#### Alternatives considered
+* **Alternative 1 (current choice)**: Delete all applications made to internships from the company to be deleted by
+ executing delete internship commands.
+  * Pros:
+    * Avoids rewriting code / code duplication by calling methods that have already been implemented to achieve the 
+    desired functionality.
+    * Ensures consistent behaviour - when an internship is deleted because a company is deleted, what happens to any 
+    application for that internship will be the same as what would happen to it if a delete internship command was 
+    executed directly by the user for the same internship.
+  * Cons:
+    * Introduces a dependency on `DeleteInternshipCommand`.
+
+* **Alternative 2**: Delete all applications made to internships from the company to be deleted without executing delete internship commands, i.e. by implementing delete internship command’s internal workings.
+  * Pros:
+    * Not dependent on `DeleteInternshipCommand`.
+  * Cons:
+    * Introduces dependencies on `InternshipItem` and `ApplicationItem`.
+    * Violates the DRY (Don't Repeat Yourself) principle:
+      * Introduces code duplication.
+      * Decentralizes the behaviour of what happens to an application made for an internship that is being deleted, 
+      since there are now 2 separate implementations for this (one in `DeleteCompanyCommand` and the other in 
+      `DeleteInternshipCommand`). The implications of this are:
+        * Cannot guarantee consistent behaviour - when an internship is deleted because a company is deleted, what 
+        happens to any application for that internship may not be the same as what would happen to it if a delete 
+        internship command was executed directly by the user for the same internship.
+        * Updating this behaviour will require updating code in both places rather than one centralised place.
+
+## **Appendix**
+### Appendix A: Product Scope
 
 **Target user profile**:
 
@@ -20,7 +111,7 @@ title: Developer Guide
 **Value proposition**: Improves your planning, confidence and readiness for tech-related internship applications by
  improving your interview skills and search strategy.
 
-## Appendix B: User Stories
+### Appendix B: User Stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -53,13 +144,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | user       | get fast feedback from the app                                 |                                                                                   |
 
 
-## Appendix C: Use Cases
+### Appendix C: Use Cases
 
 (For all use cases below, the **System** is `InternHunter` and the **Actor** is the `user`)
 
-### Use case: UC01 - Add a company
+#### Use case: UC01 - Add a company
 
-#### MSS
+**MSS**
 
 Precondition: User is on the Companies tab <br/>
 Guarantees: Addition of company is successful
@@ -68,15 +159,15 @@ Guarantees: Addition of company is successful
 2. InternHunter adds the company to the list of companies.<br/>
 Use case ends.
 
-#### Extensions
+**Extensions**
 
  1a. InternHunter detects an error in the input format. <br/>
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
   Use case resumes from step 1.
     		
-### Use case: UC02 - Delete a company
+#### Use case: UC02 - Delete a company
 
-#### MSS
+**MSS**
 
 Precondition: User is on the Companies tab and already has an existing list of companies <br/>
 Guarantees: Deletion of company is successful
@@ -85,7 +176,7 @@ Guarantees: Deletion of company is successful
 2. InternHunter removes the company from the list of companies.<br/>
 Use case ends.
     
-#### Extensions
+**Extensions**
 
  1a. InternHunter detects an error in the input format. <br/>
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
@@ -95,9 +186,9 @@ Use case ends.
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
-### Use case: UC03 - Edit a company
+#### Use case: UC03 - Edit a company
 
-##### MSS
+**MSS**
 
 Precondition: User is on the Companies tab and already has an existing list of companies <br/>
 Guarantees: Editing of company is successful
@@ -106,7 +197,7 @@ Guarantees: Editing of company is successful
 2. InternHunter updates the details of the company. <br/>
 Use case ends.
 
-####  Extensions
+**Extensions**
 
  1a. InternHunter detects an error in the input format. <br/>
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
@@ -116,9 +207,9 @@ Use case ends.
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
-### Use case: UC04 - View a company
+#### Use case: UC04 - View a company
 
-##### MSS
+**MSS**
 
 Precondition: User is on the Companies tab and already has an existing list of companies <br/>
 Guarantees: Viewing of company is successful
@@ -127,7 +218,7 @@ Guarantees: Viewing of company is successful
 2. InternHunter displays the company.<br/>
 Use case ends.
 
-####  Extensions
+**Extensions**
 
  1a. InternHunter detects an error in the input format. <br/>
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
@@ -137,9 +228,9 @@ Use case ends.
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
-### Use case: UC05 - Add an internship
+#### Use case: UC05 - Add an internship
 
-#### MSS
+**MSS**
 
 Precondition: User is on the Companies tab and already has an existing list of companies <br/>
 Guarantees: Addition of internship is successful
@@ -148,7 +239,7 @@ Guarantees: Addition of internship is successful
 2.  InternHunter adds the internship to the list of internships of the company. <br/>
     Use case ends.
 
-#### Extensions
+**Extensions**
 
  1a. InternHunter detects an error in the input format. <br/>
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
@@ -158,9 +249,9 @@ Guarantees: Addition of internship is successful
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
-### Use case: UC06 - Delete an internship
+#### Use case: UC06 - Delete an internship
 
-#### MSS
+**MSS**
 
 Precondition: User is on the Companies tab and already has an existing list of internships in a company <br/>
 Guarantees: Deletion of internship is successful
@@ -169,7 +260,7 @@ Guarantees: Deletion of internship is successful
 2.  InternHunter removes the internship from the list of internships in a company. <br />
     Use case ends.
 
-#### Extensions
+**Extensions**
 
  1a. InternHunter detects an error in the input format. <br/>
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
@@ -179,9 +270,9 @@ Guarantees: Deletion of internship is successful
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
   
-### Use case: UC07 - Edit an internship
+#### Use case: UC07 - Edit an internship
 
-#### MSS
+**MSS**
 
 Precondition: User is on the Companies tab and already has an existing list of internships in a company <br/>
 Guarantees: Editing of internship is successful
@@ -190,7 +281,7 @@ Guarantees: Editing of internship is successful
 2.  InternHunter edits the details of the internship, and updates the list. <br />
     Use case ends.
 
-#### Extensions
+**Extensions**
 
  1a. InternHunter detects an error in the input format. <br/>
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
@@ -200,9 +291,9 @@ Guarantees: Editing of internship is successful
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
-### Use case: UC08 - Add an application
+#### Use case: UC08 - Add an application
 
-#### MSS
+**MSS**
 
 Precondition: User is on the Companies tab and already has an existing list of internships in a company <br/>
 Guarantees: Adding of application is successful
@@ -212,7 +303,7 @@ Guarantees: Adding of application is successful
 tab to view the newly added application. <br/>
     Use case ends.
 
-#### Extensions
+**Extensions**
 
  1a. InternHunter detects an error in the input format. <br />
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
@@ -222,9 +313,9 @@ tab to view the newly added application. <br/>
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br />
   Use case resumes from step 1.
 
-### Use case: UC09 - Delete an application
+#### Use case: UC09 - Delete an application
 
-#### MSS
+**MSS**
 
 Precondition: User is on the Applications tab and already has an existing list of applications <br />
 Guarantees: Deletion of application is successful
@@ -233,7 +324,7 @@ Guarantees: Deletion of application is successful
 2.  InternHunter removes the application from the list of applications. <br />
     Use case ends.
 
-#### Extensions
+**Extensions**
 
  1a. InternHunter detects an error in the input format. <br />
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
@@ -243,9 +334,9 @@ Guarantees: Deletion of application is successful
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br />
   Use case resumes from step 1.
 
-### Use case: UC10 - Edit an application
+#### Use case: UC10 - Edit an application
 
-#### MSS
+**MSS**
 
 Precondition: User is on the Applications tab and already has an existing list of applications <br />
 Guarantees: Editing of application is successful
@@ -254,7 +345,7 @@ Guarantees: Editing of application is successful
 2.  InternHunter edits the details of this application and the list is updated accordingly. <br />
     Use case ends.
 
-#### Extensions
+**Extensions**
 
  1a. InternHunter detects an error in the input format. <br />
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
@@ -264,9 +355,9 @@ Guarantees: Editing of application is successful
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br />
   Use case resumes from step 1.
 
-### Use case: UC11 - View an application
+#### Use case: UC11 - View an application
 
-#### MSS
+**MSS**
 
 Precondition: User is on the Applications tab and already has an existing list of applications <br />
 Guarantees: Viewing of application is successful
@@ -275,7 +366,7 @@ Guarantees: Viewing of application is successful
 2.  InternHunter shows the details of this application. <br />
     Use case ends.
 
-#### Extensions
+**Extensions**
 
  1a. InternHunter detects an error in the input format. <br />
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
@@ -285,9 +376,9 @@ Guarantees: Viewing of application is successful
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br />
   Use case resumes from step 1.
 
-### Use case: UC12 - Add user profile item
+#### Use case: UC12 - Add user profile item
 
-#### MSS
+**MSS**
 
 Precondition: User is on the Profile tab
 Guarantees: Addition of user profile item is successful
@@ -296,15 +387,15 @@ Guarantees: Addition of user profile item is successful
 2.  InternHunter adds the user profile item to the user profile. <br />
     Use case ends.
 
-#### Extensions
+**Extensions**
 
  1a. InternHunter detects an error in the input format. <br />
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
   Use case resumes from step 1.
 
-### Use case: UC13 - Delete a user profile item 
+#### Use case: UC13 - Delete a user profile item 
 
-#### MSS
+**MSS**
 
 Precondition: User is on the Profile tab and already has an existing list of user profile items <br/>
 Guarantees: Deletion of user profile item is successful
@@ -313,7 +404,7 @@ Guarantees: Deletion of user profile item is successful
 2.  InternHunter removes the user profile item from the user profile. <br/>
     Use case ends.
 
-#### Extensions
+**Extensions**
 
  1a. InternHunter detects an error in the input format. <br/>
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
@@ -323,9 +414,9 @@ Guarantees: Deletion of user profile item is successful
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
-### Use case: UC14 - Edit a user profile item
+#### Use case: UC14 - Edit a user profile item
 
-#### MSS
+**MSS**
 
 Precondition: User is on the Profile tab and already has an existing list of user profile items <br/>
 Guarantees: Editing of user profile item is successful
@@ -334,7 +425,7 @@ Guarantees: Editing of user profile item is successful
 2.  InternHunter edits the user profile item in the user profile. <br/>
     Use case ends.
 
-#### Extensions
+**Extensions**
 
  1a. InternHunter detects an error in the input format. <br/>
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
@@ -344,9 +435,9 @@ Guarantees: Editing of user profile item is successful
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
-### Use case: UC15 - View a user profile item
+#### Use case: UC15 - View a user profile item
 
-#### MSS
+**MSS**
 Precondition: User is on the Profile tab and already has an existing list of user profile items <br/>
 Guarantees: Viewing of user profile item is successful
 
@@ -354,7 +445,7 @@ Guarantees: Viewing of user profile item is successful
 2.  InternHunter shows the details of this user profile item. <br/>
     Use case ends.
     
-#### Extensions
+**Extensions**
 
  1a. InternHunter detects an error in the input format. <br/>
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
@@ -364,23 +455,23 @@ Guarantees: Viewing of user profile item is successful
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
-### Use case: UC16 - Switch tabs
+#### Use case: UC16 - Switch tabs
 
-#### MSS
+**MSS**
 
 1.  User requests to switch the tab of the screen.
 2.  InternHunter switches to the requested tab. <br/>
     Use case ends.
 
-#### Extensions
+**Extensions**
 
  1a. InternHunter detects an error in the input format. <br/>
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
   Use case resumes from step 1.
 
-### Use case: UC17 - Get help
+#### Use case: UC17 - Get help
 
-#### MSS
+**MSS**
 Guarantees: User will get directions to the user guide
 
 1.  User requests to see the help window.
@@ -388,9 +479,9 @@ Guarantees: User will get directions to the user guide
     Use case ends.
 
 
-### Use case: UC18 - Exit 
+#### Use case: UC18 - Exit 
 
-#### MSS
+**MSS**
 
 1.  User requests to exit InternHunter.
 2.  InternHunter prompts for confirmation.
@@ -398,11 +489,11 @@ Guarantees: User will get directions to the user guide
 4.  InternHunter exits. <br/>
     Use case ends.
 
-#### Extensions
+**Extensions**
  2a. User chooses to cancel the confirmation. <br/>
   Use case ends.
     
-## Appendix D: Non-Functional Requirements
+### Appendix D: Non-Functional Requirements
 
 * Should be for a single user i.e. (not a multi-user product).
 * The data should be stored locally and should be in a human editable text file.
@@ -416,7 +507,7 @@ using commands than using the mouse.
 * Should be a result of evolving and morphing the given code base.
 * Should be developed in a breadth-first incremental manner over the project duration.
 
-## Appendix E: Glossary
+### Appendix E: Glossary
 
 * **OS**: Operating System
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
