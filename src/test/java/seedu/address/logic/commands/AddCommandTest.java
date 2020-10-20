@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.add.AddCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.FilterableItemList;
@@ -137,6 +138,35 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public void setCompanyViewIndex(Index index) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setProfileViewIndex(Index index) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setApplicationViewIndex(Index index) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Index getCompanyViewIndex() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Index getApplicationViewIndex() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Index getProfileViewIndex() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

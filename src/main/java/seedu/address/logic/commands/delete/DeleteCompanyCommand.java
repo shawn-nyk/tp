@@ -1,11 +1,12 @@
 package seedu.address.logic.commands.delete;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_DELETED_ITEM;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.commands.util.CommandUtil.getCompany;
+import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -18,6 +19,15 @@ import seedu.address.ui.tabs.TabName;
  */
 public class DeleteCompanyCommand extends DeleteCommandAbstract {
 
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " " + COMPANY_ALIAS
+            + ": Deletes a "
+            + COMPANY_NAME
+            + " from InternHunter by the index number used in the displayed list.\n"
+            + "Parameters: INDEX\n"
+            + "Note: INDEX must be a positive integer.\n"
+            + "Example: "
+            + COMMAND_WORD + " " + COMPANY_ALIAS + " 1\n";
+
     private final Index targetIndex;
 
     public DeleteCompanyCommand(Index targetIndex) {
@@ -28,6 +38,7 @@ public class DeleteCompanyCommand extends DeleteCommandAbstract {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         CompanyItem companyToDelete = getCompany(model, targetIndex);
+        TabName currentTabName = model.getTabName();
 
         // Delete all internships in the company
         deleteAllInternshipsInCompany(model, companyToDelete);
@@ -35,8 +46,8 @@ public class DeleteCompanyCommand extends DeleteCommandAbstract {
         // Delete the company
         model.getCompanyList().deleteItem(companyToDelete);
 
-        String message = String.format(Messages.MESSAGE_DELETED_ITEM, COMPANY_NAME, companyToDelete);
-        return getCommandResult(model, message, TabName.COMPANY);
+        String deleteSuccessMessage = String.format(MESSAGE_DELETED_ITEM, COMPANY_NAME, companyToDelete);
+        return getCommandResult(model, deleteSuccessMessage, currentTabName, TabName.COMPANY, targetIndex);
     }
 
     private void deleteAllInternshipsInCompany(Model model, CompanyItem company) throws CommandException {
@@ -44,11 +55,6 @@ public class DeleteCompanyCommand extends DeleteCommandAbstract {
         for (int i = 0; i < numberOfInternships; i++) {
             new DeleteInternshipCommand(targetIndex, Index.fromZeroBased(0)).execute(model);
         }
-    }
-
-    @Override
-    public String getItemType() {
-        return COMPANY_NAME;
     }
 
     @Override

@@ -1,10 +1,11 @@
 package seedu.address.logic.parser.add;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEGORY;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTORS;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_TITLE;
-import static seedu.address.logic.parser.util.Util.arePrefixesPresent;
+import static seedu.address.logic.parser.util.GeneralParserUtil.argumentsAreValid;
 
 import java.util.Set;
 
@@ -32,18 +33,18 @@ public class AddProfileCommandParser implements Parser<AddProfileCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddProfileCommand parse(String args) throws ParseException {
+        requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_CATEGORY, PREFIX_DESCRIPTORS);
 
-        boolean areProfilePrefixPresent = arePrefixesPresent(argMultimap, PREFIX_TITLE, PREFIX_CATEGORY);
-        if (!areProfilePrefixPresent || !argMultimap.getPreamble().isEmpty()) {
+        if (!argumentsAreValid(false, argMultimap, PREFIX_TITLE, PREFIX_CATEGORY)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddProfileCommand.MESSAGE_USAGE));
         }
 
         Title title = ProfileParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
         ProfileItemCategory category = ProfileParserUtil.parseCategory(argMultimap.getValue(PREFIX_CATEGORY).get());
         Set<Descriptor> descriptorSet = ProfileParserUtil
-                                            .parseDescriptors(argMultimap.getAllValues(PREFIX_DESCRIPTORS));
+                .parseDescriptors(argMultimap.getAllValues(PREFIX_DESCRIPTORS));
 
         ProfileItem profileItem = new ProfileItem(title, category, descriptorSet);
 

@@ -1,14 +1,16 @@
 package seedu.address.logic.commands.delete;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_DELETED_ITEM;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.commands.util.CommandUtil.getCompany;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
+import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
+import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_NAME;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -24,12 +26,13 @@ import seedu.address.ui.tabs.TabName;
 public class DeleteInternshipCommand extends DeleteCommandAbstract {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the internship identified by the index number used in the displayed internship list in a "
-            + "company.\n"
-            + "The application (if any) made with this internship will also be deleted.\n"
+            + ": Deletes the " + INTERNSHIP_NAME + " identified by the index number used in the displayed "
+            + INTERNSHIP_NAME + " list in a " + COMPANY_NAME + ".\n"
+            + "The " + APPLICATION_NAME + " (if any) made with this " + INTERNSHIP_NAME + " will also be deleted.\n"
+
             + "Parameters: INDEX " + PREFIX_INDEX + "INDEX\n"
-            + "Note: Select a company with the first INDEX and an internship within that company with the "
-            + "second INDEX. "
+            + "Note: Select a " + COMPANY_NAME + " with the first INDEX and an " + INTERNSHIP_NAME + " within that "
+            + COMPANY_NAME + " with the second INDEX. "
             + "INDEX must be a positive integer.\n"
             + "Example: " + COMMAND_WORD + " " + INTERNSHIP_ALIAS + " 1 " + PREFIX_INDEX + "2";
 
@@ -65,13 +68,8 @@ public class DeleteInternshipCommand extends DeleteCommandAbstract {
         // Delete the internship
         companyItem.removeInternship(internshipIndex);
 
-        String message = String.format(Messages.MESSAGE_DELETED_ITEM, INTERNSHIP_NAME, internshipItem);
-        return getCommandResult(model, message, TabName.COMPANY);
-    }
-
-    @Override
-    public String getItemType() {
-        return INTERNSHIP_NAME;
+        String deleteSuccessMessage = String.format(MESSAGE_DELETED_ITEM, INTERNSHIP_NAME, internshipItem);
+        return getCommandResult(model, deleteSuccessMessage, TabName.COMPANY);
     }
 
     @Override

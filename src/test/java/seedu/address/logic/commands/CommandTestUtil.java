@@ -2,12 +2,16 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -55,8 +59,13 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
+    // Preamble
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
+
+    // Valid indexes
+    public static final String VALID_INDEX_ONE = SPACE + PREFIX_INDEX + INDEX_FIRST;
+    public static final String VALID_INDEX_TWO = SPACE + PREFIX_INDEX + INDEX_SECOND;
 
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
@@ -112,6 +121,7 @@ public class CommandTestUtil {
         assertEquals(expectedAddressBook, actualModel.getAddressBook().getUnfilteredItemList());
         assertEquals(expectedFilteredList, actualModel.getAddressBook().getFilteredItemList());
     }
+
     /**
      * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
      * {@code model}'s address book.

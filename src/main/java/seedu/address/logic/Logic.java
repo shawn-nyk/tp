@@ -4,11 +4,15 @@ import java.nio.file.Path;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.application.ApplicationItem;
+import seedu.address.model.company.CompanyItem;
 import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
+import seedu.address.model.profile.ProfileItem;
 import seedu.address.ui.tabs.TabName;
 
 /**
@@ -34,6 +38,14 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<Person> getFilteredPersonList();
 
+    /** Returns an unmodifiable view of the filtered list of Application Item */
+    ObservableList<ApplicationItem> getFilteredApplicationItemList();
+
+    /** Returns an unmodifiable view of the filtered list of Company Item */
+    ObservableList<CompanyItem> getFilteredCompanyItemList();
+
+    /** Returns an unmodifiable view of the filtered list of Profile Item */
+    ObservableList<ProfileItem> getFilteredProfileItemList();
     /**
      * Returns the user prefs' address book file path.
      */
@@ -58,4 +70,34 @@ public interface Logic {
      * Sets the current tab of InternHunter.
      */
     void setTabName(TabName tabName);
+
+    /**
+     * Returns the current company view Index.
+     */
+    Index getCompanyViewIndex();
+
+    /**
+     * Returns the current application view Index.
+     */
+    Index getApplicationViewIndex();
+
+    /**
+     * Returns the current profile view Index.
+     */
+    Index getProfileViewIndex();
+
+    /**
+     * Sets the current company view index to {@code index}.
+     */
+    void setCompanyViewIndex(Index index);
+
+    /**
+     * Sets the current application view index to {@code index}.
+     */
+    void setApplicationViewIndex(Index index);
+
+    /**
+     * Sets the current profile view index to {@code index}.
+     */
+    void setProfileViewIndex(Index index);
 }

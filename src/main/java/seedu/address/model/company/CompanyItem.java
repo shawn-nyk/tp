@@ -94,7 +94,7 @@ public class CompanyItem extends Item {
     }
 
     /**
-     * NOTE: May end up deleting this to prevent direct access to internship list. todo javadocs (shawn)
+     * todo javadocs (shawn)
      */
     public List<InternshipItem> getInternships() {
         return Collections.unmodifiableList(internships);
@@ -126,14 +126,27 @@ public class CompanyItem extends Item {
     }
 
     /** todo javadocs (shawn) */
+    public void updateAllInternshipsCompanyName() {
+        for (InternshipItem internship : internships) {
+            internship.setCompanyName(companyName);
+        }
+    }
+
+    /** todo javadocs (shawn) */
     public int getNumberOfInternships() {
         return internships.size();
     }
 
     /**
-     * Returns true if both persons of the same companyName have at least one other identity field that is the same.
-     * This defines a weaker notion of equality between two persons.
+     * Checks if matching internship has same identity fields.
+     *
+     * @param internshipItem to check against.
+     * @return true if {@code internshipItem} exists in company.
      */
+    public boolean containsInternship(InternshipItem internshipItem) {
+        return internships.stream().anyMatch(x -> x.isSameItem(internshipItem));
+    }
+
     @Override
     public boolean isSameItem(Item otherItem) {
         if (this == otherItem) {

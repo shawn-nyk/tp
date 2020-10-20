@@ -1,11 +1,16 @@
 package seedu.address.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_SAME_SCREEN;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
+import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
+import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
+import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.AMY;
 
@@ -16,9 +21,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.SwitchCommand;
 import seedu.address.logic.commands.add.AddCommand;
+import seedu.address.logic.commands.delete.DeleteCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
@@ -38,6 +45,7 @@ import seedu.address.storage.company.JsonAdaptedCompanyItem;
 import seedu.address.storage.person.JsonAdaptedPerson;
 import seedu.address.storage.profile.JsonAdaptedProfileItem;
 import seedu.address.testutil.PersonBuilder;
+import seedu.address.ui.tabs.TabName;
 
 public class LogicManagerTest {
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy exception");
@@ -76,14 +84,14 @@ public class LogicManagerTest {
 
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
-        //        String deleteCommand = "delete 9";
-        //        assertCommandException(deleteCommand, MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        String deleteCommand = DeleteCommand.COMMAND_WORD + " " + APPLICATION_ALIAS + " 9";
+        assertCommandException(deleteCommand, String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, APPLICATION_NAME));
     }
 
     @Test
     public void execute_validCommand_success() throws Exception {
-        String listCommand = ListCommand.COMMAND_WORD;
-        assertCommandSuccess(listCommand, ListCommand.MESSAGE_SUCCESS, model);
+        String switchCommand = SwitchCommand.COMMAND_WORD + " " + COMPANY_ALIAS;
+        assertCommandSuccess(switchCommand, String.format(MESSAGE_SAME_SCREEN, TabName.COMPANY), model);
     }
 
     @Test
@@ -120,6 +128,77 @@ public class LogicManagerTest {
     @Test
     public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredPersonList().remove(0));
+    }
+
+    @Test
+    public void getFilteredApplicationItemList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredApplicationItemList().remove(0));
+    }
+
+    @Test
+    public void getFilteredProfileItemList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredProfileItemList().remove(0));
+    }
+
+    @Test
+    public void getFilteredCompanyItemList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredCompanyItemList().remove(0));
+    }
+
+    @Test
+    public void getProfileViewIndex_equals_success() {
+        assertEquals(logic.getProfileViewIndex(), Index.fromOneBased(1));
+    }
+
+    @Test
+    public void getCompanyViewIndex_equals_success() {
+        assertEquals(logic.getCompanyViewIndex(), Index.fromOneBased(1));
+    }
+
+    @Test
+    public void getApplicationViewIndex_equals_success() {
+        assertEquals(logic.getApplicationViewIndex(), Index.fromOneBased(1));
+    }
+
+    @Test
+    public void setProfileViewIndex_equals_success() {
+        logic.setProfileViewIndex(Index.fromOneBased(10));
+        assertEquals(logic.getProfileViewIndex(), Index.fromOneBased(10));
+    }
+
+    @Test
+    public void setCompanyViewIndex_equals_success() {
+        logic.setCompanyViewIndex(Index.fromOneBased(10));
+        assertEquals(logic.getCompanyViewIndex(), Index.fromOneBased(10));
+    }
+
+    @Test
+    public void setApplicationViewIndex_equals_success() {
+        logic.setApplicationViewIndex(Index.fromOneBased(10));
+        assertEquals(logic.getApplicationViewIndex(), Index.fromOneBased(10));
+    }
+
+    @Test
+    public void getTabName_equals_success() {
+        assertEquals(logic.getTabName(), TabName.COMPANY);
+    }
+
+    @Test
+    public void setTabName_changeTabNameToCompanyTestEquals_success() {
+        logic.setTabName(TabName.COMPANY);
+        assertEquals(logic.getTabName(), TabName.COMPANY);
+    }
+
+    @Test
+    public void setTabName_changeTabNameToApplicationTestEquals_success() {
+        logic.setTabName(TabName.APPLICATION);
+        assertEquals(logic.getTabName(), TabName.APPLICATION);
+    }
+
+    @Test
+    public void setTabName_changeTabNameToProfileTestEquals_success() {
+        logic.setTabName(TabName.PROFILE);
+        assertEquals(logic.getTabName(), TabName.PROFILE);
     }
 
     /**

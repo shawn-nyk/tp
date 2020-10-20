@@ -2,10 +2,9 @@ package seedu.address.model.application;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.util.DateUtil.DATE_TIME_LONG_FORMAT;
-import static seedu.address.model.util.DateUtil.DATE_TIME_SHORT_FORMAT;
 import static seedu.address.model.util.DateUtil.formatterDateTime;
-import static seedu.address.model.util.DateUtil.isDateFormat;
-import static seedu.address.model.util.DateUtil.isDateTimeFormat;
+import static seedu.address.model.util.DateUtil.isValidDateFormat;
+import static seedu.address.model.util.DateUtil.isValidDateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -15,7 +14,8 @@ import java.time.LocalDateTime;
  */
 public class StatusDate {
 
-    public static final String MESSAGE_CONSTRAINTS = "Status date should be in the format of d-M-yy or d-M-yy HHmm";
+    public static final String MESSAGE_CONSTRAINTS = "Status date should be in the format of d-M-yy or d-M-yy HHmm"
+            + "and set in the future";
 
     private final LocalDateTime statusDate;
 
@@ -30,18 +30,18 @@ public class StatusDate {
     }
 
     /**
-     * Returns true if the given statusDate is valid.
+     * Returns true if the given statusDate is valid. Status date must be in the future and have the right format.
      *
      * @param statusDate Input statusDate.
      * @return True if statusDate has a valid input format, false otherwise.
      */
     public static boolean isValidDate(String statusDate) {
-        return isDateFormat(statusDate) || isDateTimeFormat(statusDate);
+        return isValidDateFormat(statusDate) || isValidDateTimeFormat(statusDate);
     }
 
     /**
-     * Checks if the otherDate has the same statusDate as this Date object.
-     * Two LocalDateTime objects have ths same statusDate if they have the same year and statusDate.
+     * Checks if the otherDate has the same statusDate as this StatusDate object.
+     * Two LocalDateTime objects have ths same date if are on the same day in the same year.
      *
      * @param otherDate Date of the other task.
      * @return True if the other task has the same statusDate.
@@ -53,14 +53,11 @@ public class StatusDate {
     }
 
     /**
-     * Returns the short statusDate format for main screen view.
+     * Returns true if both StatusDates have the same year and day.
      *
-     * @return Short statusDate format.
+     * @param other Object object to compare to.
+     * @return True if the other StatusDate object has the same year and day as this one.
      */
-    public String getShortDate() {
-        return statusDate.format(formatterDateTime(DATE_TIME_SHORT_FORMAT));
-    }
-
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -68,15 +65,20 @@ public class StatusDate {
                 && sameDate(((StatusDate) other).statusDate)); // state check
     }
 
+    /**
+     * Returns the hashcode of this StatusDate object, which is the hashcode of its statusDate field.
+     *
+     * @return Hashcode of this StatusDate object.
+     */
     @Override
     public int hashCode() {
         return statusDate.hashCode();
     }
 
     /**
-     * Returns the long statusDate format for right pane view.
+     * Returns the string representation of this StatusDate object.
      *
-     * @return Long statusDate format.
+     * @return String representation of this StatusDate object.
      */
     @Override
     public String toString() {

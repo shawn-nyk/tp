@@ -3,6 +3,7 @@ package seedu.address.model;
 import java.nio.file.Path;
 
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.company.CompanyItem;
 import seedu.address.model.person.Person;
@@ -73,4 +74,34 @@ public interface Model {
      * Retrieves the current tab name
      */
     TabName getTabName();
+
+    /**
+     * Replaces the current company view index with {@code index}.
+     */
+    void setCompanyViewIndex(Index index);
+
+    /**
+     * Replaces the current application view index with {@code index}.
+     */
+    void setApplicationViewIndex(Index index);
+
+    /**
+     * Replaces the current profile view index with {@code index}.
+     */
+    void setProfileViewIndex(Index index);
+
+    /**
+     * Retrieves the current company view Index.
+     */
+    Index getCompanyViewIndex();
+
+    /**
+     * Retrieves the current application view Index.
+     */
+    Index getApplicationViewIndex();
+
+    /**
+     * Retrieves the current profile view Index.
+     */
+    Index getProfileViewIndex();
 }
