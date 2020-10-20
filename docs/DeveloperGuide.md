@@ -124,19 +124,18 @@ This is how the `SwitchCommand#execute()` method works upon execution:
 2. The input tab will be check against the current tab. <br/>
  2a. If both the tabs are the same, a `CommandResult` with a same tab message is return via the `CommandUtil#getCommandResult()` method. <br/>
  2b. If the tabs are different, a `CommandResult` with a success message is return via the `CommandUtil#getCommandResult()`method. <br/>
+ 
 3. The `CommandResult` also indicates whether the tab needs to be switched or not.
 
-<p align="center">
- <img src="images/SwitchCommandSequenceDiagram.png"/>
- <b> The overall process of how `SwitchCommand` was generated. <b/> <br/ >
-<p />
-<p align="center">
- <img src="images/ExecuteSwitchMeCommandSequenceDiagram.png"/>
- <b> The process of how `SwitchCommand` interacts with the model. <b/> <br />
-<p />
-<br />
+![SwitchCommandSequenceDiagram](images/SwitchCommandSequenceDiagram.png)
+The overall process of how `SwitchCommand` was generated.
+ 
+![ExecuteSwitchMeCommandSequenceDiagram](images/ExecuteSwitchMeCommandSequenceDiagram.png)
+The process of how `SwitchCommand` interacts with the model.
+
 GetCommandResultSequenceDiagram can be found [here](#get-command-result-sequence-diagram)
-<br />  
+
+
 The following activity diagram summarizes what happens when a user executes a switch command:
 
 ![SwitchCommandActivityDiagram](images/SwitchCommandActivityDiagram.png)
