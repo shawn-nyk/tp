@@ -103,11 +103,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void deleteSameCompany(CompanyItem target) {
-        companyList.deleteSameItem(target);
-    }
-
-    @Override
     public void addCompany(CompanyItem companyItem) {
         companyList.addItem(companyItem);
     }
@@ -204,11 +199,6 @@ public class ModelManager implements Model {
     @Override
     public void deleteProfileItem(ProfileItem target) {
         profileList.deleteItem(target);
-    }
-
-    @Override
-    public void deleteSameProfileItem(ProfileItem target) {
-        profileList.deleteSameItem(target);
     }
 
     @Override
