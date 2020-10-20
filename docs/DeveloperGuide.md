@@ -150,10 +150,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### Use case: UC01 - Add a company
 
-**MSS**
-
-Precondition: User is on the Companies tab <br/>
 Guarantees: Addition of company is successful
+
+**MSS**
 
 1. User requests to add a company and provides details.
 2. InternHunter adds the company to the list of companies.<br/>
@@ -167,10 +166,10 @@ Use case ends.
     		
 #### Use case: UC02 - Delete a company
 
-**MSS**
-
-Precondition: User is on the Companies tab and already has an existing list of companies <br/>
+Precondition: User already has an existing list of companies <br/>
 Guarantees: Deletion of company is successful
+
+**MSS**
 
 1. User requests to delete a company.
 2. InternHunter removes the company from the list of companies.<br/>
@@ -188,10 +187,10 @@ Use case ends.
 
 #### Use case: UC03 - Edit a company
 
-**MSS**
-
-Precondition: User is on the Companies tab and already has an existing list of companies <br/>
+Precondition: User already has an existing list of companies <br/>
 Guarantees: Editing of company is successful
+
+**MSS**
 
 1. User requests to edit the details of a company and provides details.
 2. InternHunter updates the details of the company. <br/>
@@ -209,10 +208,10 @@ Use case ends.
 
 #### Use case: UC04 - View a company
 
-**MSS**
-
-Precondition: User is on the Companies tab and already has an existing list of companies <br/>
+Precondition: User already has an existing list of companies <br/>
 Guarantees: Viewing of company is successful
+
+**MSS**
 
 1. User requests to view a company.
 2. InternHunter displays the company.<br/>
@@ -230,10 +229,10 @@ Use case ends.
 
 #### Use case: UC05 - Add an internship
 
-**MSS**
-
-Precondition: User is on the Companies tab and already has an existing list of companies <br/>
+Precondition: User already has an existing list of companies <br/>
 Guarantees: Addition of internship is successful
+
+**MSS**
 
 1.  User requests to add an internship to a company and provides the index and relevant details.
 2.  InternHunter adds the internship to the list of internships of the company. <br/>
@@ -251,10 +250,10 @@ Guarantees: Addition of internship is successful
 
 #### Use case: UC06 - Delete an internship
 
-**MSS**
-
-Precondition: User is on the Companies tab and already has an existing list of internships in a company <br/>
+Precondition: User already has an existing list of internships in a company <br/>
 Guarantees: Deletion of internship is successful
+
+**MSS**
 
 1.  User requests to delete an internship of a company and provides the index.
 2.  InternHunter removes the internship from the list of internships in a company. <br />
@@ -272,10 +271,10 @@ Guarantees: Deletion of internship is successful
   
 #### Use case: UC07 - Edit an internship
 
-**MSS**
-
-Precondition: User is on the Companies tab and already has an existing list of internships in a company <br/>
+Precondition: User already has an existing list of internships in a company <br/>
 Guarantees: Editing of internship is successful
+
+**MSS**
 
 1.  User requests to edit the details of an internship and inputs the index and details.
 2.  InternHunter edits the details of the internship, and updates the list. <br />
@@ -293,10 +292,10 @@ Guarantees: Editing of internship is successful
 
 #### Use case: UC08 - Add an application
 
-**MSS**
-
-Precondition: User is on the Companies tab and already has an existing list of internships in a company <br/>
+Precondition: User already has an existing list of internships in a company <br/>
 Guarantees: Adding of application is successful
+
+**MSS**
 
 1.  User requests to apply for an internship and provides the index and relevant details.
 2.  InternHunter adds the application to the list of applications and prompts the user to switch to the Applications
@@ -315,10 +314,10 @@ tab to view the newly added application. <br/>
 
 #### Use case: UC09 - Delete an application
 
-**MSS**
-
-Precondition: User is on the Applications tab and already has an existing list of applications <br />
+Precondition: User already has an existing list of applications <br />
 Guarantees: Deletion of application is successful
+
+**MSS**
 
 1.  User requests to delete an application and provides the index.
 2.  InternHunter removes the application from the list of applications. <br />
@@ -336,10 +335,10 @@ Guarantees: Deletion of application is successful
 
 #### Use case: UC10 - Edit an application
 
-**MSS**
-
-Precondition: User is on the Applications tab and already has an existing list of applications <br />
+Precondition: User already has an existing list of applications <br />
 Guarantees: Editing of application is successful
+
+**MSS**
 
 1.  User requests to edit the details of an application and inputs the index and details.
 2.  InternHunter edits the details of this application and the list is updated accordingly. <br />
@@ -357,10 +356,10 @@ Guarantees: Editing of application is successful
 
 #### Use case: UC11 - View an application
 
-**MSS**
-
-Precondition: User is on the Applications tab and already has an existing list of applications <br />
+Precondition: User already has an existing list of applications <br />
 Guarantees: Viewing of application is successful
+
+**MSS**
 
 1.  User requests to view the details of an application and provides the index.
 2.  InternHunter shows the details of this application. <br />
@@ -378,10 +377,9 @@ Guarantees: Viewing of application is successful
 
 #### Use case: UC12 - Add user profile item
 
-**MSS**
-
-Precondition: User is on the Profile tab
 Guarantees: Addition of user profile item is successful
+
+**MSS**
 
 1.  User requests to add a user profile item to the user profile and provides details.
 2.  InternHunter adds the user profile item to the user profile. <br />
@@ -395,10 +393,10 @@ Guarantees: Addition of user profile item is successful
 
 #### Use case: UC13 - Delete a user profile item 
 
-**MSS**
-
-Precondition: User is on the Profile tab and already has an existing list of user profile items <br/>
+Precondition: User already has an existing list of user profile items <br/>
 Guarantees: Deletion of user profile item is successful
+
+**MSS**
 
 1.  User requests to delete a user profile item from the user profile.
 2.  InternHunter removes the user profile item from the user profile. <br/>
@@ -416,10 +414,10 @@ Guarantees: Deletion of user profile item is successful
 
 #### Use case: UC14 - Edit a user profile item
 
-**MSS**
-
-Precondition: User is on the Profile tab and already has an existing list of user profile items <br/>
+Precondition: User already has an existing list of user profile items <br/>
 Guarantees: Editing of user profile item is successful
+
+**MSS**
 
 1.  User requests to edit the details of a user profile item and provides details.
 2.  InternHunter edits the user profile item in the user profile. <br/>
@@ -437,9 +435,10 @@ Guarantees: Editing of user profile item is successful
 
 #### Use case: UC15 - View a user profile item
 
-**MSS**
-Precondition: User is on the Profile tab and already has an existing list of user profile items <br/>
+Precondition: User already has an existing list of user profile items <br/>
 Guarantees: Viewing of user profile item is successful
+
+**MSS**
 
 1.  User requests to view the details of a user profile item.
 2.  InternHunter shows the details of this user profile item. <br/>
@@ -471,8 +470,9 @@ Guarantees: Viewing of user profile item is successful
 
 #### Use case: UC17 - Get help
 
-**MSS**
 Guarantees: User will get directions to the user guide
+
+**MSS**
 
 1.  User requests to see the help window.
 2.  InternHunter displays help message directing user to user guide. <br/>
