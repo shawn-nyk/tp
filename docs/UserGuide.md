@@ -144,6 +144,7 @@ Adds an internship to a company.
 
 Format: `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
 - `PERIOD` can refer to any word (e.g. 3 months, Summer break)
+- `REQUIREMENT` must be non-empty and contain less than 2 words
 
 Examples:
 - `add int 1 j/Software Engineer w/1512`
