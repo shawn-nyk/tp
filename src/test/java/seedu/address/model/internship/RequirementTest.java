@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.internship.InternshipItemFieldsUtil.INVALID_REQUIREMENT_EMPTY;
-import static seedu.address.testutil.internship.InternshipItemFieldsUtil.INVALID_REQUIREMENT_SPACES;
+import static seedu.address.testutil.internship.InternshipItemFieldsUtil.INVALID_REQUIREMENT_MORE_THAN_TWO_WORDS;
 import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_REQUIREMENT_R;
 import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_REQUIREMENT_VUE;
 
@@ -25,13 +25,13 @@ public class RequirementTest {
     @Test
     public void constructor_invalidRequirement_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> new Requirement(INVALID_REQUIREMENT_EMPTY));
-        assertThrows(IllegalArgumentException.class, () -> new Requirement(INVALID_REQUIREMENT_SPACES));
+        assertThrows(IllegalArgumentException.class, () -> new Requirement(INVALID_REQUIREMENT_MORE_THAN_TWO_WORDS));
     }
 
     @Test
     public void isValidRequirement_invalidFormats_success() {
         assertFalse(Requirement.isValidRequirement(INVALID_REQUIREMENT_EMPTY));
-        assertFalse(Requirement.isValidRequirement(INVALID_REQUIREMENT_SPACES));
+        assertFalse(Requirement.isValidRequirement(INVALID_REQUIREMENT_MORE_THAN_TWO_WORDS));
     }
 
     @Test
