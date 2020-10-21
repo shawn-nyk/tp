@@ -87,6 +87,17 @@ public class ItemListManager<T extends Item> implements FilterableItemList<T> {
         return filteredItems;
     }
 
+    /**
+     * Returns an {@code Item} from filteredItems.
+     * @param index of item to be returned.
+     * @return Item at index specified.
+     */
+    @Override
+    public T getItemFromFilteredItemList(int index) {
+        return filteredItems.get(index);
+    }
+
+
     @Override
     public void updateFilteredItemList(Predicate<? super T> predicate) {
         requireNonNull(predicate);

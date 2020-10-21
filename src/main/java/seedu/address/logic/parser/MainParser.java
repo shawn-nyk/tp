@@ -20,7 +20,7 @@ import seedu.address.logic.commands.list.ListCommand;
 import seedu.address.logic.commands.view.ViewCommand;
 import seedu.address.logic.parser.add.AddCommandParserWrapper;
 import seedu.address.logic.parser.delete.DeleteCommandParser;
-import seedu.address.logic.parser.edit.EditCommandParserWrapper;
+import seedu.address.logic.parser.edit.EditCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.find.FindCommandParser;
 import seedu.address.logic.parser.list.ListCommandParser;
@@ -60,7 +60,7 @@ public class MainParser {
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
         case EditCommand.COMMAND_WORD:
-            return new EditCommandParserWrapper().parse(arguments);
+            return new EditCommandParser().parse(arguments);
         case ViewCommand.COMMAND_WORD:
             return new ViewCommandParser().parse(arguments);
         case ClearCommand.COMMAND_WORD:

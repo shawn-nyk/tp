@@ -156,6 +156,7 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered profile list */
     ObservableList<ProfileItem> getFilteredProfileList();
 
+
     /** Returns the unfiltered profile list */
     ItemList<ProfileItem> getUnfilteredProfileList();
 
@@ -237,4 +238,20 @@ public interface Model {
      * Retrieves the current profile view Index.
      */
     Index getProfileViewIndex();
+
+    /**
+     * Gets ProfileItem from Filtered Profile list.
+     */
+    ProfileItem getProfileItemFromFilteredList(int index);
+
+    /**
+     * Gets CompanyItem from Filtered Company list.
+     */
+    CompanyItem getCompanyItemFromFilteredList(int index);
+
+
+    /**
+     * Gets ApplicationItem from Filtered Application list.
+     */
+    ApplicationItem getApplicationItemFromFilteredList(int index);
 }

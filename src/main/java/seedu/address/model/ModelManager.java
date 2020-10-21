@@ -130,6 +130,16 @@ public class ModelManager implements Model {
         this.companyList.setItemList(companyList);
     }
 
+    /**
+     * Gets CompanyItem from Filtered Company list.
+     *
+     * @param index of item in filtered company list.
+     */
+    @Override
+    public CompanyItem getCompanyItemFromFilteredList(int index) {
+        return companyList.getItemFromFilteredItemList(index);
+    }
+
     //=========== Application Methods ========================================================================
 
     @Override
@@ -180,6 +190,17 @@ public class ModelManager implements Model {
     @Override
     public void setApplicationList(ItemList<ApplicationItem> applicationList) {
         this.applicationList.setItemList(applicationList);
+    }
+
+
+    /**
+     * Gets ApplicationItem from Filtered Application list.
+     *
+     * @param index of item in filtered application list.
+     */
+    @Override
+    public ApplicationItem getApplicationItemFromFilteredList(int index) {
+        return applicationList.getItemFromFilteredItemList(index);
     }
 
     //=========== Profile Methods ============================================================================
@@ -237,6 +258,15 @@ public class ModelManager implements Model {
         this.profileList.setItemList(profileList);
     }
 
+    /**
+     * Gets ProfileItem from Filtered Profile list.
+     *
+     * @param index of item in filtered profile list.
+     */
+    @Override
+    public ProfileItem getProfileItemFromFilteredList(int index) {
+        return profileList.getItemFromFilteredItemList(index);
+    }
     //=========== UserPrefs ==================================================================================
 
     @Override

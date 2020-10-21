@@ -52,9 +52,9 @@ public class LogicManager implements Logic {
         commandResult = command.execute(model);
 
         try {
-            storage.getCompanyItemListStorage().saveItemList(model.getUnfilteredCompanyList());
-            storage.getApplicationItemListStorage().saveItemList(model.getUnfilteredApplicationList());
-            storage.getProfileItemListStorage().saveItemList(model.getUnfilteredProfileList());
+            storage.saveCompanyItemList(model.getCompanyList().getUnfilteredItemList());
+            storage.saveApplicationItemList(model.getApplicationList().getUnfilteredItemList());
+            storage.saveProfileItemList(model.getProfileList().getUnfilteredItemList());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
