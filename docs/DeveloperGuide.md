@@ -51,7 +51,8 @@ The following sequence diagrams show how the delete company feature works succes
 
 ![DeleteCompanyCommandSequenceDiagram](images/DeleteCompanyCommandSequenceDiagram.png)
 ![ExecuteDeleteCompany3CommandSequenceDiagram](images/ExecuteDeleteCompany3CommandSequenceDiagram.png)
-to add: \!\[GetDeleteCommandResultSequenceDiagram](images/GetDeleteCommandResultSequenceDiagram.png)
+![GetDeleteCommandResultSequenceDiagram](images/GetDeleteCommandResultSequenceDiagram.png)
+HandleDeleteDisplaySwitchIndexSequenceDiagram can be found [here](#handle-delete-display-switch-index-sequence-diagram)
 
 #### Design considerations
 * Obtaining the tab that the user is currently viewing has to be done before deleting all the company’s internships 
@@ -96,6 +97,64 @@ to achieve.
         happens to any application for that internship may not be the same as what would happen to it if a delete 
         internship command was executed directly by the user for the same internship.
         * Updating this behaviour will require updating code in both places rather than one centralised place.
+
+
+### Switch screen feature
+
+#### What it is
+Users are able to execute a command to switch their tabs in InterHunter. There are 3 tabs, Company, Application, Profile. Take for example swithcing to the company tab, upon the successful switch of the tabs, the screen will now display a list of companies and also display the information of the last known index of that tab, i.e if the index that was previously saved in that tab was the 3rd index, when switching back to this tab, it will show the information of the 3rd index.
+
+**Command format**: `switch TYPE`
+`TYPE` is the type of tab.
+There are three `TYPE`s:
+* `com`
+* `app`
+* `me`
+
+#### Implementation
+Upon a user’s entry of a valid switch command, a `SwitchCommand` object is created. `SwitchCommand` is a class that extends the Command abstract class as well as having direct association with TabName, an enumeration, as well as having a dependency to the Model interface.
+
+![SwitchCommandClassDiagram](images/SwitchCommandClassDiagram.png)
+
+`SwitchCommand` implements the `execute()` method from the `Command` abstract class whereby upon execution, the 
+method will switch the tab of the screen if a valid command is provided.
+
+This is how the `SwitchCommand#execute()` method works upon execution:
+1. The current tab that the user is viewing is obtained via the `Model#getTabName()` method.
+2. The input tab will be check against the current tab. <br/>
+ 2a. If both the tabs are the same, a `CommandResult` with a same tab message is return via the `CommandUtil#getCommandResult()` method. <br/>
+ 2b. If the tabs are different, a `CommandResult` with a success message is return via the `CommandUtil#getCommandResult()`method. <br/>
+ 
+3. The `CommandResult` also indicates whether the tab needs to be switched or not.
+
+![SwitchCommandSequenceDiagram](images/SwitchCommandSequenceDiagram.png)
+The overall process of how `SwitchCommand` was generated.
+ 
+![ExecuteSwitchMeCommandSequenceDiagram](images/ExecuteSwitchMeCommandSequenceDiagram.png)
+The process of how `SwitchCommand` interacts with the model.
+
+GetCommandResultSequenceDiagram can be found [here](#get-command-result-sequence-diagram)
+
+
+The following activity diagram summarizes what happens when a user executes a switch command:
+
+![SwitchCommandActivityDiagram](images/SwitchCommandActivityDiagram.png)
+
+The above activity diagram shows the logic and the path execution when the switch command is executed. The code will check if there is any missing input or if the input is not one of the three mentioned in the `Command format` above. If the aforementioned 2 conditions are not met, an error message is displayed. If the input is one of the three mentioned above in the `Command format`, there will be further checks if the user are already in the same tab.
+
+#### Design considerations
+##### Aspect: Should the tabs be allowed to change only by the `SwitchCommand`.
+* **Alternative 1 (current choice):** Allow the switch of tabs to not only be accessible via the switch command, but rather extract it out for all commands excluding `exit` and `help`.
+    * Pros:
+        * Allows user to type once instead of twice when executing a single command and wanting to view it. (This optimzation is to allow for a faster way to type and view the changes). <br/>
+        * Allows user to have a second alternative to switch tabs for just viewing purpose.
+    * Cons:
+        * User might switch tab accidentally because of inputting the wrong `TYPE`.
+* **Alternative 2:** Only allow switch command to be the only way to switch tabs.
+    * Pros:
+        * This introduces a "type-safe" checks like in Java where only if the user is in the correct tab, then he or she will be able to add items to that item type. <br/>
+    * Cons:
+        * This introduces the need to type twice in order to view the execution of the command.
 
 ## **Appendix**
 ### Appendix A: Product Scope
@@ -511,5 +570,17 @@ using commands than using the mouse.
 
 * **OS**: Operating System
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
+
+### Appendix F: Sequence Diagrams
+
+<p id="get-command-result-sequence-diagram" align="center">
+ <img src="images/GetCommandResultSequenceDiagram.png"/>
+ <b> Sequence diagram for GetCommandResult <b/> <br/ >
+<p />
+<p id="handle-delete-display-switch-index-sequence-diagram" align="center">
+ <img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png"/>
+ <b> Sequence diagram for HandleDeleteDisplaySwitchIndex <b/> <br />
+<p />
+
 
 --------------------------------------------------------------------------------------------------------------------
