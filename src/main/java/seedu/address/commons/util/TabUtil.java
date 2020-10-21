@@ -1,6 +1,6 @@
 package seedu.address.commons.util;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE_ABRIDGED;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
@@ -29,7 +29,7 @@ public class TabUtil {
             tabName = TabName.PROFILE;
             break;
         default:
-            throw new ParseException(MESSAGE_INVALID_ITEM_TYPE);
+            throw new ParseException(MESSAGE_INVALID_ITEM_TYPE_ABRIDGED);
         }
         return tabName;
     }
