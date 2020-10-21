@@ -1,0 +1,24 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1
+skinparam arrowColor STORAGE_COLOR_T2
+skinparam classBackgroundColor STORAGE_COLOR
+skinparam classAttributeFontColor #FFFFFF
+
+abstract Class JsonAdaptedItem {
+    + Item toModelType()
+}
+
+Class JsonAdaptedApplicationItem
+Class JsonAdaptedCompanyItem
+Class JsonAdaptedInternshipItem
+Class JsonAdaptedProfileItem
+
+show JsonAdaptedItem methods
+
+JsonAdaptedApplicationItem -u-|> JsonAdaptedItem
+JsonAdaptedCompanyItem -u-|> JsonAdaptedItem
+JsonAdaptedInternshipItem -u-|> JsonAdaptedItem
+JsonAdaptedProfileItem -u-|> JsonAdaptedItem
+
+@enduml

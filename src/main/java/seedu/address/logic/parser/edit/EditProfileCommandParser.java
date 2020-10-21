@@ -49,23 +49,23 @@ public class EditProfileCommandParser implements Parser<EditProfileCommand> {
 
         Index index = getIndexInPreamble(argMultimap);
 
-        EditProfileItemDescriptor editProfileDescriptor = new EditProfileItemDescriptor();
+        EditProfileItemDescriptor editProfileItemDescriptor = new EditProfileItemDescriptor();
         // Update the setters
         if (argMultimap.getValue(PREFIX_TITLE).isPresent()) {
-            editProfileDescriptor.setTitle(parseTitle(argMultimap.getValue(PREFIX_TITLE).get()));
+            editProfileItemDescriptor.setTitle(parseTitle(argMultimap.getValue(PREFIX_TITLE).get()));
         }
         if (argMultimap.getValue(PREFIX_CATEGORY).isPresent()) {
-            editProfileDescriptor.setProfileItemCategory(parseCategory(argMultimap.getValue(PREFIX_CATEGORY)
+            editProfileItemDescriptor.setProfileItemCategory(parseCategory(argMultimap.getValue(PREFIX_CATEGORY)
                 .get()));
         }
         parseDescriptorsForEdit(argMultimap.getAllValues(PREFIX_DESCRIPTOR))
-                .ifPresent(editProfileDescriptor::setDescriptors);
+                .ifPresent(editProfileItemDescriptor::setDescriptors);
 
-        if (!editProfileDescriptor.isAnyFieldEdited()) {
+        if (!editProfileItemDescriptor.isAnyFieldEdited()) {
             throw new ParseException(MESSAGE_NOT_EDITED);
         }
 
-        return new EditProfileCommand(index, editProfileDescriptor);
+        return new EditProfileCommand(index, editProfileItemDescriptor);
     }
     /**
      * Parses {@code Collection<String> descriptors} into a {@code Set<Descriptor>} if {@code descriptors} is non-empty.
