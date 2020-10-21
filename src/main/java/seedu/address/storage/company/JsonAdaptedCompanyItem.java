@@ -57,9 +57,9 @@ public class JsonAdaptedCompanyItem extends JsonAdaptedItem {
     public JsonAdaptedCompanyItem(CompanyItem source) {
         assert source != null : JsonAdaptedItem.NULL_SOURCE_ERROR_MESSAGE;
         companyName = source.getCompanyName().getValue();
-        phone = source.getPhone().value;
-        email = source.getEmail().value;
-        address = source.getEmail().value;
+        phone = source.getPhone().getValue();
+        email = source.getEmail().getValue();
+        address = source.getEmail().getValue();
 
         industries.addAll(source.getIndustries().stream()
                 .map(JsonAdaptedIndustry::new)
