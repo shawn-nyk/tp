@@ -25,7 +25,7 @@ import seedu.address.model.item.ReadOnlyItemList;
 import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.model.util.ItemUtil;
-import seedu.address.storage.ListStorage;
+import seedu.address.storage.ItemListStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.storage.item.JsonAdaptedItem;
@@ -46,7 +46,7 @@ public class MainAppUtil {
      * @return initial item list.
      */
     public static <T extends Item, U extends JsonAdaptedItem> ReadOnlyItemList<T> initItemList(
-            ListStorage<T, U> itemListStorage, String itemType) {
+            ItemListStorage<T, U> itemListStorage, String itemType) {
         Optional<ReadOnlyItemList<T>> itemListOptional;
         ReadOnlyItemList<T> initialItemListData;
         try {

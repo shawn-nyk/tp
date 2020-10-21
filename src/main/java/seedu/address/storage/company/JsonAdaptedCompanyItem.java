@@ -55,6 +55,7 @@ public class JsonAdaptedCompanyItem extends JsonAdaptedItem {
      * Converts a given {@code CompanyItem} into this class for Jackson use.
      */
     public JsonAdaptedCompanyItem(CompanyItem source) {
+        assert source != null : JsonAdaptedItem.NULL_SOURCE_ERROR_MESSAGE;
         companyName = source.getCompanyName().getValue();
         phone = source.getPhone().value;
         email = source.getEmail().value;

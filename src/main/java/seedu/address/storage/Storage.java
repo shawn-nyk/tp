@@ -31,27 +31,27 @@ public interface Storage extends UserPrefsStorage {
      *
      * @return address book storage.
      */
-    ListStorage<Person, JsonAdaptedPerson> getAddressBookStorage();
+    ItemListStorage<Person, JsonAdaptedPerson> getAddressBookStorage();
 
     /**
      * Gets the application item list storage.
      *
      * @return application item list storage.
      */
-    ListStorage<ApplicationItem, JsonAdaptedApplicationItem> getApplicationItemListStorage();
+    ItemListStorage<ApplicationItem, JsonAdaptedApplicationItem> getApplicationItemListStorage();
 
     /**
      * Gets the company item list storage.
      *
      * @return company item list storage.
      */
-    ListStorage<CompanyItem, JsonAdaptedCompanyItem> getCompanyItemListStorage();
+    ItemListStorage<CompanyItem, JsonAdaptedCompanyItem> getCompanyItemListStorage();
 
     /**
      * Gets the profile item list storage.
      *
      * @return profile item list storage.
      */
-    ListStorage<ProfileItem, JsonAdaptedProfileItem> getProfileItemListStorage();
+    ItemListStorage<ProfileItem, JsonAdaptedProfileItem> getProfileItemListStorage();
 
 }
