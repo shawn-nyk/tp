@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.company.Industry;
-import seedu.address.storage.item.JsonAdaptedItem;
 
 /**
  * Jackson-friendly version of {@link Industry}.
@@ -25,7 +24,6 @@ class JsonAdaptedIndustry {
      * Converts a given {@code Industry} into this class for Jackson use.
      */
     public JsonAdaptedIndustry(Industry source) {
-        assert source != null : JsonAdaptedItem.NULL_SOURCE_ERROR_MESSAGE;
         industryType = source.getValue();
     }
 

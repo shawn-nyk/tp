@@ -3,6 +3,7 @@
 skinparam arrowThickness 1
 skinparam arrowColor STORAGE_COLOR_T2
 skinparam classBackgroundColor STORAGE_COLOR
+skinparam classAttributeFontColor #FFFFFF
 
 abstract Class JsonAdaptedItem {
     + Item toModelType()

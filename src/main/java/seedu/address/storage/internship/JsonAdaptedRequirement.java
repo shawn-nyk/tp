@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.internship.Requirement;
-import seedu.address.storage.item.JsonAdaptedItem;
 
 /**
  * Jackson-friendly version of {@link Requirement}.
@@ -26,7 +25,6 @@ public class JsonAdaptedRequirement {
      * Converts a given {@code Requirement} into this class for Jackson use.
      */
     public JsonAdaptedRequirement(Requirement source) {
-        assert source != null : JsonAdaptedItem.NULL_SOURCE_ERROR_MESSAGE;
         requirement = source.getValue();
     }
 

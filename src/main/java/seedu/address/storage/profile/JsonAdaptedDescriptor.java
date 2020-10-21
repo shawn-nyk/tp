@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.profile.Descriptor;
-import seedu.address.storage.item.JsonAdaptedItem;
 
 /**
  * Jackson-friendly version of {@link Descriptor}.
@@ -26,7 +25,6 @@ public class JsonAdaptedDescriptor {
      * Converts a given {@code Descriptor} into this class for Jackson use.
      */
     public JsonAdaptedDescriptor(Descriptor source) {
-        assert source != null : JsonAdaptedItem.NULL_SOURCE_ERROR_MESSAGE;
         descriptor = source.descriptor;
     }
 
