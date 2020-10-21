@@ -53,11 +53,11 @@ public class AddCompanyCommand extends AddCommandAbstract {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (model.getCompanyList().hasItem(toAdd)) {
+        if (model.hasCompany(toAdd)) {
             throw new CommandException(String.format(MESSAGE_DUPLICATE_ITEM, COMPANY_NAME));
         }
 
-        model.getCompanyList().addItem(toAdd);
+        model.addCompany(toAdd);
 
         String addSuccessMessage = String.format(MESSAGE_ADD_SUCCESS, COMPANY_NAME, toAdd);
         return getCommandResult(model, addSuccessMessage, TabName.COMPANY);

@@ -6,7 +6,7 @@ import static seedu.address.commons.util.CollectionUtil.isAnyNonNull;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.commands.util.CommandUtil.getProfileItem;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEGORY;
-import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTORS;
+import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTOR;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_TITLE;
 import static seedu.address.model.FilterableItemList.PREDICATE_SHOW_ALL_ITEMS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
@@ -22,7 +22,6 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.FilterableItemList;
 import seedu.address.model.Model;
 import seedu.address.model.profile.Descriptor;
 import seedu.address.model.profile.ProfileItem;
@@ -41,11 +40,11 @@ public class EditProfileCommand extends EditCommandAbstract {
             + "Parameters: INDEX "
             + "[" + PREFIX_TITLE + "TITLE] "
             + "[" + PREFIX_CATEGORY + "CATEGORY] "
-            + "[" + PREFIX_DESCRIPTORS + "DESCRIPTOR]...\n"
+            + "[" + PREFIX_DESCRIPTOR + "DESCRIPTOR]...\n"
             + "Note: At least one of the optional fields must be provided. INDEX must be a positive integer.\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_CATEGORY + "achievement "
-            + PREFIX_DESCRIPTORS + "Devised a mobile transaction solution. ";
+            + PREFIX_DESCRIPTOR + "Devised a mobile transaction solution. ";
 
 
     private final Index targetIndex;
@@ -69,14 +68,12 @@ public class EditProfileCommand extends EditCommandAbstract {
         ProfileItem profileItemToEdit = getProfileItem(model, targetIndex);
         ProfileItem editedProfile = createEditedProfileItem(profileItemToEdit, editProfileItemDescriptor);
 
-        FilterableItemList<ProfileItem> profileItemList = model.getProfileList();
-
-        if (!profileItemToEdit.isSameItem(editedProfile) && profileItemList.hasItem(editedProfile)) {
+        if (!profileItemToEdit.isSameItem(editedProfile) && model.hasProfileItem(editedProfile)) {
             throw new CommandException(String.format(Messages.MESSAGE_DUPLICATE_ITEM, PROFILE_NAME));
         }
 
-        profileItemList.setItem(profileItemToEdit, editedProfile);
-        profileItemList.updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
+        model.setProfileItem(profileItemToEdit, editedProfile);
+        model.updateFilteredProfileList(PREDICATE_SHOW_ALL_ITEMS);
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, PROFILE_NAME, editedProfile);
         return getCommandResult(model, editSuccessMessage, TabName.PROFILE);
     }

@@ -5,7 +5,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_ADD_SUCCESS;
 import static seedu.address.commons.core.Messages.MESSAGE_DUPLICATE_ITEM;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEGORY;
-import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTORS;
+import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTOR;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_TITLE;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ITEM_NAME;
@@ -28,12 +28,12 @@ public class AddProfileCommand extends AddCommandAbstract {
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
             + PREFIX_CATEGORY + "CATEGORY "
-            + "[" + PREFIX_DESCRIPTORS + "DESCRIPTOR]...\n"
+            + "[" + PREFIX_DESCRIPTOR + "DESCRIPTOR]...\n"
             + "Example: " + COMMAND_WORD + " " + PROFILE_ALIAS + " "
             + PREFIX_TITLE + "Learn HTML "
             + PREFIX_CATEGORY + "skill "
-            + PREFIX_DESCRIPTORS + "Learn how to use div and classes. "
-            + PREFIX_DESCRIPTORS + "Learn how to inject javascript. ";
+            + PREFIX_DESCRIPTOR + "Learn how to use div and classes. "
+            + PREFIX_DESCRIPTOR + "Learn how to inject javascript. ";
 
     private final ProfileItem toAdd;
 
@@ -49,11 +49,11 @@ public class AddProfileCommand extends AddCommandAbstract {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (model.getProfileList().hasItem(toAdd)) {
+        if (model.hasProfileItem(toAdd)) {
             throw new CommandException(String.format(MESSAGE_DUPLICATE_ITEM, PROFILE_NAME));
         }
 
-        model.getProfileList().addItem(toAdd);
+        model.addProfileItem(toAdd);
 
         String addSuccessMessage = String.format(MESSAGE_ADD_SUCCESS, PROFILE_NAME, toAdd);
         return getCommandResult(model, addSuccessMessage, TabName.PROFILE);

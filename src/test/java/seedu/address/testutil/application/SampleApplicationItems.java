@@ -6,6 +6,7 @@ import static seedu.address.model.util.StatusUtil.REJECTED_KEYWORD;
 import static seedu.address.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_JUNE_2021;
 import static seedu.address.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_JUNE_2022;
 import static seedu.address.testutil.internship.SampleInternshipItems.FACEBOOK_FE;
+import static seedu.address.testutil.internship.SampleInternshipItems.GOLDMAN_DA;
 import static seedu.address.testutil.internship.SampleInternshipItems.LAZADA_DS;
 import static seedu.address.testutil.internship.SampleInternshipItems.SHOPEE_SWE;
 
@@ -33,16 +34,24 @@ public abstract class SampleApplicationItems {
             .withStatus(ACCEPTED_KEYWORD)
             .withStatusDate(STATUS_DATE_JUNE_2022)
             .build();
+    public static final ApplicationItem GOLDMAN_OFFERED = new ApplicationItemBuilder()
+            .withInternshipItem(GOLDMAN_DA)
+            .withStatus(OFFERED_KEYWORD)
+            .withStatusDate(STATUS_DATE_JUNE_2022)
+            .build();
 
+    /**
+     * Returns an {@code ItemList<ApplicationItem>} with all the sample application items.
+     */
     public static ItemList<ApplicationItem> getSampleApplicationItemList() {
-        ItemList<ApplicationItem> applicationItemItemList = new ItemList<>();
+        ItemList<ApplicationItem> applicationItemList = new ItemList<>();
         for (ApplicationItem applicationItem : getApplicationItems()) {
-            applicationItemItemList.addItem(applicationItem);
+            applicationItemList.addItem(applicationItem);
         }
-        return applicationItemItemList;
+        return applicationItemList;
     }
 
     private static List<ApplicationItem> getApplicationItems() {
-        return new ArrayList<>(Arrays.asList(SHOPEE_OFFERED, LAZADA_REJECTED, FACEBOOK_ACCEPTED));
+        return new ArrayList<>(Arrays.asList(SHOPEE_OFFERED, LAZADA_REJECTED));
     }
 }

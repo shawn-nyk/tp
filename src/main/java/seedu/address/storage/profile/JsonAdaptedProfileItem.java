@@ -32,15 +32,19 @@ public class JsonAdaptedProfileItem extends JsonAdaptedItem {
             @JsonProperty("descriptors") Set<JsonAdaptedDescriptor> descriptors) {
         this.title = title;
         this.profileType = profileType;
-        this.descriptors.addAll(descriptors);
+
+        if (descriptors != null) {
+            this.descriptors.addAll(descriptors);
+        }
     }
 
     /**
      * Converts a given {@code ProfileItem} into this class for Jackson use.
      */
     public JsonAdaptedProfileItem(ProfileItem source) {
-        title = source.getTitle().getValue();
-        profileType = source.getCategory().toString();
+        title = source.getTitleValue();
+        profileType = source.getCategoryString();
+
         descriptors.addAll(source.getDescriptors().stream()
                 .map(JsonAdaptedDescriptor::new)
                 .collect(Collectors.toList()));
