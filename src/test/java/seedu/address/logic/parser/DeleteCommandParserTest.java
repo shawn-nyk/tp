@@ -1,10 +1,10 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.parser.delete.DeleteCommandParser;
 
 /**
@@ -22,7 +22,6 @@ public class DeleteCommandParserTest {
     public void parse_invalidArgs_throwsParseException() {
         // todo: change the test case to use the currently commented-out line when all 3 delete command parsers for
         //  individual items have been implemented
-        //assertParseFailure(parser, "a", Messages.MESSAGE_INVALID_ITEM_TYPE);
-        assertParseFailure(parser, "a", MESSAGE_INVALID_INDEX);
+        assertParseFailure(parser, "a", Messages.MESSAGE_INVALID_ITEM_TYPE);
     }
 }
