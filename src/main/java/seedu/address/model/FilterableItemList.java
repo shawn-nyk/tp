@@ -61,6 +61,7 @@ public interface FilterableItemList<T extends Item> {
     /** Returns an Item from the filtered Item list */
     T getItemFromFilteredItemList(int index);
 
+    /** Returns the observable Item List */
     ObservableList<T> getItemList();
 
     /**
