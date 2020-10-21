@@ -51,6 +51,10 @@ public interface FilterableItemList<T extends Item> {
     /** Returns an unmodifiable view of the filtered Item list */
     ObservableList<T> getFilteredItemList();
 
+
+    /** Returns an Item from the filtered Item list */
+    T getItemFromFilteredItemList(int index);
+
     /**
      * Updates the filter of the filtered Item list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
