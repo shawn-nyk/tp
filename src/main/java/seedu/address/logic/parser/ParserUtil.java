@@ -1,7 +1,6 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
 
 import java.util.Collection;
@@ -10,38 +9,16 @@ import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
-import seedu.address.commons.util.TabUtil;
-import seedu.address.logic.commands.SwitchCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
-import seedu.address.ui.tabs.TabName;
-
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
  */
 public class ParserUtil {
-
-    /**
-     * Parses {@code selectedTab} into a {@code TabName} and returns it. Leading and trailing whitespaces will be
-     * trimmed.
-     * @throws ParseException if the specified selectedTab is invalid (not com or int or me).
-     */
-    public static TabName parseTab(String selectedTab) throws ParseException {
-        requireNonNull(selectedTab);
-        String tab = selectedTab.trim();
-        if (tab.length() == 0) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SwitchCommand.MESSAGE_USAGE));
-        }
-        String[] tabArray = tab.split(" ");
-        if (tabArray.length > 1) {
-            throw new ParseException(SwitchCommand.EXCESS_MESSAGE);
-        }
-        return TabUtil.getSwitchTabName(tab);
-    }
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be

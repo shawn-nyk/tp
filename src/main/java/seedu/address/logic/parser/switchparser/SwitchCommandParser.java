@@ -2,10 +2,10 @@ package seedu.address.logic.parser.switchparser;
 
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.util.TabParserUtil.parseTab;
 
 import seedu.address.logic.commands.SwitchCommand;
 import seedu.address.logic.parser.Parser;
-import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.tabs.TabName;
 
@@ -21,7 +21,7 @@ public class SwitchCommandParser implements Parser<SwitchCommand> {
      */
     public SwitchCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        TabName tabName = ParserUtil.parseTab(args);
+        TabName tabName = parseTab(args);
         return new SwitchCommand(tabName);
     }
 }
