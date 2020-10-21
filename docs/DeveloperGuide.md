@@ -71,6 +71,72 @@ and `JsonSerializableItemList` use generics.
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Implementation of `Command` classes
+
+#### Current Implementation
+There are 4 different subclasses of `Item` in InternHunter, namely `Company`, `Internship`, `Application`, and
+`Profile`. <br/>
+
+There are 2 types of commands:
+- Commands that are dependent on the type of `Item`
+    - e.g. `AddCommand`, `DeleteCommand`, `EditCommand`
+    - These commands are implemented as _abstract_ classes that inherit from the `Command` class. Type specific
+    commands like `AddCompanyCommand` and `AddApplicationCommand` inherit from the _abstract_ `AddCommand`
+    class
+- Commands that are not dependent on the type of `Item`
+    - e.g. `SwitchCommand`, `HelpCommand`, `ExitCommand`
+    - These commands are implemented as _concrete_ classes and inherit directly from the `Command` class
+
+From this point on, we will be using `XCommand` to represent commands that are dependent on type and
+`YCommand` to represent commands that are independent of type.
+
+The following is an example of the class hierachy:
+
+![CommandClassDiagram](images/CommandClassDiagram.png)
+
+#### Design considerations
+
+##### Aspect: Whether `XCommand` should be abstract and split into 4 other `XItemCommand` or handle the 4 `Item` types on its own
+
+**Alternative 1 (current choice)**: `XCommand` is split into 4 other `XItemCommand`. Parser parses the
+user input and creates the specific `XItemCommand` for execution. The following activity diagram shows how the 
+execution of the `AddApplicationCommand` will work.
+
+![AddApplicationCommandActivityDiagram](images/AddApplicationCommandActivityDiagram.png)
+
+- Pros: 
+    - Each command has its own specific task to execute. This means that classes are more flexible and can be changed
+    very easily. 
+    - Higher cohesion as the class is only dependent on the one `Item` type
+    - Short and concise `execute` method, providing better readability and maintainability
+- Cons:
+    - More classes have to be created
+        
+- **Alternative 2**: `XCommand` is a _concrete_ class and handles the execution of all 4 `Item` types.
+Parser parses the user input and creates the general `XCommand` for execution. The following
+activity diagram shows how the `AddCommand` will work.
+
+![AddCommandActivityDiagram](images/AddCommandActivityDiagram.png)
+
+- Pros:
+    - Only one command is needed, reducing the number of classes created
+- Cons:
+    - `execute` method becomes extremely long as it needs to contain switch statements to handle the execution of
+    command X for the 4 different types of `Item`
+    - `XCommand` class is vulnerable to drastic changes when the parsing method of any one `Item` class changes
+    - `XCommand` class holds more dependencies as it is now dependent on the 4 `Item` classes  
+    - Poor readability and maintainability
+    - A slight overhead increase as `Item` type needs to be passed in as a parameter to the `XCommand`,
+    additional check for nullity in the parameter passed in is required
+
+**Conclusion**: Our group settled on the first design, since it better adheres to OOP principles such as
+Single Responsiblity Principle. Our design meant that each specific `Item` command is only dependent on the `Item`
+itself and not subjected to the changes in implementation of the other `Item` classes. This means that it will only
+have one reason to change. Moreover, this leads to lower coupling, which makes maintenance, integration and
+testing easier. This ended up being a good choice as we had some changes in the parsing requirements of one
+of the `Item` classes, `Internship`. If we had gone with the second design, the concrete `XCommand` might
+have broken down as it might not be suited to the different parsing requirements in the of the `Internship` item.
+
 ### Delete company feature
 
 #### What it is
@@ -144,7 +210,8 @@ to achieve.
   * Cons:
     * Introduces a dependency on `DeleteInternshipCommand`.
 
-* **Alternative 2**: Delete all applications made to internships from the company to be deleted without executing delete internship commands, i.e. by implementing delete internship command’s internal workings.
+* **Alternative 2**: Delete all applications made to internships from the company to be deleted without executing
+delete internship commands, i.e. by implementing delete internship command’s internal workings.
   * Pros:
     * Not dependent on `DeleteInternshipCommand`.
   * Cons:
