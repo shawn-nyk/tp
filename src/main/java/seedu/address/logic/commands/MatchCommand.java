@@ -10,6 +10,7 @@ import seedu.address.model.Model;
 import seedu.address.model.company.CompanyItem;
 import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.profile.ProfileItem;
+import seedu.address.model.profile.ProfileItemCategory;
 
 public class MatchCommand extends Command {
 
@@ -29,7 +30,10 @@ public class MatchCommand extends Command {
     }
 
     private List<String> getSkillList(List<ProfileItem> profileItemList) {
-        return profileItemList.stream().map(ProfileItem::getTitleValue).collect(Collectors.toList());
+        return profileItemList.stream()
+                .filter(profileItem -> profileItem.getCategory() == ProfileItemCategory.SKILL)
+                .map(ProfileItem::getTitleValue)
+                .collect(Collectors.toList());
     }
 
     private List<InternshipItem> getInternshipList(List<CompanyItem> companyItemList) {
