@@ -20,7 +20,7 @@ CommandUtil -> Model : getTabName()
 activate Model
 Model -> TabManager : getTabName()
 activate TabManager
-TabManager -> Model : tabName
+TabManager --> Model : tabName
 deactivate TabManager
 Model --> CommandUtil : currentTabName
 deactivate Model
