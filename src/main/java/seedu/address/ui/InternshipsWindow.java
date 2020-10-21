@@ -1,7 +1,5 @@
 package seedu.address.ui;
 
-import static seedu.address.ui.util.UiUtil.addCloseWindowOnEsc;
-
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
@@ -12,7 +10,7 @@ import seedu.address.commons.core.LogsCenter;
 /**
  * Controller for the InternshipsWindow page.
  */
-public class InternshipsWindow extends UiPart<Stage> {
+public class InternshipsWindow extends PopupWindow {
 
     private static final Logger logger = LogsCenter.getLogger(InternshipsWindow.class);
     private static final String FXML = "InternshipsWindow.fxml";
@@ -22,19 +20,9 @@ public class InternshipsWindow extends UiPart<Stage> {
 
     /**
      * Creates a new InternshipsWindow.
-     *
-     * @param root Stage to use as the root of the InternshipsWindow.
-     */
-    public InternshipsWindow(Stage root) {
-        super(FXML, root);
-        addCloseWindowOnEsc(root);
-    }
-
-    /**
-     * Creates a new InternshipsWindow.
      */
     public InternshipsWindow() {
-        this(new Stage());
+        super(FXML, new Stage());
     }
 
     /**
@@ -57,35 +45,16 @@ public class InternshipsWindow extends UiPart<Stage> {
      */
     public void show() {
         logger.fine("Showing list of matching internships.");
-        getRoot().show();
-        getRoot().centerOnScreen();
+        super.show();
     }
 
+    /**
+     * Sets the internship list for display.
+     *
+     * @param internshipList List of internships.
+     */
     public void setTextDisplay(String internshipList) {
         matchingInternships.setText(internshipList);
-    }
-
-    /**
-     * Returns true if the Internships window is currently being shown.
-     *
-     * @return A boolean value representing whether a Internships window is being shown.
-     */
-    public boolean isShowing() {
-        return getRoot().isShowing();
-    }
-
-    /**
-     * Hides the Internships window.
-     */
-    public void hide() {
-        getRoot().hide();
-    }
-
-    /**
-     * Focuses on the Internships window.
-     */
-    public void focus() {
-        getRoot().requestFocus();
     }
 
 }

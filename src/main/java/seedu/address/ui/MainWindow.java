@@ -205,30 +205,30 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleHelp() {
-        if (!helpWindow.isShowing()) {
-            helpWindow.show();
-        } else {
-            helpWindow.focus();
-        }
+        handlePopupWindow(helpWindow);
     }
 
     /**
-     * Opens the help window or focuses on it if it's already opened.
+     * Opens the internships window or focuses on it if it's already opened.
      */
     @FXML
     public void handleMatchingInternships(String internshipList) {
         internshipsWindow.setTextDisplay(internshipList);
-        if (!internshipsWindow.isShowing()) {
-            internshipsWindow.show();
+        handlePopupWindow(internshipsWindow);
+    }
+
+    private void handlePopupWindow(PopupWindow popupWindow) {
+        if (!popupWindow.isShowing()) {
+            popupWindow.show();
         } else {
-            internshipsWindow.focus();
+            popupWindow.focus();
         }
     }
 
     /**
      * Displays the GUI.
      */
-    void show() {
+    public void show() {
         primaryStage.show();
     }
 

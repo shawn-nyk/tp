@@ -100,8 +100,6 @@ public abstract class CommandUtil {
         }
     }
 
-
-
     /**
      * Checks which tab's display needs to be switch.
      *
