@@ -58,7 +58,7 @@ public class FindApplicationCommandTest {
         FindApplicationCommand findApplicationFirstCommandCopy = new FindApplicationCommand(firstPredicate);
         assertTrue(findApplicationFirstCommand.equals(findApplicationFirstCommandCopy));
         FindApplicationCommand findApplicationSecondCommandCopy = new FindApplicationCommand(secondPredicate);
-        assertTrue(findApplicationFirstCommand.equals(findApplicationSecondCommandCopy));
+        assertTrue(findApplicationSecondCommand.equals(findApplicationSecondCommandCopy));
 
         // different types -> returns false
         assertFalse(findApplicationFirstCommand.equals(1));
