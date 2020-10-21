@@ -60,6 +60,9 @@ public interface Model {
     /** Returns the unfiltered company list */
     ItemList<CompanyItem> getUnfilteredCompanyList();
 
+    /** Returns the company item list */
+    ObservableList<CompanyItem> getCompanyItemList();
+
     /**
      * Returns true if a Company with the same identity as {@code companyItem} exists in the company list.
      */
@@ -155,6 +158,9 @@ public interface Model {
 
     /** Returns the unfiltered profile list */
     ItemList<ProfileItem> getUnfilteredProfileList();
+
+    /** Returns the profile item list */
+    ObservableList<ProfileItem> getProfileItemList();
 
     /**
      * Returns true if a Profile item with the same identity as {@code profileItem} exists in the profile list.

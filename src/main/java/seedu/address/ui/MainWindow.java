@@ -64,6 +64,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private InternshipsWindow internshipsWindow;
     private Tabs tabs;
     @FXML
     private VBox cardList;
@@ -115,13 +116,13 @@ public class MainWindow extends UiPart<Stage> {
         setWindowDefaultSize(logic.getGuiSettings());
         bindHeights(primaryStage);
         helpWindow = new HelpWindow();
-
+        internshipsWindow = new InternshipsWindow();
         primaryStage.setOnCloseRequest(event -> {
             GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                     (int) primaryStage.getX(), (int) primaryStage.getY());
             logic.setGuiSettings(guiSettings);
 
-            ExitDialog exitDialog = new ExitDialog(event, helpWindow);
+            ExitDialog exitDialog = new ExitDialog(event, helpWindow, internshipsWindow);
             exitDialog.show();
         });
     }
@@ -212,6 +213,19 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Opens the help window or focuses on it if it's already opened.
+     */
+    @FXML
+    public void handleMatchingInternships(String internshipList) {
+        internshipsWindow.setTextDisplay(internshipList);
+        if (!internshipsWindow.isShowing()) {
+            internshipsWindow.show();
+        } else {
+            internshipsWindow.focus();
+        }
+    }
+
+    /**
      * Displays the GUI.
      */
     void show() {
@@ -248,6 +262,10 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+
+            if (commandResult.isShowMatchingInternships()) {
+                handleMatchingInternships(commandResult.getMatchingInternshipsText());
+            }
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
