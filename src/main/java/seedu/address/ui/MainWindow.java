@@ -217,6 +217,11 @@ public class MainWindow extends UiPart<Stage> {
         handlePopupWindow(internshipsWindow);
     }
 
+    /**
+     * Opens the popup window or focuses on it if it's already opened.
+     *
+     * @param popupWindow Popup window.
+     */
     private void handlePopupWindow(PopupWindow popupWindow) {
         if (!popupWindow.isShowing()) {
             popupWindow.show();
