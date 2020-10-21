@@ -97,6 +97,79 @@ to achieve.
         internship command was executed directly by the user for the same internship.
         * Updating this behaviour will require updating code in both places rather than one centralised place.
 
+### User profile feature
+
+The user profile feature behaves like a resume for the user to keep track of noteworthy events and milestones in one
+'s professional life. There are three categories of profile items namely: `ACHIEVEMENT`, `SKILL` and `EXPERIENCE`. 
+
+#### Editing User profile
+
+The `edit me` command for the user profile allows the user to update the fields of the each profile item by
+specifying the targeted index and at least one field. The following activity diagram illustrates the possible
+behaviour of the `edit me` command depending on the user input:
+
+to Add: activity diagram
+
+#### Implementation
+
+* The functionality edit profile is implemented as part of the `EditProfileCommand` which extends the the abstract class
+ `EditCommand` which further extends the `Command` class.
+* The `EditProfileCommand` is produced by its own `EditProfileCommandParser#parse` method.
+
+This is an example of what the edit feature does at every step to achieve its intended behaviour:
+
+![EditProfileCommandSequenceDiagramSimplified](images/EditProfileCommandSequenceDiagramSimplified.png)
+
+
+1. Assuming user enters an input complying with the specification of the user guide to edit the user profile, the
+ input is first parsed by the `MainParser` looks out for the command word, recognizes the `edit` command and
+  funnels the input to `EditCommandParser`.
+2. The `EditCommandParser` then identifies the item type, which is profile item and returns the
+ `EditProfileCommandParser`.
+3. The `EditProfileCommandParser` creates a editedProfileItem based on the details of the input provided and returns a
+ `EditProfileCommand` containing with the editedProfileItem. The following sequence diagram depicts how the `EditProfileCommand` works:
+
+![ExecuteEditMeCommand](images/ExecuteEditMeCommand.png)
+
+4. The `EditProfileCommand` is executed by `LogicManager` which retrieves the targeted `profileItemToEdit` from the `lastShownList` and updates
+ the model with the `editedProfileItem` associated with the `EditProfileCommand`.
+5. CommandResult is return to indicate a successful operation.
+ 
+#### Design considerations
+
+#### Aspect: How EditProfileCommand Object interacts with Model
+#### Alternatives considered
+* **Alternative 1 (current choice)**: `EditProfileCommand` interact with the model solely and not directly with model's 
+ internal components: `ProfileItemList` and `FilteredProfileItemList`.
+  * Pros:
+    * This obeys the Law of Demeter which stresses for components to avoid interacting directly with internal
+     components of other objects. This reduces coupling which increases testability as `EditProfileCommand` only
+     requires one model
+      stub as opposed to more objects stubs for testing.
+    * This also increases maintainability as `EditProfileCommand` only has to be concerned with the methods that
+     `Model` provides and not the other implementation details should they be subjected to change.
+  * Cons:
+    * This increases code volume within `Model` as the model need to hold every method to interact with all the
+   collections it contains.
+
+* **Alternative 2 (used in v1.2)**: Due to the presence of other collections such as `companyList` in the model, the
+ `filteredProfileLists` and `profileList` are both retrieved from the model within the `EditProfileCommand` and then the
+  `setItemList()` operation is called directly on the `profileList` to update its value.
+  
+  ```
+  model.getProfileList().setItem(profileItemToEdit, EditedProfileItem)
+  ```
+![ExecuteEditMeCommandAlt.png](images/ExecuteEditMeCommandAlt.png)
+
+  * Pros: 
+    * This reduces code volume by keeping `Model` lean and for `EditProfileObject`to interact with the objects it needs.
+    * This may marginally improve performance as it bypasses the `Model` to interact with the `profileList` and
+     `filteredProfileList` directly.
+  * Cons:
+    * This exposes the internal components of the `Model` which increases coupling as `EditProfileCommand` is now
+     dependent on `filteredProfileList` and `profileList` of the `ItemListManager` reduces testability and
+      maintainability.
+
 ### Storage Feature
 
 #### What it is
