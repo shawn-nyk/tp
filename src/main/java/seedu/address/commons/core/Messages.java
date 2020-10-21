@@ -25,6 +25,8 @@ public class Messages {
     public static final String MESSAGE_DELETED_ITEM = "Deleted %1$s item: %2$s";
 
     public static final String MESSAGE_INVALID_ITEM_TYPE = "Item type has to be either 'com', 'int', 'app' or 'me'";
+    public static final String MESSAGE_INVALID_ITEM_TYPE_ABRIDGED = "The Item type for this command has to be either"
+            + " com, app or 'me'";
 
     /** Add message: First string refers to item type, second string refers to item added. */
     public static final String MESSAGE_ADD_SUCCESS = "New %1$s item added: %2$s\n";
@@ -39,6 +41,9 @@ public class Messages {
     public static final String MESSAGE_SWITCH_SUCCESS = "Switching to %s tab";
     public static final String MESSAGE_SAME_SCREEN = "Already in %s tab";
 
-    /** Find message: First string refers to the number if item found */
-    public static final String MESSAGE_FIND_APPLICATION_SUCCESS = "%1$d applications listed!";
+    /** Find message: First string refers to the number if item found. second string refers to the item type. */
+    public static final String MESSAGE_FIND_SUCCESS = "%1$d %2$s items found!";
+
+    /** List message: First string to refers to the item type. */
+    public static final String MESSAGE_LIST_SUCCESS = "Listed all %1$s items";
 }

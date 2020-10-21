@@ -2,7 +2,6 @@ package seedu.address.logic.parser.util;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
-import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 
 import java.util.stream.Stream;
 
@@ -97,7 +96,7 @@ public abstract class GeneralParserUtil {
     }
 
     private static String[] getArgumentsArr(String args) {
-        return args.strip().split(SPACE, NUMBER_OF_ARGUMENTS);
+        return args.strip().split(" ", NUMBER_OF_ARGUMENTS);
     }
 
     /**
