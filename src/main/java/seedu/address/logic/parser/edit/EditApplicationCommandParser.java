@@ -39,9 +39,7 @@ public class EditApplicationCommandParser implements Parser<EditApplicationComma
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     EditApplicationCommand.MESSAGE_USAGE));
         }
-
         Index index = getIndexInPreamble(argMultimap);
-
         EditApplicationDescriptor editApplicationDescriptor = new EditApplicationDescriptor();
 
         if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {

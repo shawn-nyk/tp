@@ -6,6 +6,67 @@ title: Developer Guide
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
+## **Design**
+
+### Storage Component
+
+#### What it is
+After a command is successfully executed, InternHunter automatically saves users' data to JSON files. Moreover, 
+everytime the `GuiSettings` is modified, InternHunter updates the user preferences JSON file. Users can transfer or 
+backup the JSON files manually. The storage component is responsible for both reading and saving the data.
+
+#### Implementation
+InternHunter uses Jackson, a high-performance JSON processor for Java. It can  serialize Java objects into JSON and 
+deserialize JSON into Java objects. InternHunter's model has 4 different types of data: `ApplicationItem`, 
+`CompanyItem`, `InternshipItem`, and `ProfileItem`. They first need to be converted to Jackson-friendly versions of 
+themselves, where each field is a string or another Jackson-friendly object. User preference is saved as a `UserPrefs` 
+object.
+ 
+ ![StorageClassDiagram](images/StorageClassDiagram.png)
+ * `Storage` handles the storage for all `Item` lists and user preferences.
+ * `UserPrefsStorage` handles the storage for user preferences.
+ * `ItemListStorage` handles the storage for `Item` lists.
+ * `JsonSerializableItemList` represents a Jackson-friendly version of an `Item` list.
+ * `JsonAdaptedItem` represents a Jackson-friendly version of an `Item`.
+ 
+ ![JsonAdaptedItemClassDiagram](images/JsonAdaptedItemClassDiagram.png)
+ 
+ `JsonAdaptedItem` is an abstract class representing Jackson-friendly version of the `Item` class in the model component.
+  It has one method `toModelType()` which convert itself to an `Item` object. There are 4 classes extending 
+  `JsonAdaptedItem`:
+  * `JsonAdaptedApplicationItem` the Jackson-friendly version of `ApplicationItem`.
+  * `JsonAdaptedCompanyItem` the Jackson-friendly version of `CompanyItem`.
+  * `JsonAdaptedInternshipItem` the Jackson-friendly version of `InternshipItem`.
+  * `JsonAdaptedProfileItem` the Jackson-friendly version of `ProfileItem`.
+  
+#### Design considerations
+
+##### Aspect: How to handle 3 types of 'Item' list
+
+InternHunter maintains 3 types of `Item` list: `ApplicationItem`, `CompanyItem`, and `ProfileItem` lists.
+Both `ItemListStorage` and `JsonSerializableItemList` use  the same logic regardless of the `Item` type.
+* **Alternative 1: current choice**: Creates a base abstract class `JsonAdaptedItem` and makes `ItemListStorage` 
+and `JsonSerializableItemList` use generics.
+    * Pros: 
+        * Adheres to OOP principle, polymorphism.
+        * Less code duplication.
+        * Makes adding a new `Item` type easy. To be able to save and read a new `Item` type, only a new 
+        class representing its Jackson-friendly version needs to be created.
+        * Makes further extension to the `ItemListStorage` and `JsonSerializableItemList` faster.
+
+    * Cons:
+        * More complicated as Jackson does not provide a direct way to convert a generic object to its JSON format.
+
+* **Alternative 2**: Each `Item` type has their own `ItemListStorage` and `JsonSerializableItemList`.
+    * Pros:
+        * Easier to implement.
+    
+    * Cons:
+        * Much longer code with much duplication.
+        * Adding a new `Item` type requires at least 3 new classes to be made.
+        * Extending the `ItemListStorage` and `JsonSerializableItemList` class would require changes to all the
+        different versions corresponding to the different `Item` types.
+        
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
@@ -97,6 +158,79 @@ to achieve.
         internship command was executed directly by the user for the same internship.
         * Updating this behaviour will require updating code in both places rather than one centralised place.
 
+### User profile feature
+
+The user profile feature behaves like a resume for the user to keep track of noteworthy events and milestones in one
+'s professional life. There are three categories of profile items namely: `ACHIEVEMENT`, `SKILL` and `EXPERIENCE`. 
+
+#### Editing User profile
+
+The `edit me` command for the user profile allows the user to update the fields of the each profile item by
+specifying the targeted index and at least one field. The following activity diagram illustrates the possible
+behaviour of the `edit me` command depending on the user input:
+
+to Add: activity diagram
+
+#### Implementation
+
+* The functionality edit profile is implemented as part of the `EditProfileCommand` which extends the the abstract class
+ `EditCommand` which further extends the `Command` class.
+* The `EditProfileCommand` is produced by its own `EditProfileCommandParser#parse` method.
+
+This is an example of what the edit feature does at every step to achieve its intended behaviour:
+
+![EditProfileCommandSequenceDiagramSimplified](images/EditProfileCommandSequenceDiagramSimplified.png)
+
+
+1. Assuming user enters an input complying with the specification of the user guide to edit the user profile, the
+ input is first parsed by the `MainParser` looks out for the command word, recognizes the `edit` command and
+  funnels the input to `EditCommandParser`.
+2. The `EditCommandParser` then identifies the item type, which is profile item and returns the
+ `EditProfileCommandParser`.
+3. The `EditProfileCommandParser` creates a editedProfileItem based on the details of the input provided and returns a
+ `EditProfileCommand` containing with the editedProfileItem. The following sequence diagram depicts how the `EditProfileCommand` works:
+
+![ExecuteEditMeCommand](images/ExecuteEditMeCommand.png)
+
+4. The `EditProfileCommand` is executed by `LogicManager` which retrieves the targeted `profileItemToEdit` from the `lastShownList` and updates
+ the model with the `editedProfileItem` associated with the `EditProfileCommand`.
+5. CommandResult is return to indicate a successful operation.
+ 
+#### Design considerations
+
+#### Aspect: How EditProfileCommand Object interacts with Model
+#### Alternatives considered
+* **Alternative 1 (current choice)**: `EditProfileCommand` interact with the model solely and not directly with model's 
+ internal components: `ProfileItemList` and `FilteredProfileItemList`.
+  * Pros:
+    * This obeys the Law of Demeter which stresses for components to avoid interacting directly with internal
+     components of other objects. This reduces coupling which increases testability as `EditProfileCommand` only
+     requires one model
+      stub as opposed to more objects stubs for testing.
+    * This also increases maintainability as `EditProfileCommand` only has to be concerned with the methods that
+     `Model` provides and not the other implementation details should they be subjected to change.
+  * Cons:
+    * This increases code volume within `Model` as the model need to hold every method to interact with all the
+   collections it contains.
+
+* **Alternative 2 (used in v1.2)**: Due to the presence of other collections such as `companyList` in the model, the
+ `filteredProfileLists` and `profileList` are both retrieved from the model within the `EditProfileCommand` and then the
+  `setItemList()` operation is called directly on the `profileList` to update its value.
+  
+  ```
+  model.getProfileList().setItem(profileItemToEdit, EditedProfileItem)
+  ```
+![ExecuteEditMeCommandAlt.png](images/ExecuteEditMeCommandAlt.png)
+
+  * Pros: 
+    * This reduces code volume by keeping `Model` lean and for `EditProfileObject`to interact with the objects it needs.
+    * This may marginally improve performance as it bypasses the `Model` to interact with the `profileList` and
+     `filteredProfileList` directly.
+  * Cons:
+    * This exposes the internal components of the `Model` which increases coupling as `EditProfileCommand` is now
+     dependent on `filteredProfileList` and `profileList` of the `ItemListManager` reduces testability and
+      maintainability.
+    
 ## **Appendix**
 ### Appendix A: Product Scope
 
@@ -511,5 +645,6 @@ using commands than using the mouse.
 
 * **OS**: Operating System
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
+* **Json**: JavaScript Object Notation
 
 --------------------------------------------------------------------------------------------------------------------

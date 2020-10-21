@@ -33,7 +33,7 @@ public abstract class CommandUtil {
             throw new CommandException(String.format(Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, COMPANY_NAME));
         }
 
-        return lastShownList.get(companyIndex.getZeroBased());
+        return model.getCompanyItemFromFilteredList(companyIndex.getZeroBased());
     }
 
     public static ApplicationItem getApplication(Model model, Index applicationIndex) throws CommandException {
@@ -43,7 +43,7 @@ public abstract class CommandUtil {
             throw new CommandException(String.format(Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, APPLICATION_NAME));
         }
 
-        return lastShownList.get(applicationIndex.getZeroBased());
+        return model.getApplicationItemFromFilteredList(applicationIndex.getZeroBased());
     }
 
     public static ProfileItem getProfileItem(Model model, Index profileItemIndex) throws CommandException {
@@ -53,7 +53,7 @@ public abstract class CommandUtil {
             throw new CommandException(String.format(Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, PROFILE_NAME));
         }
 
-        return lastShownList.get(profileItemIndex.getZeroBased());
+        return model.getProfileItemFromFilteredList(profileItemIndex.getZeroBased());
     }
 
     /**
