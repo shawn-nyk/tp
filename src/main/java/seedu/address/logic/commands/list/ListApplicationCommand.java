@@ -21,7 +21,7 @@ public class ListApplicationCommand extends ListCommand {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.getApplicationList().updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
+        model.updateFilteredApplicationList(PREDICATE_SHOW_ALL_ITEMS);
         model.setApplicationViewIndex(Index.fromOneBased(1)); // reset to zero for consistency
         return getCommandResult(model, MESSAGE_SUCCESS, TabName.APPLICATION);
     }

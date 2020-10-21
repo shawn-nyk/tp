@@ -40,7 +40,7 @@ public class Messages {
     public static final String MESSAGE_SAME_SCREEN = "Already in %s tab";
 
     /** Find message: First string refers to the number if item found. second string refers to the item type. */
-    public static final String MESSAGE_FIND_SUCCESS = "%1$d %2$s listed!";
+    public static final String MESSAGE_FIND_SUCCESS = "%1$d %2$s items found!";
 
     /** List message: First string to refers to the item type. */
     public static final String MESSAGE_LIST_SUCCESS = "Listed all %1$s items";
