@@ -118,7 +118,7 @@ to Add: activity diagram
 
 This is an example of what the edit feature does at every step to achieve its intended behaviour:
 
-![EditProfileCommandSequenceDiagramSimplified](images/EditrofileCommandSequenceDiagramSimplified.puml)
+![EditProfileCommandSequenceDiagramSimplified](images/EditProfileCommandSequenceDiagramSimplified.png)
 
 
 1. Assuming user enters an input complying with the specification of the user guide to edit the user profile, the
