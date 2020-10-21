@@ -31,10 +31,10 @@ public class FindApplicationCommand extends FindCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        model.getApplicationList().updateFilteredItemList(predicate);
+        model.updateFilteredApplicationList(predicate);
         model.setApplicationViewIndex(Index.fromOneBased(1));
         String message = String.format(Messages.MESSAGE_FIND_APPLICATION_SUCCESS,
-            model.getApplicationList().getFilteredItemList().size());
+            model.getFilteredApplicationList().size());
         return getCommandResult(model, message, TabName.APPLICATION);
     }
 }
