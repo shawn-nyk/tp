@@ -117,7 +117,9 @@ to Add: activity diagram
 * The `EditProfileCommand` is produced by its own `EditProfileCommandParser#parse` method.
 
 This is an example of what the edit feature does at every step to achieve its intended behaviour:
-![EditProfileCommandSequenceDiagramSimplified.png](images/EditProfileCommandSequenceDiagramSimplified.png)
+
+![EditProfileCommandSequenceDiagramSimplified](images/EditrofileCommandSequenceDiagramSimplified.puml)
+
 
 1. Assuming user enters an input complying with the specification of the user guide to edit the user profile, the
  input is first parsed by the `MainParser` looks out for the command word, recognizes the `edit` command and
@@ -125,11 +127,11 @@ This is an example of what the edit feature does at every step to achieve its in
 2. The `EditCommandParser` then identifies the item type, which is profile item and returns the
  `EditProfileCommandParser`.
 3. The `EditProfileCommandParser` creates a editedProfileItem based on the details of the input provided and returns a
- `EditProfileCommand` containing with the editedProfileItem.
-The following sequence diagram depicts how the edit profile operation works:
+ `EditProfileCommand` containing with the editedProfileItem. The following sequence diagram depicts how the `EditProfileCommand` works:
 
-![ExecuteEditMeCommand.png](images/ExecuteEditMeCommand.png)
-4. The `EditProfileCommand` is executed by `LogicManager` which retrieves the targeted `profileItemToEdit` and updates
+![ExecuteEditMeCommand](images/ExecuteEditMeCommand.png)
+
+4. The `EditProfileCommand` is executed by `LogicManager` which retrieves the targeted `profileItemToEdit` from the `lastShownList` and updates
  the model with the `editedProfileItem` associated with the `EditProfileCommand`.
 5. CommandResult is return to indicate a successful operation.
  
