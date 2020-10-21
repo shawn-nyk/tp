@@ -6,9 +6,11 @@ import static seedu.address.ui.panel.PanelDisplayKeyword.DESCRIPTORS_DISPLAY_NAM
 import static seedu.address.ui.panel.PanelDisplayKeyword.TITLE_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.TYPE_DISPLAY_NAME;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -54,6 +56,16 @@ public class ProfileItem extends Item {
 
     public String getCategoryString() {
         return category.toString();
+    }
+
+    /**
+     * Gets the list of words in this profile item title.
+     *
+     * @return List of words in this profile item title.
+     */
+    public List<String> getTitleValueWords() {
+        String[] words = getTitleValue().split(" ");
+        return Arrays.asList(words);
     }
 
     /**

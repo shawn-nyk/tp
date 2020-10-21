@@ -30,10 +30,13 @@ public class MatchCommand extends Command {
     }
 
     private List<String> getSkillList(List<ProfileItem> profileItemList) {
-        return profileItemList.stream()
+        List<String> listOfSkillWords = new ArrayList<>();
+        profileItemList.stream()
                 .filter(profileItem -> profileItem.getCategory() == ProfileItemCategory.SKILL)
-                .map(ProfileItem::getTitleValue)
-                .collect(Collectors.toList());
+                .map(ProfileItem::getTitleValueWords)
+                .forEach(listOfSkillWords::addAll);
+        System.out.println(listOfSkillWords);
+        return listOfSkillWords;
     }
 
     private List<InternshipItem> getInternshipList(List<CompanyItem> companyItemList) {

@@ -169,7 +169,7 @@ public class InternshipItem extends Item {
 
     /**
      * Returns true if the skill list provided matches this internship item. A match is found when any skill in
-     * the skill list contains an InternshipItem's requirement.
+     * the skill list is found in the list of requirements of this internship.
      *
      * @param skillList List of skills to check.
      * @return True if the skill list provided matches the internship item, false otherwise.
@@ -177,7 +177,7 @@ public class InternshipItem extends Item {
     public boolean matches(List<String> skillList) {
         assert skillList != null;
         return requirements.stream().anyMatch(requirement ->
-                skillList.stream().anyMatch(skill -> skill.contains(requirement.toString())));
+                skillList.stream().anyMatch(skill -> skill.equalsIgnoreCase(requirement.toString())));
     }
 
     /**
