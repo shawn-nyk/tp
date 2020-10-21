@@ -6,6 +6,67 @@ title: Developer Guide
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
+## **Design**
+
+### Storage Component
+
+#### What it is
+After a command is successfully executed, InternHunter automatically saves users' data to JSON files. Moreover, 
+everytime the `GuiSettings` is modified, InternHunter updates the user preferences JSON file. Users can transfer or 
+backup the JSON files manually. The storage component is responsible for both reading and saving the data.
+
+#### Implementation
+InternHunter uses Jackson, a high-performance JSON processor for Java. It can  serialize Java objects into JSON and 
+deserialize JSON into Java objects. InternHunter's model has 4 different types of data: `ApplicationItem`, 
+`CompanyItem`, `InternshipItem`, and `ProfileItem`. They first need to be converted to Jackson-friendly versions of 
+themselves, where each field is a string or another Jackson-friendly object. User preference is saved as a `UserPrefs` 
+object.
+ 
+ ![StorageClassDiagram](images/StorageClassDiagram.png)
+ * `Storage` handles the storage for all `Item` lists and user preferences.
+ * `UserPrefsStorage` handles the storage for user preferences.
+ * `ItemListStorage` handles the storage for `Item` lists.
+ * `JsonSerializableItemList` represents a Jackson-friendly version of an `Item` list.
+ * `JsonAdaptedItem` represents a Jackson-friendly version of an `Item`.
+ 
+ ![JsonAdaptedItemClassDiagram](images/JsonAdaptedItemClassDiagram.png)
+ 
+ `JsonAdaptedItem` is an abstract class representing Jackson-friendly version of the `Item` class in the model component.
+  It has one method `toModelType()` which convert itself to an `Item` object. There are 4 classes extending 
+  `JsonAdaptedItem`:
+  * `JsonAdaptedApplicationItem` the Jackson-friendly version of `ApplicationItem`.
+  * `JsonAdaptedCompanyItem` the Jackson-friendly version of `CompanyItem`.
+  * `JsonAdaptedInternshipItem` the Jackson-friendly version of `InternshipItem`.
+  * `JsonAdaptedProfileItem` the Jackson-friendly version of `ProfileItem`.
+  
+#### Design considerations
+
+##### Aspect: How to handle 3 types of 'Item' list
+
+InternHunter maintains 3 types of `Item` list: `ApplicationItem`, `CompanyItem`, and `ProfileItem` lists.
+Both `ItemListStorage` and `JsonSerializableItemList` use  the same logic regardless of the `Item` type.
+* **Alternative 1: current choice**: Creates a base abstract class `JsonAdaptedItem` and makes `ItemListStorage` 
+and `JsonSerializableItemList` use generics.
+    * Pros: 
+        * Adheres to OOP principle, polymorphism.
+        * Less code duplication.
+        * Makes adding a new `Item` type easy. To be able to save and read a new `Item` type, only a new 
+        class representing its Jackson-friendly version needs to be created.
+        * Makes further extension to the `ItemListStorage` and `JsonSerializableItemList` faster.
+
+    * Cons:
+        * More complicated as Jackson does not provide a direct way to convert a generic object to its JSON format.
+
+* **Alternative 2**: Each `Item` type has their own `ItemListStorage` and `JsonSerializableItemList`.
+    * Pros:
+        * Easier to implement.
+    
+    * Cons:
+        * Much longer code with much duplication.
+        * Adding a new `Item` type requires at least 3 new classes to be made.
+        * Extending the `ItemListStorage` and `JsonSerializableItemList` class would require changes to all the
+        different versions corresponding to the different `Item` types.
+        
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
@@ -169,7 +230,7 @@ This is an example of what the edit feature does at every step to achieve its in
     * This exposes the internal components of the `Model` which increases coupling as `EditProfileCommand` is now
      dependent on `filteredProfileList` and `profileList` of the `ItemListManager` reduces testability and
       maintainability.
-
+    
 ## **Appendix**
 ### Appendix A: Product Scope
 
@@ -584,5 +645,6 @@ using commands than using the mouse.
 
 * **OS**: Operating System
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
+* **Json**: JavaScript Object Notation
 
 --------------------------------------------------------------------------------------------------------------------
