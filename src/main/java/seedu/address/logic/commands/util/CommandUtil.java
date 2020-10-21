@@ -140,7 +140,7 @@ public abstract class CommandUtil {
         if (currentIndex.getOneBased() >= newIndex.getOneBased()) {
             // currentIndex have to minus 1
             int shiftIndex = currentIndex.getOneBased();
-            if (!(shiftIndex - 1 == 0)) {
+            if (shiftIndex - 1 > 0) {
                 changeViewIndex.accept(Index.fromOneBased(shiftIndex - 1));
             }
         }

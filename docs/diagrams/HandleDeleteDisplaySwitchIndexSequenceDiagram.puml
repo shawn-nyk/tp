@@ -14,7 +14,7 @@ end box
 mainframe sd handleDeleteDisplaySwitchIndex
 activate CommandUtil
 
-alt changedTabName == TabName.COMPANY
+alt current tab at company tab
     CommandUtil -> Model : getCompanyViewIndex()
     activate Model
     Model -> ViewManager : getCompanyViewIndex()
@@ -24,8 +24,8 @@ alt changedTabName == TabName.COMPANY
     Model --> CommandUtil : companyIndex
     deactivate Model
     CommandUtil -> CommandUtil : handleViewIndex(model::setCompanyViewIndex, currentIndex, newIndex)
-    opt currentIndex.getOneBased() >= newIndex.getOneBased()
-        opt currentIndex.getOneBased() -1 == 0
+    opt current index greater than new index
+        opt current index - 1  > 0
             CommandUtil -> Model : setCompanyViewIndex(Index.fromOneBased(currentIndex.getOneBased() - 1))
             activate Model
             Model -> ViewManager : setCompanyViewIndex(index)
@@ -34,7 +34,7 @@ alt changedTabName == TabName.COMPANY
             deactivate Model
         end
     end
-else changedTabName == TabName.APPLICATION
+else current tab at application tab
     CommandUtil -> Model : getApplicationViewIndex()
     activate Model
     Model -> ViewManager : getApplicationViewIndex()
@@ -44,8 +44,8 @@ else changedTabName == TabName.APPLICATION
     Model --> CommandUtil : applicationIndex
     deactivate Model
     CommandUtil -> CommandUtil : handleViewIndex(model::setApplicationViewIndex, currentIndex, newIndex)
-    opt currentIndex.getOneBased() >= newIndex.getOneBased()
-        opt currentIndex.getOneBased() -1 == 0
+    opt current index greater than new index
+        opt current index - 1  > 0
             CommandUtil -> Model : setApplicationViewIndex(Index.fromOneBased(currentIndex.getOneBased() - 1))
             activate Model
             Model -> ViewManager : setApplicationViewIndex(index)
@@ -54,7 +54,7 @@ else changedTabName == TabName.APPLICATION
             deactivate Model
         end
     end
-else changedTabName == TabName.PROFILE
+else current tab at profile tab
     CommandUtil -> Model : getProfileViewIndex()
     activate Model
     Model -> ViewManager : getCompanyViewIndex()
@@ -64,8 +64,8 @@ else changedTabName == TabName.PROFILE
     Model --> CommandUtil : profileIndex
     deactivate Model
     CommandUtil -> CommandUtil : handleViewIndex(model::setProfileViewIndex, currentIndex, newIndex)
-    opt currentIndex.getOneBased() >= newIndex.getOneBased()
-        opt currentIndex.getOneBased() -1 == 0
+    opt current index greater than new index
+        opt current index - 1  > 0
             CommandUtil -> Model : setProfileViewIndex(Index.fromOneBased(currentIndex.getOneBased() - 1))
             activate Model
             Model -> ViewManager : setProfileViewIndex(index)

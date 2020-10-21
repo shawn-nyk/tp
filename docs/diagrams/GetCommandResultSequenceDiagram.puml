@@ -25,7 +25,7 @@ deactivate TabManager
 Model --> CommandUtil : currentTabName
 deactivate Model
 
-alt TAB_NAME != currentTabName
+alt different tab
     CommandUtil -> Model : setTabName(tabName)
     activate Model
     Model -> TabManager : setTabName(tabName)
@@ -38,7 +38,7 @@ alt TAB_NAME != currentTabName
     activate CommandResult
     CommandResult --> CommandUtil : cr
     deactivate CommandResult
-else TAB_NAME == currentTabName
+else same tab
     create CommandResult
     CommandUtil -> CommandResult : getCommandResult(message)
     activate CommandResult
