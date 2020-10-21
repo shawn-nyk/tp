@@ -66,15 +66,15 @@ public class EditProfileCommand extends EditCommandAbstract {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         ProfileItem profileItemToEdit = getProfileItem(model, targetIndex);
-        ProfileItem editedProfile = createEditedProfileItem(profileItemToEdit, editProfileItemDescriptor);
+        ProfileItem editedProfileItem = createEditedProfileItem(profileItemToEdit, editProfileItemDescriptor);
 
-        if (!profileItemToEdit.isSameItem(editedProfile) && model.hasProfileItem(editedProfile)) {
+        if (!profileItemToEdit.isSameItem(editedProfileItem) && model.hasProfileItem(editedProfileItem)) {
             throw new CommandException(String.format(Messages.MESSAGE_DUPLICATE_ITEM, PROFILE_NAME));
         }
 
-        model.setProfileItem(profileItemToEdit, editedProfile);
+        model.setProfileItem(profileItemToEdit, editedProfileItem);
         model.updateFilteredProfileList(PREDICATE_SHOW_ALL_ITEMS);
-        String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, PROFILE_NAME, editedProfile);
+        String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, PROFILE_NAME, editedProfileItem);
         return getCommandResult(model, editSuccessMessage, TabName.PROFILE);
     }
 
