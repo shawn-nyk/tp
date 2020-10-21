@@ -281,9 +281,12 @@ The above activity diagram shows the logic and the path execution when the switc
 * **Alternative 1 (current choice):** Allow the switch of tabs to not only be accessible via the switch command, but rather extract it out for all commands excluding `exit` and `help`.
     * Pros:
         * Allows user to type once instead of twice when executing a single command and wanting to view it. (This optimzation is to allow for a faster way to type and view the changes). <br/>
+        * By abstract the method out from switch command, it obeys the DRY (Don't Repeat Yourself) principle as all the commands will be calling a single method.
+        * This allows and obeys the Open-Close princple as new implementation of commands can just be calling this single method at the end.
         * Allows user to have a second alternative to switch tabs for just viewing purpose.
     * Cons:
         * User might switch tab accidentally because of inputting the wrong `TYPE`.
+        * Increases some form of coupling between all commands as they are now linked to this single method.
 * **Alternative 2:** Only allow switch command to be the only way to switch tabs.
     * Pros:
         * This introduces a "type-safe" checks like in Java where only if the user is in the correct tab, then he or she will be able to add items to that item type. <br/>
