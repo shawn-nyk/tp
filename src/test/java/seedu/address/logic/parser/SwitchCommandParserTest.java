@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE_ABRIDGED;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
@@ -43,22 +43,22 @@ public class SwitchCommandParserTest {
     @Test
     public void parse_invalidTabNames_failure() {
         // invalid tab name(words)
-        assertParseFailure(switchCommandParser, "hello", MESSAGE_INVALID_ITEM_TYPE);
+        assertParseFailure(switchCommandParser, "hello", MESSAGE_INVALID_ITEM_TYPE_ABRIDGED);
 
         // invalid tab name(numbers)
-        assertParseFailure(switchCommandParser, "1", MESSAGE_INVALID_ITEM_TYPE);
+        assertParseFailure(switchCommandParser, "1", MESSAGE_INVALID_ITEM_TYPE_ABRIDGED);
 
         // almost correct tab name
-        assertParseFailure(switchCommandParser, "com1", MESSAGE_INVALID_ITEM_TYPE);
+        assertParseFailure(switchCommandParser, "com1", MESSAGE_INVALID_ITEM_TYPE_ABRIDGED);
 
         // adopting a strict case sensitive for parsers
-        assertParseFailure(switchCommandParser, "Com", MESSAGE_INVALID_ITEM_TYPE);
+        assertParseFailure(switchCommandParser, "Com", MESSAGE_INVALID_ITEM_TYPE_ABRIDGED);
 
         // adopting a strict case sensitive for parsers
-        assertParseFailure(switchCommandParser, "App", MESSAGE_INVALID_ITEM_TYPE);
+        assertParseFailure(switchCommandParser, "App", MESSAGE_INVALID_ITEM_TYPE_ABRIDGED);
 
         // adopting a strict case sensitive for parsers
-        assertParseFailure(switchCommandParser, "Me", MESSAGE_INVALID_ITEM_TYPE);
+        assertParseFailure(switchCommandParser, "Me", MESSAGE_INVALID_ITEM_TYPE_ABRIDGED);
     }
 
     @Test

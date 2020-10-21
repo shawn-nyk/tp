@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE_ABRIDGED;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INDEX_ONE;
 import static seedu.address.logic.commands.util.application.ApplicationCommandTestUtil.APPLICATION_ALIAS_DESC;
@@ -222,19 +223,19 @@ public class MainParserTest {
 
         @Test
         public void parseCommand_switchInvalidTypes_throwsParseException() {
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, ()
                 -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " hello"));
 
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, ()
                 -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " 1"));
 
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, ()
                 -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " Com"));
 
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, ()
                 -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " App"));
 
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, ()
+            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, ()
                 -> parser.parseCommand(SwitchCommand.COMMAND_WORD + " Me"));
         }
 
