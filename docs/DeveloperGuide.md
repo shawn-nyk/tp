@@ -81,14 +81,14 @@ There are 2 types of commands:
 - Commands that are dependent on the type of `Item`
     - e.g. `AddCommand`, `DeleteCommand`, `EditCommand`
     - These commands are implemented as _abstract_ classes that inherit from the `Command` class. Type specific
-    commands like `AddCompanyCommand` and `AddApplicationCommand` will then inherit from the _abstract_ `AddCommand`
+    commands like `AddCompanyCommand` and `AddApplicationCommand` inherit from the _abstract_ `AddCommand`
     class
 - Commands that are not dependent on the type of `Item`
-    - e.g. `HelpCommand`, `ExitCommand`
+    - e.g. `SwitchCommand`, `HelpCommand`, `ExitCommand`
     - These commands are implemented as _concrete_ classes and inherit directly from the `Command` class
 
-From this point on, we will be using one particular command that is dependent on the type of `Item`, `AddCommand`
-to facilitate discussion.
+From this point on, we will be using `XCommand` to represent commands that are dependent on type and
+`YCommand` to represent commands that are independent of type.
 
 The following is an example of the class hierachy:
 
@@ -96,10 +96,10 @@ The following is an example of the class hierachy:
 
 #### Design considerations
 
-##### Aspect: Whether `AddCommand` should be abstract and split into 4 other types of `AddItemCommand` or handle the addition of the 4 `Item` subclasses
+##### Aspect: Whether `XCommand` should be abstract and split into 4 other `XItemCommand` or handle the 4 `Item` types on its own
 
-**Alternative 1 (current choice)**: `AddCommand` is split into 4 other types of `AddItemCommand`. Parser parses the
-user input and creates the specific `AddItemCommand` for execution. The following activity diagram shows how the 
+**Alternative 1 (current choice)**: `XCommand` is split into 4 other `XItemCommand`. Parser parses the
+user input and creates the specific `XItemCommand` for execution. The following activity diagram shows how the 
 execution of the `AddApplicationCommand` will work.
 
 ![AddApplicationCommandActivityDiagram](images/AddApplicationCommandActivityDiagram.png)
@@ -112,8 +112,8 @@ execution of the `AddApplicationCommand` will work.
 - Cons:
     - More classes have to be created
         
-- **Alternative 2**: `AddCommand` is a _concrete_ class and handles the execution the additions of all 4 `Item` types.
-Parser parses the user input and creates the `AddCommand` for execution. The following
+- **Alternative 2**: `XCommand` is a _concrete_ class and handles the execution of all 4 `Item` types.
+Parser parses the user input and creates the general `XCommand` for execution. The following
 activity diagram shows how the `AddCommand` will work.
 
 ![AddCommandActivityDiagram](images/AddCommandActivityDiagram.png)
@@ -121,12 +121,12 @@ activity diagram shows how the `AddCommand` will work.
 - Pros:
     - Only one command is needed, reducing the number of classes created
 - Cons:
-    - `execute` method becomes extremely long as it needs to contain switch statements to handle the addition of the
-    4 different types of items
-    - The `AddCommand` class is vulnerable to drastic changes when the parsing method of any one `Item` class changes
-    - `AddCommand` holds more dependencies as it is now dependent on the 4 `Item` classes  
+    - `execute` method becomes extremely long as it needs to contain switch statements to handle the execution of
+    command X for the 4 different types of `Item`
+    - `XCommand` class is vulnerable to drastic changes when the parsing method of any one `Item` class changes
+    - `XCommand` class holds more dependencies as it is now dependent on the 4 `Item` classes  
     - Poor readability and maintainability
-    - A slight overhead increase as `Item` type needs to be passed in as a parameter to the `AddCommand` method,
+    - A slight overhead increase as `Item` type needs to be passed in as a parameter to the `XCommand`,
     additional check for nullity in the parameter passed in is required
 
 **Conclusion**: Our group settled on the first design, since it better adheres to OOP principles such as
@@ -134,8 +134,8 @@ Single Responsiblity Principle. Our design meant that each specific `Item` comma
 itself and not subjected to the changes in implementation of the other `Item` classes. This means that it will only
 have one reason to change. Moreover, this leads to lower coupling, which makes maintenance, integration and
 testing easier. This ended up being a good choice as we had some changes in the parsing requirements of one
-of the `Item` classes, `Internship`. If we had gone with the second design, the concrete `AddCommand` might
-have broken down as it might not be suited to the different parsing requirements in the adding of `Internship` item.
+of the `Item` classes, `Internship`. If we had gone with the second design, the concrete `XCommand` might
+have broken down as it might not be suited to the different parsing requirements in the of the `Internship` item.
 
 ### Delete company feature
 

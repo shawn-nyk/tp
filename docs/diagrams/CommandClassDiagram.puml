@@ -7,22 +7,22 @@ skinparam classBackgroundColor LOGIC_COLOR
 package Command {
 
 class "ABSTRACT\nCommand" as Command
-class "ABSTRACT\nAddCommand" as AddCommand
-class AddApplicationCommand
-class AddInternshipCommand
-class AddCompanyCommand
-class AddProfileCommand
-class HelpCommand
+class "ABSTRACT\nXCommand" as XCommand
+class XCompanyCommand
+class XInternshipCommand
+class XApplicationCommand
+class XProfileCommand
+class YCommand
 
 }
 
 hide members
 
-Command <|-- AddCommand
-AddCommand <|-- AddCompanyCommand
-AddCommand <|-- AddInternshipCommand
-AddCommand <|-- AddApplicationCommand
-AddCommand <|-- AddProfileCommand
-Command <|-- HelpCommand
+Command <|-- XCommand
+XCommand <|-- XCompanyCommand
+XCommand <|-- XInternshipCommand
+XCommand <|-- XApplicationCommand
+XCommand <|-- XProfileCommand
+Command <|-- YCommand
 
 @enduml
