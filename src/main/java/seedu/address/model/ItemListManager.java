@@ -88,6 +88,16 @@ public class ItemListManager<T extends Item> implements FilterableItemList<T> {
     }
 
     /**
+     * Retrieves the size of the filterable item list.
+     *
+     * @return the size of the filterable item list.
+     */
+    @Override
+    public int getSize() {
+        return filteredItems.size();
+    }
+
+    /**
      * Returns an {@code Item} from filteredItems.
      * @param index of item to be returned.
      * @return Item at index specified.

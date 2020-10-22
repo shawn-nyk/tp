@@ -319,7 +319,7 @@ public class AddCommandTest {
          */
         @Override
         public ProfileItem getProfileItemFromFilteredList(int index) {
-            return null;
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
@@ -329,7 +329,22 @@ public class AddCommandTest {
 
         @Override
         public ApplicationItem getApplicationItemFromFilteredList(int index) {
-            return null;
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getFilteredCompanyListSize() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getFilteredApplicationListSize() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getFilteredProfileListSize() {
+            throw new AssertionError("This method should not be called.");
         }
     }
 

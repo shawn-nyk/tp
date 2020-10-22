@@ -61,6 +61,7 @@ public class EditApplicationCommand extends EditCommandAbstract {
 
         model.setApplication(applicationItemToEdit, editedApplicationItem);
         model.updateFilteredApplicationList(PREDICATE_SHOW_ALL_ITEMS);
+        model.setApplicationViewIndex(targetIndex);
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, APPLICATION_NAME, editedApplicationItem);
         return getCommandResult(model, editSuccessMessage, TabName.APPLICATION);
     }

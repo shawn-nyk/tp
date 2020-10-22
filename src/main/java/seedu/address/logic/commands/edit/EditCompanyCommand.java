@@ -81,6 +81,7 @@ public class EditCompanyCommand extends EditCommandAbstract {
 
         model.setCompany(companyToEdit, editedCompany);
         model.updateFilteredCompanyList(PREDICATE_SHOW_ALL_ITEMS);
+        model.setCompanyViewIndex(index);
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, COMPANY_NAME, editedCompany);
         return getCommandResult(model, editSuccessMessage, TabName.COMPANY);
     }
