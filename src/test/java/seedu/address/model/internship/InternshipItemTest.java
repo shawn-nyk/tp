@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.commons.util.NumberUtil.NUMBER_FIVE;
-import static seedu.address.commons.util.NumberUtil.NUMBER_ZERO;
 import static seedu.address.model.internship.Wage.WAGE_SYMBOL;
 import static seedu.address.model.util.InternshipItemUtil.COMPANY_OUTPUT_NAME;
 import static seedu.address.model.util.InternshipItemUtil.PERIOD_OUTPUT_NAME;
@@ -47,7 +45,7 @@ public class InternshipItemTest {
     @Test
     public void requirements_invalidDataType_throwsUnsupportedOperationException() {
         InternshipItem internshipItem = new InternshipItemBuilder().build();
-        assertThrows(UnsupportedOperationException.class, () -> internshipItem.getRequirements().remove(NUMBER_ZERO));
+        assertThrows(UnsupportedOperationException.class, () -> internshipItem.getRequirements().remove(0));
     }
 
     @Test
@@ -100,7 +98,7 @@ public class InternshipItemTest {
     @Test
     public void getMapping_size_success() {
         LinkedHashMap<String, Object> mapping = SHOPEE_SWE.getMapping();
-        assertEquals(NUMBER_FIVE, mapping.size());
+        assertEquals(5, mapping.size());
     }
 
     @Test

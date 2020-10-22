@@ -1,12 +1,14 @@
 @startuml
-!include style.puml
+!include InternHunterStyle.puml
 skinparam arrowThickness 1
 skinparam arrowColor STORAGE_COLOR_T2
 skinparam classBackgroundColor STORAGE_COLOR
 skinparam classAttributeFontColor #FFFFFF
 
-abstract Class JsonAdaptedItem {
-    + Item toModelType()
+hide members
+
+class "ABSTRACT\nJsonAdaptedItem" as JsonAdaptedItem {
+    +toModelType(): Item
 }
 
 Class JsonAdaptedApplicationItem
