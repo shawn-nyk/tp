@@ -177,7 +177,7 @@ public class CompanyItem extends Item {
 
         return otherCompanyItem != null
                 && otherCompanyItem.getCompanyName().equals(getCompanyName())
-                && (otherCompanyItem.getPhone().equals(getPhone()) || otherCompanyItem.getEmail().equals(getEmail()));
+                && otherCompanyItem.getAddress().equals(getAddress());
     }
 
     /**
