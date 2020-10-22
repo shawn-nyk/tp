@@ -195,7 +195,7 @@ Finds all companies in your list of companies whose names contain any of the giv
 
 Format: `find com KEYWORD [ANOTHER_KEYWORD]...`
 - Only the company name will be searched for.
-- The search is case-insensitive. e.g `google` will match `Google`
+- The search is case-insensitive. e.g. `google` will match `Google`
 - Companies with names matching at least one keyword will be returned. e.g. `Google Facebook` will return companies
  whose names contain the word `Google` *or* `Facebook`
 - The order of the keywords does not matter. e.g. `Google Facebook` and `Facebook Google` will return the same results
