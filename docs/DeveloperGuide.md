@@ -315,7 +315,7 @@ There are three `TYPE`s:
 #### Implementation
 Upon a user’s entry of a valid switch command, a `SwitchCommand` object is created. `SwitchCommand` is a class that extends the Command abstract class as well as having direct association with TabName, an enumeration, as well as having a dependency to the Model interface.
 
-![SwitchCommandClassDiagram](images/SwitchCommandClassDiagram.png)
+<p align="left"><img src="images/SwitchCommandClassDiagram.png" width="70%" height="70%"/></p>
 
 `SwitchCommand` implements the `execute()` method from the `Command` abstract class whereby upon execution, the 
 method will switch the tab of the screen if a valid command is provided.
@@ -328,14 +328,16 @@ This is how the `SwitchCommand#execute()` method works upon execution:
  
 3. The `CommandResult` also indicates whether the tab needs to be switched or not.
 
-![SwitchCommandSequenceDiagram](images/SwitchCommandSequenceDiagram.png)
-The overall process of how `SwitchCommand` was generated.
- 
-![ExecuteSwitchMeCommandSequenceDiagram](images/ExecuteSwitchMeCommandSequenceDiagram.png)
-The process of how `SwitchCommand` interacts with the model.
+<p align="center">The overall process of how <code>SwitchCommand</code> was generated.</p>
+
+<p align="center"><img src="images/SwitchCommandSequenceDiagram.png"</p>
+
+<p align="center">The process of how <code>SwitchCommand</code> interacts with the model.</p>
+
+<p align="center"><img src="images/ExecuteSwitchMeCommandSequenceDiagram.png" width="75%" height="75%"/></p>
+
 
 GetCommandResultSequenceDiagram can be found [here](#get-command-result-sequence-diagram)
-
 
 The following activity diagram summarizes what happens when a user executes a switch command:
 
@@ -778,14 +780,13 @@ using commands than using the mouse.
 
 ### Appendix F: Sequence Diagrams
 
-<p id="get-command-result-sequence-diagram" align="center">
- <img src="images/GetCommandResultSequenceDiagram.png"/>
- <b> Sequence diagram for GetCommandResult <b/> <br/>
-<p />
-<p id="handle-delete-display-switch-index-sequence-diagram" align="center">
- <img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png"/>
- <b> Sequence diagram for HandleDeleteDisplaySwitchIndex <b/> <br />
-<p />
+<p align="center">Sequence diagram for GetCommandResult</p>
+
+<p id="get-command-result-sequence-diagram" align="center"><img src="images/GetCommandResultSequenceDiagram.png"/><p />
+
+<p align="center">Sequence diagram for HandleDeleteDisplaySwitchIndex</p>
+
+<p id="handle-delete-display-switch-index-sequence-diagram" align="center"><img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png"/><p />
 
 
 --------------------------------------------------------------------------------------------------------------------
