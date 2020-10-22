@@ -1,7 +1,7 @@
 package seedu.address.logic.parser.add;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
+import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY_RANDOM;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.address.logic.commands.util.profile.ProfileCommandTestUtil.CATEGORY_DESC_ACHIEVEMENT;
 import static seedu.address.logic.commands.util.profile.ProfileCommandTestUtil.CATEGORY_DESC_EXPERIENCE;
@@ -111,7 +111,7 @@ class AddProfileCommandParserTest {
                 + DESCRIPTOR_DESC_LEARN, Title.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
-        assertParseFailure(parser, PREAMBLE_NON_EMPTY + TITLE_DESC_INTERNSHIP + CATEGORY_DESC_EXPERIENCE
+        assertParseFailure(parser, PREAMBLE_NON_EMPTY_RANDOM + TITLE_DESC_INTERNSHIP + CATEGORY_DESC_EXPERIENCE
                         + DESCRIPTOR_DESC_LEARN + DESCRIPTOR_DESC_IMPLEMENT ,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddProfileCommand.MESSAGE_USAGE));
     }
