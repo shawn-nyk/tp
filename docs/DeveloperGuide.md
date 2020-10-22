@@ -331,13 +331,11 @@ This is how the `SwitchCommand#execute()` method works upon execution:
 ![SwitchCommandSequenceDiagram](images/SwitchCommandSequenceDiagram.png)
 The overall process of how `SwitchCommand` was generated.
 
-<p align="center">
-  <img src="images/ExecuteSwitchMeCommandSequenceDiagram.png" width="70%" height="70%"/>
-  The process of how <code>SwitchCommand</code> interacts with the model.
-</p>
+<p align="center"><img src="images/ExecuteSwitchMeCommandSequenceDiagram.png" width="75%" height="75%"/></p>
+
+The process of how `SwitchCommand` interacts with the model.
 
 GetCommandResultSequenceDiagram can be found [here](#get-command-result-sequence-diagram)
-
 
 The following activity diagram summarizes what happens when a user executes a switch command:
 
