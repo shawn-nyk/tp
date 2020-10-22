@@ -84,14 +84,14 @@ public abstract class CommandUtil {
      * @param message Feedback message of the operation result for display.
      * @param currentTabName The current tab of the application.
      * @param changedTabName The tab that is being switched to.
-     * @param index The desired index of the tab that is being switch to.
+     * @param newIndex The desired index of the tab that is being switch to.
      * @return Feedback message of the operation result for display.
      */
     public static CommandResult getCommandResult(Model model, String message, TabName currentTabName,
-        TabName changedTabName, Index index) {
+        TabName changedTabName, Index newIndex) {
 
-        requireAllNonNull(model, message, currentTabName, changedTabName, index);
-        handleDeleteDisplaySwitchIndex(model, changedTabName, index);
+        requireAllNonNull(model, message, currentTabName, changedTabName, newIndex);
+        handleDeleteDisplaySwitchIndex(model, changedTabName, newIndex);
         if (currentTabName != changedTabName) {
             model.setTabName(changedTabName);
             return new CommandResult(message, false, false, true, true);
@@ -104,25 +104,25 @@ public abstract class CommandUtil {
      * Checks which tab's display needs to be switch.
      *
      * @param model Model of application.
-     * @param tabName The tab that is being switched to.
-     * @param index The desired index of the tab that is being switch to.
+     * @param changedTabName The tab that is being switched to.
+     * @param newIndex The desired index of the tab that is being switch to.
      */
-    private static void handleDeleteDisplaySwitchIndex(Model model, TabName tabName, Index index) {
+    private static void handleDeleteDisplaySwitchIndex(Model model, TabName changedTabName, Index newIndex) {
         Index currentIndex;
-        assert (tabName.equals(COMPANY) || tabName.equals(APPLICATION) || tabName.equals(PROFILE));
+        assert (changedTabName.equals(COMPANY) || changedTabName.equals(APPLICATION) || changedTabName.equals(PROFILE));
 
-        switch (tabName) {
+        switch (changedTabName) {
         case COMPANY:
             currentIndex = model.getCompanyViewIndex();
-            handleViewIndex(model::setCompanyViewIndex, currentIndex, index);
+            handleViewIndex(model::setCompanyViewIndex, currentIndex, newIndex);
             break;
         case APPLICATION:
             currentIndex = model.getApplicationViewIndex();
-            handleViewIndex(model::setApplicationViewIndex, currentIndex, index);
+            handleViewIndex(model::setApplicationViewIndex, currentIndex, newIndex);
             break;
         case PROFILE:
             currentIndex = model.getProfileViewIndex();
-            handleViewIndex(model::setProfileViewIndex, currentIndex, index);
+            handleViewIndex(model::setProfileViewIndex, currentIndex, newIndex);
             break;
         default:
             assert false;
@@ -140,7 +140,7 @@ public abstract class CommandUtil {
         if (currentIndex.getOneBased() >= newIndex.getOneBased()) {
             // currentIndex have to minus 1
             int shiftIndex = currentIndex.getOneBased();
-            if (!(shiftIndex - 1 == 0)) {
+            if (shiftIndex - 1 > 0) {
                 changeViewIndex.accept(Index.fromOneBased(shiftIndex - 1));
             }
         }

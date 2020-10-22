@@ -25,19 +25,19 @@ import seedu.address.storage.profile.JsonAdaptedProfileItem;
 public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private final ListStorage<Person, JsonAdaptedPerson> addressBookStorage;
-    private final ListStorage<ApplicationItem, JsonAdaptedApplicationItem> applicationItemListStorage;
-    private final ListStorage<CompanyItem, JsonAdaptedCompanyItem> companyItemListStorage;
-    private final ListStorage<ProfileItem, JsonAdaptedProfileItem> profileItemListStorage;
+    private final ItemListStorage<Person, JsonAdaptedPerson> addressBookStorage;
+    private final ItemListStorage<ApplicationItem, JsonAdaptedApplicationItem> applicationItemListStorage;
+    private final ItemListStorage<CompanyItem, JsonAdaptedCompanyItem> companyItemListStorage;
+    private final ItemListStorage<ProfileItem, JsonAdaptedProfileItem> profileItemListStorage;
     private final UserPrefsStorage userPrefsStorage;
 
     /**
      * Creates a {@code StorageManager} with the given {@code ItemListStorage} and {@code UserPrefStorage}.
      */
-    public StorageManager(ListStorage<Person, JsonAdaptedPerson> addressBookStorage,
-            ListStorage<ApplicationItem, JsonAdaptedApplicationItem> applicationItemListStorage,
-            ListStorage<CompanyItem, JsonAdaptedCompanyItem> companyItemListStorage,
-            ListStorage<ProfileItem, JsonAdaptedProfileItem> profileItemListStorage,
+    public StorageManager(ItemListStorage<Person, JsonAdaptedPerson> addressBookStorage,
+            ItemListStorage<ApplicationItem, JsonAdaptedApplicationItem> applicationItemListStorage,
+            ItemListStorage<CompanyItem, JsonAdaptedCompanyItem> companyItemListStorage,
+            ItemListStorage<ProfileItem, JsonAdaptedProfileItem> profileItemListStorage,
             UserPrefsStorage userPrefsStorage) {
         super();
         this.addressBookStorage = addressBookStorage;

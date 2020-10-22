@@ -13,7 +13,7 @@ import seedu.address.storage.item.JsonAdaptedItem;
 /**
  * Represents a storage for {@link seedu.address.model.item.ItemList}.
  */
-public interface ListStorage<T extends Item, U extends JsonAdaptedItem> {
+public interface ItemListStorage<T extends Item, U extends JsonAdaptedItem> {
 
     /**
      * Returns the file path of the data file.
