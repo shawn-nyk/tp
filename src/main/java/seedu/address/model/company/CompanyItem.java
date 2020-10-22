@@ -85,6 +85,22 @@ public class CompanyItem extends Item {
         return address;
     }
 
+    public String getCompanyNameValue() {
+        return companyName.getValue();
+    }
+
+    public String getPhoneValue() {
+        return phone.getValue();
+    }
+
+    public String getEmailValue() {
+        return email.getValue();
+    }
+
+    public String getAddressValue() {
+        return address.getValue();
+    }
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.

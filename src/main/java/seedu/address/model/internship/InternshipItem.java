@@ -1,8 +1,6 @@
 package seedu.address.model.internship;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.commons.util.GeneralStringUtil.COMMA_WITH_SPACE;
-import static seedu.address.commons.util.GeneralStringUtil.DASH;
 import static seedu.address.model.util.InternshipItemUtil.COMPANY_OUTPUT_NAME;
 import static seedu.address.model.util.InternshipItemUtil.PERIOD_OUTPUT_NAME;
 import static seedu.address.model.util.InternshipItemUtil.REQUIREMENTS_OUTPUT_NAME;
@@ -24,7 +22,7 @@ import seedu.address.model.company.CompanyName;
 import seedu.address.model.item.Item;
 import seedu.address.storage.internship.JsonAdaptedInternshipItem;
 
-/**
+/** todo: javadocs
  * Represents an InternshipItem in the InternHunter application.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
@@ -67,6 +65,10 @@ public class InternshipItem extends Item {
         return companyName;
     }
 
+    public String getCompanyNameValue() {
+        return companyName.getValue();
+    }
+
     /**
      * Sets the company name of this InternshipItem.
      *
@@ -83,6 +85,10 @@ public class InternshipItem extends Item {
      */
     public JobTitle getJobTitle() {
         return jobTitle;
+    }
+
+    public String getJobTitleValue() {
+        return jobTitle.getValue();
     }
 
     /**
@@ -103,6 +109,10 @@ public class InternshipItem extends Item {
         return period;
     }
 
+    public String getPeriodValue() {
+        return period.getValue();
+    }
+
     /**
      * Sets the period of this InternshipItem.
      *
@@ -119,6 +129,10 @@ public class InternshipItem extends Item {
      */
     public Wage getWage() {
         return wage;
+    }
+
+    public String getWageValue() {
+        return wage.getValue();
     }
 
     /**
@@ -242,18 +256,18 @@ public class InternshipItem extends Item {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getJobTitle())
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(COMPANY_OUTPUT_NAME)
                 .append(getCompanyName())
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(PERIOD_OUTPUT_NAME)
                 .append(getPeriod())
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(WAGE_OUTPUT_NAME)
                 .append(getWage())
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(REQUIREMENTS_OUTPUT_NAME)
-                .append(getRequirements().isEmpty() ? DASH : getRequirements())
+                .append(getRequirements().isEmpty() ? "-" : getRequirements())
                 .append(System.lineSeparator());
         return builder.toString();
     }

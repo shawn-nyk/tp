@@ -48,6 +48,7 @@ public class JsonAdaptedInternshipItem extends JsonAdaptedItem {
      * Converts a given {@code InternshipItem} into this class for Jackson use.
      */
     public JsonAdaptedInternshipItem(InternshipItem source) {
+        assert source != null : JsonAdaptedItem.NULL_SOURCE_ERROR_MESSAGE;
         companyName = source.getCompanyName().getValue();
         jobTitle = source.getJobTitle().getValue();
         period = source.getPeriod().getValue();

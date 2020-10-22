@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
@@ -21,6 +20,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.edit.EditCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.application.ApplicationItem;
+import seedu.address.model.application.ApplicationNameContainsKeyWordsPredicate;
 import seedu.address.model.item.ItemList;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -64,8 +65,8 @@ public class CommandTestUtil {
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
     // Valid indexes
-    public static final String VALID_INDEX_ONE = SPACE + PREFIX_INDEX + INDEX_FIRST;
-    public static final String VALID_INDEX_TWO = SPACE + PREFIX_INDEX + INDEX_SECOND;
+    public static final String VALID_INDEX_ONE = " " + PREFIX_INDEX + INDEX_FIRST;
+    public static final String VALID_INDEX_TWO = " " + PREFIX_INDEX + INDEX_SECOND;
 
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
@@ -134,6 +135,22 @@ public class CommandTestUtil {
         model.getAddressBook().updateFilteredItemList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getAddressBook().getFilteredItemList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the application at the given {@code targetIndex} in the
+     * {@code model}'s application list.
+     */
+    public static void showApplicationAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getApplicationList().getFilteredItemList().size());
+
+        ApplicationItem applicationItem = model.getApplicationList().getFilteredItemList().get(
+            targetIndex.getZeroBased());
+        final String[] splitJobTitle = applicationItem.getInternshipItem().getJobTitle().toString().split("\\s+");
+        model.getApplicationList().updateFilteredItemList(
+            new ApplicationNameContainsKeyWordsPredicate(Arrays.asList(splitJobTitle[0])));
+
+        assertEquals(1, model.getApplicationList().getFilteredItemList().size());
     }
 
 }
