@@ -32,7 +32,7 @@ public class TitleDescription {
     }
 
     /**
-     * Retrieves the title. 
+     * Retrieves the title.
      *
      * @return The styled {@code title};
      */
@@ -41,7 +41,7 @@ public class TitleDescription {
     }
 
     /**
-     * Retrieves the description. 
+     * Retrieves the description.
      *
      * @return The styled {@code description};
      */

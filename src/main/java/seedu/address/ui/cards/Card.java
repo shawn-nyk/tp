@@ -68,7 +68,7 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
     }
 
     /**
-     * Retrieves the item in the card. 
+     * Retrieves the item in the card.
      *
      * @return The item in the card.
      */

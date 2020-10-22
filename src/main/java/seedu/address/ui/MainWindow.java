@@ -101,7 +101,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Retrieves the primary stage. 
+     * Retrieves the primary stage.
      *
      * @return the {@code primaryStage} of the main window.
      */
@@ -414,7 +414,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Retrieves the particular profile item's information at that index. 
+     * Retrieves the particular profile item's information at that index.
      *
      * @param index The Index of the display to be displayed.
      * @return An Optional containing the display information of the profile at that particular Index.
