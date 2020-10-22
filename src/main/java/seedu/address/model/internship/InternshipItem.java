@@ -1,8 +1,6 @@
 package seedu.address.model.internship;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.commons.util.GeneralStringUtil.COMMA_WITH_SPACE;
-import static seedu.address.commons.util.GeneralStringUtil.DASH;
 import static seedu.address.model.util.InternshipItemUtil.COMPANY_OUTPUT_NAME;
 import static seedu.address.model.util.InternshipItemUtil.PERIOD_OUTPUT_NAME;
 import static seedu.address.model.util.InternshipItemUtil.REQUIREMENTS_OUTPUT_NAME;
@@ -258,18 +256,18 @@ public class InternshipItem extends Item {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getJobTitle())
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(COMPANY_OUTPUT_NAME)
                 .append(getCompanyName())
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(PERIOD_OUTPUT_NAME)
                 .append(getPeriod())
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(WAGE_OUTPUT_NAME)
                 .append(getWage())
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(REQUIREMENTS_OUTPUT_NAME)
-                .append(getRequirements().isEmpty() ? DASH : getRequirements())
+                .append(getRequirements().isEmpty() ? "-" : getRequirements())
                 .append(System.lineSeparator());
         return builder.toString();
     }

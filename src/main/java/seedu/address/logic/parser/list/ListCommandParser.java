@@ -7,6 +7,7 @@ import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
+import seedu.address.logic.commands.list.ListApplicationCommand;
 import seedu.address.logic.commands.list.ListCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -33,9 +34,7 @@ public class ListCommandParser implements Parser<ListCommand> {
             //return new ListCompanyCommand();
             return null;
         case APPLICATION_ALIAS:
-            // todo sean
-            //return new ListApplicationCommand();
-            return null;
+            return new ListApplicationCommand();
         case PROFILE_ALIAS:
             // todo isaac
             //return new ListProfileCommand();
