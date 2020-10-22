@@ -29,9 +29,9 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
      */
     private final Function<String, String> formatInternshipDetail = string -> {
         String s = string.substring(0, string.length() - 1);
-        s = s.replaceAll(NEW_LINE + COMMA_ONE_SPACE, NEW_LINE);
+        s = s.replaceAll("\n, ", "\n");
         StringBuffer buffer = new StringBuffer(s);
-        buffer.insert(0, 1 + DOT_SPACE);
+        buffer.insert(0, 1 + ". ");
         formatNumbering(buffer);
         return formatBulletPoints(buffer);
     };
@@ -64,7 +64,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
      */
     private void initializeCompanyDisplayGui() {
         setCompanyName();
-        setCompanyInformation();;
+        setCompanyInformation();
     }
 
     /**
@@ -89,13 +89,13 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
      * @param buffer A stringbuffer containing information of the internships.
      */
     private void formatNumbering(StringBuffer buffer) {
-        int index = buffer.indexOf(NEW_LINE);
+        int index = buffer.indexOf("\n");
         int counter = 2;
         while (index != -1) {
-            String replacement = NEW_LINE + counter + DOT_SPACE;
+            String replacement = "\n" + counter + ". ";
             buffer.replace(index, index + 1, replacement);
             index += replacement.length();
-            index = buffer.indexOf(NEW_LINE, index);
+            index = buffer.indexOf("\n", index);
             counter++;
         }
     }
@@ -103,12 +103,12 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
     /**
      * Formats the {@code buffer} to have bullet points for each attributes.
      *
-     * @param buffer A stringbuffer containing information of the intnership.
+     * @param buffer A stringbuffer containing information of the internship.
      * @return A string that is formatted with bullet points.
      */
     private String formatBulletPoints(StringBuffer buffer) {
         String string = buffer.toString();
-        string = string.replaceAll(COMMA_TWO_SPACE, NEW_LINE + BULLET_WITH_TWO_SPACE_FRONT_ONE_BACK);
+        string = string.replaceAll(COMMA_TWO_SPACE, "\n" + BULLET_WITH_TWO_SPACE_FRONT_ONE_BACK);
         return string;
     }
 }
