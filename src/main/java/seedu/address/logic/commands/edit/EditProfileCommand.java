@@ -6,7 +6,7 @@ import static seedu.address.commons.util.CollectionUtil.isAnyNonNull;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.commands.util.CommandUtil.getProfileItem;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEGORY;
-import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTORS;
+import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTOR;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_TITLE;
 import static seedu.address.model.FilterableItemList.PREDICATE_SHOW_ALL_ITEMS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
@@ -40,11 +40,11 @@ public class EditProfileCommand extends EditCommandAbstract {
             + "Parameters: INDEX "
             + "[" + PREFIX_TITLE + "TITLE] "
             + "[" + PREFIX_CATEGORY + "CATEGORY] "
-            + "[" + PREFIX_DESCRIPTORS + "DESCRIPTOR]...\n"
+            + "[" + PREFIX_DESCRIPTOR + "DESCRIPTOR]...\n"
             + "Note: At least one of the optional fields must be provided. INDEX must be a positive integer.\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_CATEGORY + "achievement "
-            + PREFIX_DESCRIPTORS + "Devised a mobile transaction solution. ";
+            + PREFIX_DESCRIPTOR + "Devised a mobile transaction solution. ";
 
 
     private final Index targetIndex;
@@ -66,15 +66,15 @@ public class EditProfileCommand extends EditCommandAbstract {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         ProfileItem profileItemToEdit = getProfileItem(model, targetIndex);
-        ProfileItem editedProfile = createEditedProfileItem(profileItemToEdit, editProfileItemDescriptor);
+        ProfileItem editedProfileItem = createEditedProfileItem(profileItemToEdit, editProfileItemDescriptor);
 
-        if (!profileItemToEdit.isSameItem(editedProfile) && model.hasProfileItem(editedProfile)) {
+        if (!profileItemToEdit.isSameItem(editedProfileItem) && model.hasProfileItem(editedProfileItem)) {
             throw new CommandException(String.format(Messages.MESSAGE_DUPLICATE_ITEM, PROFILE_NAME));
         }
 
-        model.setProfileItem(profileItemToEdit, editedProfile);
+        model.setProfileItem(profileItemToEdit, editedProfileItem);
         model.updateFilteredProfileList(PREDICATE_SHOW_ALL_ITEMS);
-        String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, PROFILE_NAME, editedProfile);
+        String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, PROFILE_NAME, editedProfileItem);
         return getCommandResult(model, editSuccessMessage, TabName.PROFILE);
     }
 

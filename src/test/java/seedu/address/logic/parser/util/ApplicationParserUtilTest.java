@@ -1,7 +1,6 @@
 package seedu.address.logic.parser.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.commons.util.GeneralStringUtil.SPACE;
 import static seedu.address.model.util.StatusUtil.APPLIED_KEYWORD;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.application.ApplicationItemFieldsUtil.INVALID_STATUS;
@@ -38,7 +37,7 @@ public class ApplicationParserUtilTest {
 
     @Test
     public void parseStatus_validValueWithWhitespace_returnsStatus() throws Exception {
-        String statusWithWhitespace = SPACE + APPLIED_KEYWORD + SPACE;
+        String statusWithWhitespace = " " + APPLIED_KEYWORD + " ";
         assertEquals(EXPECTED_STATUS, ApplicationParserUtil.parseStatus(statusWithWhitespace));
     }
 
@@ -59,7 +58,7 @@ public class ApplicationParserUtilTest {
 
     @Test
     public void parseStatusDate_validValueWithWhitespace_returnsStatusDate() throws Exception {
-        String statusDateWithWhitespace = SPACE + STATUS_DATE_WITH_TIME + SPACE;
+        String statusDateWithWhitespace = " " + STATUS_DATE_WITH_TIME + " ";
         assertEquals(EXPECTED_STATUS_DATE, ApplicationParserUtil.parseStatusDate(statusDateWithWhitespace));
     }
 

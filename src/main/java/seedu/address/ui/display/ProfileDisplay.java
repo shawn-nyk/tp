@@ -32,7 +32,7 @@ public class ProfileDisplay extends InformationDisplay<ProfileItem> {
      */
     private final Function<String, String> formatProfileDetail = string -> {
         string = BULLET_WITH_ONE_SPACE + string;
-        return string.replaceAll(NEW_LINE, NEW_LINE + BULLET_WITH_ONE_SPACE);
+        return string.replaceAll("\n", "\n" + BULLET_WITH_ONE_SPACE);
     };
 
     /**

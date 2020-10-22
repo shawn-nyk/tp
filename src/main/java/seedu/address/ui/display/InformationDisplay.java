@@ -27,11 +27,7 @@ public abstract class InformationDisplay<T extends Item> extends UiPart<Region> 
 
     protected static final String BULLET_WITH_ONE_SPACE = "\u2022 ";
     protected static final String BULLET_WITH_TWO_SPACE_FRONT_ONE_BACK = "  \u2022 ";
-    protected static final String COMMA_ONE_SPACE = ", ";
     protected static final String COMMA_TWO_SPACE = ", {2}";
-    protected static final String DOT_SPACE = ". ";
-    protected static final String NEW_LINE = "\n";
-    private static final String DASH = "-";
 
     //FXML
     private static final String FXML = "InformationDisplay.fxml";
@@ -126,7 +122,7 @@ public abstract class InformationDisplay<T extends Item> extends UiPart<Region> 
                 detail = formatString.apply(detail);
             }
             if (IS_EMPTY_STRING.test(detail)) {
-                detail = DASH;
+                detail = "-";
             }
             addInformation(TitleDescriptionDisplay.addTitleDescriptionDisplay(key, detail, tabName));
         }
