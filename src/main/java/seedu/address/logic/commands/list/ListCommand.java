@@ -15,12 +15,12 @@ public abstract class ListCommand extends Command {
     public static final String COMMAND_WORD = "list";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-        + ": List out all the items in either "
-        + COMPANY_NAME + " or "
+        + ": Lists out all the items in the "
+        + COMPANY_NAME + ", "
         + APPLICATION_NAME + " or "
-        + PROFILE_NAME + ".\n"
-        + "Parameters: list ITEM_TYPE\n"
+        + PROFILE_NAME + " list.\n"
+        + "Parameters: ITEM_TYPE\n"
         + "Example: " + COMMAND_WORD + " " + COMPANY_ALIAS + "\n";
 
-    public static final String EXCESS_MESSAGE = "Note that that should not be anything inputs after the ITEM_TYPE";
+    public static final String EXCESS_MESSAGE = "Note that there should not be any inputs after the ITEM_TYPE";
 }

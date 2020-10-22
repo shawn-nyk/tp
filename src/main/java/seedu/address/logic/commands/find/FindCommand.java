@@ -17,14 +17,14 @@ public abstract class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-        + ": Find if an item exist in the list of "
-        + COMPANY_NAME + " or "
+        + ": Finds items by name in the "
+        + COMPANY_NAME + ", "
         + APPLICATION_NAME + " or "
-        + PROFILE_NAME + ".\n"
-        + "Parameters: ITEM_TYPE DESCRIPTION\n" // note that the name description can be change in the future
+        + PROFILE_NAME + " list based on if they match the given search query.\n"
+        + "Parameters: ITEM_TYPE SEARCH_QUERY\n"
         + "Note: Valid ITEM_TYPEs are "
-        + " " + COMPANY_ALIAS + ", "
-        + " " + APPLICATION_ALIAS + " or "
-        + " " + PROFILE_ALIAS + ". "
-        + "Example: " + COMMAND_WORD + " " + COMPANY_ALIAS + " " + "Google\n";
+        + "'" + COMPANY_ALIAS + "', "
+        + "'" + APPLICATION_ALIAS + "' or "
+        + "'" + PROFILE_ALIAS + "'.\n"
+        + "Example: " + COMMAND_WORD + " " + COMPANY_ALIAS + " Google\n";
 }

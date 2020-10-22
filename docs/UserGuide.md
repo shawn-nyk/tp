@@ -15,6 +15,8 @@ title: User Guide
   [3.1.2. Deleting a company: `delete com`](#deleting-a-company-delete-com) <br />
   [3.1.3. Editing a company: `edit com`](#editing-a-company-edit-com) <br />
   [3.1.4. Viewing a company: `view com`](#viewing-a-company-view-com) <br />
+  [3.1.5. Finding a company: `find com`](#finding-a-company-find-com) <br />
+  [3.1.6. Listing all companies: `list com`](#listing-all-companies-list-com) <br />
  [3.2. Internship](#internship) <br />
   [3.2.1. Adding an internship: `add int`](#adding-an-internship-add-int) <br />
   [3.2.2. Deleting an internship: `delete int`](#deleting-an-internship-delete-int) <br />
@@ -133,6 +135,21 @@ Format: `view com INDEX`
 
 Example:
 - `view com 3`
+
+#### Finding a company: `find com`
+
+Finds companies in your list of companies based on their names.
+
+Format: `find com KEYWORD`
+
+Example:
+- `find com Facebook`
+
+#### Listing all companies: `list com`
+
+Lists out all companies in your list of companies.
+
+Format: `list com`
 
 ### Internship
 
