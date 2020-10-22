@@ -780,7 +780,7 @@ using commands than using the mouse.
 
 <p id="get-command-result-sequence-diagram" align="center">
  <img src="images/GetCommandResultSequenceDiagram.png"/>
- <b> Sequence diagram for GetCommandResult <b/> <br/ >
+ <b> Sequence diagram for GetCommandResult <b/> <br/>
 <p />
 <p id="handle-delete-display-switch-index-sequence-diagram" align="center">
  <img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png"/>
