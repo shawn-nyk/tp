@@ -328,11 +328,11 @@ This is how the `SwitchCommand#execute()` method works upon execution:
  
 3. The `CommandResult` also indicates whether the tab needs to be switched or not.
 
-<h6 align="center">The overall process of how <code>SwitchCommand</code> was generated.</h6>
+<p align="center">The overall process of how <code>SwitchCommand</code> was generated.</p>
 
-![SwitchCommandSequenceDiagram](images/SwitchCommandSequenceDiagram.png)
+<p align="center"><img src="images/SwitchCommandSequenceDiagram.png"</p>
 
-<h6 align="center">The process of how <code>SwitchCommand</code> interacts with the model.</h6>
+<p align="center">The process of how <code>SwitchCommand</code> interacts with the model.</p>
 
 <p align="center"><img src="images/ExecuteSwitchMeCommandSequenceDiagram.png" width="75%" height="75%"/></p>
 
@@ -780,14 +780,13 @@ using commands than using the mouse.
 
 ### Appendix F: Sequence Diagrams
 
-<p id="get-command-result-sequence-diagram" align="center">
- <img src="images/GetCommandResultSequenceDiagram.png"/>
- <b> Sequence diagram for GetCommandResult <b/> <br/>
-<p />
-<p id="handle-delete-display-switch-index-sequence-diagram" align="center">
- <img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png"/>
- <b> Sequence diagram for HandleDeleteDisplaySwitchIndex <b/> <br />
-<p />
+<p align="center">Sequence diagram for GetCommandResult</p>
+
+<p id="get-command-result-sequence-diagram" align="center"><img src="images/GetCommandResultSequenceDiagram.png"/><p />
+
+<p align="center">Sequence diagram for HandleDeleteDisplaySwitchIndex</p>
+
+<p id="handle-delete-display-switch-index-sequence-diagram" align="center"><img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png"/><p />
 
 
 --------------------------------------------------------------------------------------------------------------------
