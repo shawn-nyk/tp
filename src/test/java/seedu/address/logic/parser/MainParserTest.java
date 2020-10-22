@@ -19,6 +19,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.MatchCommand;
 import seedu.address.logic.commands.SwitchCommand;
 import seedu.address.logic.commands.edit.EditCommandAbstract;
 import seedu.address.logic.commands.find.FindApplicationCommand;
@@ -83,6 +84,12 @@ public class MainParserTest {
     public void parseCommand_clear() throws Exception {
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
+    }
+
+    @Test
+    public void parseCommand_match_success() throws Exception {
+        assertTrue(parser.parseCommand(MatchCommand.COMMAND_WORD) instanceof MatchCommand);
+        assertTrue(parser.parseCommand(MatchCommand.COMMAND_WORD + " 3") instanceof MatchCommand);
     }
 
     @Nested

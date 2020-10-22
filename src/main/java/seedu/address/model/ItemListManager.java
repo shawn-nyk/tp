@@ -43,6 +43,11 @@ public class ItemListManager<T extends Item> implements FilterableItemList<T> {
     }
 
     @Override
+    public ObservableList<T> getItemList() {
+        return itemList.getItemList();
+    }
+
+    @Override
     public boolean hasItem(T item) {
         requireNonNull(item);
         return itemList.hasItem(item);

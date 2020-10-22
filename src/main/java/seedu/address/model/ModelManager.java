@@ -92,6 +92,14 @@ public class ModelManager implements Model {
         return companyList.getUnfilteredItemList();
     }
 
+    /**
+     * Returns the company item list
+     */
+    @Override
+    public ObservableList<CompanyItem> getCompanyItemList() {
+        return companyList.getItemList();
+    }
+
     @Override
     public boolean hasCompany(CompanyItem companyItem) {
         return companyList.hasItem(companyItem);
@@ -210,6 +218,14 @@ public class ModelManager implements Model {
     @Override
     public ItemList<ProfileItem> getUnfilteredProfileList() {
         return profileList.getUnfilteredItemList();
+    }
+
+    /**
+     * Returns the profile item list
+     */
+    @Override
+    public ObservableList<ProfileItem> getProfileItemList() {
+        return profileList.getItemList();
     }
 
     @Override
