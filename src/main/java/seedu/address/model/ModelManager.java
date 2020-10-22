@@ -88,8 +88,21 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public int getFilteredCompanyListSize() {
+        return companyList.getSize();
+    }
+
+    @Override
     public ItemList<CompanyItem> getUnfilteredCompanyList() {
         return companyList.getUnfilteredItemList();
+    }
+
+    /**
+     * Returns the company item list
+     */
+    @Override
+    public ObservableList<CompanyItem> getCompanyItemList() {
+        return companyList.getItemList();
     }
 
     @Override
@@ -142,6 +155,11 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<ApplicationItem> getFilteredApplicationList() {
         return applicationList.getFilteredItemList();
+    }
+
+    @Override
+    public int getFilteredApplicationListSize() {
+        return applicationList.getSize();
     }
 
     @Override
@@ -208,8 +226,21 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public int getFilteredProfileListSize() {
+        return profileList.getSize();
+    }
+
+    @Override
     public ItemList<ProfileItem> getUnfilteredProfileList() {
         return profileList.getUnfilteredItemList();
+    }
+
+    /**
+     * Returns the profile item list
+     */
+    @Override
+    public ObservableList<ProfileItem> getProfileItemList() {
+        return profileList.getItemList();
     }
 
     @Override
