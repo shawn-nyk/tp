@@ -88,6 +88,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public int getFilteredCompanyListSize() {
+        return companyList.getSize();
+    }
+
+    @Override
     public ItemList<CompanyItem> getUnfilteredCompanyList() {
         return companyList.getUnfilteredItemList();
     }
@@ -153,6 +158,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public int getFilteredApplicationListSize() {
+        return applicationList.getSize();
+    }
+
+    @Override
     public ItemList<ApplicationItem> getUnfilteredApplicationList() {
         return applicationList.getUnfilteredItemList();
     }
@@ -213,6 +223,11 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<ProfileItem> getFilteredProfileList() {
         return profileList.getFilteredItemList();
+    }
+
+    @Override
+    public int getFilteredProfileListSize() {
+        return profileList.getSize();
     }
 
     @Override
