@@ -131,7 +131,7 @@ Ready to begin? Let's get hunting.
 This represents a company, any company, but typically one that you are interested in applying for an internship to.
 You can record and maintain a company's name, phone number, email address, physical address, and its industry types.
 You can then later specify what internships the company is offering by using the [internship commands](#internship).
-*(Note that you must create a company before you can create internships that the company offers)*
+*(Note that you must create a company first before you can create internships that the company offers)*
 
 #### Adding a company: `add com`
 
