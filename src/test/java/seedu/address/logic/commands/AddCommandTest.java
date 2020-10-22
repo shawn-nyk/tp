@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static seedu.address.testutil.Assert.assertThrows;
 
-import java.nio.file.Path;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -98,16 +97,6 @@ public class AddCommandTest {
 
         @Override
         public void setGuiSettings(GuiSettings guiSettings) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public Path getInternHunterFilePath() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void setInternHunterFilePath(Path internHunterFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
