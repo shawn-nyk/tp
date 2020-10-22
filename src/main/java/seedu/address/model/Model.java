@@ -60,6 +60,9 @@ public interface Model {
     /** Returns the unfiltered company list */
     ItemList<CompanyItem> getUnfilteredCompanyList();
 
+    /** Returns the company item list */
+    ObservableList<CompanyItem> getCompanyItemList();
+
     /**
      * Returns true if a Company with the same identity as {@code companyItem} exists in the company list.
      */
@@ -153,8 +156,12 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered profile list */
     ObservableList<ProfileItem> getFilteredProfileList();
 
+
     /** Returns the unfiltered profile list */
     ItemList<ProfileItem> getUnfilteredProfileList();
+
+    /** Returns the profile item list */
+    ObservableList<ProfileItem> getProfileItemList();
 
     /**
      * Returns true if a Profile item with the same identity as {@code profileItem} exists in the profile list.
@@ -231,4 +238,20 @@ public interface Model {
      * Retrieves the current profile view Index.
      */
     Index getProfileViewIndex();
+
+    /**
+     * Gets ProfileItem from Filtered Profile list.
+     */
+    ProfileItem getProfileItemFromFilteredList(int index);
+
+    /**
+     * Gets CompanyItem from Filtered Company list.
+     */
+    CompanyItem getCompanyItemFromFilteredList(int index);
+
+
+    /**
+     * Gets ApplicationItem from Filtered Application list.
+     */
+    ApplicationItem getApplicationItemFromFilteredList(int index);
 }

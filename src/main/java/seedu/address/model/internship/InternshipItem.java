@@ -1,8 +1,6 @@
 package seedu.address.model.internship;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.commons.util.GeneralStringUtil.COMMA_WITH_SPACE;
-import static seedu.address.commons.util.GeneralStringUtil.DASH;
 import static seedu.address.model.util.InternshipItemUtil.COMPANY_OUTPUT_NAME;
 import static seedu.address.model.util.InternshipItemUtil.PERIOD_OUTPUT_NAME;
 import static seedu.address.model.util.InternshipItemUtil.REQUIREMENTS_OUTPUT_NAME;
@@ -17,6 +15,7 @@ import static seedu.address.ui.panel.PanelDisplayKeyword.WAGE_DISPLAY_NAME;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -24,7 +23,8 @@ import seedu.address.model.company.CompanyName;
 import seedu.address.model.item.Item;
 import seedu.address.storage.internship.JsonAdaptedInternshipItem;
 
-/** todo: javadocs
+/**
+ * todo: javadocs
  * Represents an InternshipItem in the InternHunter application.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
@@ -166,6 +166,19 @@ public class InternshipItem extends Item {
     }
 
     /**
+     * Returns true if the skill list provided matches this internship item. A match is found when any skill in
+     * the skill list is found in the list of requirements of this internship.
+     *
+     * @param skillList List of skills to check.
+     * @return True if the skill list provided matches the internship item, false otherwise.
+     */
+    public boolean matches(List<String> skillList) {
+        assert skillList != null;
+        return requirements.stream().anyMatch(requirement ->
+                skillList.stream().anyMatch(skill -> skill.equalsIgnoreCase(requirement.toString())));
+    }
+
+    /**
      * Obtains the name of this InternshipItem.
      *
      * @return InternshipItem name.
@@ -258,18 +271,18 @@ public class InternshipItem extends Item {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getJobTitle())
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(COMPANY_OUTPUT_NAME)
                 .append(getCompanyName())
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(PERIOD_OUTPUT_NAME)
                 .append(getPeriod())
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(WAGE_OUTPUT_NAME)
                 .append(getWage())
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(REQUIREMENTS_OUTPUT_NAME)
-                .append(getRequirements().isEmpty() ? DASH : getRequirements())
+                .append(getRequirements().isEmpty() ? "-" : getRequirements())
                 .append(System.lineSeparator());
         return builder.toString();
     }

@@ -19,6 +19,8 @@ public class SwitchCommand extends Command {
         + "Parameters: TAB_NAME.\n"
         + "Example: " + COMMAND_WORD + " com";
 
+    public static final String EXCESS_MESSAGE = "Note that that should not be anything inputs after the ITEM_TYPE";
+
     public final String sameScreenText;
     public final String switchedScreenText;
 

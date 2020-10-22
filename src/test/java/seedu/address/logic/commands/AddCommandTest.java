@@ -131,6 +131,14 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        /**
+         * Returns the company item list
+         */
+        @Override
+        public ObservableList<CompanyItem> getCompanyItemList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
         @Override
         public boolean hasCompany(CompanyItem companyItem) {
             throw new AssertionError("This method should not be called.");
@@ -226,6 +234,14 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        /**
+         * Returns the profile item list
+         */
+        @Override
+        public ObservableList<ProfileItem> getProfileItemList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
         @Override
         public boolean hasProfileItem(ProfileItem profileItem) {
             throw new AssertionError("This method should not be called.");
@@ -295,11 +311,28 @@ public class AddCommandTest {
         public Index getProfileViewIndex() {
             throw new AssertionError("This method should not be called.");
         }
+
+        /**
+         * Gets ProfileItem from Filtered Profile list.
+         *
+         * @param index
+         */
+        @Override
+        public ProfileItem getProfileItemFromFilteredList(int index) {
+            return null;
+        }
+
+        @Override
+        public CompanyItem getCompanyItemFromFilteredList(int index) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ApplicationItem getApplicationItemFromFilteredList(int index) {
+            return null;
+        }
     }
 
-    /**
-     * A Model stub that contains a single person.
-     */
     private class ModelStubWithPerson extends ModelStub {
         private final Person person;
 
