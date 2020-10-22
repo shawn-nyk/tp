@@ -71,7 +71,7 @@ public class AddCompanyCommand extends AddCommandAbstract {
      */
     private void setCompanyViewIndex(Model model) {
         int size = model.getFilteredCompanyListSize();
-        model.setProfileViewIndex(Index.fromOneBased(size));
+        model.setCompanyViewIndex(Index.fromOneBased(size));
     }
 
     @Override
