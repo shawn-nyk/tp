@@ -4,7 +4,7 @@ title: User Guide
 ---
 ---
 
-# Welcome to the InternHunter User Guide!
+# Welcome to the InternHunter User Guide
 
 ## Table Of Contents
 
@@ -43,9 +43,10 @@ title: User Guide
 
 ## **Introduction**
 
-**InternHunter is a CLI-centric desktop application which aids university students in applying for internships.**
+**InternHunter is a CLI-centric desktop application which aids university students in applying for internships**.
 It lets you manage your own customisable collection of companies, internships, internship applications and your own 
-user profile, so that you can keep track of internships that you are interested in - all from one centralised place. 
+user profile, so that you can keep track of internships that you are interested in - all from one centralised place.
+
 Never lose track of a good internship opportunity again.
 
 This User Guide will help you - the user - find out about what InternHunter is and how to use it. It'll get you up and 
@@ -126,6 +127,11 @@ Ready to begin? Let's get hunting.
 
 
 ### **Company**
+
+This represents a company, any company, but typically one that you are interested in applying for an internship to.
+You can record and maintain a company's name, phone number, email address, physical address, and its industry types.
+You can then later specify what internships the company is offering by using the [internship commands](#internship).
+*(Note that you must create a company before you can create internships that the company offers)*
 
 #### Adding a company: `add com`
 
