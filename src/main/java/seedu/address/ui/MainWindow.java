@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.ui.GuardClauseUi.IS_EMPTY_DATA_LIST;
 import static seedu.address.ui.GuardClauseUi.IS_EMPTY_DISPLAY;
 import static seedu.address.ui.GuardClauseUi.IS_EMPTY_LIST_PANEL;
@@ -232,6 +233,7 @@ public class MainWindow extends UiPart<Stage> {
      * @param tabName The tab to be switched to.
      */
     private void switchTab(TabName tabName) {
+        requireNonNull(tabName);
         tabs.switchTab(tabName);
     }
 

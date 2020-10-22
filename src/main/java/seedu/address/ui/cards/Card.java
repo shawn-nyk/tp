@@ -1,5 +1,6 @@
 package seedu.address.ui.cards;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.ui.textstyle.TitleDescription.createTitleDescription;
 
 import java.util.LinkedHashMap;
@@ -88,6 +89,8 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
      * @param tagNames A string containing all the tag names.
      */
     protected void setTags(String tagNames) {
+        // to ensure that we can use the methods without errors.
+        requireNonNull(tagNames);
         String[] tagList = generateTags(tagNames);
         setAllTags(tagList);
     }
@@ -176,9 +179,8 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
             return false;
         }
 
-        @SuppressWarnings("unchecked")
         // state check
-        Card<T> card = (Card<T>) other;
+        Card<? extends Item> card = (Card<? extends Item>) other;
         return id.getText().equals(card.id.getText())
             && item.equals(card.item);
     }

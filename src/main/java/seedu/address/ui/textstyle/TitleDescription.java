@@ -1,5 +1,7 @@
 package seedu.address.ui.textstyle;
 
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -15,8 +17,8 @@ public class TitleDescription {
     private static final String TITLE_COLOR = "#363F80";
     private static final String DESCRIPTION_COLOR = "#8E8FB5";
 
-    private Text title;
-    private Text description;
+    private final Text title;
+    private final Text description;
 
     /**
      * Creates a {@code TitleDescription} containing a title and a description.
@@ -51,6 +53,7 @@ public class TitleDescription {
      * @return A titleDescription object that contains a styled title and a styled description.
      */
     public static TitleDescription createTitleDescription(String displayTitle, String displayDescription) {
+        requireAllNonNull(displayDescription, displayTitle);
         Text styledTitle = new Text(displayTitle);
         Text styledDescription = new Text(displayDescription);
         setTextStyle(styledTitle, Color.web(TITLE_COLOR));
@@ -65,6 +68,7 @@ public class TitleDescription {
      * @param color The color of the text.
      */
     private static void setTextStyle(Text text, Color color) {
+        requireAllNonNull(text, color);
         text.setFont(Font.font(DISPLAY_FONT, FontWeight.BOLD, DISPLAY_SIZE));
         text.setFill(color);
     }
