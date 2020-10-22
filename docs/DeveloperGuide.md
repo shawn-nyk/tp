@@ -315,7 +315,7 @@ There are three `TYPE`s:
 #### Implementation
 Upon a user’s entry of a valid switch command, a `SwitchCommand` object is created. `SwitchCommand` is a class that extends the Command abstract class as well as having direct association with TabName, an enumeration, as well as having a dependency to the Model interface.
 
-![SwitchCommandClassDiagram](images/SwitchCommandClassDiagram.png)
+<p align="left"><img src="images/SwitchCommandClassDiagram.png" width="70%" height="70%"/></p>
 
 `SwitchCommand` implements the `execute()` method from the `Command` abstract class whereby upon execution, the 
 method will switch the tab of the screen if a valid command is provided.
@@ -331,8 +331,10 @@ This is how the `SwitchCommand#execute()` method works upon execution:
 ![SwitchCommandSequenceDiagram](images/SwitchCommandSequenceDiagram.png)
 The overall process of how `SwitchCommand` was generated.
  
-![ExecuteSwitchMeCommandSequenceDiagram](images/ExecuteSwitchMeCommandSequenceDiagram.png)
-The process of how `SwitchCommand` interacts with the model.
+<p align="center">
+    <img src="images/ExecuteSwitchMeCommandSequenceDiagram.png" width="70%" height="70%"/>
+    <code>The process of how `SwitchCommand` interacts with the model.</code>
+</p> 
 
 GetCommandResultSequenceDiagram can be found [here](#get-command-result-sequence-diagram)
 
