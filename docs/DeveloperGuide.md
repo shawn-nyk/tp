@@ -329,11 +329,11 @@ This is how the `SwitchCommand#execute()` method works upon execution:
 3. The `CommandResult` also indicates whether the tab needs to be switched or not.
 
 ![SwitchCommandSequenceDiagram](images/SwitchCommandSequenceDiagram.png)
-The overall process of how `SwitchCommand` was generated.
+<h6 align="center">The overall process of how <code>SwitchCommand</code> was generated.</h6>
 
 <p align="center"><img src="images/ExecuteSwitchMeCommandSequenceDiagram.png" width="75%" height="75%"/></p>
+<h6 align="center">The process of how <code>SwitchCommand</code> interacts with the model.</h6>
 
-The process of how `SwitchCommand` interacts with the model.
 
 GetCommandResultSequenceDiagram can be found [here](#get-command-result-sequence-diagram)
 
