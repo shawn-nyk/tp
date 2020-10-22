@@ -19,10 +19,10 @@ import seedu.address.ui.tabs.TabName;
 public class FindCompanyCommand extends FindCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " "
-            + COMPANY_ALIAS + ": Finds all companies in the list of companies whose names match the given search "
-            + "query.\n"
-            + "Parameters: SEARCH_QUERY\n"
-            + "Example: " + COMMAND_WORD + " " + COMPANY_ALIAS + " Facebook\n";
+            + COMPANY_ALIAS + ": Finds all companies in the list of companies whose names contain any of the given "
+            + "keywords.\n"
+            + "Parameters: KEYWORD [ANOTHER_KEYWORD]...\n"
+            + "Example: " + COMMAND_WORD + " " + COMPANY_ALIAS + " Google Facebook";
 
     private final CompanyNameContainsKeyWordsPredicate predicate;
 

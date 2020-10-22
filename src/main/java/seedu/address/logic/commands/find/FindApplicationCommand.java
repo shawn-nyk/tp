@@ -20,9 +20,9 @@ public class FindApplicationCommand extends FindCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " "
             + APPLICATION_ALIAS + ": Finds all applications in the list of applications whose internship job titles "
-            + "match the given search query.\n"
-            + "Parameters: SEARCH_QUERY\n"
-            + "Example: " + COMMAND_WORD + " " + APPLICATION_ALIAS + " software engineering\n";
+            + "contain any of the given keywords.\n"
+            + "Parameters: KEYWORD [ANOTHER_KEYWORD]...\n"
+            + "Example: " + COMMAND_WORD + " " + APPLICATION_ALIAS + " tester\n";
 
     private final ApplicationNameContainsKeyWordsPredicate predicate;
 
