@@ -61,7 +61,7 @@ public class EditInternshipCommand extends EditCommandAbstract {
 
     /** todo javadocs (shawn) */
     public EditInternshipCommand(Index companyIndex, Index internshipIndex,
-                                 EditInternshipDescriptor editInternshipDescriptor) {
+            EditInternshipDescriptor editInternshipDescriptor) {
         requireAllNonNull(companyIndex, internshipIndex, editInternshipDescriptor);
 
         this.companyIndex = companyIndex;
@@ -92,7 +92,7 @@ public class EditInternshipCommand extends EditCommandAbstract {
      * edited with {@code editPersonDescriptor}.
      */
     private static InternshipItem createEditedInternship(InternshipItem internshipToEdit,
-                                            EditInternshipDescriptor editInternshipDescriptor) {
+            EditInternshipDescriptor editInternshipDescriptor) {
         assert internshipToEdit != null;
 
         CompanyName companyName = internshipToEdit.getCompanyName();
@@ -141,7 +141,8 @@ public class EditInternshipCommand extends EditCommandAbstract {
         private Period period;
         private Set<Requirement> requirements;
 
-        public EditInternshipDescriptor() {}
+        public EditInternshipDescriptor() {
+        }
 
         /**
          * Copy constructor.
