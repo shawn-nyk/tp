@@ -155,4 +155,3 @@ public class ProfileItem extends Item {
         return new JsonAdaptedProfileItem(this);
     }
 }
-

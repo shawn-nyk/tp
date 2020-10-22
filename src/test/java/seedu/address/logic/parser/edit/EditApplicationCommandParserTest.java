@@ -35,8 +35,6 @@ public class EditApplicationCommandParserTest {
 
     private final EditApplicationCommandParser parser = new EditApplicationCommandParser();
 
-    // Expected:  5 s/offered
-
     @Test
     public void parse_missingParts_failure() {
         // no index specified
