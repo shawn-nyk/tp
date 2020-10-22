@@ -32,6 +32,8 @@ public class TitleDescription {
     }
 
     /**
+     * Retrieves the title. 
+     *
      * @return The styled {@code title};
      */
     public Text getTitle() {
@@ -39,6 +41,8 @@ public class TitleDescription {
     }
 
     /**
+     * Retrieves the description. 
+     *
      * @return The styled {@code description};
      */
     public Text getDescription() {

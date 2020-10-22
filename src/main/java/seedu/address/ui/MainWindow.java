@@ -101,6 +101,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the primary stage. 
+     *
      * @return the {@code primaryStage} of the main window.
      */
     public Stage getPrimaryStage() {
@@ -329,6 +331,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the list of cards that displays a list of company information.
+     *
      * @return An Optional value containing the company list panel.
      */
     private Optional<ListPanel<? extends Item>> getCompanyTabView() {
@@ -336,6 +340,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the list of cards that displays a list of application information.
+     *
      * @return An Optional value containing the application list panel.
      */
     private Optional<ListPanel<? extends Item>> setApplicationTabView() {
@@ -343,6 +349,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the list of cards that displays a list of profile information.
+     *
      * @return An Optional value containing the profile list panel.
      */
     private Optional<ListPanel<? extends Item>> setProfileTabView() {
@@ -380,6 +388,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the particular company item's information at that index.
+     *
      * @param index The Index of the display to be displayed.
      * @return An Optional containing the display information of the company at that particular Index.
      */
@@ -391,6 +401,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the particular application item's information at that index.
+     *
      * @param index The Index of the display to be displayed.
      * @return An Optional containing the display information of the Application at that particular Index.
      */
@@ -402,6 +414,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the particular profile item's information at that index. 
+     *
      * @param index The Index of the display to be displayed.
      * @return An Optional containing the display information of the profile at that particular Index.
      */
