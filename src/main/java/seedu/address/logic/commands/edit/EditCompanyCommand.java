@@ -79,6 +79,7 @@ public class EditCompanyCommand extends EditCommandAbstract {
         }
 
         model.setCompany(companyToEdit, editedCompany);
+        model.setCompanyViewIndex(index);
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, COMPANY_NAME, editedCompany);
         return getCommandResult(model, editSuccessMessage, TabName.COMPANY);
     }
