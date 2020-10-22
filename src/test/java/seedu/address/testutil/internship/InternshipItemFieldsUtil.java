@@ -51,6 +51,6 @@ public class InternshipItemFieldsUtil {
 
     // Invalid requirements
     public static final String INVALID_REQUIREMENT_EMPTY = "";
-    public static final String INVALID_REQUIREMENT_MORE_THAN_TWO_WORDS = "c++ java js";
+    public static final String INVALID_REQUIREMENT_SPACES = "   ";
 
 }
