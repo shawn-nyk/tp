@@ -49,7 +49,7 @@ public class FindCommandParserTest {
         assertTrue(findCommandParser.parse(APPLICATION_ALIAS + " 3") instanceof FindApplicationCommand);
         assertTrue(findCommandParser.parse(APPLICATION_ALIAS + " developers") instanceof FindApplicationCommand);
         assertTrue(findCommandParser.parse(PROFILE_ALIAS + " 4") instanceof FindProfileCommand);
-        assertTrue(findCommandParser.parse(PROFILE_ALIAS + " html competition internship") instanceof FindProfileCommand);
+        assertTrue(findCommandParser.parse(PROFILE_ALIAS + " internship html") instanceof FindProfileCommand);
     }
 
     @Test

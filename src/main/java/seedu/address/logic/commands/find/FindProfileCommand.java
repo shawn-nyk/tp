@@ -22,7 +22,7 @@ public class FindProfileCommand extends FindCommand {
     public static final String MESSAGE_USAGE = COMMAND_WORD + " "
             + PROFILE_ALIAS + ": Finds all profile items whose titles contain any of "
             + "the specified keywords (case-insensitive).\n"
-            + "Example: " + COMMAND_WORD + " " + PROFILE_ALIAS + "competition html hackathon" + "\n";
+            + "Example: " + COMMAND_WORD + " " + PROFILE_ALIAS + " competition html hackathon" + "\n";
 
     private final ProfileItemContainsKeywordPredicate predicate;
 

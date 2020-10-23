@@ -8,8 +8,8 @@ import static seedu.address.model.util.ItemUtil.PROFILE_NAME;
 import seedu.address.logic.commands.Command;
 
 /**
- * todo javadocs
- */
+ * Lists all items of a specified item type in the InternHunter to the user.
+ **/
 public abstract class ListCommand extends Command {
 
     public static final String COMMAND_WORD = "list";

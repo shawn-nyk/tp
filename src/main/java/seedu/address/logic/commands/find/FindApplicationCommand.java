@@ -14,7 +14,8 @@ import seedu.address.model.application.ApplicationNameContainsKeyWordsPredicate;
 import seedu.address.ui.tabs.TabName;
 
 /**
- * todo javadocs
+ * Finds and lists all application items in Internhunter whose jobTitle contains any of the argument keywords.
+ * Keyword matching is case insensitive.
  */
 public class FindApplicationCommand extends FindCommand {
 
