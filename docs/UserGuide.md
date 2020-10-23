@@ -132,8 +132,8 @@ Execute | Typing the information into the command box and pressing enter.
 
 Symbol | What it means
 -------|--------------
-:information_source: | Important information to take note
-:bulb: | Extra tip
+:information_source: | Important information to take note.
+:bulb: | Extra tip.
 `add` | Words that have a grey highlighted background are commands that can be keyed into the command box.
 
 #### Understanding the usage of the commands
