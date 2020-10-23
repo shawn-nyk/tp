@@ -98,6 +98,13 @@ public class ApplicationItem extends Item {
     }
 
     /**
+     * todo javadocs
+     */
+    public String getInternshipJobTitleValue() {
+        return internshipItem.getJobTitleValue();
+    }
+
+    /**
      * Obtains the name of the ApplicationItem.
      *
      * @return ApplicationItem name.

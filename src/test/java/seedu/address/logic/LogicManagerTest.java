@@ -71,8 +71,8 @@ public class LogicManagerTest {
                 new JsonItemListStorage<>(temporaryFolder.resolve("profileitemlist.json"),
                         ProfileItem.class, JsonAdaptedProfileItem.class);
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, applicationItemListStorage,
-                companyItemListStorage, profileItemListStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(applicationItemListStorage, companyItemListStorage,
+                profileItemListStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -110,8 +110,8 @@ public class LogicManagerTest {
                         ProfileItem.class, JsonAdaptedProfileItem.class);
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, applicationItemListStorage,
-                companyItemListStorage, profileItemListStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(applicationItemListStorage, companyItemListStorage,
+                profileItemListStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
 
         // Execute add command

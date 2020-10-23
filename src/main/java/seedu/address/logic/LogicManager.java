@@ -1,7 +1,6 @@
 package seedu.address.logic;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -87,11 +86,6 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<ProfileItem> getFilteredProfileItemList() {
         return model.getFilteredProfileList();
-    }
-
-    @Override
-    public Path getAddressBookFilePath() {
-        return model.getInternHunterFilePath();
     }
 
     @Override

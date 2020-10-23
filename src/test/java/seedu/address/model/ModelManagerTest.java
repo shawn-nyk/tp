@@ -9,7 +9,6 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
@@ -47,14 +46,18 @@ public class ModelManagerTest {
     @Test
     public void setUserPrefs_validUserPrefs_copiesUserPrefs() {
         UserPrefs userPrefs = new UserPrefs();
-        userPrefs.setAddressBookFilePath(Paths.get("address/book/file/path"));
+        userPrefs.setApplicationItemListFilePath(Paths.get("app/item/list/file/path"));
+        userPrefs.setCompanyItemListFilePath(Paths.get("com/item/list/file/path"));
+        userPrefs.setProfileItemListFilePath(Paths.get("app/me/list/file/path"));
         userPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));
         modelManager.setUserPrefs(userPrefs);
         assertEquals(userPrefs, modelManager.getUserPrefs());
 
         // Modifying userPrefs should not modify modelManager's userPrefs
         UserPrefs oldUserPrefs = new UserPrefs(userPrefs);
-        userPrefs.setAddressBookFilePath(Paths.get("new/address/book/file/path"));
+        userPrefs.setApplicationItemListFilePath(Paths.get("new/app/item/list/file/path"));
+        userPrefs.setCompanyItemListFilePath(Paths.get("new/com/item/list/file/path"));
+        userPrefs.setProfileItemListFilePath(Paths.get("new/app/me/list/file/path"));
         assertEquals(oldUserPrefs, modelManager.getUserPrefs());
     }
 
@@ -68,18 +71,6 @@ public class ModelManagerTest {
         GuiSettings guiSettings = new GuiSettings(1, 2, 3, 4);
         modelManager.setGuiSettings(guiSettings);
         assertEquals(guiSettings, modelManager.getGuiSettings());
-    }
-
-    @Test
-    public void setInternHunterFilePath_nullPath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> modelManager.setInternHunterFilePath(null));
-    }
-
-    @Test
-    public void setInternHunterFilePath_validPath_setsInternHunterFilePath() {
-        Path path = Paths.get("address/book/file/path");
-        modelManager.setInternHunterFilePath(path);
-        assertEquals(path, modelManager.getInternHunterFilePath());
     }
 
     @Test
@@ -147,7 +138,7 @@ public class ModelManagerTest {
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
-        differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
+        differentUserPrefs.setApplicationItemListFilePath(Paths.get("differentFilePath"));
         assertNotEquals(new ModelManager(addressBook, companyList,
                 applicationList, profileList, differentUserPrefs), modelManager);
     }
