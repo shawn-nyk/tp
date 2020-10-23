@@ -140,7 +140,7 @@ public class CommandTestUtil {
         final String[] splitTitle = profileItem.getTitle().toString().split("\\s+");
         model.updateFilteredProfileList(new ProfileItemContainsKeywordPredicate(Arrays.asList(splitTitle[0])));
 
-        assertEquals(1, model.getFilteredProfileList().size());
+        assertEquals(1, model.getFilteredProfileListSize());
     }
 
     /**
@@ -156,7 +156,7 @@ public class CommandTestUtil {
         model.updateFilteredApplicationList(
                 new ApplicationNameContainsKeyWordsPredicate(Arrays.asList(splitJobTitle[0])));
 
-        assertEquals(1, model.getFilteredApplicationList().size());
+        assertEquals(1, model.getFilteredApplicationListSize());
     }
 
 }

@@ -19,9 +19,11 @@ import seedu.address.ui.tabs.TabName;
  */
 public class FindProfileCommand extends FindCommand {
 
+
     public static final String MESSAGE_USAGE = COMMAND_WORD + " "
             + PROFILE_ALIAS + ": Finds all profile items whose titles contain any of "
             + "the specified keywords (case-insensitive).\n"
+            + "Parameters: KEYWORD [ANOTHER_KEYWORD]...\n"
             + "Example: " + COMMAND_WORD + " " + PROFILE_ALIAS + " competition html hackathon" + "\n";
 
     private final ProfileItemContainsKeywordPredicate predicate;
@@ -36,7 +38,7 @@ public class FindProfileCommand extends FindCommand {
         model.updateFilteredProfileList(predicate);
         model.setProfileViewIndex(Index.fromOneBased(1));
         String message = String.format(Messages.MESSAGE_FIND_SUCCESS,
-                model.getFilteredProfileList().size(), PROFILE_NAME);
+                model.getFilteredProfileListSize(), PROFILE_NAME);
         return getCommandResult(model, message, TabName.PROFILE);
     }
 
