@@ -6,39 +6,42 @@ start
 :InternHunter parse the user input;
 if () then ([switch command, with item type])
     if () then ([Command is "switch com"])
-        if () then ([current tab is at company])
+        if () then ([tab is at company])
             :Returns same
             tab message;
-        else ([current tab is not at company])
-            :Switch the current tab
-            to company screen;
-            :Returns success message;
+        else ([tab is not at company])
+            :Switch current
+            tab company;
+            :Returns
+            success message;
         endif
     elseif () then ([Command is "switch app"])
-        if () then ([current tab is at application])
+        if () then ([tab is at application])
             :Returns same
             tab message;
-        else ([current tab is not at application])
-            :Switch the current tab
-            to application screen;
-            :Returns success message;
+        else ([tab is not at application])
+            :Switch current
+            tab application;
+            :Returns
+            success message;
         endif
     elseif () then ([Command is "switch me"])
-        if () then ([current tab is at profile])
+        if () then ([tab is at profile])
             :Returns same
             tab message;
-        else ([current tab is not at profile])
-            :Switch the current tab
-            to profile screen;
-            :Returns success message;
+        else ([tab is not at profile])
+            :Switch current
+            tab profile;
+            :Returns
+            success message;
         endif
     else ([Command is neither of the three commands])
-        :Returns failure message
-        (Invalid Command message for switch);
+        :Returns
+        failure message;
     endif
-else ([switch command, without any input behind])
-:Returns failure message
-(Invalid Command message for switch);
+else ([switch command, without any item type])
+:Returns
+failure message;
 endif
 :InternHunter app prints message to user;
 
