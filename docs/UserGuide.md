@@ -142,8 +142,7 @@ Format: `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...
 Examples:
 - `add com n/Garena a/201 Victoria St e/GarenaHires@garena.com p/65093545` *(notice that the company's industry types
  need not be specified)*
-- Executing `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t
-/Artificial Intelligence` on an empty company list will add the company as follows: <br />
+- Executing `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Intelligence` on an empty company list will add the company as follows: <br />
 ![AddCompanySS](images/AddCompanySS.PNG)
 
 #### Deleting a company: `delete com`
@@ -230,7 +229,9 @@ Format: `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
 - `PERIOD` can refer to any word (e.g. 3 months, Summer break)
 
 Examples:
-- `add int 1 j/Software Engineer w/1512`
+- `add int 1 j/Machine Learning Engineer w/4700` 
+![AddInternship](images/AddInternship.png)
+
 - `add int 3 j/Web Developer w/3000 r/React r/HTML5`
 
 #### Deleting an internship: `delete int`
@@ -254,8 +255,15 @@ internship in the company’s list of internships.
 - At least one of the optional fields must be provided.
 
 Examples:
-- `edit int 7 i/1 w/2000 r/Java r/Python`
-- `edit int 4 i/4 j/ML Engineer`
+- Executing: `edit int 1 i/2 w/4800 r/Java r/Python` will change:
+
+![EditInternshipBefore](images/EditInternshipBefore.png)
+
+to:
+
+![EditInternshipAfter](images/EditInternshipAfter.png)
+
+- `edit int 3 i/1 j/Frontend Developer`
 
 ### **Application**
 
@@ -400,6 +408,11 @@ There are three `TYPE`s:
 Example: 
 * `switch me`
 
+#### Clearing all entries: `clear'
+Clears all entries from InternHunter.
+
+format: `clear`
+
 #### Viewing Help: `help`
 Displays a link to the InternHunter user guide.
 
@@ -416,23 +429,51 @@ Format: `exit`
 
 ## Command summary
 
-Type            | Action     | Format
-----------------|------------|------------------
-**Company**     | **Add**    | `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`
-&nbsp;          | **Delete** | `delete com INDEX`
-&nbsp;          | **Edit**   | `edit com INDEX [n/COMPANY_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/INDUSTRY]...`
-&nbsp;          | **View**   | `view com INDEX`
-**Internship**  | **Add**    | `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
-&nbsp;          | **Delete** | `delete int INDEX i/INDEX`
-&nbsp;          | **Edit**   | `edit int INDEX i/INDEX [j/JOB_TITLE] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
-**Application** | **Add**    | `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
-&nbsp;          | **Delete** | `delete app INDEX`
-&nbsp;          | **Edit**   | `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
-&nbsp;          | **View**   | `view app INDEX`
-**Profile**     | **Add**    | `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
-&nbsp;          | **Delete** | `delete me INDEX`
-&nbsp;          | **Edit**   | `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTOR]...`
-&nbsp;          | **View**   | `view me INDEX`
-**General**     | **Switch** | `switch TYPE`
-&nbsp;          | **Help**   | `help`
-&nbsp;          | **Exit**   | `exit`
+### Company
+
+Action     | Format
+-----------|------------------
+**Add**    | `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`
+**Delete** | `delete com INDEX`
+**Edit**   | `edit com INDEX [n/COMPANY_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/INDUSTRY]...`
+**View**   | `view com INDEX`
+**Find**   | `find com KEYWORD [ANOTHER_KEYWORD]...`
+**List**   | `list com`
+
+### Internship
+
+Action     | Format
+-----------|------------------
+**Add**    | `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
+**Delete** | `delete int INDEX i/INDEX`
+**Edit**   | `edit int INDEX i/INDEX [j/JOB_TITLE] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
+
+### Application
+
+Action     | Format
+-----------|------------------
+**Add**    | `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
+**Delete** | `delete app INDEX`
+**Edit**   | `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
+**View**   | `view app INDEX`
+**Find**   | `find app KEYWORD [ANOTHER_KEYWORD]...`
+**List**   | `list app`
+
+### Profile
+
+Action     | Format
+-----------|------------------
+**Add**    | `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
+**Delete** | `delete me INDEX`
+**Edit**   | `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTOR]...`
+**View**   | `view me INDEX`
+**Find**   | `find me KEYWORD [ANOTHER_KEYWORD]...`
+**List**   | `list me`
+
+### General
+Action     | Format
+-----------|------------------
+**Switch** | `switch TYPE`
+**Clear**  | `clear`
+**Help**   | `help`
+**Exit**   | `exit`
