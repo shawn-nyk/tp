@@ -27,12 +27,10 @@ class TabName <<enumeration>> {
 
 class Model <<interface>> {
     +getTabName(): TabName
-    +setTabName(TabName tabName): void
 }
 
 class TabManager {
     +getTabName(): TabName
-    +setTabName(TabName tabName): void
 }
 
 TabName <-- SwitchCommand
