@@ -55,7 +55,7 @@ public class FindCommandParserTest {
     @Test
     public void parse_listAppFalse_success() throws ParseException {
         // item type different
-        assertFalse(findCommandParser.parse(COMPANY_ALIAS) instanceof FindApplicationCommand);
-        assertFalse(findCommandParser.parse(PROFILE_ALIAS) instanceof FindApplicationCommand);
+        assertFalse(findCommandParser.parse(COMPANY_ALIAS + " google") instanceof FindApplicationCommand);
+        assertFalse(findCommandParser.parse(PROFILE_ALIAS + " internship") instanceof FindApplicationCommand);
     }
 }

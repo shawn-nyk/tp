@@ -54,6 +54,8 @@ public class UiManager implements Ui {
     }
 
     /**
+     * Retrieves the image from the image path.
+     *
      * @param imagePath A String representing the path of the image.
      * @return an Image that is from the {@code imagePath}.
      */

@@ -75,6 +75,7 @@ public class EditProfileCommand extends EditCommandAbstract {
         }
 
         model.setProfileItem(profileItemToEdit, editedProfileItem);
+        model.setProfileViewIndex(targetIndex);
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, PROFILE_NAME, editedProfileItem);
         return getCommandResult(model, editSuccessMessage, TabName.PROFILE);
     }
