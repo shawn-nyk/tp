@@ -541,6 +541,7 @@ Precondition: User already has an existing list of companies <br/>
 **Extensions**
 
  1a. Similar to adding a company.
+
  1b. InternHunter detects an invalid index. <br/>
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
