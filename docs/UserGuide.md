@@ -28,16 +28,22 @@ title: User Guide
   [3.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
   [3.3.3. Editing an application: `edit app`](#editing-an-application-edit-app) <br />
   [3.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
+  [3.3.5. Finding an application: `find com`](#finding-an-application-find-app) <br />
+  [3.3.6. Listing all application: `list com`](#listing-all-application-list-app) <br />
  [3.4. Profile](#profile) <br />
   [3.4.1. Adding item to profile: `add me`](#adding-item-to-profile-add-me) <br />
   [3.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
   [3.4.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
   [3.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
- [3.5 General](#general) <br /> 
-  [3.5.1. Switching Tabs: `switch`](#switching-tabs-switch) <br />
-  [3.5.2. Viewing Help: `help`](#viewing-help-help) <br />
-  [3.5.3. Exiting the program: `exit`](#exiting-the-program-exit) <br />
-[4. Command Summary](#command-summary) <br />
+  [3.4.5. Finding an item in profile: `find com`](#finding-an-item-in-profile-find-me) <br />
+  [3.4.6. Listing all profile item: `list com`](#listing-all-item-in-profile-list-me) <br />
+ [3.5 General](#general) <br />
+  [3.5.1. Matching skill: `switch`](#matching-skill-match) <br />
+  [3.5.2. Switching Tabs: `switch`](#switching-tabs-switch) <br />
+  [3.5.3. Viewing Help: `help`](#viewing-help-help) <br />
+  [3.5.4. Exiting the program: `exit`](#exiting-the-program-exit) <br />
+[4. FAQ](#faq) <br/>
+[5. Command Summary](#command-summary) <br />
 
 ---
 
