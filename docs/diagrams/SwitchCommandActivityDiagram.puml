@@ -10,8 +10,8 @@ if () then ([switch command, with item type])
             :Returns same
             tab message;
         else ([tab is not at company])
-            :Switch current
-            tab company;
+            :Switch tab
+            to company;
             :Returns
             success message;
         endif
@@ -20,8 +20,8 @@ if () then ([switch command, with item type])
             :Returns same
             tab message;
         else ([tab is not at application])
-            :Switch current
-            tab application;
+            :Switch tab
+            to application;
             :Returns
             success message;
         endif
@@ -30,8 +30,8 @@ if () then ([switch command, with item type])
             :Returns same
             tab message;
         else ([tab is not at profile])
-            :Switch current
-            tab profile;
+            :Switch tab
+            to profile;
             :Returns
             success message;
         endif
