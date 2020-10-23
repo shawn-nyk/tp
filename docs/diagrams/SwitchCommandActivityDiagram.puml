@@ -35,7 +35,7 @@ if () then ([switch command, with item type])
     else ([Command is neither of the three commands])
         :Returns failure message
         (Invalid Command message for switch);
-    endif    
+    endif
 else ([switch command, without any input behind])
 :Returns failure message
 (Invalid Command message for switch);
