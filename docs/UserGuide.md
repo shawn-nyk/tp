@@ -119,7 +119,7 @@ Ready to begin? Let's get hunting.
 This section will bring you through the [GUI](#understanding-the-gui), [technical terminologies](#understanding-the-technical-terminologies), as well as commonly used [symbols](#understanding-the-symbols).
 
 #### Understanding the GUI
-**Note**
+
 There is be a slight difference in GUI between the Windows and macOS version, however this does not affect InternHunter in any way.
 
 <p><img src="images/GuiAnnotated.png"/><p/>
