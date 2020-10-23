@@ -8,12 +8,9 @@ import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.delete.DeleteApplicationCommand;
 import seedu.address.logic.commands.delete.DeleteCommandAbstract;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.util.GeneralParserUtil;
 
 /**
  * Parses input arguments and creates a new DeleteCommand object
@@ -30,10 +27,6 @@ public class DeleteCommandParser implements Parser<DeleteCommandAbstract> {
         String itemType = getItemType(args, DeleteCommandAbstract.MESSAGE_USAGE);
         String commandDetails = getCommandDetails(args);
 
-        // todo: delete the line below when all command parsers have been written; note that with this line still
-        //  present, error messages will appear inappropriate for commands like "delete ITEM_TYPE" (args are missing)
-        Index index = GeneralParserUtil.parseIndex(commandDetails);
-
         switch (itemType) {
         case COMPANY_ALIAS:
             return new DeleteCompanyCommandParser().parse(commandDetails);
@@ -42,8 +35,7 @@ public class DeleteCommandParser implements Parser<DeleteCommandAbstract> {
             return new DeleteInternshipCommandParser().parse(commandDetails);
 
         case APPLICATION_ALIAS:
-            // todo: return delete application command parser
-            return new DeleteApplicationCommand(index);
+            return new DeleteApplicationCommandParser().parse(commandDetails);
 
         case PROFILE_ALIAS:
             return new DeleteProfileCommandParser().parse(commandDetails);

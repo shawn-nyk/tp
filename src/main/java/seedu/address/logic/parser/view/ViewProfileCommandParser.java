@@ -1,16 +1,13 @@
 package seedu.address.logic.parser.view;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.util.GeneralParserUtil.argumentsAreValid;
-import static seedu.address.logic.parser.util.GeneralParserUtil.getIndexInPreamble;
+import static seedu.address.logic.parser.util.GeneralParserUtil.checkCommandDetailsIsNotBlank;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.view.ViewProfileCommand;
-import seedu.address.logic.parser.ArgumentMultimap;
-import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.util.GeneralParserUtil;
 
 /**
  * Parses input arguments and creates a new ViewProfileCommand object.
@@ -27,13 +24,8 @@ public class ViewProfileCommandParser implements Parser<ViewProfileCommand> {
      */
     public ViewProfileCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args);
-
-        if (!argumentsAreValid(true, argMultimap)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewProfileCommand.MESSAGE_USAGE));
-        }
-
-        Index index = getIndexInPreamble(argMultimap);
+        checkCommandDetailsIsNotBlank(args, ViewProfileCommand.MESSAGE_USAGE);
+        Index index = GeneralParserUtil.parseIndex(args);
         return new ViewProfileCommand(index);
     }
 }

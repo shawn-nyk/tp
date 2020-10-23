@@ -29,7 +29,6 @@ public class DeleteInternshipCommand extends DeleteCommandAbstract {
             + ": Deletes the " + INTERNSHIP_NAME + " identified by the index number used in the displayed "
             + INTERNSHIP_NAME + " list in a " + COMPANY_NAME + ".\n"
             + "The " + APPLICATION_NAME + " (if any) made with this " + INTERNSHIP_NAME + " will also be deleted.\n"
-
             + "Parameters: INDEX " + PREFIX_INDEX + "INDEX\n"
             + "Note: Select a " + COMPANY_NAME + " with the first INDEX and an " + INTERNSHIP_NAME + " within that "
             + COMPANY_NAME + " with the second INDEX. "
@@ -63,7 +62,7 @@ public class DeleteInternshipCommand extends DeleteCommandAbstract {
 
         // Delete applications for this deleted internship
         ApplicationItem applicationItemToDelete = new ApplicationItem(internshipItem);
-        model.getApplicationList().deleteSameItem(applicationItemToDelete);
+        model.deleteSameApplication(applicationItemToDelete);
 
         // Delete the internship
         companyItem.removeInternship(internshipIndex);

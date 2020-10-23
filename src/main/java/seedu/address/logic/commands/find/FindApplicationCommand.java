@@ -3,6 +3,7 @@ package seedu.address.logic.commands.find;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
+import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -17,10 +18,11 @@ import seedu.address.ui.tabs.TabName;
  */
 public class FindApplicationCommand extends FindCommand {
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-        + " " + APPLICATION_ALIAS + ": Finds if an application exist in the list of application in InternHunter\n"
-        + "Parameters: ITEM_TYPE DESCRIPTION\n" // THE WORD DESCRIPTION CAN BE CHANGE IN THE FUTURE.
-        + "Example: " + COMMAND_WORD + " " + APPLICATION_ALIAS + " " + "software engineering" + "\n";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " "
+            + APPLICATION_ALIAS + ": Finds all applications in the list of applications whose internship job titles "
+            + "contain any of the given keywords.\n"
+            + "Parameters: KEYWORD [ANOTHER_KEYWORD]...\n"
+            + "Example: " + COMMAND_WORD + " " + APPLICATION_ALIAS + " tester\n";
 
     private final ApplicationNameContainsKeyWordsPredicate predicate;
 
@@ -31,10 +33,17 @@ public class FindApplicationCommand extends FindCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        model.getApplicationList().updateFilteredItemList(predicate);
+        model.updateFilteredApplicationList(predicate);
         model.setApplicationViewIndex(Index.fromOneBased(1));
-        String message = String.format(Messages.MESSAGE_FIND_APPLICATION_SUCCESS,
-            model.getApplicationList().getFilteredItemList().size());
+        String message = String.format(Messages.MESSAGE_FIND_SUCCESS,
+            model.getFilteredApplicationList().size(), APPLICATION_NAME);
         return getCommandResult(model, message, TabName.APPLICATION);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+            || (other instanceof FindApplicationCommand // instanceof handles nulls
+            && predicate.equals(((FindApplicationCommand) other).predicate)); // state check
     }
 }

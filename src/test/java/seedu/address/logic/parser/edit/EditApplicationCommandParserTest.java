@@ -2,7 +2,6 @@ package seedu.address.logic.parser.edit;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
-import static seedu.address.commons.util.GeneralStringUtil.BLANK;
 import static seedu.address.logic.commands.edit.EditCommandAbstract.MESSAGE_NOT_EDITED;
 import static seedu.address.logic.commands.util.application.ApplicationCommandTestUtil.INVALID_STATUS_DATE_DESC;
 import static seedu.address.logic.commands.util.application.ApplicationCommandTestUtil.INVALID_STATUS_DESC;
@@ -36,8 +35,6 @@ public class EditApplicationCommandParserTest {
 
     private final EditApplicationCommandParser parser = new EditApplicationCommandParser();
 
-    // Expected:  5 s/offered
-
     @Test
     public void parse_missingParts_failure() {
         // no index specified
@@ -47,7 +44,7 @@ public class EditApplicationCommandParserTest {
         assertParseFailure(parser, "1", MESSAGE_NOT_EDITED);
 
         // no index and no field specified
-        assertParseFailure(parser, BLANK, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);
     }
 
     @Test

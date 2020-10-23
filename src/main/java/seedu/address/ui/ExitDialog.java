@@ -8,6 +8,10 @@ import javafx.scene.control.DialogPane;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
+/**
+ * Controller for a exit page.
+ * Any opened windows from InternHunter will also be closed when InternHunter is closed.
+ */
 public class ExitDialog extends UiPart<DialogPane> {
 
     private static final String FXML = "ExitDialog.fxml";
@@ -24,13 +28,14 @@ public class ExitDialog extends UiPart<DialogPane> {
     private Dialog<Boolean> dialog;
     private WindowEvent event;
     private HelpWindow helpWindow;
+    private InternshipsWindow internshipsWindow;
 
     /**
      * Creates a new Exit dialog.
      *
      * @param event event that triggers the creation of exit dialog.
      */
-    public ExitDialog(WindowEvent event, HelpWindow helpWindow) {
+    public ExitDialog(WindowEvent event, HelpWindow helpWindow, InternshipsWindow internshipsWindow) {
         super(FXML);
         dialog = new Dialog<>();
         dialog.setDialogPane(dialogPane);
@@ -42,6 +47,7 @@ public class ExitDialog extends UiPart<DialogPane> {
         });
         this.event = event;
         this.helpWindow = helpWindow;
+        this.internshipsWindow = internshipsWindow;
     }
 
     public void show() {
@@ -53,6 +59,7 @@ public class ExitDialog extends UiPart<DialogPane> {
         dialog.setResult(Boolean.TRUE);
         dialog.hide();
         helpWindow.hide();
+        internshipsWindow.hide();
         return true;
     }
 
