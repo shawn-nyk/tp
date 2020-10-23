@@ -377,11 +377,11 @@ and `JsonSerializableItemList` use generics.
         * Extending the `ItemListStorage` and `JsonSerializableItemList` class would require changes to all the
         different versions corresponding to the different `Item` types.
 
-### Trial Feature
+### Clear Feature
 
 #### What it is
-User can see how the app works with sample data. Additionally, user can clear all the entries in InternHunter with just
-a command.
+In the beginning, user can see how the app works with sample data. After that, user can decide to 
+clear all the entries in InternHunter with just a `clear` command.
 
 #### Implementation
 
