@@ -119,7 +119,7 @@ Ready to begin? Let's get hunting.
 This section will bring you through the [GUI](#understanding-the-gui), [technical terminologies](#understanding-the-technical-terminologies), as well as commonly used [symbols](#understanding-the-symbols).
 
 #### Understanding the GUI
-<p><img src="images/annotatedGui.png" width="75%" height="75%"/><p/>
+<p><img src="images/annotatedGui.png"/><p/>
 
 #### Understanding the technical terminologies
 Word | What it means
