@@ -8,6 +8,10 @@ import javafx.scene.control.DialogPane;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
+/**
+ * Controller for a exit page.
+ * Any opened windows from InternHunter will also be closed when InternHunter is closed.
+ */
 public class ExitDialog extends UiPart<DialogPane> {
 
     private static final String FXML = "ExitDialog.fxml";
