@@ -36,7 +36,7 @@ public class FindCompanyCommand extends FindCommand {
         model.updateFilteredCompanyList(predicate);
         model.setCompanyViewIndex(Index.fromOneBased(1));
         String message = String.format(Messages.MESSAGE_FIND_SUCCESS,
-                model.getFilteredCompanyList().size(), COMPANY_NAME);
+                model.getFilteredCompanyListSize(), COMPANY_NAME);
         return getCommandResult(model, message, TabName.COMPANY);
     }
 

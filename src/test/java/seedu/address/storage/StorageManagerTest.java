@@ -3,6 +3,7 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static seedu.address.testutil.application.SampleApplicationItems.getSampleApplicationItemList;
+import static seedu.address.testutil.profile.SampleProfileItems.getSampleProfileItemList;
 
 import java.nio.file.Path;
 
@@ -45,8 +46,8 @@ public class StorageManagerTest {
                         JsonAdaptedProfileItem.class);
 
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageManager = new StorageManager(addressBookStorage, applicationItemListStorage, companyItemListStorage,
-                profileItemListStorage, userPrefsStorage);
+        storageManager = new StorageManager(applicationItemListStorage, companyItemListStorage, profileItemListStorage,
+                userPrefsStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -74,7 +75,6 @@ public class StorageManagerTest {
          * {@link JsonItemListStorage} class.
          * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
          */
-        ItemList<ApplicationItem> getSampleApplicationItems;
         ItemList<ApplicationItem> original = getSampleApplicationItemList();
         storageManager.saveApplicationItemList(original);
         ReadOnlyItemList<ApplicationItem> retrieved = storageManager.readApplicationItemList().get();
@@ -82,8 +82,26 @@ public class StorageManagerTest {
     }
 
     @Test
-    public void getItemListFilePath() {
+    public void getApplicationItemListFilePath() {
         assertNotNull(storageManager.getApplicationItemListFilePath());
+    }
+
+    @Test
+    public void profileItemListReadSave() throws Exception {
+        /*
+         * Note: This is an integration test that verifies the StorageManager is properly wired to the
+         * {@link JsonItemListStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
+         */
+        ItemList<ProfileItem> original = getSampleProfileItemList();
+        storageManager.saveProfileItemList(original);
+        ReadOnlyItemList<ProfileItem> retrieved = storageManager.readProfileItemList().get();
+        assertEquals(original, new ItemList<>(retrieved));
+    }
+
+    @Test
+    public void getProfileItemListFilePath() {
+        assertNotNull(storageManager.getProfileItemListFilePath());
     }
 
 }
