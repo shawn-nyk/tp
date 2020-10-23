@@ -1,5 +1,4 @@
 @startuml
-!include InternHunterStyle.puml
 
 start
 :user enters switch command;
