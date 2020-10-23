@@ -346,7 +346,7 @@ The following activity diagram summarizes what happens when a user executes a sw
 The above activity diagram shows the logic and the path execution when the switch command is executed. The code will check if there is any missing input or if the input is not one of the three mentioned in the `Command format` above. If the aforementioned 2 conditions are not met, an error message is displayed. If the input is one of the three mentioned above in the `Command format`, there will be further checks if the user are already in the same tab.
 
 #### Design considerations
-##### Aspect: Should the tabs be allowed to change only by the `SwitchCommand`.
+#### Aspect: Should the tabs be allowed to change only by the `SwitchCommand`.
 * **Alternative 1 (current choice):** Allow the switch of tabs to not only be accessible via the switch command, but rather extract it out for all commands excluding `exit` and `help`.
     * Pros:
         * Allows user to type once instead of twice when executing a single command and wanting to view it. (This optimzation is to allow for a faster way to type and view the changes). <br/>
