@@ -42,7 +42,7 @@ title: User Guide
   [4.5.1. Matching of skill: `match`](#matching-of-skill-match) <br />
   [4.5.2. Switching Tabs: `switch`](#switching-tabs-switch) <br />
   [4.5.3. Viewing Help: `help`](#viewing-help-help) <br />
-  [4.5.4. Clearing all data: `clear`](#clearing-all-data-clear) <br />
+  [4.5.4. Clearing all entries: `clear`](#clearing-all-entries-clear) <br />
   [4.5.5. Exiting the program: `exit`](#exiting-the-program-exit) <br />
 [5. FAQ](#faq) <br/>
 [6. Command Summary](#command-summary) <br />
