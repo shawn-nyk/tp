@@ -33,6 +33,8 @@ title: User Guide
   [3.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
   [3.4.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
   [3.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
+  [3.1.5. Finding items in profile: `find me`](#finding-items-in-profile-find-me) <br />
+  [3.1.6. Listing all profile items: `list me`](#listing-all-items-in-profile-list-me) <br />
  [3.5 General](#general) <br /> 
   [3.5.1. Switching Tabs: `switch`](#switching-tabs-switch) <br />
   [3.5.2. Viewing Help: `help`](#viewing-help-help) <br />
@@ -80,8 +82,9 @@ And here's what you can do:
 2. Next, note down the internships offered by that company that interest you with the [`add int` command](#adding-an-internship-add-int)
 3. And once you've applied for an internship, record it down to keep track of it with the [`add app` command](#adding-an-application-add-app)
 
-You can also keep track of your achievements, experience and skills in your own [user profile](#profile) to help you 
-in figuring out which internship is the best fit for you.
+You can also keep track of your achievements, experience and skills in your own [profile](#profile) to help you 
+in figuring out which internship is the best fit for you through the skills matching feature and also to aid you in
+ creating a tailored resume for each application.
 
 Simple? Well that's the InternHunter flow.
 
@@ -326,32 +329,35 @@ Example:
 
 ### **Profile**
 
-Note: You must be on the **Profile** tab in order to execute these commands.
+The profile feature offers you the ability to keep track and maintain your personal portfolio. It stores
+profile items which are entities that describe an achievement, a past experience or a skill you have acquired.
+It assists you in crafting a tailored resume for your internship applications by allowing you to find items in your
+profile which are relevant to the job description through the [find feature](#finding-items-in-profile-find-me).
 
-Your profile can contain 3 categories of information.
+Each profile item belongs to  1 of 3 categories.
 
 Valid `CATEGORY` specifiers:
 - `achievement`
 - `experience`
 - `skill`
 
-Each profile item (bit of information) also contains a `TITLE` that describes the item, and you can optionally 
+Each profile item also contains a `TITLE` that describes the item, and you can optionally 
 add additional `DESCRIPTOR`s to further describe the item in point form.
 
 #### Adding item to profile: `add me`
 
-Adds experience, skills or achievements descriptors to your profile.
+Adds a profile item to your profile.
 
 Format: `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
 
-* Category specifies a category which can be either experience, skills or achievement.
+* `CATEGORY` specifies a category which can be either experience, skills or achievement.
 
 Examples:
-* `add me c/experience t/Internship at Govtech d/Implemented automate testing 
-using TravisCI d/Implemented dashboard to track code coverage`
-* `add me c/achievement t/special recognition in Hack n Roll`
 * `add me c/skill t/HTML d/Learn how to create divs`
-
+* `add me c/achievement t/special recognition in Hack n Roll`
+* For example, executing `add me c/experience t/Internship at Govtech d/Implemented automate testing 
+using TravisCI d/Implemented dashboard to track code coverage` on an empty profile will add the profile item as follows: <br />
+![AddProfileSS](images/AddProfileItemSS.PNG)
 #### Deleting item in profile: `delete me`
 
 Deletes experience, skills or achievements descriptors from your profile.
@@ -368,19 +374,75 @@ Edit the experience, skills or achievements descriptors of your profile.
 Format: `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTORS]`
 
 * At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing `DESCRIPTORS`, all existing descriptors get replaced by the new specified descriptors.
+* You can remove all `DESCRIPTORS` by adding d/ without anything after it.
 
 Examples:
 * `edit me 2 c/skill t/CSS d/learnt how to use flexbox`
-* `edit me 4 c/achievement`
+* For example if you want to update the title and descriptor of the first item in your profile:<br />
+
+![EditProfileBeforeSS](images/EditProfileItemBeforeSS.PNG)<br />
+
+Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the the profile item to:<br />
+
+![EditProfileAfterSS](images/EditProfileItemAfterSS.PNG)<br />
+ *(Note that the existing descriptors get replaced and cannot be accumulated)*
 
 #### Viewing item in profile: `view me`
 
-Selects an item in the profile to show in detail.
+Selects an item in the profile to show in detail. The category and descriptors of the selected profile item will be
+shown on the display panel to the right.
 
 Format: `view me INDEX`
 
 Example:
 * `view me 3`
+* For example if you have the following profile items and you want to view the third item in your user profile:<br />
+
+![ViewProfileAfterSS](images/ViewProfileAfterSS.PNG)<br />
+
+Executing `view me 3` will show the following:<br />
+
+![ViewProfileAfterSS](images/ViewProfileAfterSS.PNG)<br />
+*(As you can see the details of the third item can be seen in the right panel)*
+
+#### Finding items in profile: `find me`
+
+Finds all items in your profile whose titles contain any of the specified keywords.
+
+Format: `find me KEYWORD [ANOTHER_KEYWORD]...`
+- Only the profile item's title will be searched for.
+- The search is case-insensitive. e.g. `HTML` will match and return items with `html` in its title
+- Profile items with titles matching at least one keyword will be returned. e.g. `Hackathon Internship` will return
+ a list of profile items whose titles contain the word `Hackathon` *or* `Internship`
+- The ordering of the keywords does not affect the outcome of the query. e.g. `Hackathon Internship` and `Internship
+ Hackathon` will return the same results
+- Only full words will be matched. e.g. `Intern` will not match `Internship`
+
+Examples:
+- `find me Internship`
+- For the following example, if the profile contains the following items: <br />
+
+     ![FindProfileBeforeSS](images/FindProfileBeforeSS.PNG) <br />
+     
+     Executing `find me internship` will return the following: <br />
+     
+     ![FindProfileAfterSS](images/FindProfileAfterSS.PNG) <br />
+     
+     And executing `find me internship google` will return the following: <br />
+     
+     ![FindProfileAfterSSDouble](images/FindProfileAfterSSDouble.PNG) <br />
+     *(As you can see the search results match at least one of the keywords specified regardless of its casing)*
+
+#### Listing all items in profile: `list me`
+
+Lists out all items in your profile. After using the `find me` command, you would have likely filtered 
+your list of profile items down to a few search results. You can then use the `list me` command to view all the items in
+your profile.
+
+Format: `list me`
+
 
 ### **General**
 
