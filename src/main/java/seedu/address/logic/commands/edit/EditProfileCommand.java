@@ -8,7 +8,6 @@ import static seedu.address.logic.commands.util.CommandUtil.getProfileItem;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEGORY;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTOR;
 import static seedu.address.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_TITLE;
-import static seedu.address.model.FilterableItemList.PREDICATE_SHOW_ALL_ITEMS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ITEM_NAME;
 import static seedu.address.model.util.ItemUtil.PROFILE_NAME;
@@ -29,6 +28,9 @@ import seedu.address.model.profile.ProfileItemCategory;
 import seedu.address.model.profile.Title;
 import seedu.address.ui.tabs.TabName;
 
+/**
+ * Edits the details of a existing profileItem in the InternHunter.
+ */
 public class EditProfileCommand extends EditCommandAbstract {
 
     public static final String COMMAND_WORD = "edit";
@@ -66,15 +68,15 @@ public class EditProfileCommand extends EditCommandAbstract {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         ProfileItem profileItemToEdit = getProfileItem(model, targetIndex);
-        ProfileItem editedProfile = createEditedProfileItem(profileItemToEdit, editProfileItemDescriptor);
+        ProfileItem editedProfileItem = createEditedProfileItem(profileItemToEdit, editProfileItemDescriptor);
 
-        if (!profileItemToEdit.isSameItem(editedProfile) && model.hasProfileItem(editedProfile)) {
+        if (!profileItemToEdit.isSameItem(editedProfileItem) && model.hasProfileItem(editedProfileItem)) {
             throw new CommandException(String.format(Messages.MESSAGE_DUPLICATE_ITEM, PROFILE_NAME));
         }
 
-        model.setProfileItem(profileItemToEdit, editedProfile);
-        model.updateFilteredProfileList(PREDICATE_SHOW_ALL_ITEMS);
-        String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, PROFILE_NAME, editedProfile);
+        model.setProfileItem(profileItemToEdit, editedProfileItem);
+        model.setProfileViewIndex(targetIndex);
+        String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, PROFILE_NAME, editedProfileItem);
         return getCommandResult(model, editSuccessMessage, TabName.PROFILE);
     }
 

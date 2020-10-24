@@ -1,7 +1,6 @@
 package seedu.address.logic;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -52,9 +51,9 @@ public class LogicManager implements Logic {
         commandResult = command.execute(model);
 
         try {
-            storage.getCompanyItemListStorage().saveItemList(model.getUnfilteredCompanyList());
-            storage.getApplicationItemListStorage().saveItemList(model.getUnfilteredApplicationList());
-            storage.getProfileItemListStorage().saveItemList(model.getUnfilteredProfileList());
+            storage.saveCompanyItemList(model.getCompanyList().getUnfilteredItemList());
+            storage.saveApplicationItemList(model.getApplicationList().getUnfilteredItemList());
+            storage.saveProfileItemList(model.getProfileList().getUnfilteredItemList());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
@@ -87,11 +86,6 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<ProfileItem> getFilteredProfileItemList() {
         return model.getFilteredProfileList();
-    }
-
-    @Override
-    public Path getAddressBookFilePath() {
-        return model.getInternHunterFilePath();
     }
 
     @Override

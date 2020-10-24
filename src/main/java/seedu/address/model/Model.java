@@ -1,6 +1,5 @@
 package seedu.address.model;
 
-import java.nio.file.Path;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -39,26 +38,29 @@ public interface Model {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the user prefs' address book file path.
-     */
-    Path getInternHunterFilePath();
-
-    /**
-     * Sets the user prefs' address book file path.
-     */
-    void setInternHunterFilePath(Path internHunterFilePath);
-
-    /** Returns the person list */ //todo: remove when possible
+     * Returns the person list
+     */ //todo: remove when possible
     FilterableItemList<Person> getAddressBook();
 
-    /** Returns the company list */ // todo: remove if ultimately not needed
+    /**
+     * Returns the company list
+     */ // todo: remove if ultimately not needed
     FilterableItemList<CompanyItem> getCompanyList();
 
-    /** Returns an unmodifiable view of the filtered company list */
+    /**
+     * Returns an unmodifiable view of the filtered company list
+     */
     ObservableList<CompanyItem> getFilteredCompanyList();
 
-    /** Returns the unfiltered company list */
+    /**
+     * Returns the unfiltered company list
+     */
     ItemList<CompanyItem> getUnfilteredCompanyList();
+
+    /**
+     * Returns the company item list
+     */
+    ObservableList<CompanyItem> getCompanyItemList();
 
     /**
      * Returns true if a Company with the same identity as {@code companyItem} exists in the company list.
@@ -70,12 +72,6 @@ public interface Model {
      * The Company must exist in the company list.
      */
     void deleteCompany(CompanyItem target);
-
-    /**
-     * Deletes the given Company according to the weaker notion of equality.
-     * The Company may not necessarily exist in the company list.
-     */
-    void deleteSameCompany(CompanyItem target);
 
     /**
      * Adds the given Company.
@@ -93,6 +89,7 @@ public interface Model {
 
     /**
      * Updates the filter of the filtered Company list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredCompanyList(Predicate<? super CompanyItem> predicate);
@@ -102,13 +99,19 @@ public interface Model {
      */
     void setCompanyList(ItemList<CompanyItem> companyList);
 
-    /** Returns the application list */ // todo: remove if ultimately not needed
+    /**
+     * Returns the application list
+     */ // todo: remove if ultimately not needed
     FilterableItemList<ApplicationItem> getApplicationList();
 
-    /** Returns an unmodifiable view of the filtered application list */
+    /**
+     * Returns an unmodifiable view of the filtered application list
+     */
     ObservableList<ApplicationItem> getFilteredApplicationList();
 
-    /** Returns the unfiltered application list */
+    /**
+     * Returns the unfiltered application list
+     */
     ItemList<ApplicationItem> getUnfilteredApplicationList();
 
     /**
@@ -144,6 +147,7 @@ public interface Model {
 
     /**
      * Updates the filter of the filtered Application list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredApplicationList(Predicate<? super ApplicationItem> predicate);
@@ -153,14 +157,26 @@ public interface Model {
      */
     void setApplicationList(ItemList<ApplicationItem> applicationList);
 
-    /** Returns the profile list */ // todo: remove if ultimately not needed
+    /**
+     * Returns the profile list
+     */ // todo: remove if ultimately not needed
     FilterableItemList<ProfileItem> getProfileList();
 
-    /** Returns an unmodifiable view of the filtered profile list */
+    /**
+     * Returns an unmodifiable view of the filtered profile list
+     */
     ObservableList<ProfileItem> getFilteredProfileList();
 
-    /** Returns the unfiltered profile list */
+
+    /**
+     * Returns the unfiltered profile list
+     */
     ItemList<ProfileItem> getUnfilteredProfileList();
+
+    /**
+     * Returns the profile item list
+     */
+    ObservableList<ProfileItem> getProfileItemList();
 
     /**
      * Returns true if a Profile item with the same identity as {@code profileItem} exists in the profile list.
@@ -172,12 +188,6 @@ public interface Model {
      * The Profile item must exist in the profile list.
      */
     void deleteProfileItem(ProfileItem target);
-
-    /**
-     * Deletes the given Profile item according to the weaker notion of equality.
-     * The Profile item may not necessarily exist in the profile list.
-     */
-    void deleteSameProfileItem(ProfileItem target);
 
     /**
      * Adds the given Profile item.
@@ -195,6 +205,7 @@ public interface Model {
 
     /**
      * Updates the filter of the filtered Profile list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredProfileList(Predicate<? super ProfileItem> predicate);
@@ -243,4 +254,36 @@ public interface Model {
      * Retrieves the current profile view Index.
      */
     Index getProfileViewIndex();
+
+    /**
+     * Gets ProfileItem from Filtered Profile list.
+     */
+    ProfileItem getProfileItemFromFilteredList(int index);
+
+    /**
+     * Gets CompanyItem from Filtered Company list.
+     */
+    CompanyItem getCompanyItemFromFilteredList(int index);
+
+
+    /**
+     * Gets ApplicationItem from Filtered Application list.
+     */
+    ApplicationItem getApplicationItemFromFilteredList(int index);
+
+    /**
+     * Gets the size of the filtered company list.
+     */
+    int getFilteredCompanyListSize();
+
+    /**
+     * Gets the size of the filtered application list.
+     */
+    int getFilteredApplicationListSize();
+
+    /**
+     * Gets the size of the filtered profile list.
+     */
+    int getFilteredProfileListSize();
+
 }

@@ -6,13 +6,9 @@ import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.view.ViewApplicationCommand;
 import seedu.address.logic.commands.view.ViewCommand;
-import seedu.address.logic.commands.view.ViewProfileCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.util.GeneralParserUtil;
 
 /**
  * Parses input arguments and creates a new ViewCommand object
@@ -31,22 +27,15 @@ public class ViewCommandParser implements Parser<ViewCommand> {
         String itemType = getItemType(args, ViewCommand.MESSAGE_USAGE);
         String commandDetails = getCommandDetails(args);
 
-        // todo: delete the line below when all command parsers have been written; note that with this line still
-        //  present, error messages will appear inappropriate for commands like "view ITEM_TYPE" (args are missing)
-        Index index = GeneralParserUtil.parseIndex(commandDetails);
-
         switch (itemType) {
         case COMPANY_ALIAS:
             return new ViewCompanyCommandParser().parse(commandDetails);
 
         case APPLICATION_ALIAS:
-            // todo: return view application command parser
-            return new ViewApplicationCommand(index);
+            return new ViewApplicationCommandParser().parse(commandDetails);
 
         case PROFILE_ALIAS:
-            // todo: return view profile command parser
-            return new ViewProfileCommand(index);
-
+            return new ViewProfileCommandParser().parse(commandDetails);
         default:
             // Invalid item type
             throw new ParseException(MESSAGE_INVALID_ITEM_TYPE);

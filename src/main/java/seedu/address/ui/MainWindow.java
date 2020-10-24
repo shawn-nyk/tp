@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.ui.GuardClauseUi.IS_EMPTY_DATA_LIST;
 import static seedu.address.ui.GuardClauseUi.IS_EMPTY_DISPLAY;
 import static seedu.address.ui.GuardClauseUi.IS_EMPTY_LIST_PANEL;
@@ -64,6 +65,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private InternshipsWindow internshipsWindow;
     private Tabs tabs;
     @FXML
     private VBox cardList;
@@ -99,6 +101,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the primary stage.
+     *
      * @return the {@code primaryStage} of the main window.
      */
     public Stage getPrimaryStage() {
@@ -115,13 +119,13 @@ public class MainWindow extends UiPart<Stage> {
         setWindowDefaultSize(logic.getGuiSettings());
         bindHeights(primaryStage);
         helpWindow = new HelpWindow();
-
+        internshipsWindow = new InternshipsWindow();
         primaryStage.setOnCloseRequest(event -> {
             GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                     (int) primaryStage.getX(), (int) primaryStage.getY());
             logic.setGuiSettings(guiSettings);
 
-            ExitDialog exitDialog = new ExitDialog(event, helpWindow);
+            ExitDialog exitDialog = new ExitDialog(event, helpWindow, internshipsWindow);
             exitDialog.show();
         });
     }
@@ -204,17 +208,35 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleHelp() {
-        if (!helpWindow.isShowing()) {
-            helpWindow.show();
+        handlePopupWindow(helpWindow);
+    }
+
+    /**
+     * Opens the internships window or focuses on it if it's already opened.
+     */
+    @FXML
+    public void handleMatchingInternships(String internshipList) {
+        internshipsWindow.setTextDisplay(internshipList);
+        handlePopupWindow(internshipsWindow);
+    }
+
+    /**
+     * Opens the popup window or focuses on it if it's already opened.
+     *
+     * @param popupWindow Popup window.
+     */
+    private void handlePopupWindow(PopupWindow popupWindow) {
+        if (!popupWindow.isShowing()) {
+            popupWindow.show();
         } else {
-            helpWindow.focus();
+            popupWindow.focus();
         }
     }
 
     /**
      * Displays the GUI.
      */
-    void show() {
+    public void show() {
         primaryStage.show();
     }
 
@@ -232,6 +254,7 @@ public class MainWindow extends UiPart<Stage> {
      * @param tabName The tab to be switched to.
      */
     private void switchTab(TabName tabName) {
+        requireNonNull(tabName);
         tabs.switchTab(tabName);
     }
 
@@ -248,6 +271,10 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+
+            if (commandResult.isShowMatchingInternships()) {
+                handleMatchingInternships(commandResult.getMatchingInternshipsText());
+            }
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
@@ -304,6 +331,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the list of cards that displays a list of company information.
+     *
      * @return An Optional value containing the company list panel.
      */
     private Optional<ListPanel<? extends Item>> getCompanyTabView() {
@@ -311,6 +340,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the list of cards that displays a list of application information.
+     *
      * @return An Optional value containing the application list panel.
      */
     private Optional<ListPanel<? extends Item>> setApplicationTabView() {
@@ -318,6 +349,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the list of cards that displays a list of profile information.
+     *
      * @return An Optional value containing the profile list panel.
      */
     private Optional<ListPanel<? extends Item>> setProfileTabView() {
@@ -355,6 +388,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the particular company item's information at that index.
+     *
      * @param index The Index of the display to be displayed.
      * @return An Optional containing the display information of the company at that particular Index.
      */
@@ -366,6 +401,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the particular application item's information at that index.
+     *
      * @param index The Index of the display to be displayed.
      * @return An Optional containing the display information of the Application at that particular Index.
      */
@@ -377,6 +414,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the particular profile item's information at that index.
+     *
      * @param index The Index of the display to be displayed.
      * @return An Optional containing the display information of the profile at that particular Index.
      */

@@ -7,7 +7,10 @@ import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
+import seedu.address.logic.commands.list.ListApplicationCommand;
 import seedu.address.logic.commands.list.ListCommand;
+import seedu.address.logic.commands.list.ListCompanyCommand;
+import seedu.address.logic.commands.list.ListProfileCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -29,17 +32,11 @@ public class ListCommandParser implements Parser<ListCommand> {
 
         switch (itemType) {
         case COMPANY_ALIAS:
-            // todo shawn
-            //return new ListCompanyCommand();
-            return null;
+            return new ListCompanyCommand();
         case APPLICATION_ALIAS:
-            // todo sean
-            //return new ListApplicationCommand();
-            return null;
+            return new ListApplicationCommand();
         case PROFILE_ALIAS:
-            // todo isaac
-            //return new ListProfileCommand();
-            return null;
+            return new ListProfileCommand();
         default:
             // Invalid item type
             throw new ParseException(MESSAGE_INVALID_ITEM_TYPE);
