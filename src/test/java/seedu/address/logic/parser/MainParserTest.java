@@ -24,6 +24,8 @@ import seedu.address.logic.commands.SwitchCommand;
 import seedu.address.logic.commands.edit.EditCommandAbstract;
 import seedu.address.logic.commands.find.FindApplicationCommand;
 import seedu.address.logic.commands.find.FindCommand;
+import seedu.address.logic.commands.find.FindCompanyCommand;
+import seedu.address.logic.commands.find.FindProfileCommand;
 import seedu.address.logic.commands.list.ListCommand;
 import seedu.address.logic.commands.view.ViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -97,11 +99,10 @@ public class MainParserTest {
 
         @Test
         public void parseCommand_findValidTypes_returnsTrue() throws ParseException {
-            // TODO include in when the rest are done
-            // assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + " me software") instanceof FindCommand);
-            // assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + " me 3") instanceof FindCommand);
-            // assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + " com hardware") instanceof FindCommand);
-            // assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + " com 4") instanceof FindCommand);
+            assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + " me software") instanceof FindCommand);
+            assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + " me 3") instanceof FindCommand);
+            assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + " com hardware") instanceof FindCommand);
+            assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + " com 4") instanceof FindCommand);
             assertTrue(parser.parseCommand(FindCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " developers")
                 instanceof FindCommand);
 
@@ -146,14 +147,14 @@ public class MainParserTest {
                 -> parser.parseCommand(FindCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC));
 
             // missing description for com
-            // String comMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCompanyCommand.MESSAGE_USAGE);
-            // assertThrows(ParseException.class, comMessage, () -> parser.parseCommand("find com "));
-            // assertThrows(ParseException.class, comMessage, () -> parser.parseCommand("find com"));
+            String comMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCompanyCommand.MESSAGE_USAGE);
+            assertThrows(ParseException.class, comMessage, () -> parser.parseCommand("find com "));
+            assertThrows(ParseException.class, comMessage, () -> parser.parseCommand("find com"));
 
             // missing description for me
-            // String meMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindProfileCommand.MESSAGE_USAGE);
-            // assertThrows(ParseException.class, meMessage, () -> parser.parseCommand("find me "));
-            // assertThrows(ParseException.class, meMessage, () -> parser.parseCommand("find me"));
+            String meMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindProfileCommand.MESSAGE_USAGE);
+            assertThrows(ParseException.class, meMessage, () -> parser.parseCommand("find me "));
+            assertThrows(ParseException.class, meMessage, () -> parser.parseCommand("find me"));
         }
     }
 
@@ -162,10 +163,8 @@ public class MainParserTest {
 
         @Test
         public void parseCommand_listValidTypes_returnsTrue() throws ParseException {
-            // TODO include in when the rest are done
-            //assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " me") instanceof ListCommand);
-            //assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " com") instanceof ListCommand);
-
+            assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " me") instanceof ListCommand);
+            assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " com") instanceof ListCommand);
             assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC) instanceof ListCommand);
         }
 
