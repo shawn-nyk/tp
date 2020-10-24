@@ -25,21 +25,21 @@ title: User Guide
   [4.2.2. Deleting an internship: `delete int`](#deleting-an-internship-delete-int) <br />
   [4.2.3. Editing an internship: `edit int`](#editing-an-internship-edit-int) <br />
  [4.3. Application](#application) <br />
-  [4.3.1. Adding an application: `add app`](#adding-an-application-add-app) <br />
+  [4.3.1. Applying for an internship: `add app`](#applying-for-an-internship-add-app) <br />
   [4.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
-  [4.3.3. Editing an application: `edit app`](#editing-an-application-edit-app) <br />
+  [4.3.3. Updating an application: `edit app`](#updating-an-application-edit-app) <br />
   [4.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
-  [4.3.5. Finding an application: `find app`](#finding-an-application-find-app) <br />
-  [4.3.6. Listing all application: `list app`](#listing-all-application-list-app) <br />
+  [4.3.5. Finding applications: `find app`](#finding-applications-find-app) <br />
+  [4.3.6. Listing all applications: `list app`](#listing-all-applications-list-app) <br />
  [4.4. Profile](#profile) <br />
   [4.4.1. Adding item to profile: `add me`](#adding-item-to-profile-add-me) <br />
   [4.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
   [4.4.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
   [4.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
-  [4.4.5. Finding an item in profile: `find me`](#finding-an-item-in-profile-find-me) <br />
-  [4.4.6. Listing all profile item: `list me`](#listing-all-item-in-profile-list-me) <br />
+  [4.4.5. Finding items in profile: `find me`](#finding-items-in-profile-find-me) <br />
+  [4.4.6. Listing all profile items: `list me`](#listing-all-items-in-profile-list-me) <br />
  [4.5 General](#general) <br />
-  [4.5.1. Matching of skills: `match`](#matching-of-skills-match) <br />
+  [4.5.1. Generating matching internships: `match`](#generating-matching-internships-match) <br />
   [4.5.2. Switching Tabs: `switch`](#switching-tabs-switch) <br />
   [4.5.3. Viewing Help: `help`](#viewing-help-help) <br />
   [4.5.4. Clearing all entries: `clear`](#clearing-all-entries-clear) <br />
@@ -84,12 +84,16 @@ Application | app | internship, status, status date | An internship application 
 Profile Item | me | category, title, descriptors | An item in your profile
 
 And here's what you can do:
-1. When you find a company that you are interested in, add it to your list of companies with the [`add com` command](#adding-a-company-add-com)
-2. Next, note down the internships offered by that company that interest you with the [`add int` command](#adding-an-internship-add-int)
-3. And once you've applied for an internship, record it down to keep track of it with the [`add app` command](#adding-an-application-add-app)
+1. When you find a company that you are interested in, add it to your list of companies with the: <br />
+[`add com` command](#adding-a-company-add-com)
+2. Next, note down the internships offered by that company that interest you with the: <br />
+[`add int` command](#adding-an-internship-add-int)
+3. And once you've applied for an internship, record it down to keep track of it with the: <br />
+[`add app` command](#applying-for-an-internship-add-app)
 
-You can also keep track of your achievements, experience and skills in your own [user profile](#profile) to help you 
-in figuring out which internship is the best fit for you.
+You can also keep track of your achievements, experience and skills in your own [profile](#profile). Along with the 
+[skills matching feature](#generating-matching-internships-match), it will aid you in creating a tailored resume for each 
+application and figure out which internship is the best fit for you.
 
 Simple? Well that's the InternHunter flow.
 
@@ -129,6 +133,7 @@ Commands | Words that determines the action of InternHunter.
 Command word | The first word of every command.
 Parameters | Information that is supplied by you.
 Execute | Typing the information into the command box and pressing enter.
+
 #### Understanding the symbols
 
 Symbol | What it means
@@ -136,6 +141,7 @@ Symbol | What it means
 :information_source: | Important information to take note.
 :bulb: | Extra tip.
 `add` | Words that have a grey highlighted background are commands that can be keyed into the command box.
+*italics* | Words in italics represent additional information.
 
 #### Understanding the usage of the commands
 
@@ -178,8 +184,8 @@ Format: `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...
 Examples:
 - `add com n/Garena a/201 Victoria St e/GarenaHires@garena.com p/65093545` *(notice that the company's industry types
  need not be specified)*
-- Executing `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Intelligence`
-on an empty company list will add the company as follows: <br />
+- Executing `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t
+/Artificial Intelligence` on an empty company list will add the company as follows: <br />
 ![AddCompanySS](images/AddCompanySS.PNG)
 
 #### Deleting a company: `delete com`
@@ -227,11 +233,11 @@ Finds all companies in your list of companies whose names contain any of the giv
 
 Format: `find com KEYWORD [ANOTHER_KEYWORD]...`
 - Only the company name will be searched for.
-- The search is case-insensitive. e.g. `google` will match `Google`
+- The search is case-insensitive. e.g. `google` will match `Google`.
 - Companies with names matching at least one keyword will be returned. e.g. `Google Facebook` will return companies
- whose names contain the word `Google` *or* `Facebook`
-- The order of the keywords does not matter. e.g. `Google Facebook` and `Facebook Google` will return the same results
-- Only full words will be matched. e.g. `Googl` will not match `Google`
+ whose names contain the word `Google` *or* `Facebook`.
+- The order of the keywords does not matter. e.g. `Google Facebook` and `Facebook Google` will return the same results.
+- Only full words will be matched. e.g. `Googl` will not match `Google`.
 
 Examples:
 - `find com Amazon`
@@ -244,9 +250,9 @@ Examples:
 
 #### Listing all companies: `list com`
 
-Lists out all companies in your list of companies. After using the `find com` command, you would have likely narrowed 
-your list of companies down to a few search results. Use the `list com` command to go back to seeing all the companies 
-in your list.
+Lists out **all** companies in your list of companies. After using the `find com` command, you would have likely
+narrowed your list of companies down to a few search results. Use the `list com` command to revert to seeing all the
+companies in your list.
 
 Format: `list com`
 
@@ -259,7 +265,7 @@ Note: You must be on the **Company** tab in order to execute these commands.
 Adds an internship to a company.
 
 Format: `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
-- `PERIOD` can refer to any word (e.g. 3 months, Summer break)
+- `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`).
 
 Examples:
 - `add int 1 j/Software Engineer w/1512`
@@ -291,18 +297,22 @@ Examples:
 
 ### **Application**
 
-Note: You must be on the **Company** tab in order to execute the add app command. To execute all other commands of type Application, you
-must be on the **Application** tab.
+Now that you have learnt how to manage your companies and internships, the next burning question you probably have is 
+how to use InternHunter to apply, track and manage your internship applications. Read on through this section to find 
+out how.
 
-Each application comes with a `STATUS` and `STATUS_DATE` field that indicates the date that the status was set/updated.
+:information_source: Each application comes with a `STATUS` and `STATUS_DATE` field which indicates the date that the
+`STATUS` was set/updated.
 
 Valid `STATUS` specifiers:
-- `applied`
-- `interview`
-- `waiting`
-- `rejected`
-- `offered`
-- `accepted`
+- `Applied`
+- `Interview`
+- `Waiting`
+- `Rejected`
+- `Offered`
+- `Accepted`
+
+:information_source: Note that status added are case-insensitive
 
 Valid `STATUS_DATE` formats:
 
@@ -314,18 +324,23 @@ Valid `STATUS_DATE` formats:
 
 :information_source: Note that dates added must be in the future
 
-#### Adding an application: `add app`
+#### Applying for an internship: `add app`
 
 Selects an internship from a company and adds it to your list of applications. If unspecified, the application’s
 `STATUS` will be `Applied`, and it’s `STATUS_DATE` will be set as today’s date.
 
 Format: `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
 - Where `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
-internship in the company’s list of internships.
+internship in the company’s internship list.
 
-Examples:
-- `add app 1 i/2`
-- `add app 1 i/2 s/waiting d/23-12-20`
+Example:
+- Suppose you are interested in applying for the Software Engineer internship in Google Singapore:
+<p align="center"><img src="images/ug-application/Internship.png" width="100%"/></p>
+
+Executing `add app 1 i/1` will apply for the internship as follows. The default status and status date will be used
+since the status and status date are not specified in this case. Note that you will be automatically switched to
+the application tab to view this application made:
+<p align="center"><img src="images/ug-application/AddApplication.png" width="100%"/></p>
 
 #### Deleting an application: `delete app`
 
@@ -336,53 +351,91 @@ Format: `delete app INDEX`
 Example:
 - `delete app 3`
 
-#### Editing an application: `edit app`
+#### Updating an application: `edit app`
 
-Edits an application in your list of applications.
+Updates an application in your list of applications.
 
-Format:  `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
+Format: `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
 - At least one of the optional fields must be provided.
 
-Examples:
-- `edit app 5 s/offered`
-- `edit app 2 s/waiting d/10-11-20`
+Example:
+- Suppose Google Singapore has replied to your application for the Software Engineer internship and has called you up 
+for an interview on the 28 Oct 2020, 2pm. Executing `edit app 1 s/interview d/28-10-2020 1400` will update this 
+application:
+<p align="center"><img src="images/ug-application/EditApplication.png" width="125%" height="125%"/></p>
 
 #### Viewing an application: `view app`
 
-Selects an application in the list of applications to show in detail.
+Selects an application in the list of applications to show in detail on the right panel.
  
 Format: `view app INDEX`
 
 Example:
-- `view app 3`
+- Suppose you are currently viewing the first application and you want to view the second application. 
+Executing `view app 2` will update the right panel to display the second application:
+<p align="center"><img src="images/ug-application/ViewApplication.png" width="100%"/></p>
+
+#### Finding applications: `find app`
+
+Finds all applications in your list of applications whose job titles contain any of the given keywords.
+
+Format: `find app KEYWORD [ANOTHER_KEYWORD]...`
+- Find command matching is the same as that used in [`find com` command](#finding-companies-find-com), except 
+job titles are used in placed of company names.
+
+Example:
+- Suppose you have this list of applications. Executing `find app engineer` will update the list to show matching
+applications:
+<p align="center"><img src="images/ug-application/FindApplication.png" width="100%"/></p>
+
+#### Listing all applications: `list app`
+
+Lists out **all** applications in your list of applications. After using the `find app` command, you would have likely
+narrowed your list of applications down to a few search results. Use the `list app` command to revert to seeing
+all the applications in your list.
+
+Format: `list app`
 
 ### **Profile**
 
-Note: You must be on the **Profile** tab in order to execute these commands.
+The profile feature offers you the ability to keep track and maintain your personal portfolio. It stores
+profile items which are entities that describe an achievement, a past experience or a skill you have acquired.
+It assists you in crafting a tailored resume for your internship applications by allowing you to find items in your
+profile which are relevant to the job description through the [find feature](#finding-items-in-profile-find-me).
 
-Your profile can contain 3 categories of information.
+Each profile item belongs to 1 of 3 categories.
 
 Valid `CATEGORY` specifiers:
 - `achievement`
 - `experience`
 - `skill`
 
-Each profile item (bit of information) also contains a `TITLE` that describes the item, and you can optionally 
+Each category is represented by the following icons in the UI:
+
+| CATEGORY   | ICON 
+|------------|------------------
+|`achievement`| <p><img src="images/achievement.png" width="10%" height="10%"/></p>
+|`experience` | <p><img src="images/experience.png" width="10%" height="10%"/></p>
+|`skill`      | <p><img src="images/skill.png" width="10%" height="10%"/></p>
+
+
+Each profile item also contains a `TITLE` that describes the item, and you can optionally 
 add additional `DESCRIPTOR`s to further describe the item in point form.
 
 #### Adding item to profile: `add me`
 
-Adds experience, skills or achievements descriptors to your profile.
+Adds a profile item to your profile.
 
 Format: `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
 
-* Category specifies a category which can be either experience, skills or achievement.
-
 Examples:
-* `add me c/experience t/Internship at Govtech d/Implemented automate testing 
-using TravisCI d/Implemented dashboard to track code coverage`
-* `add me c/achievement t/special recognition in Hack n Roll`
 * `add me c/skill t/HTML d/Learn how to create divs`
+* `add me c/achievement t/special recognition in Hack n Roll`
+* For example, you have just completed an internship at Govtech. Executing `add me c/experience t/Internship at
+ Govtech d/Implemented automate testing using TravisCI d/Implemented dashboard to track code coverage` on an empty 
+ profile will add the profile item as follows: <br />
+ 
+![AddProfileSS](images/AddProfileItemSS.png)
 
 #### Deleting item in profile: `delete me`
 
@@ -398,23 +451,83 @@ Example:
 Edit the experience, skills or achievements descriptors of your profile.
 
 Format: `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTORS]`
-
 * At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing `DESCRIPTORS`, all existing descriptors get replaced by the new specified descriptors.
+* You can remove all `DESCRIPTORS` by adding d/ without anything after it.
 
 Examples:
 * `edit me 2 c/skill t/CSS d/learnt how to use flexbox`
-* `edit me 4 c/achievement`
-
+* For example if you want to update the title and descriptor of the first item in your profile.
+* Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the the profile item to:<br />
+![EditProfileSS](images/EditProfile.PNG)<br />
+ *(Note that the existing descriptors get replaced)*
+ 
 #### Viewing item in profile: `view me`
 
-Selects an item in the profile to show in detail.
+Selects an item in the profile to show in detail on the right panel.
 
 Format: `view me INDEX`
 
 Example:
 * `view me 3`
+* For example if you have the following profile items and you want to view the third item in your user profile. Executing `view me 3` will show the following:<br />
+
+![ViewProfile](images/ViewProfile.png)<br />
+*(As you can see the details of the third item can be seen in the right panel)*
+
+#### Finding items in profile: `find me`
+
+Finds all items in your profile whose titles contain any of the specified keywords.
+
+Format: `find me KEYWORD [ANOTHER_KEYWORD]...`
+- Only the profile item's title will be searched for.
+- The search is case-insensitive. e.g. `HTML` will match and return items with `html` in its title.
+- Profile items with titles matching at least one keyword will be returned. e.g. `Hackathon Internship` will return
+ a list of profile items whose titles contain the word `Hackathon` *or* `Internship`.
+- The ordering of the keywords does not affect the outcome of the query. e.g. `Hackathon Internship` and `Internship
+ Hackathon` will return the same results.
+- Only full words will be matched. e.g. `Intern` will not match `Internship`.
+
+Examples:
+- `find me Internship`
+- For the following example, if the profile contains the following items. Executing `find me internship` will return
+ the following: <br />
+     
+     ![FindProfile](images/FindProfileSingle.png) <br />
+     
+     And executing `find me internship google` will return the following: <br />
+     
+     ![FindProfileDouble](images/FindProfileDouble.png) <br />
+     *(As you can see, the search results match at least one of the keywords specified regardless of its casing)*
+
+#### Listing all items in profile: `list me`
+
+Lists out all items in your profile. After using the `find me` command, you would have likely filtered 
+your list of profile items down to a few search results. You can then use the `list me` command to revert to seeing 
+all the items in your profile.
+
+Format: `list me`
+
 
 ### **General**
+
+#### Generating matching internships: `match`
+
+Generates a list of internships that have requirements that matches your current set of skills.
+
+Format: `match`
+- Matching done is case-insensitive. e.g. `Python` will match `python`
+- Internships with job titles matching at least one `SKILL` will be returned.
+- Only full words will be matched. e.g. `React` will not match `React Native`
+
+Example:
+- Suppose you have these 2 internship lists (from 2 different companies) and profile skills in your list.
+Executing `match` will generate the list of matching internships in a new window.
+
+<p align="center"><img src="images/ug-application/MatchCommand.png" width="100%"/></p>
+
+:bulb: You can press Esc key to close the popup window!
 
 #### Switching Tabs: `switch`
 
@@ -463,7 +576,7 @@ Unfortunately InternHunter does not provide an `undo` method.
 --------------------------------------------------------------------------------------------------------------------
 
 
-## Command summary
+## **Command summary**
 
 Type            | Action     | Format
 ----------------|------------|------------------
