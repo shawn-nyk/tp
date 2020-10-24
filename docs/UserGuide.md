@@ -345,7 +345,7 @@ Each category is represented by the following icons in the UI:
 
 | CATEGORY   | ICON 
 |------------|------------------
-|`achievement`| ![AddProfileSS](images/achievement.PNG)
+|`achievement`| ![AddProfileSS](images/achievement.png)
 |`experience` | ![AddProfileSS](images/experience.PNG)
 |`skill`      | ![AddProfileSS](images/skills.PNG)
 
@@ -364,9 +364,10 @@ Format: `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
 Examples:
 * `add me c/skill t/HTML d/Learn how to create divs`
 * `add me c/achievement t/special recognition in Hack n Roll`
-* For example, executing `add me c/experience t/Internship at Govtech d/Implemented automate testing 
-using TravisCI d/Implemented dashboard to track code coverage` on an empty profile will add the profile item as follows: <br />
-![AddProfileSS](images/AddProfileItemSS.PNG)
+* For example, you have just completed an internship at Govtech, executing `add me c/experience t/Internship at
+ Govtech d/Implemented automate testing using TravisCI d/Implemented dashboard to track code coverage` on an empty profile will add the profile item as follows: <br />
+ 
+![AddProfileSS](images/AddProfileItemSS.png)
 #### Deleting item in profile: `delete me`
 
 Deletes experience, skills or achievements descriptors from your profile.
@@ -389,15 +390,12 @@ Format: `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTORS]`
 
 Examples:
 * `edit me 2 c/skill t/CSS d/learnt how to use flexbox`
-* For example if you want to update the title and descriptor of the first item in your profile:<br />
+* For example if you want to update the title and descriptor of the first item in your profile.
+* Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the the profile item to:<br />
 
-![EditProfileBeforeSS](images/EditProfileItemBeforeSS.PNG)<br />
-
-Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the the profile item to:<br />
-
-![EditProfileAfterSS](images/EditProfileItemAfterSS.PNG)<br />
- *(Note that the existing descriptors get replaced and cannot be accumulated)*
-
+![EditProfileSS](images/EditProfile.png)<br />
+ *(Note that the existing descriptors get replaced)*
+ 
 #### Viewing item in profile: `view me`
 
 Selects an item in the profile to show in detail. The category and descriptors of the selected profile item will be
@@ -407,13 +405,9 @@ Format: `view me INDEX`
 
 Example:
 * `view me 3`
-* For example if you have the following profile items and you want to view the third item in your user profile:<br />
+* For example if you have the following profile items and you want to view the third item in your user profile. Executing `view me 3` will show the following:<br />
 
-![ViewProfileAfterSS](images/ViewProfileAfterSS.PNG)<br />
-
-Executing `view me 3` will show the following:<br />
-
-![ViewProfileAfterSS](images/ViewProfileAfterSS.PNG)<br />
+![ViewProfile](images/ViewProfile.png)<br />
 *(As you can see the details of the third item can be seen in the right panel)*
 
 #### Finding items in profile: `find me`
@@ -431,17 +425,14 @@ Format: `find me KEYWORD [ANOTHER_KEYWORD]...`
 
 Examples:
 - `find me Internship`
-- For the following example, if the profile contains the following items: <br />
-
-     ![FindProfileBeforeSS](images/FindProfileBeforeSS.PNG) <br />
+- For the following example, if the profile contains the following items. Executing `find me internship` will return
+ the following: <br />
      
-     Executing `find me internship` will return the following: <br />
-     
-     ![FindProfileAfterSS](images/FindProfileAfterSS.PNG) <br />
+     ![FindProfile](images/FindProfileSingle.png) <br />
      
      And executing `find me internship google` will return the following: <br />
      
-     ![FindProfileAfterSSDouble](images/FindProfileAfterSSDouble.PNG) <br />
+     ![FindProfileDouble](images/FindProfileDouble.png) <br />
      *(As you can see the search results match at least one of the keywords specified regardless of its casing)*
 
 #### Listing all items in profile: `list me`
