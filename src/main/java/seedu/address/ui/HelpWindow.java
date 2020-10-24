@@ -7,18 +7,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 
 /**
- * Controller for a help page
+ * Controller for the help window.
  */
-public class HelpWindow extends UiPart<Stage> {
+public class HelpWindow extends PopupWindow {
 
-    public static final String USERGUIDE_URL = "https://ay2021s1-cs2103t-t15-4.github.io/tp/UserGuide.html";
-    public static final String HELP_MESSAGE = "Refer to the user guide: " + USERGUIDE_URL;
+    private static final String USERGUIDE_URL = "https://ay2021s1-cs2103t-t15-4.github.io/tp/UserGuide.html";
+    private static final String HELP_MESSAGE = "Refer to the user guide: " + USERGUIDE_URL;
 
     private static final Logger logger = LogsCenter.getLogger(HelpWindow.class);
     private static final String FXML = "HelpWindow.fxml";
@@ -31,20 +29,10 @@ public class HelpWindow extends UiPart<Stage> {
 
     /**
      * Creates a new HelpWindow.
-     *
-     * @param root Stage to use as the root of the HelpWindow.
-     */
-    public HelpWindow(Stage root) {
-        super(FXML, root);
-        helpMessage.setText(HELP_MESSAGE);
-        addCloseWindowOnEsc(root);
-    }
-
-    /**
-     * Creates a new HelpWindow.
      */
     public HelpWindow() {
-        this(new Stage());
+        super(FXML, new Stage());
+        helpMessage.setText(HELP_MESSAGE);
     }
 
     /**
@@ -67,44 +55,7 @@ public class HelpWindow extends UiPart<Stage> {
      */
     public void show() {
         logger.fine("Showing help page about the application.");
-        getRoot().show();
-        getRoot().centerOnScreen();
-    }
-
-    /**
-     * Returns true if the help window is currently being shown.
-     *
-     * @return A boolean value representing whether a help window is being shown.
-     */
-    public boolean isShowing() {
-        return getRoot().isShowing();
-    }
-
-    /**
-     * Hides the help window.
-     */
-    public void hide() {
-        getRoot().hide();
-    }
-
-    /**
-     * Focuses on the help window.
-     */
-    public void focus() {
-        getRoot().requestFocus();
-    }
-
-    /**
-     * Closes the help window when the escape button is pressed and released.
-     *
-     * @param stage Current stage.
-     */
-    private void addCloseWindowOnEsc(Stage stage) {
-        stage.addEventHandler(KeyEvent.KEY_RELEASED, (KeyEvent event) -> {
-            if (KeyCode.ESCAPE == event.getCode()) {
-                stage.close();
-            }
-        });
+        super.show();
     }
 
     /**

@@ -3,7 +3,6 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.nio.file.Path;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -88,8 +87,21 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public int getFilteredCompanyListSize() {
+        return companyList.getSize();
+    }
+
+    @Override
     public ItemList<CompanyItem> getUnfilteredCompanyList() {
         return companyList.getUnfilteredItemList();
+    }
+
+    /**
+     * Returns the company item list
+     */
+    @Override
+    public ObservableList<CompanyItem> getCompanyItemList() {
+        return companyList.getItemList();
     }
 
     @Override
@@ -142,6 +154,11 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<ApplicationItem> getFilteredApplicationList() {
         return applicationList.getFilteredItemList();
+    }
+
+    @Override
+    public int getFilteredApplicationListSize() {
+        return applicationList.getSize();
     }
 
     @Override
@@ -208,8 +225,21 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public int getFilteredProfileListSize() {
+        return profileList.getSize();
+    }
+
+    @Override
     public ItemList<ProfileItem> getUnfilteredProfileList() {
         return profileList.getUnfilteredItemList();
+    }
+
+    /**
+     * Returns the profile item list
+     */
+    @Override
+    public ObservableList<ProfileItem> getProfileItemList() {
+        return profileList.getItemList();
     }
 
     @Override
@@ -273,17 +303,6 @@ public class ModelManager implements Model {
     public void setGuiSettings(GuiSettings guiSettings) {
         requireNonNull(guiSettings);
         userPrefs.setGuiSettings(guiSettings);
-    }
-
-    @Override
-    public Path getInternHunterFilePath() {
-        return userPrefs.getAddressBookFilePath();
-    }
-
-    @Override
-    public void setInternHunterFilePath(Path internHunterFilePath) {
-        requireNonNull(internHunterFilePath);
-        userPrefs.setAddressBookFilePath(internHunterFilePath);
     }
 
 

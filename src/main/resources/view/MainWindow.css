@@ -223,6 +223,14 @@
     -fx-font-weight: bold;
 }
 
+.windowTextDisplay {
+    -fx-focus-color: transparent;
+    -fx-control-inner-background: "white";
+    -fx-font-family: "Droid Sans";
+    -fx-font-size: 20px;
+    -fx-text-fill: #6F67C6;
+}
+
 .information_display_bar {
     -fx-pref-height: 1;
     -fx-background-color: #DBE8FF;
