@@ -1,8 +1,8 @@
 @startuml
 (*)  --> If "" then
-    [applicationItemList.json is empty] If "" then
-        [companyItemList.json is empty] If "" then
-        ---> [profileItemList.json is empty] "use sample data"
+    [[applicationItemList.json is empty&#93;] If "" then
+        [[companyItemList.json is empty&#93;] If "" then
+        ---> [[profileItemList.json is empty&#93;] "use sample data"
         -->(*)
         else
         --> [else] "use user data"
