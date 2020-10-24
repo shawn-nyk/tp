@@ -28,8 +28,8 @@ title: User Guide
   [3.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
   [3.3.3. Updating an application: `edit app`](#updating-an-application-edit-app) <br />
   [3.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
-  [3.1.5. Finding applications: `find app`](#finding-applications-find-app) <br />
-  [3.1.6. Listing all applications: `list app`](#listing-all-applications-list-app) <br />
+  [3.3.5. Finding applications: `find app`](#finding-applications-find-app) <br />
+  [3.3.6. Listing all applications: `list app`](#listing-all-applications-list-app) <br />
  [3.4. Profile](#profile) <br />
   [3.4.1. Adding item to profile: `add me`](#adding-item-to-profile-add-me) <br />
   [3.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
