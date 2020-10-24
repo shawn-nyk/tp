@@ -14,7 +14,7 @@ import seedu.address.model.application.ApplicationNameContainsKeyWordsPredicate;
 import seedu.address.ui.tabs.TabName;
 
 /**
- * Finds and lists all application items in Internhunter whose jobTitle contains any of the argument keywords.
+ * Finds and lists all application items in InternHunter whose jobTitle contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
 public class FindApplicationCommand extends FindCommand {
