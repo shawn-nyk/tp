@@ -11,41 +11,36 @@ title: User Guide
 [1. Introduction](#introduction) <br />
  [1.1. Overview](#overview) <br />
 [2. Quick start](#quick-start) <br />
-[3. About](#about) <br />
-[4. Features](#features) <br />
- [4.1. Company](#company) <br />
-  [4.1.1. Adding a company: `add com`](#adding-a-company-add-com) <br />
-  [4.1.2. Deleting a company: `delete com`](#deleting-a-company-delete-com) <br />
-  [4.1.3. Editing a company: `edit com`](#editing-a-company-edit-com) <br />
-  [4.1.4. Viewing a company: `view com`](#viewing-a-company-view-com) <br />
-  [4.1.5. Finding a company: `find com`](#finding-a-company-find-com) <br />
-  [4.1.6. Listing all companies: `list com`](#listing-all-companies-list-com) <br />
- [4.2. Internship](#internship) <br />
-  [4.2.1. Adding an internship: `add int`](#adding-an-internship-add-int) <br />
-  [4.2.2. Deleting an internship: `delete int`](#deleting-an-internship-delete-int) <br />
-  [4.2.3. Editing an internship: `edit int`](#editing-an-internship-edit-int) <br />
- [4.3. Application](#application) <br />
-  [4.3.1. Adding an application: `add app`](#adding-an-application-add-app) <br />
-  [4.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
-  [4.3.3. Editing an application: `edit app`](#editing-an-application-edit-app) <br />
-  [4.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
-  [4.3.5. Finding an application: `find com`](#finding-an-application-find-app) <br />
-  [4.3.6. Listing all application: `list com`](#listing-all-application-list-app) <br />
- [4.4. Profile](#profile) <br />
-  [4.4.1. Adding item to profile: `add me`](#adding-item-to-profile-add-me) <br />
-  [4.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
-  [4.4.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
-  [4.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
-  [4.4.5. Finding an item in profile: `find com`](#finding-an-item-in-profile-find-me) <br />
-  [4.4.6. Listing all profile item: `list com`](#listing-all-item-in-profile-list-me) <br />
- [4.5 General](#general) <br />
-  [4.5.1. Matching of skill: `match`](#matching-of-skill-match) <br />
-  [4.5.2. Switching Tabs: `switch`](#switching-tabs-switch) <br />
-  [4.5.3. Viewing Help: `help`](#viewing-help-help) <br />
-  [4.5.4. Clearing all entries: `clear`](#clearing-all-entries-clear) <br />
-  [4.5.5. Exiting the program: `exit`](#exiting-the-program-exit) <br />
-[5. FAQ](#faq) <br/>
-[6. Command Summary](#command-summary) <br />
+[3. Features](#features) <br />
+ [3.1. Company](#company) <br />
+  [3.1.1. Adding a company: `add com`](#adding-a-company-add-com) <br />
+  [3.1.2. Deleting a company: `delete com`](#deleting-a-company-delete-com) <br />
+  [3.1.3. Editing a company: `edit com`](#editing-a-company-edit-com) <br />
+  [3.1.4. Viewing a company: `view com`](#viewing-a-company-view-com) <br />
+  [3.1.5. Finding a company: `find com`](#finding-a-company-find-com) <br />
+  [3.1.6. Listing all companies: `list com`](#listing-all-companies-list-com) <br />
+ [3.2. Internship](#internship) <br />
+  [3.2.1. Adding an internship: `add int`](#adding-an-internship-add-int) <br />
+  [3.2.2. Deleting an internship: `delete int`](#deleting-an-internship-delete-int) <br />
+  [3.2.3. Editing an internship: `edit int`](#editing-an-internship-edit-int) <br />
+ [3.3. Application](#application) <br />
+  [3.3.1. Applying for an internship: `add app`](#applying-for-an-internship-add-app) <br />
+  [3.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
+  [3.3.3. Updating an application: `edit app`](#updating-an-application-edit-app) <br />
+  [3.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
+  [3.3.5. Finding applications: `find app`](#finding-applications-find-app) <br />
+  [3.3.6. Listing all applications: `list app`](#listing-all-applications-list-app) <br />
+ [3.4. Profile](#profile) <br />
+  [3.4.1. Adding item to profile: `add me`](#adding-item-to-profile-add-me) <br />
+  [3.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
+  [3.4.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
+  [3.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
+ [3.5 General](#general) <br />
+  [3.5.1. Generating matching internships: `match`](#generating-matching-internships-match) <br />
+  [3.5.2. Switching Tabs: `switch`](#switching-tabs-switch) <br />
+  [3.5.3. Viewing Help: `help`](#viewing-help-help) <br />
+  [3.5.4. Exiting the program: `exit`](#exiting-the-program-exit) <br />
+[4. Command Summary](#command-summary) <br />
 
 ---
 
@@ -86,7 +81,7 @@ Profile Item | me | category, title, descriptors | An item in your profile
 And here's what you can do:
 1. When you find a company that you are interested in, add it to your list of companies with the [`add com` command](#adding-a-company-add-com)
 2. Next, note down the internships offered by that company that interest you with the [`add int` command](#adding-an-internship-add-int)
-3. And once you've applied for an internship, record it down to keep track of it with the [`add app` command](#adding-an-application-add-app)
+3. And once you've applied for an internship, record it down to keep track of it with the [`add app` command](#applying-for-an-internship-add-app)
 
 You can also keep track of your achievements, experience and skills in your own [user profile](#profile) to help you 
 in figuring out which internship is the best fit for you.
@@ -180,8 +175,8 @@ Format: `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...
 Examples:
 - `add com n/Garena a/201 Victoria St e/GarenaHires@garena.com p/65093545` *(notice that the company's industry types
  need not be specified)*
-- Executing `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Intelligence`
-on an empty company list will add the company as follows: <br />
+- Executing `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t
+/Artificial Intelligence` on an empty company list will add the company as follows: <br />
 ![AddCompanySS](images/AddCompanySS.PNG)
 
 #### Deleting a company: `delete com`
@@ -250,9 +245,9 @@ Examples:
 
 #### Listing all companies: `list com`
 
-Lists out all companies in your list of companies. After using the `find com` command, you would have likely narrowed 
-your list of companies down to a few search results. Use the `list com` command to go back to seeing all the companies 
-in your list.
+Lists out **all** companies in your list of companies. After using the `find com` command, you would have likely
+narrowed your list of companies down to a few search results. Use the `list com` command to revert to seeing all the
+companies in your list.
 
 Format: `list com`
 
@@ -303,18 +298,22 @@ Examples:
 
 ### **Application**
 
-Note: You must be on the **Company** tab in order to execute the add app command. To execute all other commands of type Application, you
-must be on the **Application** tab.
+Now that you have learnt how to manage your companies and internships, the next burning question you probably have is
+how do I use our app to apply, track or manage your internship applications? Read on this section to understand
+the application features provided and use them to manage your applications in the next internship window! 
 
-Each application comes with a `STATUS` and `STATUS_DATE` field that indicates the date that the status was set/updated.
+:information_source: Each application comes with a `STATUS` and `STATUS_DATE` field which indicates the date that the
+`STATUS` was set/updated.
 
 Valid `STATUS` specifiers:
-- `applied`
-- `interview`
-- `waiting`
-- `rejected`
-- `offered`
-- `accepted`
+- `Applied`
+- `Interview`
+- `Waiting`
+- `Rejected`
+- `Offered`
+- `Accepted`
+
+:information_source: Note that status added are case-insensitive
 
 Valid `STATUS_DATE` formats:
 
@@ -326,18 +325,23 @@ Valid `STATUS_DATE` formats:
 
 :information_source: Note that dates added must be in the future
 
-#### Adding an application: `add app`
+#### Applying for an internship: `add app`
 
 Selects an internship from a company and adds it to your list of applications. If unspecified, the application’s
 `STATUS` will be `Applied`, and it’s `STATUS_DATE` will be set as today’s date.
 
 Format: `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
 - Where `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
-internship in the company’s list of internships.
+internship in the company’s internship list.
 
-Examples:
-- `add app 1 i/2`
-- `add app 1 i/2 s/waiting d/23-12-20`
+Example:
+1. Suppose you are interested in applying for the Software Engineer internship in Google Singapore.
+<p align="center"><img src="images/ug-application/Internship.png" width="100%"/></p>
+
+2. Executing `add app 1 i/1` will apply for the internship as follows. The default status and status date will be used
+since the status and status date are not specified in this case. Note that you will be automatically switched to
+the application tab to view this application made:
+<p align="center"><img src="images/ug-application/AddApplication.png" width="100%"/></p>
 
 #### Deleting an application: `delete app`
 
@@ -348,25 +352,50 @@ Format: `delete app INDEX`
 Example:
 - `delete app 3`
 
-#### Editing an application: `edit app`
+#### Updating an application: `edit app`
 
-Edits an application in your list of applications.
+Updates an application in your list of applications.
 
-Format:  `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
+Format: `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
 - At least one of the optional fields must be provided.
 
-Examples:
-- `edit app 5 s/offered`
-- `edit app 2 s/waiting d/10-11-20`
+Example:
+- Suppose Google Singapore has replied to your application for the Software Engineer internship and has called you up
+for an interview on the 28 Oct 2020, 2pm. 
+- Executing `edit app 1 s/interview d/28-10-2020 1400` will update this application:
+<p align="center"><img src="images/ug-application/EditApplication.png" width="125%" height="125%"/></p>
 
 #### Viewing an application: `view app`
 
-Selects an application in the list of applications to show in detail.
+Selects an application in the list of applications to show in detail on the right panel.
  
 Format: `view app INDEX`
 
 Example:
-- `view app 3`
+- Suppose you are currently viewing the first application and you want to view the second application. 
+Executing `view app 2` will update the right panel to display the second application:
+<p align="center"><img src="images/ug-application/ViewApplication.png" width="100%"/></p>
+
+#### Finding applications: `find app`
+
+Finds all applications in your list of applications whose job titles contain any of the given keywords.
+
+Format: `find app KEYWORD [ANOTHER_KEYWORD]...`
+- Find command matching is the same as that used in [`find com` command](#finding-a-company-find-com), except
+job titles are used in placed of company name
+
+Example:
+- Suppose you have this list of applications. Executing `find app engineer` will update the list to show matching
+applications:
+<p align="center"><img src="images/ug-application/FindApplication.png" width="100%"/></p>
+
+#### Listing all applications: `list app`
+
+Lists out **all** applications in your list of applications. After using the `find app` command, you would have likely
+narrowed your list of applications down to a few search results. Use the `list app` command to revert to seeing
+all the applications in your list.
+
+Format: `list app`
 
 ### **Profile**
 
@@ -427,6 +456,23 @@ Example:
 * `view me 3`
 
 ### **General**
+
+#### Generating matching internships: `match`
+
+Generates a list of internships that have requirements that matches your current set of skills.
+
+Format: `match`
+- Matching done is case-insensitive. e.g. `Python` will match `python`
+- Internships with job titles matching at least one `SKILL` will be returned.
+- Only full words will be matched. e.g. `React` will not match `React Native`
+
+Example:
+- Suppose you have these 2 internship lists (from 2 different companies) and profile skills in your list.
+Executing `match` will generate the list of matching internships in a new window.
+
+<p align="center"><img src="images/ug-application/MatchCommand.png" width="100%"/></p>
+
+:bulb: You can press Esc key to close the popup window!
 
 #### Switching Tabs: `switch`
 
