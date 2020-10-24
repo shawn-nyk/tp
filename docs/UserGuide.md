@@ -24,9 +24,9 @@ title: User Guide
   [3.2.2. Deleting an internship: `delete int`](#deleting-an-internship-delete-int) <br />
   [3.2.3. Editing an internship: `edit int`](#editing-an-internship-edit-int) <br />
  [3.3. Application](#application) <br />
-  [3.3.1. Adding an application: `add app`](#adding-an-application-add-app) <br />
+  [3.3.1. Applying for an internship: `add app`](#applying-for-an-internship-add-app) <br />
   [3.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
-  [3.3.3. Editing an application: `edit app`](#editing-an-application-edit-app) <br />
+  [3.3.3. Updating an application: `edit app`](#updating-an-application-edit-app) <br />
   [3.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
  [3.4. Profile](#profile) <br />
   [3.4.1. Adding item to profile: `add me`](#adding-item-to-profile-add-me) <br />
@@ -417,6 +417,18 @@ Example:
 * `view me 3`
 
 ### **General**
+
+#### Matching profile skills to internships requirements: `match`
+
+Generates a list of internships that have requirements that matches your current set of skills.
+
+Format: `match`
+
+Example:
+- Suppose you have these 2 set of profile skills and internships in your list. Executing `match` will generate the 
+list of matching internships in a new window.
+
+:bulb: You can press Esc key to close the popup window!
 
 #### Switching Tabs: `switch`
 
