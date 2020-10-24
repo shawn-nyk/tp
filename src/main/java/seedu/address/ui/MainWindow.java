@@ -8,6 +8,7 @@ import static seedu.address.ui.tabs.TabName.APPLICATION;
 import static seedu.address.ui.tabs.TabName.COMPANY;
 import static seedu.address.ui.tabs.TabName.PROFILE;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -26,6 +27,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.company.CompanyItem;
+import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.item.Item;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.ui.display.ApplicationDisplay;
@@ -215,8 +217,8 @@ public class MainWindow extends UiPart<Stage> {
      * Opens the internships window or focuses on it if it's already opened.
      */
     @FXML
-    public void handleMatchingInternships(String internshipList) {
-        internshipsWindow.setTextDisplay(internshipList);
+    private void handleMatchingInternships(List<InternshipItem> internshipList) {
+        internshipsWindow.setInternshipList(internshipList);
         handlePopupWindow(internshipsWindow);
     }
 
@@ -273,7 +275,7 @@ public class MainWindow extends UiPart<Stage> {
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
             if (commandResult.isShowMatchingInternships()) {
-                handleMatchingInternships(commandResult.getMatchingInternshipsText());
+                handleMatchingInternships(commandResult.getMatchingInternships());
             }
 
             if (commandResult.isShowHelp()) {
