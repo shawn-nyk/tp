@@ -464,7 +464,7 @@ Example:
 - Suppose you have these 2 internship lists (from 2 different companies) and profile skills in your list.
 Executing `match` will generate the list of matching internships in a new window.
 
-<p align="center"><img src="images/ug-application/MatchCommand.png" width="100%"/></p>
+<p align="center"><img src="images/ug-application/MatchCommand2.png" width="100%"/></p>
 
 :bulb: You can press Esc key to close the popup window!
 
