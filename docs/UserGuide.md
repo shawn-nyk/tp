@@ -357,7 +357,7 @@ Example:
 - Suppose Google Singapore has replied to your application for the Software Engineer internship and has called you up
 for an interview on the 28 Oct 2020, 2pm. 
 - Executing `edit app 1 s/interview d/28-10-2020 1400` will update this application:
-<p align="center"><img src="images/ug-application/EditApplication.png" width="100%"/></p>
+<p align="center"><img src="images/ug-application/EditApplication.png" width="125%" height="125%"/></p>
 
 #### Viewing an application: `view app`
 
