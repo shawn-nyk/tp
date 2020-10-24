@@ -28,15 +28,18 @@ title: User Guide
   [3.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
   [3.3.3. Updating an application: `edit app`](#updating-an-application-edit-app) <br />
   [3.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
+  [3.1.5. Finding applications: `find app`](#finding-applications-find-app) <br />
+  [3.1.6. Listing all applications: `list app`](#listing-all-applications-list-app) <br />
  [3.4. Profile](#profile) <br />
   [3.4.1. Adding item to profile: `add me`](#adding-item-to-profile-add-me) <br />
   [3.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
   [3.4.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
   [3.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
- [3.5 General](#general) <br /> 
-  [3.5.1. Switching Tabs: `switch`](#switching-tabs-switch) <br />
-  [3.5.2. Viewing Help: `help`](#viewing-help-help) <br />
-  [3.5.3. Exiting the program: `exit`](#exiting-the-program-exit) <br />
+ [3.5 General](#general) <br />
+  [3.5.1. Generating matching internships: `match`](#) <br />
+  [3.5.2. Switching Tabs: `switch`](#switching-tabs-switch) <br />
+  [3.5.3. Viewing Help: `help`](#viewing-help-help) <br />
+  [3.5.4. Exiting the program: `exit`](#exiting-the-program-exit) <br />
 [4. Command Summary](#command-summary) <br />
 
 ---
@@ -448,11 +451,14 @@ Example:
 
 ### **General**
 
-#### Matching profile skills to internships requirements: `match`
+#### Generating matching internships: `match`
 
 Generates a list of internships that have requirements that matches your current set of skills.
 
 Format: `match`
+- Matching done is case-insensitive. e.g. `Python` will match `python`
+- Internships with job titles matching at least one `SKILL` will be returned.
+- Only full words will be matched. e.g. `React` will not match `React Native`
 
 Example:
 - Suppose you have these 2 internship lists (from 2 different companies) and profile skills in your list.
