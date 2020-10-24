@@ -230,6 +230,7 @@ Format: `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
 
 Examples:
 - `add int 1 j/Machine Learning Engineer w/4700` 
+
 ![AddInternship](images/AddInternship.png)
 
 - `add int 3 j/Web Developer w/3000 r/React r/HTML5`
@@ -247,7 +248,7 @@ Example:
 
 #### Editing an internship: `edit int`
 
-Edits an internship from a company.
+Edits an internship from a company. The application (if any) made with this internship will also be edited.
 
 Format:  `edit int INDEX i/INDEX [j/JOB_TITLE] [w/WAGE] [p/PERIOD] [r/REQUIREMENT]...`
 - `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
@@ -255,13 +256,9 @@ internship in the company’s list of internships.
 - At least one of the optional fields must be provided.
 
 Examples:
-- Executing: `edit int 1 i/2 w/4800 r/Java r/Python` will change:
+- Executing `edit int 1 i/2 w/4800 r/Java r/Python`:
 
-![EditInternshipBefore](images/EditInternshipBefore.png)
-
-to:
-
-![EditInternshipAfter](images/EditInternshipAfter.png)
+![EditInternship](images/EditInternship.png)
 
 - `edit int 3 i/1 j/Frontend Developer`
 
@@ -408,7 +405,7 @@ There are three `TYPE`s:
 Example: 
 * `switch me`
 
-#### Clearing all entries: `clear'
+#### Clearing all entries: `clear`
 Clears all entries from InternHunter.
 
 format: `clear`
