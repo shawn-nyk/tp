@@ -11,36 +11,42 @@ title: User Guide
 [1. Introduction](#introduction) <br />
  [1.1. Overview](#overview) <br />
 [2. Quick start](#quick-start) <br />
-[3. Features](#features) <br />
- [3.1. Company](#company) <br />
-  [3.1.1. Adding a company: `add com`](#adding-a-company-add-com) <br />
-  [3.1.2. Deleting a company: `delete com`](#deleting-a-company-delete-com) <br />
-  [3.1.3. Editing a company: `edit com`](#editing-a-company-edit-com) <br />
-  [3.1.4. Viewing a company: `view com`](#viewing-a-company-view-com) <br />
-  [3.1.5. Finding a company: `find com`](#finding-a-company-find-com) <br />
-  [3.1.6. Listing all companies: `list com`](#listing-all-companies-list-com) <br />
- [3.2. Internship](#internship) <br />
-  [3.2.1. Adding an internship: `add int`](#adding-an-internship-add-int) <br />
-  [3.2.2. Deleting an internship: `delete int`](#deleting-an-internship-delete-int) <br />
-  [3.2.3. Editing an internship: `edit int`](#editing-an-internship-edit-int) <br />
- [3.3. Application](#application) <br />
-  [3.3.1. Applying for an internship: `add app`](#applying-for-an-internship-add-app) <br />
-  [3.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
-  [3.3.3. Updating an application: `edit app`](#updating-an-application-edit-app) <br />
-  [3.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
-  [3.3.5. Finding applications: `find app`](#finding-applications-find-app) <br />
-  [3.3.6. Listing all applications: `list app`](#listing-all-applications-list-app) <br />
- [3.4. Profile](#profile) <br />
-  [3.4.1. Adding item to profile: `add me`](#adding-item-to-profile-add-me) <br />
-  [3.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
-  [3.4.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
-  [3.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
- [3.5 General](#general) <br />
-  [3.5.1. Generating matching internships: `match`](#generating-matching-internships-match) <br />
-  [3.5.2. Switching Tabs: `switch`](#switching-tabs-switch) <br />
-  [3.5.3. Viewing Help: `help`](#viewing-help-help) <br />
-  [3.5.4. Exiting the program: `exit`](#exiting-the-program-exit) <br />
-[4. Command Summary](#command-summary) <br />
+[3. About](#about) <br />
+[4. Features](#features) <br />
+ [4.1. Company](#company) <br />
+  [4.1.1. Adding a company: `add com`](#adding-a-company-add-com) <br />
+  [4.1.2. Deleting a company: `delete com`](#deleting-a-company-delete-com) <br />
+  [4.1.3. Editing a company: `edit com`](#editing-a-company-edit-com) <br />
+  [4.1.4. Viewing a company: `view com`](#viewing-a-company-view-com) <br />
+  [4.1.5. Finding a company: `find com`](#finding-a-company-find-com) <br />
+  [4.1.6. Listing all companies: `list com`](#listing-all-companies-list-com) <br />
+ [4.2. Internship](#internship) <br />
+  [4.2.1. Adding an internship: `add int`](#adding-an-internship-add-int) <br />
+  [4.2.2. Deleting an internship: `delete int`](#deleting-an-internship-delete-int) <br />
+  [4.2.3. Editing an internship: `edit int`](#editing-an-internship-edit-int) <br />
+ [4.3. Application](#application) <br />
+  [4.3.1. Applying for an internship: `add app`](#applying-for-an-internship-add-app) <br />
+  [4.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
+  [4.3.3. Updating an application: `edit app`](#updating-an-application-edit-app) <br />
+  [4.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
+  [4.3.5. Finding applications: `find app`](#finding-applications-find-app) <br />
+  [4.3.6. Listing all applications: `list app`](#listing-all-applications-list-app) <br />
+ [4.4. Profile](#profile) <br />
+  [4.4.1. Adding item to profile: `add me`](#adding-item-to-profile-add-me) <br />
+  [4.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
+  [4.4.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
+  [4.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
+  [4.4.5. Finding items in profile: `find me`](#finding-items-in-profile-find-me) <br />
+  [4.4.6. Listing all profile items: `list me`](#listing-all-items-in-profile-list-me) <br />
+ [4.5 General](#general) <br />
+  [4.5.1. Matching of skill: `match`](#matching-of-skill-match) <br />
+  [4.5.2. Switching Tabs: `switch`](#switching-tabs-switch) <br />
+  [4.5.3. Viewing Help: `help`](#viewing-help-help) <br />
+  [4.5.4. Clearing all entries: `clear`](#clearing-all-entries-clear) <br />
+  [4.5.5. Exiting the program: `exit`](#exiting-the-program-exit) <br />
+[5. FAQ](#faq) <br/>
+[6. Command Summary](#command-summary) <br />
+
 
 ---
 
@@ -83,8 +89,9 @@ And here's what you can do:
 2. Next, note down the internships offered by that company that interest you with the [`add int` command](#adding-an-internship-add-int)
 3. And once you've applied for an internship, record it down to keep track of it with the [`add app` command](#applying-for-an-internship-add-app)
 
-You can also keep track of your achievements, experience and skills in your own [user profile](#profile) to help you 
-in figuring out which internship is the best fit for you.
+You can also keep track of your achievements, experience and skills in your own [profile](#profile) to help you 
+in figuring out which internship is the best fit for you through the skills matching feature and also to aid you in
+ creating a tailored resume for each application.
 
 Simple? Well that's the InternHunter flow.
 
@@ -393,32 +400,45 @@ Format: `list app`
 
 ### **Profile**
 
-Note: You must be on the **Profile** tab in order to execute these commands.
+The profile feature offers you the ability to keep track and maintain your personal portfolio. It stores
+profile items which are entities that describe an achievement, a past experience or a skill you have acquired.
+It assists you in crafting a tailored resume for your internship applications by allowing you to find items in your
+profile which are relevant to the job description through the [find feature](#finding-items-in-profile-find-me).
 
-Your profile can contain 3 categories of information.
+Each profile item belongs to  1 of 3 categories.
 
 Valid `CATEGORY` specifiers:
 - `achievement`
 - `experience`
 - `skill`
 
-Each profile item (bit of information) also contains a `TITLE` that describes the item, and you can optionally 
+Each category is represented by the following icons in the UI:
+
+| CATEGORY   | ICON 
+|------------|------------------
+|`achievement`| <p><img src="images/achievement.png" width="10%" height="10%"/></p>
+|`experience` | <p><img src="images/experience.png" width="10%" height="10%"/></p>
+|`skill`      | <p><img src="images/skill.png" width="10%" height="10%"/></p>
+
+
+Each profile item also contains a `TITLE` that describes the item, and you can optionally 
 add additional `DESCRIPTOR`s to further describe the item in point form.
 
 #### Adding item to profile: `add me`
 
-Adds experience, skills or achievements descriptors to your profile.
+Adds a profile item to your profile.
 
 Format: `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
 
-* Category specifies a category which can be either experience, skills or achievement.
+* `CATEGORY` specifies a category which can be either experience, skills or achievement.
 
 Examples:
-* `add me c/experience t/Internship at Govtech d/Implemented automate testing 
-using TravisCI d/Implemented dashboard to track code coverage`
-* `add me c/achievement t/special recognition in Hack n Roll`
 * `add me c/skill t/HTML d/Learn how to create divs`
-
+* `add me c/achievement t/special recognition in Hack n Roll`
+* For example, you have just completed an internship at Govtech, executing `add me c/experience t/Internship at
+ Govtech d/Implemented automate testing using TravisCI d/Implemented dashboard to track code coverage` on an empty profile will add the profile item as follows: <br />
+ 
+![AddProfileSS](images/AddProfileItemSS.png)
 #### Deleting item in profile: `delete me`
 
 Deletes experience, skills or achievements descriptors from your profile.
@@ -435,19 +455,65 @@ Edit the experience, skills or achievements descriptors of your profile.
 Format: `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTORS]`
 
 * At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing `DESCRIPTORS`, all existing descriptors get replaced by the new specified descriptors.
+* You can remove all `DESCRIPTORS` by adding d/ without anything after it.
 
 Examples:
 * `edit me 2 c/skill t/CSS d/learnt how to use flexbox`
-* `edit me 4 c/achievement`
+* For example if you want to update the title and descriptor of the first item in your profile.
+* Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the the profile item to:<br />
 
+![EditProfileSS](images/EditProfile.png)<br />
+ *(Note that the existing descriptors get replaced)*
+ 
 #### Viewing item in profile: `view me`
 
-Selects an item in the profile to show in detail.
+Selects an item in the profile to show in detail. The category and descriptors of the selected profile item will be
+shown on the display panel to the right.
 
 Format: `view me INDEX`
 
 Example:
 * `view me 3`
+* For example if you have the following profile items and you want to view the third item in your user profile. Executing `view me 3` will show the following:<br />
+
+![ViewProfile](images/ViewProfile.png)<br />
+*(As you can see the details of the third item can be seen in the right panel)*
+
+#### Finding items in profile: `find me`
+
+Finds all items in your profile whose titles contain any of the specified keywords.
+
+Format: `find me KEYWORD [ANOTHER_KEYWORD]...`
+- Only the profile item's title will be searched for.
+- The search is case-insensitive. e.g. `HTML` will match and return items with `html` in its title
+- Profile items with titles matching at least one keyword will be returned. e.g. `Hackathon Internship` will return
+ a list of profile items whose titles contain the word `Hackathon` *or* `Internship`
+- The ordering of the keywords does not affect the outcome of the query. e.g. `Hackathon Internship` and `Internship
+ Hackathon` will return the same results
+- Only full words will be matched. e.g. `Intern` will not match `Internship`
+
+Examples:
+- `find me Internship`
+- For the following example, if the profile contains the following items. Executing `find me internship` will return
+ the following: <br />
+     
+     ![FindProfile](images/FindProfileSingle.png) <br />
+     
+     And executing `find me internship google` will return the following: <br />
+     
+     ![FindProfileDouble](images/FindProfileDouble.png) <br />
+     *(As you can see the search results match at least one of the keywords specified regardless of its casing)*
+
+#### Listing all items in profile: `list me`
+
+Lists out all items in your profile. After using the `find me` command, you would have likely filtered 
+your list of profile items down to a few search results. You can then use the `list me` command to view all the items in
+your profile.
+
+Format: `list me`
+
 
 ### **General**
 
