@@ -274,6 +274,8 @@ Valid `STATUS` specifiers:
 - `Offered`
 - `Accepted`
 
+:information_source: Note that status added are case-insensitive
+
 Valid `STATUS_DATE` formats:
 
 - d-M-yy HHmm
@@ -295,12 +297,16 @@ internship in the company’s internship list.
 
 Example:
 1. Suppose you are interested in applying for the Software Engineer internship in Google Singapore.
+<br />
 ![InternshipList](images/application-ug/Internship.png)
+<br />
 
 2. Executing `add app 1 i/1` will apply for the internship as follows. The default status and status date will be used
 since the status and status date are not specified in this case. Note that you will be automatically switched to
 the application tab to view this application made:
+<br />
 ![AddApplication](images/application-ug/AddApplication.png)
+<br />
 
 #### Deleting an application: `delete app`
 
@@ -319,10 +325,12 @@ Format: `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
 - At least one of the optional fields must be provided.
 
 Example:
-- Suppose Google Singapore has replied to your application and has called you up for an interview on the
-28 Oct 2020, 2pm. 
+- Suppose Google Singapore has replied to your application for the Software Engineer internship and has called you up
+for an interview on the 28 Oct 2020, 2pm. 
 - Executing `edit app 1 s/interview d/28-10-2020 1400` will update this application:
+<br />
 ![EditApplication](images/application-ug/EditApplication.png)
+<br />
 
 #### Viewing an application: `view app`
 
