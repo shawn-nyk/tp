@@ -1,7 +1,5 @@
 package seedu.address.logic.commands;
 
-import static seedu.address.commons.util.CollectionUtil.getNumberedList;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,9 +52,8 @@ public class MatchCommand extends Command {
         if (matchingInternships.isEmpty()) {
             return new CommandResult(NO_MATCHING_INTERNSHIPS_MESSAGE);
         }
-        String internshipsToDisplay = getNumberedList(matchingInternships);
         CommandResult commandResult = new CommandResult(SHOWING_MATCH_COMMAND_MESSAGE);
-        commandResult.setMatchingInternshipsText(internshipsToDisplay);
+        commandResult.setMatchingInternships(matchingInternships);
         return commandResult;
     }
 
