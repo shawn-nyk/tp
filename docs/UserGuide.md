@@ -382,7 +382,7 @@ Format: `view app INDEX`
 Example:
 - Suppose you are currently viewing the first application and you want to view the second application. 
 Executing `view app 2` will update the right panel to display the second application:
-<p align="center"><img src="images/ug-application/ViewApplication.png" width="70%" height="70%"/></p>
+<p align="center"><img src="images/ug-application/ViewApplication2.png" width="70%" height="70%"/></p>
 
 #### Finding applications: `find app`
 
