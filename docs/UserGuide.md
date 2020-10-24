@@ -259,18 +259,20 @@ Examples:
 
 ### **Application**
 
-Note: You must be on the **Company** tab in order to execute the add app command. To execute all other commands of type Application, you
-must be on the **Application** tab.
+Now that you have learnt how to manage your companies and internships, the next burning question you probably have is
+how do I use our app to apply, track or manage your internship applications? Read on this section to understand
+the application features provided and use them to manage your applications in the next internship window! 
 
-Each application comes with a `STATUS` and `STATUS_DATE` field that indicates the date that the status was set/updated.
+:information_source: Each application comes with a `STATUS` and `STATUS_DATE` field which indicates the date that the
+`STATUS` was set/updated.
 
 Valid `STATUS` specifiers:
-- `applied`
-- `interview`
-- `waiting`
-- `rejected`
-- `offered`
-- `accepted`
+- `Applied`
+- `Interview`
+- `Waiting`
+- `Rejected`
+- `Offered`
+- `Accepted`
 
 Valid `STATUS_DATE` formats:
 
@@ -282,18 +284,23 @@ Valid `STATUS_DATE` formats:
 
 :information_source: Note that dates added must be in the future
 
-#### Adding an application: `add app`
+#### Applying for an internship: `add app`
 
 Selects an internship from a company and adds it to your list of applications. If unspecified, the application’s
 `STATUS` will be `Applied`, and it’s `STATUS_DATE` will be set as today’s date.
 
 Format: `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
 - Where `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
-internship in the company’s list of internships.
+internship in the company’s internship list.
 
-Examples:
-- `add app 1 i/2`
-- `add app 1 i/2 s/waiting d/23-12-20`
+Example:
+1. Suppose you are interested in applying for the Software Engineer internship in Google Singapore.
+![InternshipList](images/application-ug/Internship.png)
+
+2. Executing `add app 1 i/1` will apply for the internship as follows. The default status and status date will be used
+since the status and status date are not specified in this case. Note that you will be automatically switched to
+the application tab to view this application made:
+![AddApplication](images/application-ug/AddApplication.png)
 
 #### Deleting an application: `delete app`
 
@@ -304,16 +311,18 @@ Format: `delete app INDEX`
 Example:
 - `delete app 3`
 
-#### Editing an application: `edit app`
+#### Updating an application: `edit app`
 
-Edits an application in your list of applications.
+Updates an application in your list of applications.
 
-Format:  `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
+Format: `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
 - At least one of the optional fields must be provided.
 
-Examples:
-- `edit app 5 s/offered`
-- `edit app 2 s/waiting d/10-11-20`
+Example:
+- Suppose Google Singapore has replied to your application and has called you up for an interview on the
+28 Oct 2020, 2pm. 
+- Executing `edit app 1 s/interview d/28-10-2020 1400` will update this application:
+![EditApplication](images/application-ug/EditApplication.png)
 
 #### Viewing an application: `view app`
 
