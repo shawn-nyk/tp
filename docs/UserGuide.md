@@ -18,14 +18,14 @@ title: User Guide
   [4.1.2. Deleting a company: `delete com`](#deleting-a-company-delete-com) <br />
   [4.1.3. Editing a company: `edit com`](#editing-a-company-edit-com) <br />
   [4.1.4. Viewing a company: `view com`](#viewing-a-company-view-com) <br />
-  [4.1.5. Finding a company: `find com`](#finding-a-company-find-com) <br />
+  [4.1.5. Finding companies: `find com`](#finding-companies-find-com) <br />
   [4.1.6. Listing all companies: `list com`](#listing-all-companies-list-com) <br />
  [4.2. Internship](#internship) <br />
   [4.2.1. Adding an internship: `add int`](#adding-an-internship-add-int) <br />
   [4.2.2. Deleting an internship: `delete int`](#deleting-an-internship-delete-int) <br />
   [4.2.3. Editing an internship: `edit int`](#editing-an-internship-edit-int) <br />
  [4.3. Application](#application) <br />
-  [4.3.1. Applying for an internship: `add app`](#applying-for-an-internship-add-app) <br />
+  [4.3.1. Applying for an internship: `add app`](#applying-for-an-internship-add-app) <br />
   [4.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
   [4.3.3. Updating an application: `edit app`](#updating-an-application-edit-app) <br />
   [4.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
@@ -39,14 +39,13 @@ title: User Guide
   [4.4.5. Finding items in profile: `find me`](#finding-items-in-profile-find-me) <br />
   [4.4.6. Listing all profile items: `list me`](#listing-all-items-in-profile-list-me) <br />
  [4.5 General](#general) <br />
-  [4.5.1. Matching of skill: `match`](#matching-of-skill-match) <br />
+  [4.5.1. Generating matching internships: `match`](#generating-matching-internships-match) <br />
   [4.5.2. Switching Tabs: `switch`](#switching-tabs-switch) <br />
   [4.5.3. Viewing Help: `help`](#viewing-help-help) <br />
   [4.5.4. Clearing all entries: `clear`](#clearing-all-entries-clear) <br />
   [4.5.5. Exiting the program: `exit`](#exiting-the-program-exit) <br />
 [5. FAQ](#faq) <br/>
 [6. Command Summary](#command-summary) <br />
-
 
 ---
 
@@ -85,13 +84,16 @@ Application | app | internship, status, status date | An internship application 
 Profile Item | me | category, title, descriptors | An item in your profile
 
 And here's what you can do:
-1. When you find a company that you are interested in, add it to your list of companies with the [`add com` command](#adding-a-company-add-com)
-2. Next, note down the internships offered by that company that interest you with the [`add int` command](#adding-an-internship-add-int)
-3. And once you've applied for an internship, record it down to keep track of it with the [`add app` command](#applying-for-an-internship-add-app)
+1. When you find a company that you are interested in, add it to your list of companies with the: <br />
+[`add com` command](#adding-a-company-add-com)
+2. Next, note down the internships offered by that company that interest you with the: <br />
+[`add int` command](#adding-an-internship-add-int)
+3. And once you've applied for an internship, record it down to keep track of it with the: <br />
+[`add app` command](#applying-for-an-internship-add-app)
 
-You can also keep track of your achievements, experience and skills in your own [profile](#profile) to help you 
-in figuring out which internship is the best fit for you through the skills matching feature and also to aid you in
- creating a tailored resume for each application.
+You can also keep track of your achievements, experience and skills in your own [profile](#profile). Along with the 
+[skills matching feature](#generating-matching-internships-match), it will aid you in creating a tailored resume for each 
+application and figure out which internship is the best fit for you.
 
 Simple? Well that's the InternHunter flow.
 
@@ -122,17 +124,17 @@ This section will bring you through the [GUI](#understanding-the-gui), [technica
 
 #### Understanding the GUI
 
-There is be a slight difference in GUI between the Windows and macOS version, however this does not affect InternHunter in any way.
-
 <p><img src="images/GuiAnnotated.png"/></p>
 
 #### Understanding the technical terminologies
+
 Word | What it means
 -----|---------------
 Commands | Words that determines the action of InternHunter.
 Command word | The first word of every command.
 Parameters | Information that is supplied by you.
 Execute | Typing the information into the command box and pressing enter.
+
 #### Understanding the symbols
 
 Symbol | What it means
@@ -140,6 +142,7 @@ Symbol | What it means
 :information_source: | Important information to take note.
 :bulb: | Extra tip.
 `add` | Words that have a grey highlighted background are commands that can be keyed into the command box.
+*italics* | Words in italics represent additional information.
 
 #### Understanding the usage of the commands
 
@@ -207,48 +210,44 @@ Format: `edit com INDEX [n/COMPANY_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] 
 
 Examples:
 - `edit com 2 p/61234567`
-- For the following example, say you want to edit company 1: <br />
- ![OneCompanyInListSS](images/OneCompanyInListSS.PNG) <br />
- Executing `edit com 1 n/Google Singapore e/GoogleIsHiring@google.com t/Internet` will edit the company as follows: <br />
+- For the following example, executing `edit com 1 n/Google Singapore e/GoogleIsHiring@google.com t/Internet` will
+ edit company 1 as follows: <br />
  ![EditCompanySS](images/EditCompanySS.PNG) <br />
  *(Notice that by editing industry types, the existing industry types get replaced i.e. industry types do not
   accumulate)*
 
 #### Viewing a company: `view com`
 
-Selects a company in your list of companies to show in detail. The selected company will be shown in full on the 
-display panel to the right.
+Selects a company in your list of companies to show in detail on the right panel.
 
 Format: `view com INDEX`
 
 Examples:
 - `view com 3`
-- For the following example, say you are viewing company 1: <br />
-   ![ViewComOneSS](images/ViewComOneSS.PNG) <br />
-   *(Notice that "viewing" means having the company displayed on the panel to the right)* <br />
-   Executing `view com 2` will let you view company 2: <br />
-   ![ViewComTwoSS](images/ViewComTwoSS.PNG) <br />
+- Suppose you are currently viewing the first company and you want to view the second company. Executing `view com 2` 
+will update the right panel to display the second company: <br />
+   ![ViewComSS](images/ViewComSS.PNG) <br />
 
-#### Finding a company: `find com`
+#### Finding companies: `find com`
 
 Finds all companies in your list of companies whose names contain any of the given keywords.
 
 Format: `find com KEYWORD [ANOTHER_KEYWORD]...`
 - Only the company name will be searched for.
-- The search is case-insensitive. e.g. `google` will match `Google`
+- The search is case-insensitive. e.g. `google` will match `Google`.
 - Companies with names matching at least one keyword will be returned. e.g. `Google Facebook` will return companies
- whose names contain the word `Google` *or* `Facebook`
-- The order of the keywords does not matter. e.g. `Google Facebook` and `Facebook Google` will return the same results
-- Only full words will be matched. e.g. `Googl` will not match `Google`
+ whose names contain the word `Google` *or* `Facebook`.
+- The order of the keywords does not matter. e.g. `Google Facebook` and `Facebook Google` will return the same results.
+- Only full words will be matched. e.g. `Googl` will not match `Google`.
 
 Examples:
 - `find com Amazon`
-- For the following example, say you have this list of companies: <br />
-     ![FindCompanyOneSS](images/FindCompanyOneSS.PNG) <br />
-     Executing `find com google` will return the following: <br />
-     ![FindCompanyGoogleSS](images/FindCompanyGoogleSS.PNG) <br />
+- Suppose you have this list of companies. Executing `find com google` will update the list to show matching
+ companies: <br />
+     ![FindComGoogleSS](images/FindComGoogleSS.png) <br />
+     
      And executing `find com google facebook` will return the following: <br />
-     ![FindCompanyGoogleFacebookSS](images/FindCompanyGoogleFacebookSS.PNG) <br />
+     ![FindComGoogleFacebookSS](images/FindComGoogleFacebookSS.png) <br />
 
 #### Listing all companies: `list com`
 
@@ -267,14 +266,13 @@ Note: You must be on the **Company** tab in order to execute these commands.
 Adds an internship to a company.
 
 Format: `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
-- `PERIOD` can refer to any word (e.g. 3 months, Summer break)
+- `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`).
 
 Examples:
+- `add int 3 j/Web Developer w/3000 r/React r/HTML5`
 - `add int 1 j/Machine Learning Engineer w/4700` 
 
 ![AddInternship](images/AddInternship.png)
-
-- `add int 3 j/Web Developer w/3000 r/React r/HTML5`
 
 #### Deleting an internship: `delete int`
 
@@ -297,6 +295,7 @@ internship in the company’s list of internships.
 - At least one of the optional fields must be provided.
 
 Examples:
+- `edit int 3 i/1 j/Frontend Developer`
 - Executing `edit int 1 i/2 w/4800 r/Java r/Python`:
 
 ![EditInternship](images/EditInternship.png)
@@ -305,13 +304,11 @@ If an application is already created for the internship, it will also be edited 
 
 ![EditInternshipApplication](images/EditInternshipApplication.png)
 
-- `edit int 3 i/1 j/Frontend Developer`
-
 ### **Application**
 
-Now that you have learnt how to manage your companies and internships, the next burning question you probably have is
-how do I use our app to apply, track or manage your internship applications? Read on this section to understand
-the application features provided and use them to manage your applications in the next internship window! 
+Now that you have learnt how to manage your companies and internships, the next burning question you probably have is 
+how to use InternHunter to apply, track and manage your internship applications. Read on through this section to find 
+out how.
 
 :information_source: Each application comes with a `STATUS` and `STATUS_DATE` field which indicates the date that the
 `STATUS` was set/updated.
@@ -346,10 +343,10 @@ Format: `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
 internship in the company’s internship list.
 
 Example:
-1. Suppose you are interested in applying for the Software Engineer internship in Google Singapore.
+- Suppose you are interested in applying for the Software Engineer internship in Google Singapore:
 <p align="center"><img src="images/ug-application/Internship.png" width="100%"/></p>
 
-2. Executing `add app 1 i/1` will apply for the internship as follows. The default status and status date will be used
+Executing `add app 1 i/1` will apply for the internship as follows. The default status and status date will be used
 since the status and status date are not specified in this case. Note that you will be automatically switched to
 the application tab to view this application made:
 <p align="center"><img src="images/ug-application/AddApplication.png" width="100%"/></p>
@@ -371,9 +368,9 @@ Format: `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
 - At least one of the optional fields must be provided.
 
 Example:
-- Suppose Google Singapore has replied to your application for the Software Engineer internship and has called you up
-for an interview on the 28 Oct 2020, 2pm. 
-- Executing `edit app 1 s/interview d/28-10-2020 1400` will update this application:
+- Suppose Google Singapore has replied to your application for the Software Engineer internship and has called you up 
+for an interview on the 28 Oct 2020, 2pm. Executing `edit app 1 s/interview d/28-10-2020 1400` will update this 
+application:
 <p align="center"><img src="images/ug-application/EditApplication.png" width="125%" height="125%"/></p>
 
 #### Viewing an application: `view app`
@@ -392,8 +389,8 @@ Executing `view app 2` will update the right panel to display the second applica
 Finds all applications in your list of applications whose job titles contain any of the given keywords.
 
 Format: `find app KEYWORD [ANOTHER_KEYWORD]...`
-- Find command matching is the same as that used in [`find com` command](#finding-a-company-find-com), except
-job titles are used in placed of company name
+- Find command matching is the same as that used in [`find com` command](#finding-companies-find-com), except 
+job titles are used in placed of company names.
 
 Example:
 - Suppose you have this list of applications. Executing `find app engineer` will update the list to show matching
@@ -415,7 +412,7 @@ profile items which are entities that describe an achievement, a past experience
 It assists you in crafting a tailored resume for your internship applications by allowing you to find items in your
 profile which are relevant to the job description through the [find feature](#finding-items-in-profile-find-me).
 
-Each profile item belongs to  1 of 3 categories.
+Each profile item belongs to 1 of 3 categories.
 
 Valid `CATEGORY` specifiers:
 - `achievement`
@@ -426,9 +423,9 @@ Each category is represented by the following icons in the UI:
 
 | CATEGORY   | ICON 
 |------------|------------------
-|`achievement`| <p><img src="images/achievement.png" width="10%" height="10%"/></p>
-|`experience` | <p><img src="images/experience.png" width="10%" height="10%"/></p>
-|`skill`      | <p><img src="images/skill.png" width="10%" height="10%"/></p>
+|`achievement`| <img src="images/achievement.png" width="10%" height="10%"/>
+|`experience` | <img src="images/experience.png" width="10%" height="10%"/>
+|`skill`      | <img src="images/skills.png" width="10%" height="10%"/>
 
 
 Each profile item also contains a `TITLE` that describes the item, and you can optionally 
@@ -440,15 +437,15 @@ Adds a profile item to your profile.
 
 Format: `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
 
-* `CATEGORY` specifies a category which can be either experience, skills or achievement.
-
 Examples:
 * `add me c/skill t/HTML d/Learn how to create divs`
 * `add me c/achievement t/special recognition in Hack n Roll`
-* For example, you have just completed an internship at Govtech, executing `add me c/experience t/Internship at
- Govtech d/Implemented automate testing using TravisCI d/Implemented dashboard to track code coverage` on an empty profile will add the profile item as follows: <br />
+* For example, you have just completed an internship at Govtech. Executing `add me c/experience t/Internship at
+ Govtech d/Implemented automate testing using TravisCI d/Implemented dashboard to track code coverage` on an empty 
+ profile will add the profile item as follows: <br />
  
 ![AddProfileSS](images/AddProfileItemSS.png)
+
 #### Deleting item in profile: `delete me`
 
 Deletes experience, skills or achievements descriptors from your profile.
@@ -463,7 +460,6 @@ Example:
 Edit the experience, skills or achievements descriptors of your profile.
 
 Format: `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTORS]`
-
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing `DESCRIPTORS`, all existing descriptors get replaced by the new specified descriptors.
@@ -472,15 +468,13 @@ Format: `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTORS]`
 Examples:
 * `edit me 2 c/skill t/CSS d/learnt how to use flexbox`
 * For example if you want to update the title and descriptor of the first item in your profile.
-* Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the the profile item to:<br />
-
-![EditProfileSS](images/EditProfile.png)<br />
+* Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the profile item to:<br />
+![EditProfileSS](images/EditProfile.PNG)<br />
  *(Note that the existing descriptors get replaced)*
  
 #### Viewing item in profile: `view me`
 
-Selects an item in the profile to show in detail. The category and descriptors of the selected profile item will be
-shown on the display panel to the right.
+Selects an item in the profile to show in detail on the right panel.
 
 Format: `view me INDEX`
 
@@ -497,30 +491,27 @@ Finds all items in your profile whose titles contain any of the specified keywor
 
 Format: `find me KEYWORD [ANOTHER_KEYWORD]...`
 - Only the profile item's title will be searched for.
-- The search is case-insensitive. e.g. `HTML` will match and return items with `html` in its title
+- The search is case-insensitive. e.g. `HTML` will match and return items with `html` in its title.
 - Profile items with titles matching at least one keyword will be returned. e.g. `Hackathon Internship` will return
- a list of profile items whose titles contain the word `Hackathon` *or* `Internship`
+ a list of profile items whose titles contain the word `Hackathon` *or* `Internship`.
 - The ordering of the keywords does not affect the outcome of the query. e.g. `Hackathon Internship` and `Internship
- Hackathon` will return the same results
-- Only full words will be matched. e.g. `Intern` will not match `Internship`
+ Hackathon` will return the same results.
+- Only full words will be matched. e.g. `Intern` will not match `Internship`.
 
 Examples:
 - `find me Internship`
 - For the following example, if the profile contains the following items. Executing `find me internship` will return
  the following: <br />
-     
      ![FindProfile](images/FindProfileSingle.png) <br />
-     
      And executing `find me internship google` will return the following: <br />
-     
      ![FindProfileDouble](images/FindProfileDouble.png) <br />
-     *(As you can see the search results match at least one of the keywords specified regardless of its casing)*
+     *(As you can see, the search results match at least one of the keywords specified regardless of its casing)*
 
 #### Listing all items in profile: `list me`
 
 Lists out all items in your profile. After using the `find me` command, you would have likely filtered 
-your list of profile items down to a few search results. You can then use the `list me` command to view all the items in
-your profile.
+your list of profile items down to a few search results. You can then use the `list me` command to revert to seeing 
+all the items in your profile.
 
 Format: `list me`
 
@@ -596,7 +587,7 @@ Unfortunately InternHunter does not provide an `undo` method.
 --------------------------------------------------------------------------------------------------------------------
 
 
-## Command summary
+## **Command summary**
 
 ### Company
 
@@ -640,6 +631,7 @@ Action     | Format
 **List**   | `list me`
 
 ### General
+
 Action     | Format
 -----------|------------------
 **Match**  | `match`
