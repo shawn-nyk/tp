@@ -36,7 +36,7 @@ title: User Guide
   [3.4.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
   [3.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
  [3.5 General](#general) <br />
-  [3.5.1. Generating matching internships: `match`](#) <br />
+  [3.5.1. Generating matching internships: `match`](#generating-matching-internships-match) <br />
   [3.5.2. Switching Tabs: `switch`](#switching-tabs-switch) <br />
   [3.5.3. Viewing Help: `help`](#viewing-help-help) <br />
   [3.5.4. Exiting the program: `exit`](#exiting-the-program-exit) <br />
