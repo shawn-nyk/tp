@@ -294,6 +294,10 @@ Examples:
 
 ![EditInternship](images/EditInternship.png)
 
+If an application is already created for the internship, it will also be edited as shown below:
+
+![EditInternshipApplication](images/EditInternshipApplication.png)
+
 - `edit int 3 i/1 j/Frontend Developer`
 
 ### **Application**
