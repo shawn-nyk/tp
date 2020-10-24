@@ -444,7 +444,7 @@ Examples:
  Govtech d/Implemented automate testing using TravisCI d/Implemented dashboard to track code coverage` on an empty 
  profile will add the profile item as follows: <br />
  
-![AddProfileSS](images/AddProfileItemSS.png)
+![AddProfileSS](images/AddProfileItem.png)
 
 #### Deleting item in profile: `delete me`
 
