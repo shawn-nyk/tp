@@ -526,6 +526,7 @@ Action     | Format
 ### General
 Action     | Format
 -----------|------------------
+**Match**  | `match`
 **Switch** | `switch TYPE`
 **Clear**  | `clear`
 **Help**   | `help`
