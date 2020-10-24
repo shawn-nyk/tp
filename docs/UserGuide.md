@@ -100,13 +100,40 @@ Ready to begin? Let's get hunting.
 
 1. Double-click the file to start the app or run `java -jar InternHunter.jar` from the terminal.
 
+1. Refer to [About](#about) to understand certain terminologies and usage of InternHunter.
+
 1. The [Features](#features) available in the current version of InternHunter are listed below.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Features**
+## **About**
 
-**:information_source: Notes about the features:**<br>
+This section will bring you through the [GUI](#understanding-the-gui), [technical terminologies](#understanding-the-technical-terminologies), as well as commonly used [symbols](#understanding-the-symbols).
+
+#### Understanding the GUI
+
+There is be a slight difference in GUI between the Windows and macOS version, however this does not affect InternHunter in any way.
+
+<p><img src="images/GuiAnnotated.png"/></p>
+
+#### Understanding the technical terminologies
+Word | What it means
+-----|---------------
+Commands | Words that determines the action of InternHunter.
+Command word | The first word of every command.
+Parameters | Information that is supplied by you.
+Execute | Typing the information into the command box and pressing enter.
+#### Understanding the symbols
+
+Symbol | What it means
+-------|--------------
+:information_source: | Important information to take note.
+:bulb: | Extra tip.
+`add` | Words that have a grey highlighted background are commands that can be keyed into the command box.
+
+#### Understanding the usage of the commands
+
+**:information_source: Notes about the commands:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by you.<br>
   e.g. in `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`, `COMPANY_NAME`, `PHONE_NUMBER`, `EMAIL`, `ADDRESS`, `INDUSTRY`,
@@ -120,11 +147,14 @@ Ready to begin? Let's get hunting.
   e.g. `[r/REQUIREMENT]...` can be used as `r/Rust`, `r/React native r/JavaScript` etc.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `p/PERIOD w/WAGE`, `w/WAGE p/PERIOD` is also acceptable.
+  e.g. if the command specifies `p/PERIOD w/WAGE`, `w/WAGE p/PERIOD` is also acceptable. Note that the command word and the item type should still come first.
 
 * `INDEX` refers to the index of the item (Company, Application, or Profile Item) in its respective displayed list of
  items unless stated otherwise. All `INDEX`es are positive integers *(1, 2, 3, ...)*.<br>
 
+--------------------------------------------------------------------------------------------------------------------
+
+## **Features**
 
 ### **Company**
 
@@ -461,6 +491,23 @@ Shows an exit confirmation dialog.
 Format: `exit`
 
 --------------------------------------------------------------------------------------------------------------------
+
+## **FAQ**
+
+**Where does InternHunter store its data?** <br/>
+By default, InternHunter will save all the information into a folder called data. The information is then stored into 3 different Json files: `applicationitemlist.json`, `companyitemlist.json`, `profileitemlist.json`.
+
+**How do I transfer my data to another computer?** <br/>
+You can copy the data file and transfer it into the same directory of the other computer. InternHunter will then be able to reuse this data.
+
+**Do I have to save my data manually?** <br/>
+There isn't a need for you to manually save your data, InternHunter will automatically save your data into the relevant json files.
+
+**What happens if I accidentally clear all my data using `clear`?** <br/>
+Unfortunately InternHunter does not provide an `undo` method.
+
+--------------------------------------------------------------------------------------------------------------------
+
 
 ## Command summary
 

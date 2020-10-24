@@ -313,20 +313,18 @@ There are three `TYPE`s:
 * `me`
 
 #### Implementation
-Upon a user’s entry of a valid switch command, a `SwitchCommand` object is created. `SwitchCommand` is a class that extends the Command abstract class as well as having direct association with TabName, an enumeration, as well as having a dependency to the Model interface.
+Upon a user’s entry of a valid switch command, a `SwitchCommand` object is created. `SwitchCommand` is a class that extends the Command abstract class as well as having direct association with TabName, an enumeration, as well as having a dependency to the Model interface as it relies on some of its method.
 
 <p align="left"><img src="images/SwitchCommandClassDiagram.png" width="70%" height="70%"/></p>
 
 `SwitchCommand` implements the `execute()` method from the `Command` abstract class whereby upon execution, the 
-method will switch the tab of the screen if a valid command is provided.
+method will switch the tab and the screen if a valid command is provided.
 
 This is how the `SwitchCommand#execute()` method works upon execution:
 1. The current tab that the user is viewing is obtained via the `Model#getTabName()` method.
 2. The input tab will be check against the current tab. <br/>
- 2a. If both the tabs are the same, a `CommandResult` with a same tab message is return via the `CommandUtil#getCommandResult()` method. <br/>
- 2b. If the tabs are different, a `CommandResult` with a success message is return via the `CommandUtil#getCommandResult()`method. <br/>
- 
-3. The `CommandResult` also indicates whether the tab needs to be switched or not.
+ 2a. If both the tabs are the same, a same tab message will be passed to `CommandUtil#getCommandResult()`method. <br/>
+ 2b. If both the tabs are different, a success message will be passed to `CommandUtil#getCommandResult()`method. <br/>
 
 <p align="center">The overall process of how <code>SwitchCommand</code> was generated.</p>
 
@@ -336,8 +334,15 @@ This is how the `SwitchCommand#execute()` method works upon execution:
 
 <p align="center"><img src="images/ExecuteSwitchMeCommandSequenceDiagram.png" width="75%" height="75%"/></p>
 
+This is how the `CommandUtil#getCommandResult()` method works upon execution:
+1. The current tab that the user is viewing is obtained via the `Model#getTabName()` method.
+2. The input tab will be check against the current tab. <br/>
+ 2a. If both the tabs are the same, a `CommandResult` with a same tab message is return.
+ 2b. If both the tabs are different, we will change the tab to the input's tab name via `Model#setTabName()`. A `CommandResult` with a success message is return.
 
-GetCommandResultSequenceDiagram can be found [here](#get-command-result-sequence-diagram)
+<p align="center">The process of how <code>getCommandResult</code>.</p>
+
+<p align="center"><img src="images/GetCommandResultSequenceDiagram.png" width="95%" height="95%"/></p>
 
 The following activity diagram summarizes what happens when a user executes a switch command:
 
@@ -346,7 +351,7 @@ The following activity diagram summarizes what happens when a user executes a sw
 The above activity diagram shows the logic and the path execution when the switch command is executed. The code will check if there is any missing input or if the input is not one of the three mentioned in the `Command format` above. If the aforementioned 2 conditions are not met, an error message is displayed. If the input is one of the three mentioned above in the `Command format`, there will be further checks if the user are already in the same tab.
 
 #### Design considerations
-##### Aspect: Should the tabs be allowed to change only by the `SwitchCommand`.
+#### Aspect: Should the tabs be allowed to change only by the `SwitchCommand`.
 * **Alternative 1 (current choice):** Allow the switch of tabs to not only be accessible via the switch command, but rather extract it out for all commands excluding `exit` and `help`.
     * Pros:
         * Allows user to type once instead of twice when executing a single command and wanting to view it. (This optimzation is to allow for a faster way to type and view the changes). <br/>
@@ -780,13 +785,9 @@ using commands than using the mouse.
 
 ### Appendix F: Sequence Diagrams
 
-<p align="center">Sequence diagram for GetCommandResult</p>
-
-<p id="get-command-result-sequence-diagram" align="center"><img src="images/GetCommandResultSequenceDiagram.png"/><p />
-
 <p align="center">Sequence diagram for HandleDeleteDisplaySwitchIndex</p>
 
-<p id="handle-delete-display-switch-index-sequence-diagram" align="center"><img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png"/><p />
+<p id="handle-delete-display-switch-index-sequence-diagram" align="center"><img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png"/></p>
 
 
 --------------------------------------------------------------------------------------------------------------------
