@@ -18,7 +18,7 @@ title: User Guide
   [4.1.2. Deleting a company: `delete com`](#deleting-a-company-delete-com) <br />
   [4.1.3. Editing a company: `edit com`](#editing-a-company-edit-com) <br />
   [4.1.4. Viewing a company: `view com`](#viewing-a-company-view-com) <br />
-  [4.1.5. Finding a company: `find com`](#finding-a-company-find-com) <br />
+  [4.1.5. Finding companies: `find com`](#finding-companies-find-com) <br />
   [4.1.6. Listing all companies: `list com`](#listing-all-companies-list-com) <br />
  [4.2. Internship](#internship) <br />
   [4.2.1. Adding an internship: `add int`](#adding-an-internship-add-int) <br />
@@ -29,17 +29,17 @@ title: User Guide
   [4.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
   [4.3.3. Editing an application: `edit app`](#editing-an-application-edit-app) <br />
   [4.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
-  [4.3.5. Finding an application: `find com`](#finding-an-application-find-app) <br />
-  [4.3.6. Listing all application: `list com`](#listing-all-application-list-app) <br />
+  [4.3.5. Finding an application: `find app`](#finding-an-application-find-app) <br />
+  [4.3.6. Listing all application: `list app`](#listing-all-application-list-app) <br />
  [4.4. Profile](#profile) <br />
   [4.4.1. Adding item to profile: `add me`](#adding-item-to-profile-add-me) <br />
   [4.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
   [4.4.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
   [4.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
-  [4.4.5. Finding an item in profile: `find com`](#finding-an-item-in-profile-find-me) <br />
-  [4.4.6. Listing all profile item: `list com`](#listing-all-item-in-profile-list-me) <br />
+  [4.4.5. Finding an item in profile: `find me`](#finding-an-item-in-profile-find-me) <br />
+  [4.4.6. Listing all profile item: `list me`](#listing-all-item-in-profile-list-me) <br />
  [4.5 General](#general) <br />
-  [4.5.1. Matching of skill: `match`](#matching-of-skill-match) <br />
+  [4.5.1. Matching of skills: `match`](#matching-of-skills-match) <br />
   [4.5.2. Switching Tabs: `switch`](#switching-tabs-switch) <br />
   [4.5.3. Viewing Help: `help`](#viewing-help-help) <br />
   [4.5.4. Clearing all entries: `clear`](#clearing-all-entries-clear) <br />
@@ -119,8 +119,6 @@ Ready to begin? Let's get hunting.
 This section will bring you through the [GUI](#understanding-the-gui), [technical terminologies](#understanding-the-technical-terminologies), as well as commonly used [symbols](#understanding-the-symbols).
 
 #### Understanding the GUI
-
-There is be a slight difference in GUI between the Windows and macOS version, however this does not affect InternHunter in any way.
 
 <p><img src="images/GuiAnnotated.png"/></p>
 
@@ -205,29 +203,25 @@ Format: `edit com INDEX [n/COMPANY_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] 
 
 Examples:
 - `edit com 2 p/61234567`
-- For the following example, say you want to edit company 1: <br />
- ![OneCompanyInListSS](images/OneCompanyInListSS.PNG) <br />
- Executing `edit com 1 n/Google Singapore e/GoogleIsHiring@google.com t/Internet` will edit the company as follows: <br />
+- For the following example, executing `edit com 1 n/Google Singapore e/GoogleIsHiring@google.com t/Internet` will
+ edit company 1 as follows: <br />
  ![EditCompanySS](images/EditCompanySS.PNG) <br />
  *(Notice that by editing industry types, the existing industry types get replaced i.e. industry types do not
   accumulate)*
 
 #### Viewing a company: `view com`
 
-Selects a company in your list of companies to show in detail. The selected company will be shown in full on the 
-display panel to the right.
+Selects a company in your list of companies to show in detail on the right panel.
 
 Format: `view com INDEX`
 
 Examples:
 - `view com 3`
-- For the following example, say you are viewing company 1: <br />
-   ![ViewComOneSS](images/ViewComOneSS.PNG) <br />
-   *(Notice that "viewing" means having the company displayed on the panel to the right)* <br />
-   Executing `view com 2` will let you view company 2: <br />
-   ![ViewComTwoSS](images/ViewComTwoSS.PNG) <br />
+- Suppose you are currently viewing the first company and you want to view the second company. Executing `view com 2` 
+will update the right panel to display the second company: <br />
+   ![ViewComSS](images/ViewComSS.PNG) <br />
 
-#### Finding a company: `find com`
+#### Finding companies: `find com`
 
 Finds all companies in your list of companies whose names contain any of the given keywords.
 
@@ -241,12 +235,12 @@ Format: `find com KEYWORD [ANOTHER_KEYWORD]...`
 
 Examples:
 - `find com Amazon`
-- For the following example, say you have this list of companies: <br />
-     ![FindCompanyOneSS](images/FindCompanyOneSS.PNG) <br />
-     Executing `find com google` will return the following: <br />
-     ![FindCompanyGoogleSS](images/FindCompanyGoogleSS.PNG) <br />
+- Suppose you have this list of companies. Executing `find com google` will update the list to show matching
+ companies: <br />
+     ![FindComGoogleSS](images/FindComGoogleSS.png) <br />
+     
      And executing `find com google facebook` will return the following: <br />
-     ![FindCompanyGoogleFacebookSS](images/FindCompanyGoogleFacebookSS.PNG) <br />
+     ![FindComGoogleFacebookSS](images/FindComGoogleFacebookSS.png) <br />
 
 #### Listing all companies: `list com`
 
