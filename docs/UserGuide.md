@@ -127,6 +127,7 @@ This section will bring you through the [GUI](#understanding-the-gui), [technica
 <p><img src="images/GuiAnnotated.png"/></p>
 
 #### Understanding the technical terminologies
+
 Word | What it means
 -----|---------------
 Commands | Words that determines the action of InternHunter.
@@ -268,11 +269,10 @@ Format: `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
 - `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`).
 
 Examples:
+- `add int 3 j/Web Developer w/3000 r/React r/HTML5`
 - `add int 1 j/Machine Learning Engineer w/4700` 
 
 ![AddInternship](images/AddInternship.png)
-
-- `add int 3 j/Web Developer w/3000 r/React r/HTML5`
 
 #### Deleting an internship: `delete int`
 
@@ -295,6 +295,7 @@ internship in the company’s list of internships.
 - At least one of the optional fields must be provided.
 
 Examples:
+- `edit int 3 i/1 j/Frontend Developer`
 - Executing `edit int 1 i/2 w/4800 r/Java r/Python`:
 
 ![EditInternship](images/EditInternship.png)
@@ -302,8 +303,6 @@ Examples:
 If an application is already created for the internship, it will also be edited as shown below:
 
 ![EditInternshipApplication](images/EditInternshipApplication.png)
-
-- `edit int 3 i/1 j/Frontend Developer`
 
 ### **Application**
 
