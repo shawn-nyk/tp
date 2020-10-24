@@ -78,7 +78,7 @@ Profile Item | me | category, title, descriptors | An item in your profile
 And here's what you can do:
 1. When you find a company that you are interested in, add it to your list of companies with the [`add com` command](#adding-a-company-add-com)
 2. Next, note down the internships offered by that company that interest you with the [`add int` command](#adding-an-internship-add-int)
-3. And once you've applied for an internship, record it down to keep track of it with the [`add app` command](#adding-an-application-add-app)
+3. And once you've applied for an internship, record it down to keep track of it with the [`add app` command](#applying-for-an-internship-add-app)
 
 You can also keep track of your achievements, experience and skills in your own [user profile](#profile) to help you 
 in figuring out which internship is the best fit for you.
@@ -212,9 +212,9 @@ Examples:
 
 #### Listing all companies: `list com`
 
-Lists out all companies in your list of companies. After using the `find com` command, you would have likely narrowed 
-your list of companies down to a few search results. Use the `list com` command to go back to seeing all the companies 
-in your list.
+Lists out **all** companies in your list of companies. After using the `find com` command, you would have likely
+narrowed your list of companies down to a few search results. Use the `list com` command to revert to seeing all the
+companies in your list.
 
 Format: `list com`
 
@@ -328,12 +328,35 @@ for an interview on the 28 Oct 2020, 2pm.
 
 #### Viewing an application: `view app`
 
-Selects an application in the list of applications to show in detail.
+Selects an application in the list of applications to show in detail on the right panel.
  
 Format: `view app INDEX`
 
 Example:
-- `view app 3`
+- Suppose you are currently viewing the first application and you want to view the second application. 
+Executing `view app 2` will update the right panel to display the second application:
+<p align="center"><img src="images/ug-application/ViewApplication.png" width="100%"/></p>
+
+#### Finding an application: `find app`
+
+Finds all applications in your list of applications whose job titles contain any of the given keywords.
+
+Format: `find app KEYWORD [ANOTHER_KEYWORD]...`
+- Find command matching is the same as that used in [`find com` command](#finding-a-company-find-com), except
+job titles are used in placed of company name
+
+Example:
+- Suppose you have this list of applications. Executing `find app engineer` will update the list to show matching
+applications:
+<p align="center"><img src="images/ug-application/FindApplication.png" width="100%"/></p>
+
+#### Listing all applications: `list app`
+
+Lists out **all** applications in your list of applications. After using the `find app` command, you would have likely
+narrowed your list of applications down to a few search results. Use the `list app` command to revert to seeing
+all the applications in your list.
+
+Format: `list app`
 
 ### **Profile**
 
