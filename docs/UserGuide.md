@@ -337,7 +337,7 @@ Example:
 Executing `view app 2` will update the right panel to display the second application:
 <p align="center"><img src="images/ug-application/ViewApplication.png" width="100%"/></p>
 
-#### Finding an application: `find app`
+#### Finding applications: `find app`
 
 Finds all applications in your list of applications whose job titles contain any of the given keywords.
 
@@ -425,8 +425,10 @@ Generates a list of internships that have requirements that matches your current
 Format: `match`
 
 Example:
-- Suppose you have these 2 set of profile skills and internships in your list. Executing `match` will generate the 
-list of matching internships in a new window.
+- Suppose you have these 2 internship lists (from 2 different companies) and profile skills in your list.
+Executing `match` will generate the list of matching internships in a new window.
+
+<p align="center"><img src="images/ug-application/MatchCommand.png" width="100%"/></p>
 
 :bulb: You can press Esc key to close the popup window!
 
