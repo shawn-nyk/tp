@@ -36,8 +36,8 @@ title: User Guide
   [4.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
   [4.4.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
   [4.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
-  [4.4.5. Finding items in profile: `find com`](#finding-items-in-profile-find-me) <br />
-  [4.4.6. Listing all profile item: `list com`](#listing-all-item-in-profile-list-me) <br />
+  [4.4.5. Finding items in profile: `find me`](#finding-items-in-profile-find-me) <br />
+  [4.4.6. Listing all profile items: `list me`](#listing-all-items-in-profile-list-me) <br />
  [4.5 General](#general) <br />
   [4.5.1. Matching of skill: `match`](#matching-of-skill-match) <br />
   [4.5.2. Switching Tabs: `switch`](#switching-tabs-switch) <br />
