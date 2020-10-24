@@ -98,13 +98,13 @@ public class Tabs extends VBox {
     public void switchTab(TabName tabName) {
         switch (tabName) {
         case COMPANY:
-            selectCompany();
+            setTabToCompany();
             break;
         case APPLICATION:
-            selectApplication();
+            setTabToApplication();
             break;
         case PROFILE:
-            selectProfile();
+            setTabToProfile();
             break;
         default:
             assert false;
@@ -126,10 +126,9 @@ public class Tabs extends VBox {
     }
 
     /**
-     * Sets the display and tab to be of {@code application} in the {@code stage}
-     * Currently it only switches the information display.
+     * Sets the tab to be of {@code application} in the {@code stage}.
      */
-    private void selectApplication() {
+    private void setTabToApplication() {
         // adjust tab bar position
         setColor(application, APPLICATION_Y_TRANSLATE);
         setTransparent(company, COMPANY_Y_TRANSLATE);
@@ -137,10 +136,9 @@ public class Tabs extends VBox {
     }
 
     /**
-     * Sets the display and tab to be of {@code company} in the {@code stage}
-     * Currently it only switches the information display.
+     * Sets the tab to be of {@code company} in the {@code stage}.
      */
-    private void selectCompany() {
+    private void setTabToCompany() {
         // adjust tab bar position
         setTransparent(application, APPLICATION_Y_TRANSLATE);
         setColor(company, COMPANY_Y_TRANSLATE);
@@ -148,10 +146,9 @@ public class Tabs extends VBox {
     }
 
     /**
-     * Sets the display and tab to be of {@code profile} in the {@code stage}
-     * Currently it only switches the information display.
+     * Sets the tab to be of {@code profile} in the {@code stage}.
      */
-    private void selectProfile() {
+    private void setTabToProfile() {
         // adjust tab bar position
         setTransparent(application, APPLICATION_Y_TRANSLATE);
         setTransparent(company, COMPANY_Y_TRANSLATE);
