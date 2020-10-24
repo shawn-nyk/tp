@@ -17,11 +17,9 @@ import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.company.CompanyItem;
 import seedu.address.model.item.ItemList;
 import seedu.address.model.item.ReadOnlyItemList;
-import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.storage.application.JsonAdaptedApplicationItem;
 import seedu.address.storage.company.JsonAdaptedCompanyItem;
-import seedu.address.storage.person.JsonAdaptedPerson;
 import seedu.address.storage.profile.JsonAdaptedProfileItem;
 
 public class StorageManagerTest {
@@ -33,8 +31,6 @@ public class StorageManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonItemListStorage<Person, JsonAdaptedPerson> addressBookStorage = new JsonItemListStorage<>(
-                getTempFilePath("ab"), Person.class, JsonAdaptedPerson.class);
         JsonItemListStorage<ApplicationItem, JsonAdaptedApplicationItem> applicationItemListStorage =
                 new JsonItemListStorage<>(getTempFilePath("app"), ApplicationItem.class,
                         JsonAdaptedApplicationItem.class);
