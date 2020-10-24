@@ -345,7 +345,7 @@ Each category is represented by the following icons in the UI:
 
 | CATEGORY   | ICON 
 |------------|------------------
-|`achievement`| ![AddProfileSS](images/achievement.png)
+|`achievement`| <p><img src="images/achievement.png" width="10%" height="10%"/></p>
 |`experience` | ![AddProfileSS](images/experience.PNG)
 |`skill`      | ![AddProfileSS](images/skills.PNG)
 
