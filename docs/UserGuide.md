@@ -11,35 +11,41 @@ title: User Guide
 [1. Introduction](#introduction) <br />
  [1.1. Overview](#overview) <br />
 [2. Quick start](#quick-start) <br />
-[3. Features](#features) <br />
- [3.1. Company](#company) <br />
-  [3.1.1. Adding a company: `add com`](#adding-a-company-add-com) <br />
-  [3.1.2. Deleting a company: `delete com`](#deleting-a-company-delete-com) <br />
-  [3.1.3. Editing a company: `edit com`](#editing-a-company-edit-com) <br />
-  [3.1.4. Viewing a company: `view com`](#viewing-a-company-view-com) <br />
-  [3.1.5. Finding a company: `find com`](#finding-a-company-find-com) <br />
-  [3.1.6. Listing all companies: `list com`](#listing-all-companies-list-com) <br />
- [3.2. Internship](#internship) <br />
-  [3.2.1. Adding an internship: `add int`](#adding-an-internship-add-int) <br />
-  [3.2.2. Deleting an internship: `delete int`](#deleting-an-internship-delete-int) <br />
-  [3.2.3. Editing an internship: `edit int`](#editing-an-internship-edit-int) <br />
- [3.3. Application](#application) <br />
-  [3.3.1. Adding an application: `add app`](#adding-an-application-add-app) <br />
-  [3.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
-  [3.3.3. Editing an application: `edit app`](#editing-an-application-edit-app) <br />
-  [3.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
- [3.4. Profile](#profile) <br />
-  [3.4.1. Adding item to profile: `add me`](#adding-item-to-profile-add-me) <br />
-  [3.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
-  [3.4.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
-  [3.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
-  [3.1.5. Finding items in profile: `find me`](#finding-items-in-profile-find-me) <br />
-  [3.1.6. Listing all profile items: `list me`](#listing-all-items-in-profile-list-me) <br />
- [3.5 General](#general) <br /> 
-  [3.5.1. Switching Tabs: `switch`](#switching-tabs-switch) <br />
-  [3.5.2. Viewing Help: `help`](#viewing-help-help) <br />
-  [3.5.3. Exiting the program: `exit`](#exiting-the-program-exit) <br />
-[4. Command Summary](#command-summary) <br />
+[3. About](#about) <br />
+[4. Features](#features) <br />
+ [4.1. Company](#company) <br />
+  [4.1.1. Adding a company: `add com`](#adding-a-company-add-com) <br />
+  [4.1.2. Deleting a company: `delete com`](#deleting-a-company-delete-com) <br />
+  [4.1.3. Editing a company: `edit com`](#editing-a-company-edit-com) <br />
+  [4.1.4. Viewing a company: `view com`](#viewing-a-company-view-com) <br />
+  [4.1.5. Finding a company: `find com`](#finding-a-company-find-com) <br />
+  [4.1.6. Listing all companies: `list com`](#listing-all-companies-list-com) <br />
+ [4.2. Internship](#internship) <br />
+  [4.2.1. Adding an internship: `add int`](#adding-an-internship-add-int) <br />
+  [4.2.2. Deleting an internship: `delete int`](#deleting-an-internship-delete-int) <br />
+  [4.2.3. Editing an internship: `edit int`](#editing-an-internship-edit-int) <br />
+ [4.3. Application](#application) <br />
+  [4.3.1. Adding an application: `add app`](#adding-an-application-add-app) <br />
+  [4.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
+  [4.3.3. Editing an application: `edit app`](#editing-an-application-edit-app) <br />
+  [4.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
+  [4.3.5. Finding an application: `find com`](#finding-an-application-find-app) <br />
+  [4.3.6. Listing all application: `list com`](#listing-all-application-list-app) <br />
+ [4.4. Profile](#profile) <br />
+  [4.4.1. Adding item to profile: `add me`](#adding-item-to-profile-add-me) <br />
+  [4.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
+  [4.4.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
+  [4.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
+  [4.4.5. Finding an item in profile: `find me`](#finding-items-in-profile-find-me) <br />
+  [4.4.6. Listing all profile item: `list me`](#listing-all-items-in-profile-list-me) <br />
+ [4.5 General](#general) <br />
+  [4.5.1. Matching of skill: `match`](#matching-of-skill-match) <br />
+  [4.5.2. Switching Tabs: `switch`](#switching-tabs-switch) <br />
+  [4.5.3. Viewing Help: `help`](#viewing-help-help) <br />
+  [4.5.4. Clearing all entries: `clear`](#clearing-all-entries-clear) <br />
+  [4.5.5. Exiting the program: `exit`](#exiting-the-program-exit) <br />
+[5. FAQ](#faq) <br/>
+[6. Command Summary](#command-summary) <br />
 
 ---
 
@@ -103,13 +109,40 @@ Ready to begin? Let's get hunting.
 
 1. Double-click the file to start the app or run `java -jar InternHunter.jar` from the terminal.
 
+1. Refer to [About](#about) to understand certain terminologies and usage of InternHunter.
+
 1. The [Features](#features) available in the current version of InternHunter are listed below.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Features**
+## **About**
 
-**:information_source: Notes about the features:**<br>
+This section will bring you through the [GUI](#understanding-the-gui), [technical terminologies](#understanding-the-technical-terminologies), as well as commonly used [symbols](#understanding-the-symbols).
+
+#### Understanding the GUI
+
+There is be a slight difference in GUI between the Windows and macOS version, however this does not affect InternHunter in any way.
+
+<p><img src="images/GuiAnnotated.png"/></p>
+
+#### Understanding the technical terminologies
+Word | What it means
+-----|---------------
+Commands | Words that determines the action of InternHunter.
+Command word | The first word of every command.
+Parameters | Information that is supplied by you.
+Execute | Typing the information into the command box and pressing enter.
+#### Understanding the symbols
+
+Symbol | What it means
+-------|--------------
+:information_source: | Important information to take note.
+:bulb: | Extra tip.
+`add` | Words that have a grey highlighted background are commands that can be keyed into the command box.
+
+#### Understanding the usage of the commands
+
+**:information_source: Notes about the commands:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by you.<br>
   e.g. in `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`, `COMPANY_NAME`, `PHONE_NUMBER`, `EMAIL`, `ADDRESS`, `INDUSTRY`,
@@ -123,11 +156,14 @@ Ready to begin? Let's get hunting.
   e.g. `[r/REQUIREMENT]...` can be used as `r/Rust`, `r/React native r/JavaScript` etc.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `p/PERIOD w/WAGE`, `w/WAGE p/PERIOD` is also acceptable.
+  e.g. if the command specifies `p/PERIOD w/WAGE`, `w/WAGE p/PERIOD` is also acceptable. Note that the command word and the item type should still come first.
 
 * `INDEX` refers to the index of the item (Company, Application, or Profile Item) in its respective displayed list of
  items unless stated otherwise. All `INDEX`es are positive integers *(1, 2, 3, ...)*.<br>
 
+--------------------------------------------------------------------------------------------------------------------
+
+## **Features**
 
 ### **Company**
 
@@ -145,8 +181,8 @@ Format: `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...
 Examples:
 - `add com n/Garena a/201 Victoria St e/GarenaHires@garena.com p/65093545` *(notice that the company's industry types
  need not be specified)*
-- Executing `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t
-/Artificial Intelligence` on an empty company list will add the company as follows: <br />
+- Executing `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Intelligence`
+on an empty company list will add the company as follows: <br />
 ![AddCompanySS](images/AddCompanySS.PNG)
 
 #### Deleting a company: `delete com`
@@ -346,8 +382,8 @@ Each category is represented by the following icons in the UI:
 | CATEGORY   | ICON 
 |------------|------------------
 |`achievement`| <p><img src="images/achievement.png" width="10%" height="10%"/></p>
-|`experience` | ![AddProfileSS](images/experience.PNG)
-|`skill`      | ![AddProfileSS](images/skills.PNG)
+|`experience` | <p><img src="images/experience.png" width="10%" height="10%"/></p>
+|`skill`      | <p><img src="images/skill.png" width="10%" height="10%"/></p>
 
 
 Each profile item also contains a `TITLE` that describes the item, and you can optionally 
@@ -475,6 +511,23 @@ Shows an exit confirmation dialog.
 Format: `exit`
 
 --------------------------------------------------------------------------------------------------------------------
+
+## **FAQ**
+
+**Where does InternHunter store its data?** <br/>
+By default, InternHunter will save all the information into a folder called data. The information is then stored into 3 different Json files: `applicationitemlist.json`, `companyitemlist.json`, `profileitemlist.json`.
+
+**How do I transfer my data to another computer?** <br/>
+You can copy the data file and transfer it into the same directory of the other computer. InternHunter will then be able to reuse this data.
+
+**Do I have to save my data manually?** <br/>
+There isn't a need for you to manually save your data, InternHunter will automatically save your data into the relevant json files.
+
+**What happens if I accidentally clear all my data using `clear`?** <br/>
+Unfortunately InternHunter does not provide an `undo` method.
+
+--------------------------------------------------------------------------------------------------------------------
+
 
 ## Command summary
 
