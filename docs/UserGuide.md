@@ -298,14 +298,14 @@ internship in the company’s internship list.
 Example:
 1. Suppose you are interested in applying for the Software Engineer internship in Google Singapore.
 <br />
-![InternshipList](images/application-ug/Internship.png)
+![InternshipList](images/application-ug/Internship.PNG)
 <br />
 
 2. Executing `add app 1 i/1` will apply for the internship as follows. The default status and status date will be used
 since the status and status date are not specified in this case. Note that you will be automatically switched to
 the application tab to view this application made:
 <br />
-![AddApplication](images/application-ug/AddApplication.png)
+![AddApplication](images/application-ug/AddApplication.PNG)
 <br />
 
 #### Deleting an application: `delete app`
