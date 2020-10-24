@@ -341,6 +341,15 @@ Valid `CATEGORY` specifiers:
 - `experience`
 - `skill`
 
+Each category is represented by the following icons in the UI:
+
+| CATEGORY   | ICON 
+|------------|------------------
+|`achievement`| ![AddProfileSS](images/achievement.PNG)
+|`experience` | ![AddProfileSS](images/experience.PNG)
+|`skill`      | ![AddProfileSS](images/skills.PNG)
+
+
 Each profile item also contains a `TITLE` that describes the item, and you can optionally 
 add additional `DESCRIPTOR`s to further describe the item in point form.
 
