@@ -468,7 +468,7 @@ Format: `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTORS]`
 Examples:
 * `edit me 2 c/skill t/CSS d/learnt how to use flexbox`
 * For example if you want to update the title and descriptor of the first item in your profile.
-* Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the the profile item to:<br />
+* Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the profile item to:<br />
 ![EditProfileSS](images/EditProfile.PNG)<br />
  *(Note that the existing descriptors get replaced)*
  
@@ -502,11 +502,8 @@ Examples:
 - `find me Internship`
 - For the following example, if the profile contains the following items. Executing `find me internship` will return
  the following: <br />
-     
      ![FindProfile](images/FindProfileSingle.png) <br />
-     
      And executing `find me internship google` will return the following: <br />
-     
      ![FindProfileDouble](images/FindProfileDouble.png) <br />
      *(As you can see, the search results match at least one of the keywords specified regardless of its casing)*
 
