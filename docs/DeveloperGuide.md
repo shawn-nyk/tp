@@ -787,7 +787,7 @@ using commands than using the mouse.
 
 <p align="center">Sequence diagram for HandleDeleteDisplaySwitchIndex</p>
 
-<p id="handle-delete-display-switch-index-sequence-diagram" align="center"><img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png"/><p />
+<p id="handle-delete-display-switch-index-sequence-diagram" align="center"><img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png"/></p>
 
 
 --------------------------------------------------------------------------------------------------------------------

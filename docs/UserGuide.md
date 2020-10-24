@@ -42,7 +42,7 @@ title: User Guide
   [4.5.1. Matching of skill: `match`](#matching-of-skill-match) <br />
   [4.5.2. Switching Tabs: `switch`](#switching-tabs-switch) <br />
   [4.5.3. Viewing Help: `help`](#viewing-help-help) <br />
-  [4.5.4. Clearing all data: `clear`](#clearing-all-data-clear) <br />
+  [4.5.4. Clearing all entries: `clear`](#clearing-all-entries-clear) <br />
   [4.5.5. Exiting the program: `exit`](#exiting-the-program-exit) <br />
 [5. FAQ](#faq) <br/>
 [6. Command Summary](#command-summary) <br />
@@ -122,7 +122,7 @@ This section will bring you through the [GUI](#understanding-the-gui), [technica
 
 There is be a slight difference in GUI between the Windows and macOS version, however this does not affect InternHunter in any way.
 
-<p><img src="images/GuiAnnotated.png"/><p/>
+<p><img src="images/GuiAnnotated.png"/></p>
 
 #### Understanding the technical terminologies
 Word | What it means
@@ -180,8 +180,8 @@ Format: `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...
 Examples:
 - `add com n/Garena a/201 Victoria St e/GarenaHires@garena.com p/65093545` *(notice that the company's industry types
  need not be specified)*
-- Executing `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t
-/Artificial Intelligence` on an empty company list will add the company as follows: <br />
+- Executing `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Intelligence`
+on an empty company list will add the company as follows: <br />
 ![AddCompanySS](images/AddCompanySS.PNG)
 
 #### Deleting a company: `delete com`
