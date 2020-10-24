@@ -1,11 +1,15 @@
 package seedu.address.ui;
 
+import static seedu.address.commons.util.CollectionUtil.getNumberedList;
+
+import java.util.List;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.internship.InternshipItem;
 
 /**
  * Controller for the InternshipsWindow page.
@@ -53,8 +57,9 @@ public class InternshipsWindow extends PopupWindow {
      *
      * @param internshipList List of internships.
      */
-    public void setTextDisplay(String internshipList) {
-        matchingInternships.setText(internshipList);
+    public void setInternshipList(List<InternshipItem> internshipList) {
+        String displayText = getNumberedList(internshipList);
+        matchingInternships.setText(displayText);
     }
 
 }
