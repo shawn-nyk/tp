@@ -122,7 +122,7 @@ This section will bring you through the [GUI](#understanding-the-gui), [technica
 
 There is be a slight difference in GUI between the Windows and macOS version, however this does not affect InternHunter in any way.
 
-<p><img src="images/GuiAnnotated.png"/><p/>
+<p><img src="images/GuiAnnotated.png"/></p>
 
 #### Understanding the technical terminologies
 Word | What it means
