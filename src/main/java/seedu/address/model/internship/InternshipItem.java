@@ -1,5 +1,6 @@
 package seedu.address.model.internship;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.model.util.InternshipItemUtil.COMPANY_OUTPUT_NAME;
 import static seedu.address.model.util.InternshipItemUtil.PERIOD_OUTPUT_NAME;
@@ -15,6 +16,7 @@ import static seedu.address.ui.panel.PanelDisplayKeyword.WAGE_DISPLAY_NAME;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -22,7 +24,8 @@ import seedu.address.model.company.CompanyName;
 import seedu.address.model.item.Item;
 import seedu.address.storage.internship.JsonAdaptedInternshipItem;
 
-/** todo: javadocs
+/**
+ * todo: javadocs
  * Represents an InternshipItem in the InternHunter application.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
@@ -75,6 +78,7 @@ public class InternshipItem extends Item {
      * @param companyName Company name to set.
      */
     public void setCompanyName(CompanyName companyName) {
+        requireNonNull(companyName);
         this.companyName = companyName;
     }
 
@@ -97,6 +101,7 @@ public class InternshipItem extends Item {
      * @param jobTitle Job title to set.
      */
     public void setJobTitle(JobTitle jobTitle) {
+        requireNonNull(jobTitle);
         this.jobTitle = jobTitle;
     }
 
@@ -119,6 +124,7 @@ public class InternshipItem extends Item {
      * @param period Job title to set.
      */
     public void setPeriod(Period period) {
+        requireNonNull(period);
         this.period = period;
     }
 
@@ -141,6 +147,7 @@ public class InternshipItem extends Item {
      * @param wage Wage to set.
      */
     public void setWage(Wage wage) {
+        requireNonNull(wage);
         this.wage = wage;
     }
 
@@ -160,7 +167,21 @@ public class InternshipItem extends Item {
      * @param requirements Requirements to set.
      */
     public void setRequirements(Set<Requirement> requirements) {
+        requireNonNull(requirements);
         this.requirements = requirements;
+    }
+
+    /**
+     * Returns true if the skill list provided matches this internship item. A match is found when any skill in
+     * the skill list is found in the list of requirements of this internship.
+     *
+     * @param skillList List of skills to check.
+     * @return True if the skill list provided matches the internship item, false otherwise.
+     */
+    public boolean matches(List<String> skillList) {
+        assert skillList != null;
+        return requirements.stream().anyMatch(requirement ->
+                skillList.stream().anyMatch(skill -> skill.equalsIgnoreCase(requirement.toString())));
     }
 
     /**
