@@ -8,7 +8,6 @@ import static seedu.address.ui.tabs.TabName.APPLICATION;
 import static seedu.address.ui.tabs.TabName.COMPANY;
 import static seedu.address.ui.tabs.TabName.PROFILE;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -230,7 +229,7 @@ public class MainWindow extends UiPart<Stage> {
      * Opens the internships window or focuses on it if it's already opened.
      */
     @FXML
-    private void handleMatchingInternships(List<InternshipItem> internshipList) {
+    private void handleMatchingInternships(ObservableList<InternshipItem> internshipList) {
         internshipsWindow.setInternshipList(internshipList);
         handlePopupWindow(internshipsWindow);
     }
