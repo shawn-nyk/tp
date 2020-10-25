@@ -10,7 +10,8 @@ import static seedu.address.model.util.ItemUtil.PROFILE_NAME;
 import seedu.address.logic.commands.Command;
 
 /**
- * todo javadocs
+ * Finds all items of a specified item type in the InternHunter to the user.
+ * Keyword matching is case insensitive.
  */
 public abstract class FindCommand extends Command {
 
