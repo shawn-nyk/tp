@@ -1,26 +1,44 @@
 @startuml
-!include style.puml
+!include InternHunterStyle.puml
+
 skinparam arrowThickness 1.1
 skinparam arrowColor UI_COLOR_T4
 skinparam classBackgroundColor UI_COLOR
 
-package UI <<Rectangle>>{
+package UI <<Rectangle>> {
 Interface Ui <<Interface>>
 Class "{abstract}\nUiPart" as UiPart
 Class UiManager
 Class MainWindow
 Class HelpWindow
-Class ResultDisplay
-Class PersonListPanel
-Class PersonCard
-Class StatusBarFooter
+Class InternshipWindow
+Class PopupWindow
+Class Tabs
 Class CommandBox
+Class ResultDisplay
+
+Class "{abstract}\nCard" as Card
+Class InformationDisplay
+Class ListPanel
+
+Class CompanyCard
+Class ApplicationCard
+Class ProfileCard
+
+Class CompanyDisplay
+Class ApplicationDisplay
+Class ProfileDisplay
+
+Class ApplicationListPanel
+Class CompanyListPanel
+Class ProfileListPanel
+
 }
 
 package Model <<Rectangle>> {
 Class HiddenModel #FFFFFF
 }
-
+UI -down[hidden]-> Model
 package Logic <<Rectangle>> {
 Class HiddenLogic #FFFFFF
 }
@@ -29,32 +47,53 @@ Class HiddenOutside #FFFFFF
 HiddenOutside ..> Ui
 
 UiManager .left.|> Ui
-UiManager -down-> MainWindow
+UiManager -up-> Logic
+UiManager --> MainWindow
+
+MainWindow -up-> Logic
+MainWindow *-right-> ListPanel
+MainWindow *-left-> InformationDisplay
+MainWindow *--> ResultDisplay
+MainWindow *--> CommandBox
+MainWindow *--> Tabs
 MainWindow --> HelpWindow
-MainWindow *-down-> CommandBox
-MainWindow *-down-> ResultDisplay
-MainWindow *-down-> PersonListPanel
-MainWindow *-down-> StatusBarFooter
+MainWindow --> InternshipWindow
 
-PersonListPanel -down-> PersonCard
+ApplicationDisplay -left-|> InformationDisplay
+CompanyDisplay -left-|> InformationDisplay
+ProfileDisplay -left-|> InformationDisplay
 
-MainWindow -left-|> UiPart
 
-ResultDisplay --|> UiPart
-CommandBox --|> UiPart
-PersonListPanel --|> UiPart
-PersonCard --|> UiPart
-StatusBarFooter --|> UiPart
-HelpWindow -down-|> UiPart
+ApplicationListPanel -left-|> ListPanel
+CompanyListPanel -left-|> ListPanel
+ProfileListPanel -left-|> ListPanel
 
-PersonCard ..> Model
-UiManager -right-> Logic
-MainWindow -left-> Logic
+ApplicationListPanel *--> ApplicationCard
+CompanyListPanel *--> CompanyCard
+ProfileListPanel *--> ProfileCard
 
-PersonListPanel -[hidden]left- HelpWindow
-HelpWindow -[hidden]left- CommandBox
-CommandBox -[hidden]left- ResultDisplay
-ResultDisplay -[hidden]left- StatusBarFooter
+ApplicationCard --|> Card
+CompanyCard --|> Card
+ProfileCard --|> Card
 
-MainWindow -[hidden]-|> UiPart
+HelpWindow --|> PopupWindow
+InternshipWindow --|> PopupWindow
+
+Card -down-|> UiPart
+PopupWindow -down-|> UiPart
+ResultDisplay -down-|> UiPart
+MainWindow -down-|> UiPart
+CommandBox -down-|> UiPart
+Tabs -down-|> UiPart
+InformationDisplay -down-|> UiPart
+
+
+ApplicationCard ..>Model
+ProfileCard ..> Model
+CompanyCard ..> Model
+ApplicationDisplay ..> Model
+CompanyDisplay ..> Model
+ProfileDisplay ..> Model
+UiPart .[hidden].> Model
+
 @enduml
