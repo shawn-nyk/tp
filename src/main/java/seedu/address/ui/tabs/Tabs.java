@@ -2,6 +2,7 @@ package seedu.address.ui.tabs;
 
 import java.io.IOException;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -11,14 +12,15 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import seedu.address.logic.Logic;
 import seedu.address.ui.MainWindow;
+import seedu.address.ui.UiPart;
 
 /**
  * Tabs which allow switching of screens for different information.
  */
-public class Tabs extends VBox {
+public class Tabs extends UiPart<VBox> {
 
     //FXML
-    private static final String FXML = "/view/Tabs.fxml";
+    private static final String FXML = "Tabs.fxml";
 
     //FXML properties
     private static final String TRANSPARENT = "-fx-background-color: transparent;";
@@ -61,22 +63,13 @@ public class Tabs extends VBox {
      * @param logic The logic unit of the app.
      */
     private Tabs(MainWindow mainWindow, Logic logic) {
-        try {
-            this.mainWindow = mainWindow;
-            this.logic = logic;
+        super(FXML);
+        this.mainWindow = mainWindow;
+        this.logic = logic;
 
-            // Loading the information of the GUI
-            FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource(FXML));
-            fxmlLoader.setController(this);
-            fxmlLoader.setRoot(this);
-            fxmlLoader.load();
-
-            // initialize the GUI of the tabs.
-            company.setStyle(TAB_COLOR);
-            setTabIcons();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // initialize the GUI of the tabs.
+        company.setStyle(TAB_COLOR);
+        setTabIcons();
     }
 
     /**

@@ -1,4 +1,4 @@
-package seedu.address.ui;
+package seedu.address.ui.popupwindow;
 
 import static seedu.address.commons.util.CollectionUtil.getNumberedList;
 
