@@ -193,13 +193,12 @@ specifying the targeted index and at least one field.
 
 * The `edit me` command is implemented by the `EditProfileCommandParser` and `EditProfileCommand`.
 * `EditProfileCommandParser#parse` method creates a `EditProfileItemDescriptor` based on the fields of the input
- provided by the user. The `EditProfileItemDescriptor` is then used to instantiate `EditProfileCommand` object which
-  will update the model upon execution.
-
-Insert class diagram here
+ provided by the user. The `EditProfileItemDescriptor` is then used in instantiating the `EditProfileCommand`.
 
 * `EditProfileCommand` implements the `execute()` method from the `Command` abstract class whereby upon execution
 , the method will edit the specified profile item in the model’s profile item.
+
+
 
 The following sequence diagrams show how the editing profile Item feature works successfully, using the example command 
 `edit me t/HTML`:
@@ -212,12 +211,13 @@ The following sequence diagrams show how the editing profile Item feature works 
 2. The `EditCommandParser` then identifies the item type, which is profile item and returns the
  `EditProfileCommandParser`.
 3. The `EditProfileCommandParser` then parses for the index and fields to be edited and returns a `EditProfileCommand` 
-containing a editedProfileItem. The following sequence diagram depicts how the `EditProfileCommand` works:
+containing a editProfileItemDescriptor. The following sequence diagram depicts how the `EditProfileCommand` works:
 
 ![ExecuteEditMeCommand](images/ExecuteEditMeCommand.png)
 
 4. The `EditProfileCommand` is executed by `LogicManager` which retrieves the targeted `profileItemToEdit` from the
- `lastShownList` and updates the model with the `editedProfileItem` associated with the `EditProfileCommand`.
+ `lastShownList` *(which contains the profile items the user is able to see)* and updates the model with the
+  `editedProfileItem` associated with the `EditProfileCommand`.
 5. CommandResult is return to indicate a successful operation.
  
 #### Design considerations
@@ -554,7 +554,7 @@ Use case ends.
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
-#### Use case: UC05 - Finding companies
+#### Use case: UC05 - Find companies
 
 Precondition: User already has an existing list of companies <br/>
 Guarantees: Companies whose names matches the keywords specified is listed 
@@ -572,7 +572,7 @@ Use case ends.
   Use case resumes from step 1.
 
 
-#### Use case: UC06 - Listing all companies
+#### Use case: UC06 - List all companies
 
 Precondition: User already has an existing list of companies <br/>
 Guarantees: All companies stored in Internhunter is shown
@@ -613,7 +613,7 @@ Precondition: User already has an existing list of companies <br/>
 
 * Similar to editing a company except user is editing an internship
 
-#### Use case: UC010 - Add an application
+#### Use case: UC10 - Add an application
 
 Precondition: User already has an existing list of internships in a company <br/>
 Guarantees: Adding of application is successful
@@ -621,7 +621,7 @@ Guarantees: Adding of application is successful
 **MSS**
 
 1.  User requests to apply for an internship and provides the index and relevant details.
-2.  InternHunter adds the application to the list of applications and prompts the user to switch to the Applications
+2.  InternHunter adds the application to the list of applications.
 tab to view the newly added application. <br/>
     Use case ends.
 
@@ -629,7 +629,7 @@ tab to view the newly added application. <br/>
 
 * Similar to extension of UC07 - Add an internship.
 
-#### Use case: UC011 - Delete an application
+#### Use case: UC11 - Delete an application
 
 * Similar to deleting a company except user is deleting an application.
 
@@ -641,7 +641,7 @@ tab to view the newly added application. <br/>
 
 * Similar to viewing an company except  user is viewing an application.
 
-#### Use case: UC14 - Finding applications
+#### Use case: UC14 - Find applications
 
 * Similar to finding companies except user is finding applications.
 
@@ -665,7 +665,7 @@ tab to view the newly added application. <br/>
 
 * Similar to viewing a company except  user is viewing a user profile item.
 
-#### Use case: UC20 - Finding user profile items
+#### Use case: UC20 - Find user profile items
 
 * Similar to finding companies except user is finding user profile items.
 
@@ -674,7 +674,7 @@ tab to view the newly added application. <br/>
 * Similar to listing all companies except user is listing all user profiles items.
 
 
-#### Use case: UC22 - Matching skills in user profile to internship requirements
+#### Use case: UC22 - Match skills in user profile to internship requirements
 
 #### Use case: UC23 - Switch tabs
 
