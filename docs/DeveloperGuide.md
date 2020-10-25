@@ -616,14 +616,10 @@ Precondition: User already has an existing list of companies <br/>
 #### Use case: UC10 - Add an application
 
 Precondition: User already has an existing list of internships in a company <br/>
-Guarantees: Adding of application is successful
 
 **MSS**
 
-1.  User requests to apply for an internship and provides the index and relevant details.
-2.  InternHunter adds the application to the list of applications.
-tab to view the newly added application. <br/>
-    Use case ends.
+*  Similar MSS to adding a company except user is now adding an internship.
 
 **Extensions**
 
