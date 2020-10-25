@@ -9,63 +9,14 @@ title: Developer Guide
 ## **Design**
 
 ### Storage Component
+<p id="storage-class-diagram" align="center"><img src="images/StorageClassDiagram.png"/><p />
 
-#### What it is
-After a command is successfully executed, InternHunter automatically saves users' data to JSON files. Moreover, 
-everytime the `GuiSettings` is modified, InternHunter updates the user preferences JSON file. Users can transfer or 
-backup the JSON files manually. The storage component is responsible for both reading and saving the data.
+API : [Storage.java](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
-#### Implementation
-InternHunter uses Jackson, a high-performance JSON processor for Java. It can  serialize Java objects into JSON and 
-deserialize JSON into Java objects. InternHunter's model has 4 different types of data: `ApplicationItem`, 
-`CompanyItem`, `InternshipItem`, and `ProfileItem`. They first need to be converted to Jackson-friendly versions of 
-themselves, where each field is a string or another Jackson-friendly object. User preference is saved as a `UserPrefs` 
-object.
- 
- ![StorageClassDiagram](images/StorageClassDiagram.png)
- * `Storage` handles the storage for all `Item` lists and user preferences.
- * `UserPrefsStorage` handles the storage for user preferences.
- * `ItemListStorage` handles the storage for `Item` lists.
- * `JsonSerializableItemList` represents a Jackson-friendly version of an `Item` list.
- * `JsonAdaptedItem` represents a Jackson-friendly version of an `Item`.
- 
- ![JsonAdaptedItemClassDiagram](images/JsonAdaptedItemClassDiagram.png)
- 
- `JsonAdaptedItem` is an abstract class representing Jackson-friendly version of the `Item` class in the model component.
-  It has one method `toModelType()` which convert itself to an `Item` object. There are 4 classes extending 
-  `JsonAdaptedItem`:
-  * `JsonAdaptedApplicationItem` the Jackson-friendly version of `ApplicationItem`.
-  * `JsonAdaptedCompanyItem` the Jackson-friendly version of `CompanyItem`.
-  * `JsonAdaptedInternshipItem` the Jackson-friendly version of `InternshipItem`.
-  * `JsonAdaptedProfileItem` the Jackson-friendly version of `ProfileItem`.
-  
-#### Design considerations
+The Storage component,
+* can save UserPref objects in json format and read it back.
+* can save the InternHunter data in json format and read it back.
 
-##### Aspect: How to handle 3 types of 'Item' list
-
-InternHunter maintains 3 types of `Item` list: `ApplicationItem`, `CompanyItem`, and `ProfileItem` lists.
-Both `ItemListStorage` and `JsonSerializableItemList` use  the same logic regardless of the `Item` type.
-* **Alternative 1: current choice**: Creates a base abstract class `JsonAdaptedItem` and makes `ItemListStorage` 
-and `JsonSerializableItemList` use generics.
-    * Pros: 
-        * Adheres to OOP principle, polymorphism.
-        * Less code duplication.
-        * Makes adding a new `Item` type easy. To be able to save and read a new `Item` type, only a new 
-        class representing its Jackson-friendly version needs to be created.
-        * Makes further extension to the `ItemListStorage` and `JsonSerializableItemList` faster.
-
-    * Cons:
-        * More complicated as Jackson does not provide a direct way to convert a generic object to its JSON format.
-
-* **Alternative 2**: Each `Item` type has their own `ItemListStorage` and `JsonSerializableItemList`.
-    * Pros:
-        * Easier to implement.
-    
-    * Cons:
-        * Much longer code with much duplication.
-        * Adding a new `Item` type requires at least 3 new classes to be made.
-        * Extending the `ItemListStorage` and `JsonSerializableItemList` class would require changes to all the
-        different versions corresponding to the different `Item` types.
         
 ## **Implementation**
 
@@ -367,6 +318,126 @@ The above activity diagram shows the logic and the path execution when the switc
     * Cons:
         * This introduces the need to type twice in order to view the execution of the command.
 
+### Storage Feature
+
+#### What it is
+After a command is successfully executed, InternHunter automatically saves users' data to JSON files. Moreover, 
+everytime the `GuiSettings` is modified, InternHunter updates the user preferences JSON file. Users can transfer or 
+backup the JSON files manually. The storage component is responsible for both reading and saving the data.
+
+#### Implementation
+InternHunter uses Jackson, a high-performance JSON processor for Java. It can  serialize Java objects into JSON and 
+deserialize JSON into Java objects. InternHunter's model has 4 different types of data: `ApplicationItem`, 
+`CompanyItem`, `InternshipItem`, and `ProfileItem`. They first need to be converted to Jackson-friendly versions of 
+themselves, where each field is a string or another Jackson-friendly object. User preference is saved as a `UserPrefs` 
+object.
+ 
+ [Storage structure diagram](#storage-class-diagram)
+ 
+ * `Storage` handles the storage for all `Item` lists and user preferences.
+ * `UserPrefsStorage` handles the storage for user preferences.
+ * `ItemListStorage` handles the storage for `Item` lists.
+ * `JsonSerializableItemList` represents a Jackson-friendly version of an `Item` list.
+ * `JsonAdaptedItem` represents a Jackson-friendly version of an `Item`.
+ 
+ ![JsonAdaptedItemClassDiagram](images/JsonAdaptedItemClassDiagram.png)
+ 
+ `JsonAdaptedItem` is an abstract class representing Jackson-friendly version of the `Item` class in the model component.
+  It has one method `toModelType()` which convert itself to an `Item` object. There are 4 classes extending 
+  `JsonAdaptedItem`:
+  * `JsonAdaptedApplicationItem` the Jackson-friendly version of `ApplicationItem`.
+  * `JsonAdaptedCompanyItem` the Jackson-friendly version of `CompanyItem`.
+  * `JsonAdaptedInternshipItem` the Jackson-friendly version of `InternshipItem`.
+  * `JsonAdaptedProfileItem` the Jackson-friendly version of `ProfileItem`.
+  
+InternHunter automatically saves user data after every command. The following sequence diagram demonstrates how
+InternHunter does it. Let `commandString` be any valid command string.
+  
+![SavingDataSequenceDiagram](images/SavingDataSequenceDiagram.png)
+  
+#### Design considerations
+
+##### Aspect: How to handle 3 types of 'Item' list
+
+InternHunter maintains 3 types of `Item` list: `ApplicationItem`, `CompanyItem`, and `ProfileItem` lists.
+Both `ItemListStorage` and `JsonSerializableItemList` use  the same logic regardless of the `Item` type.
+* **Alternative 1: current choice**: Creates a base abstract class `JsonAdaptedItem` and makes `ItemListStorage` 
+and `JsonSerializableItemList` use generics.
+    * Pros: 
+        * Adheres to OOP principle, polymorphism.
+        * Less code duplication.
+        * Makes adding a new `Item` type easy. To be able to save and read a new `Item` type, only a new 
+        class representing its Jackson-friendly version needs to be created.
+        * Makes further extension to the `ItemListStorage` and `JsonSerializableItemList` faster.
+
+    * Cons:
+        * More complicated as Jackson does not provide a direct way to convert a generic object to its JSON format.
+
+* **Alternative 2**: Each `Item` type has their own `ItemListStorage` and `JsonSerializableItemList`.
+    * Pros:
+        * Easier to implement.
+    
+    * Cons:
+        * Much longer code with much duplication.
+        * Adding a new `Item` type requires at least 3 new classes to be made.
+        * Extending the `ItemListStorage` and `JsonSerializableItemList` class would require changes to all the
+        different versions corresponding to the different `Item` types.
+
+### Clear Feature
+
+#### What it is
+In the beginning, user can see how the app works with sample data. After that, user can decide to 
+clear all the entries in InternHunter with just a `clear` command.
+
+#### Implementation
+
+The following diagram illustrates whether InternHunter use sample data.
+
+![SampleDataActivityDiagram](images/SampleDataActivityDiagram.png)
+
+When user enters the `clear` command, InternHunter will reset all three lists. Here is a sequence diagram showcasing how
+InternHunter does it.
+
+![ClearCommandSequenceDiagram](images/ClearCommandSequenceDiagram.png)
+
+#### Design considerations
+
+##### Aspect: How to clear the lists
+
+InternHunter only lets users create applications for internships already added to companies.
+
+* **Alternative 1: current choice**: Clear all three lists at once.
+    * Pros: 
+        * Guarantees data consistency.
+        
+    * Cons:
+        * Less freedom for the users.
+
+* **Alternative 2**: Each list can be cleared individually.
+    * Pros:
+        * Users can choose which lists to be cleared.
+    
+    * Cons:
+        * High risk of data inconsistency due to the linkage between company and application lists.
+
+##### Aspect: How to clear the lists
+
+InternHunter only lets users create applications for internships already added to companies.
+
+* **Alternative 1: current choice**: Clear all three lists at once.
+    * Pros: 
+        * Guarantees data consistency.
+        
+    * Cons:
+        * Less freedom for the users.
+
+* **Alternative 2**: Each list can be cleared individually.
+    * Pros:
+        * Users can choose which lists to be cleared.
+    
+    * Cons:
+        * High risk of data inconsistency due to the linkage between company and application lists.
+       
 ## **Appendix**
 ### Appendix A: Product Scope
 
@@ -412,8 +483,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user       | view information in my user profile                            | see its details                                                                   |
 | `* *`    | user       | navigate the application easily through a clear user interface |                                                                                   |
 | `* *`    | user       | get fast feedback from the app                                 |                                                                                   |
-
-
+| `* *`    | user       | clears all entries from InterhHunter                           | start from a clean slate
 ### Appendix C: Use Cases
 
 (For all use cases below, the **System** is `InternHunter` and the **Actor** is the `user`)
@@ -738,7 +808,17 @@ Guarantees: Viewing of user profile item is successful
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
   Use case resumes from step 1.
 
-#### Use case: UC17 - Get help
+#### Use case: UC17 - Clear all entries
+
+Guarantees: All entries in InternHunter will be cleared
+
+**MSS**
+
+1.  User requests to clear all entries.
+2.  InternHunter deletes all of its entries. <br/>
+    Use case ends.
+
+#### Use case: UC18 - Get help
 
 Guarantees: User will get directions to the user guide
 
@@ -749,7 +829,7 @@ Guarantees: User will get directions to the user guide
     Use case ends.
 
 
-#### Use case: UC18 - Exit 
+#### Use case: UC19 - Exit 
 
 **MSS**
 
