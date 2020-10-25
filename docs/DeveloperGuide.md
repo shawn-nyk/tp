@@ -9,6 +9,7 @@ title: Developer Guide
 ## **Design**
 
 ### Storage Component
+
 <p id="storage-class-diagram" align="center"><img src="images/StorageClassDiagram.png"/><p />
 
 API : [Storage.java](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
@@ -401,24 +402,6 @@ InternHunter does it.
 ![ClearCommandSequenceDiagram](images/ClearCommandSequenceDiagram.png)
 
 #### Design considerations
-
-##### Aspect: How to clear the lists
-
-InternHunter only lets users create applications for internships already added to companies.
-
-* **Alternative 1: current choice**: Clear all three lists at once.
-    * Pros: 
-        * Guarantees data consistency.
-        
-    * Cons:
-        * Less freedom for the users.
-
-* **Alternative 2**: Each list can be cleared individually.
-    * Pros:
-        * Users can choose which lists to be cleared.
-    
-    * Cons:
-        * High risk of data inconsistency due to the linkage between company and application lists.
 
 ##### Aspect: How to clear the lists
 
