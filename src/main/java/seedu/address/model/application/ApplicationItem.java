@@ -33,6 +33,7 @@ public class ApplicationItem extends Item {
 
     /**
      * Every field must be present and not null.
+     *
      * @param internshipItem Internship item.
      * @param status Status.
      * @param statusDate Status date.
@@ -85,7 +86,9 @@ public class ApplicationItem extends Item {
     }
 
     /**
-     * todo javadocs
+     * Retrieves the status in string representation.
+     *
+     * @return Status in string representation.
      */
     public String getStatusString() {
         return status.toString();
@@ -101,14 +104,18 @@ public class ApplicationItem extends Item {
     }
 
     /**
-     * todo javadocs
+     * Retrieves the status date in string representation.
+     *
+     * @return Status date in string representation.
      */
     public String getStatusDateString() {
         return statusDate.toString();
     }
 
     /**
-     * todo javadocs
+     * Retrieves the internship job title in string representation.
+     *
+     * @return Internship job title in string representation.
      */
     public String getInternshipJobTitleValue() {
         return internshipItem.getJobTitleValue();

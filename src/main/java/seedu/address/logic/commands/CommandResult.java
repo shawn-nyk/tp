@@ -2,7 +2,11 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import seedu.address.model.internship.InternshipItem;
 
 /**
  * Represents the result of a command execution.
@@ -24,7 +28,7 @@ public class CommandResult {
     private final boolean isSwitchDisplay;
 
     /** List of matching internships generated based on user's profile skills */
-    private String matchingInternshipsText = "";
+    private List<InternshipItem> matchingInternships = new ArrayList<>();
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
@@ -68,15 +72,15 @@ public class CommandResult {
     }
 
     public boolean isShowMatchingInternships() {
-        return !matchingInternshipsText.isEmpty();
+        return !matchingInternships.isEmpty();
     }
 
-    public void setMatchingInternshipsText(String listOfInternships) {
-        matchingInternshipsText = listOfInternships;
+    public void setMatchingInternships(List<InternshipItem> listOfInternships) {
+        matchingInternships = listOfInternships;
     }
 
-    public String getMatchingInternshipsText() {
-        return matchingInternshipsText;
+    public List<InternshipItem> getMatchingInternships() {
+        return matchingInternships;
     }
 
     @Override
