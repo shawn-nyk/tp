@@ -420,6 +420,14 @@ InternHunter only lets users create applications for internships already added t
     
     * Cons:
         * High risk of data inconsistency due to the linkage between company and application lists.
+
+## **Documentation, logging, testing, configuration, dev-ops**
+
+* [Documentation guide](Documentation.md)
+* [Testing guide](Testing.md)
+* [Logging guide](Logging.md)
+* [Configuration guide](Configuration.md)
+* [DevOps guide](DevOps.md)
        
 ## **Appendix**
 ### Appendix A: Product Scope
