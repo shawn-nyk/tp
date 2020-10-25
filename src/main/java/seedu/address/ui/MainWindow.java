@@ -434,7 +434,7 @@ public class MainWindow extends UiPart<Stage> {
         if (IS_EMPTY_DATA_LIST.test(applicationItems)) {
             return Optional.empty();
         }
-        return Optional.of(ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(index)));  
+        return Optional.of(ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(index)));
     }
 
     /**
