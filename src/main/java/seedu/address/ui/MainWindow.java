@@ -74,6 +74,7 @@ public class MainWindow extends UiPart<Stage> {
     private Tabs tabs;
     private ListPanel<? extends Item> listPanel;
     private InformationDisplay<? extends Item> informationDisplay;
+    private CommandBox commandBox;
 
     @FXML
     private VBox cardList;
@@ -177,7 +178,7 @@ public class MainWindow extends UiPart<Stage> {
      * Adds the tab display to the {@code MainWindow}.
      */
     void addTabs() {
-        tabs = Tabs.getTabs(this, logic);
+        tabs = Tabs.getTabs(this);
         tabsContainer.getChildren().add(tabs.getRoot());
     }
 
@@ -204,7 +205,7 @@ public class MainWindow extends UiPart<Stage> {
      * Adds the command box display to the {@code MainWindow}.
      */
     void addCommandBox() {
-        CommandBox commandBox = new CommandBox(this::executeCommand);
+        commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 

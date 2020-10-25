@@ -1,10 +1,6 @@
 package seedu.address.ui.tabs;
 
-import java.io.IOException;
-
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -54,18 +50,15 @@ public class Tabs extends UiPart<VBox> {
     private ImageView profileIcon;
 
     private MainWindow mainWindow;
-    private Logic logic;
 
     /**
      * Creates the {@code Tabs} in the given {@code primaryStage} of the {@code mainWindow}.
      *
      * @param mainWindow The Main Window of the app.
-     * @param logic The logic unit of the app.
      */
-    private Tabs(MainWindow mainWindow, Logic logic) {
+    private Tabs(MainWindow mainWindow) {
         super(FXML);
         this.mainWindow = mainWindow;
-        this.logic = logic;
 
         // initialize the GUI of the tabs.
         company.setStyle(TAB_COLOR);
@@ -76,11 +69,10 @@ public class Tabs extends UiPart<VBox> {
      * Creates the {@code Tabs} information in the {@code primaryStage} of the {@code mainWindow}.
      *
      * @param mainWindow The Main Window of the app.
-     * @param logic The logic unit of the app.
      * @return A tab display.
      */
-    public static Tabs getTabs(MainWindow mainWindow, Logic logic) {
-        return new Tabs(mainWindow, logic);
+    public static Tabs getTabs(MainWindow mainWindow) {
+        return new Tabs(mainWindow);
     }
 
     /**
