@@ -42,9 +42,11 @@ There are 2 types of commands:
 From this point on, we will be using `XCommand` to represent commands that are dependent on type and
 `YCommand` to represent commands that are independent of type.
 
-The following is an example of the class hierachy:
+The following shows the class diagram for `Command` and its subclasses:
 
 ![CommandClassDiagram](images/CommandClassDiagram.png)
+
+Figure xx. `Xcommand` refers to a command dependent on type while `YCommand` refers to a command indepedent of type
 
 #### Design considerations
 
@@ -447,34 +449,36 @@ InternHunter only lets users create applications for internships already added t
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​    | I want to …​                                                   | So that I can…​                                                                   |
-| -------- | ---------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `* * *`  | new user   | see usage instructions                                         | refer to instructions when I forget how to use the app                            |
-| `* * *`  | user       | get error feedback when a command fails                        | know what went wrong                                                              |
-| `* * *`  | user       | maintain a list of company profiles                            | keep track of companies that I'm interested in                                    |
-| `* * *`  | user       | add a company profile                                          | keep track of companies that I'm interested in                                    |
-| `* * *`  | user       | delete a company profile                                       | remove company profiles that I no longer need / am no longer interested in        |
-| `* * *`  | user       | edit a company profile                                         | keep my company profiles updated and accurate                                     |
-| `* * *`  | user       | view a company profile                                         | see its details                                                                   |
-| `* * *`  | user       | add an internship to a company profile                         | keep track of the internships that that company is offering                       |
-| `* * *`  | user       | delete an internship from a company profile                    | remove erroneous / outdated entries                                               |
-| `* * *`  | user       | edit an internship from a company profile                      | keep the list of internships that a company offers updated and accurate           |
-| `* * *`  | user       | view a company’s internships when I view their profile         | see what internships they are offering                                            |
-| `* * *`  | user       | maintain a list of my internship applications                  | keep track of them                                                                |
-| `* * *`  | user       | add an internship application                                  | keep track of the internships that I have applied for                             |
-| `* * *`  | user       | delete an internship application                               | remove internship applications that I no longer need / am no longer interested in |
-| `* * *`  | user       | edit an internship application                                 | keep my internship applications updated and accurate                              |
-| `* * *`  | user       | view an internship application                                 | see its details                                                                   |
-| `* * *`  | user       | record and see an internship application's status              | keep track of them                                                                |
-| `* * *`  | user       | save the dates of my upcoming interviews                       | keep track of them                                                                |
-| `* * *`  | user       | maintain a user profile                                        | have an overview of my experience, skills and achievements                        |
-| `* * *`  | user       | add information to my user profile                             | keep my user profile updated and accurate                                         |
-| `* * *`  | user       | delete information from my user profile                        | keep my user profile updated and accurate                                         |
-| `* * *`  | user       | edit information in my user profile                            | keep my user profile updated and accurate                                         |
-| `* * *`  | user       | view information in my user profile                            | see its details                                                                   |
-| `* *`    | user       | navigate the application easily through a clear user interface |                                                                                   |
-| `* *`    | user       | get fast feedback from the app                                 |                                                                                   |
-| `* *`    | user       | clears all entries from InterhHunter                           | start from a clean slate
+Priority | As a …​    | I want to …​                                                   | So that I can…​                                                           
+-------- | ---------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------- 
+`* * *`  | new user   | see usage instructions                                         | refer to instructions when I forget how to use the app                            
+`* * *`  | user       | get error feedback when a command fails                        | know what went wrong                                                              
+`* * *`  | user       | maintain a list of company profiles                            | keep track of companies that I'm interested in                                    
+`* * *`  | user       | add a company profile                                          | keep track of companies that I'm interested in                                    
+`* * *`  | user       | delete a company profile                                       | remove company profiles that I no longer need / am no longer interested in        
+`* * *`  | user       | edit a company profile                                         | keep my company profiles updated and accurate                                     
+`* * *`  | user       | view a company profile                                         | see its details                                                                   
+`* * *`  | user       | add an internship to a company profile                         | keep track of the internships that that company is offering                       
+`* * *`  | user       | delete an internship from a company profile                    | remove erroneous / outdated entries                                               
+`* * *`  | user       | edit an internship from a company profile                      | keep the list of internships that a company offers updated and accurate           
+`* * *`  | user       | view a company’s internships when I view their profile         | see what internships they are offering                                            
+`* * *`  | user       | maintain a list of my internship applications                  | keep track of them                                                                
+`* * *`  | user       | add an internship application                                  | keep track of the internships that I have applied for                             
+`* * *`  | user       | delete an internship application                               | remove internship applications that I no longer need / am no longer interested in 
+`* * *`  | user       | edit an internship application                                 | keep my internship applications updated and accurate                              
+`* * *`  | user       | view an internship application                                 | see its details                                                                   
+`* * *`  | user       | record and see an internship application's status              | keep track of them                                                                
+`* * *`  | user       | save the dates of my upcoming interviews                       | keep track of them                                                                
+`* * *`  | user       | maintain a user profile                                        | have an overview of my experience, skills and achievements                        
+`* * *`  | user       | add information to my user profile                             | keep my user profile updated and accurate                                         
+`* * *`  | user       | delete information from my user profile                        | keep my user profile updated and accurate                                         
+`* * *`  | user       | edit information in my user profile                            | keep my user profile updated and accurate                                         
+`* * *`  | user       | view information in my user profile                            | see its details  
+`* * *`  | user       | find internships based on my skills set                        | know which internships I can apply for                                
+`* *`    | user       | navigate the application easily through a clear user interface |                                                                                   
+`* *`    | user       | get fast feedback from the app                                 |                                                                                   
+`* *`    | user       | clears all entries from InternHunter                           | start from a clean slate
+
 ### Appendix C: Use Cases
 
 (For all use cases below, the **System** is `InternHunter` and the **Actor** is the `user`)
