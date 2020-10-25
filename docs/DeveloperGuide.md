@@ -192,10 +192,11 @@ specifying the targeted index and at least one field.
 #### Implementation
 
 * The `edit me` command is implemented by the `EditProfileCommandParser` and `EditProfileCommand`.
-* The `EditProfileCommand` object is initialized by the `EditProfileCommandParser#parse` method which creates a 
-`EditProfileItemDescriptor` object based on the fields of the input provided by the user.
+* `EditProfileCommandParser#parse` method creates a `EditProfileItemDescriptor` based on the fields of the input
+ provided by the user. The `EditProfileItemDescriptor` is then used to instantiate `EditProfileCommand` object which
+  will update the model upon execution.
 
-Insert object diagram here
+Insert class diagram here
 
 * `EditProfileCommand` implements the `execute()` method from the `Command` abstract class whereby upon execution
 , the method will edit the specified profile item in the model’s profile item.
@@ -222,7 +223,7 @@ containing a editedProfileItem. The following sequence diagram depicts how the `
 #### Design considerations
 
 #### Aspect: How EditProfileCommand Object interacts with Model
-#### Alternatives considered
+##### Alternatives considered
 * **Alternative 1 (current choice)**: `EditProfileCommand` interact with the model solely and not directly with model's 
  internal components: `ProfileItemList` and `FilteredProfileItemList`.
   * Pros:
@@ -598,7 +599,7 @@ Precondition: User already has an existing list of companies <br/>
 
 **Extensions**
 
- 1a. Similar to adding a company.
+ 1a. Similar to extension 1a of adding a company.
 
  1b. InternHunter detects an invalid index. <br/>
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
@@ -626,76 +627,19 @@ tab to view the newly added application. <br/>
 
 **Extensions**
 
- 1a. InternHunter detects an error in the input format. <br />
-  1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
-  Use case resumes from step 1.
-
- 1b. InternHunter detects an invalid index. <br />
-  1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br />
-  Use case resumes from step 1.
+* Similar to extension of UC07 - Add an internship.
 
 #### Use case: UC011 - Delete an application
 
-Precondition: User already has an existing list of applications <br />
-Guarantees: Deletion of application is successful
-
-**MSS**
-
-1.  User requests to delete an application and provides the index.
-2.  InternHunter removes the application from the list of applications. <br />
-    Use case ends.
-
-**Extensions**
-
- 1a. InternHunter detects an error in the input format. <br />
-  1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
-  Use case resumes from step 1.
-
- 1b. InternHunter detects an invalid index. <br />
-  1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br />
-  Use case resumes from step 1.
+* Similar to deleting a company except user is deleting an application.
 
 #### Use case: UC12 - Edit an application
 
-Precondition: User already has an existing list of applications <br />
-Guarantees: Editing of application is successful
-
-**MSS**
-
-1.  User requests to edit the details of an application and inputs the index and details.
-2.  InternHunter edits the details of this application and the list is updated accordingly. <br />
-    Use case ends.
-
-**Extensions**
-
- 1a. InternHunter detects an error in the input format. <br />
-  1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
-  Use case resumes from step 1.
-
- 1b. InternHunter detects an invalid index. <br />
-  1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br />
-  Use case resumes from step 1.
+* Similar to editing a company except user is editing an application.
 
 #### Use case: UC13 - View an application
 
-Precondition: User already has an existing list of applications <br />
-Guarantees: Viewing of application is successful
-
-**MSS**
-
-1.  User requests to view the details of an application and provides the index.
-2.  InternHunter shows the details of this application. <br />
-    Use case ends.
-
-**Extensions**
-
- 1a. InternHunter detects an error in the input format. <br />
-  1a1. InternHunter displays an error message and informs the user of the valid input format. <br />
-  Use case resumes from step 1.
-  
- 1b. InternHunter detects an invalid index. <br />
-  1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br />
-  Use case resumes from step 1.
+* Similar to viewing an company except  user is viewing an application.
 
 #### Use case: UC14 - Finding applications
 
@@ -703,36 +647,36 @@ Guarantees: Viewing of application is successful
 
 #### Use case: UC15 - List all applications
 
-* Similar to listing all companies except user is listing all applications
+* Similar to listing all companies except user is listing all applications.
 
 #### Use case: UC16 - Add user profile item
 
 * Similar to adding a company except user is adding a user profile item.
 
-#### Use case: UC15 - Delete a user profile item 
+#### Use case: UC17 - Delete a user profile item 
 
 * Similar to deleting a company except user is deleting a user profile item.
 
-#### Use case: UC16 - Edit a user profile item
+#### Use case: UC18 - Edit a user profile item
 
 * Similar to editing a company except user is editing a user profile item.
 
-#### Use case: UC17 - View a user profile item
+#### Use case: UC19 - View a user profile item
 
 * Similar to viewing a company except  user is viewing a user profile item.
 
-#### Use case: UC17 - Finding user profile items
+#### Use case: UC20 - Finding user profile items
 
 * Similar to finding companies except user is finding user profile items.
 
-#### Use case: UC19 - List all user profile items
+#### Use case: UC21 - List all user profile items
 
-* Similar to listing all companies except user is listing all user profiles items
+* Similar to listing all companies except user is listing all user profiles items.
 
 
-#### Use case: UC15 - Matching skills in user profile to internship requirements
+#### Use case: UC22 - Matching skills in user profile to internship requirements
 
-#### Use case: UC16 - Switch tabs
+#### Use case: UC23 - Switch tabs
 
 **MSS**
 
@@ -746,7 +690,7 @@ Guarantees: Viewing of application is successful
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
   Use case resumes from step 1.
 
-#### Use case: UC17 - Clear all entries
+#### Use case: UC24 - Clear all entries
 
 Guarantees: All entries in InternHunter will be cleared
 
@@ -756,7 +700,7 @@ Guarantees: All entries in InternHunter will be cleared
 2.  InternHunter deletes all of its entries. <br/>
     Use case ends.
 
-#### Use case: UC18 - Get help
+#### Use case: UC25 - Get help
 
 Guarantees: User will get directions to the user guide
 
@@ -767,7 +711,7 @@ Guarantees: User will get directions to the user guide
     Use case ends.
 
 
-#### Use case: UC19 - Exit 
+#### Use case: UC26 - Exit 
 
 **MSS**
 
