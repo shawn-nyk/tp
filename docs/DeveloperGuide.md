@@ -419,24 +419,6 @@ InternHunter only lets users create applications for internships already added t
     
     * Cons:
         * High risk of data inconsistency due to the linkage between company and application lists.
-
-##### Aspect: How to clear the lists
-
-InternHunter only lets users create applications for internships already added to companies.
-
-* **Alternative 1: current choice**: Clear all three lists at once.
-    * Pros: 
-        * Guarantees data consistency.
-        
-    * Cons:
-        * Less freedom for the users.
-
-* **Alternative 2**: Each list can be cleared individually.
-    * Pros:
-        * Users can choose which lists to be cleared.
-    
-    * Cons:
-        * High risk of data inconsistency due to the linkage between company and application lists.
        
 ## **Appendix**
 ### Appendix A: Product Scope
