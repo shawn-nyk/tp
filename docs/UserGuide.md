@@ -146,7 +146,9 @@ Symbol | What it means
 
 #### Understanding the usage of the commands
 
-**:information_source: Notes about the commands:**<br>
+<div markdown="block" class="alert alert-info">
+
+:information_source: **Notes about the commands:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by you.<br>
   e.g. in `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`, `COMPANY_NAME`, `PHONE_NUMBER`, `EMAIL`, `ADDRESS`, `INDUSTRY`,
@@ -164,6 +166,8 @@ Symbol | What it means
 
 * `INDEX` refers to the index of the item (Company, Application, or Profile Item) in its respective displayed list of
  items unless stated otherwise. All `INDEX`es are positive integers *(1, 2, 3, ...)*.<br>
+ 
+</div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -310,8 +314,10 @@ Now that you have learnt how to manage your companies and internships, the next 
 how to use InternHunter to apply, track and manage your internship applications. Read on through this section to find 
 out how.
 
-:information_source: Each application comes with a `STATUS` and `STATUS_DATE` field which indicates the date that the
-`STATUS` was set/updated.
+<div markdown="span" class="alert alert-info">
+:information_source: **Note:** Each application comes with a `STATUS` and `STATUS_DATE` field which indicates the
+date that the `STATUS` was set/updated.
+</div>
 
 Valid `STATUS` specifiers:
 - `Applied`
@@ -321,7 +327,9 @@ Valid `STATUS` specifiers:
 - `Offered`
 - `Accepted`
 
-:information_source: Note that status added are case-insensitive
+<div markdown="span" class="alert alert-info">
+:information_source: **Note:** Status added are case-insensitive
+</div>
 
 Valid `STATUS_DATE` formats:
 
@@ -331,7 +339,9 @@ Valid `STATUS_DATE` formats:
     - e.g. `23-12-20`
     - Time will be taken as 2359
 
-:information_source: Note that dates added must be in the future
+<div markdown="span" class="alert alert-info">
+:information_source: **Note:** Dates added must be in the future
+</div>
 
 #### Applying for an internship: `add app`
 
@@ -532,7 +542,9 @@ Executing `match` will generate the list of matching internships in a new window
 
 <p align="center"><img src="images/ug-application/MatchCommand2.png" width="100%"/></p>
 
-:bulb: You can press Esc key to close the popup window!
+<div markdown="span" class="alert alert-primary">
+:bulb: **Tip:** You can press Esc key to close the popup window!
+</div>
 
 #### Switching Tabs: `switch`
 
@@ -560,7 +572,9 @@ Displays a link to the InternHunter user guide.
 
 Format: `help`
 
-:bulb: You can press Esc key to close the help window!
+<div markdown="span" class="alert alert-primary">
+:bulb: **Tip:** You can press Esc key to close the help window!
+</div>
 
 #### Exiting the Program: `exit`
 Shows an exit confirmation dialog.
