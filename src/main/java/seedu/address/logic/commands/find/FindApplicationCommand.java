@@ -14,7 +14,8 @@ import seedu.address.model.application.ApplicationNameContainsKeyWordsPredicate;
 import seedu.address.ui.tabs.TabName;
 
 /**
- * todo javadocs
+ * Finds and lists all application items in InternHunter whose jobTitle contains any of the argument keywords.
+ * Keyword matching is case insensitive.
  */
 public class FindApplicationCommand extends FindCommand {
 
@@ -36,7 +37,7 @@ public class FindApplicationCommand extends FindCommand {
         model.updateFilteredApplicationList(predicate);
         model.setApplicationViewIndex(Index.fromOneBased(1));
         String message = String.format(Messages.MESSAGE_FIND_SUCCESS,
-            model.getFilteredApplicationList().size(), APPLICATION_NAME);
+            model.getFilteredApplicationListSize(), APPLICATION_NAME);
         return getCommandResult(model, message, TabName.APPLICATION);
     }
 
