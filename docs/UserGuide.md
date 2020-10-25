@@ -326,9 +326,9 @@ Valid `STATUS` specifiers:
 Valid `STATUS_DATE` formats:
 
 - d-M-yy HHmm
-    - e.g. `23-12-19 2230`
+    - e.g. `23-12-20 2230`
 - d-M-yy
-    - e.g. `23-12-19`
+    - e.g. `23-12-20`
     - Time will be taken as 2359
 
 :information_source: Note that dates added must be in the future
@@ -346,10 +346,9 @@ Example:
 - Suppose you are interested in applying for the Software Engineer internship in Google Singapore:
 <p align="center"><img src="images/ug-application/Internship.png" width="100%"/></p>
 
-Executing `add app 1 i/1` will apply for the internship as follows. The default status and status date will be used
-since the status and status date are not specified in this case. Note that you will be automatically switched to
-the application tab to view this application made:
-<p align="center"><img src="images/ug-application/AddApplication.png" width="100%"/></p>
+Executing `add app 1 i/1 d/24-12-2020` will apply for the internship as follows.
+Note that you will be automatically switched to the application tab to view the application made:
+<p align="center"><img src="images/ug-application/AddApplication1.png" width="100%"/></p>
 
 #### Deleting an application: `delete app`
 
@@ -369,9 +368,9 @@ Format: `edit app INDEX [s/STATUS] [d/STATUS_DATE]`
 
 Example:
 - Suppose Google Singapore has replied to your application for the Software Engineer internship and has called you up 
-for an interview on the 28 Oct 2020, 2pm. Executing `edit app 1 s/interview d/28-10-2020 1400` will update this 
-application:
-<p align="center"><img src="images/ug-application/EditApplication.png" width="70%" height="70%"/></p>
+for an interview on the 28 Dec 2020, 2pm. Executing `edit app 1 s/interview d/28-12-20 1400` will update this 
+application as follows:
+<p align="center"><img src="images/ug-application/EditApplication1.png" width="90%" height="90%"/></p>
 
 #### Viewing an application: `view app`
 
@@ -382,7 +381,7 @@ Format: `view app INDEX`
 Example:
 - Suppose you are currently viewing the first application and you want to view the second application. 
 Executing `view app 2` will update the right panel to display the second application:
-<p align="center"><img src="images/ug-application/ViewApplication2.png" width="70%" height="70%"/></p>
+<p align="center"><img src="images/ug-application/ViewApplication.png" width="90%" height="90%"/></p>
 
 #### Finding applications: `find app`
 
@@ -395,7 +394,7 @@ job titles are used in placed of company names.
 Example:
 - Suppose you have this list of applications. Executing `find app engineer` will update the list to show matching
 applications:
-<p align="center"><img src="images/ug-application/FindApplication.png" width="100%"/></p>
+<p align="center"><img src="images/ug-application/FindApplication1.png" width="100%"/></p>
 
 #### Listing all applications: `list app`
 
