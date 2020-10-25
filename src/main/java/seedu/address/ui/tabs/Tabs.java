@@ -6,7 +6,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import seedu.address.logic.Logic;
 import seedu.address.ui.MainWindow;
 import seedu.address.ui.UiPart;
 
