@@ -267,7 +267,7 @@ There are three `TYPE`s:
 #### Implementation
 Upon a user’s entry of a valid switch command, a `SwitchCommand` object is created. `SwitchCommand` is a class that extends the Command abstract class as well as having direct association with TabName, an enumeration, as well as having a dependency to the Model interface as it relies on some of its method.
 
-<p align="left"><img src="images/SwitchCommandClassDiagram.png" width="70%" height="70%"/></p>
+<p align="left"><img src="images/switchcommand/SwitchCommandClassDiagram.png" width="70%" height="70%"/></p>
 
 `SwitchCommand` implements the `execute()` method from the `Command` abstract class whereby upon execution, the 
 method will switch the tab and the screen if a valid command is provided.
@@ -280,7 +280,7 @@ This is how the `SwitchCommand#execute()` method works upon execution:
 
 <p align="center">The overall process of how <code>SwitchCommand</code> was generated.</p>
 
-<p align="center"><img src="images/SwitchCommandSequenceDiagram.png"</p>
+<p align="center"><img src="images/switchcommand/SwitchCommandSequenceDiagram.png"</p>
 
 <p align="center">The process of how <code>SwitchCommand</code> interacts with the model.</p>
 
@@ -298,7 +298,7 @@ This is how the `CommandUtil#getCommandResult()` method works upon execution:
 
 The following activity diagram summarizes what happens when a user executes a switch command:
 
-![SwitchCommandActivityDiagram](images/SwitchCommandActivityDiagram.png)
+![SwitchCommandActivityDiagram](images/switchcommand/SwitchCommandActivityDiagram.png)
 
 The above activity diagram shows the logic and the path execution when the switch command is executed. The code will check if there is any missing input or if the input is not one of the three mentioned in the `Command format` above. If the aforementioned 2 conditions are not met, an error message is displayed. If the input is one of the three mentioned above in the `Command format`, there will be further checks if the user are already in the same tab.
 

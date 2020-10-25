@@ -6,44 +6,45 @@ skinparam arrowColor UI_COLOR_T4
 skinparam classBackgroundColor UI_COLOR
 
 package UI <<Rectangle>> {
-Interface Ui <<Interface>>
-Class "{abstract}\nUiPart" as UiPart
-Class UiManager
-Class MainWindow
-Class HelpWindow
-Class InternshipWindow
-Class PopupWindow
-Class Tabs
-Class CommandBox
-Class ResultDisplay
+interface Ui <<Interface>>
+class "{abstract}\nUiPart" as UiPart
+class UiManager
+class MainWindow
+class HelpWindow
+class InternshipWindow
+class PopupWindow
+class Tabs
+class CommandBox
+class ResultDisplay
 
-Class "{abstract}\nCard" as Card
-Class InformationDisplay
-Class ListPanel
+class "{abstract}\nCard" as Card
+class InformationDisplay
+class ListPanel
 
-Class CompanyCard
-Class ApplicationCard
-Class ProfileCard
+class CompanyCard
+class ApplicationCard
+class ProfileCard
 
-Class CompanyDisplay
-Class ApplicationDisplay
-Class ProfileDisplay
+class CompanyDisplay
+class ApplicationDisplay
+class ProfileDisplay
 
-Class ApplicationListPanel
-Class CompanyListPanel
-Class ProfileListPanel
-
+class ApplicationListPanel
+class CompanyListPanel
+class ProfileListPanel
 }
 
+hide members
+
 package Model <<Rectangle>> {
-Class HiddenModel #FFFFFF
+class HiddenModel #FFFFFF
 }
 UI -down[hidden]-> Model
 package Logic <<Rectangle>> {
-Class HiddenLogic #FFFFFF
+class HiddenLogic #FFFFFF
 }
 
-Class HiddenOutside #FFFFFF
+class HiddenOutside #FFFFFF
 HiddenOutside ..> Ui
 
 UiManager .left.|> Ui
