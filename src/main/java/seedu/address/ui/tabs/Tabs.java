@@ -1,24 +1,21 @@
 package seedu.address.ui.tabs;
 
-import java.io.IOException;
-
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import seedu.address.logic.Logic;
 import seedu.address.ui.MainWindow;
+import seedu.address.ui.UiPart;
 
 /**
  * Tabs which allow switching of screens for different information.
  */
-public class Tabs extends VBox {
+public class Tabs extends UiPart<VBox> {
 
     //FXML
-    private static final String FXML = "/view/Tabs.fxml";
+    private static final String FXML = "Tabs.fxml";
 
     //FXML properties
     private static final String TRANSPARENT = "-fx-background-color: transparent;";
@@ -52,42 +49,29 @@ public class Tabs extends VBox {
     private ImageView profileIcon;
 
     private MainWindow mainWindow;
-    private Logic logic;
 
     /**
      * Creates the {@code Tabs} in the given {@code primaryStage} of the {@code mainWindow}.
      *
      * @param mainWindow The Main Window of the app.
-     * @param logic The logic unit of the app.
      */
-    private Tabs(MainWindow mainWindow, Logic logic) {
-        try {
-            this.mainWindow = mainWindow;
-            this.logic = logic;
+    private Tabs(MainWindow mainWindow) {
+        super(FXML);
+        this.mainWindow = mainWindow;
 
-            // Loading the information of the GUI
-            FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource(FXML));
-            fxmlLoader.setController(this);
-            fxmlLoader.setRoot(this);
-            fxmlLoader.load();
-
-            // initialize the GUI of the tabs.
-            company.setStyle(TAB_COLOR);
-            setTabIcons();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // initialize the GUI of the tabs.
+        company.setStyle(TAB_COLOR);
+        setTabIcons();
     }
 
     /**
      * Creates the {@code Tabs} information in the {@code primaryStage} of the {@code mainWindow}.
      *
      * @param mainWindow The Main Window of the app.
-     * @param logic The logic unit of the app.
      * @return A tab display.
      */
-    public static Tabs getTabs(MainWindow mainWindow, Logic logic) {
-        return new Tabs(mainWindow, logic);
+    public static Tabs getTabs(MainWindow mainWindow) {
+        return new Tabs(mainWindow);
     }
 
     /**

@@ -5,7 +5,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_DELETED_ITEM;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.commands.util.CommandUtil.getCompany;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_INDEX;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
@@ -29,7 +29,6 @@ public class DeleteInternshipCommand extends DeleteCommandAbstract {
             + ": Deletes the " + INTERNSHIP_NAME + " identified by the index number used in the displayed "
             + INTERNSHIP_NAME + " list in a " + COMPANY_NAME + ".\n"
             + "The " + APPLICATION_NAME + " (if any) made with this " + INTERNSHIP_NAME + " will also be deleted.\n"
-
             + "Parameters: INDEX " + PREFIX_INDEX + "INDEX\n"
             + "Note: Select a " + COMPANY_NAME + " with the first INDEX and an " + INTERNSHIP_NAME + " within that "
             + COMPANY_NAME + " with the second INDEX. "

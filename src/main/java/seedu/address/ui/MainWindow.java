@@ -26,6 +26,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.company.CompanyItem;
+import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.item.Item;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.ui.display.ApplicationDisplay;
@@ -36,6 +37,9 @@ import seedu.address.ui.panel.ApplicationListPanel;
 import seedu.address.ui.panel.CompanyListPanel;
 import seedu.address.ui.panel.ListPanel;
 import seedu.address.ui.panel.ProfileListPanel;
+import seedu.address.ui.popupwindow.HelpWindow;
+import seedu.address.ui.popupwindow.InternshipsWindow;
+import seedu.address.ui.popupwindow.PopupWindow;
 import seedu.address.ui.tabs.TabName;
 import seedu.address.ui.tabs.Tabs;
 
@@ -67,6 +71,10 @@ public class MainWindow extends UiPart<Stage> {
     private HelpWindow helpWindow;
     private InternshipsWindow internshipsWindow;
     private Tabs tabs;
+    private ListPanel<? extends Item> listPanel;
+    private InformationDisplay<? extends Item> informationDisplay;
+    private CommandBox commandBox;
+
     @FXML
     private VBox cardList;
     @FXML
@@ -169,8 +177,8 @@ public class MainWindow extends UiPart<Stage> {
      * Adds the tab display to the {@code MainWindow}.
      */
     void addTabs() {
-        tabs = Tabs.getTabs(this, logic);
-        tabsContainer.getChildren().add(tabs);
+        tabs = Tabs.getTabs(this);
+        tabsContainer.getChildren().add(tabs.getRoot());
     }
 
     /**
@@ -185,14 +193,18 @@ public class MainWindow extends UiPart<Stage> {
      * Adds the information display to the {@code MainWindow}.
      */
     void addInformationDisplay() {
-        changeDisplay();
+        display.getChildren().clear();
+        if (!IS_EMPTY_DATA_LIST.test(companyItems)) {
+            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
+            display.getChildren().add(informationDisplay.getRoot());
+        }
     }
 
     /**
      * Adds the command box display to the {@code MainWindow}.
      */
     void addCommandBox() {
-        CommandBox commandBox = new CommandBox(this::executeCommand);
+        commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 
@@ -200,7 +212,9 @@ public class MainWindow extends UiPart<Stage> {
      * Adds the list panel display to the {@code MainWindow}.
      */
     void addListPanel() {
-        changeListPanelView(COMPANY);
+        listPanelPlaceholder.getChildren().clear();
+        listPanel = new CompanyListPanel(companyItems);
+        listPanelPlaceholder.getChildren().add(listPanel.getRoot());
     }
 
     /**
@@ -215,8 +229,8 @@ public class MainWindow extends UiPart<Stage> {
      * Opens the internships window or focuses on it if it's already opened.
      */
     @FXML
-    public void handleMatchingInternships(String internshipList) {
-        internshipsWindow.setTextDisplay(internshipList);
+    private void handleMatchingInternships(ObservableList<InternshipItem> internshipList) {
+        internshipsWindow.setInternshipList(internshipList);
         handlePopupWindow(internshipsWindow);
     }
 
@@ -273,7 +287,7 @@ public class MainWindow extends UiPart<Stage> {
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
             if (commandResult.isShowMatchingInternships()) {
-                handleMatchingInternships(commandResult.getMatchingInternshipsText());
+                handleMatchingInternships(commandResult.getMatchingInternships());
             }
 
             if (commandResult.isShowHelp()) {
@@ -336,6 +350,9 @@ public class MainWindow extends UiPart<Stage> {
      * @return An Optional value containing the company list panel.
      */
     private Optional<ListPanel<? extends Item>> getCompanyTabView() {
+        if (IS_EMPTY_DATA_LIST.test(companyItems)) {
+            return Optional.empty();
+        }
         return Optional.of(new CompanyListPanel(companyItems));
     }
 
@@ -345,6 +362,9 @@ public class MainWindow extends UiPart<Stage> {
      * @return An Optional value containing the application list panel.
      */
     private Optional<ListPanel<? extends Item>> setApplicationTabView() {
+        if (IS_EMPTY_DATA_LIST.test(applicationItems)) {
+            return Optional.empty();
+        }
         return Optional.of(new ApplicationListPanel(applicationItems));
     }
 
@@ -354,6 +374,9 @@ public class MainWindow extends UiPart<Stage> {
      * @return An Optional value containing the profile list panel.
      */
     private Optional<ListPanel<? extends Item>> setProfileTabView() {
+        if (IS_EMPTY_DATA_LIST.test(profileItems)) {
+            return Optional.empty();
+        }
         return Optional.of(new ProfileListPanel(profileItems));
     }
 
@@ -394,10 +417,10 @@ public class MainWindow extends UiPart<Stage> {
      * @return An Optional containing the display information of the company at that particular Index.
      */
     private Optional<InformationDisplay<? extends Item>> getCompanyDisplay(int index) {
-        if (!IS_EMPTY_DATA_LIST.test(companyItems)) {
-            return Optional.of(CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(index)));
+        if (IS_EMPTY_DATA_LIST.test(companyItems)) {
+            return Optional.empty();
         }
-        return Optional.empty();
+        return Optional.of(CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(index)));
     }
 
     /**
@@ -407,10 +430,10 @@ public class MainWindow extends UiPart<Stage> {
      * @return An Optional containing the display information of the Application at that particular Index.
      */
     private Optional<InformationDisplay<? extends Item>> getApplicationDisplay(int index) {
-        if (!IS_EMPTY_DATA_LIST.test(applicationItems)) {
-            return Optional.of(ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(index)));
+        if (IS_EMPTY_DATA_LIST.test(applicationItems)) {
+            return Optional.empty();
         }
-        return Optional.empty();
+        return Optional.of(ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(index)));
     }
 
     /**
@@ -420,9 +443,9 @@ public class MainWindow extends UiPart<Stage> {
      * @return An Optional containing the display information of the profile at that particular Index.
      */
     private Optional<InformationDisplay<? extends Item>> getProfileDisplay(int index) {
-        if (!IS_EMPTY_DATA_LIST.test(profileItems)) {
-            return Optional.of(ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index)));
+        if (IS_EMPTY_DATA_LIST.test(profileItems)) {
+            return Optional.empty();
         }
-        return Optional.empty();
+        return Optional.of(ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index)));
     }
 }
