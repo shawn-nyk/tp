@@ -316,7 +316,7 @@ This is how the `SwitchCommand#execute()` method works upon execution:
 
 <p align="center">The overall process of how <code>SwitchCommand</code> was generated.</p>
 
-<p align="center"><img src="images/switchcommand/SwitchCommandSequenceDiagram.png"</p>
+<p align="center"><img src="images/switchcommand/SwitchCommandSequenceDiagram.png"/></p>
 
 <p align="center">The process of how <code>SwitchCommand</code> interacts with the model.</p>
 
