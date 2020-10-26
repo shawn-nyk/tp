@@ -743,7 +743,7 @@ using commands than using the mouse.
 * **OS**: Operating System
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Json**: JavaScript Object Notation
-* **DRY**: Don't repeat yourself
+* **DRY**: Don't Repeat Yourself
 
 ### Appendix F: Sequence Diagrams
 
