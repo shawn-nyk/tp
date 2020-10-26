@@ -25,10 +25,10 @@ title: Developer Guide
 
 1. `Logic` uses the `MainParser` class to parse the user command.
 2. This results in a `Command` object which is executed by the `LogicManager`.
-3. The command execution can affect the `Model` (e.g. adding an internship).
+3. The command execution can affect the `Model` (e.g. deleting an application).
 4. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
-5. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying
-the matching internships window to the user or switch tabs.
+5. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as switching
+tabs or displaying the matching internships window to the user.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete app 1")`
 API call.
