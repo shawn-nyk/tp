@@ -14,7 +14,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.application.SampleApplicationItems.SHOPEE_OFFERED;
 import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_COMPANY_NAME_FACEBOOK;
 import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_COMPANY_NAME_SHOPEE;
-import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_JOB_TITLE_DA;
+import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_JOB_TITLE_BA;
 import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_JOB_TITLE_FE;
 import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_JOB_TITLE_SWE;
 import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_PERIOD_MAY_TO_JULY;
@@ -58,7 +58,7 @@ public class InternshipItemTest {
 
     @Test
     public void setJobTitle_newJobTitle_success() {
-        JobTitle jobTitle = new JobTitle(VALID_JOB_TITLE_DA);
+        JobTitle jobTitle = new JobTitle(VALID_JOB_TITLE_BA);
         InternshipItem editedInternshipItem = new InternshipItemBuilder(SHOPEE_SWE).build();
         editedInternshipItem.setJobTitle(jobTitle);
         assertEquals(jobTitle, editedInternshipItem.getJobTitle());
@@ -151,7 +151,7 @@ public class InternshipItemTest {
         assertFalse(SHOPEE_SWE.isSameItem(editedShopeeSwe));
 
         // different job title -> returns false
-        editedShopeeSwe = new InternshipItemBuilder(SHOPEE_SWE).withJobTitle(VALID_JOB_TITLE_DA).build();
+        editedShopeeSwe = new InternshipItemBuilder(SHOPEE_SWE).withJobTitle(VALID_JOB_TITLE_BA).build();
         assertFalse(SHOPEE_SWE.isSameItem(editedShopeeSwe));
 
         // different period -> returns false
@@ -190,7 +190,7 @@ public class InternshipItemTest {
         assertNotEquals(editedShopeeSwe, SHOPEE_SWE);
 
         // different job title -> returns false
-        editedShopeeSwe = new InternshipItemBuilder(SHOPEE_SWE).withJobTitle(VALID_JOB_TITLE_DA).build();
+        editedShopeeSwe = new InternshipItemBuilder(SHOPEE_SWE).withJobTitle(VALID_JOB_TITLE_BA).build();
         assertNotEquals(editedShopeeSwe, SHOPEE_SWE);
 
         // different period -> returns false

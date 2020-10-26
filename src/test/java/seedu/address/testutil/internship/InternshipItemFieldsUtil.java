@@ -15,7 +15,7 @@ public class InternshipItemFieldsUtil {
     public static final String VALID_JOB_TITLE_SWE = "Software Engineer";
     public static final String VALID_JOB_TITLE_FE = "Front End Engineer";
     public static final String VALID_JOB_TITLE_DS = "Data Scientist Intern";
-    public static final String VALID_JOB_TITLE_DA = "Data Analyst";
+    public static final String VALID_JOB_TITLE_BA = "Business Analyst";
 
     // Invalid job titles
     public static final String INVALID_JOB_TITLE_DASH = "Software - Engineer";

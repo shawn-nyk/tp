@@ -58,6 +58,10 @@ public class EditApplicationCommand extends EditCommandAbstract {
         ApplicationItem editedApplicationItem = createEditedApplicationItem(applicationItemToEdit,
                 editApplicationDescriptor);
 
+        // Application items will always be equal since we are not able to edit internship items using edit application
+        // command
+        assert applicationItemToEdit.isSameItem(editedApplicationItem);
+
         model.setApplication(applicationItemToEdit, editedApplicationItem);
         model.setApplicationViewIndex(targetIndex);
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, APPLICATION_NAME, editedApplicationItem);

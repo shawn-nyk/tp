@@ -201,6 +201,13 @@ public class ModelManager implements Model {
         this.applicationList.setItemList(applicationList);
     }
 
+    /**
+     * Returns the profile item list
+     */
+    @Override
+    public ObservableList<ApplicationItem> getApplicationItemList() {
+        return applicationList.getItemList();
+    }
 
     /**
      * Gets ApplicationItem from Filtered Application list.
@@ -227,6 +234,30 @@ public class ModelManager implements Model {
     @Override
     public int getFilteredProfileListSize() {
         return profileList.getSize();
+    }
+
+    /**
+     * Gets the size of the unfiltered company list.
+     */
+    @Override
+    public int getUnFilteredCompanyListSize() {
+        return getCompanyItemList().size();
+    }
+
+    /**
+     * Gets the size of the unfiltered application list.
+     */
+    @Override
+    public int getUnFilteredApplicationListSize() {
+        return getApplicationItemList().size();
+    }
+
+    /**
+     * Gets the size of the unfiltered profile list.
+     */
+    @Override
+    public int getUnFilteredProfileListSize() {
+        return getProfileItemList().size();
     }
 
     @Override

@@ -6,7 +6,7 @@ import static seedu.address.model.util.StatusUtil.REJECTED_KEYWORD;
 import static seedu.address.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_JUNE_2021;
 import static seedu.address.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_JUNE_2022;
 import static seedu.address.testutil.internship.SampleInternshipItems.FACEBOOK_FE;
-import static seedu.address.testutil.internship.SampleInternshipItems.GOLDMAN_DA;
+import static seedu.address.testutil.internship.SampleInternshipItems.GOLDMAN_BA;
 import static seedu.address.testutil.internship.SampleInternshipItems.LAZADA_DS;
 import static seedu.address.testutil.internship.SampleInternshipItems.SHOPEE_SWE;
 
@@ -19,6 +19,11 @@ import seedu.address.model.item.ItemList;
 
 public abstract class SampleApplicationItems {
 
+    public static final ApplicationItem GOLDMAN_OFFERED = new ApplicationItemBuilder()
+            .withInternshipItem(GOLDMAN_BA)
+            .withStatus(OFFERED_KEYWORD)
+            .withStatusDate(STATUS_DATE_JUNE_2022)
+            .build();
     public static final ApplicationItem SHOPEE_OFFERED = new ApplicationItemBuilder()
             .withInternshipItem(SHOPEE_SWE)
             .withStatus(OFFERED_KEYWORD)
@@ -29,14 +34,11 @@ public abstract class SampleApplicationItems {
             .withStatus(REJECTED_KEYWORD)
             .withStatusDate(STATUS_DATE_JUNE_2021)
             .build();
+
+    // Manually added
     public static final ApplicationItem FACEBOOK_ACCEPTED = new ApplicationItemBuilder()
             .withInternshipItem(FACEBOOK_FE)
             .withStatus(ACCEPTED_KEYWORD)
-            .withStatusDate(STATUS_DATE_JUNE_2022)
-            .build();
-    public static final ApplicationItem GOLDMAN_OFFERED = new ApplicationItemBuilder()
-            .withInternshipItem(GOLDMAN_DA)
-            .withStatus(OFFERED_KEYWORD)
             .withStatusDate(STATUS_DATE_JUNE_2022)
             .build();
 
@@ -52,6 +54,6 @@ public abstract class SampleApplicationItems {
     }
 
     private static List<ApplicationItem> getApplicationItems() {
-        return new ArrayList<>(Arrays.asList(SHOPEE_OFFERED, LAZADA_REJECTED));
+        return new ArrayList<>(Arrays.asList(GOLDMAN_OFFERED, SHOPEE_OFFERED, LAZADA_REJECTED));
     }
 }

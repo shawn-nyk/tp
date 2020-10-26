@@ -11,7 +11,7 @@ import seedu.address.model.util.DateUtil;
  */
 public class EditApplicationDescriptorBuilder {
 
-    private EditApplicationDescriptor descriptor;
+    private final EditApplicationDescriptor descriptor;
 
     public EditApplicationDescriptorBuilder() {
         descriptor = new EditApplicationDescriptor();

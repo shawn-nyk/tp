@@ -160,8 +160,7 @@ public class CommandTestUtil {
     public static void showApplicationAtIndex(Model model, Index targetIndex) {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredApplicationList().size());
 
-        ApplicationItem applicationItem = model.getApplicationItemFromFilteredList(
-                targetIndex.getZeroBased());
+        ApplicationItem applicationItem = model.getApplicationItemFromFilteredList(targetIndex.getZeroBased());
         final String[] splitJobTitle = applicationItem.getJobTitleOfInternshipItem().toString().split("\\s+");
         model.updateFilteredApplicationList(
                 new ApplicationNameContainsKeyWordsPredicate(Arrays.asList(splitJobTitle[0])));

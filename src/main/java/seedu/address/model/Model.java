@@ -158,6 +158,13 @@ public interface Model {
     void setApplicationList(ItemList<ApplicationItem> applicationList);
 
     /**
+     * Gets the application item list.
+     *
+     * @return Application item list.
+     */
+    ObservableList<ApplicationItem> getApplicationItemList();
+
+    /**
      * Returns the profile list
      */ // todo: remove if ultimately not needed
     FilterableItemList<ProfileItem> getProfileList();
@@ -265,7 +272,6 @@ public interface Model {
      */
     CompanyItem getCompanyItemFromFilteredList(int index);
 
-
     /**
      * Gets ApplicationItem from Filtered Application list.
      */
@@ -285,5 +291,20 @@ public interface Model {
      * Gets the size of the filtered profile list.
      */
     int getFilteredProfileListSize();
+
+    /**
+     * Gets the size of the unfiltered company list.
+     */
+    int getUnFilteredCompanyListSize();
+
+    /**
+     * Gets the size of the unfiltered application list.
+     */
+    int getUnFilteredApplicationListSize();
+
+    /**
+     * Gets the size of the unfiltered profile list.
+     */
+    int getUnFilteredProfileListSize();
 
 }

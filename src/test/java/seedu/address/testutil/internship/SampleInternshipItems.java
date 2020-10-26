@@ -4,7 +4,7 @@ import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_C
 import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_COMPANY_NAME_GOLDMAN;
 import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_COMPANY_NAME_LAZADA;
 import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_COMPANY_NAME_SHOPEE;
-import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_JOB_TITLE_DA;
+import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_JOB_TITLE_BA;
 import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_JOB_TITLE_DS;
 import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_JOB_TITLE_FE;
 import static seedu.address.testutil.internship.InternshipItemFieldsUtil.VALID_JOB_TITLE_SWE;
@@ -32,6 +32,12 @@ import seedu.address.model.item.ItemList;
  */
 public abstract class SampleInternshipItems {
 
+    public static final InternshipItem GOLDMAN_BA = new InternshipItemBuilder()
+            .withCompanyName(VALID_COMPANY_NAME_GOLDMAN)
+            .withJobTitle(VALID_JOB_TITLE_BA)
+            .withWage(VALID_WAGE_4000)
+            .withPeriod(VALID_PERIOD_SUMMER)
+            .build();
     public static final InternshipItem SHOPEE_SWE = new InternshipItemBuilder()
             .withCompanyName(VALID_COMPANY_NAME_SHOPEE)
             .withJobTitle(VALID_JOB_TITLE_SWE)
@@ -52,12 +58,6 @@ public abstract class SampleInternshipItems {
             .withWage(VALID_WAGE_3500)
             .withPeriod(VALID_PERIOD_MAY_TO_JULY)
             .build();
-    public static final InternshipItem GOLDMAN_DA = new InternshipItemBuilder()
-            .withCompanyName(VALID_COMPANY_NAME_GOLDMAN)
-            .withJobTitle(VALID_JOB_TITLE_DA)
-            .withWage(VALID_WAGE_4000)
-            .withPeriod(VALID_PERIOD_SUMMER)
-            .build();
 
     /**
      * Returns an {@code ItemList<InternshipItem>} with all the sample internship items.
@@ -71,6 +71,6 @@ public abstract class SampleInternshipItems {
     }
 
     private static List<InternshipItem> getInternshipItems() {
-        return new ArrayList<>(Arrays.asList(SHOPEE_SWE, LAZADA_DS, FACEBOOK_FE, GOLDMAN_DA));
+        return new ArrayList<>(Arrays.asList(GOLDMAN_BA, SHOPEE_SWE, LAZADA_DS, FACEBOOK_FE));
     }
 }

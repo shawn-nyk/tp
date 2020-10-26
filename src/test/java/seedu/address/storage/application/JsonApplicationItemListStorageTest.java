@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.application.SampleApplicationItems.FACEBOOK_ACCEPTED;
-import static seedu.address.testutil.application.SampleApplicationItems.GOLDMAN_OFFERED;
 import static seedu.address.testutil.application.SampleApplicationItems.SHOPEE_OFFERED;
 import static seedu.address.testutil.application.SampleApplicationItems.getSampleApplicationItemList;
 
@@ -89,7 +88,7 @@ public class JsonApplicationItemListStorageTest {
         assertEquals(original, new ItemList<>(readBack));
 
         // Save and read without specifying file path
-        original.addItem(GOLDMAN_OFFERED);
+        original.addItem(SHOPEE_OFFERED);
         jsonItemListStorage.saveItemList(original); // file path not specified
         readBack = jsonItemListStorage.readItemList().get(); // file path not specified
         assertEquals(original, new ItemList<>(readBack));
