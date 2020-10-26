@@ -13,9 +13,11 @@ title: Developer Guide
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
 <div markdown="span" class="alert alert-info">
+
   :information_source: <strong>Note:</strong> Implementation of the command class is not accurate for commands
   independent of type as the diagram is simplified for better readability.
-  Click [here](#implementation-of-command-classes) to see how is it implemented in full.
+  Refer to the [command implementation](#implementation-of-command-classes) to see how is it implemented in full.
+
 </div>
 
 **API** :
@@ -44,8 +46,8 @@ API call.
 
 <p id="storage-class-diagram" align="center"><img src="images/StorageClassDiagram.png"/></p>
 
-API : [Storage.java]
-(https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
+**API** :
+[Storage.java](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 The Storage component,
 * can save UserPref objects in json format and read it back.
