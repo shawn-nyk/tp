@@ -25,8 +25,10 @@ public class PeriodTest {
 
     @Test
     public void constructor_invalidPeriod_throwsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> new Period(INVALID_PERIOD_EMPTY));
-        assertThrows(IllegalArgumentException.class, () -> new Period(INVALID_PERIOD_SPACES));
+        assertThrows(IllegalArgumentException.class,
+                Period.MESSAGE_CONSTRAINTS, () -> new Period(INVALID_PERIOD_EMPTY));
+        assertThrows(IllegalArgumentException.class,
+                Period.MESSAGE_CONSTRAINTS, () -> new Period(INVALID_PERIOD_SPACES));
     }
 
     @Test

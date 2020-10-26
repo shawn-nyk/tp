@@ -24,8 +24,10 @@ public class RequirementTest {
 
     @Test
     public void constructor_invalidRequirement_throwsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> new Requirement(INVALID_REQUIREMENT_EMPTY));
-        assertThrows(IllegalArgumentException.class, () -> new Requirement(INVALID_REQUIREMENT_SPACES));
+        assertThrows(IllegalArgumentException.class,
+                Requirement.MESSAGE_CONSTRAINTS, () -> new Requirement(INVALID_REQUIREMENT_EMPTY));
+        assertThrows(IllegalArgumentException.class,
+                Requirement.MESSAGE_CONSTRAINTS, () -> new Requirement(INVALID_REQUIREMENT_SPACES));
     }
 
     @Test

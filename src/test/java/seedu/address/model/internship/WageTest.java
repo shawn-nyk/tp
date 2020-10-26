@@ -16,8 +16,6 @@ import org.junit.jupiter.api.Test;
 
 public class WageTest {
 
-
-
     private static final Wage VALID_WAGE_ONE = new Wage(VALID_WAGE_2000);
     private static final Wage VALID_WAGE_TWO = new Wage(VALID_WAGE_3000);
 
@@ -28,9 +26,9 @@ public class WageTest {
 
     @Test
     public void constructor_invalidWage_throwsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> new Wage(INVALID_WAGE_ZERO));
-        assertThrows(IllegalArgumentException.class, () -> new Wage(INVALID_WAGE_NEGATIVE));
-        assertThrows(IllegalArgumentException.class, () -> new Wage(INVALID_WAGE_DECIMAL));
+        assertThrows(IllegalArgumentException.class, Wage.MESSAGE_CONSTRAINTS, () -> new Wage(INVALID_WAGE_ZERO));
+        assertThrows(IllegalArgumentException.class, Wage.MESSAGE_CONSTRAINTS, () -> new Wage(INVALID_WAGE_NEGATIVE));
+        assertThrows(IllegalArgumentException.class, Wage.MESSAGE_CONSTRAINTS, () -> new Wage(INVALID_WAGE_DECIMAL));
     }
 
     @Test

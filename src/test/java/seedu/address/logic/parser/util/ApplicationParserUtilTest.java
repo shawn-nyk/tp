@@ -27,7 +27,8 @@ public class ApplicationParserUtilTest {
 
     @Test
     public void parseStatus_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ApplicationParserUtil.parseStatus(INVALID_STATUS));
+        assertThrows(ParseException.class,
+                Status.MESSAGE_CONSTRAINTS, () -> ApplicationParserUtil.parseStatus(INVALID_STATUS));
     }
 
     @Test
@@ -48,7 +49,8 @@ public class ApplicationParserUtilTest {
 
     @Test
     public void parseStatusDate_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ApplicationParserUtil.parseStatusDate(INVALID_STATUS_DATE_TIME));
+        assertThrows(ParseException.class,
+                StatusDate.MESSAGE_CONSTRAINTS, () -> ApplicationParserUtil.parseStatusDate(INVALID_STATUS_DATE_TIME));
     }
 
     @Test

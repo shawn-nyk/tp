@@ -24,8 +24,10 @@ public class JobTitleTest {
 
     @Test
     public void constructor_invalidJobTitle_throwsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> new JobTitle(INVALID_JOB_TITLE_DASH));
-        assertThrows(IllegalArgumentException.class, () -> new JobTitle(INVALID_JOB_TITLE_BLANK));
+        assertThrows(IllegalArgumentException.class,
+                JobTitle.MESSAGE_CONSTRAINTS, () -> new JobTitle(INVALID_JOB_TITLE_DASH));
+        assertThrows(IllegalArgumentException.class,
+                JobTitle.MESSAGE_CONSTRAINTS, () -> new JobTitle(INVALID_JOB_TITLE_BLANK));
     }
 
     @Test

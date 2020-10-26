@@ -33,8 +33,10 @@ public class StatusDateTest {
 
     @Test
     public void constructor_invalidStatusDate_throwsAssertionError() {
-        assertThrows(AssertionError.class, () -> new StatusDate(DateUtil.convertToDateTime(BLANK_STATUS_DATE)));
-        assertThrows(AssertionError.class, () -> new StatusDate(DateUtil.convertToDateTime(INVALID_STATUS_DATE)));
+        assertThrows(AssertionError.class,
+                DateUtil.ERROR_MESSAGE, () -> new StatusDate(DateUtil.convertToDateTime(BLANK_STATUS_DATE)));
+        assertThrows(AssertionError.class,
+                DateUtil.ERROR_MESSAGE, () -> new StatusDate(DateUtil.convertToDateTime(INVALID_STATUS_DATE)));
     }
 
     @Test
