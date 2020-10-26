@@ -315,7 +315,7 @@ how to use InternHunter to apply, track and manage your internship applications.
 out how.
 
 <div markdown="span" class="alert alert-info">
-:information_source: **Note:** Each application comes with a `STATUS` and `STATUS_DATE` field which indicates the
+  :information_source: <strong>Note:</strong> Each application comes with a `STATUS` and `STATUS_DATE` field which indicates the
 date that the `STATUS` was set/updated.
 </div>
 
@@ -328,7 +328,7 @@ Valid `STATUS` specifiers:
 - `Accepted`
 
 <div markdown="span" class="alert alert-info">
-:information_source: **Note:** Status added are case-insensitive
+  :information_source: <strong>Note:</strong> Status added are case-insensitive
 </div>
 
 Valid `STATUS_DATE` formats:
@@ -340,7 +340,7 @@ Valid `STATUS_DATE` formats:
     - Time will be taken as 2359
 
 <div markdown="span" class="alert alert-info">
-:information_source: **Note:** Dates added must be in the future
+  :information_source: <strong>Note:</strong> Dates added must be in the future
 </div>
 
 #### Applying for an internship: `add app`
@@ -573,7 +573,7 @@ Displays a link to the InternHunter user guide.
 Format: `help`
 
 <div markdown="span" class="alert alert-primary">
-:bulb: **Tip:** You can press Esc key to close the help window!
+  :bulb: <strong>Tip:</strong> You can press Esc key to close the help window!
 </div>
 
 #### Exiting the Program: `exit`
