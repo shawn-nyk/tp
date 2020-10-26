@@ -1,15 +1,16 @@
-package seedu.address.ui;
+package seedu.address.ui.popupwindow;
 
-import static seedu.address.commons.util.CollectionUtil.getNumberedList;
-
-import java.util.List;
 import java.util.logging.Logger;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.internship.InternshipItem;
+import seedu.address.model.item.Item;
+import seedu.address.ui.panel.InternshipListPanel;
+import seedu.address.ui.panel.ListPanel;
 
 /**
  * Controller for the InternshipsWindow page.
@@ -20,7 +21,7 @@ public class InternshipsWindow extends PopupWindow {
     private static final String FXML = "InternshipsWindow.fxml";
 
     @FXML
-    private TextArea matchingInternships;
+    private StackPane matchingInternships;
 
     /**
      * Creates a new InternshipsWindow.
@@ -57,9 +58,10 @@ public class InternshipsWindow extends PopupWindow {
      *
      * @param internshipList List of internships.
      */
-    public void setInternshipList(List<InternshipItem> internshipList) {
-        String displayText = getNumberedList(internshipList);
-        matchingInternships.setText(displayText);
+    public void setInternshipList(ObservableList<InternshipItem> internshipList) {
+        matchingInternships.getChildren().clear();
+        ListPanel<? extends Item> internshipListPanel = new InternshipListPanel(internshipList);
+        matchingInternships.getChildren().add(internshipListPanel.getRoot());
     }
 
 }

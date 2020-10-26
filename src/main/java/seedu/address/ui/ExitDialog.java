@@ -7,6 +7,8 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
+import seedu.address.ui.popupwindow.HelpWindow;
+import seedu.address.ui.popupwindow.InternshipsWindow;
 
 /**
  * Controller for a exit page.

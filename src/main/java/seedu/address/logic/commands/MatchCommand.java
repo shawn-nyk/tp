@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javafx.collections.FXCollections;
 import seedu.address.model.Model;
 import seedu.address.model.company.CompanyItem;
 import seedu.address.model.internship.InternshipItem;
@@ -53,7 +54,7 @@ public class MatchCommand extends Command {
             return new CommandResult(NO_MATCHING_INTERNSHIPS_MESSAGE);
         }
         CommandResult commandResult = new CommandResult(SHOWING_MATCH_COMMAND_MESSAGE);
-        commandResult.setMatchingInternships(matchingInternships);
+        commandResult.setMatchingInternships(FXCollections.observableArrayList(matchingInternships));
         return commandResult;
     }
 
