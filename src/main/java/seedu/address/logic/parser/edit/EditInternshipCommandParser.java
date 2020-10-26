@@ -3,11 +3,11 @@ package seedu.address.logic.parser.edit;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.edit.EditCommandAbstract.MESSAGE_NOT_EDITED;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_INDEX;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_JOB_TITLE;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_PERIOD;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_WAGE;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
 import static seedu.address.logic.parser.util.GeneralParserUtil.argumentsAreValid;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getIndexInPreamble;
 

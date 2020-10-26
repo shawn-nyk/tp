@@ -44,7 +44,7 @@ EditCommandParser -> EditProfileCommandParser : parse("$commandDetails")
 activate EditProfileCommandParser
 
 create EditProfileCommand
-EditProfileCommandParser -> EditProfileCommand : EditProfileCommand($index, editProfileDescriptor)
+EditProfileCommandParser -> EditProfileCommand : EditProfileCommand($index, editProfileItemDescriptor)
 activate EditProfileCommand
 
 EditProfileCommand --> EditProfileCommandParser
