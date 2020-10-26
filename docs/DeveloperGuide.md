@@ -8,17 +8,42 @@ title: Developer Guide
 --------------------------------------------------------------------------------------------------------------------
 ## **Design**
 
+### Logic component
+
+![Structure of the Logic Component](images/LogicClassDiagram.png)
+
+**API** :
+[`Logic.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
+
+1. `Logic` uses the `MainParser` class to parse the user command.
+2. This results in a `Command` object which is executed by the `LogicManager`.
+3. The command execution can affect the `Model` (e.g. adding an internship).
+4. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
+5. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying
+the matching internships window to the user or switch tabs.
+
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete app 3")`
+API call.
+
+![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
+
+<div markdown="span" class="alert alert-info">
+:information_source: **Note:** The lifeline for `DeleteCommandParser`should end at the destroy marker (X) but due to a
+limitation of PlantUML, the lifeline reaches the end of diagram.
+</div>
+
+### Model component
+
 ### Storage Component
 
 ![StorageClassDiagram](images/StorageClassDiagram.png)
 
-API : [Storage.java](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
+API : [`Storage.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 The Storage component,
 * can save UserPref objects in json format and read it back.
 * can save the InternHunter data in json format and read it back.
 
-        
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
@@ -39,21 +64,21 @@ There are 2 types of commands:
     - e.g. `SwitchCommand`, `HelpCommand`, `ExitCommand`
     - These commands are implemented as _concrete_ classes and inherit directly from the `Command` class
 
-From this point on, we will be using `XCommand` to represent commands that are dependent on type and
-`YCommand` to represent commands that are independent of type.
+From this point on, we will be using `ABCCommand` to represent commands that are dependent on type and
+`XYZCommand` to represent commands that are independent of type.
 
 The following shows the class diagram for `Command` and its subclasses:
 
 ![CommandClassDiagram](images/CommandClassDiagram.png)
 
-Figure xx. `Xcommand` refers to a command dependent on type while `YCommand` refers to a command indepedent of type
+Figure xx. `ABCCommand` refers to a command dependent on type while `XYZCommand` refers to a command indepedent of type
 
 #### Design considerations
 
-##### Aspect: Whether `XCommand` should be abstract and split into 4 other `XItemCommand` or handle the 4 `Item` types on its own
+##### Aspect: Whether `ABCCommand` should be abstract and split into 4 other `ABCItemCommand` or handle the 4 `Item` types on its own
 
-**Alternative 1 (current choice)**: `XCommand` is split into 4 other `XItemCommand`. Parser parses the
-user input and creates the specific `XItemCommand` for execution. The following activity diagram shows how the 
+**Alternative 1 (current choice)**: `ABCCommand` is split into 4 other `ABCItemCommand`. Parser parses the
+user input and creates the specific `ABCItemCommand` for execution. The following activity diagram shows how the 
 execution of the `AddApplicationCommand` will work.
 
 ![AddApplicationCommandActivityDiagram](images/AddApplicationCommandActivityDiagram.png)
@@ -66,8 +91,8 @@ execution of the `AddApplicationCommand` will work.
 - Cons:
     - More classes have to be created
         
-- **Alternative 2**: `XCommand` is a _concrete_ class and handles the execution of all 4 `Item` types.
-Parser parses the user input and creates the general `XCommand` for execution. The following
+- **Alternative 2**: `ABCCommand` is a _concrete_ class and handles the execution of all 4 `Item` types.
+Parser parses the user input and creates the general `ABCCommand` for execution. The following
 activity diagram shows how the `AddCommand` will work.
 
 ![AddCommandActivityDiagram](images/AddCommandActivityDiagram.png)
@@ -77,10 +102,10 @@ activity diagram shows how the `AddCommand` will work.
 - Cons:
     - `execute` method becomes extremely long as it needs to contain switch statements to handle the execution of
     command X for the 4 different types of `Item`
-    - `XCommand` class is vulnerable to drastic changes when the parsing method of any one `Item` class changes
-    - `XCommand` class holds more dependencies as it is now dependent on the 4 `Item` classes  
+    - `ABCCommand` class is vulnerable to drastic changes when the parsing method of any one `Item` class changes
+    - `ABCCommand` class holds more dependencies as it is now dependent on the 4 `Item` classes  
     - Poor readability and maintainability
-    - A slight overhead increase as `Item` type needs to be passed in as a parameter to the `XCommand`,
+    - A slight overhead increase as `Item` type needs to be passed in as a parameter to the `ABCCommand`,
     additional check for nullity in the parameter passed in is required
 
 **Conclusion**: Our group settled on the first design, since it better adheres to OOP principles such as
@@ -88,7 +113,7 @@ Single Responsiblity Principle. Our design meant that each specific `Item` comma
 itself and not subjected to the changes in implementation of the other `Item` classes. This means that it will only
 have one reason to change. Moreover, this leads to lower coupling, which makes maintenance, integration and
 testing easier. This ended up being a good choice as we had some changes in the parsing requirements of one
-of the `Item` classes, `Internship`. If we had gone with the second design, the concrete `XCommand` might
+of the `Item` classes, `Internship`. If we had gone with the second design, the concrete `ABCCommand` might
 have broken down as it might not be suited to the different parsing requirements in the of the `Internship` item.
 
 ### Delete company feature
