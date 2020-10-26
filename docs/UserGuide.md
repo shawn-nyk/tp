@@ -453,7 +453,7 @@ Examples:
  Govtech d/Implemented automate testing using TravisCI d/Implemented dashboard to track code coverage` on an empty 
  profile will add the profile item as follows: <br />
  
-![AddProfileSS](images/AddProfileItem.png)
+![AddProfileSS](images/ug-profile/AddProfileItem.png)
 
 #### Deleting item in profile: `delete me`
 
@@ -478,7 +478,7 @@ Examples:
 * `edit me 2 c/skill t/CSS d/learnt how to use flexbox`
 * For example if you want to update the title and descriptor of the first item in your profile.
 * Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the profile item to:<br />
-![EditProfileSS](images/EditProfile.PNG)<br />
+![EditProfileSS](images/ug-profile/EditProfile.PNG)<br />
  *(Note that the existing descriptors get replaced)*
  
 #### Viewing item in profile: `view me`
@@ -491,7 +491,7 @@ Example:
 * `view me 3`
 * For example if you have the following profile items and you want to view the third item in your user profile. Executing `view me 3` will show the following:<br />
 
-![ViewProfile](images/ViewProfile.png)<br />
+![ViewProfile](images/ug-profile/ViewProfile.png)<br />
 *(As you can see the details of the third item can be seen in the right panel)*
 
 #### Finding items in profile: `find me`
@@ -511,9 +511,9 @@ Examples:
 - `find me Internship`
 - For the following example, if the profile contains the following items. Executing `find me internship` will return
  the following: <br />
-     ![FindProfile](images/FindProfileSingle.png) <br />
+     ![FindProfile](images/ug-profile/FindProfileSingle.png) <br />
      And executing `find me internship google` will return the following: <br />
-     ![FindProfileDouble](images/FindProfileDouble.png) <br />
+     ![FindProfileDouble](images/ug-profile/FindProfileDouble.png) <br />
      *(As you can see, the search results match at least one of the keywords specified regardless of its casing)*
 
 #### Listing all items in profile: `list me`
