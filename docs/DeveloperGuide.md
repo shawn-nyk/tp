@@ -203,7 +203,7 @@ specifying the targeted index and at least one field.
 The following sequence diagrams show how the editing profile Item feature works successfully, using the example command 
 `edit me t/HTML`:
 
-![EditProfileCommandSequenceDiagramSimplified](images/EditProfileCommandSequenceDiagramSimplified.png)
+![EditProfileCommandSequenceDiagramSimplified](images/dg-profile/EditProfileCommandSequenceDiagramSimplified.png)
 
 
 1. After the user enters an input  to edit the user profile, the input is first parsed by the `MainParser` looks out
@@ -213,7 +213,7 @@ The following sequence diagrams show how the editing profile Item feature works 
 3. The `EditProfileCommandParser` then parses for the index and fields to be edited and returns a `EditProfileCommand` 
 containing a editProfileItemDescriptor. The following sequence diagram depicts how the `EditProfileCommand` works:
 
-![ExecuteEditMeCommand](images/ExecuteEditMeCommand.png)
+![ExecuteEditMeCommand](images/dg-profile/ExecuteEditMeCommand.png)
 
 4. The `EditProfileCommand` is executed by `LogicManager` which retrieves the targeted `profileItemToEdit` from the
  `lastShownList` *(which contains the profile items the user is able to see)* and updates the model with the
@@ -244,7 +244,7 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
   ```
   model.getProfileList().setItem(profileItemToEdit, EditedProfileItem)
   ```
-![ExecuteEditMeCommandAlt.png](images/ExecuteEditMeCommandAlt.png)
+![ExecuteEditMeCommandAlt.png](images/dg-profile/ExecuteEditMeCommandAlt.png)
 
   * Pros: 
     * This reduces code volume by keeping `Model` lean and for `EditProfileObject`to interact with the objects it needs.
