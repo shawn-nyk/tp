@@ -30,14 +30,15 @@ title: Developer Guide
 5. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying
 the matching internships window to the user or switch tabs.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete app 3")`
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete app 1")`
 API call.
 
-![Interactions Inside the Logic Component for the `delete app 3` Command](images/DeleteSequenceDiagram.png)
+![Interactions Inside the Logic Component for the `delete app 1` Command](images/DeleteSequenceDiagram.png)
 
 <div markdown="span" class="alert alert-info">
-  :information_source: <strong>Note:</strong> The lifeline for `DeleteCommandParser`should end at the destroy marker
-  (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+  :information_source: <strong>Note:</strong> The lifeline for `DeleteCommandParser` and
+  `DeleteApplicationCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the
+  lifeline reaches the end of diagram.
 </div>
 
 ### Model component
