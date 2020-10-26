@@ -2,7 +2,6 @@ package seedu.address.model.application;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.commons.util.GeneralStringUtil.COMMA_WITH_SPACE;
 import static seedu.address.model.util.ApplicationItemUtil.DATE_OUTPUT_NAME;
 import static seedu.address.model.util.ApplicationItemUtil.STATUS_OUTPUT_NAME;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
@@ -14,6 +13,7 @@ import java.util.LinkedHashMap;
 import java.util.Objects;
 
 import seedu.address.model.internship.InternshipItem;
+import seedu.address.model.internship.JobTitle;
 import seedu.address.model.item.Item;
 import seedu.address.storage.application.JsonAdaptedApplicationItem;
 import seedu.address.storage.item.JsonAdaptedItem;
@@ -33,6 +33,7 @@ public class ApplicationItem extends Item {
 
     /**
      * Every field must be present and not null.
+     *
      * @param internshipItem Internship item.
      * @param status Status.
      * @param statusDate Status date.
@@ -67,6 +68,15 @@ public class ApplicationItem extends Item {
     }
 
     /**
+     * Retrieves the JobTitle of the InternshipItem of this ApplicationItem.
+     *
+     * @return InternshipItem of this ApplicationItem.
+     */
+    public JobTitle getJobTitleOfInternshipItem() {
+        return internshipItem.getJobTitle();
+    }
+
+    /**
      * Retrieves the status of this ApplicationItem.
      *
      * @return Status of this ApplicationItem.
@@ -76,12 +86,39 @@ public class ApplicationItem extends Item {
     }
 
     /**
+     * Retrieves the status in string representation.
+     *
+     * @return Status in string representation.
+     */
+    public String getStatusString() {
+        return status.toString();
+    }
+
+    /**
      * Retrieves the status date of this ApplicationItem.
      *
      * @return Status date of this ApplicationItem.
      */
     public StatusDate getStatusDate() {
         return statusDate;
+    }
+
+    /**
+     * Retrieves the status date in string representation.
+     *
+     * @return Status date in string representation.
+     */
+    public String getStatusDateString() {
+        return statusDate.toString();
+    }
+
+    /**
+     * Retrieves the internship job title in string representation.
+     *
+     * @return Internship job title in string representation.
+     */
+    public String getInternshipJobTitleValue() {
+        return internshipItem.getJobTitleValue();
     }
 
     /**
@@ -174,7 +211,7 @@ public class ApplicationItem extends Item {
         builder.append(getInternshipItem())
                 .append(STATUS_OUTPUT_NAME)
                 .append(getStatus())
-                .append(COMMA_WITH_SPACE)
+                .append(", ")
                 .append(DATE_OUTPUT_NAME)
                 .append(getStatusDate());
         return builder.toString();

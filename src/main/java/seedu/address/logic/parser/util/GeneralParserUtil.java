@@ -2,12 +2,6 @@ package seedu.address.logic.parser.util;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_INDEX;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
-import static seedu.address.commons.util.GeneralStringUtil.SPACE;
-import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
-import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
-import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
-import static seedu.address.model.util.ItemUtil.PROFILE_ALIAS;
 
 import java.util.stream.Stream;
 
@@ -21,7 +15,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * Handles the general parsing of all commands.
  * TODO: Javadocs
  */
-public abstract class GeneralParserUtil {
+public class GeneralParserUtil {
 
     private static final int ITEM_TYPE_INDEX = 0;
     private static final int COMMAND_DETAILS_INDEX = 1;
@@ -85,18 +79,6 @@ public abstract class GeneralParserUtil {
     }
 
     /**
-     * todo javadocs
-     */
-    public static void isValidItemType(String itemType) throws ParseException {
-        if (!itemType.equals(COMPANY_ALIAS)
-                && !itemType.equals(INTERNSHIP_ALIAS)
-                && !itemType.equals(APPLICATION_ALIAS)
-                && !itemType.equals(PROFILE_ALIAS)) {
-            throw new ParseException(MESSAGE_INVALID_ITEM_TYPE);
-        }
-    }
-
-    /**
      * Obtains the command details.
      *
      * @param args Arguments provided by the user.
@@ -114,7 +96,7 @@ public abstract class GeneralParserUtil {
     }
 
     private static String[] getArgumentsArr(String args) {
-        return args.strip().split(SPACE, NUMBER_OF_ARGUMENTS);
+        return args.strip().split(" ", NUMBER_OF_ARGUMENTS);
     }
 
     /**

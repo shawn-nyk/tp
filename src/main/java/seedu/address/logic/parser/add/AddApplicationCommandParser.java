@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_INDEX;
 import static seedu.address.logic.parser.util.GeneralParserUtil.argumentsAreValid;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getIndexInPreamble;
 import static seedu.address.logic.parser.util.GeneralParserUtil.parseIndex;

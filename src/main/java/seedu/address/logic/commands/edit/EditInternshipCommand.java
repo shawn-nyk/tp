@@ -5,11 +5,11 @@ import static seedu.address.commons.core.Messages.MESSAGE_EDIT_SUCCESS;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.commands.util.CommandUtil.getCompany;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_INDEX;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_JOB_TITLE;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_PERIOD;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_REQUIREMENT;
 import static seedu.address.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_WAGE;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
 import static seedu.address.model.FilterableItemList.PREDICATE_SHOW_ALL_ITEMS;
 import static seedu.address.model.util.ItemUtil.COMPANY_NAME;
 import static seedu.address.model.util.ItemUtil.INTERNSHIP_ALIAS;
@@ -61,7 +61,7 @@ public class EditInternshipCommand extends EditCommandAbstract {
 
     /** todo javadocs (shawn) */
     public EditInternshipCommand(Index companyIndex, Index internshipIndex,
-                                 EditInternshipDescriptor editInternshipDescriptor) {
+            EditInternshipDescriptor editInternshipDescriptor) {
         requireAllNonNull(companyIndex, internshipIndex, editInternshipDescriptor);
 
         this.companyIndex = companyIndex;
@@ -82,7 +82,8 @@ public class EditInternshipCommand extends EditCommandAbstract {
         }
 
         editInternship(internshipToEdit, editedInternship);
-        model.getCompanyList().updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
+        model.updateFilteredCompanyList(PREDICATE_SHOW_ALL_ITEMS);
+        model.setCompanyViewIndex(companyIndex);
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, INTERNSHIP_NAME, editedInternship);
         return getCommandResult(model, editSuccessMessage, TabName.COMPANY);
     }
@@ -92,7 +93,7 @@ public class EditInternshipCommand extends EditCommandAbstract {
      * edited with {@code editPersonDescriptor}.
      */
     private static InternshipItem createEditedInternship(InternshipItem internshipToEdit,
-                                            EditInternshipDescriptor editInternshipDescriptor) {
+            EditInternshipDescriptor editInternshipDescriptor) {
         assert internshipToEdit != null;
 
         CompanyName companyName = internshipToEdit.getCompanyName();
@@ -141,7 +142,8 @@ public class EditInternshipCommand extends EditCommandAbstract {
         private Period period;
         private Set<Requirement> requirements;
 
-        public EditInternshipDescriptor() {}
+        public EditInternshipDescriptor() {
+        }
 
         /**
          * Copy constructor.

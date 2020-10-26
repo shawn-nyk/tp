@@ -2,7 +2,7 @@ package seedu.address.logic.parser.delete;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_INDEX;
 import static seedu.address.logic.parser.util.GeneralParserUtil.argumentsAreValid;
 import static seedu.address.logic.parser.util.GeneralParserUtil.getIndexInPreamble;
 import static seedu.address.logic.parser.util.GeneralParserUtil.parseIndex;
@@ -20,8 +20,8 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class DeleteInternshipCommandParser implements Parser<DeleteInternshipCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the AddCommand
-     * and returns an AddCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the DeleteInternshipCommand
+     * and returns an DeleteInternshipCommand object for execution.
      *
      * @throws ParseException if the user input does not conform the expected format
      */

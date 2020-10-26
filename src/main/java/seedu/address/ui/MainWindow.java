@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.ui.GuardClauseUi.IS_EMPTY_DATA_LIST;
 import static seedu.address.ui.GuardClauseUi.IS_EMPTY_DISPLAY;
 import static seedu.address.ui.GuardClauseUi.IS_EMPTY_LIST_PANEL;
@@ -25,6 +26,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.company.CompanyItem;
+import seedu.address.model.internship.InternshipItem;
 import seedu.address.model.item.Item;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.ui.display.ApplicationDisplay;
@@ -35,6 +37,9 @@ import seedu.address.ui.panel.ApplicationListPanel;
 import seedu.address.ui.panel.CompanyListPanel;
 import seedu.address.ui.panel.ListPanel;
 import seedu.address.ui.panel.ProfileListPanel;
+import seedu.address.ui.popupwindow.HelpWindow;
+import seedu.address.ui.popupwindow.InternshipsWindow;
+import seedu.address.ui.popupwindow.PopupWindow;
 import seedu.address.ui.tabs.TabName;
 import seedu.address.ui.tabs.Tabs;
 
@@ -64,7 +69,12 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private InternshipsWindow internshipsWindow;
     private Tabs tabs;
+    private ListPanel<? extends Item> listPanel;
+    private InformationDisplay<? extends Item> informationDisplay;
+    private CommandBox commandBox;
+
     @FXML
     private VBox cardList;
     @FXML
@@ -99,6 +109,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the primary stage.
+     *
      * @return the {@code primaryStage} of the main window.
      */
     public Stage getPrimaryStage() {
@@ -115,13 +127,13 @@ public class MainWindow extends UiPart<Stage> {
         setWindowDefaultSize(logic.getGuiSettings());
         bindHeights(primaryStage);
         helpWindow = new HelpWindow();
-
+        internshipsWindow = new InternshipsWindow();
         primaryStage.setOnCloseRequest(event -> {
             GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                     (int) primaryStage.getX(), (int) primaryStage.getY());
             logic.setGuiSettings(guiSettings);
 
-            ExitDialog exitDialog = new ExitDialog(event, helpWindow);
+            ExitDialog exitDialog = new ExitDialog(event, helpWindow, internshipsWindow);
             exitDialog.show();
         });
     }
@@ -165,8 +177,8 @@ public class MainWindow extends UiPart<Stage> {
      * Adds the tab display to the {@code MainWindow}.
      */
     void addTabs() {
-        tabs = Tabs.getTabs(this, logic);
-        tabsContainer.getChildren().add(tabs);
+        tabs = Tabs.getTabs(this);
+        tabsContainer.getChildren().add(tabs.getRoot());
     }
 
     /**
@@ -181,14 +193,18 @@ public class MainWindow extends UiPart<Stage> {
      * Adds the information display to the {@code MainWindow}.
      */
     void addInformationDisplay() {
-        changeDisplay();
+        display.getChildren().clear();
+        if (!IS_EMPTY_DATA_LIST.test(companyItems)) {
+            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
+            display.getChildren().add(informationDisplay.getRoot());
+        }
     }
 
     /**
      * Adds the command box display to the {@code MainWindow}.
      */
     void addCommandBox() {
-        CommandBox commandBox = new CommandBox(this::executeCommand);
+        commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 
@@ -196,7 +212,9 @@ public class MainWindow extends UiPart<Stage> {
      * Adds the list panel display to the {@code MainWindow}.
      */
     void addListPanel() {
-        changeListPanelView(COMPANY);
+        listPanelPlaceholder.getChildren().clear();
+        listPanel = new CompanyListPanel(companyItems);
+        listPanelPlaceholder.getChildren().add(listPanel.getRoot());
     }
 
     /**
@@ -204,17 +222,35 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleHelp() {
-        if (!helpWindow.isShowing()) {
-            helpWindow.show();
+        handlePopupWindow(helpWindow);
+    }
+
+    /**
+     * Opens the internships window or focuses on it if it's already opened.
+     */
+    @FXML
+    private void handleMatchingInternships(ObservableList<InternshipItem> internshipList) {
+        internshipsWindow.setInternshipList(internshipList);
+        handlePopupWindow(internshipsWindow);
+    }
+
+    /**
+     * Opens the popup window or focuses on it if it's already opened.
+     *
+     * @param popupWindow Popup window.
+     */
+    private void handlePopupWindow(PopupWindow popupWindow) {
+        if (!popupWindow.isShowing()) {
+            popupWindow.show();
         } else {
-            helpWindow.focus();
+            popupWindow.focus();
         }
     }
 
     /**
      * Displays the GUI.
      */
-    void show() {
+    public void show() {
         primaryStage.show();
     }
 
@@ -232,6 +268,7 @@ public class MainWindow extends UiPart<Stage> {
      * @param tabName The tab to be switched to.
      */
     private void switchTab(TabName tabName) {
+        requireNonNull(tabName);
         tabs.switchTab(tabName);
     }
 
@@ -248,6 +285,10 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+
+            if (commandResult.isShowMatchingInternships()) {
+                handleMatchingInternships(commandResult.getMatchingInternships());
+            }
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
@@ -304,23 +345,38 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the list of cards that displays a list of company information.
+     *
      * @return An Optional value containing the company list panel.
      */
     private Optional<ListPanel<? extends Item>> getCompanyTabView() {
+        if (IS_EMPTY_DATA_LIST.test(companyItems)) {
+            return Optional.empty();
+        }
         return Optional.of(new CompanyListPanel(companyItems));
     }
 
     /**
+     * Retrieves the list of cards that displays a list of application information.
+     *
      * @return An Optional value containing the application list panel.
      */
     private Optional<ListPanel<? extends Item>> setApplicationTabView() {
+        if (IS_EMPTY_DATA_LIST.test(applicationItems)) {
+            return Optional.empty();
+        }
         return Optional.of(new ApplicationListPanel(applicationItems));
     }
 
     /**
+     * Retrieves the list of cards that displays a list of profile information.
+     *
      * @return An Optional value containing the profile list panel.
      */
     private Optional<ListPanel<? extends Item>> setProfileTabView() {
+        if (IS_EMPTY_DATA_LIST.test(profileItems)) {
+            return Optional.empty();
+        }
         return Optional.of(new ProfileListPanel(profileItems));
     }
 
@@ -355,35 +411,41 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Retrieves the particular company item's information at that index.
+     *
      * @param index The Index of the display to be displayed.
      * @return An Optional containing the display information of the company at that particular Index.
      */
     private Optional<InformationDisplay<? extends Item>> getCompanyDisplay(int index) {
-        if (!IS_EMPTY_DATA_LIST.test(companyItems)) {
-            return Optional.of(CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(index)));
+        if (IS_EMPTY_DATA_LIST.test(companyItems)) {
+            return Optional.empty();
         }
-        return Optional.empty();
+        return Optional.of(CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(index)));
     }
 
     /**
+     * Retrieves the particular application item's information at that index.
+     *
      * @param index The Index of the display to be displayed.
      * @return An Optional containing the display information of the Application at that particular Index.
      */
     private Optional<InformationDisplay<? extends Item>> getApplicationDisplay(int index) {
-        if (!IS_EMPTY_DATA_LIST.test(applicationItems)) {
-            return Optional.of(ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(index)));
+        if (IS_EMPTY_DATA_LIST.test(applicationItems)) {
+            return Optional.empty();
         }
-        return Optional.empty();
+        return Optional.of(ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(index)));
     }
 
     /**
+     * Retrieves the particular profile item's information at that index.
+     *
      * @param index The Index of the display to be displayed.
      * @return An Optional containing the display information of the profile at that particular Index.
      */
     private Optional<InformationDisplay<? extends Item>> getProfileDisplay(int index) {
-        if (!IS_EMPTY_DATA_LIST.test(profileItems)) {
-            return Optional.of(ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index)));
+        if (IS_EMPTY_DATA_LIST.test(profileItems)) {
+            return Optional.empty();
         }
-        return Optional.empty();
+        return Optional.of(ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index)));
     }
 }

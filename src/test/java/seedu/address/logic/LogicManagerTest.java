@@ -1,11 +1,16 @@
 package seedu.address.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_SAME_SCREEN;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
+import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
+import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
+import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.AMY;
 
@@ -18,7 +23,9 @@ import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.SwitchCommand;
 import seedu.address.logic.commands.add.AddCommand;
+import seedu.address.logic.commands.delete.DeleteCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
@@ -35,7 +42,6 @@ import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.application.JsonAdaptedApplicationItem;
 import seedu.address.storage.company.JsonAdaptedCompanyItem;
-import seedu.address.storage.person.JsonAdaptedPerson;
 import seedu.address.storage.profile.JsonAdaptedProfileItem;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.ui.tabs.TabName;
@@ -46,14 +52,11 @@ public class LogicManagerTest {
     @TempDir
     public Path temporaryFolder;
 
-    private Model model = new ModelManager();
+    private final Model model = new ModelManager();
     private Logic logic;
 
     @BeforeEach
     public void setUp() {
-        JsonItemListStorage<Person, JsonAdaptedPerson> addressBookStorage =
-                new JsonItemListStorage<>(temporaryFolder.resolve("addressBook.json"),
-                        Person.class, JsonAdaptedPerson.class);
         JsonItemListStorage<ApplicationItem, JsonAdaptedApplicationItem> applicationItemListStorage =
                 new JsonItemListStorage<>(temporaryFolder.resolve("applicationitemlist.json"),
                         ApplicationItem.class, JsonAdaptedApplicationItem.class);
@@ -64,8 +67,8 @@ public class LogicManagerTest {
                 new JsonItemListStorage<>(temporaryFolder.resolve("profileitemlist.json"),
                         ProfileItem.class, JsonAdaptedProfileItem.class);
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, applicationItemListStorage,
-                companyItemListStorage, profileItemListStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(applicationItemListStorage, companyItemListStorage,
+                profileItemListStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -77,21 +80,19 @@ public class LogicManagerTest {
 
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
-        //        String deleteCommand = "delete 9";
-        //        assertCommandException(deleteCommand, MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        String deleteCommand = DeleteCommand.COMMAND_WORD + " " + APPLICATION_ALIAS + " 9";
+        assertCommandException(deleteCommand, String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, APPLICATION_NAME));
     }
 
-    //    @Test
-    //    public void execute_validCommand_success() throws Exception {
-    //        String listCommand = ListCommand.COMMAND_WORD;
-    //        assertCommandSuccess(listCommand, ListCommand.MESSAGE_SUCCESS, model);
-    //    }
+    @Test
+    public void execute_validCommand_success() throws Exception {
+        String switchCommand = SwitchCommand.COMMAND_WORD + " " + COMPANY_ALIAS;
+        assertCommandSuccess(switchCommand, String.format(MESSAGE_SAME_SCREEN, TabName.COMPANY), model);
+    }
 
     @Test
     public void execute_storageThrowsIoException_throwsCommandException() {
         // Setup LogicManager with JsonItemListIoExceptionThrowingStub
-        JsonItemListStorage<Person, JsonAdaptedPerson> addressBookStorage =
-                new JsonItemListIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAddressBook.json"));
         JsonItemListStorage<ApplicationItem, JsonAdaptedApplicationItem> applicationItemListStorage =
                 new JsonItemListStorage<>(temporaryFolder.resolve("applicationitemlist.json"),
                         ApplicationItem.class, JsonAdaptedApplicationItem.class);
@@ -103,8 +104,8 @@ public class LogicManagerTest {
                         ProfileItem.class, JsonAdaptedProfileItem.class);
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, applicationItemListStorage,
-                companyItemListStorage, profileItemListStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(applicationItemListStorage, companyItemListStorage,
+                profileItemListStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
 
         // Execute add command
@@ -116,11 +117,6 @@ public class LogicManagerTest {
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
         // Todo: Update testcase for expected model
         //        assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
-    }
-
-    @Test
-    public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredPersonList().remove(0));
     }
 
     @Test
@@ -256,13 +252,14 @@ public class LogicManagerTest {
     /**
      * A stub class to throw an {@code IOException} when the save method is called.
      */
-    private static class JsonItemListIoExceptionThrowingStub extends JsonItemListStorage<Person, JsonAdaptedPerson> {
+    private static class JsonItemListIoExceptionThrowingStub extends
+            JsonItemListStorage<ApplicationItem, JsonAdaptedApplicationItem> {
         private JsonItemListIoExceptionThrowingStub(Path filePath) {
-            super(filePath, Person.class, JsonAdaptedPerson.class);
+            super(filePath, ApplicationItem.class, JsonAdaptedApplicationItem.class);
         }
 
         @Override
-        public void saveItemList(ReadOnlyItemList<Person> addressBook, Path filePath) throws IOException {
+        public void saveItemList(ReadOnlyItemList<ApplicationItem> addressBook, Path filePath) throws IOException {
             throw DUMMY_IO_EXCEPTION;
         }
     }

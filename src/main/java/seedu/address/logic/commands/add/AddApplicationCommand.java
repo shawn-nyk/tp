@@ -8,14 +8,13 @@ import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.commands.util.CommandUtil.getCompany;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_INDEX;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.FilterableItemList;
 import seedu.address.model.Model;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.application.Status;
@@ -71,16 +70,24 @@ public class AddApplicationCommand extends AddCommandAbstract {
         InternshipItem internshipItem = companyItem.getInternship(internshipIndex);
         ApplicationItem applicationToAdd = new ApplicationItem(internshipItem, status, statusDate);
 
-        FilterableItemList<ApplicationItem> applicationList = model.getApplicationList();
-
-        if (applicationList.hasItem(applicationToAdd)) {
+        if (model.hasApplication(applicationToAdd)) {
             throw new CommandException(String.format(MESSAGE_DUPLICATE_ITEM, APPLICATION_NAME));
         }
 
-        applicationList.addItem(applicationToAdd);
-
+        model.addApplication(applicationToAdd);
+        setApplicationViewIndex(model);
         String addSuccessMessage = String.format(MESSAGE_ADD_SUCCESS, APPLICATION_NAME, applicationToAdd);
         return getCommandResult(model, addSuccessMessage, TabName.APPLICATION);
+    }
+
+    /**
+     * Sets the application view index to the newly added application.
+     *
+     * @param model {@code Model} which the command should operate on.
+     */
+    private void setApplicationViewIndex(Model model) {
+        int size = model.getFilteredApplicationListSize();
+        model.setApplicationViewIndex(Index.fromOneBased(size));
     }
 
     @Override

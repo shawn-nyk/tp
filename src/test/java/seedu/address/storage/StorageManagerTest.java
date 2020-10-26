@@ -2,7 +2,8 @@ package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.application.SampleApplicationItems.getSampleApplicationItemList;
+import static seedu.address.testutil.profile.SampleProfileItems.getSampleProfileItemList;
 
 import java.nio.file.Path;
 
@@ -16,11 +17,9 @@ import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.company.CompanyItem;
 import seedu.address.model.item.ItemList;
 import seedu.address.model.item.ReadOnlyItemList;
-import seedu.address.model.person.Person;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.storage.application.JsonAdaptedApplicationItem;
 import seedu.address.storage.company.JsonAdaptedCompanyItem;
-import seedu.address.storage.person.JsonAdaptedPerson;
 import seedu.address.storage.profile.JsonAdaptedProfileItem;
 
 public class StorageManagerTest {
@@ -32,8 +31,6 @@ public class StorageManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonItemListStorage<Person, JsonAdaptedPerson> addressBookStorage = new JsonItemListStorage<>(
-                getTempFilePath("ab"), Person.class, JsonAdaptedPerson.class);
         JsonItemListStorage<ApplicationItem, JsonAdaptedApplicationItem> applicationItemListStorage =
                 new JsonItemListStorage<>(getTempFilePath("app"), ApplicationItem.class,
                         JsonAdaptedApplicationItem.class);
@@ -45,8 +42,8 @@ public class StorageManagerTest {
                         JsonAdaptedProfileItem.class);
 
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageManager = new StorageManager(addressBookStorage, applicationItemListStorage, companyItemListStorage,
-                profileItemListStorage, userPrefsStorage);
+        storageManager = new StorageManager(applicationItemListStorage, companyItemListStorage, profileItemListStorage,
+                userPrefsStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -68,21 +65,39 @@ public class StorageManagerTest {
     }
 
     @Test
-    public void addressBookReadSave() throws Exception {
+    public void applicationItemListReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
          * {@link JsonItemListStorage} class.
          * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
          */
-        ItemList<Person> original = getTypicalAddressBook();
-        storageManager.getAddressBookStorage().saveItemList(original);
-        ReadOnlyItemList<Person> retrieved = storageManager.getAddressBookStorage().readItemList().get();
+        ItemList<ApplicationItem> original = getSampleApplicationItemList();
+        storageManager.saveApplicationItemList(original);
+        ReadOnlyItemList<ApplicationItem> retrieved = storageManager.readApplicationItemList().get();
         assertEquals(original, new ItemList<>(retrieved));
     }
 
     @Test
-    public void getItemListFilePath() {
-        assertNotNull(storageManager.getAddressBookStorage().getItemListFilePath());
+    public void getApplicationItemListFilePath() {
+        assertNotNull(storageManager.getApplicationItemListFilePath());
+    }
+
+    @Test
+    public void profileItemListReadSave() throws Exception {
+        /*
+         * Note: This is an integration test that verifies the StorageManager is properly wired to the
+         * {@link JsonItemListStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
+         */
+        ItemList<ProfileItem> original = getSampleProfileItemList();
+        storageManager.saveProfileItemList(original);
+        ReadOnlyItemList<ProfileItem> retrieved = storageManager.readProfileItemList().get();
+        assertEquals(original, new ItemList<>(retrieved));
+    }
+
+    @Test
+    public void getProfileItemListFilePath() {
+        assertNotNull(storageManager.getProfileItemListFilePath());
     }
 
 }
