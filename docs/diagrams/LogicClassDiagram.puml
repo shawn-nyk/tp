@@ -8,17 +8,17 @@ package Logic {
 
 package Parser {
 Interface Parser <<Interface>>
-Class AddressBookParser
-Class XYZCommandParser
-Class CliSyntax
-Class ParserUtil
+Class MainParser
+Class ABCCommandParser
+Class XYZCliSyntax
+Class XYZParserUtil
 Class ArgumentMultimap
 Class ArgumentTokenizer
 Class Prefix
 }
 
 package Command {
-Class XYZCommand
+Class ABCCommand
 Class CommandResult
 Class "{abstract}\nCommand" as Command
 }
@@ -35,25 +35,27 @@ Class HiddenOutside #FFFFFF
 HiddenOutside ..> Logic
 
 LogicManager .up.|> Logic
-LogicManager -->"1" AddressBookParser
-AddressBookParser .left.> XYZCommandParser: creates >
+LogicManager -->"1" MainParser
+MainParser .left.> ABCCommandParser: creates >
 
-XYZCommandParser ..> XYZCommand : creates >
-XYZCommandParser ..|> Parser
-XYZCommandParser ..> ArgumentMultimap
-XYZCommandParser ..> ArgumentTokenizer
+ABCCommandParser ..> ABCCommand : creates >
+ABCCommandParser ..|> Parser
+ABCCommandParser ..> ArgumentMultimap
+ABCCommandParser ..> ArgumentTokenizer
 ArgumentTokenizer .left.> ArgumentMultimap
-XYZCommandParser ..> CliSyntax
-CliSyntax ..> Prefix
-XYZCommandParser ..> ParserUtil
-ParserUtil .down.> Prefix
+ABCCommandParser ..> XYZCliSyntax
+XYZCliSyntax ..> Prefix
+ABCCommandParser ..> XYZParserUtil
+XYZParserUtil .down.> Prefix
 ArgumentTokenizer .down.> Prefix
-XYZCommand -up-|> Command
+ABCCommand -up-|> Command
 LogicManager .left.> Command : executes >
+
+note top of XYZCliSyntax: XYZCliSyntax = ProfileCliSyntax,\nGeneralCliSyntax, etc \n(Same definition of XYZ \nused for XYZParserUtil)
 
 LogicManager --> Model
 Command .right.> Model
-note right of XYZCommand: XYZCommand = AddCommand, \nFindCommand, etc
+note right of ABCCommand: ABCCommand = AddCommand, \nViewCommand, etc
 
 Logic ..> CommandResult
 LogicManager .down.> CommandResult
