@@ -50,14 +50,13 @@ ABCCommandParser ..> XYZParserUtil
 XYZParserUtil .down.> Prefix
 ArgumentTokenizer .down.> Prefix
 ABCCommand -up-|> Command
-ABCItemCommand -up-|> ABCCommand
+ABCItemCommand -left-|> ABCCommand
 LogicManager .left.> Command : executes >
 
 note top of XYZCliSyntax: XYZCliSyntax = ProfileCliSyntax,\nGeneralCliSyntax, etc \n(Same definition of XYZ \nused for XYZParserUtil)
 
 LogicManager --> Model
 Command .right.> Model
-note right of ABCCommand: ABCCommand = AddCommand, \nViewCommand, etc
 note right of ABCItemCommand: ABCItemCommand = AddProfileCommand, \nViewCompanyCommand, etc
 
 Logic ..> CommandResult
