@@ -13,7 +13,7 @@ import static seedu.address.testutil.application.ApplicationItemFieldsUtil.EXPEC
 import static seedu.address.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_JUNE_2022;
 import static seedu.address.testutil.application.SampleApplicationItems.LAZADA_REJECTED;
 import static seedu.address.testutil.application.SampleApplicationItems.SHOPEE_OFFERED;
-import static seedu.address.testutil.internship.SampleInternshipItems.GOLDMAN_DA;
+import static seedu.address.testutil.internship.SampleInternshipItems.GOLDMAN_BA;
 import static seedu.address.testutil.internship.SampleInternshipItems.SHOPEE_SWE;
 
 import java.util.Iterator;
@@ -87,7 +87,7 @@ public class ApplicationItemTest {
 
         // different internship -> returns false
         ApplicationItem editedShopeeOffered = new ApplicationItemBuilder(SHOPEE_OFFERED)
-                .withInternshipItem(GOLDMAN_DA).build();
+                .withInternshipItem(GOLDMAN_BA).build();
         assertFalse(SHOPEE_OFFERED.isSameItem(editedShopeeOffered));
     }
 
@@ -117,7 +117,7 @@ public class ApplicationItemTest {
 
         // different internshipItem -> returns false
         ApplicationItem editedShopeeOffered = new ApplicationItemBuilder(SHOPEE_OFFERED)
-                .withInternshipItem(GOLDMAN_DA).build();
+                .withInternshipItem(GOLDMAN_BA).build();
         assertNotEquals(editedShopeeOffered, SHOPEE_OFFERED);
 
         // different status -> returns false
