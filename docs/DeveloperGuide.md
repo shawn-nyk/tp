@@ -10,9 +10,10 @@ title: Developer Guide
 
 ### Storage Component
 
-![StorageClassDiagram](images/StorageClassDiagram.png)
+<p id="storage-class-diagram" align="center"><img src="images/StorageClassDiagram.png"/></p>
 
-API : [Storage.java](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
+API : [Storage.java]
+(https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 The Storage component,
 * can save UserPref objects in json format and read it back.
