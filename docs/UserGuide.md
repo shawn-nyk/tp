@@ -543,7 +543,7 @@ Executing `match` will generate the list of matching internships in a new window
 <p align="center"><img src="images/ug-application/MatchCommand2.png" width="100%"/></p>
 
 <div markdown="span" class="alert alert-primary">
-:bulb: **Tip:** You can press Esc key to close the popup window!
+  :bulb: <strong>Tip:</strong> You can press Esc key to close the popup window!
 </div>
 
 #### Switching Tabs: `switch`
