@@ -119,7 +119,7 @@ activity diagram shows how the `AddCommand` will work.
     additional check for nullity in the parameter passed in is required
 
 **Conclusion**: Our group settled on the first design, since it better adheres to OOP principles such as
-Single Responsiblity Principle. Our design meant that each specific `Item` command is only dependent on the `Item`
+Single Responsibility Principle. Our design meant that each specific `Item` command is only dependent on the `Item`
 itself and not subjected to the changes in implementation of the other `Item` classes. This means that it will only
 have one reason to change. Moreover, this leads to lower coupling, which makes maintenance, integration and
 testing easier. This ended up being a good choice as we had some changes in the parsing requirements of one
@@ -486,16 +486,16 @@ This is how the `MatchCommand#execute()` method works upon execution:
 1. The list of profile items and company items are first obtained via the `Model#getProfileItemList()` method and
 `Model#getCompanyItemList()` respectively.
 2. Then, the list of profile skills that the user has is obtained via a self-invocation to
-`MatchCommand`'s own `getSkillList(profileItemList)` method.
+`MatchCommand`'s own `getSkillList(...)` method.
 3. Next, the list of all internships from the list of companies is obtained via its own
-`getInternshipList(companyItemList)` method.
-4. Then, the `MatchCommand`'s own `getMatchingInternships(fullInternshipList, currentSkillList)` is invoked to obtain
+`getInternshipList(...)` method.
+4. Then, the `MatchCommand`'s own `getMatchingInternships(...)` is invoked to obtain
 the list of matching internships.
-5. Finally, `MatchCommand`'s own `getMatchingInternshipsCommandResult(matchingInternships)` is used to generate the
+5. Finally, `MatchCommand`'s own `getMatchingInternshipsCommandResult(...)` is used to generate the
 `CommandResult`. This method returns different `CommandResult` depending if the matchingInternships is empty or not. 
- 5a. If the matchingInternships list is empty, the no matching internships message will be passed to the `CommandResult`
+ 5a. If the matchingInternships list is empty, then no matching internships message will be passed to the `CommandResult`.
  5b. Otherwise, the showing matching internships message will be passed to the `CommandResult`. This internship list
- will be passed into `CommandResult#setMatchingInternships(listOfInternships)` method.
+ will be passed into `CommandResult#setMatchingInternships(...)` method.
 
 The following sequence diagram show how the match command works:
 
