@@ -119,7 +119,7 @@ activity diagram shows how the `AddCommand` will work.
     additional check for nullity in the parameter passed in is required
 
 **Conclusion**: Our group settled on the first design, since it better adheres to OOP principles such as
-Single Responsiblity Principle. Our design meant that each specific `Item` command is only dependent on the `Item`
+Single Responsibility Principle. Our design meant that each specific `Item` command is only dependent on the `Item`
 itself and not subjected to the changes in implementation of the other `Item` classes. This means that it will only
 have one reason to change. Moreover, this leads to lower coupling, which makes maintenance, integration and
 testing easier. This ended up being a good choice as we had some changes in the parsing requirements of one
@@ -462,7 +462,76 @@ InternHunter only lets users create applications for internships already added t
     * Cons:
         * High risk of data inconsistency due to the linkage between company and application lists.
 
-### Match Command
+### Match Command feature
+
+#### What it is
+Users are able to execute a command to generate a list of matching internships that matches their current profile
+skills. This matching is done by accumulating the list of profile items that has the category `SKILL` and
+filtering the list of internships from them. Remaining internships are those that consist of at least one
+`Requirement` that matches the user's list of skills. 
+
+**Command format:** `match`
+
+#### Implementation
+
+`MatchCommand` is a class that extends the `Command` _abstract_ class. It has a dependency to the `Model`
+interface as it relies on getting the profile list and company item list from the model.
+
+Here is a class diagram to show how the `MatchCommand` is implemented:
+
+![MatchCommandClassDiagram](images/MatchCommandClassDiagram.png)
+
+This is how the `MatchCommand#execute()` method works upon execution:
+
+1. The list of profile items and company items are first obtained via the `Model#getProfileItemList()` method and
+`Model#getCompanyItemList()` respectively.
+2. Then, the list of profile skills that the user has is obtained via a self-invocation to
+`MatchCommand`'s own `getSkillList(...)` method.
+3. Next, the list of all internships from the list of companies is obtained via its own
+`getInternshipList(...)` method.
+4. Then, the `MatchCommand`'s own `getMatchingInternships(...)` is invoked to obtain
+the list of matching internships.
+5. Finally, `MatchCommand`'s own `getMatchingInternshipsCommandResult(...)` is used to generate the
+`CommandResult`. This method returns different `CommandResult` depending if the matchingInternships is empty or not. 
+ 5a. If the matchingInternships list is empty, then no matching internships message will be passed to the `CommandResult`.
+ 5b. Otherwise, the showing matching internships message will be passed to the `CommandResult`. This internship list
+ will be passed into `CommandResult#setMatchingInternships(...)` method.
+
+The following sequence diagram show how the match command works:
+
+![MatchCommandClassDiagram](images/MatchCommandSequenceDiagram.png)
+
+#### Design considerations
+
+##### Aspect: How to generate the matching internships
+
+**Alternative 1 (current choice):** Methods to generate the matching internships, namely `getSkillList`, 
+`getInternshipList`, and `getMatchingInternships` are implemented within `MatchCommand`.
+
+- Pros:
+    - Still adheres to the Single Responsibility Principle as the `MatchCommand` is meant to generate the list of
+    matching internships. Having additional methods to match internships to profile skills are still within the
+    responsibility of this class
+    - Higher cohesion as `Model` does not need to have additional responsibilities like executing algorithms
+    - Increased flexibility as the matching algorithm can be easily changed within this `MatchCommand`
+    
+- Cons:
+    - `MatchCommand` becomes longer as it needs additional methods to generate the list of matching internships
+
+**Alternative 2:** Methods to generate the matching internships, namely `getSkillList`, 
+`getInternshipList`, and `getMatchingInternships` are implemented within `Model`.
+
+- Pros:
+    - `MatchCommand` will be very short as it just needs to call the `getMatchingInternships` method from the
+    `Model` interface and generate the correct `CommandResult` from there
+    
+- Cons:
+    - `Model` becomes more complicated as it needs to support more methods. This in turns causes the `ModelManager`
+    class, which implements the `Model` interface to be overly complex as it needs to provide the algorithms to
+    filter and generate the matching internship list.
+    - Lower cohesion as the `Model` interface has additional responsibilities and functionalities.
+    `Model` now has to deal with algorithms, instead of keeping to what a `Model` does which is to manage the app data
+    of the user.
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 
@@ -720,8 +789,18 @@ Guarantees: Addition of application is successful
 
 * Similar to UC06 - listing all companies except user is listing all user profiles items.
 
-
 #### Use case: UC22 - Match skills in user profile to internship requirements
+
+**MSS**
+
+1. User requests to see the list of internships that matches her profile skills.
+2. InternHunter generates and displays the list of internships.
+
+**Extensions**
+
+ 2a. User have no internships that matches her profile skills. <br/>
+  2a1. InternHunter displays an error message and informs the user that she has no matching internships. <br/>
+  2a2. Use case ends.
 
 #### Use case: UC23 - Switch tabs
 
