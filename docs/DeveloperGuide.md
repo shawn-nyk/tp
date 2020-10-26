@@ -557,11 +557,11 @@ Use case ends.
 #### Use case: UC05 - Find companies
 
 Precondition: User already has an existing list of companies <br/>
-Guarantees: Companies whose names matches the keywords specified is listed 
+Guarantees: Companies whose names matches the keywords specified are listed 
 
 **MSS**
 
-1. User searches for a company name.
+1. User searches for a company by name.
 2. InternHunter displays the companies sought.<br/>
 Use case ends.
 
@@ -575,7 +575,7 @@ Use case ends.
 #### Use case: UC06 - List all companies
 
 Precondition: User already has an existing list of companies <br/>
-Guarantees: All companies stored in Internhunter is shown
+Guarantees: All companies stored in Internhunter are shown
 
 **MSS**
 
@@ -593,6 +593,7 @@ Use case ends.
 #### Use case: UC07 - Add an internship
 
 Precondition: User already has an existing list of companies <br/>
+Guarantees: Addition of internship to company is successful
 
 **MSS**
 *  Similar MSS to adding a company except user is now adding an internship.
@@ -607,19 +608,20 @@ Precondition: User already has an existing list of companies <br/>
 
 #### Use case: UC08 - Delete an internship
 
-* Similar to deleting a company except user is deleting an internship
+* Similar to UC02 - delete a company except user is deleting an internship
   
 #### Use case: UC09 - Edit an internship
 
-* Similar to editing a company except user is editing an internship
+* Similar to UC03 - editing a company except user is editing an internship
 
 #### Use case: UC10 - Add an application
 
 Precondition: User already has an existing list of internships in a company <br/>
+Guarantees: Addition of application is successful
 
 **MSS**
 
-*  Similar MSS to adding a company except user is now adding an internship.
+*  Similar MSS to UC01 - adding a company except user is now adding an application
 
 **Extensions**
 
@@ -627,52 +629,54 @@ Precondition: User already has an existing list of internships in a company <br/
 
 #### Use case: UC11 - Delete an application
 
-* Similar to deleting a company except user is deleting an application.
+* Similar to UC02 - deleting a company except user is deleting an application.
 
 #### Use case: UC12 - Edit an application
 
-* Similar to editing a company except user is editing an application.
+* Similar to UC03 - editing a company except user is editing an application.
 
 #### Use case: UC13 - View an application
 
-* Similar to viewing an company except  user is viewing an application.
+* Similar to UC04 - viewing a company except  user is viewing an application.
 
 #### Use case: UC14 - Find applications
 
-* Similar to finding companies except user is finding applications.
+* Similar to UC05 - finding companies except user is finding applications.
 
 #### Use case: UC15 - List all applications
 
-* Similar to listing all companies except user is listing all applications.
+* Similar to UC06 - listing all companies except user is listing all applications.
 
 #### Use case: UC16 - Add user profile item
 
-* Similar to adding a company except user is adding a user profile item.
+* Similar to UC01 - adding a company except user is adding a user profile item.
 
 #### Use case: UC17 - Delete a user profile item 
 
-* Similar to deleting a company except user is deleting a user profile item.
+* Similar to UC02 - deleting a company except user is deleting a user profile item.
 
 #### Use case: UC18 - Edit a user profile item
 
-* Similar to editing a company except user is editing a user profile item.
+* Similar to UC03 - editing a company except user is editing a user profile item.
 
 #### Use case: UC19 - View a user profile item
 
-* Similar to viewing a company except  user is viewing a user profile item.
+* Similar to UC04 - viewing a company except  user is viewing a user profile item.
 
 #### Use case: UC20 - Find user profile items
 
-* Similar to finding companies except user is finding user profile items.
+* Similar to UC05 - finding companies except user is finding user profile items.
 
 #### Use case: UC21 - List all user profile items
 
-* Similar to listing all companies except user is listing all user profiles items.
+* Similar to UC06 - listing all companies except user is listing all user profiles items.
 
 
 #### Use case: UC22 - Match skills in user profile to internship requirements
 
 #### Use case: UC23 - Switch tabs
+
+Guarantees: InternHunter switches to the queried tab.
 
 **MSS**
 
@@ -724,16 +728,15 @@ Guarantees: User will get directions to the user guide
     
 ### Appendix D: Non-Functional Requirements
 
-* Should be for a single user i.e. (not a multi-user product).
-* The data should be stored locally and should be in a human editable text file.
-* The software should work without requiring an installer.
 * Should work on any mainstream OS as long as it has Java 11 or above installed.
 * Should work on both 32-bit and 64-bit environment.
+* Should be for a single user i.e. (not a multi-user product).
+* The data should be stored locally and should be in a human editable text file.
+* InternHunter should work without requiring an installer.
 * Should only use third-party frameworks or libraries which are free, open-source and have permissive license term and 
 do not require installation by user of the software.
 * A user with above average typing speed for regular English text should be able to accomplish most of the tasks faster 
 using commands than using the mouse.
-* Should be developed in a breadth-first incremental manner over the project duration.
 
 ### Appendix E: Glossary
 
