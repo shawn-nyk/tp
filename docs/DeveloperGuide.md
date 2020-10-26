@@ -342,14 +342,14 @@ Upon a user’s entry of a valid switch command, a `SwitchCommand` object is cre
 
 <p align="left"><img src="images/switchcommand/SwitchCommandClassDiagram.png" width="70%" height="70%"/></p>
 
-`SwitchCommand` implements the `execute()` method from the `Command` abstract class whereby upon execution, the 
+`SwitchCommand` implements the `execute(...)` method from the `Command` abstract class whereby upon execution, the 
 method will switch the tab and the screen if a valid command is provided.
 
-This is how the `SwitchCommand#execute()` method works upon execution:
+This is how the `SwitchCommand#execute(...)` method works upon execution:
 1. The current tab that the user is viewing is obtained via the `Model#getTabName()` method.
 2. The input tab will be check against the current tab. <br/>
- 2a. If both the tabs are the same, a same tab message will be passed to `CommandUtil#getCommandResult()`method. <br/>
- 2b. If both the tabs are different, a success message will be passed to `CommandUtil#getCommandResult()`method. <br/>
+ 2a. If both the tabs are the same, a same tab message will be passed to `CommandUtil#getCommandResult(...)`method. <br/>
+ 2b. If both the tabs are different, a success message will be passed to `CommandUtil#getCommandResult(...)`method. <br/>
 
 <p align="center">The overall process of how <code>SwitchCommand</code> was generated.</p>
 
@@ -359,11 +359,11 @@ This is how the `SwitchCommand#execute()` method works upon execution:
 
 <p align="center"><img src="images/ExecuteSwitchMeCommandSequenceDiagram.png" width="75%" height="75%"/></p>
 
-This is how the `CommandUtil#getCommandResult()` method works upon execution:
+This is how the `CommandUtil#getCommandResult(...)` method works upon execution:
 1. The current tab that the user is viewing is obtained via the `Model#getTabName()` method.
 2. The input tab will be check against the current tab. <br/>
- 2a. If both the tabs are the same, a `CommandResult` with a same tab message is return.
- 2b. If both the tabs are different, we will change the tab to the input's tab name via `Model#setTabName()`. A `CommandResult` with a success message is return.
+ 2a. If both the tabs are the same, a `CommandResult` with a same tab message is return. <br/>
+ 2b. If both the tabs are different, we will change the tab to the input's tab name via `Model#setTabName(...)`. A `CommandResult` with a success message is return.
 
 <p align="center">The process of how <code>getCommandResult</code>.</p>
 
