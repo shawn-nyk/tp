@@ -168,7 +168,7 @@ delete internship commands, i.e. by implementing delete internship command’s i
     * Not dependent on `DeleteInternshipCommand`.
   * Cons:
     * Introduces dependencies on `InternshipItem` and `ApplicationItem`.
-    * Violates the DRY (Don't Repeat Yourself) principle:
+    * Violates the DRY principle:
       * Introduces code duplication.
       * Decentralizes the behaviour of what happens to an application made for an internship that is being deleted, 
       since there are now 2 separate implementations for this (one in `DeleteCompanyCommand` and the other in 
@@ -311,7 +311,7 @@ The above activity diagram shows the logic and the path execution when the switc
 * **Alternative 1 (current choice):** Allow the switch of tabs to not only be accessible via the switch command, but rather extract it out for all commands excluding `exit` and `help`.
     * Pros:
         * Allows user to type once instead of twice when executing a single command and wanting to view it. (This optimzation is to allow for a faster way to type and view the changes). <br/>
-        * By abstract the method out from switch command, it obeys the DRY (Don't Repeat Yourself) principle as all the commands will be calling a single method.
+        * By abstract the method out from switch command, it obeys the DRY principle as all the commands will be calling a single method.
         * This allows and obeys the Open-Close princple as new implementation of commands can just be calling this single method at the end.
         * Allows user to have a second alternative to switch tabs for just viewing purpose.
     * Cons:
