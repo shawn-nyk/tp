@@ -2,11 +2,11 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_INDEX;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_PHONE;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
