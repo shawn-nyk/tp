@@ -52,7 +52,7 @@ title: User Guide
 ## **Introduction**
 
 **InternHunter is a CLI-centric desktop application which aids university students in applying for internships**.
-It lets you manage your own customisable collection of companies, internships, internship applications and your own 
+It lets you manage your own customisable collection of companies, internships, internship applications and your 
 user profile, so that you can keep track of internships that you are interested in - all from one centralised place.
 
 Never lose track of a good internship opportunity again.
@@ -189,8 +189,8 @@ Format: `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...
 Examples:
 - `add com n/Garena a/201 Victoria St e/GarenaHires@garena.com p/65093545` *(notice that the company's industry types
  need not be specified)*
-- Executing `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t
-/Artificial Intelligence` on an empty company list will add the company as follows: <br />
+- Executing `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Intelligence`
+on an empty company list will add the company as follows: <br />
 ![AddCompanySS](images/AddCompanySS.PNG)
 
 #### Deleting a company: `delete com`
