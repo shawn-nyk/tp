@@ -8,18 +8,52 @@ title: Developer Guide
 --------------------------------------------------------------------------------------------------------------------
 ## **Design**
 
+### Logic component
+
+![Structure of the Logic Component](images/LogicClassDiagram.png)
+
+<div markdown="span" class="alert alert-info">
+
+  :information_source: <strong>Note:</strong> Implementation of the command class is not accurate for commands
+  independent of type as the diagram is simplified for better readability.
+  Refer to the [command implementation](#implementation-of-command-classes) to see how is it implemented in full.
+
+</div>
+
+**API** :
+[`Logic.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
+
+1. `Logic` uses the `MainParser` class to parse the user command.
+2. This results in a `Command` object which is executed by the `LogicManager`.
+3. The command execution can affect the `Model` (e.g. deleting an application).
+4. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
+5. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as switching
+tabs or displaying the matching internships window to the user.
+
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete app 1")`
+API call.
+
+![Interactions Inside the Logic Component for the `delete app 1` Command](images/DeleteSequenceDiagram.png)
+
+<div markdown="span" class="alert alert-info">
+  :information_source: <strong>Note:</strong> The lifeline for <code>DeleteCommandParser</code> and
+  <code>DeleteApplicationCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML,
+  the lifeline reaches the end of diagram.
+</div>
+
+### Model component
+
 ### Storage Component
 
 <p id="storage-class-diagram" align="center"><img src="images/StorageClassDiagram.png"/></p>
 
-API : [Storage.java]
-(https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
+**API** :
+[`Storage.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 The Storage component,
 * can save UserPref objects in json format and read it back.
 * can save the InternHunter data in json format and read it back.
 
-        
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
@@ -40,19 +74,21 @@ There are 2 types of commands:
     - e.g. `SwitchCommand`, `HelpCommand`, `ExitCommand`
     - These commands are implemented as _concrete_ classes and inherit directly from the `Command` class
 
-From this point on, we will be using `XCommand` to represent commands that are dependent on type and
-`YCommand` to represent commands that are independent of type.
+From this point on, we will be using `ABCCommand` to represent commands that are dependent on type and
+`XYZCommand` to represent commands that are independent of type.
 
-The following is an example of the class hierachy:
+The following shows the class diagram for `Command` and its subclasses:
 
 ![CommandClassDiagram](images/CommandClassDiagram.png)
 
+Figure xx. `ABCCommand` refers to a command dependent on type while `XYZCommand` refers to a command indepedent of type
+
 #### Design considerations
 
-##### Aspect: Whether `XCommand` should be abstract and split into 4 other `XItemCommand` or handle the 4 `Item` types on its own
+##### Aspect: Whether `ABCCommand` should be abstract and split into 4 other `ABCItemCommand` or handle the 4 `Item` types on its own
 
-**Alternative 1 (current choice)**: `XCommand` is split into 4 other `XItemCommand`. Parser parses the
-user input and creates the specific `XItemCommand` for execution. The following activity diagram shows how the 
+**Alternative 1 (current choice)**: `ABCCommand` is split into 4 other `ABCItemCommand`. Parser parses the
+user input and creates the specific `ABCItemCommand` for execution. The following activity diagram shows how the 
 execution of the `AddApplicationCommand` will work.
 
 ![AddApplicationCommandActivityDiagram](images/AddApplicationCommandActivityDiagram.png)
@@ -65,8 +101,8 @@ execution of the `AddApplicationCommand` will work.
 - Cons:
     - More classes have to be created
         
-- **Alternative 2**: `XCommand` is a _concrete_ class and handles the execution of all 4 `Item` types.
-Parser parses the user input and creates the general `XCommand` for execution. The following
+- **Alternative 2**: `ABCCommand` is a _concrete_ class and handles the execution of all 4 `Item` types.
+Parser parses the user input and creates the general `ABCCommand` for execution. The following
 activity diagram shows how the `AddCommand` will work.
 
 ![AddCommandActivityDiagram](images/AddCommandActivityDiagram.png)
@@ -76,10 +112,10 @@ activity diagram shows how the `AddCommand` will work.
 - Cons:
     - `execute` method becomes extremely long as it needs to contain switch statements to handle the execution of
     command X for the 4 different types of `Item`
-    - `XCommand` class is vulnerable to drastic changes when the parsing method of any one `Item` class changes
-    - `XCommand` class holds more dependencies as it is now dependent on the 4 `Item` classes  
+    - `ABCCommand` class is vulnerable to drastic changes when the parsing method of any one `Item` class changes
+    - `ABCCommand` class holds more dependencies as it is now dependent on the 4 `Item` classes  
     - Poor readability and maintainability
-    - A slight overhead increase as `Item` type needs to be passed in as a parameter to the `XCommand`,
+    - A slight overhead increase as `Item` type needs to be passed in as a parameter to the `ABCCommand`,
     additional check for nullity in the parameter passed in is required
 
 **Conclusion**: Our group settled on the first design, since it better adheres to OOP principles such as
@@ -87,7 +123,7 @@ Single Responsiblity Principle. Our design meant that each specific `Item` comma
 itself and not subjected to the changes in implementation of the other `Item` classes. This means that it will only
 have one reason to change. Moreover, this leads to lower coupling, which makes maintenance, integration and
 testing easier. This ended up being a good choice as we had some changes in the parsing requirements of one
-of the `Item` classes, `Internship`. If we had gone with the second design, the concrete `XCommand` might
+of the `Item` classes, `Internship`. If we had gone with the second design, the concrete `ABCCommand` might
 have broken down as it might not be suited to the different parsing requirements in the of the `Internship` item.
 
 ### Delete company feature
@@ -285,7 +321,7 @@ This is how the `SwitchCommand#execute()` method works upon execution:
 
 <p align="center">The overall process of how <code>SwitchCommand</code> was generated.</p>
 
-<p align="center"><img src="images/switchcommand/SwitchCommandSequenceDiagram.png"</p>
+<p align="center"><img src="images/switchcommand/SwitchCommandSequenceDiagram.png"/></p>
 
 <p align="center">The process of how <code>SwitchCommand</code> interacts with the model.</p>
 
@@ -425,6 +461,16 @@ InternHunter only lets users create applications for internships already added t
     
     * Cons:
         * High risk of data inconsistency due to the linkage between company and application lists.
+
+### Match Command
+
+## **Documentation, logging, testing, configuration, dev-ops**
+
+* [Documentation guide](Documentation.md)
+* [Testing guide](Testing.md)
+* [Logging guide](Logging.md)
+* [Configuration guide](Configuration.md)
+* [DevOps guide](DevOps.md)
        
 ## **Appendix**
 ### Appendix A: Product Scope
@@ -444,34 +490,36 @@ InternHunter only lets users create applications for internships already added t
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​    | I want to …​                                                   | So that I can…​                                                                   |
-| -------- | ---------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `* * *`  | new user   | see usage instructions                                         | refer to instructions when I forget how to use the app                            |
-| `* * *`  | user       | get error feedback when a command fails                        | know what went wrong                                                              |
-| `* * *`  | user       | maintain a list of company profiles                            | keep track of companies that I'm interested in                                    |
-| `* * *`  | user       | add a company profile                                          | keep track of companies that I'm interested in                                    |
-| `* * *`  | user       | delete a company profile                                       | remove company profiles that I no longer need / am no longer interested in        |
-| `* * *`  | user       | edit a company profile                                         | keep my company profiles updated and accurate                                     |
-| `* * *`  | user       | view a company profile                                         | see its details                                                                   |
-| `* * *`  | user       | add an internship to a company profile                         | keep track of the internships that that company is offering                       |
-| `* * *`  | user       | delete an internship from a company profile                    | remove erroneous / outdated entries                                               |
-| `* * *`  | user       | edit an internship from a company profile                      | keep the list of internships that a company offers updated and accurate           |
-| `* * *`  | user       | view a company’s internships when I view their profile         | see what internships they are offering                                            |
-| `* * *`  | user       | maintain a list of my internship applications                  | keep track of them                                                                |
-| `* * *`  | user       | add an internship application                                  | keep track of the internships that I have applied for                             |
-| `* * *`  | user       | delete an internship application                               | remove internship applications that I no longer need / am no longer interested in |
-| `* * *`  | user       | edit an internship application                                 | keep my internship applications updated and accurate                              |
-| `* * *`  | user       | view an internship application                                 | see its details                                                                   |
-| `* * *`  | user       | record and see an internship application's status              | keep track of them                                                                |
-| `* * *`  | user       | save the dates of my upcoming interviews                       | keep track of them                                                                |
-| `* * *`  | user       | maintain a user profile                                        | have an overview of my experience, skills and achievements                        |
-| `* * *`  | user       | add information to my user profile                             | keep my user profile updated and accurate                                         |
-| `* * *`  | user       | delete information from my user profile                        | keep my user profile updated and accurate                                         |
-| `* * *`  | user       | edit information in my user profile                            | keep my user profile updated and accurate                                         |
-| `* * *`  | user       | view information in my user profile                            | see its details                                                                   |
-| `* *`    | user       | navigate the application easily through a clear user interface |                                                                                   |
-| `* *`    | user       | get fast feedback from the app                                 |                                                                                   |
-| `* *`    | user       | clears all entries from InterhHunter                           | start from a clean slate
+Priority | As a …​    | I want to …​                                                   | So that I can…​                                                           
+-------- | ---------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------- 
+`* * *`  | new user   | see usage instructions                                         | refer to instructions when I forget how to use the app                            
+`* * *`  | user       | get error feedback when a command fails                        | know what went wrong                                                              
+`* * *`  | user       | maintain a list of company profiles                            | keep track of companies that I'm interested in                                    
+`* * *`  | user       | add a company profile                                          | keep track of companies that I'm interested in                                    
+`* * *`  | user       | delete a company profile                                       | remove company profiles that I no longer need / am no longer interested in        
+`* * *`  | user       | edit a company profile                                         | keep my company profiles updated and accurate                                     
+`* * *`  | user       | view a company profile                                         | see its details                                                                   
+`* * *`  | user       | add an internship to a company profile                         | keep track of the internships that that company is offering                       
+`* * *`  | user       | delete an internship from a company profile                    | remove erroneous / outdated entries                                               
+`* * *`  | user       | edit an internship from a company profile                      | keep the list of internships that a company offers updated and accurate           
+`* * *`  | user       | view a company’s internships when I view their profile         | see what internships they are offering                                            
+`* * *`  | user       | maintain a list of my internship applications                  | keep track of them                                                                
+`* * *`  | user       | add an internship application                                  | keep track of the internships that I have applied for                             
+`* * *`  | user       | delete an internship application                               | remove internship applications that I no longer need / am no longer interested in 
+`* * *`  | user       | edit an internship application                                 | keep my internship applications updated and accurate                              
+`* * *`  | user       | view an internship application                                 | see its details                                                                   
+`* * *`  | user       | record and see an internship application's status              | keep track of them                                                                
+`* * *`  | user       | save the dates of my upcoming interviews                       | keep track of them                                                                
+`* * *`  | user       | maintain a user profile                                        | have an overview of my experience, skills and achievements                        
+`* * *`  | user       | add information to my user profile                             | keep my user profile updated and accurate                                         
+`* * *`  | user       | delete information from my user profile                        | keep my user profile updated and accurate                                         
+`* * *`  | user       | edit information in my user profile                            | keep my user profile updated and accurate                                         
+`* * *`  | user       | view information in my user profile                            | see its details  
+`* * *`  | user       | find internships based on my skills set                        | know which internships I can apply for                                
+`* *`    | user       | navigate the application easily through a clear user interface |                                                                                   
+`* *`    | user       | get fast feedback from the app                                 |                                                                                   
+`* *`    | user       | clears all entries from InternHunter                           | start from a clean slate
+
 ### Appendix C: Use Cases
 
 (For all use cases below, the **System** is `InternHunter` and the **Actor** is the `user`)
@@ -746,7 +794,34 @@ using commands than using the mouse.
 * **Json**: JavaScript Object Notation
 * **DRY**: Don't Repeat Yourself
 
-### Appendix F: Sequence Diagrams
+### Appendix F: Instructions for manual testing
+
+Given below are instructions to test the app manually.
+
+<div markdown="span" class="alert alert-info">
+
+:information_source: <strong>Note:</strong> These instructions only provide a starting point for testers to work on;
+testers are expected to do more *exploratory* testing.
+
+</div>
+
+#### Launch and shutdown
+
+1. Initial launch
+
+   1. Download the jar file and copy into an empty folder.
+
+   1. Double-click the jar file. <br>
+       Expected: Shows the GUI with a set of sample data. The window size may not be optimum.
+
+1. Saving window preferences
+
+   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+
+   1. Re-launch the app by double-clicking the jar file.<br>
+       Expected: The most recent window size and location is retained.
+
+### Appendix G: Sequence Diagrams
 
 <p align="center">Sequence diagram for HandleDeleteDisplaySwitchIndex</p>
 

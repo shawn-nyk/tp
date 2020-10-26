@@ -15,7 +15,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * Handles the general parsing of all commands.
  * TODO: Javadocs
  */
-public abstract class GeneralParserUtil {
+public class GeneralParserUtil {
 
     private static final int ITEM_TYPE_INDEX = 0;
     private static final int COMMAND_DETAILS_INDEX = 1;

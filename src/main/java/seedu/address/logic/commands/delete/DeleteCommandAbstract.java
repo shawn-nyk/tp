@@ -1,6 +1,6 @@
 package seedu.address.logic.commands.delete;
 
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_INDEX;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 import static seedu.address.model.util.ItemUtil.COMPANY_ALIAS;
