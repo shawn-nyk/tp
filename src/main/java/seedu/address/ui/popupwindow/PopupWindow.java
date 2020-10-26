@@ -1,8 +1,9 @@
-package seedu.address.ui;
+package seedu.address.ui.popupwindow;
 
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import seedu.address.ui.UiPart;
 
 /**
  * Controller for PopupWindow.
