@@ -20,8 +20,8 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class DeleteInternshipCommandParser implements Parser<DeleteInternshipCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the AddCommand
-     * and returns an AddCommand object for execution. todo javadocs
+     * Parses the given {@code String} of arguments in the context of the DeleteInternshipCommand
+     * and returns an DeleteInternshipCommand object for execution.
      *
      * @throws ParseException if the user input does not conform the expected format
      */
