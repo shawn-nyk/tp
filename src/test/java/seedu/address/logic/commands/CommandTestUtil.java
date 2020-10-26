@@ -21,6 +21,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.application.ApplicationNameContainsKeyWordsPredicate;
+import seedu.address.model.company.CompanyItem;
 import seedu.address.model.item.ItemList;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -108,12 +109,21 @@ public class CommandTestUtil {
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
-        ItemList<Person> expectedAddressBook = new ItemList<>(actualModel.getAddressBook().getUnfilteredItemList());
-        List<Person> expectedFilteredList = new ArrayList<>(actualModel.getAddressBook().getFilteredItemList());
+        ItemList<CompanyItem> expectedCompanyList = new ItemList<>(actualModel.getUnfilteredCompanyList());
+        List<CompanyItem> expectedFilteredCompanyList = new ArrayList<>(actualModel.getFilteredCompanyList());
+        ItemList<ApplicationItem> expectedApplicationList = new ItemList<>(actualModel.getUnfilteredApplicationList());
+        List<ApplicationItem> expectedFilteredApplicationList =
+                new ArrayList<>(actualModel.getFilteredApplicationList());
+        ItemList<ProfileItem> expectedProfileList = new ItemList<>(actualModel.getUnfilteredProfileList());
+        List<ProfileItem> expectedFilteredProfileList = new ArrayList<>(actualModel.getFilteredProfileList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
-        assertEquals(expectedAddressBook, actualModel.getAddressBook().getUnfilteredItemList());
-        assertEquals(expectedFilteredList, actualModel.getAddressBook().getFilteredItemList());
+        assertEquals(expectedCompanyList, actualModel.getUnfilteredCompanyList());
+        assertEquals(expectedFilteredCompanyList, actualModel.getFilteredCompanyList());
+        assertEquals(expectedApplicationList, actualModel.getUnfilteredApplicationList());
+        assertEquals(expectedFilteredApplicationList, actualModel.getFilteredApplicationList());
+        assertEquals(expectedProfileList, actualModel.getUnfilteredProfileList());
+        assertEquals(expectedFilteredProfileList, actualModel.getFilteredProfileList());
     }
 
     /**
