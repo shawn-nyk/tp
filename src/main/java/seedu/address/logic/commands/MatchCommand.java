@@ -1,11 +1,10 @@
 package seedu.address.logic.commands;
 
-import static seedu.address.commons.util.CollectionUtil.getNumberedList;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javafx.collections.FXCollections;
 import seedu.address.model.Model;
 import seedu.address.model.company.CompanyItem;
 import seedu.address.model.internship.InternshipItem;
@@ -23,9 +22,9 @@ public class MatchCommand extends Command {
     public CommandResult execute(Model model) {
         List<ProfileItem> profileItemList = model.getProfileItemList();
         List<CompanyItem> companyItemList = model.getCompanyItemList();
-        List<String> currentSkillList = getSkillList(profileItemList);
+        List<String> skillList = getSkillList(profileItemList);
         List<InternshipItem> fullInternshipList = getInternshipList(companyItemList);
-        List<InternshipItem> matchingInternships = getMatchingInternships(fullInternshipList, currentSkillList);
+        List<InternshipItem> matchingInternships = getMatchingInternships(fullInternshipList, skillList);
         return getMatchingInternshipsCommandResult(matchingInternships);
     }
 
@@ -42,9 +41,9 @@ public class MatchCommand extends Command {
         return internshipItems;
     }
 
-    private List<InternshipItem> getMatchingInternships(List<InternshipItem> internshipItemList,
+    private List<InternshipItem> getMatchingInternships(List<InternshipItem> fullInternshipList,
             List<String> skillList) {
-        return internshipItemList
+        return fullInternshipList
                 .stream()
                 .filter(internshipItem -> internshipItem.matches(skillList))
                 .collect(Collectors.toList());
@@ -54,9 +53,8 @@ public class MatchCommand extends Command {
         if (matchingInternships.isEmpty()) {
             return new CommandResult(NO_MATCHING_INTERNSHIPS_MESSAGE);
         }
-        String internshipsToDisplay = getNumberedList(matchingInternships);
         CommandResult commandResult = new CommandResult(SHOWING_MATCH_COMMAND_MESSAGE);
-        commandResult.setMatchingInternshipsText(internshipsToDisplay);
+        commandResult.setMatchingInternships(FXCollections.observableArrayList(matchingInternships));
         return commandResult;
     }
 
