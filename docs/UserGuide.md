@@ -356,7 +356,7 @@ Example:
 - Suppose you are interested in applying for the Software Engineer internship in Google Singapore:
 <p align="center"><img src="images/ug-application/Internship.png" width="100%"/></p>
 
-Executing `add app 1 i/1 d/24-12-2020` will apply for the internship as follows.
+Executing `add app 1 i/1 d/24-12-20` will apply for the internship as follows.
 Note that you will be automatically switched to the application tab to view the application made:
 <p align="center"><img src="images/ug-application/AddApplication1.png" width="100%"/></p>
 
@@ -532,9 +532,16 @@ Format: `list me`
 Generates a list of internships that have requirements that matches your current set of skills.
 
 Format: `match`
-- Matching done is case-insensitive. e.g. `Python` will match `python`
-- Internships with job titles matching at least one `SKILL` will be returned.
-- Only full words will be matched. e.g. `React` will not match `React Native`
+- Only the `Requirement` field in the internships will be searched for.
+- Only profile items with `Skill` category will be used for matching.
+- The `TITLE` field of the profile items will be used for matching.
+- Internships with at least one `Requirement` matching any one `TITLE` in your `Skill`s in the profile list will be
+considered as successful matches. e.g. Say you have a profile item `Skill` category and `Python` as the `TITLE`, any
+internships that has a `Requirement` of `Python` will be matched.
+- Matched internships can have `Requirement`s that do not match with the profile `Skills`, since a match is found when
+an internship has **at least one and not all** `Requirement` that matches with the profile `Skills`.
+- Matching done is case-insensitive. e.g. `Python` will match `python`.
+- Only the full sentence will be matched. e.g. `Machine` will not match `Machine Learning`.
 
 Example:
 - Suppose you have these 2 internship lists (from 2 different companies) and profile skills in your list.
