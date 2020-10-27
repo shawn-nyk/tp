@@ -398,12 +398,17 @@ Executing `view app 2` will update the right panel to display the second applica
 Finds all applications in your list of applications whose job titles contain any of the given keywords.
 
 Format: `find app KEYWORD [ANOTHER_KEYWORD]...`
-- Find command matching is the same as that used in [`find com` command](#finding-companies-find-com), except 
-job titles are used in placed of company names.
+- Only the application name will be searched for.
+- The search is case-insensitive. e.g. `engineer` will match `Engineer`.
+- Companies with names matching at least one keyword will be returned. e.g. `Software Engineer` will return applications
+ whose names contain the word `Software` *or* `Engineer`.
+- The order of the keywords does not matter. e.g. `Software Engineer` and `Engineer Software` will return the same results.
+- Only full words will be matched. e.g. `Engineer` will not match `Engine`.
 
 Example:
 - Suppose you have this list of applications. Executing `find app engineer` will update the list to show matching
 applications:
+
 <p align="center"><img src="images/ug-application/FindApplication1.png" width="100%"/></p>
 
 #### Listing all applications: `list app`
@@ -432,9 +437,9 @@ Each category is represented by the following icons in the UI:
 
 | CATEGORY   | ICON 
 |------------|------------------
-|`achievement`| <img src="images/achievement.png" width="10%" height="10%"/>
-|`experience` | <img src="images/experience.png" width="10%" height="10%"/>
-|`skill`      | <img src="images/skills.png" width="10%" height="10%"/>
+|`achievement`| <img src="images/ug-profile/achievement" width="10%" height="10%"/>
+|`experience` | <img src="images/ug-profile/experience" width="10%" height="10%"/>
+|`skill`      | <img src="images/ug-profile/skills.png" width="10%" height="10%"/>
 
 
 Each profile item also contains a `TITLE` that describes the item, and you can optionally 
@@ -554,8 +559,14 @@ matching with the internships.
 
 <p align="center"><img src="images/ug-general/match-skills.png" width="100%"/></p>
 
-3. By typing the `match` word in the command box in any window, a pop-up window showing the matching internships will
-be displayed.
+3. All that's left to do is to type the `match` word in the command box. A pop-up window showing the matching
+internships will be displayed.
+
+<div markdown="span" class="alert alert-info">
+
+  :information_source: **Note:** You can be on any tab to execute this command.
+
+</div>
 
 <p align="center"><img src="images/ug-general/match-window.png" width="100%"/></p>
 
