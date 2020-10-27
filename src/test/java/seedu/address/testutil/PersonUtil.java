@@ -1,10 +1,10 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_TAG;
 
 import java.util.Set;
 

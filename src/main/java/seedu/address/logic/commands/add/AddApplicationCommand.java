@@ -8,7 +8,7 @@ import static seedu.address.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.address.logic.commands.util.CommandUtil.getCompany;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.address.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
-import static seedu.address.logic.parser.clisyntax.ItemCliSyntax.PREFIX_INDEX;
+import static seedu.address.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_INDEX;
 import static seedu.address.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 

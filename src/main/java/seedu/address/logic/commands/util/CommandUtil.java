@@ -24,7 +24,7 @@ import seedu.address.ui.tabs.TabName;
 /**
  * Encapsulates common / shared execution processes between commands.
  */
-public abstract class CommandUtil {
+public class CommandUtil {
 
     public static CompanyItem getCompany(Model model, Index companyIndex) throws CommandException {
         List<CompanyItem> lastShownList = model.getFilteredCompanyList();

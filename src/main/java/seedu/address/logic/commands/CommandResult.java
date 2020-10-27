@@ -2,10 +2,10 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import seedu.address.model.internship.InternshipItem;
 
 /**
@@ -28,7 +28,7 @@ public class CommandResult {
     private final boolean isSwitchDisplay;
 
     /** List of matching internships generated based on user's profile skills */
-    private List<InternshipItem> matchingInternships = new ArrayList<>();
+    private ObservableList<InternshipItem> matchingInternships = FXCollections.observableArrayList();
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
@@ -75,11 +75,11 @@ public class CommandResult {
         return !matchingInternships.isEmpty();
     }
 
-    public void setMatchingInternships(List<InternshipItem> listOfInternships) {
+    public void setMatchingInternships(ObservableList<InternshipItem> listOfInternships) {
         matchingInternships = listOfInternships;
     }
 
-    public List<InternshipItem> getMatchingInternships() {
+    public ObservableList<InternshipItem> getMatchingInternships() {
         return matchingInternships;
     }
 
