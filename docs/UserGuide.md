@@ -551,18 +551,18 @@ Example:
 
 1. Say you currently have these 2 list of internships from Google Singapore and Garena:
 
-<p align="center"><img src="images/ug-general/match-internships.png" width="100%"/></p>
+<p align="center"><img src="images/ug-general/match-internships1.png" width="100%"/></p>
 
 <br/>
 
 2. And this is your current profile item list. Note that only the 2 profile items of `Skill` type will be used for
 matching with the internships.
 
-<p align="center"><img src="images/ug-general/match-skills.png" width="100%"/></p>
+<p align="center"><img src="images/ug-general/match-skills1.png" width="100%"/></p>
 
 3. All that's left to do is to type the `match` word in the command box.
 
-<p align="center"><img src="images/ug-general/match-typecommand.png" width="100%"/></p>
+<p align="center"><img src="images/ug-general/match-type.png" width="100%"/></p>
 
 <br />
 
@@ -574,7 +574,7 @@ matching with the internships.
 
 4. A pop-up window showing the list of matching internships will be displayed!
 
-<p align="center"><img src="images/ug-general/match-window.png" width="100%"/></p>
+<p align="center"><img src="images/ug-general/match-window1.png" width="100%"/></p>
 
 <div markdown="span" class="alert alert-primary">
   :bulb: <strong>Tip:</strong> You can press Esc key to close the popup window!
