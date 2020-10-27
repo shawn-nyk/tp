@@ -124,7 +124,7 @@ This section will bring you through the [GUI](#understanding-the-gui), [technica
 
 #### Understanding the GUI
 
-<p><img src="images/GuiAnnotated.png"/></p>
+<p><img src="images/AnnotatedGui.png"/></p>
 
 #### Understanding the technical terminologies
 
@@ -152,9 +152,9 @@ Symbol | What it means
 
 * Words in `UPPER_CASE` are the parameters to be supplied by you.<br>
   e.g. in `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`, `COMPANY_NAME`, `PHONE_NUMBER`, `EMAIL`, `ADDRESS`, `INDUSTRY`,
-  are parameters which can be used as `add com n/Google p/65218000 e/GoogleHire@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Industry`.
+  an example of how to fill up the parameters are `add com n/Google p/65218000 e/GoogleHire@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Industry`.
 
-* Items in square brackets `[]` are optional.<br>
+* Items in square brackets `[]` are optional. This paramaters are optional because we allow the user to key in at a later date if they do not have the relevant information at hand.<br>
   e.g `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...` can be used as <br/> `add int 1 j/Software Engineer` or
   `add int 3 j/Web Developer r/React w/3000 r/HTML5`.
 
@@ -437,8 +437,8 @@ Each category is represented by the following icons in the UI:
 
 | CATEGORY   | ICON 
 |------------|------------------
-|`achievement`| <img src="images/ug-profile/achievement" width="10%" height="10%"/>
-|`experience` | <img src="images/ug-profile/experience" width="10%" height="10%"/>
+|`achievement`| <img src="images/ug-profile/achievement.png" width="10%" height="10%"/>
+|`experience` | <img src="images/ug-profile/experience.png" width="10%" height="10%"/>
 |`skill`      | <img src="images/ug-profile/skills.png" width="10%" height="10%"/>
 
 
@@ -588,13 +588,30 @@ There are three `TYPE`s:
 
 `com` refers to Company tab, `app` refers to Application tab, `me` refers to Profile tab.
 
-Example: 
-* `switch me`
+Example:
+
+1. Suppose you want to switch tabs to the application tab. Executing `switch app` will switch the tabs to application tab.
+
+<p align="center"><img src="images/ug-general/switchApp.png" width="70%" height="70%"/></p>
+
+2. Note that the tabs have been changed as well as the cards and display.
+
+<p align="center"><img src="images/ug-general/switchAppResultAnnotated.png" width="110%" height="110%"/></p>
 
 #### Clearing all entries: `clear`
 Clears all entries from InternHunter.
 
 format: `clear`
+
+Example:
+
+1. Suppose you want to clear all your data in InternHunter. Executing `clear` will clear all the data.
+
+<p align="center"><img src="images/ug-general/clear.png" width="70%" height="70%"/></p>
+
+2. Note that all the data has been wiped as seen in the Ui.
+
+<p align="center"><img src="images/ug-general/clearResult.png" width="70%" height="70%"/></p>
 
 #### Viewing Help: `help`
 Displays a link to the InternHunter user guide.
@@ -604,11 +621,44 @@ Format: `help`
 <div markdown="span" class="alert alert-primary">
   :bulb: <strong>Tip:</strong> You can press Esc key to close the help window!
 </div>
+<br/>
+
+Example:
+
+1. Suppose you can't remember the commands. Fret not, executing `help` will generate a new window containing the link to the user guide!
+
+<p align="center"><img src="images/ug-general/help.png" width="70%" height="70%"/></p>
+
+2. Copy the link and access our user guide for more information.
+
+<p align="center"><img src="images/ug-general/helpResult.png" width="70%" height="70%"/></p>
+
+
 
 #### Exiting the Program: `exit`
 Shows an exit confirmation dialog.
 
 Format: `exit`
+
+<div markdown="span">
+  
+  :bulb: <strong>Tip:</strong> <br/>
+  For <strong>MacOS</strong> users, you can navigate the options using <strong>tab</strong> on your keyboard and pressing <strong>spacebar</strong> to confirm your choice. <br/>
+  For <strong>Windows</strong> and Linux users, similarly, you can use <strong>tab</strong> to navigate. However, instead of using <strong>spacebar</strong>, you should use <strong>enter</strong> instead. <br/>
+  
+</div>
+
+<br/>
+
+Example:
+
+1. Suppose you want to exit InternHunter without clicking the cross button, executing `exit` will generate a new window to confirm your request of exitting.
+
+<p align="center"><img src="images/ug-general/exit.png" width="70%" height="70%"/></p>
+
+2. At this stage, you have the option to confirm the exit or continue to stay in InternHunter.
+
+<p align="center"><img src="images/ug-general/exitResult.png" width="70%" height="70%"/></p>
 
 --------------------------------------------------------------------------------------------------------------------
 
