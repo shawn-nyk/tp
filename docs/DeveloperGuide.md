@@ -4,9 +4,61 @@ title: Developer Guide
 ---
 * Table of Contents
 {:toc}
+--------------------------------------------------------------------------------------------------------------------
+
+## **Setting up, getting started**
+
+Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
+
 ## **Design**
+
+### Architecture
+
+<img src="images/ArchitectureDiagram.png" width="450" />
+
+The ***Architecture Diagram*** given above explains the high-level design of InternHunter. Given below is a quick
+overview of each component. As seen in the diagram, InternHunter follows a multi-layered architecture whereby
+components of lower layers are independent of higher layers. e.g. the `Logic` component can make use of methods in
+ the `Model` but not vice versa.
+
+<div markdown="span" class="alert alert-primary">
+
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2021S1-CS2103T-T15-4/tp/tree/master/docs/diagrams) folder.
+
+</div>
+
+**`Main`** has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/MainApp.java). It is responsible for,
+* At app launch: Initializes the components in the correct sequence, and connects them up with each other.
+* At shut down: Shuts down the components and invokes cleanup methods where necessary.
+
+[**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
+
+The rest of the App consists of four components.
+
+* [**`UI`**](#ui-component): The UI of the App.
+* [**`Logic`**](#logic-component): The command executor.
+* [**`Model`**](#model-component): Holds the data of the App in memory.
+* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+
+Each of the four components,
+
+* defines its *API* in an `interface` with the same name as the Component.
+* exposes its functionality using a concrete `{Component Name}Manager` class (which implements the corresponding API `interface` mentioned in the previous point.
+
+For example, the `Logic` component (see the class diagram given below) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
+
+![Class Diagram of the Logic Component](images/LogicClassDiagram.png)
+
+**How the architecture components interact with each other**
+
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues
+ the command `delete me 1` to delete a profile item.
+
+<img src="images/ArchitectureSequenceDiagram.png" width="574" />
+
+The sections below give more details of each component.
 
 ### Ui component
 
@@ -85,6 +137,13 @@ API call.
 The Storage component,
 * can save UserPref objects in json format and read it back.
 * can save the InternHunter data in json format and read it back.
+
+### Common classes
+
+Classes used by multiple components are in the `seedu.internhunter.commons` package.
+
+--------------------------------------------------------------------------------------------------------------------
+
 
 ## **Implementation**
 
