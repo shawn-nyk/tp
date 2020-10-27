@@ -616,6 +616,8 @@ Priority | As a …​    | I want to …​                                    
 `* * *`  | user       | delete a company profile                                       | remove company profiles that I no longer need / am no longer interested in        
 `* * *`  | user       | edit a company profile                                         | keep my company profiles updated and accurate                                     
 `* * *`  | user       | view a company profile                                         | see its details                                                                   
+`* *`    | user       | find company profiles by name                                  | quickly look up company profiles without having to search manually                
+`* *`    | user       | list all company profiles in my list                           | see my full list of companies
 `* * *`  | user       | add an internship to a company profile                         | keep track of the internships that that company is offering                       
 `* * *`  | user       | delete an internship from a company profile                    | remove erroneous / outdated entries                                               
 `* * *`  | user       | edit an internship from a company profile                      | keep the list of internships that a company offers updated and accurate           
@@ -625,6 +627,8 @@ Priority | As a …​    | I want to …​                                    
 `* * *`  | user       | delete an internship application                               | remove internship applications that I no longer need / am no longer interested in 
 `* * *`  | user       | edit an internship application                                 | keep my internship applications updated and accurate                              
 `* * *`  | user       | view an internship application                                 | see its details                                                                   
+`* *`    | user       | find internship applications by job title                      | quickly look up my internship applications without having to search manually
+`* *`    | user       | list all internship applications in my list                    | see my full list of internship applications
 `* * *`  | user       | record and see an internship application's status              | keep track of them                                                                
 `* * *`  | user       | save the dates of my upcoming interviews                       | keep track of them                                                                
 `* * *`  | user       | maintain a user profile                                        | have an overview of my experience, skills and achievements                        
@@ -632,10 +636,13 @@ Priority | As a …​    | I want to …​                                    
 `* * *`  | user       | delete information from my user profile                        | keep my user profile updated and accurate                                         
 `* * *`  | user       | edit information in my user profile                            | keep my user profile updated and accurate                                         
 `* * *`  | user       | view information in my user profile                            | see its details  
-`* * *`  | user       | find internships based on my skills set                        | know which internships I can apply for                                
+`* *`    | user       | find information in my user profile by title                   | quickly look up specific information in my user profile without having to search manually
+`* *`    | user       | list all the information in my user profile                    | see the full list of information in my user profile
+`* * *`  | user       | switch between the multiple pages of the app                   |
+`* *`    | user       | automatically find internships based on my skill set           | find internships that may be more suitable for me
 `* *`    | user       | navigate the application easily through a clear user interface |                                                                                   
 `* *`    | user       | get fast feedback from the app                                 |                                                                                   
-`* *`    | user       | clears all entries from InternHunter                           | start from a clean slate
+`* *`    | user       | easily clear all data from the app                             | start from a clean slate
 
 ### Appendix C: Use Cases
 
