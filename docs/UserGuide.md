@@ -562,8 +562,6 @@ matching with the internships.
 
 <p align="center"><img src="images/ug-general/match-type1.png" width="100%"/></p>
 
-<br />
-
 <div markdown="span" class="alert alert-info">
 
   :information_source: **Note:** You can be on any tab to execute this command.
