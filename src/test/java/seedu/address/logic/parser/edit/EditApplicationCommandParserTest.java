@@ -24,9 +24,9 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.edit.EditApplicationCommand;
 import seedu.address.logic.commands.edit.EditApplicationCommand.EditApplicationDescriptor;
+import seedu.address.logic.commands.util.application.EditApplicationDescriptorBuilder;
 import seedu.address.model.application.Status;
 import seedu.address.model.application.StatusDate;
-import seedu.address.testutil.application.EditApplicationDescriptorBuilder;
 
 public class EditApplicationCommandParserTest {
 

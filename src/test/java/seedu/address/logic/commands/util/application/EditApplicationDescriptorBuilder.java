@@ -1,4 +1,4 @@
-package seedu.address.testutil.application;
+package seedu.address.logic.commands.util.application;
 
 import seedu.address.logic.commands.edit.EditApplicationCommand.EditApplicationDescriptor;
 import seedu.address.model.application.ApplicationItem;

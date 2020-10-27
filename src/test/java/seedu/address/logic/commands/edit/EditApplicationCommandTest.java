@@ -8,28 +8,28 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showApplicationAtIndex;
 import static seedu.address.logic.commands.edit.EditApplicationCommand.EditApplicationDescriptor;
+import static seedu.address.logic.commands.util.application.ApplicationCommandTestUtil.INVALID_APPLICATION_INDEX_MESSAGE;
+import static seedu.address.logic.commands.util.application.SampleEditApplicationDescriptor.DESC_GOLDMAN;
+import static seedu.address.logic.commands.util.application.SampleEditApplicationDescriptor.DESC_SHOPEE;
 import static seedu.address.model.util.ItemUtil.APPLICATION_NAME;
 import static seedu.address.model.util.StatusUtil.APPLIED_KEYWORD;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_JUNE_2021;
 import static seedu.address.testutil.application.SampleApplicationItems.getSampleApplicationItemList;
-import static seedu.address.testutil.application.SampleEditApplicationDescriptor.DESC_GOLDMAN;
-import static seedu.address.testutil.application.SampleEditApplicationDescriptor.DESC_SHOPEE;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.util.application.EditApplicationDescriptorBuilder;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.application.ApplicationItem;
 import seedu.address.model.item.ItemList;
 import seedu.address.testutil.application.ApplicationItemBuilder;
-import seedu.address.testutil.application.EditApplicationDescriptorBuilder;
 import seedu.address.ui.tabs.TabName;
 
 /**
@@ -37,9 +37,6 @@ import seedu.address.ui.tabs.TabName;
  * EditApplicationCommand.
  */
 public class EditApplicationCommandTest {
-
-    private static final String INVALID_APPLICATION_INDEX_MESSAGE =
-            String.format(Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, APPLICATION_NAME);
 
     private Model model;
     private Model expectedModel;

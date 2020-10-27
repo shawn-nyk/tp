@@ -2,15 +2,15 @@ package seedu.address.logic.commands.edit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static seedu.address.logic.commands.util.application.SampleEditApplicationDescriptor.DESC_GOLDMAN;
+import static seedu.address.logic.commands.util.application.SampleEditApplicationDescriptor.DESC_SHOPEE;
 import static seedu.address.model.util.StatusUtil.APPLIED_KEYWORD;
 import static seedu.address.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_WITH_TIME;
-import static seedu.address.testutil.application.SampleEditApplicationDescriptor.DESC_GOLDMAN;
-import static seedu.address.testutil.application.SampleEditApplicationDescriptor.DESC_SHOPEE;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.edit.EditApplicationCommand.EditApplicationDescriptor;
-import seedu.address.testutil.application.EditApplicationDescriptorBuilder;
+import seedu.address.logic.commands.util.application.EditApplicationDescriptorBuilder;
 
 public class EditApplicationDescriptorTest {
 

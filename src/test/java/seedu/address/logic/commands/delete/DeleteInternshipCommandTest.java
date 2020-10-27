@@ -10,6 +10,10 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.item.ItemList;
 import seedu.address.ui.tabs.TabName;
 
+/**
+ * Contains integration tests (interaction with the Model and ApplicationItemList) and unit tests for
+ * {@code DeleteInternshipCommand}.
+ */
 public class DeleteInternshipCommandTest {
 
     private Model model;
