@@ -567,7 +567,7 @@ Example:
 
 2. Note that the tabs has been changed as well as the cards and display.
 
-<p align="center"><img src="images/ug-general/switchAppResultAnnotated.png" width="90%" height="90%"/></p>
+<p align="center"><img src="images/ug-general/switchAppResultAnnotated.png" width="110%" height="110%"/></p>
 
 #### Clearing all entries: `clear`
 Clears all entries from InternHunter.
@@ -616,7 +616,7 @@ Example:
 
 <p align="center"><img src="images/ug-general/exit.png" width="70%" height="70%"/></p>
 
-2. At this stage, you have th option to confirm the exit or continue to stay in InternHunter.
+2. At this stage, you have the option to confirm the exit or continue to stay in InternHunter.
 
 <p align="center"><img src="images/ug-general/exitResult.png" width="70%" height="70%"/></p>
 
