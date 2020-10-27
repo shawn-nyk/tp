@@ -1,15 +1,19 @@
 package seedu.address.ui.display;
 
+import static seedu.address.ui.GuardClauseUi.IS_EMPTY_DATA_LIST;
 import static seedu.address.ui.display.DisplayKeyList.COMPANY_DISPLAY_KEY_LIST;
 import static seedu.address.ui.panel.PanelDisplayKeyword.COMPANY_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.INDUSTRIES_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.INTERNSHIPS_DISPLAY_NAME;
 
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 import seedu.address.model.company.CompanyItem;
+import seedu.address.model.item.Item;
 import seedu.address.ui.tabs.TabName;
 
 /**
@@ -49,14 +53,18 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
     }
 
     /**
-     * Creates a {@code CompanyDisplay} in the given {@code primaryStage}.
+     * Factory method that creates and displays the particular company item's information at that index.
      *
-     * @param primaryStage The main stage of the app.
-     * @param companyItem The company item to be displayed.
-     * @return A company display that contains information of the {@code companyItem} in {@code primaryStage}.
+     * @param index The Index of the display to be displayed.
+     * @return An Optional containing the display information of the company at that particular Index.
      */
-    public static CompanyDisplay getCompanyDisplay(Stage primaryStage, CompanyItem companyItem) {
-        return new CompanyDisplay(primaryStage, companyItem);
+    public static Optional<InformationDisplay<? extends Item>> getCompanyDisplay(
+        ObservableList<CompanyItem> companyItems, int index, Stage primaryStage) {
+
+        if (IS_EMPTY_DATA_LIST.test(companyItems)) {
+            return Optional.empty();
+        }
+        return Optional.of(new CompanyDisplay(primaryStage, companyItems.get(index)));
     }
 
     /**

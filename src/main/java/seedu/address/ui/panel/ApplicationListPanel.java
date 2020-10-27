@@ -1,5 +1,6 @@
 package seedu.address.ui.panel;
 
+
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListCell;
 import seedu.address.model.application.ApplicationItem;
@@ -14,11 +15,20 @@ public class ApplicationListPanel extends ListPanel<ApplicationItem> {
     /**
      * Creates a scrollable list panel with information of {@code ApplicationItem}.
      *
-     * @param applicationItemList List containing all the application item in the storage.
+     * @param applicationItems List containing all the application item in the storage.
      */
-    public ApplicationListPanel(ObservableList<ApplicationItem> applicationItemList) {
-        super(applicationItemList);
+    private ApplicationListPanel(ObservableList<ApplicationItem> applicationItems) {
+        super(applicationItems);
         itemListView.setCellFactory(listView -> new ApplicationListViewCell());
+    }
+
+    /**
+     * Factory method to create the list of cards that displays a list of application information.
+     *
+     * @return An application list panel.
+     */
+    public static ListPanel<ApplicationItem> getApplicationListPanel(ObservableList<ApplicationItem> applicationItems) {
+        return new ApplicationListPanel(applicationItems);
     }
 
     /**

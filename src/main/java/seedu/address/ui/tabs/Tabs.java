@@ -5,14 +5,14 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import seedu.address.ui.MainWindow;
 import seedu.address.ui.UiPart;
 
 /**
  * Tabs which allow switching of screens for different information.
  */
-public class Tabs extends UiPart<VBox> {
+public class Tabs extends UiPart<Region> {
 
     //FXML
     private static final String FXML = "Tabs.fxml";
@@ -48,16 +48,11 @@ public class Tabs extends UiPart<VBox> {
     @FXML
     private ImageView profileIcon;
 
-    private MainWindow mainWindow;
-
     /**
-     * Creates the {@code Tabs} in the given {@code primaryStage} of the {@code mainWindow}.
-     *
-     * @param mainWindow The Main Window of the app.
+     * Creates the {@code Tabs} in the given {@code primaryStage}.
      */
-    private Tabs(MainWindow mainWindow) {
+    private Tabs() {
         super(FXML);
-        this.mainWindow = mainWindow;
 
         // initialize the GUI of the tabs.
         company.setStyle(TAB_COLOR);
@@ -65,13 +60,12 @@ public class Tabs extends UiPart<VBox> {
     }
 
     /**
-     * Creates the {@code Tabs} information in the {@code primaryStage} of the {@code mainWindow}.
+     * Creates the {@code Tabs} information in the {@code primaryStage}.
      *
-     * @param mainWindow The Main Window of the app.
      * @return A tab display.
      */
-    public static Tabs getTabs(MainWindow mainWindow) {
-        return new Tabs(mainWindow);
+    public static Tabs getTabs() {
+        return new Tabs();
     }
 
     /**

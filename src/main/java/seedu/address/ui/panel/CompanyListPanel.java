@@ -1,5 +1,6 @@
 package seedu.address.ui.panel;
 
+
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListCell;
 import seedu.address.model.company.CompanyItem;
@@ -14,11 +15,20 @@ public class CompanyListPanel extends ListPanel<CompanyItem> {
     /**
      * Creates a scrollable list panel with information of {@code CompanyItem}.
      *
-     * @param companyItemList List containing all the company item in the storage.
+     * @param companyItems List containing all the company item in the storage.
      */
-    public CompanyListPanel(ObservableList<CompanyItem> companyItemList) {
-        super(companyItemList);
+    private CompanyListPanel(ObservableList<CompanyItem> companyItems) {
+        super(companyItems);
         itemListView.setCellFactory(listView -> new CompanyListViewCell());
+    }
+
+    /**
+     * Factory method to create the list of cards that displays a list of company information.
+     *
+     * @return A company list panel.
+     */
+    public static ListPanel<CompanyItem> getCompanyListPanel(ObservableList<CompanyItem> companyItems) {
+        return new CompanyListPanel(companyItems);
     }
 
     /**

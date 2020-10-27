@@ -1,14 +1,18 @@
 package seedu.address.ui.display;
 
+import static seedu.address.ui.GuardClauseUi.IS_EMPTY_DATA_LIST;
 import static seedu.address.ui.display.DisplayKeyList.APPLICATION_DISPLAY_KEY_LIST;
 import static seedu.address.ui.panel.PanelDisplayKeyword.JOB_TITLE_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.REQUIREMENTS_DISPLAY_NAME;
 
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 import seedu.address.model.application.ApplicationItem;
+import seedu.address.model.item.Item;
 import seedu.address.ui.tabs.TabName;
 
 /**
@@ -39,14 +43,18 @@ public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
     }
 
     /**
-     * Creates a {@code ApplicationDisplay} in the given {@code primaryStage}.
+     * Factory method that creates and displays the particular application item's information at that index.
      *
-     * @param primaryStage The main stage of the app.
-     * @param applicationItem The application item to be displayed.
-     * @return An Application Display with information of the {@code applicationItem} in {@code primaryStage}.
+     * @param index The Index of the display to be displayed.
+     * @return An Optional containing the display information of the Application at that particular Index.
      */
-    public static ApplicationDisplay getApplicationDisplay(Stage primaryStage, ApplicationItem applicationItem) {
-        return new ApplicationDisplay(primaryStage, applicationItem);
+    public static Optional<InformationDisplay<? extends Item>> getApplicationDisplay(
+        ObservableList<ApplicationItem> applicationItems, int index, Stage primaryStage) {
+
+        if (IS_EMPTY_DATA_LIST.test(applicationItems)) {
+            return Optional.empty();
+        }
+        return Optional.of(new ApplicationDisplay(primaryStage, applicationItems.get(index)));
     }
 
     /**

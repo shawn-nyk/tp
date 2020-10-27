@@ -1,13 +1,17 @@
 package seedu.address.ui.display;
 
+import static seedu.address.ui.GuardClauseUi.IS_EMPTY_DATA_LIST;
 import static seedu.address.ui.display.DisplayKeyList.PROFILE_DISPLAY_KEY_LIST;
 import static seedu.address.ui.panel.PanelDisplayKeyword.DESCRIPTORS_DISPLAY_NAME;
 import static seedu.address.ui.panel.PanelDisplayKeyword.TITLE_DISPLAY_NAME;
 
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+import javafx.collections.ObservableList;
 import javafx.stage.Stage;
+import seedu.address.model.item.Item;
 import seedu.address.model.profile.ProfileItem;
 import seedu.address.ui.tabs.TabName;
 
@@ -48,14 +52,18 @@ public class ProfileDisplay extends InformationDisplay<ProfileItem> {
     }
 
     /**
-     * Creates a {@code ProfileDisplay} in the given {@code primaryStage}.
+     * Factory method that creates and displays the particular profile item's information at that index.
      *
-     * @param primaryStage The main stage of the app.
-     * @param profileItem The profile item to be displayed.
-     * @return A Profile Display with information of the {@code profileItem} in {@code primaryStage}.
+     * @param index The Index of the display to be displayed.
+     * @return An Optional containing the display information of the profile at that particular Index.
      */
-    public static ProfileDisplay getProfileDisplay(Stage primaryStage, ProfileItem profileItem) {
-        return new ProfileDisplay(primaryStage, profileItem);
+    public static Optional<InformationDisplay<? extends Item>> getProfileDisplay(
+        ObservableList<ProfileItem> profileItems, int index, Stage primaryStage) {
+
+        if (IS_EMPTY_DATA_LIST.test(profileItems)) {
+            return Optional.empty();
+        }
+        return Optional.of(new ProfileDisplay(primaryStage, profileItems.get(index)));
     }
 
     /**
