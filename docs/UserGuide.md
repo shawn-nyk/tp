@@ -593,6 +593,7 @@ Format: `help`
   :bulb: <strong>Tip:</strong> You can press Esc key to close the help window!
 </div>
 
+
 Example:
 
 1. Suppose you can't remember the commands. Fret not, executing `help` will generate a new window containing the link to your user guide!
@@ -609,6 +610,11 @@ Example:
 Shows an exit confirmation dialog.
 
 Format: `exit`
+
+<div markdown="span">
+  :bulb: <strong>Tip:</strong> For MacOS users, you can use navigate the options using `tab` on your keyboard and pressing `spacebar` to confirm your choice. <br/>
+  For Windows and Linux users, similarly, you can use `tab` to navigate. However, instead of using `spacebar`, you should use `enter` instead. 
+</div>
 
 Example:
 
