@@ -124,7 +124,7 @@ This section will bring you through the [GUI](#understanding-the-gui), [technica
 
 #### Understanding the GUI
 
-<p><img src="images/GuiAnnotated.png"/></p>
+<p><img src="images/emptyGui.png"/></p>
 
 #### Understanding the technical terminologies
 
@@ -152,9 +152,9 @@ Symbol | What it means
 
 * Words in `UPPER_CASE` are the parameters to be supplied by you.<br>
   e.g. in `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`, `COMPANY_NAME`, `PHONE_NUMBER`, `EMAIL`, `ADDRESS`, `INDUSTRY`,
-  are parameters which can be used as `add com n/Google p/65218000 e/GoogleHire@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Industry`.
+  an example of how to fill up the parameters are `add com n/Google p/65218000 e/GoogleHire@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Industry`.
 
-* Items in square brackets `[]` are optional.<br>
+* Items in square brackets `[]` are optional. This paramaters are optional because we allow the user to key in at a later date if they do not have the relevant information at hand.<br>
   e.g `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...` can be used as <br/> `add int 1 j/Software Engineer` or
   `add int 3 j/Web Developer r/React w/3000 r/HTML5`.
 
