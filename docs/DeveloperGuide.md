@@ -128,7 +128,9 @@ API call.
 ### Model component
 
 <p id="model-class-diagram"><img src="images/dg-model/ModelClassDiagram.png)" width="70%" height="70%"/></p>
+
 ![Structure of the Company, Internship and Application Classes](images/dg-model/CompanyInternshipApplicationClassDiagram.png)
+
 <p id="profile-class-diagram"><img src="images/dg-model/ProfileClassDiagram.png" width="40%" height="40%"/></p>
 
 **API** :
