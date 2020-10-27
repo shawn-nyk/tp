@@ -4,8 +4,14 @@ title: Developer Guide
 ---
 * Table of Contents
 {:toc}
+--------------------------------------------------------------------------------------------------------------------
+
+## **Setting up, getting started**
+
+Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
+
 ## **Design**
 
 ### Architecture
@@ -46,7 +52,7 @@ For example, the `Logic` component (see the class diagram given below) defines i
 **How the architecture components interact with each other**
 
 The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues
- the command `delete me 1`.
+ the command `delete me 1` to delete a profile item.
 
 <img src="images/ArchitectureSequenceDiagram.png" width="574" />
 
@@ -97,6 +103,13 @@ API call.
 The Storage component,
 * can save UserPref objects in json format and read it back.
 * can save the InternHunter data in json format and read it back.
+
+### Common classes
+
+Classes used by multiple components are in the `seedu.internhunter.commons` package.
+
+--------------------------------------------------------------------------------------------------------------------
+
 
 ## **Implementation**
 
