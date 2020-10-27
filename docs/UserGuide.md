@@ -590,11 +590,11 @@ There are three `TYPE`s:
 
 Example:
 
-1. Suppose you want to switch to the application tab. Executing `switch app` will switch the tabs to application tab.
+1. Suppose you want to switch tabs to the application tab. Executing `switch app` will switch the tabs to application tab.
 
 <p align="center"><img src="images/ug-general/switchApp.png" width="70%" height="70%"/></p>
 
-2. Note that the tabs has been changed as well as the cards and display.
+2. Note that the tabs have been changed as well as the cards and display.
 
 <p align="center"><img src="images/ug-general/switchAppResultAnnotated.png" width="110%" height="110%"/></p>
 
@@ -625,7 +625,7 @@ Format: `help`
 
 Example:
 
-1. Suppose you can't remember the commands. Fret not, executing `help` will generate a new window containing the link to your user guide!
+1. Suppose you can't remember the commands. Fret not, executing `help` will generate a new window containing the link to the user guide!
 
 <p align="center"><img src="images/ug-general/help.png" width="70%" height="70%"/></p>
 
