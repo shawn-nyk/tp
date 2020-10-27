@@ -26,7 +26,7 @@ import seedu.internhunter.model.internship.Requirement;
 import seedu.internhunter.model.internship.Wage;
 import seedu.internhunter.ui.tabs.TabName;
 
-public class AddInternshipCommand extends AddCommandAbstract {
+public class AddInternshipCommand extends AddCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + INTERNSHIP_ALIAS
             + ": Adds an " + INTERNSHIP_NAME + " to InternHunter.\n"

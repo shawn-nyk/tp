@@ -22,7 +22,7 @@ import seedu.internhunter.ui.tabs.TabName;
 /**
  * Adds a Company to the Model's Company list. todo javadocs (shawn)
  */
-public class AddCompanyCommand extends AddCommandAbstract {
+public class AddCompanyCommand extends AddCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + COMPANY_ALIAS
             + ": Adds a " + COMPANY_NAME + " to "

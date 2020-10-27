@@ -21,7 +21,7 @@ import seedu.internhunter.ui.tabs.TabName;
 /**
  * Adds a Profile Item to the Model's Profile list.
  */
-public class AddProfileCommand extends AddCommandAbstract {
+public class AddProfileCommand extends AddCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + PROFILE_ALIAS
             + ": Adds a " + PROFILE_ITEM_NAME + " item to "

@@ -26,7 +26,7 @@ import seedu.internhunter.ui.tabs.TabName;
 /**
  * Adds an application to the Application list.
  */
-public class AddApplicationCommand extends AddCommandAbstract {
+public class AddApplicationCommand extends AddCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + APPLICATION_ALIAS
             + ": Adds an " + APPLICATION_NAME + " to "
