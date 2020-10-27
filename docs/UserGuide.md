@@ -437,8 +437,8 @@ Each category is represented by the following icons in the UI:
 
 | CATEGORY   | ICON 
 |------------|------------------
-|`achievement`| <img src="images/ug-profile/achievement" width="10%" height="10%"/>
-|`experience` | <img src="images/ug-profile/experience" width="10%" height="10%"/>
+|`achievement`| <img src="images/ug-profile/achievement.png" width="10%" height="10%"/>
+|`experience` | <img src="images/ug-profile/experience.png" width="10%" height="10%"/>
 |`skill`      | <img src="images/ug-profile/skills.png" width="10%" height="10%"/>
 
 
