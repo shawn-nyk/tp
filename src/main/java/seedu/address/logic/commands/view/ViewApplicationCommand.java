@@ -55,7 +55,7 @@ public class ViewApplicationCommand extends ViewCommand {
         }
 
         if (model.getTabName() == TabName.APPLICATION && model.getApplicationViewIndex().equals(targetIndex)) {
-            return new CommandResult(messageAlreadyViewing, false, false , false, false);
+            return new CommandResult(messageAlreadyViewing, false, false, false, false);
         }
         model.setApplicationViewIndex(targetIndex);
         return getCommandResult(model, messageViewSuccess, TabName.APPLICATION);
