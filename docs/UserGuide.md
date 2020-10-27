@@ -613,9 +613,11 @@ Format: `exit`
 
 <div markdown="span">
   :bulb: <strong>Tip:</strong> <br/>
-  For MacOS users, you can use navigate the options using `tab` on your keyboard and pressing `spacebar` to confirm your choice. <br/>
-  For Windows and Linux users, similarly, you can use `tab` to navigate. However, instead of using `spacebar`, you should use `enter` instead. <br/>
+  For <strong>MacOS<strong/> users, you can use navigate the options using <strong>tab</strong> on your keyboard and pressing <strong>spacebar<strong/> to confirm your choice. <br/>
+  For <strong>Windows</strong> and Linux users, similarly, you can use <strong>tab</strong> to navigate. However, instead of using <strong>spacebar<strong/>, you should use <strong>enter<strong/> instead. <br/>
 </div>
+
+<br/>
 
 Example:
 
