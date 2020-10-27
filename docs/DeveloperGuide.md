@@ -127,9 +127,9 @@ API call.
 
 ### Model component
 
-![Structure of the Model Component](images/dg-model/ModelClassDiagram.png)
+<p id="model-class-diagram"><img src="images/dg-model/ModelClassDiagram.png)" width="70%" height="70%"/></p>
 ![Structure of the Company, Internship and Application Classes](images/dg-model/CompanyInternshipApplicationClassDiagram.png)
-<p><img src="images/dg-model/ProfileClassDiagram.png" width="60%" height="60%"/></p>
+<p id="profile-class-diagram"><img src="images/dg-model/ProfileClassDiagram.png" width="40%" height="40%"/></p>
 
 **API** :
 ![`Model.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/model/Model.java)
@@ -145,7 +145,7 @@ The `Model`,
 
 ### Storage Component
 
-<p id="storage-class-diagram" align="center"><img src="images/StorageClassDiagram.png"/></p>
+<p id="storage-class-diagram"><img src="images/StorageClassDiagram.png"/></p>
 
 **API** :
 [`Storage.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/storage/Storage.java)
