@@ -539,12 +539,11 @@ Generates a list of internships that have requirements that matches your current
 Format: `match`
 - Only the `Requirement` field in the internships will be searched for.
 - Only profile items with `Skill` category will be used for matching.
-- The `TITLE` field of the profile items will be used for matching.
-- Internships with at least one `Requirement` matching any one `TITLE` in your `Skill`s in the profile list will be
-considered as successful matches. e.g. Say you have a profile item `Skill` category and `Python` as the `TITLE`, any
-internships that has a `Requirement` of `Python` will be matched.
-- Matched internships can have `Requirement`s that do not match with the profile `Skills`, since a match is found when
-an internship has **at least one and not all** `Requirement` that matches with the profile `Skills`.
+- An Internship with at least one `Requirement` matching any one `Skill` in the profile list will be
+considered as a successful match. e.g. Say you have a profile item which is of `Skill` category and titled `Python`, any
+internship that has a `Requirement` of `Python` will be successfully matched.
+- Matched internships can have `Requirements` that do not match with the profile `Skills`, since a match is found when
+an internship has **at least one and not all** `Requirements` that matches with the profile `Skills`.
 - Matching done is case-insensitive. e.g. `Python` will match `python`.
 - Only the full sentence will be matched. e.g. `Machine` will not match `Machine Learning`.
 
@@ -554,19 +553,26 @@ Example:
 
 <p align="center"><img src="images/ug-general/match-internships.png" width="100%"/></p>
 
+<br/>
+
 2. And this is your current profile item list. Note that only the 2 profile items of `Skill` type will be used for
 matching with the internships.
 
 <p align="center"><img src="images/ug-general/match-skills.png" width="100%"/></p>
 
-3. All that's left to do is to type the `match` word in the command box. A pop-up window showing the matching
-internships will be displayed.
+3. All that's left to do is to type the `match` word in the command box.
+
+<p align="center"><img src="images/ug-general/match-typecommand.png" width="100%"/></p>
+
+<br />
 
 <div markdown="span" class="alert alert-info">
 
   :information_source: **Note:** You can be on any tab to execute this command.
 
 </div>
+
+4. A pop-up window showing the list of matching internships will be displayed!
 
 <p align="center"><img src="images/ug-general/match-window.png" width="100%"/></p>
 
