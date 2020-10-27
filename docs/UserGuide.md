@@ -592,7 +592,7 @@ Format: `help`
 <div markdown="span" class="alert alert-primary">
   :bulb: <strong>Tip:</strong> You can press Esc key to close the help window!
 </div>
-
+<br/>
 
 Example:
 
@@ -612,8 +612,9 @@ Shows an exit confirmation dialog.
 Format: `exit`
 
 <div markdown="span">
-  :bulb: <strong>Tip:</strong> For MacOS users, you can use navigate the options using `tab` on your keyboard and pressing `spacebar` to confirm your choice. <br/>
-  For Windows and Linux users, similarly, you can use `tab` to navigate. However, instead of using `spacebar`, you should use `enter` instead. 
+  :bulb: <strong>Tip:</strong> <br/>
+  For MacOS users, you can use navigate the options using `tab` on your keyboard and pressing `spacebar` to confirm your choice. <br/>
+  For Windows and Linux users, similarly, you can use `tab` to navigate. However, instead of using `spacebar`, you should use `enter` instead. <br/>
 </div>
 
 Example:
