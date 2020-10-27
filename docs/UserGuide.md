@@ -560,11 +560,14 @@ There are three `TYPE`s:
 `com` refers to Company tab, `app` refers to Application tab, `me` refers to Profile tab.
 
 Example:
-- Suppose you want to switch to the application tab. Executing `switch app` will switch the tabs to application tab.
 
-<p align="center"><img src="images/ug-general/switchApp.png" width="80%" height="80%"/></p>
+1. Suppose you want to switch to the application tab. Executing `switch app` will switch the tabs to application tab.
 
-<p align="center"><img src="images/ug-general/switchAppResult.png" width="80%" height="80%"/></p>
+<p align="center"><img src="images/ug-general/switchApp.png" width="70%" height="70%"/></p>
+
+2. Note that the tabs has been changed as well as the cards and display.
+
+<p align="center"><img src="images/ug-general/switchAppResultAnnotated.png" width="90%" height="90%"/></p>
 
 #### Clearing all entries: `clear`
 Clears all entries from InternHunter.
@@ -572,11 +575,14 @@ Clears all entries from InternHunter.
 format: `clear`
 
 Example:
-- Suppose you want to clear all your data in InternHunter. Executing `clear` will clear all the data.
 
-<p align="center"><img src="images/ug-general/clear.png" width="80%" height="80%"/></p>
+1. Suppose you want to clear all your data in InternHunter. Executing `clear` will clear all the data.
 
-<p align="center"><img src="images/ug-general/clearResult.png" width="80%" height="80%"/></p>
+<p align="center"><img src="images/ug-general/clear.png" width="70%" height="70%"/></p>
+
+2. Note that all the data has been wiped as seen in the Ui.
+
+<p align="center"><img src="images/ug-general/clearResult.png" width="70%" height="70%"/></p>
 
 #### Viewing Help: `help`
 Displays a link to the InternHunter user guide.
@@ -588,11 +594,14 @@ Format: `help`
 </div>
 
 Example:
-- Suppose you can't remember the commands. Fret not, executing `help` will generate a new window containing the link to your user guide!
 
-<p align="center"><img src="images/ug-general/help.png" width="80%" height="80%"/></p>
+1. Suppose you can't remember the commands. Fret not, executing `help` will generate a new window containing the link to your user guide!
 
-<p align="center"><img src="images/ug-general/helpResult.png" width="80%" height="80%"/></p>
+<p align="center"><img src="images/ug-general/help.png" width="70%" height="70%"/></p>
+
+2. Copy the link and access our user guide for more information.
+
+<p align="center"><img src="images/ug-general/helpResult.png" width="70%" height="70%"/></p>
 
 
 
@@ -602,11 +611,14 @@ Shows an exit confirmation dialog.
 Format: `exit`
 
 Example:
-- Suppose you want to exit InternHunter without clicking the cross button, executing `exit` will generate a new window to confirm your request of exitting.
 
-<p align="center"><img src="images/ug-general/exit.png" width="80%" height="80%"/></p>
+1. Suppose you want to exit InternHunter without clicking the cross button, executing `exit` will generate a new window to confirm your request of exitting.
 
-<p align="center"><img src="images/ug-general/exitResult.png" width="80%" height="80%"/></p>
+<p align="center"><img src="images/ug-general/exit.png" width="70%" height="70%"/></p>
+
+2. At this stage, you have th option to confirm the exit or continue to stay in InternHunter.
+
+<p align="center"><img src="images/ug-general/exitResult.png" width="70%" height="70%"/></p>
 
 --------------------------------------------------------------------------------------------------------------------
 
