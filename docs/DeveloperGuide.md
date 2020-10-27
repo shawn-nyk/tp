@@ -466,8 +466,8 @@ InternHunter only lets users create applications for internships already added t
 
 #### What it is
 Users are able to execute a command to generate a list of matching internships that matches their current profile
-skills. This matching is done by accumulating the list of profile items that has the category `SKILL` and
-filtering the list of internships from them. Remaining internships are those that consist of at least one
+skills. This matching is done by filtering the list of profile items that has the category `SKILL` and
+using it to filter the list of internships. Remaining internships are those that consist of at least one
 `Requirement` that matches the user's list of skills. 
 
 **Command format:** `match`
@@ -475,7 +475,7 @@ filtering the list of internships from them. Remaining internships are those tha
 #### Implementation
 
 `MatchCommand` is a class that extends the `Command` _abstract_ class. It has a dependency to the `Model`
-interface as it relies on getting the profile list and company item list from the model.
+interface as it relies on getting the profile list and company list from the model.
 
 Here is a class diagram to show how the `MatchCommand` is implemented:
 
@@ -489,13 +489,13 @@ This is how the `MatchCommand#execute()` method works upon execution:
 `MatchCommand`'s own `getSkillList(...)` method.
 3. Next, the list of all internships from the list of companies is obtained via its own
 `getInternshipList(...)` method.
-4. Then, the `MatchCommand`'s own `getMatchingInternships(...)` is invoked to obtain
+4. Then, `MatchCommand`'s own `getMatchingInternships(...)` is invoked to obtain
 the list of matching internships.
-5. Finally, `MatchCommand`'s own `getMatchingInternshipsCommandResult(...)` is used to generate the
-`CommandResult`. This method returns different `CommandResult` depending if the matchingInternships is empty or not. 
- 5a. If the matchingInternships list is empty, then no matching internships message will be passed to the `CommandResult`.
+5. Finally, `getMatchingInternshipsCommandResult(...)` method in `MatchCommand` is used to generate the
+`CommandResult`. This method returns a different `CommandResult` depending if the matchingInternships is empty or not. <br/>
+ 5a. If the matchingInternships list is empty, then the no matching internships message will be passed to the `CommandResult`. <br/>
  5b. Otherwise, the showing matching internships message will be passed to the `CommandResult`. This internship list
- will be passed into `CommandResult#setMatchingInternships(...)` method.
+ will be passed into `CommandResult#setMatchingInternships(...)` method for display in the Ui. <br/>
 
 The following sequence diagram show how the match command works:
 
