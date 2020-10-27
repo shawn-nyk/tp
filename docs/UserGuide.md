@@ -544,10 +544,20 @@ an internship has **at least one and not all** `Requirement` that matches with t
 - Only the full sentence will be matched. e.g. `Machine` will not match `Machine Learning`.
 
 Example:
-- Suppose you have these 2 internship lists (from 2 different companies) and profile skills in your list.
-Executing `match` will generate the list of matching internships in a new window.
 
-<p align="center"><img src="images/ug-application/MatchCommand2.png" width="100%"/></p>
+1. Say you currently have these 2 list of internships from Google Singapore and Garena:
+
+<p align="center"><img src="images/ug-general/match-internships.png" width="100%"/></p>
+
+2. And this is your current profile item list. Note that only the 2 profile items of `Skill` type will be used for
+matching with the internships.
+
+<p align="center"><img src="images/ug-general/match-skills.png" width="100%"/></p>
+
+3. By typing the `match` word in the command box in any window, a pop-up window showing the matching internships will
+be displayed.
+
+<p align="center"><img src="images/ug-general/match-window.png" width="100%"/></p>
 
 <div markdown="span" class="alert alert-primary">
   :bulb: <strong>Tip:</strong> You can press Esc key to close the popup window!
