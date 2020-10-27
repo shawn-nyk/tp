@@ -127,13 +127,13 @@ API call.
 
 ### Model component
 
-<p id="model-class-diagram"><img src="images/dg-model/ModelClassDiagram.png" width="80%" height="80%"/></p>
+<p id="model-class-diagram"><img src="images/dg-model/ModelClassDiagram.png" width="55%" height="55%"/></p>
 
 Breakdown of the Company, Internship and Application packages:
 ![Structure of the Company, Internship and Application Classes](images/dg-model/CompanyInternshipApplicationClassDiagram.png)
 
 Breakdown of the Profile package:
-<p id="profile-class-diagram"><img src="images/dg-model/ProfileClassDiagram.png" width="90%" height="90%"/></p>
+<p id="profile-class-diagram"><img src="images/dg-model/ProfileClassDiagram.png" width="40%" height="40%"/></p>
 
 **API** :
 [`Model.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/model/Model.java)
