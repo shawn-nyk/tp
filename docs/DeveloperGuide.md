@@ -518,12 +518,12 @@ This is how the `MatchCommand#execute()` method works upon execution:
 1. The list of profile items and company items are first obtained via the `Model#getProfileItemList()` method and
 `Model#getCompanyItemList()` respectively.
 2. Then, the list of profile skills that the user has is obtained via a self-invocation to
-`MatchCommand`'s own `getSkillList(...)` method.
+`MatchCommand#getSkillList(...)` method.
 3. Next, the list of all internships from the list of companies is obtained via its own
-`getInternshipList(...)` method.
-4. Then, `MatchCommand`'s own `getMatchingInternships(...)` is invoked to obtain
+`MatchCommand#getInternshipList(...)` method.
+4. Then, `MatchCommand#getMatchingInternships(...)` is invoked to obtain
 the list of matching internships.
-5. Finally, `getMatchingInternshipsCommandResult(...)` method in `MatchCommand` is used to generate the
+5. Finally, `MatchCommand#getMatchingInternshipsCommandResult(...)` method is used to generate the
 `CommandResult`. This method returns a different `CommandResult` depending if the matchingInternships is empty or not. <br/>
  5a. If the matchingInternships list is empty, then the no matching internships message will be passed to the `CommandResult`. <br/>
  5b. Otherwise, the showing matching internships message will be passed to the `CommandResult`. This internship list

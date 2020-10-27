@@ -398,10 +398,10 @@ Executing `view app 2` will update the right panel to display the second applica
 Finds all applications in your list of applications whose job titles contain any of the given keywords.
 
 Format: `find app KEYWORD [ANOTHER_KEYWORD]...`
-- Only the application name will be searched for.
+- Only the application job title will be searched for.
 - The search is case-insensitive. e.g. `engineer` will match `Engineer`.
-- Companies with names matching at least one keyword will be returned. e.g. `Software Engineer` will return applications
- whose names contain the word `Software` *or* `Engineer`.
+- Applications with job titles matching at least one keyword will be returned. e.g. `Software Engineer` will return
+applications whose job titles contain the word `Software` *or* `Engineer`.
 - The order of the keywords does not matter. e.g. `Software Engineer` and `Engineer Software` will return the same results.
 - Only full words will be matched. e.g. `Engineer` will not match `Engine`.
 
@@ -529,7 +529,6 @@ all the items in your profile.
 
 Format: `list me`
 
-
 ### **General**
 
 #### Generating matching internships: `match`
@@ -545,7 +544,7 @@ internship that has a `Requirement` of `Python` will be successfully matched.
 - Matched internships can have `Requirements` that do not match with the profile `Skills`, since a match is found when
 an internship has **at least one and not all** `Requirements` that matches with the profile `Skills`.
 - Matching done is case-insensitive. e.g. `Python` will match `python`.
-- Only the full sentence will be matched. e.g. `Machine` will not match `Machine Learning`.
+- Only the full phrase will be matched. e.g. `Machine` will not match `Machine Learning`.
 
 Example:
 
