@@ -53,7 +53,7 @@ The `UI` component,
 </div>
 
 **API** :
-[`Logic.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/logic/Logic.java)
+![`Logic.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/logic/Logic.java)
 
 1. `Logic` uses the `MainParser` class to parse the user command.
 2. This results in a `Command` object which is executed by the `LogicManager`.
@@ -74,6 +74,22 @@ API call.
 </div>
 
 ### Model component
+
+![Structure of the Model Component](images/dg-model/ModelClassDiagram.png)
+![Structure of the Company, Internship and Application Classes](images/dg-model/CompanyInternshipApplicationClassDiagram.png)
+<p><img src="images/dg-model/ProfileClassDiagram.png" width="60%" height="60%"/></p>
+
+**API** :
+![`Model.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/model/Model.java)
+
+The `Model`,
+
+* stores a `UserPrefs` object that represents the user’s preferences i.e. GUI settings and file paths of saved data.
+* stores the application data.
+* exposes an unmodifiable `ObservableList` for `CompanyItem`, `ApplicationItem` and `ProfileItem` respectively, that
+ can be 'observed' i.e. the UI can be bound to this list so that the UI automatically updates when the data in the
+ list changes.
+* does not depend on any of the other three components.
 
 ### Storage Component
 
@@ -177,7 +193,7 @@ Upon a user’s entry of a valid delete company command, a `DeleteCompanyCommand
 `DeleteCompanyCommand` is a class that extends the `DeleteCommandAbstract` abstract class that in turn extends the 
 `Command` abstract class.
 
-![DeleteCompanyCommandClassDiagram](images/DeleteCompanyCommandClassDiagram.png)
+![DeleteCompanyCommandClassDiagram](images/dg-company/DeleteCompanyCommandClassDiagram.png)
 
 `DeleteCompanyCommand` implements the `execute()` method from the `Command` abstract class whereby upon execution, the 
 method will delete the respective company in the model’s list of companies if a valid index is given.
@@ -197,8 +213,8 @@ This is how the `DeleteCompanyCommand#execute()` method works upon execution:
 The following sequence diagrams show how the delete company feature works successfully, using the example command 
 `delete com 3`:
 
-![DeleteCompanyCommandSequenceDiagram](images/DeleteCompanyCommandSequenceDiagram.png)
-![ExecuteDeleteCompany3CommandSequenceDiagram](images/ExecuteDeleteCompany3CommandSequenceDiagram.png)
+![DeleteCompanyCommandSequenceDiagram](images/dg-company/DeleteCompanyCommandSequenceDiagram.png)
+![ExecuteDeleteCompany3CommandSequenceDiagram](images/dg-company/ExecuteDeleteCompany3CommandSequenceDiagram.png)
 ![GetDeleteCommandResultSequenceDiagram](images/GetDeleteCommandResultSequenceDiagram.png)
 HandleDeleteDisplaySwitchIndexSequenceDiagram can be found [here](#handle-delete-display-switch-index-sequence-diagram)
 
