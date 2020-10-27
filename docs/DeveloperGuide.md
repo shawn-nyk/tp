@@ -4,9 +4,61 @@ title: Developer Guide
 ---
 * Table of Contents
 {:toc}
+--------------------------------------------------------------------------------------------------------------------
+
+## **Setting up, getting started**
+
+Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
+
 ## **Design**
+
+### Architecture
+
+<img src="images/ArchitectureDiagram.png" width="450" />
+
+The ***Architecture Diagram*** given above explains the high-level design of InternHunter. Given below is a quick
+overview of each component. As seen in the diagram, InternHunter follows a multi-layered architecture whereby
+components of lower layers are independent of higher layers. e.g. the `Logic` component can make use of methods in
+ the `Model` but not vice versa.
+
+<div markdown="span" class="alert alert-primary">
+
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2021S1-CS2103T-T15-4/tp/tree/master/docs/diagrams) folder.
+
+</div>
+
+**`Main`** has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/MainApp.java). It is responsible for,
+* At app launch: Initializes the components in the correct sequence, and connects them up with each other.
+* At shut down: Shuts down the components and invokes cleanup methods where necessary.
+
+[**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
+
+The rest of the App consists of four components.
+
+* [**`UI`**](#ui-component): The UI of the App.
+* [**`Logic`**](#logic-component): The command executor.
+* [**`Model`**](#model-component): Holds the data of the App in memory.
+* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+
+Each of the four components,
+
+* defines its *API* in an `interface` with the same name as the Component.
+* exposes its functionality using a concrete `{Component Name}Manager` class (which implements the corresponding API `interface` mentioned in the previous point.
+
+For example, the `Logic` component (see the class diagram given below) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
+
+![Class Diagram of the Logic Component](images/LogicClassDiagram.png)
+
+**How the architecture components interact with each other**
+
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues
+ the command `delete me 1` to delete a profile item.
+
+<img src="images/ArchitectureSequenceDiagram.png" width="574" />
+
+The sections below give more details of each component.
 
 ### Ui component
 
@@ -101,6 +153,13 @@ The `Model`,
 The Storage component,
 * can save UserPref objects in json format and read it back.
 * can save the InternHunter data in json format and read it back.
+
+### Common classes
+
+Classes used by multiple components are in the `seedu.internhunter.commons` package.
+
+--------------------------------------------------------------------------------------------------------------------
+
 
 ## **Implementation**
 
@@ -514,8 +573,8 @@ InternHunter only lets users create applications for internships already added t
 
 #### What it is
 Users are able to execute a command to generate a list of matching internships that matches their current profile
-skills. This matching is done by accumulating the list of profile items that has the category `SKILL` and
-filtering the list of internships from them. Remaining internships are those that consist of at least one
+skills. This matching is done by filtering the list of profile items that has the category `SKILL` and
+using it to filter the list of internships. Remaining internships are those that consist of at least one
 `Requirement` that matches the user's list of skills. 
 
 **Command format:** `match`
@@ -523,7 +582,7 @@ filtering the list of internships from them. Remaining internships are those tha
 #### Implementation
 
 `MatchCommand` is a class that extends the `Command` _abstract_ class. It has a dependency to the `Model`
-interface as it relies on getting the profile list and company item list from the model.
+interface as it relies on getting the profile list and company list from the model.
 
 Here is a class diagram to show how the `MatchCommand` is implemented:
 
@@ -534,16 +593,16 @@ This is how the `MatchCommand#execute()` method works upon execution:
 1. The list of profile items and company items are first obtained via the `Model#getProfileItemList()` method and
 `Model#getCompanyItemList()` respectively.
 2. Then, the list of profile skills that the user has is obtained via a self-invocation to
-`MatchCommand`'s own `getSkillList(...)` method.
+`MatchCommand#getSkillList(...)` method.
 3. Next, the list of all internships from the list of companies is obtained via its own
-`getInternshipList(...)` method.
-4. Then, the `MatchCommand`'s own `getMatchingInternships(...)` is invoked to obtain
+`MatchCommand#getInternshipList(...)` method.
+4. Then, `MatchCommand#getMatchingInternships(...)` is invoked to obtain
 the list of matching internships.
-5. Finally, `MatchCommand`'s own `getMatchingInternshipsCommandResult(...)` is used to generate the
-`CommandResult`. This method returns different `CommandResult` depending if the matchingInternships is empty or not. 
- 5a. If the matchingInternships list is empty, then no matching internships message will be passed to the `CommandResult`.
+5. Finally, `MatchCommand#getMatchingInternshipsCommandResult(...)` method is used to generate the
+`CommandResult`. This method returns a different `CommandResult` depending if the matchingInternships is empty or not. <br/>
+ 5a. If the matchingInternships list is empty, then the no matching internships message will be passed to the `CommandResult`. <br/>
  5b. Otherwise, the showing matching internships message will be passed to the `CommandResult`. This internship list
- will be passed into `CommandResult#setMatchingInternships(...)` method.
+ will be passed into `CommandResult#setMatchingInternships(...)` method for display in the Ui. <br/>
 
 The following sequence diagram show how the match command works:
 
