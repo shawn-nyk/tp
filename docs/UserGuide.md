@@ -356,7 +356,7 @@ Example:
 - Suppose you are interested in applying for the Software Engineer internship in Google Singapore:
 <p align="center"><img src="images/ug-application/Internship.png" width="100%"/></p>
 
-Executing `add app 1 i/1 d/24-12-2020` will apply for the internship as follows.
+Executing `add app 1 i/1 d/24-12-20` will apply for the internship as follows.
 Note that you will be automatically switched to the application tab to view the application made:
 <p align="center"><img src="images/ug-application/AddApplication1.png" width="100%"/></p>
 
@@ -398,12 +398,17 @@ Executing `view app 2` will update the right panel to display the second applica
 Finds all applications in your list of applications whose job titles contain any of the given keywords.
 
 Format: `find app KEYWORD [ANOTHER_KEYWORD]...`
-- Find command matching is the same as that used in [`find com` command](#finding-companies-find-com), except 
-job titles are used in placed of company names.
+- Only the application job title will be searched for.
+- The search is case-insensitive. e.g. `engineer` will match `Engineer`.
+- Applications with job titles matching at least one keyword will be returned. e.g. `Software Engineer` will return
+applications whose job titles contain the word `Software` *or* `Engineer`.
+- The order of the keywords does not matter. e.g. `Software Engineer` and `Engineer Software` will return the same results.
+- Only full words will be matched. e.g. `Engineer` will not match `Engine`.
 
 Example:
 - Suppose you have this list of applications. Executing `find app engineer` will update the list to show matching
 applications:
+
 <p align="center"><img src="images/ug-application/FindApplication1.png" width="100%"/></p>
 
 #### Listing all applications: `list app`
@@ -432,8 +437,8 @@ Each category is represented by the following icons in the UI:
 
 | CATEGORY   | ICON 
 |------------|------------------
-|`achievement`| <img src="images/ug-profile/achievement.png" width="10%" height="10%"/>
-|`experience` | <img src="images/ug-profile/experience.png" width="10%" height="10%"/>
+|`achievement`| <img src="images/ug-profile/achievement" width="10%" height="10%"/>
+|`experience` | <img src="images/ug-profile/experience" width="10%" height="10%"/>
 |`skill`      | <img src="images/ug-profile/skills.png" width="10%" height="10%"/>
 
 
@@ -524,7 +529,6 @@ all the items in your profile.
 
 Format: `list me`
 
-
 ### **General**
 
 #### Generating matching internships: `match`
@@ -532,15 +536,40 @@ Format: `list me`
 Generates a list of internships that have requirements that matches your current set of skills.
 
 Format: `match`
-- Matching done is case-insensitive. e.g. `Python` will match `python`
-- Internships with job titles matching at least one `SKILL` will be returned.
-- Only full words will be matched. e.g. `React` will not match `React Native`
+- Only the `Requirement` field in the internships will be searched for.
+- Only profile items with `Skill` category will be used for matching.
+- An Internship with at least one `Requirement` matching any one `Skill` in the profile list will be
+considered as a successful match. e.g. Say you have a profile item which is of `Skill` category and titled `Python`, any
+internship that has a `Requirement` of `Python` will be successfully matched.
+- Matched internships can have `Requirements` that do not match with the profile `Skills`, since a match is found when
+an internship has **at least one and not all** `Requirements` that matches with the profile `Skills`.
+- Matching done is case-insensitive. e.g. `Python` will match `python`.
+- Only the full phrase will be matched. e.g. `Machine` will not match `Machine Learning`.
 
 Example:
-- Suppose you have these 2 internship lists (from 2 different companies) and profile skills in your list.
-Executing `match` will generate the list of matching internships in a new window.
 
-<p align="center"><img src="images/ug-application/MatchCommand2.png" width="100%"/></p>
+1. Say you currently have these 2 list of internships from Google Singapore and Garena:
+
+<p align="center"><img src="images/ug-general/match-internships1.png" width="100%"/></p>
+
+2. And this is your current profile item list. Note that only the 2 profile items of `Skill` type will be used for
+matching with the internships.
+
+<p align="center"><img src="images/ug-general/match-skills1.png" width="100%"/></p>
+
+3. All that's left to do is to type the `match` word in the command box.
+
+<p align="center"><img src="images/ug-general/match-type1.png" width="100%"/></p>
+
+<div markdown="span" class="alert alert-info">
+
+  :information_source: **Note:** You can be on any tab to execute this command.
+
+</div>
+
+4. A pop-up window showing the list of matching internships will be displayed!
+
+<p align="center"><img src="images/ug-general/match-window.png" width="100%"/></p>
 
 <div markdown="span" class="alert alert-primary">
   :bulb: <strong>Tip:</strong> You can press Esc key to close the popup window!
