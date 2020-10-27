@@ -105,7 +105,7 @@ The `UI` component,
 </div>
 
 **API** :
-![`Logic.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/logic/Logic.java)
+[`Logic.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/logic/Logic.java)
 
 1. `Logic` uses the `MainParser` class to parse the user command.
 2. This results in a `Command` object which is executed by the `LogicManager`.
@@ -134,7 +134,7 @@ API call.
 <p id="profile-class-diagram"><img src="images/dg-model/ProfileClassDiagram.png" width="40%" height="40%"/></p>
 
 **API** :
-![`Model.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/model/Model.java)
+[`Model.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/model/Model.java)
 
 The `Model`,
 
