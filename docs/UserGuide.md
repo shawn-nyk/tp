@@ -612,9 +612,11 @@ Shows an exit confirmation dialog.
 Format: `exit`
 
 <div markdown="span">
+  
   :bulb: <strong>Tip:</strong> <br/>
-  For <strong>MacOS<strong/> users, you can use navigate the options using <strong>tab</strong> on your keyboard and pressing <strong>spacebar<strong/> to confirm your choice. <br/>
-  For <strong>Windows</strong> and Linux users, similarly, you can use <strong>tab</strong> to navigate. However, instead of using <strong>spacebar<strong/>, you should use <strong>enter<strong/> instead. <br/>
+  For <strong>MacOS</strong> users, you can navigate the options using <strong>tab</strong> on your keyboard and pressing <strong>spacebar</strong> to confirm your choice. <br/>
+  For <strong>Windows</strong> and Linux users, similarly, you can use <strong>tab</strong> to navigate. However, instead of using <strong>spacebar</strong>, you should use <strong>enter</strong> instead. <br/>
+  
 </div>
 
 <br/>
