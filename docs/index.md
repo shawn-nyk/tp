@@ -9,11 +9,11 @@
     </a>
 </p>
 
-<p align="center"><img src="images/Ui.png" width="100%"/></p>
+<p align="center"><img src="images/readme/Ui.png" width="100%"/></p>
 
 <div>
-  <img src="images/App.png" width="49.7%"/>
-  <img src="images/Profile.png" width="49.7%"/>
+  <img src="images/readme/App.png" width="49.7%"/>
+  <img src="images/readme/Profile.png" width="49.7%"/>
 </div>
 
 Welcome to **InternHunter**, a CLI-centric desktop application which aids university students in applying for tech
@@ -29,5 +29,8 @@ and their own user profile, so that they can keep track of internships that they
 - This project was extended from AddressBook-Level3 project created by [SE-EDU initiative](https://se-education.org).
 - Libraries Used: [JavaFX](https://github.com/openjdk/jfx), [Jackson](https://github.com/FasterXML/jackson),
 [JUnit5](https://github.com/junit-team/junit5)
+
+### Images Used
+Credits goes to [Freepik](https://www.flaticon.com/authors/freepik), [itim201](https://www.flaticon.com/authors/itim2101), [DinosoftLabs](https://www.flaticon.com/authors/dinosoftlabs)
 
 ## Licence : [MIT](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/LICENSE)

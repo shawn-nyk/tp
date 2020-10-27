@@ -5,13 +5,13 @@
         ---> [[profileItemList.json is empty&#93;] "use sample data"
         -->(*)
         else
-        --> [else] "use user data"
+        --> [[else&#93;] "use user data"
         Endif
     else
-    --> [else] "use user data"
+    --> [[else&#93;] "use user data"
     Endif
 else
---> [else] "use user data"
+--> [[else&#93;] "use user data"
 Endif
 -->(*)
 @enduml
