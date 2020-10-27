@@ -1,12 +1,13 @@
 package seedu.internhunter.ui;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.internhunter.ui.GuardClauseUi.IS_EMPTY_DATA_LIST;
 import static seedu.internhunter.ui.GuardClauseUi.IS_EMPTY_DISPLAY;
-import static seedu.internhunter.ui.GuardClauseUi.IS_EMPTY_LIST_PANEL;
-import static seedu.internhunter.ui.tabs.TabName.APPLICATION;
-import static seedu.internhunter.ui.tabs.TabName.COMPANY;
-import static seedu.internhunter.ui.tabs.TabName.PROFILE;
+import static seedu.internhunter.ui.display.ApplicationDisplay.getApplicationDisplay;
+import static seedu.internhunter.ui.display.CompanyDisplay.getCompanyDisplay;
+import static seedu.internhunter.ui.display.ProfileDisplay.getProfileDisplay;
+import static seedu.internhunter.ui.panel.ApplicationListPanel.getApplicationListPanel;
+import static seedu.internhunter.ui.panel.CompanyListPanel.getCompanyListPanel;
+import static seedu.internhunter.ui.panel.ProfileListPanel.getProfileListPanel;
 
 import java.util.Optional;
 import java.util.logging.Logger;
@@ -14,7 +15,6 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -29,14 +29,8 @@ import seedu.internhunter.model.company.CompanyItem;
 import seedu.internhunter.model.internship.InternshipItem;
 import seedu.internhunter.model.item.Item;
 import seedu.internhunter.model.profile.ProfileItem;
-import seedu.internhunter.ui.display.ApplicationDisplay;
-import seedu.internhunter.ui.display.CompanyDisplay;
 import seedu.internhunter.ui.display.InformationDisplay;
-import seedu.internhunter.ui.display.ProfileDisplay;
-import seedu.internhunter.ui.panel.ApplicationListPanel;
-import seedu.internhunter.ui.panel.CompanyListPanel;
 import seedu.internhunter.ui.panel.ListPanel;
-import seedu.internhunter.ui.panel.ProfileListPanel;
 import seedu.internhunter.ui.popupwindow.HelpWindow;
 import seedu.internhunter.ui.popupwindow.InternshipsWindow;
 import seedu.internhunter.ui.popupwindow.PopupWindow;
@@ -76,20 +70,19 @@ public class MainWindow extends UiPart<Stage> {
     private CommandBox commandBox;
 
     @FXML
-    private VBox cardList;
+    private VBox listPanelPlaceholder;
     @FXML
-    private StackPane listPanelPlaceholder;
-    @FXML
-    private VBox display;
+    private VBox displayPlaceholder;
     @FXML
     private ScrollPane resultDisplayPlaceholder;
     @FXML
     private VBox commandBoxPlaceholder;
     @FXML
-    private VBox tabsContainer;
+    private VBox tabsPlaceholder;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
+     *
      * @param primaryStage The main stage of the app.
      * @param logic The logic unit of the app.
      */
@@ -144,7 +137,7 @@ public class MainWindow extends UiPart<Stage> {
      * @param primaryStage The main stage of the app.
      */
     private void bindHeights(Stage primaryStage) {
-        cardList.prefWidthProperty().bind(primaryStage.widthProperty().subtract(PERSON_LIST_HEIGHT_SHRINK));
+        listPanelPlaceholder.prefWidthProperty().bind(primaryStage.widthProperty().subtract(PERSON_LIST_HEIGHT_SHRINK));
         resultDisplayPlaceholder.prefWidthProperty().bind(primaryStage.widthProperty().subtract(RESULT_HEIGHT_SHRINK));
     }
 
@@ -177,8 +170,8 @@ public class MainWindow extends UiPart<Stage> {
      * Adds the tab display to the {@code MainWindow}.
      */
     void addTabs() {
-        tabs = Tabs.getTabs(this);
-        tabsContainer.getChildren().add(tabs.getRoot());
+        tabs = Tabs.getTabs();
+        tabsPlaceholder.getChildren().add(tabs.getRoot());
     }
 
     /**
@@ -193,10 +186,12 @@ public class MainWindow extends UiPart<Stage> {
      * Adds the information display to the {@code MainWindow}.
      */
     void addInformationDisplay() {
-        display.getChildren().clear();
-        if (!IS_EMPTY_DATA_LIST.test(companyItems)) {
-            informationDisplay = CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(0));
-            display.getChildren().add(informationDisplay.getRoot());
+        Optional<InformationDisplay<? extends Item>> newInformationDisplay = getCompanyDisplay(companyItems,
+            0, primaryStage);
+
+        if (!IS_EMPTY_DISPLAY.test(newInformationDisplay)) {
+            informationDisplay = newInformationDisplay.get();
+            displayPlaceholder.getChildren().add(informationDisplay.getRoot());
         }
     }
 
@@ -212,8 +207,7 @@ public class MainWindow extends UiPart<Stage> {
      * Adds the list panel display to the {@code MainWindow}.
      */
     void addListPanel() {
-        listPanelPlaceholder.getChildren().clear();
-        listPanel = new CompanyListPanel(companyItems);
+        listPanel = getCompanyListPanel(companyItems);
         listPanelPlaceholder.getChildren().add(listPanel.getRoot());
     }
 
@@ -263,13 +257,67 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Switch the tabs of the application to {@code tabName}.
+     * Switches the tabs of the application to {@code tabName}.
      *
      * @param tabName The tab to be switched to.
      */
     private void switchTab(TabName tabName) {
         requireNonNull(tabName);
         tabs.switchTab(tabName);
+    }
+
+    /**
+     * Changes the list panel view to the list panel view that resides in {@code tabName}.
+     *
+     * @param tabName The tab to be switched to.
+     */
+    private void changeListPanelView(TabName tabName) {
+        requireNonNull(tabName);
+        listPanelPlaceholder.getChildren().clear();
+        switch (tabName) {
+        case COMPANY:
+            listPanelPlaceholder.getChildren().add(getCompanyListPanel(companyItems).getRoot());
+            break;
+        case APPLICATION:
+            listPanelPlaceholder.getChildren().add(getApplicationListPanel(applicationItems).getRoot());
+            break;
+        case PROFILE:
+            listPanelPlaceholder.getChildren().add(getProfileListPanel(profileItems).getRoot());
+            break;
+        default:
+            assert false;
+            break;
+        }
+    }
+
+    /**
+     * Switches the display based on the {@code index} and {@code tabName}.
+     */
+    public void changeDisplay() {
+        TabName tabName = logic.getTabName();
+        int index;
+        Optional<InformationDisplay<? extends Item>> newInformationDisplay = Optional.empty();
+        switch (tabName) {
+        case COMPANY:
+            index = logic.getCompanyViewIndex().getZeroBased();
+            newInformationDisplay = getCompanyDisplay(companyItems, index, primaryStage);
+            break;
+        case APPLICATION:
+            index = logic.getApplicationViewIndex().getZeroBased();
+            newInformationDisplay = getApplicationDisplay(applicationItems, index, primaryStage);
+            break;
+        case PROFILE:
+            index = logic.getProfileViewIndex().getZeroBased();
+            newInformationDisplay = getProfileDisplay(profileItems, index, primaryStage);
+            break;
+        default:
+            assert false;
+            break;
+        }
+        displayPlaceholder.getChildren().clear();
+        if (!IS_EMPTY_DISPLAY.test(newInformationDisplay)) {
+            displayPlaceholder.getChildren().add(newInformationDisplay.get().getRoot());
+        }
     }
 
     /**
@@ -315,137 +363,4 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-    /**
-     * Changes the display of screen, depending on {@code tabName}, in the {@code primaryStage}.
-     *
-     * @param tabName The tab to be switched to.
-     */
-    public void changeListPanelView(TabName tabName) {
-        assert (tabName.equals(APPLICATION) || tabName.equals(COMPANY) || tabName.equals(PROFILE));
-        listPanelPlaceholder.getChildren().clear();
-        Optional<ListPanel<? extends Item>> newListPanel = Optional.empty();
-        switch (tabName) {
-        case COMPANY:
-            newListPanel = getCompanyTabView();
-            break;
-        case APPLICATION:
-            newListPanel = setApplicationTabView();
-            break;
-        case PROFILE:
-            newListPanel = setProfileTabView();
-            break;
-        default:
-            assert false;
-            break;
-        }
-        changeDisplay();
-        if (!IS_EMPTY_LIST_PANEL.test(newListPanel)) {
-            listPanelPlaceholder.getChildren().add(newListPanel.get().getRoot());
-        }
-    }
-
-    /**
-     * Retrieves the list of cards that displays a list of company information.
-     *
-     * @return An Optional value containing the company list panel.
-     */
-    private Optional<ListPanel<? extends Item>> getCompanyTabView() {
-        if (IS_EMPTY_DATA_LIST.test(companyItems)) {
-            return Optional.empty();
-        }
-        return Optional.of(new CompanyListPanel(companyItems));
-    }
-
-    /**
-     * Retrieves the list of cards that displays a list of application information.
-     *
-     * @return An Optional value containing the application list panel.
-     */
-    private Optional<ListPanel<? extends Item>> setApplicationTabView() {
-        if (IS_EMPTY_DATA_LIST.test(applicationItems)) {
-            return Optional.empty();
-        }
-        return Optional.of(new ApplicationListPanel(applicationItems));
-    }
-
-    /**
-     * Retrieves the list of cards that displays a list of profile information.
-     *
-     * @return An Optional value containing the profile list panel.
-     */
-    private Optional<ListPanel<? extends Item>> setProfileTabView() {
-        if (IS_EMPTY_DATA_LIST.test(profileItems)) {
-            return Optional.empty();
-        }
-        return Optional.of(new ProfileListPanel(profileItems));
-    }
-
-    /**
-     * Switches the display based on the {@code index} and {@code tabName}.
-     */
-    public void changeDisplay() {
-        TabName tabName = logic.getTabName();
-        int index;
-        Optional<InformationDisplay<? extends Item>> newInformationDisplay = Optional.empty();
-        switch (tabName) {
-        case COMPANY:
-            index = logic.getCompanyViewIndex().getZeroBased();
-            newInformationDisplay = getCompanyDisplay(index);
-            break;
-        case APPLICATION:
-            index = logic.getApplicationViewIndex().getZeroBased();
-            newInformationDisplay = getApplicationDisplay(index);
-            break;
-        case PROFILE:
-            index = logic.getProfileViewIndex().getZeroBased();
-            newInformationDisplay = getProfileDisplay(index);
-            break;
-        default:
-            assert false;
-            break;
-        }
-        display.getChildren().clear();
-        if (!IS_EMPTY_DISPLAY.test(newInformationDisplay)) {
-            display.getChildren().add(newInformationDisplay.get().getRoot());
-        }
-    }
-
-    /**
-     * Retrieves the particular company item's information at that index.
-     *
-     * @param index The Index of the display to be displayed.
-     * @return An Optional containing the display information of the company at that particular Index.
-     */
-    private Optional<InformationDisplay<? extends Item>> getCompanyDisplay(int index) {
-        if (IS_EMPTY_DATA_LIST.test(companyItems)) {
-            return Optional.empty();
-        }
-        return Optional.of(CompanyDisplay.getCompanyDisplay(primaryStage, companyItems.get(index)));
-    }
-
-    /**
-     * Retrieves the particular application item's information at that index.
-     *
-     * @param index The Index of the display to be displayed.
-     * @return An Optional containing the display information of the Application at that particular Index.
-     */
-    private Optional<InformationDisplay<? extends Item>> getApplicationDisplay(int index) {
-        if (IS_EMPTY_DATA_LIST.test(applicationItems)) {
-            return Optional.empty();
-        }
-        return Optional.of(ApplicationDisplay.getApplicationDisplay(primaryStage, applicationItems.get(index)));
-    }
-
-    /**
-     * Retrieves the particular profile item's information at that index.
-     *
-     * @param index The Index of the display to be displayed.
-     * @return An Optional containing the display information of the profile at that particular Index.
-     */
-    private Optional<InformationDisplay<? extends Item>> getProfileDisplay(int index) {
-        if (IS_EMPTY_DATA_LIST.test(profileItems)) {
-            return Optional.empty();
-        }
-        return Optional.of(ProfileDisplay.getProfileDisplay(primaryStage, profileItems.get(index)));
-    }
 }

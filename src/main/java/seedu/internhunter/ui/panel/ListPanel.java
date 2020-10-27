@@ -35,5 +35,7 @@ public class ListPanel<T extends Item> extends UiPart<Region> {
         super(FXML);
         itemListView.addEventFilter(MouseEvent.MOUSE_PRESSED, (EventHandler<Event>) Event::consume);
         itemListView.setItems(itemList);
+        logger.fine("Adding item into list");
     }
+
 }

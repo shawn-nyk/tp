@@ -7,7 +7,6 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.internhunter.model.item.Item;
 import seedu.internhunter.ui.display.InformationDisplay;
-import seedu.internhunter.ui.panel.ListPanel;
 
 /**
  * Contains the predicate and function checks for ui.
@@ -29,11 +28,6 @@ public class GuardClauseUi {
      * Checks if the given display is empty
      */
     public static final Predicate<Optional<InformationDisplay<? extends Item>>> IS_EMPTY_DISPLAY = Optional::isEmpty;
-
-    /**
-     * Checks if the given list panel is empty
-     */
-    public static final Predicate<Optional<ListPanel<? extends Item>>> IS_EMPTY_LIST_PANEL = Optional::isEmpty;
 
     /**
      * Checks if the given string is empty

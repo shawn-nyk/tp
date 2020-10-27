@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.geometry.Insets?>
 <?import java.net.URL?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.control.ScrollPane?>
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" title="InternHunter" minWidth="932" minHeight="743">
   <scene>
@@ -28,19 +27,18 @@
             </rowConstraints>
             <children>
               <VBox GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.rowIndex="0" GridPane.rowSpan="5" styleClass="tabs_background_style">
-                <VBox fx:id="tabsContainer" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" VBox.vgrow="ALWAYS" styleClass="tabs_container_style"/>
+                <VBox fx:id="tabsPlaceholder" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" VBox.vgrow="ALWAYS" styleClass="tabs_container_style"/>
               </VBox>
               <ScrollPane fx:id="resultDisplayPlaceholder" AnchorPane.bottomAnchor="1.0" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="3" GridPane.valignment="CENTER" styleClass="result_display_style"/>
               <VBox fillWidth="true" VBox.vgrow="NEVER" fx:id="commandBoxPlaceholder" AnchorPane.bottomAnchor="1.0" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="4" GridPane.valignment="CENTER"/>
               <VBox maxHeight="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="4" styleClass="cards_container_style">
-                <VBox fx:id="cardList" VBox.vgrow="ALWAYS" styleClass="cards_container_inner_style">
+                <VBox fx:id="listPanelPlaceholder" VBox.vgrow="ALWAYS" styleClass="cards_container_inner_style">
                   <padding>
                     <Insets top="10" right="10" bottom="10" left="10" />
                   </padding>
-                  <StackPane fx:id="listPanelPlaceholder" VBox.vgrow="ALWAYS"/>
                 </VBox>
               </VBox>
-              <VBox fx:id="display" GridPane.columnIndex="5" GridPane.rowIndex="0" styleClass="display_container_style"/>
+              <VBox fx:id="displayPlaceholder" GridPane.columnIndex="5" GridPane.rowIndex="0" styleClass="display_container_style"/>
             </children>
           </GridPane>
         </children>
