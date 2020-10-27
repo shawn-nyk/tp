@@ -19,7 +19,9 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 <img src="images/ArchitectureDiagram.png" width="450" />
 
 The ***Architecture Diagram*** given above explains the high-level design of InternHunter. Given below is a quick
- overview of each component.
+overview of each component. As seen in the diagram, InternHunter follows a multi-layered architecture whereby
+components of lower layers are independent of higher layers. e.g. the `Logic` component can make use of methods in
+ the `Model` but not vice versa.
 
 <div markdown="span" class="alert alert-primary">
 
