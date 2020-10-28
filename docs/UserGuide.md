@@ -640,7 +640,7 @@ Shows an exit confirmation dialog.
 
 Format: `exit`
 
-<div markdown="span">
+<div markdown="span" class="alert alert-primary">
   
   :bulb: <strong>Tip:</strong> <br/>
   For <strong>MacOS</strong> users, you can navigate the options using <strong>tab</strong> on your keyboard and pressing <strong>spacebar</strong> to confirm your choice. <br/>
