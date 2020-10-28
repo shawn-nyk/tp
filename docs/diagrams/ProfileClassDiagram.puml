@@ -7,7 +7,7 @@ skinparam classBackgroundColor MODEL_COLOR
 Package Profile\n <<Rectangle>>{
 Class ProfileItem
 Class Title
-Class ProfileItemCategory
+Class "<<enumeration>>\nProfileItemCategory" as ProfileItemCategory
 Class Descriptor
 }
 

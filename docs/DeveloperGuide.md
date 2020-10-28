@@ -672,8 +672,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 Priority | As a …​    | I want to …​                                                   | So that I can…​                                                           
 -------- | ---------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------- 
-`* * *`  | new user   | see usage instructions                                         | refer to instructions when I forget how to use the app                            
-`* * *`  | user       | get error feedback when a command fails                        | know what went wrong                                                              
 `* * *`  | user       | maintain a list of company profiles                            | keep track of companies that I'm interested in                                    
 `* * *`  | user       | add a company profile                                          | keep track of companies that I'm interested in                                    
 `* * *`  | user       | delete a company profile                                       | remove company profiles that I no longer need / am no longer interested in        
@@ -703,6 +701,8 @@ Priority | As a …​    | I want to …​                                    
 `* *`    | user       | list all the information in my user profile                    | see the full list of information in my user profile
 `* * *`  | user       | switch between the multiple pages of the app                   |
 `* *`    | user       | automatically find internships based on my skill set           | find internships that may be more suitable for me
+`* * *`  | new user   | see usage instructions                                         | refer to instructions when I forget how to use the app                            
+`* * *`  | user       | get error feedback when a command fails                        | know what went wrong                                                              
 `* *`    | user       | navigate the application easily through a clear user interface |                                                                                   
 `* *`    | user       | get fast feedback from the app                                 |                                                                                   
 `* *`    | user       | easily clear all data from the app                             | start from a clean slate
