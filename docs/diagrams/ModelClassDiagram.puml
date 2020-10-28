@@ -58,10 +58,10 @@ ModelManager -right-> Tab
 ModelManager -right-> View
 UserPrefs .up.|> ReadOnlyUserPrefs
 
-CompanyItem ..|> Item
-ApplicationItem ..|> Item
-ProfileItem ..|> Item
-InternshipItem .right.|> Item
+CompanyItem --|> Item
+ApplicationItem --|> Item
+ProfileItem --|> Item
+InternshipItem -right-|> Item
 
 ModelManager --> "*" CompanyItem : has filterable item list of >
 ModelManager --> "*" ApplicationItem : has filterable item list of >

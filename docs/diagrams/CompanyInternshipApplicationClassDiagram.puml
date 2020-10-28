@@ -42,7 +42,7 @@ Address -[hidden]right-> Email
 Email -[hidden]right-> Industry
 Industry -[hidden]right-> CompanyName
 
-InternshipItem *--> "1" CompanyName
+InternshipItem --> "1" CompanyName
 InternshipItem *--> "1" JobTitle
 InternshipItem *--> "1" Wage
 InternshipItem *--> "1" Period
@@ -57,5 +57,5 @@ HiddenOutside2 --> "*" ApplicationItem
 
 ApplicationItem *--> "1" Status
 ApplicationItem *--> "1" StatusDate
-ApplicationItem *-left-> "1" InternshipItem
+ApplicationItem -left-> "1" InternshipItem
 @enduml
