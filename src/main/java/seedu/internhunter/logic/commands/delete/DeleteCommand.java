@@ -1,55 +1,45 @@
 package seedu.internhunter.logic.commands.delete;
 
-import static java.util.Objects.requireNonNull;
+import static seedu.internhunter.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_INDEX;
+import static seedu.internhunter.model.util.ItemUtil.APPLICATION_ALIAS;
+import static seedu.internhunter.model.util.ItemUtil.APPLICATION_NAME;
+import static seedu.internhunter.model.util.ItemUtil.COMPANY_ALIAS;
+import static seedu.internhunter.model.util.ItemUtil.COMPANY_NAME;
+import static seedu.internhunter.model.util.ItemUtil.INTERNSHIP_ALIAS;
+import static seedu.internhunter.model.util.ItemUtil.INTERNSHIP_NAME;
+import static seedu.internhunter.model.util.ItemUtil.PROFILE_ALIAS;
+import static seedu.internhunter.model.util.ItemUtil.PROFILE_ITEM_NAME;
 
-import java.util.List;
+import seedu.internhunter.logic.commands.Command;
 
-import seedu.internhunter.commons.core.Messages;
-import seedu.internhunter.commons.core.index.Index;
-import seedu.internhunter.logic.commands.CommandResult;
-import seedu.internhunter.logic.commands.exceptions.CommandException;
-import seedu.internhunter.model.Model;
-import seedu.internhunter.model.person.Person;
-
-/**
- * Deletes a person identified using it's displayed index from the address book.
- */
-public class DeleteCommand extends DeleteCommandAbstract {
+/** todo javadocs */
+public abstract class DeleteCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the person identified by the index number used in the displayed person list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
-
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
-
-    private final Index targetIndex;
-
-    public DeleteCommand(Index targetIndex) {
-        this.targetIndex = targetIndex;
-    }
-
-    @Override
-    public CommandResult execute(Model model) throws CommandException {
-        requireNonNull(model);
-        List<Person> lastShownList = model.getAddressBook().getFilteredItemList();
-
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-        }
-
-        Person personToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.getAddressBook().deleteItem(personToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, personToDelete));
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof DeleteCommand // instanceof handles nulls
-                && targetIndex.equals(((DeleteCommand) other).targetIndex)); // state check
-    }
+            + ": Deletes a "
+            + COMPANY_NAME + ", "
+            + INTERNSHIP_NAME + ", "
+            + APPLICATION_NAME + " or "
+            + PROFILE_ITEM_NAME
+            + " from InternHunter by the index number used in the displayed list.\n"
+            + "Parameters (for ITEM_TYPE "
+            + "'" + COMPANY_ALIAS + "', "
+            + "'" + APPLICATION_ALIAS + "', "
+            + "'" + PROFILE_ALIAS + "'): "
+            + "ITEM_TYPE INDEX\n"
+            + "Parameters (for ITEM_TYPE "
+            + "'" + INTERNSHIP_ALIAS + "'): "
+            + "ITEM_TYPE INDEX " + PREFIX_INDEX + "INDEX\n"
+            + "Note: Valid ITEM_TYPEs are "
+            + "'" + COMPANY_ALIAS + "', "
+            + "'" + INTERNSHIP_ALIAS + "', "
+            + "'" + APPLICATION_ALIAS + "' or "
+            + "'" + PROFILE_ALIAS + "'. "
+            + "INDEX must be a positive integer.\n"
+            + "Examples:\n"
+            + COMMAND_WORD + " " + COMPANY_ALIAS + " 2\n"
+            + COMMAND_WORD + " " + INTERNSHIP_ALIAS + " 1 " + PREFIX_INDEX + "3";
 
 }

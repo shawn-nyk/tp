@@ -34,10 +34,9 @@ public class FindApplicationCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(new ItemList<>(), new ItemList<>(), getSampleApplicationItemList(),
+        model = new ModelManager(new ItemList<>(), getSampleApplicationItemList(), new ItemList<>(), new UserPrefs());
+        expectedModel = new ModelManager(new ItemList<>(), model.getApplicationList().getUnfilteredItemList(),
             new ItemList<>(), new UserPrefs());
-        expectedModel = new ModelManager(new ItemList<>(), new ItemList<>(),
-            model.getApplicationList().getUnfilteredItemList(), new ItemList<>(), new UserPrefs());
     }
 
     @Test

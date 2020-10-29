@@ -8,14 +8,14 @@ import static seedu.internhunter.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.internhunter.model.util.ItemUtil.INTERNSHIP_ALIAS;
 import static seedu.internhunter.model.util.ItemUtil.PROFILE_ALIAS;
 
-import seedu.internhunter.logic.commands.delete.DeleteCommandAbstract;
+import seedu.internhunter.logic.commands.delete.DeleteCommand;
 import seedu.internhunter.logic.parser.Parser;
 import seedu.internhunter.logic.parser.exceptions.ParseException;
 
 /**
  * Parses input arguments and creates a new DeleteCommand object
  */
-public class DeleteCommandParser implements Parser<DeleteCommandAbstract> {
+public class DeleteCommandParser implements Parser<DeleteCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteCommand
@@ -23,8 +23,8 @@ public class DeleteCommandParser implements Parser<DeleteCommandAbstract> {
      *
      * @throws ParseException if the user input does not conform the expected format
      */
-    public DeleteCommandAbstract parse(String args) throws ParseException {
-        String itemType = getItemType(args, DeleteCommandAbstract.MESSAGE_USAGE);
+    public DeleteCommand parse(String args) throws ParseException {
+        String itemType = getItemType(args, DeleteCommand.MESSAGE_USAGE);
         String commandDetails = getCommandDetails(args);
 
         switch (itemType) {

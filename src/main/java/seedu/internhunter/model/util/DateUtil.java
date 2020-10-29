@@ -153,7 +153,10 @@ public abstract class DateUtil {
     }
 
     /**
-     * todo Javadocs
+     * Extracts out the day and month from the given {@code dateInformation}.
+     *
+     * @param dateInformation String containing the day and month.
+     * @return A different String representation containing the day and month.
      */
     public static String extractDayAndMonth(String... dateInformation) {
         return dateInformation[0] + " " + dateInformation[1];
