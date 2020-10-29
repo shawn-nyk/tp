@@ -16,6 +16,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import seedu.internhunter.commons.core.GuiSettings;
 import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.logic.commands.CommandResult;
 import seedu.internhunter.logic.commands.SwitchCommand;
@@ -61,6 +62,18 @@ public class LogicManagerTest {
         StorageManager storage = new StorageManager(applicationItemListStorage, companyItemListStorage,
                 profileItemListStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
+    }
+
+    @Test
+    public void setGuiSettings_nullGuiSettings_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> logic.setGuiSettings(null));
+    }
+
+    @Test
+    public void setGuiSettings_validGuiSettings_setsGuiSettings() {
+        GuiSettings guiSettings = new GuiSettings(1, 2, 3, 4);
+        logic.setGuiSettings(guiSettings);
+        assertEquals(guiSettings, logic.getGuiSettings());
     }
 
     @Test
