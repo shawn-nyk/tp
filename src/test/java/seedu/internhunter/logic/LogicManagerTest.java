@@ -4,15 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_SAME_SCREEN;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.internhunter.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
-import static seedu.internhunter.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
-import static seedu.internhunter.logic.commands.CommandTestUtil.NAME_DESC_AMY;
-import static seedu.internhunter.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.internhunter.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.internhunter.model.util.ItemUtil.APPLICATION_NAME;
 import static seedu.internhunter.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.internhunter.testutil.Assert.assertThrows;
-import static seedu.internhunter.testutil.TypicalPersons.AMY;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -25,7 +20,7 @@ import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.logic.commands.CommandResult;
 import seedu.internhunter.logic.commands.SwitchCommand;
 import seedu.internhunter.logic.commands.add.AddCommand;
-import seedu.internhunter.logic.commands.delete.DeleteCommand;
+import seedu.internhunter.logic.commands.delete.DeleteCommandAbstract;
 import seedu.internhunter.logic.commands.exceptions.CommandException;
 import seedu.internhunter.logic.parser.exceptions.ParseException;
 import seedu.internhunter.model.Model;
@@ -33,9 +28,6 @@ import seedu.internhunter.model.ModelManager;
 import seedu.internhunter.model.UserPrefs;
 import seedu.internhunter.model.application.ApplicationItem;
 import seedu.internhunter.model.company.CompanyItem;
-import seedu.internhunter.model.item.ItemList;
-import seedu.internhunter.model.item.ReadOnlyItemList;
-import seedu.internhunter.model.person.Person;
 import seedu.internhunter.model.profile.ProfileItem;
 import seedu.internhunter.storage.JsonItemListStorage;
 import seedu.internhunter.storage.JsonUserPrefsStorage;
@@ -43,7 +35,6 @@ import seedu.internhunter.storage.StorageManager;
 import seedu.internhunter.storage.application.JsonAdaptedApplicationItem;
 import seedu.internhunter.storage.company.JsonAdaptedCompanyItem;
 import seedu.internhunter.storage.profile.JsonAdaptedProfileItem;
-import seedu.internhunter.testutil.PersonBuilder;
 import seedu.internhunter.ui.tabs.TabName;
 
 public class LogicManagerTest {
@@ -80,7 +71,7 @@ public class LogicManagerTest {
 
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
-        String deleteCommand = DeleteCommand.COMMAND_WORD + " " + APPLICATION_ALIAS + " 9";
+        String deleteCommand = DeleteCommandAbstract.COMMAND_WORD + " " + APPLICATION_ALIAS + " 9";
         assertCommandException(deleteCommand, String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, APPLICATION_NAME));
     }
 
@@ -109,11 +100,10 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage);
 
         // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + " int " + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
-                + ADDRESS_DESC_AMY;
-        Person expectedPerson = new PersonBuilder(AMY).withTags().build();
+        String addCommand = AddCommand.COMMAND_WORD + " int ";
+        // Person expectedPerson = new PersonBuilder(AMY).withTags().build(); DELETED PERSONBUILDER
         ModelManager expectedModel = new ModelManager();
-        expectedModel.getAddressBook().addItem(expectedPerson);
+        // expectedModel.getAddressBook().addItem(expectedPerson);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
         // Todo: Update testcase for expected model
         //        assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
@@ -230,8 +220,8 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getAddressBook().getUnfilteredItemList(), new ItemList<>(),
-                new ItemList<>(), new ItemList<>(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getUnfilteredCompanyList(), model.getUnfilteredApplicationList(),
+            model.getUnfilteredProfileList(), new UserPrefs());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -249,18 +239,4 @@ public class LogicManagerTest {
         assertEquals(expectedModel, model);
     }
 
-    /**
-     * A stub class to throw an {@code IOException} when the save method is called.
-     */
-    private static class JsonItemListIoExceptionThrowingStub extends
-            JsonItemListStorage<ApplicationItem, JsonAdaptedApplicationItem> {
-        private JsonItemListIoExceptionThrowingStub(Path filePath) {
-            super(filePath, ApplicationItem.class, JsonAdaptedApplicationItem.class);
-        }
-
-        @Override
-        public void saveItemList(ReadOnlyItemList<ApplicationItem> addressBook, Path filePath) throws IOException {
-            throw DUMMY_IO_EXCEPTION;
-        }
-    }
 }
