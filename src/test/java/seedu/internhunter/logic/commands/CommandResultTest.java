@@ -8,6 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import seedu.internhunter.model.internship.InternshipItem;
+import seedu.internhunter.testutil.internship.InternshipItemBuilder;
+
 public class CommandResultTest {
 
     private static final String FEEDBACK = "feedback";
@@ -20,6 +25,8 @@ public class CommandResultTest {
     private CommandResult commandResultIsExitTrue;
     private CommandResult commandResultIsSwitchTabTrue;
     private CommandResult commandResultIsSwitchDisplayFalse;
+    private CommandResult commandResultWithMatchingInternship;
+    private InternshipItemBuilder internshipItemBuilder;
 
     @BeforeEach
     public void setUp() {
@@ -30,6 +37,15 @@ public class CommandResultTest {
         commandResultIsExitTrue = new CommandResult(FEEDBACK, false, true, false, false);
         commandResultIsSwitchTabTrue = new CommandResult(FEEDBACK, false, false, true, false);
         commandResultIsSwitchDisplayFalse = new CommandResult(FEEDBACK, false, false, false, false);
+        commandResultWithMatchingInternship = new CommandResult(FEEDBACK);
+        initializeCommandResultWithMatchingInternship();
+    }
+    
+    public void initializeCommandResultWithMatchingInternship() {
+        ObservableList<InternshipItem> internshipItems = FXCollections.observableArrayList();
+        internshipItemBuilder = new InternshipItemBuilder();
+        internshipItems.add(internshipItemBuilder.build());
+        commandResultWithMatchingInternship.setMatchingInternships(internshipItems);
     }
 
     @Test
@@ -176,5 +192,37 @@ public class CommandResultTest {
 
         // default values inputted
         assertTrue(commandResultWithDefaultValue.isSwitchDisplay());
+    }
+    
+    @Test
+    public void isShowMatchingInternship_emptyMatchingInternshipList_false() {
+        assertFalse(commandResult.isShowMatchingInternships());
+    }
+    
+    @Test
+    public void isShowMatchingInternship_nonEmptyMatchingInternshipList_true() {
+        assertTrue(commandResultWithMatchingInternship.isShowMatchingInternships());
+    }
+    
+    @Test
+    public void getMatchingInternships_equal_true() {
+        ObservableList<InternshipItem> internshipItems = FXCollections.observableArrayList();
+        internshipItems.add(internshipItemBuilder.build());
+        
+        // command result which contains some matching internship
+        assertEquals(commandResultWithMatchingInternship.getMatchingInternships(), internshipItems);
+        
+        // command result which doesnt contain any matching internship
+        assertEquals(commandResult.getMatchingInternships(), FXCollections.observableArrayList());
+    }
+    
+    @Test
+    public void setMatchingInternship_equal_true() {
+        ObservableList<InternshipItem> internshipItems = FXCollections.observableArrayList();
+        internshipItems.add(internshipItemBuilder.build());
+        
+        // adding items to a command result which doesnt contain any matching internship
+        commandResult.setMatchingInternships(internshipItems);
+        assertEquals(commandResultWithMatchingInternship, commandResult);
     }
 }
