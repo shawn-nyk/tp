@@ -30,14 +30,13 @@ public class DisplayKeyList {
     /**
      * A fix order for the key list to access the company display.
      */
-    public static final String[] COMPANY_DISPLAY_KEY_LIST = {COMPANY_DISPLAY_NAME, PHONE_DISPLAY_NAME,
-        EMAIL_DISPLAY_NAME, ADDRESS_DISPLAY_NAME, INDUSTRIES_DISPLAY_NAME, INTERNSHIPS_DISPLAY_NAME
+    public static final String[] COMPANY_DISPLAY_KEY_LIST = {PHONE_DISPLAY_NAME, EMAIL_DISPLAY_NAME,
+        ADDRESS_DISPLAY_NAME, INDUSTRIES_DISPLAY_NAME, INTERNSHIPS_DISPLAY_NAME
     };
 
     /**
      * A fix order for the key list to access the profile display.
      */
-    public static final String[] PROFILE_DISPLAY_KEY_LIST = {TITLE_DISPLAY_NAME, TYPE_DISPLAY_NAME,
-        DESCRIPTORS_DISPLAY_NAME
+    public static final String[] PROFILE_DISPLAY_KEY_LIST = {TYPE_DISPLAY_NAME, DESCRIPTORS_DISPLAY_NAME
     };
 }
