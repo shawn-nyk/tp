@@ -13,7 +13,7 @@ import static seedu.internhunter.model.util.ItemUtil.PROFILE_ITEM_NAME;
 import seedu.internhunter.logic.commands.Command;
 
 /** todo javadocs */
-public abstract class DeleteCommandAbstract extends Command {
+public abstract class DeleteCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 

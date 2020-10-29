@@ -13,7 +13,7 @@ import seedu.internhunter.logic.commands.HelpCommand;
 import seedu.internhunter.logic.commands.MatchCommand;
 import seedu.internhunter.logic.commands.SwitchCommand;
 import seedu.internhunter.logic.commands.add.AddCommand;
-import seedu.internhunter.logic.commands.delete.DeleteCommandAbstract;
+import seedu.internhunter.logic.commands.delete.DeleteCommand;
 import seedu.internhunter.logic.commands.edit.EditCommand;
 import seedu.internhunter.logic.commands.find.FindCommand;
 import seedu.internhunter.logic.commands.list.ListCommand;
@@ -57,7 +57,7 @@ public class MainParser {
         switch (commandWord) {
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
-        case DeleteCommandAbstract.COMMAND_WORD:
+        case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);

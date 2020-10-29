@@ -17,7 +17,7 @@ import seedu.internhunter.ui.tabs.TabName;
 /**
  * Deletes the application from the Application list.
  */
-public class DeleteApplicationCommand extends DeleteCommandAbstract {
+public class DeleteApplicationCommand extends DeleteCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + APPLICATION_ALIAS
             + ": Deletes a "

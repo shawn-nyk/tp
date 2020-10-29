@@ -23,7 +23,7 @@ import seedu.internhunter.ui.tabs.TabName;
 /**
  * Deletes an internship from the internship list.
  */
-public class DeleteInternshipCommand extends DeleteCommandAbstract {
+public class DeleteInternshipCommand extends DeleteCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the " + INTERNSHIP_NAME + " identified by the index number used in the displayed "

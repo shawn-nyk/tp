@@ -21,7 +21,7 @@ import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.logic.commands.CommandResult;
 import seedu.internhunter.logic.commands.SwitchCommand;
 import seedu.internhunter.logic.commands.add.AddCommand;
-import seedu.internhunter.logic.commands.delete.DeleteCommandAbstract;
+import seedu.internhunter.logic.commands.delete.DeleteCommand;
 import seedu.internhunter.logic.commands.exceptions.CommandException;
 import seedu.internhunter.logic.parser.exceptions.ParseException;
 import seedu.internhunter.model.Model;
@@ -84,7 +84,7 @@ public class LogicManagerTest {
 
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
-        String deleteCommand = DeleteCommandAbstract.COMMAND_WORD + " " + APPLICATION_ALIAS + " 9";
+        String deleteCommand = DeleteCommand.COMMAND_WORD + " " + APPLICATION_ALIAS + " 9";
         assertCommandException(deleteCommand, String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, APPLICATION_NAME));
     }
 
