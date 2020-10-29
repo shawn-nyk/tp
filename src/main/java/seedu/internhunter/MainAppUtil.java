@@ -21,7 +21,6 @@ import seedu.internhunter.model.internship.InternshipItem;
 import seedu.internhunter.model.internship.exceptions.InconsistentInternshipException;
 import seedu.internhunter.model.item.ItemList;
 import seedu.internhunter.model.item.ReadOnlyItemList;
-import seedu.internhunter.model.person.Person;
 import seedu.internhunter.model.profile.ProfileItem;
 import seedu.internhunter.storage.Storage;
 import seedu.internhunter.storage.UserPrefsStorage;
@@ -158,7 +157,6 @@ public class MainAppUtil {
      * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
      */
     public static Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        ItemList<Person> addressBook = new ItemList<>();
         ItemList<CompanyItem> companyItemList = new ItemList<>(initCompanyItemList(storage));
         ItemList<ApplicationItem> applicationItemList = new ItemList<>(initApplicationItemList(storage));
         ItemList<ProfileItem> profileItemList = new ItemList<>(initProfileItemList(storage));
@@ -169,7 +167,7 @@ public class MainAppUtil {
             logger.warning(e.getMessage());
         }
 
-        return new ModelManager(addressBook, companyItemList, applicationItemList, profileItemList, userPrefs);
+        return new ModelManager(companyItemList, applicationItemList, profileItemList, userPrefs);
     }
 
     public static void initLogging(Config config) {

@@ -9,7 +9,7 @@ import seedu.internhunter.logic.parser.exceptions.ParseException;
 import seedu.internhunter.ui.tabs.TabName;
 
 /**
- * todo javadocs
+ * A Utility class for Tab.
  */
 public class TabUtil {
 

@@ -16,7 +16,7 @@ import seedu.internhunter.model.Model;
 import seedu.internhunter.model.profile.ProfileItem;
 import seedu.internhunter.ui.tabs.TabName;
 
-public class DeleteProfileCommand extends DeleteCommandAbstract {
+public class DeleteProfileCommand extends DeleteCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + PROFILE_ALIAS
             + ": Deletes a "

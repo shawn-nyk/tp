@@ -12,7 +12,7 @@ import seedu.internhunter.logic.parser.Parser;
 import seedu.internhunter.logic.parser.exceptions.ParseException;
 
 /**
- * todo javadocs
+ * A general find command parser which will parser the data into a more specific parser.
  */
 public class FindCommandParser implements Parser<FindCommand> {
 
