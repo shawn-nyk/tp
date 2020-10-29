@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 import seedu.internhunter.commons.core.index.Index;
 
 /**
- * todo javadoc
+ * Represents View Index Control of InternHunter.
  */
 public class ViewManager implements View {
 

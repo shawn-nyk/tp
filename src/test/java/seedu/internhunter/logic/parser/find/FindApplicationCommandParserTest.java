@@ -13,7 +13,7 @@ import seedu.internhunter.logic.commands.find.FindApplicationCommand;
 import seedu.internhunter.model.application.ApplicationNameContainsKeyWordsPredicate;
 
 /**
- * todo javadocs
+ * Test for find application command parser.
  */
 public class FindApplicationCommandParserTest {
 

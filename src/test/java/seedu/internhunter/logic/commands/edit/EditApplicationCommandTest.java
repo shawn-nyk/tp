@@ -43,10 +43,9 @@ public class EditApplicationCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(new ItemList<>(), new ItemList<>(), getSampleApplicationItemList(),
-                new ItemList<>(), new UserPrefs());
-        expectedModel = new ModelManager(new ItemList<>(), new ItemList<>(),
-                model.getUnfilteredApplicationList(), new ItemList<>(), new UserPrefs());
+        model = new ModelManager(new ItemList<>(), getSampleApplicationItemList(), new ItemList<>(), new UserPrefs());
+        expectedModel = new ModelManager(new ItemList<>(), model.getUnfilteredApplicationList(), new ItemList<>(),
+            new UserPrefs());
         model.setTabName(TabName.APPLICATION);
         expectedModel.setTabName(TabName.APPLICATION);
     }

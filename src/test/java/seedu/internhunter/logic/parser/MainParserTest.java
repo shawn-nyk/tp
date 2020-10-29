@@ -32,8 +32,6 @@ import seedu.internhunter.logic.commands.list.ListCompanyCommand;
 import seedu.internhunter.logic.commands.list.ListProfileCommand;
 import seedu.internhunter.logic.commands.view.ViewCommand;
 import seedu.internhunter.logic.parser.exceptions.ParseException;
-import seedu.internhunter.model.person.Person;
-import seedu.internhunter.testutil.PersonBuilder;
 
 public class MainParserTest {
 
@@ -41,7 +39,7 @@ public class MainParserTest {
 
     @Test
     public void parseCommand_add() throws Exception {
-        Person person = new PersonBuilder().build();
+        // Person person = new PersonBuilder().build();
         // Todo: Update test cases after add commands are added.
         //        AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(person));
         //        AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand()
