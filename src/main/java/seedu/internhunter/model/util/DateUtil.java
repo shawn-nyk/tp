@@ -153,7 +153,7 @@ public abstract class DateUtil {
     }
 
     /**
-     * Extracts out the day and month from the given {@code dateInformation}. 
+     * Extracts out the day and month from the given {@code dateInformation}.
      *
      * @param dateInformation String containing the day and month.
      * @return A different String representation containing the day and month.

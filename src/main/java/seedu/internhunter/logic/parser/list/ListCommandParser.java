@@ -44,7 +44,7 @@ public class ListCommandParser implements Parser<ListCommand> {
     }
 
     /**
-     * Checks if the user have input in more than necessary. 
+     * Checks if the user have input in more than necessary.
      *
      * @param args String representing user's parsed input.
      * @throws ParseException If user have input in more than necessary.
