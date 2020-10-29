@@ -11,7 +11,6 @@ import static seedu.internhunter.ui.panel.PanelDisplayKeyword.PERIOD_DISPLAY_NAM
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.PHONE_DISPLAY_NAME;
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.REQUIREMENTS_DISPLAY_NAME;
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.STATUS_DISPLAY_NAME;
-import static seedu.internhunter.ui.panel.PanelDisplayKeyword.TITLE_DISPLAY_NAME;
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.TYPE_DISPLAY_NAME;
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.WAGE_DISPLAY_NAME;
 
