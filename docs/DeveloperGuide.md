@@ -320,13 +320,11 @@ specifying the targeted index and at least one field.
 #### Implementation
 
 * The `edit me` command is implemented by the `EditProfileCommandParser` and `EditProfileCommand`.
-* `EditProfileCommandParser#parse` method creates a `EditProfileItemDescriptor` based on the fields of the input
+* `EditProfileCommandParser#parse(...)` method creates a `EditProfileItemDescriptor` based on the fields of the input
  provided by the user. The `EditProfileItemDescriptor` is then used in instantiating the `EditProfileCommand`.
 
-* `EditProfileCommand` implements the `execute()` method from the `Command` abstract class whereby upon execution
-, the method will edit the specified profile item in the model’s profile item.
-
-
+* `EditProfileCommand` implements the `execute(...)` method from the `Command` abstract class whereby upon execution
+, the method will edit the specified profile item in the model’s profile list.
 
 The following sequence diagrams show how the editing profile Item feature works successfully, using the example command 
 `edit me t/HTML`:
