@@ -9,7 +9,7 @@
     </a>
 </p>
 
-<p align="center"><img src="images/readme/Ui.png" width="100%"/></p>
+<p align="center"><img src="images/Ui.png" width="100%"/></p>
 
 <div>
   <img src="images/readme/App.png" width="49.7%"/>

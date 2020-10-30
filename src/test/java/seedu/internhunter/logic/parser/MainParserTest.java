@@ -57,24 +57,24 @@ public class MainParserTest {
     // todo: When com, profile has their prefixes and syntax ready
     @Test
     public void parseCommand_edit() throws Exception {
-        // assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + SPACE
+        // assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + " "
         //         + INDEX_FIRST.getOneBased() + JOB_TITLE_DESC_SWE) instanceof EditCommand);
         assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + " "
                 + INDEX_FIRST.getOneBased() + VALID_INDEX_ONE + JOB_TITLE_DESC_SWE) instanceof EditCommand);
         assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " "
                 + INDEX_FIRST.getOneBased() + STATUS_DESC_ACCEPTED) instanceof EditCommand);
-        // assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + SPACE
+        // assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + " "
         //         + INDEX_FIRST.getOneBased() + JOB_TITLE_DESC_SWE) instanceof EditCommand);
     }
 
     // todo: When com, profile has their prefixes and syntax ready
     @Test
     public void parseCommand_view_success() throws Exception {
-        // assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD +  + SPACE
+        // assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " " + COMPANY_ALIAS + " "
         //         + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
         assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " "
                 + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
-        // assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + SPACE + PROFILE_ALIAS + SPACE
+        // assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " " + PROFILE_ALIAS + " "
         //         + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
     }
 
