@@ -14,7 +14,7 @@ import seedu.internhunter.logic.commands.list.ListApplicationCommand;
 import seedu.internhunter.logic.parser.exceptions.ParseException;
 
 /**
- * todo javadocs
+ * Test for list command parser.
  */
 public class ListCommandParserTest {
 

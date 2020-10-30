@@ -5,10 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import seedu.internhunter.commons.core.index.Index;
-import seedu.internhunter.model.Model;
-import seedu.internhunter.model.person.Person;
-
 /**
  * A utility class for test cases.
  */
@@ -30,26 +26,5 @@ public class TestUtil {
             throw new RuntimeException(e);
         }
         return SANDBOX_FOLDER.resolve(fileName);
-    }
-
-    /**
-     * Returns the middle index of the person in the {@code model}'s person list.
-     */
-    public static Index getMidIndex(Model model) {
-        return Index.fromOneBased(model.getAddressBook().getFilteredItemList().size() / 2);
-    }
-
-    /**
-     * Returns the last index of the person in the {@code model}'s person list.
-     */
-    public static Index getLastIndex(Model model) {
-        return Index.fromOneBased(model.getAddressBook().getFilteredItemList().size());
-    }
-
-    /**
-     * Returns the person in the {@code model}'s person list at {@code index}.
-     */
-    public static Person getPerson(Model model, Index index) {
-        return model.getAddressBook().getFilteredItemList().get(index.getZeroBased());
     }
 }
