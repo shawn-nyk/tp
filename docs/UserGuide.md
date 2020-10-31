@@ -134,6 +134,7 @@ Commands | Words that determines the action of InternHunter.
 Command word | The first word of every command.
 Parameters | Information that is supplied by you.
 Execute | Typing the information into the command box and pressing enter.
+Item type for command | com, int, app, me
 
 #### Understanding the symbols
 
@@ -150,12 +151,14 @@ Symbol | What it means
 
 :information_source: **Notes about the commands:**<br>
 
+* Command word and the item type for command are case sensitive.
+
 * Words in `UPPER_CASE` are the parameters to be supplied by you.<br>
   e.g. in `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`, `COMPANY_NAME`, `PHONE_NUMBER`, `EMAIL`, `ADDRESS`, `INDUSTRY`,
   an example of how to fill up the parameters are `add com n/Google p/65218000 e/GoogleHire@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Industry`.
 
 * Items in square brackets `[]` are optional. This paramaters are optional because we allow the user to key in at a later date if they do not have the relevant information at hand.<br>
-  e.g `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...` can be used as <br/> `add int 1 j/Software Engineer` or
+  e.g `add int INDEX j/JOB_TITLE [w/WAGE] [p/PERIOD] [r/REQUIREMENT]...` can be used as <br/> `add int 1 j/Software Engineer` or
   `add int 3 j/Web Developer r/React w/3000 r/HTML5`.
 
 * Items with `...`​ after them can be used multiple times including zero times.<br>
