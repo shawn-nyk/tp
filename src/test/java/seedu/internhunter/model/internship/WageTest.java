@@ -38,9 +38,10 @@ public class WageTest {
 
     @Test
     public void isValidWage_validInput_success() {
-        assertTrue(Wage.isValidWage("2"));
-        assertTrue(Wage.isValidWage("12345"));
-        assertTrue(Wage.isValidWage("243"));
+        assertTrue(Wage.isValidWage("1")); // Min value of 1
+        assertTrue(Wage.isValidWage("12345")); // Normal wage
+        assertTrue(Wage.isValidWage("3000")); // Normal wage
+        assertTrue(Wage.isValidWage("123456789123456789123456789123456789")); // Very large number
     }
 
     @Test

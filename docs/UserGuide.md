@@ -541,6 +541,7 @@ Format: `match`
 - An Internship with at least one `Requirement` matching any one `Skill` in the profile list will be
 considered as a successful match. e.g. Say you have a profile item which is of `Skill` category and titled `Python`, any
 internship that has a `Requirement` of `Python` will be successfully matched.
+- An Internship with no requirements will never be matched.
 - Matched internships can have `Requirements` that do not match with the profile `Skills`, since a match is found when
 an internship has **at least one and not all** `Requirements` that matches with the profile `Skills`.
 - Matching done is case-insensitive. e.g. `Python` will match `python`.

@@ -5,12 +5,12 @@ import static seedu.internhunter.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents an InternshipItem's wage. TODO: Javadocs
- * Guarantees: immutable; is valid as declared in {@link #isValidWage(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidOutputWage(String)}
  */
 public class Wage {
 
     public static final String WAGE_SYMBOL = "$";
-    public static final String MESSAGE_CONSTRAINTS = "Wage should only contain a positive number";
+    public static final String MESSAGE_CONSTRAINTS = "Wage should only contain a positive number and no leading zeroes";
     public static final String VALIDATION_REGEX = "^[1-9]\\d*";
 
     private final String value;
@@ -22,8 +22,18 @@ public class Wage {
      */
     public Wage(String wage) {
         requireNonNull(wage);
-        checkArgument(isValidWage(wage), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidOutputWage(wage), MESSAGE_CONSTRAINTS);
         value = wage;
+    }
+
+    /**
+     * Returns true if a given string is a valid wage.
+     *
+     * @param test String to test.
+     * @return True if the given string is a valid wage, false otherwise.
+     */
+    public static boolean isValidOutputWage(String test) {
+        return test.equals("-") || test.matches(VALIDATION_REGEX);
     }
 
     /**
