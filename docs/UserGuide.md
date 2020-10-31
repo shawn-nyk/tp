@@ -124,7 +124,7 @@ This section will bring you through the [GUI](#understanding-the-gui), [technica
 
 #### Understanding the GUI
 
-<p><img src="images/AnnotatedGui.png"/></p>
+<p><img src="images/tempimg.png" width="60%" height="60%"/></p>
 
 #### Understanding the technical terminologies
 
