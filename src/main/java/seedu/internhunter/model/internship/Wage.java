@@ -5,13 +5,15 @@ import static seedu.internhunter.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents an InternshipItem's wage. TODO: Javadocs
- * Guarantees: immutable; is valid as declared in {@link #isValidWage(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidOutputWage(String)}
  */
 public class Wage {
 
     public static final String WAGE_SYMBOL = "$";
-    public static final String MESSAGE_CONSTRAINTS = "Wage should only contain a positive number";
+    public static final String MESSAGE_CONSTRAINTS = "Wage should only contain a positive number and no leading zeroes";
     public static final String VALIDATION_REGEX = "^[1-9]\\d*";
+
+    public static final String DEFAULT_WAGE = "-";
 
     private final String value;
 
@@ -22,8 +24,18 @@ public class Wage {
      */
     public Wage(String wage) {
         requireNonNull(wage);
-        checkArgument(isValidWage(wage), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidOutputWage(wage), MESSAGE_CONSTRAINTS);
         value = wage;
+    }
+
+    /**
+     * Returns true if the given string matches the default wage or the regex.
+     *
+     * @param test String to test.
+     * @return True if the given string is a valid wage, false otherwise.
+     */
+    public static boolean isValidOutputWage(String test) {
+        return test.equals(DEFAULT_WAGE) || test.matches(VALIDATION_REGEX);
     }
 
     /**
@@ -47,7 +59,7 @@ public class Wage {
      */
     @Override
     public String toString() {
-        return WAGE_SYMBOL + value;
+        return value.equals(DEFAULT_WAGE) ? DEFAULT_WAGE : WAGE_SYMBOL + value;
     }
 
     @Override

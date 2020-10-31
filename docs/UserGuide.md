@@ -124,7 +124,7 @@ This section will bring you through the [GUI](#understanding-the-gui), [technica
 
 #### Understanding the GUI
 
-<p><img src="images/GuiAnnotated.png"/></p>
+<p><img src="images/AnnotatedGui.png"/></p>
 
 #### Understanding the technical terminologies
 
@@ -152,9 +152,9 @@ Symbol | What it means
 
 * Words in `UPPER_CASE` are the parameters to be supplied by you.<br>
   e.g. in `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`, `COMPANY_NAME`, `PHONE_NUMBER`, `EMAIL`, `ADDRESS`, `INDUSTRY`,
-  are parameters which can be used as `add com n/Google p/65218000 e/GoogleHire@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Industry`.
+  an example of how to fill up the parameters are `add com n/Google p/65218000 e/GoogleHire@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Industry`.
 
-* Items in square brackets `[]` are optional.<br>
+* Items in square brackets `[]` are optional. This paramaters are optional because we allow the user to key in at a later date if they do not have the relevant information at hand.<br>
   e.g `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...` can be used as <br/> `add int 1 j/Software Engineer` or
   `add int 3 j/Web Developer r/React w/3000 r/HTML5`.
 
@@ -270,10 +270,10 @@ Note: You must be on the **Company** tab in order to execute these commands.
 Adds an internship to a company.
 
 Format: `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
-- `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`).
+- `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`, `Jun - Aug 2021`).
 
 Examples:
-- `add int 3 j/Web Developer w/3000 r/React r/HTML5`
+- `add int 3 j/Web Developer w/3000 p/30 May to 30 Aug r/React r/HTML5`
 - `add int 1 j/Machine Learning Engineer w/4700` 
 
 ![AddInternship](images/AddInternship.png)
@@ -346,7 +346,7 @@ Valid `STATUS_DATE` formats:
 #### Applying for an internship: `add app`
 
 Selects an internship from a company and adds it to your list of applications. If unspecified, the application’s
-`STATUS` will be `Applied`, and it’s `STATUS_DATE` will be set as today’s date.
+`STATUS` will be `Applied`, and it’s `STATUS_DATE` will be set as today’s date and time to be 2359.
 
 Format: `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
 - Where `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
@@ -356,7 +356,7 @@ Example:
 - Suppose you are interested in applying for the Software Engineer internship in Google Singapore:
 <p align="center"><img src="images/ug-application/Internship.png" width="100%"/></p>
 
-Executing `add app 1 i/1 d/24-12-2020` will apply for the internship as follows.
+Executing `add app 1 i/1 d/24-12-20` will apply for the internship as follows.
 Note that you will be automatically switched to the application tab to view the application made:
 <p align="center"><img src="images/ug-application/AddApplication1.png" width="100%"/></p>
 
@@ -398,12 +398,17 @@ Executing `view app 2` will update the right panel to display the second applica
 Finds all applications in your list of applications whose job titles contain any of the given keywords.
 
 Format: `find app KEYWORD [ANOTHER_KEYWORD]...`
-- Find command matching is the same as that used in [`find com` command](#finding-companies-find-com), except 
-job titles are used in placed of company names.
+- Only the application job title will be searched for.
+- The search is case-insensitive. e.g. `engineer` will match `Engineer`.
+- Applications with job titles matching at least one keyword will be returned. e.g. `Software Engineer` will return
+applications whose job titles contain the word `Software` *or* `Engineer`.
+- The order of the keywords does not matter. e.g. `Software Engineer` and `Engineer Software` will return the same results.
+- Only full words will be matched. e.g. `Engineer` will not match `Engine`.
 
 Example:
 - Suppose you have this list of applications. Executing `find app engineer` will update the list to show matching
 applications:
+
 <p align="center"><img src="images/ug-application/FindApplication1.png" width="100%"/></p>
 
 #### Listing all applications: `list app`
@@ -524,7 +529,6 @@ all the items in your profile.
 
 Format: `list me`
 
-
 ### **General**
 
 #### Generating matching internships: `match`
@@ -532,15 +536,41 @@ Format: `list me`
 Generates a list of internships that have requirements that matches your current set of skills.
 
 Format: `match`
-- Matching done is case-insensitive. e.g. `Python` will match `python`
-- Internships with job titles matching at least one `SKILL` will be returned.
-- Only full words will be matched. e.g. `React` will not match `React Native`
+- Only the `Requirement` field in the internships will be searched for.
+- Only profile items with `Skill` category will be used for matching.
+- An Internship with at least one `Requirement` matching any one `Skill` in the profile list will be
+considered as a successful match. e.g. Say you have a profile item which is of `Skill` category and titled `Python`, any
+internship that has a `Requirement` of `Python` will be successfully matched.
+- An Internship with no requirements will never be matched.
+- Matched internships can have `Requirements` that do not match with the profile `Skills`, since a match is found when
+an internship has **at least one and not all** `Requirements` that matches with the profile `Skills`.
+- Matching done is case-insensitive. e.g. `Python` will match `python`.
+- Only the full phrase will be matched. e.g. `Machine` will not match `Machine Learning`.
 
 Example:
-- Suppose you have these 2 internship lists (from 2 different companies) and profile skills in your list.
-Executing `match` will generate the list of matching internships in a new window.
 
-<p align="center"><img src="images/ug-application/MatchCommand2.png" width="100%"/></p>
+1. Say you currently have these 2 list of internships from Google Singapore and Garena:
+
+<p align="center"><img src="images/ug-general/match-internships1.png" width="100%"/></p>
+
+2\. And this is your current profile item list. Note that only the 2 profile items of `Skill` type will be used for
+matching with the internships.
+
+<p align="center"><img src="images/ug-general/match-skills1.png" width="100%"/></p>
+
+3\. All that's left to do is to type the `match` word in the command box.
+
+<p align="center"><img src="images/ug-general/match-type1.png" width="100%"/></p>
+
+<div markdown="span" class="alert alert-info">
+
+  :information_source: **Note:** You can be on any tab to execute this command.
+
+</div>
+
+4\. A pop-up window showing the list of matching internships will be displayed!
+
+<p align="center"><img src="images/ug-general/match-window.png" width="100%"/></p>
 
 <div markdown="span" class="alert alert-primary">
   :bulb: <strong>Tip:</strong> You can press Esc key to close the popup window!
@@ -559,13 +589,30 @@ There are three `TYPE`s:
 
 `com` refers to Company tab, `app` refers to Application tab, `me` refers to Profile tab.
 
-Example: 
-* `switch me`
+Example:
+
+1. Suppose you want to switch tabs to the application tab. Executing `switch app` will switch the tabs to application tab.
+
+<p align="center"><img src="images/ug-general/switchApp.png" width="70%" height="70%"/></p>
+
+2\. Note that the tabs have been changed as well as the cards and display.
+
+<p align="center"><img src="images/ug-general/switchAppResultAnnotated.png" width="110%" height="110%"/></p>
 
 #### Clearing all entries: `clear`
 Clears all entries from InternHunter.
 
 format: `clear`
+
+Example:
+
+1. Suppose you want to clear all your data in InternHunter. Executing `clear` will clear all the data.
+
+<p align="center"><img src="images/ug-general/clear.png" width="70%" height="70%"/></p>
+
+2\. Note that all the data has been wiped as seen in the Ui.
+
+<p align="center"><img src="images/ug-general/clearResult.png" width="70%" height="70%"/></p>
 
 #### Viewing Help: `help`
 Displays a link to the InternHunter user guide.
@@ -575,11 +622,44 @@ Format: `help`
 <div markdown="span" class="alert alert-primary">
   :bulb: <strong>Tip:</strong> You can press Esc key to close the help window!
 </div>
+<br/>
+
+Example:
+
+1. Suppose you can't remember the commands. Fret not, executing `help` will generate a new window containing the link to the user guide!
+
+<p align="center"><img src="images/ug-general/help.png" width="70%" height="70%"/></p>
+
+2\. Copy the link and access our user guide for more information.
+
+<p align="center"><img src="images/ug-general/helpResult.png" width="70%" height="70%"/></p>
+
+
 
 #### Exiting the Program: `exit`
 Shows an exit confirmation dialog.
 
 Format: `exit`
+
+<div markdown="span" class="alert alert-primary">
+  
+  :bulb: <strong>Tip:</strong> <br/>
+  For <strong>MacOS</strong> users, you can navigate the options using <strong>tab</strong> on your keyboard and pressing <strong>spacebar</strong> to confirm your choice. <br/>
+  For <strong>Windows</strong> and Linux users, similarly, you can use <strong>tab</strong> to navigate. However, instead of using <strong>spacebar</strong>, you should use <strong>enter</strong> instead. <br/>
+  
+</div>
+
+<br/>
+
+Example:
+
+1. Suppose you want to exit InternHunter without clicking the cross button, executing `exit` will generate a new window to confirm your request of exitting.
+
+<p align="center"><img src="images/ug-general/exit.png" width="70%" height="70%"/></p>
+
+2\. At this stage, you have the option to confirm the exit or continue to stay in InternHunter.
+
+<p align="center"><img src="images/ug-general/exitResult.png" width="70%" height="70%"/></p>
 
 --------------------------------------------------------------------------------------------------------------------
 

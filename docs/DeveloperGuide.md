@@ -119,17 +119,31 @@ API call.
 
 ![Interactions Inside the Logic Component for the `delete app 1` Command](images/DeleteSequenceDiagram.png)
 
-<div markdown="span" class="alert alert-info">
-  :information_source: <strong>Note:</strong> The lifeline for <code>DeleteCommandParser</code> and
-  <code>DeleteApplicationCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML,
-  the lifeline reaches the end of diagram.
-</div>
-
 ### Model component
+
+<p id="model-class-diagram"><img src="images/dg-model/ModelClassDiagram.png" width="55%" height="55%"/></p>
+
+Breakdown of the Company, Internship and Application packages:
+![Structure of the Company, Internship and Application Classes](images/dg-model/CompanyInternshipApplicationClassDiagram.png)
+
+Breakdown of the Profile package:
+<p id="profile-class-diagram"><img src="images/dg-model/ProfileClassDiagram.png" width="40%" height="40%"/></p>
+
+**API** :
+[`Model.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/model/Model.java)
+
+The `Model`,
+
+* stores a `UserPrefs` object that represents the user’s preferences i.e. GUI settings and file paths of saved data.
+* stores the application data.
+* exposes an unmodifiable `ObservableList` for `CompanyItem`, `ApplicationItem` and `ProfileItem` respectively, that
+ can be 'observed' i.e. the UI can be bound to this list so that the UI automatically updates when the data in the
+ list changes.
+* does not depend on any of the other three components.
 
 ### Storage Component
 
-<p id="storage-class-diagram" align="center"><img src="images/StorageClassDiagram.png"/></p>
+<p id="storage-class-diagram"><img src="images/StorageClassDiagram.png"/></p>
 
 **API** :
 [`Storage.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/storage/Storage.java)
@@ -236,7 +250,7 @@ Upon a user’s entry of a valid delete company command, a `DeleteCompanyCommand
 `DeleteCompanyCommand` is a class that extends the `DeleteCommandAbstract` abstract class that in turn extends the 
 `Command` abstract class.
 
-![DeleteCompanyCommandClassDiagram](images/DeleteCompanyCommandClassDiagram.png)
+![DeleteCompanyCommandClassDiagram](images/dg-company/DeleteCompanyCommandClassDiagram.png)
 
 `DeleteCompanyCommand` implements the `execute()` method from the `Command` abstract class whereby upon execution, the 
 method will delete the respective company in the model’s list of companies if a valid index is given.
@@ -256,8 +270,8 @@ This is how the `DeleteCompanyCommand#execute()` method works upon execution:
 The following sequence diagrams show how the delete company feature works successfully, using the example command 
 `delete com 3`:
 
-![DeleteCompanyCommandSequenceDiagram](images/DeleteCompanyCommandSequenceDiagram.png)
-![ExecuteDeleteCompany3CommandSequenceDiagram](images/ExecuteDeleteCompany3CommandSequenceDiagram.png)
+![DeleteCompanyCommandSequenceDiagram](images/dg-company/DeleteCompanyCommandSequenceDiagram.png)
+![ExecuteDeleteCompany3CommandSequenceDiagram](images/dg-company/ExecuteDeleteCompany3CommandSequenceDiagram.png)
 ![GetDeleteCommandResultSequenceDiagram](images/GetDeleteCommandResultSequenceDiagram.png)
 HandleDeleteDisplaySwitchIndexSequenceDiagram can be found [here](#handle-delete-display-switch-index-sequence-diagram)
 
@@ -556,8 +570,8 @@ InternHunter only lets users create applications for internships already added t
 
 #### What it is
 Users are able to execute a command to generate a list of matching internships that matches their current profile
-skills. This matching is done by accumulating the list of profile items that has the category `SKILL` and
-filtering the list of internships from them. Remaining internships are those that consist of at least one
+skills. This matching is done by filtering the list of profile items that has the category `SKILL` and
+using it to filter the list of internships. Remaining internships are those that consist of at least one
 `Requirement` that matches the user's list of skills. 
 
 **Command format:** `match`
@@ -565,7 +579,7 @@ filtering the list of internships from them. Remaining internships are those tha
 #### Implementation
 
 `MatchCommand` is a class that extends the `Command` _abstract_ class. It has a dependency to the `Model`
-interface as it relies on getting the profile list and company item list from the model.
+interface as it relies on getting the profile list and company list from the model.
 
 Here is a class diagram to show how the `MatchCommand` is implemented:
 
@@ -576,16 +590,16 @@ This is how the `MatchCommand#execute()` method works upon execution:
 1. The list of profile items and company items are first obtained via the `Model#getProfileItemList()` method and
 `Model#getCompanyItemList()` respectively.
 2. Then, the list of profile skills that the user has is obtained via a self-invocation to
-`MatchCommand`'s own `getSkillList(...)` method.
+`MatchCommand#getSkillList(...)` method.
 3. Next, the list of all internships from the list of companies is obtained via its own
-`getInternshipList(...)` method.
-4. Then, the `MatchCommand`'s own `getMatchingInternships(...)` is invoked to obtain
+`MatchCommand#getInternshipList(...)` method.
+4. Then, `MatchCommand#getMatchingInternships(...)` is invoked to obtain
 the list of matching internships.
-5. Finally, `MatchCommand`'s own `getMatchingInternshipsCommandResult(...)` is used to generate the
-`CommandResult`. This method returns different `CommandResult` depending if the matchingInternships is empty or not. 
- 5a. If the matchingInternships list is empty, then no matching internships message will be passed to the `CommandResult`.
+5. Finally, `MatchCommand#getMatchingInternshipsCommandResult(...)` method is used to generate the
+`CommandResult`. This method returns a different `CommandResult` depending if the matchingInternships is empty or not. <br/>
+ 5a. If the matchingInternships list is empty, then the no matching internships message will be passed to the `CommandResult`. <br/>
  5b. Otherwise, the showing matching internships message will be passed to the `CommandResult`. This internship list
- will be passed into `CommandResult#setMatchingInternships(...)` method.
+ will be passed into `CommandResult#setMatchingInternships(...)` method for display in the Ui. <br/>
 
 The following sequence diagram show how the match command works:
 
@@ -651,13 +665,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 Priority | As a …​    | I want to …​                                                   | So that I can…​                                                           
 -------- | ---------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------- 
-`* * *`  | new user   | see usage instructions                                         | refer to instructions when I forget how to use the app                            
-`* * *`  | user       | get error feedback when a command fails                        | know what went wrong                                                              
 `* * *`  | user       | maintain a list of company profiles                            | keep track of companies that I'm interested in                                    
 `* * *`  | user       | add a company profile                                          | keep track of companies that I'm interested in                                    
 `* * *`  | user       | delete a company profile                                       | remove company profiles that I no longer need / am no longer interested in        
 `* * *`  | user       | edit a company profile                                         | keep my company profiles updated and accurate                                     
 `* * *`  | user       | view a company profile                                         | see its details                                                                   
+`* *`    | user       | find company profiles by name                                  | quickly look up company profiles without having to search manually                
+`* *`    | user       | list all company profiles in my list                           | see my full list of companies
 `* * *`  | user       | add an internship to a company profile                         | keep track of the internships that that company is offering                       
 `* * *`  | user       | delete an internship from a company profile                    | remove erroneous / outdated entries                                               
 `* * *`  | user       | edit an internship from a company profile                      | keep the list of internships that a company offers updated and accurate           
@@ -667,6 +681,8 @@ Priority | As a …​    | I want to …​                                    
 `* * *`  | user       | delete an internship application                               | remove internship applications that I no longer need / am no longer interested in 
 `* * *`  | user       | edit an internship application                                 | keep my internship applications updated and accurate                              
 `* * *`  | user       | view an internship application                                 | see its details                                                                   
+`* *`    | user       | find internship applications by job title                      | quickly look up my internship applications without having to search manually
+`* *`    | user       | list all internship applications in my list                    | see my full list of internship applications
 `* * *`  | user       | record and see an internship application's status              | keep track of them                                                                
 `* * *`  | user       | save the dates of my upcoming interviews                       | keep track of them                                                                
 `* * *`  | user       | maintain a user profile                                        | have an overview of my experience, skills and achievements                        
@@ -674,10 +690,15 @@ Priority | As a …​    | I want to …​                                    
 `* * *`  | user       | delete information from my user profile                        | keep my user profile updated and accurate                                         
 `* * *`  | user       | edit information in my user profile                            | keep my user profile updated and accurate                                         
 `* * *`  | user       | view information in my user profile                            | see its details  
-`* * *`  | user       | find internships based on my skills set                        | know which internships I can apply for                                
+`* *`    | user       | find information in my user profile by title                   | quickly look up specific information in my user profile without having to search manually
+`* *`    | user       | list all the information in my user profile                    | see the full list of information in my user profile
+`* * *`  | user       | switch between the multiple pages of the app                   |
+`* *`    | user       | automatically find internships based on my skill set           | find internships that may be more suitable for me
+`* * *`  | new user   | see usage instructions                                         | refer to instructions when I forget how to use the app                            
+`* * *`  | user       | get error feedback when a command fails                        | know what went wrong                                                              
 `* *`    | user       | navigate the application easily through a clear user interface |                                                                                   
 `* *`    | user       | get fast feedback from the app                                 |                                                                                   
-`* *`    | user       | clears all entries from InternHunter                           | start from a clean slate
+`* *`    | user       | easily clear all data from the app                             | start from a clean slate
 
 ### Appendix C: Use Cases
 
@@ -963,6 +984,7 @@ using commands than using the mouse.
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Json**: JavaScript Object Notation
 * **DRY**: Don't Repeat Yourself
+* **OOP**: Object-oriented programming
 
 ### Appendix F: Instructions for manual testing
 

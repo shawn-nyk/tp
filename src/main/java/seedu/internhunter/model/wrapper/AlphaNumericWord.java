@@ -10,8 +10,8 @@ import static seedu.internhunter.commons.util.AppUtil.checkArgument;
 public abstract class AlphaNumericWord {
 
     /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
+     * Represents a string that contains only alphanumeric characters and whitespaces, does not start with a
+     * whitespace and is not blank.
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 

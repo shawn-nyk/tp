@@ -14,11 +14,20 @@ public class ProfileListPanel extends ListPanel<ProfileItem> {
     /**
      * Creates a scrollable list panel with information of {@code ProfileItem}.
      *
-     * @param profileItemsList List containing all the profile item in the storage.
+     * @param profileItems List containing all the profile item in the storage.
      */
-    public ProfileListPanel(ObservableList<ProfileItem> profileItemsList) {
-        super(profileItemsList);
+    private ProfileListPanel(ObservableList<ProfileItem> profileItems) {
+        super(profileItems);
         itemListView.setCellFactory(listView -> new ProfileListViewCell());
+    }
+
+    /**
+     * Factory method to create the list of cards that displays a list of profile information.
+     *
+     * @return A profile list panel.
+     */
+    public static ListPanel<ProfileItem> getProfileListPanel(ObservableList<ProfileItem> profileItems) {
+        return new ProfileListPanel(profileItems);
     }
 
     /**

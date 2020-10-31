@@ -14,7 +14,7 @@ import seedu.internhunter.model.profile.ProfileItemCategory;
 public class MatchCommand extends Command {
 
     public static final String COMMAND_WORD = "match";
-    public static final String SHOWING_MATCH_COMMAND_MESSAGE = "Displaying list of matching internships.";
+    public static final String SHOWING_MATCH_COMMAND_MESSAGE = "Displayed list of matching internships.";
     public static final String NO_MATCHING_INTERNSHIPS_MESSAGE = "There are no internships that matches your "
             + "current skill set";
 

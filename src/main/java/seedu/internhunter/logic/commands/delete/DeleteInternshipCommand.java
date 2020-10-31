@@ -23,7 +23,7 @@ import seedu.internhunter.ui.tabs.TabName;
 /**
  * Deletes an internship from the internship list.
  */
-public class DeleteInternshipCommand extends DeleteCommandAbstract {
+public class DeleteInternshipCommand extends DeleteCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the " + INTERNSHIP_NAME + " identified by the index number used in the displayed "
@@ -67,6 +67,7 @@ public class DeleteInternshipCommand extends DeleteCommandAbstract {
         // Delete the internship
         companyItem.removeInternship(internshipIndex);
 
+        model.setCompanyViewIndex(companyIndex);
         String deleteSuccessMessage = String.format(MESSAGE_DELETED_ITEM, INTERNSHIP_NAME, internshipItem);
         return getCommandResult(model, deleteSuccessMessage, TabName.COMPANY);
     }

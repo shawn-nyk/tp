@@ -4,13 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.internhunter.model.FilterableItemList.PREDICATE_SHOW_ALL_ITEMS;
 import static seedu.internhunter.testutil.Assert.assertThrows;
-import static seedu.internhunter.testutil.TypicalPersons.ALICE;
-import static seedu.internhunter.testutil.TypicalPersons.BENSON;
 
 import java.nio.file.Paths;
-import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,10 +18,7 @@ import seedu.internhunter.model.application.ApplicationItem;
 import seedu.internhunter.model.company.CompanyItem;
 import seedu.internhunter.model.internship.InternshipItem;
 import seedu.internhunter.model.item.ItemList;
-import seedu.internhunter.model.person.NameContainsKeywordsPredicate;
-import seedu.internhunter.model.person.Person;
 import seedu.internhunter.model.profile.ProfileItem;
-import seedu.internhunter.testutil.AddressBookBuilder;
 import seedu.internhunter.testutil.application.ApplicationItemBuilder;
 import seedu.internhunter.testutil.profile.ProfileItemBuilder;
 
@@ -68,7 +61,6 @@ public class ModelManagerTest {
     public void constructor() {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
-        assertEquals(new ItemListManager<Person>(), modelManager.getAddressBook());
         assertEquals(new ItemListManager<CompanyItem>(), modelManager.getCompanyList());
         assertEquals(new ItemListManager<ApplicationItem>(), modelManager.getApplicationList());
         assertEquals(new ItemListManager<ProfileItem>(), modelManager.getProfileList());
@@ -283,8 +275,6 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        ItemList<Person> addressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
-        ItemList<Person> differentAddressBook = new ItemList<>();
         ItemList<CompanyItem> companyList = new ItemList<>();
         ItemList<InternshipItem> internshipList = new ItemList<>();
         ItemList<ApplicationItem> applicationList = new ItemList<>();
@@ -292,11 +282,8 @@ public class ModelManagerTest {
         UserPrefs userPrefs = new UserPrefs();
 
         // same values -> returns true
-        modelManager = new ModelManager(addressBook, companyList, applicationList,
-                profileList,
-                userPrefs);
-        ModelManager modelManagerCopy = new ModelManager(addressBook, companyList,
-                applicationList, profileList, userPrefs);
+        modelManager = new ModelManager(companyList, applicationList, profileList, userPrefs);
+        ModelManager modelManagerCopy = new ModelManager(companyList, applicationList, profileList, userPrefs);
         assertEquals(modelManagerCopy, modelManager);
 
         // same object -> returns true
@@ -308,24 +295,21 @@ public class ModelManagerTest {
         // different types -> returns false
         assertNotEquals(modelManager, 5);
 
-        // different addressBook -> returns false
-        assertNotEquals(new ModelManager(differentAddressBook, companyList,
-                applicationList, profileList, userPrefs), modelManager);
-
+        // TODO REMOVE
         // different filteredList -> returns false
-        String[] keywords = ALICE.getName().fullName.split("\\s+");
-        modelManager.getAddressBook()
-                .updateFilteredItemList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertNotEquals(new ModelManager(addressBook, companyList,
-                applicationList, profileList, userPrefs), modelManager);
+        // String[] keywords = ALICE.getName().fullName.split("\\s+");
+        // modelManager.getAddressBook()
+        //        .updateFilteredItemList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
+        // assertNotEquals(new ModelManager(addressBook, companyList,
+        //        applicationList, profileList, userPrefs), modelManager);
 
         // resets modelManager to initial state for upcoming tests
-        modelManager.getAddressBook().updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
+        // modelManager.getAddressBook().updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
 
         // different userPrefs -> returns false
-        UserPrefs differentUserPrefs = new UserPrefs();
-        differentUserPrefs.setApplicationItemListFilePath(Paths.get("differentFilePath"));
-        assertNotEquals(new ModelManager(addressBook, companyList,
-                applicationList, profileList, differentUserPrefs), modelManager);
+        // UserPrefs differentUserPrefs = new UserPrefs();
+        // differentUserPrefs.setApplicationItemListFilePath(Paths.get("differentFilePath"));
+        // assertNotEquals(new ModelManager(addressBook, companyList,
+        //        applicationList, profileList, differentUserPrefs), modelManager);
     }
 }
