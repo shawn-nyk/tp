@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.internhunter.model.internship.Wage.DEFAULT_WAGE;
 import static seedu.internhunter.model.internship.Wage.WAGE_SYMBOL;
 import static seedu.internhunter.testutil.Assert.assertThrows;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.INVALID_WAGE_DECIMAL;
@@ -18,6 +19,7 @@ public class WageTest {
 
     private static final Wage VALID_WAGE_ONE = new Wage(VALID_WAGE_2000);
     private static final Wage VALID_WAGE_TWO = new Wage(VALID_WAGE_3000);
+    private static final Wage VALID_WAGE_DEFAULT = new Wage(DEFAULT_WAGE);
 
     @Test
     public void constructor_null_throwsNullPointerException() {
@@ -62,6 +64,16 @@ public class WageTest {
     }
 
     @Test
+    public void isValidOutputWage_validInput_success() {
+        assertTrue(Wage.isValidOutputWage("1")); // Min value of 1
+        assertTrue(Wage.isValidOutputWage("12345")); // Normal wage
+        assertTrue(Wage.isValidOutputWage("3000")); // Normal wage
+        assertTrue(Wage.isValidOutputWage("123456789123456789123456789123456789")); // Very large number
+
+        assertTrue(Wage.isValidOutputWage(DEFAULT_WAGE)); // Dash should be accepted
+    }
+
+    @Test
     public void getValue_equalityTest_success() {
         assertEquals(VALID_WAGE_2000, VALID_WAGE_ONE.getValue());
     }
@@ -69,6 +81,7 @@ public class WageTest {
     @Test
     public void toString_validFormat_success() {
         assertEquals(WAGE_SYMBOL + VALID_WAGE_2000, VALID_WAGE_ONE.toString());
+        assertEquals(DEFAULT_WAGE, VALID_WAGE_DEFAULT.toString());
     }
 
     @Test

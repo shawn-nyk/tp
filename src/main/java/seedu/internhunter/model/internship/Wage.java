@@ -13,7 +13,7 @@ public class Wage {
     public static final String MESSAGE_CONSTRAINTS = "Wage should only contain a positive number and no leading zeroes";
     public static final String VALIDATION_REGEX = "^[1-9]\\d*";
 
-    private static final String DEFAULT_WAGE = "";
+    public static final String DEFAULT_WAGE = "-";
 
     private final String value;
 
