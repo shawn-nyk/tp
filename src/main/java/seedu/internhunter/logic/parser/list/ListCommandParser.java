@@ -1,7 +1,7 @@
 package seedu.internhunter.logic.parser.list;
 
 import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
+import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE_ABRIDGED;
 import static seedu.internhunter.logic.parser.util.GeneralParserUtil.getItemType;
 import static seedu.internhunter.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.internhunter.model.util.ItemUtil.COMPANY_ALIAS;
@@ -15,7 +15,7 @@ import seedu.internhunter.logic.parser.Parser;
 import seedu.internhunter.logic.parser.exceptions.ParseException;
 
 /**
- * todo javadocs
+ * A general list command parser that parses the data into a more specific parser.
  */
 public class ListCommandParser implements Parser<ListCommand> {
 
@@ -39,12 +39,15 @@ public class ListCommandParser implements Parser<ListCommand> {
             return new ListProfileCommand();
         default:
             // Invalid item type
-            throw new ParseException(MESSAGE_INVALID_ITEM_TYPE);
+            throw new ParseException(MESSAGE_INVALID_ITEM_TYPE_ABRIDGED);
         }
     }
 
     /**
-     * todo javadocs
+     * Checks if the user have input in more than necessary.
+     *
+     * @param args String representing user's parsed input.
+     * @throws ParseException If user have input in more than necessary.
      */
     private void checkIfHaveExcessMessage(String args) throws ParseException {
         // allows white space behind the list ITEM TYPE.

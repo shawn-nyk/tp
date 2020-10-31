@@ -16,7 +16,7 @@ import seedu.internhunter.logic.parser.switchparser.SwitchCommandParser;
 import seedu.internhunter.ui.tabs.TabName;
 
 /**
- * todo javadocs
+ * Test for switch command parser.
  */
 public class SwitchCommandParserTest {
 

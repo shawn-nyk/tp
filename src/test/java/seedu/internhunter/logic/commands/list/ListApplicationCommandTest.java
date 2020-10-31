@@ -25,10 +25,9 @@ public class ListApplicationCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(new ItemList<>(), new ItemList<>(), getSampleApplicationItemList(),
-            new ItemList<>(), new UserPrefs());
-        expectedModel = new ModelManager(new ItemList<>(), new ItemList<>(),
-            model.getUnfilteredApplicationList(), new ItemList<>(), new UserPrefs());
+        model = new ModelManager(new ItemList<>(), getSampleApplicationItemList(), new ItemList<>(), new UserPrefs());
+        expectedModel = new ModelManager(new ItemList<>(), model.getUnfilteredApplicationList(), new ItemList<>(),
+            new UserPrefs());
         commandResult = new CommandResult(ListApplicationCommand.MESSAGE_SUCCESS, false, false, true, true);
     }
 

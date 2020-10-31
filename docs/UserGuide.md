@@ -437,8 +437,8 @@ Each category is represented by the following icons in the UI:
 
 | CATEGORY   | ICON 
 |------------|------------------
-|`achievement`| <img src="images/ug-profile/achievement" width="10%" height="10%"/>
-|`experience` | <img src="images/ug-profile/experience" width="10%" height="10%"/>
+|`achievement`| <img src="images/ug-profile/achievement.png" width="10%" height="10%"/>
+|`experience` | <img src="images/ug-profile/experience.png" width="10%" height="10%"/>
 |`skill`      | <img src="images/ug-profile/skills.png" width="10%" height="10%"/>
 
 
@@ -552,12 +552,12 @@ Example:
 
 <p align="center"><img src="images/ug-general/match-internships1.png" width="100%"/></p>
 
-2. And this is your current profile item list. Note that only the 2 profile items of `Skill` type will be used for
+2\. And this is your current profile item list. Note that only the 2 profile items of `Skill` type will be used for
 matching with the internships.
 
 <p align="center"><img src="images/ug-general/match-skills1.png" width="100%"/></p>
 
-3. All that's left to do is to type the `match` word in the command box.
+3\. All that's left to do is to type the `match` word in the command box.
 
 <p align="center"><img src="images/ug-general/match-type1.png" width="100%"/></p>
 
@@ -567,7 +567,7 @@ matching with the internships.
 
 </div>
 
-4. A pop-up window showing the list of matching internships will be displayed!
+4\. A pop-up window showing the list of matching internships will be displayed!
 
 <p align="center"><img src="images/ug-general/match-window.png" width="100%"/></p>
 
@@ -590,11 +590,11 @@ There are three `TYPE`s:
 
 Example:
 
-1. Suppose you want to switch to the application tab. Executing `switch app` will switch the tabs to application tab.
+1. Suppose you want to switch tabs to the application tab. Executing `switch app` will switch the tabs to application tab.
 
 <p align="center"><img src="images/ug-general/switchApp.png" width="70%" height="70%"/></p>
 
-2. Note that the tabs has been changed as well as the cards and display.
+2\. Note that the tabs have been changed as well as the cards and display.
 
 <p align="center"><img src="images/ug-general/switchAppResultAnnotated.png" width="110%" height="110%"/></p>
 
@@ -609,7 +609,7 @@ Example:
 
 <p align="center"><img src="images/ug-general/clear.png" width="70%" height="70%"/></p>
 
-2. Note that all the data has been wiped as seen in the Ui.
+2\. Note that all the data has been wiped as seen in the Ui.
 
 <p align="center"><img src="images/ug-general/clearResult.png" width="70%" height="70%"/></p>
 
@@ -625,11 +625,11 @@ Format: `help`
 
 Example:
 
-1. Suppose you can't remember the commands. Fret not, executing `help` will generate a new window containing the link to your user guide!
+1. Suppose you can't remember the commands. Fret not, executing `help` will generate a new window containing the link to the user guide!
 
 <p align="center"><img src="images/ug-general/help.png" width="70%" height="70%"/></p>
 
-2. Copy the link and access our user guide for more information.
+2\. Copy the link and access our user guide for more information.
 
 <p align="center"><img src="images/ug-general/helpResult.png" width="70%" height="70%"/></p>
 
@@ -640,7 +640,7 @@ Shows an exit confirmation dialog.
 
 Format: `exit`
 
-<div markdown="span">
+<div markdown="span" class="alert alert-primary">
   
   :bulb: <strong>Tip:</strong> <br/>
   For <strong>MacOS</strong> users, you can navigate the options using <strong>tab</strong> on your keyboard and pressing <strong>spacebar</strong> to confirm your choice. <br/>
@@ -656,7 +656,7 @@ Example:
 
 <p align="center"><img src="images/ug-general/exit.png" width="70%" height="70%"/></p>
 
-2. At this stage, you have the option to confirm the exit or continue to stay in InternHunter.
+2\. At this stage, you have the option to confirm the exit or continue to stay in InternHunter.
 
 <p align="center"><img src="images/ug-general/exitResult.png" width="70%" height="70%"/></p>
 

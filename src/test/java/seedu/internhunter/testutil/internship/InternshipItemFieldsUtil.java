@@ -10,6 +10,7 @@ public class InternshipItemFieldsUtil {
     public static final String VALID_COMPANY_NAME_LAZADA = "Lazada";
     public static final String VALID_COMPANY_NAME_FACEBOOK = "Facebook";
     public static final String VALID_COMPANY_NAME_GOLDMAN = "Goldman Sachs";
+    public static final String VALID_COMPANY_NAME_GOOGLE = "Google";
 
     // Valid job titles
     public static final String VALID_JOB_TITLE_SWE = "Software Engineer";

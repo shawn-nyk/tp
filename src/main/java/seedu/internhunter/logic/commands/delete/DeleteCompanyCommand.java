@@ -17,7 +17,7 @@ import seedu.internhunter.ui.tabs.TabName;
 /**
  * Deletes a Company from the Model's Company list. todo javadocs (shawn)
  */
-public class DeleteCompanyCommand extends DeleteCommandAbstract {
+public class DeleteCompanyCommand extends DeleteCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + COMPANY_ALIAS
             + ": Deletes a "
