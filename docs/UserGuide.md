@@ -120,11 +120,13 @@ Ready to begin? Let's get hunting.
 
 ## **About**
 
-This section will bring you through the [GUI](#understanding-the-gui), [technical terminologies](#understanding-the-technical-terminologies), as well as commonly used [symbols](#understanding-the-symbols).
+This section will bring you through the [Graphical User Interface(GUI)](#understanding-the-gui), [technical terminologies](#understanding-the-technical-terminologies), as well as commonly used [symbols](#understanding-the-symbols).
 
 #### Understanding the GUI
 
-<p><img src="images/tempimg.png" width="60%" height="60%"/></p>
+<p><img src="images/AnnotatedGui.png"/></p>
+
+<p align="center"><strong>Figure 1: Annotated GUI with component names and functionality</strong></p>
 
 #### Understanding the technical terminologies
 
