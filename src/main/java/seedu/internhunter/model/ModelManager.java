@@ -191,7 +191,9 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Returns the profile item list
+     * Gets the application item list.
+     *
+     * @return Application Item list.
      */
     @Override
     public ObservableList<ApplicationItem> getApplicationItemList() {

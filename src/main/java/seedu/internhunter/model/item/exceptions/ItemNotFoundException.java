@@ -7,7 +7,9 @@ import seedu.internhunter.model.item.Item;
  */
 public class ItemNotFoundException extends RuntimeException {
 
+    private static final String ITEM_NOT_FOUND_EXCEPTION = "Not able to find this %s item";
+
     public ItemNotFoundException(Item item) {
-        super(String.format("Not able to find this %s item", item.getItemName()));
+        super(String.format(ITEM_NOT_FOUND_EXCEPTION, item.getItemName()));
     }
 }
