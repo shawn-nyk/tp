@@ -1,5 +1,6 @@
 package seedu.internhunter.ui;
 
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -46,6 +47,7 @@ public class CommandBox extends UiPart<Region> {
         this.commandExecutor = commandExecutor;
         setCommandTextFieldProperties();
         setSendButtonProperties();
+        Platform.runLater(() -> commandTextField.requestFocus());
     }
 
     /**
