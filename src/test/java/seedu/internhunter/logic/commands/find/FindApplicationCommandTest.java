@@ -25,7 +25,7 @@ import seedu.internhunter.model.item.ItemList;
 import seedu.internhunter.ui.tabs.TabName;
 
 /**
- * todo javadocs
+ * Test for find application command.
  */
 public class FindApplicationCommandTest {
 
