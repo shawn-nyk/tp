@@ -69,5 +69,5 @@ return result
 
 MatchCommand --> LogicManager : result
 
-[<--LogicManager
+[<--LogicManager : result
 @enduml

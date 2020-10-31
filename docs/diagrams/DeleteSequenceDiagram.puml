@@ -75,6 +75,6 @@ deactivate CommandResult
 DeleteApplicationCommand --> LogicManager : result
 deactivate DeleteApplicationCommand
 
-[<--LogicManager
+[<--LogicManager : result
 deactivate LogicManager
 @enduml
