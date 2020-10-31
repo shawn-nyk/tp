@@ -16,6 +16,7 @@ public class UserPrefsTest {
     public void setUp() {
         userPrefs = new UserPrefs();
     }
+
     @Test
     public void setGuiSettings_nullGuiSettings_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> userPrefs.setGuiSettings(null));
@@ -35,20 +36,20 @@ public class UserPrefsTest {
     public void setProfileItemListFilePath_nullPath_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> userPrefs.setProfileItemListFilePath(null));
     }
-    
+
     @Test
     public void hashCode_equals() {
         assertEquals(userPrefs.hashCode(), userPrefs.hashCode());
     }
-    
+
     @Test
     public void equals() {
         // same object -> return true
         assertTrue(userPrefs.equals(userPrefs));
-        
+
         // null -> return false
         assertFalse(userPrefs.equals(null));
-        
+
         // different Types -> return false
         assertFalse(userPrefs.equals(0.5f));
     }
