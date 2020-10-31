@@ -602,7 +602,7 @@ Example:
 
 2\. Note that the tabs have been changed as well as the cards and display.
 
-<p align="center"><img src="images/ug-general/switchAppResultAnnotated.png" width="110%" height="110%"/></p>
+<p align="center"><img src="images/ug-general/switchAppResultAnnotated.png"/></p>
 
 #### Clearing all entries: `clear`
 Clears all entries from InternHunter.
