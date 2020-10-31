@@ -315,8 +315,10 @@ how to use InternHunter to apply, track and manage your internship applications.
 out how.
 
 <div markdown="span" class="alert alert-info">
-  :information_source: <strong>Note:</strong> Each application comes with a `STATUS` and `STATUS_DATE` field which indicates the
+
+  :information_source: **Note:** Each application comes with a `STATUS` and `STATUS_DATE` field which indicates the
 date that the `STATUS` was set/updated.
+
 </div>
 
 Valid `STATUS` specifiers:
@@ -328,7 +330,9 @@ Valid `STATUS` specifiers:
 - `Accepted`
 
 <div markdown="span" class="alert alert-info">
-  :information_source: <strong>Note:</strong> Status added are case-insensitive
+
+  :information_source: **Note:** Status added is case-insensitive
+  
 </div>
 
 Valid `STATUS_DATE` formats:
@@ -340,7 +344,10 @@ Valid `STATUS_DATE` formats:
     - Time will be taken as 2359
 
 <div markdown="span" class="alert alert-info">
-  :information_source: <strong>Note:</strong> Dates added must be in the future
+
+  :information_source: **Note:** Date added must be in the future and all dates added will be from the current year to
+  the year 2099
+  
 </div>
 
 #### Applying for an internship: `add app`
@@ -367,7 +374,10 @@ Deletes an application from your list of applications.
 Format: `delete app INDEX` 
 
 Example:
-- `delete app 3`
+- Suppose you have these 2 applications in your application list and you want to delete the 2nd application in the list.
+Executing `delete app 2` will delete the 2nd application and update the list to show the remaining applications:
+
+<p align="center"><img src="images/ug-application/DeleteApplication.png" width="100%"/></p>
 
 #### Updating an application: `edit app`
 
@@ -418,6 +428,13 @@ narrowed your list of applications down to a few search results. Use the `list a
 all the applications in your list.
 
 Format: `list app`
+
+Example:
+- Following the result of `find app engineer` on the application list from the example shown in the
+[find application command](#finding-applications-find-app), execution of `list app` will update the list to show 
+**all** applications in your list of applications:
+
+<p align="center"><img src="images/ug-application/ListApplication.png" width="100%"/></p>
 
 ### **Profile**
 
