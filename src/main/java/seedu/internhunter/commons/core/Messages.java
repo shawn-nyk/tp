@@ -23,7 +23,7 @@ public class Messages {
 
     public static final String MESSAGE_INVALID_ITEM_TYPE = "Item type has to be either 'com', 'int', 'app' or 'me'";
     public static final String MESSAGE_INVALID_ITEM_TYPE_ABRIDGED = "The Item type for this command has to be either"
-            + " com, app or 'me'";
+            + " com, app or me";
 
     /** Add message: First string refers to item type, second string refers to item added. */
     public static final String MESSAGE_ADD_SUCCESS = "New %1$s item added: %2$s\n";

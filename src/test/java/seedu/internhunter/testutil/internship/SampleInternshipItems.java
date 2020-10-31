@@ -2,6 +2,7 @@ package seedu.internhunter.testutil.internship;
 
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_COMPANY_NAME_FACEBOOK;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_COMPANY_NAME_GOLDMAN;
+import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_COMPANY_NAME_GOOGLE;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_COMPANY_NAME_LAZADA;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_COMPANY_NAME_SHOPEE;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_JOB_TITLE_BA;
@@ -38,6 +39,12 @@ public abstract class SampleInternshipItems {
             .withWage(VALID_WAGE_4000)
             .withPeriod(VALID_PERIOD_SUMMER)
             .build();
+    public static final InternshipItem GOLDMAN_FE = new InternshipItemBuilder()
+            .withCompanyName(VALID_COMPANY_NAME_GOLDMAN)
+            .withJobTitle(VALID_JOB_TITLE_FE)
+            .withWage(VALID_WAGE_3000)
+            .withPeriod(VALID_PERIOD_MAY_TO_JULY)
+            .build();
     public static final InternshipItem SHOPEE_SWE = new InternshipItemBuilder()
             .withCompanyName(VALID_COMPANY_NAME_SHOPEE)
             .withJobTitle(VALID_JOB_TITLE_SWE)
@@ -58,6 +65,24 @@ public abstract class SampleInternshipItems {
             .withWage(VALID_WAGE_3500)
             .withPeriod(VALID_PERIOD_MAY_TO_JULY)
             .build();
+    public static final InternshipItem FACEBOOK_SWE = new InternshipItemBuilder()
+            .withCompanyName(VALID_COMPANY_NAME_FACEBOOK)
+            .withJobTitle(VALID_JOB_TITLE_SWE)
+            .withWage(VALID_WAGE_4000)
+            .withPeriod(VALID_PERIOD_SUMMER)
+            .build();
+    public static final InternshipItem FACEBOOK_BA = new InternshipItemBuilder()
+            .withCompanyName(VALID_COMPANY_NAME_FACEBOOK)
+            .withJobTitle(VALID_JOB_TITLE_BA)
+            .withWage(VALID_WAGE_3000)
+            .withPeriod(VALID_PERIOD_SUMMER)
+            .build();
+    public static final InternshipItem GOOGLE_SWE = new InternshipItemBuilder()
+            .withCompanyName(VALID_COMPANY_NAME_GOOGLE)
+            .withJobTitle(VALID_JOB_TITLE_SWE)
+            .withWage(VALID_WAGE_4000)
+            .withPeriod(VALID_PERIOD_SUMMER)
+            .build();
 
     /**
      * Returns an {@code ItemList<InternshipItem>} with all the sample internship items.
@@ -71,6 +96,7 @@ public abstract class SampleInternshipItems {
     }
 
     private static List<InternshipItem> getInternshipItems() {
-        return new ArrayList<>(Arrays.asList(GOLDMAN_BA, SHOPEE_SWE, LAZADA_DS, FACEBOOK_FE));
+        return new ArrayList<>(Arrays.asList(GOLDMAN_BA, SHOPEE_SWE, LAZADA_DS, FACEBOOK_FE, FACEBOOK_SWE,
+                FACEBOOK_BA));
     }
 }

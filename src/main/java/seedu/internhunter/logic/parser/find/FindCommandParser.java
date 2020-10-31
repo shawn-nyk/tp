@@ -1,6 +1,6 @@
 package seedu.internhunter.logic.parser.find;
 
-import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
+import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE_ABRIDGED;
 import static seedu.internhunter.logic.parser.util.GeneralParserUtil.getCommandDetails;
 import static seedu.internhunter.logic.parser.util.GeneralParserUtil.getItemType;
 import static seedu.internhunter.model.util.ItemUtil.APPLICATION_ALIAS;
@@ -36,7 +36,7 @@ public class FindCommandParser implements Parser<FindCommand> {
             return new FindProfileCommandParser().parse(commandDetails);
         default:
             // Invalid item type
-            throw new ParseException(MESSAGE_INVALID_ITEM_TYPE);
+            throw new ParseException(MESSAGE_INVALID_ITEM_TYPE_ABRIDGED);
         }
     }
 
