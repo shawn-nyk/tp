@@ -8,8 +8,6 @@ public class Messages {
     /** Invalid commands */
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command";
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
-    // To remove
-    public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The person index provided is invalid";
 
     /** Error messages, string refers to item type */
     public static final String MESSAGE_INVALID_ITEM_DISPLAYED_INDEX = "The %s item index provided is invalid!";

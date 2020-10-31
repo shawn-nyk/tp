@@ -270,10 +270,10 @@ Note: You must be on the **Company** tab in order to execute these commands.
 Adds an internship to a company.
 
 Format: `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
-- `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`).
+- `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`, `Jun - Aug 2021`).
 
 Examples:
-- `add int 3 j/Web Developer w/3000 r/React r/HTML5`
+- `add int 3 j/Web Developer w/3000 p/30 May to 30 Aug r/React r/HTML5`
 - `add int 1 j/Machine Learning Engineer w/4700` 
 
 ![AddInternship](images/AddInternship.png)
@@ -346,7 +346,7 @@ Valid `STATUS_DATE` formats:
 #### Applying for an internship: `add app`
 
 Selects an internship from a company and adds it to your list of applications. If unspecified, the application’s
-`STATUS` will be `Applied`, and it’s `STATUS_DATE` will be set as today’s date.
+`STATUS` will be `Applied`, and it’s `STATUS_DATE` will be set as today’s date and time to be 2359.
 
 Format: `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
 - Where `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
@@ -541,6 +541,7 @@ Format: `match`
 - An Internship with at least one `Requirement` matching any one `Skill` in the profile list will be
 considered as a successful match. e.g. Say you have a profile item which is of `Skill` category and titled `Python`, any
 internship that has a `Requirement` of `Python` will be successfully matched.
+- An Internship with no requirements will never be matched.
 - Matched internships can have `Requirements` that do not match with the profile `Skills`, since a match is found when
 an internship has **at least one and not all** `Requirements` that matches with the profile `Skills`.
 - Matching done is case-insensitive. e.g. `Python` will match `python`.
