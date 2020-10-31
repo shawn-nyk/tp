@@ -119,12 +119,6 @@ API call.
 
 ![Interactions Inside the Logic Component for the `delete app 1` Command](images/DeleteSequenceDiagram.png)
 
-<div markdown="span" class="alert alert-info">
-  :information_source: <strong>Note:</strong> The lifeline for <code>DeleteCommandParser</code> and
-  <code>DeleteApplicationCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML,
-  the lifeline reaches the end of diagram.
-</div>
-
 ### Model component
 
 <p id="model-class-diagram"><img src="images/dg-model/ModelClassDiagram.png" width="55%" height="55%"/></p>

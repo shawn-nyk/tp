@@ -7,7 +7,7 @@ participant ":MainParser" as MainParser LOGIC_COLOR
 participant ":DeleteCommandParser" as DeleteCommandParser LOGIC_COLOR
 participant ":DeleteApplicationCommandParser" as DeleteApplicationCommandParser LOGIC_COLOR
 participant "d:DeleteApplicationCommand" as DeleteApplicationCommand LOGIC_COLOR
-participant ":CommandResult" as CommandResult LOGIC_COLOR
+participant "result:CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
@@ -49,15 +49,9 @@ deactivate DeleteApplicationCommand
 
 DeleteApplicationCommandParser --> DeleteCommandParser : d
 deactivate DeleteApplicationCommandParser
-'Hidden arrow to position the destroy marker below the end of the activation bar.
-DeleteApplicationCommandParser -[hidden]-> DeleteCommandParser
-destroy DeleteApplicationCommandParser
 
 DeleteCommandParser --> MainParser : d
 deactivate DeleteCommandParser
-'Hidden arrow to position the destroy marker below the end of the activation bar.
-DeleteCommandParser -[hidden]-> MainParser
-destroy DeleteCommandParser
 
 MainParser --> LogicManager : d
 deactivate MainParser
