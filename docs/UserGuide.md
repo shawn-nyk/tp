@@ -314,12 +314,10 @@ Now that you have learnt how to manage your companies and internships, the next 
 how to use InternHunter to apply, track and manage your internship applications. Read on through this section to find 
 out how.
 
-<div markdown="span" class="alert alert-info">
+#### All about applications
 
-  :information_source: **Note:** Each application comes with a `STATUS` and `STATUS_DATE` field which indicates the
+Each application comes with a `STATUS` and `STATUS_DATE` field which indicates the
 date that the `STATUS` was set/updated.
-
-</div>
 
 Valid `STATUS` specifiers:
 - `Applied`
@@ -349,6 +347,10 @@ Valid `STATUS_DATE` formats:
   the year 2099
   
 </div>
+
+Here is how the application tab looks like: 
+
+<p align="center"><img src="images/ug-application/ApplicationAnnotated.png" width="100%"/></p>
 
 #### Applying for an internship: `add app`
 
@@ -590,7 +592,9 @@ matching with the internships.
 <p align="center"><img src="images/ug-general/match-window.png" width="100%"/></p>
 
 <div markdown="span" class="alert alert-primary">
-  :bulb: <strong>Tip:</strong> You can press Esc key to close the popup window!
+
+  :bulb: **Tip:** You can press Esc key to close the popup window!
+  
 </div>
 
 #### Switching Tabs: `switch`
@@ -637,7 +641,9 @@ Displays a link to the InternHunter user guide.
 Format: `help`
 
 <div markdown="span" class="alert alert-primary">
-  :bulb: <strong>Tip:</strong> You can press Esc key to close the help window!
+
+  :bulb: **Tip:** You can press Esc key to close the help window!
+  
 </div>
 <br/>
 
