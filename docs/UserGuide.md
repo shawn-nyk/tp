@@ -395,7 +395,7 @@ Executing `view app 2` will update the right panel to display the second applica
 
 #### Finding applications: `find app`
 
-Finds all applications in your list of applications whose job titles contain any of the given keywords. Note that 
+Finds all applications in your list of applications whose job titles contain any of the given keywords.
 
 Format: `find app KEYWORD [ANOTHER_KEYWORD]...`
 - Only the application job title will be searched for.
