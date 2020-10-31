@@ -990,6 +990,7 @@ using commands than using the mouse.
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Json**: JavaScript Object Notation
 * **DRY**: Don't Repeat Yourself
+* **OOP**: Object-oriented programming
 
 ### Appendix F: Instructions for manual testing
 

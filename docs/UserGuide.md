@@ -270,10 +270,10 @@ Note: You must be on the **Company** tab in order to execute these commands.
 Adds an internship to a company.
 
 Format: `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
-- `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`).
+- `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`, `Jun - Aug 2021`).
 
 Examples:
-- `add int 3 j/Web Developer w/3000 r/React r/HTML5`
+- `add int 3 j/Web Developer w/3000 p/30 May to 30 Aug r/React r/HTML5`
 - `add int 1 j/Machine Learning Engineer w/4700` 
 
 ![AddInternship](images/AddInternship.png)
@@ -395,7 +395,7 @@ Executing `view app 2` will update the right panel to display the second applica
 
 #### Finding applications: `find app`
 
-Finds all applications in your list of applications whose job titles contain any of the given keywords.
+Finds all applications in your list of applications whose job titles contain any of the given keywords. Note that 
 
 Format: `find app KEYWORD [ANOTHER_KEYWORD]...`
 - Only the application job title will be searched for.
