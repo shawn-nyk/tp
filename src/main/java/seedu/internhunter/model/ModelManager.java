@@ -14,7 +14,6 @@ import seedu.internhunter.model.application.ApplicationItem;
 import seedu.internhunter.model.company.CompanyItem;
 import seedu.internhunter.model.item.ItemList;
 import seedu.internhunter.model.item.ReadOnlyItemList;
-import seedu.internhunter.model.person.Person;
 import seedu.internhunter.model.profile.ProfileItem;
 import seedu.internhunter.model.tab.Tab;
 import seedu.internhunter.model.tab.TabManager;
@@ -28,7 +27,6 @@ import seedu.internhunter.ui.tabs.TabName;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final FilterableItemList<Person> addressBook;
     private final FilterableItemList<CompanyItem> companyList;
     private final FilterableItemList<ApplicationItem> applicationList;
     private final FilterableItemList<ProfileItem> profileList;
@@ -40,21 +38,19 @@ public class ModelManager implements Model {
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
     public ModelManager(
-            ReadOnlyItemList<Person> addressBook,
             ReadOnlyItemList<CompanyItem> companyList,
             ReadOnlyItemList<ApplicationItem> applicationList,
             ReadOnlyItemList<ProfileItem> profileList,
             ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(addressBook, companyList, applicationList, profileList, userPrefs);
+        requireAllNonNull(companyList, applicationList, profileList, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook
+        logger.fine("Initializing InternHunter: "
                 + " and company list " + companyList
                 + " and application list " + applicationList
                 + " and profile list " + profileList
                 + " and user prefs " + userPrefs);
 
-        this.addressBook = new ItemListManager<>(new ItemList<>(addressBook));
         this.companyList = new ItemListManager<>(new ItemList<>(companyList));
         this.applicationList = new ItemListManager<>(new ItemList<>(applicationList));
         this.profileList = new ItemListManager<>(new ItemList<>(profileList));
@@ -64,14 +60,7 @@ public class ModelManager implements Model {
     }
 
     public ModelManager() {
-        this(new ItemList<>(), new ItemList<>(), new ItemList<>(), new ItemList<>(), new UserPrefs());
-    }
-
-    //=========== Models Getters =============================================================================
-
-    @Override
-    public FilterableItemList<Person> getAddressBook() {
-        return addressBook;
+        this(new ItemList<>(), new ItemList<>(), new ItemList<>(), new UserPrefs());
     }
 
     //=========== Company Methods ============================================================================
@@ -202,7 +191,9 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Returns the profile item list
+     * Gets the application item list.
+     *
+     * @return Application Item list.
      */
     @Override
     public ObservableList<ApplicationItem> getApplicationItemList() {
@@ -419,8 +410,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
-                && companyList.equals(other.companyList)
+        return companyList.equals(other.companyList)
                 && applicationList.equals(other.applicationList)
                 && profileList.equals(other.profileList)
                 && userPrefs.equals(other.userPrefs)

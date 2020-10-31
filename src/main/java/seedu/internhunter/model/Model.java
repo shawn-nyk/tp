@@ -8,7 +8,6 @@ import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.model.application.ApplicationItem;
 import seedu.internhunter.model.company.CompanyItem;
 import seedu.internhunter.model.item.ItemList;
-import seedu.internhunter.model.person.Person;
 import seedu.internhunter.model.profile.ProfileItem;
 import seedu.internhunter.ui.tabs.TabName;
 
@@ -36,11 +35,6 @@ public interface Model {
      * Sets the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
-
-    /**
-     * Returns the person list
-     */ //todo: remove when possible
-    FilterableItemList<Person> getAddressBook();
 
     /**
      * Returns the company list

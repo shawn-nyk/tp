@@ -8,8 +8,10 @@ import seedu.internhunter.model.item.Item;
  */
 public class DuplicateItemException extends RuntimeException {
 
+    private static final String ITEM_DUPLICATE_EXCEPTION = "Operation would result in duplicate %s items";
+
     public DuplicateItemException(Item item) {
-        super(String.format("Operation would result in duplicate %s items", item.getItemName()));
+        super(String.format(ITEM_DUPLICATE_EXCEPTION, item.getItemName()));
     }
 
 }

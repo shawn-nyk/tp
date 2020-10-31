@@ -31,10 +31,9 @@ class FindProfileCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(new ItemList<>(), new ItemList<>(), new ItemList<>() ,
-            getSampleProfileItemList(), new UserPrefs());
-        expectedModel = new ModelManager(new ItemList<>(), new ItemList<>(), new ItemList<>(),
-            model.getUnfilteredProfileList(), new UserPrefs());
+        model = new ModelManager(new ItemList<>(), new ItemList<>(), getSampleProfileItemList(), new UserPrefs());
+        expectedModel = new ModelManager(new ItemList<>(), new ItemList<>(), model.getUnfilteredProfileList(),
+            new UserPrefs());
     }
 
     @Test

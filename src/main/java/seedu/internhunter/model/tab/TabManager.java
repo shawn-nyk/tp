@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 import seedu.internhunter.ui.tabs.TabName;
 
 /**
- * todo javadoc
+ * Represents Tab Control of InternHunter.
  */
 public class TabManager implements Tab {
 
