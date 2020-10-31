@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class StatusDate {
 
     public static final String MESSAGE_CONSTRAINTS = "Status date should be in the format of d-M-yy or d-M-yy HHmm"
-            + "and set in the future";
+            + " and set in the future";
 
     private final LocalDateTime statusDate;
 

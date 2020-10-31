@@ -13,6 +13,8 @@ public class Wage {
     public static final String MESSAGE_CONSTRAINTS = "Wage should only contain a positive number and no leading zeroes";
     public static final String VALIDATION_REGEX = "^[1-9]\\d*";
 
+    private static final String DEFAULT_WAGE = "";
+
     private final String value;
 
     /**
@@ -27,13 +29,13 @@ public class Wage {
     }
 
     /**
-     * Returns true if a given string is a valid wage.
+     * Returns true if the given string matches the default wage or the regex.
      *
      * @param test String to test.
      * @return True if the given string is a valid wage, false otherwise.
      */
     public static boolean isValidOutputWage(String test) {
-        return test.equals("-") || test.matches(VALIDATION_REGEX);
+        return test.equals(DEFAULT_WAGE) || test.matches(VALIDATION_REGEX);
     }
 
     /**
@@ -57,7 +59,7 @@ public class Wage {
      */
     @Override
     public String toString() {
-        return WAGE_SYMBOL + value;
+        return value.equals(DEFAULT_WAGE) ? DEFAULT_WAGE : WAGE_SYMBOL + value;
     }
 
     @Override
