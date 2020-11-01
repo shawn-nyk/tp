@@ -272,7 +272,9 @@ The following sequence diagrams show how the delete company feature works succes
 
 ![DeleteCompanyCommandSequenceDiagram](images/dg-company/DeleteCompanyCommandSequenceDiagram.png)
 ![ExecuteDeleteCompany3CommandSequenceDiagram](images/dg-company/ExecuteDeleteCompany3CommandSequenceDiagram.png)
-![GetDeleteCommandResultSequenceDiagram](images/GetDeleteCommandResultSequenceDiagram.png)
+
+<p align="center"><img src="images/GetDeleteCommandResultSequenceDiagram.png" width="80%", height="80%"/></p>
+
 HandleDeleteDisplaySwitchIndexSequenceDiagram can be found [here](#handle-delete-display-switch-index-sequence-diagram)
 
 #### Design considerations
@@ -1017,7 +1019,7 @@ testers are expected to do more *exploratory* testing.
 
 <p align="center">Sequence diagram for HandleDeleteDisplaySwitchIndex</p>
 
-<p id="handle-delete-display-switch-index-sequence-diagram" align="center"><img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png"/></p>
+<p id="handle-delete-display-switch-index-sequence-diagram" align="center"><img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png"  width ="70%" height=70%"/></p>
 
 
 --------------------------------------------------------------------------------------------------------------------
