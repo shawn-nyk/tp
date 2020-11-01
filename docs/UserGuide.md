@@ -622,7 +622,7 @@ Example:
 #### Clearing all entries: `clear`
 Clears all entries from InternHunter.
 
-format: `clear`
+Format: `clear`
 
 <div markdown="span" class="alert alert-warning">
 
