@@ -24,16 +24,12 @@ import static seedu.internhunter.testutil.internship.SampleInternshipItems.FACEB
 import static seedu.internhunter.testutil.internship.SampleInternshipItems.FACEBOOK_SWE;
 import static seedu.internhunter.testutil.internship.SampleInternshipItems.GOLDMAN_BA;
 
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import seedu.internhunter.model.company.CompanyItem;
 import seedu.internhunter.model.item.ItemList;
-import seedu.internhunter.storage.JsonItemListStorage;
-import seedu.internhunter.storage.company.JsonAdaptedCompanyItem;
 
 /**
  * A utility class containing a list of {@code InternshipItem} objects to be used in tests. todo javadocs shawn
@@ -84,10 +80,5 @@ public abstract class SampleCompanyItems {
     private static List<CompanyItem> getCompanyItems() {
         return new ArrayList<>(Arrays.asList(new CompanyItemBuilder(GOOGLE).build(),
                 new CompanyItemBuilder(GOLDMAN).build(), new CompanyItemBuilder(FACEBOOK).build()));
-    }
-
-    public static void main(String[] args) throws IOException {
-        new JsonItemListStorage<>(Paths.get("test.json"), CompanyItem.class, JsonAdaptedCompanyItem.class)
-                .saveItemList(getSampleCompanyList());
     }
 }

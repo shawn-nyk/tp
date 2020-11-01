@@ -2,10 +2,15 @@ package seedu.internhunter.storage.company;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.internhunter.storage.company.JsonAdaptedCompanyItem.MISSING_FIELD_MESSAGE_FORMAT;
+import static seedu.internhunter.storage.internship.JsonAdaptedInternshipItemTest.INVALID_JOB_TITLE;
+import static seedu.internhunter.storage.internship.JsonAdaptedInternshipItemTest.VALID_PERIOD;
+import static seedu.internhunter.storage.internship.JsonAdaptedInternshipItemTest.VALID_REQUIREMENT;
+import static seedu.internhunter.storage.internship.JsonAdaptedInternshipItemTest.VALID_WAGE;
 import static seedu.internhunter.testutil.Assert.assertThrows;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.INVALID_ADDRESS_BLANK;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.INVALID_COMPANY_NAME_GOOGLE_WITH_LEADING_AND_TRAILING_SPACES;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.INVALID_EMAIL_DOMAIN_BEGIN_WITH_PERIOD;
+import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.INVALID_INDUSTRY_EMPTY;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.INVALID_PHONE_ALPHABETS;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_ADDRESS_ONE_ALPHABET;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_COMPANY_NAME_GOLDMAN;
@@ -14,6 +19,8 @@ import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_PH
 import static seedu.internhunter.testutil.company.SampleCompanyItems.FACEBOOK;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.GOLDMAN;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -21,9 +28,12 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import seedu.internhunter.commons.exceptions.IllegalValueException;
+import seedu.internhunter.model.company.Address;
 import seedu.internhunter.model.company.CompanyName;
 import seedu.internhunter.model.company.Email;
+import seedu.internhunter.model.company.Industry;
 import seedu.internhunter.model.company.Phone;
+import seedu.internhunter.model.internship.JobTitle;
 import seedu.internhunter.storage.internship.JsonAdaptedInternshipItem;
 
 public class JsonAdaptedCompanyItemTest {
@@ -100,17 +110,39 @@ public class JsonAdaptedCompanyItemTest {
 
     @Test
     public void toModelType_invalidAddress_throwsIllegalValueException() {
-        JsonAdaptedCompanyItem companyItem = new JsonAdaptedCompanyItem(INVALID_COMPANY_NAME, VALID_PHONE,
-                VALID_EMAIL, VALID_ADDRESS, VALID_INDUSTRIES, VALID_INTERNSHIPS);
+        JsonAdaptedCompanyItem companyItem = new JsonAdaptedCompanyItem(VALID_COMPANY_NAME, VALID_PHONE,
+                VALID_EMAIL, INVALID_ADDRESS, VALID_INDUSTRIES, VALID_INTERNSHIPS);
         String expectedMessage = Address.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, companyItem::toModelType);
     }
 
     @Test
     public void toModelType_nullAddress_throwsIllegalValueException() {
-        JsonAdaptedCompanyItem companyItem = new JsonAdaptedCompanyItem(null, VALID_PHONE,
-                VALID_EMAIL, VALID_ADDRESS, VALID_INDUSTRIES, VALID_INTERNSHIPS);
+        JsonAdaptedCompanyItem companyItem = new JsonAdaptedCompanyItem(VALID_COMPANY_NAME, VALID_PHONE,
+                VALID_EMAIL, null, VALID_INDUSTRIES, VALID_INTERNSHIPS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, companyItem::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidIndustry_throwsIllegalValueException() {
+        Set<JsonAdaptedIndustry> invalidIndustries = new HashSet<>();
+        invalidIndustries.add(new JsonAdaptedIndustry(INVALID_INDUSTRY_EMPTY));
+        JsonAdaptedCompanyItem companyItem = new JsonAdaptedCompanyItem(VALID_COMPANY_NAME, VALID_PHONE,
+                VALID_EMAIL, VALID_ADDRESS, invalidIndustries, VALID_INTERNSHIPS);
+        String expectedMessage = Industry.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, companyItem::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidInternship_throwsIllegalValueException() {
+        JsonAdaptedInternshipItem invalidInternshipItem = new JsonAdaptedInternshipItem(VALID_COMPANY_NAME,
+                INVALID_JOB_TITLE, VALID_WAGE, VALID_PERIOD, VALID_REQUIREMENT);
+        List<JsonAdaptedInternshipItem> invalidInternships = new ArrayList<>();
+        invalidInternships.add(invalidInternshipItem);
+        JsonAdaptedCompanyItem companyItem = new JsonAdaptedCompanyItem(VALID_COMPANY_NAME, VALID_PHONE,
+                VALID_EMAIL, VALID_ADDRESS, VALID_INDUSTRIES, invalidInternships);
+        String expectedMessage = JobTitle.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, companyItem::toModelType);
     }
 
