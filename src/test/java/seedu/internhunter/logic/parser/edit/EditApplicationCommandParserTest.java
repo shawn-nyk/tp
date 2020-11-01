@@ -19,6 +19,7 @@ import static seedu.internhunter.testutil.TypicalIndexes.INDEX_THIRD;
 import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_JUNE_2021;
 import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_JUNE_2022;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.internhunter.commons.core.index.Index;
@@ -33,7 +34,12 @@ public class EditApplicationCommandParserTest {
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditApplicationCommand.MESSAGE_USAGE);
 
-    private final EditApplicationCommandParser parser = new EditApplicationCommandParser();
+    private EditApplicationCommandParser parser;
+
+    @BeforeEach
+    public void setup() {
+        parser = new EditApplicationCommandParser();
+    }
 
     @Test
     public void parse_missingParts_failure() {

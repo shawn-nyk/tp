@@ -86,6 +86,7 @@ public class MainParserTest {
     @Test
     public void parseCommand_match_success() throws Exception {
         assertTrue(parser.parseCommand("match") instanceof MatchCommand);
+        assertTrue(parser.parseCommand("match ") instanceof MatchCommand);
         assertTrue(parser.parseCommand("match 3") instanceof MatchCommand);
     }
 
