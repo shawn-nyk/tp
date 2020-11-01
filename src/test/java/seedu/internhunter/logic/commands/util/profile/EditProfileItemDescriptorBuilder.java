@@ -1,4 +1,4 @@
-package seedu.internhunter.testutil.profile;
+package seedu.internhunter.logic.commands.util.profile;
 
 
 import java.util.Set;

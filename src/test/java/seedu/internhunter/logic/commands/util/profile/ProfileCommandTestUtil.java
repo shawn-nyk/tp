@@ -3,6 +3,9 @@ package seedu.internhunter.logic.commands.util.profile;
 import static seedu.internhunter.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEGORY;
 import static seedu.internhunter.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTOR;
 import static seedu.internhunter.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_TITLE;
+import static seedu.internhunter.model.util.ItemUtil.PROFILE_NAME;
+
+import seedu.internhunter.commons.core.Messages;
 
 public class ProfileCommandTestUtil {
     public static final String VALID_TITLE_HTML = "Learn HTML";
@@ -30,4 +33,9 @@ public class ProfileCommandTestUtil {
     public static final String INVALID_TITLE_DESC = " " + PREFIX_TITLE + "Internship at cre@tive"; // '@' is not a
     public static final String INVALID_CATEGORY_DESC = " " + PREFIX_CATEGORY + "awards";
     public static final String INVALID_DESCRIPTOR_DESC = " " + PREFIX_DESCRIPTOR + "hubby*"; //
+
+    // Invalid profile item index
+    public static final String INVALID_PROFILE_INDEX_MESSAGE =
+            String.format(Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, PROFILE_NAME);
+
 }

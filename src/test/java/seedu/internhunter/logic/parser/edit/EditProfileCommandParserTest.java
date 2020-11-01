@@ -36,7 +36,7 @@ import seedu.internhunter.logic.commands.edit.EditProfileCommand.EditProfileItem
 import seedu.internhunter.model.profile.Descriptor;
 import seedu.internhunter.model.profile.ProfileItemCategory;
 import seedu.internhunter.model.profile.Title;
-import seedu.internhunter.testutil.profile.EditProfileItemDescriptorBuilder;
+import seedu.internhunter.logic.commands.util.profile.EditProfileItemDescriptorBuilder;
 
 public class EditProfileCommandParserTest {
 
