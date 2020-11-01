@@ -27,7 +27,7 @@ public class ApplicationItemBuilder {
     public ApplicationItemBuilder() {
         status = Status.valueOf(DEFAULT_STATUS);
         statusDate = new StatusDate(DateUtil.convertToDateTime(DEFAULT_STATUS_DATE));
-        internshipItem = SampleInternshipItems.GOLDMAN_BA;
+        internshipItem = SampleInternshipItems.SHOPEE_SWE;
     }
 
     /**
