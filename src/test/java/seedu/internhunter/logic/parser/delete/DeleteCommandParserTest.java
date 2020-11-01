@@ -1,11 +1,10 @@
-package seedu.internhunter.logic.parser;
+package seedu.internhunter.logic.parser.delete;
 
 import static seedu.internhunter.logic.parser.CommandParserTestUtil.assertParseFailure;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.internhunter.commons.core.Messages;
-import seedu.internhunter.logic.parser.delete.DeleteCommandParser;
 
 /**
  * As we are only doing white-box testing, our test cases do not cover path variations

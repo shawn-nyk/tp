@@ -99,12 +99,23 @@ public class CommandResult {
                 && isShowHelp == otherCommandResult.isShowHelp
                 && isExit == otherCommandResult.isExit
                 && isSwitchTab == otherCommandResult.isSwitchTab
-                && isSwitchDisplay == otherCommandResult.isSwitchDisplay;
+                && isSwitchDisplay == otherCommandResult.isSwitchDisplay
+                && matchingInternships.equals(otherCommandResult.matchingInternships);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(feedbackToUser, isShowHelp, isExit, isSwitchTab, isSwitchDisplay);
+    }
+
+    @Override
+    public String toString() {
+        return "Feedback message: " + feedbackToUser + "\n"
+                + "isShowHelp: " + isShowHelp + "\n"
+                + "isExit: " + isExit + "\n"
+                + "isSwitchTab: " + isSwitchTab + "\n"
+                + "isSwitchDisplay: " + isSwitchDisplay + "\n"
+                + "matching internships: " + matchingInternships;
     }
 
 }

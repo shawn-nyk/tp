@@ -9,6 +9,7 @@ import static seedu.internhunter.testutil.TypicalIndexes.INDEX_SECOND;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import seedu.internhunter.commons.core.index.Index;
@@ -17,12 +18,13 @@ import seedu.internhunter.model.Model;
 import seedu.internhunter.model.application.ApplicationItem;
 import seedu.internhunter.model.application.ApplicationNameContainsKeyWordsPredicate;
 import seedu.internhunter.model.company.CompanyItem;
+import seedu.internhunter.model.company.CompanyNameContainsKeyWordsPredicate;
 import seedu.internhunter.model.item.ItemList;
 import seedu.internhunter.model.profile.ProfileItem;
 import seedu.internhunter.model.profile.ProfileItemContainsKeywordPredicate;
 
 /**
- * Contains helper methods for testing commands.
+ * Contains helper methods and strings for testing commands.
  */
 public class CommandTestUtil {
 
@@ -38,6 +40,9 @@ public class CommandTestUtil {
     // Invalid indexes
     public static final String INVALID_INDEX_RANDOM_STRING = " " + PREFIX_INDEX + "random";
 
+    public static final String METHOD_SHOULD_NOT_FAIL_MESSAGE = "Execution of method should not fail.";
+    private static final String EXECUTION_SHOULD_NOT_FAIL_MESSAGE = "Execution of command should not fail.";
+
     /**
      * Executes the given {@code command}, confirms that <br>
      * - the returned {@link CommandResult} matches {@code expectedCommandResult} <br>
@@ -50,7 +55,7 @@ public class CommandTestUtil {
             assertEquals(expectedCommandResult, result);
             assertEquals(expectedModel, actualModel);
         } catch (CommandException ce) {
-            throw new AssertionError("Execution of command should not fail.", ce);
+            throw new AssertionError(EXECUTION_SHOULD_NOT_FAIL_MESSAGE, ce);
         }
     }
 
@@ -112,11 +117,26 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredApplicationList().size());
 
         ApplicationItem applicationItem = model.getApplicationItemFromFilteredList(targetIndex.getZeroBased());
-        final String[] splitJobTitle = applicationItem.getJobTitleOfInternshipItem().toString().split("\\s+");
+        final String[] splitJobTitle = applicationItem.getInternshipJobTitleValue().split("\\s+");
         model.updateFilteredApplicationList(
-                new ApplicationNameContainsKeyWordsPredicate(Arrays.asList(splitJobTitle[0])));
+                new ApplicationNameContainsKeyWordsPredicate(Collections.singletonList(splitJobTitle[0])));
 
         assertEquals(1, model.getFilteredApplicationListSize());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the company at the given {@code targetIndex} in the
+     * {@code model}'s company list.
+     */
+    public static void showCompanyAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredCompanyList().size());
+
+        CompanyItem companyItem = model.getCompanyItemFromFilteredList(targetIndex.getZeroBased());
+        final String[] splitJobTitle = companyItem.getCompanyNameValue().split("\\s+");
+        model.updateFilteredCompanyList(
+                new CompanyNameContainsKeyWordsPredicate(Collections.singletonList(splitJobTitle[0])));
+
+        assertEquals(1, model.getFilteredCompanyListSize());
     }
 
 }

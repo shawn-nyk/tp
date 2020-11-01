@@ -31,7 +31,10 @@ import seedu.internhunter.model.application.Status;
 import seedu.internhunter.model.application.StatusDate;
 import seedu.internhunter.model.util.DateUtil;
 
-class AddApplicationCommandParserTest {
+/**
+ * Contains the tests for AddApplicationCommandParser.
+ */
+public class AddApplicationCommandParserTest {
 
     private final AddApplicationCommandParser parser = new AddApplicationCommandParser();
 

@@ -68,6 +68,7 @@ public abstract class SampleCompanyItems {
     }
 
     private static List<CompanyItem> getCompanyItems() {
-        return new ArrayList<>(Arrays.asList(GOOGLE, GOLDMAN, FACEBOOK));
+        return new ArrayList<>(Arrays.asList(new CompanyItemBuilder(GOOGLE).build(),
+                new CompanyItemBuilder(GOLDMAN).build(), new CompanyItemBuilder(FACEBOOK).build()));
     }
 }
