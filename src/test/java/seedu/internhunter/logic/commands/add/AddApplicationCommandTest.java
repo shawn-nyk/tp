@@ -3,8 +3,8 @@ package seedu.internhunter.logic.commands.add;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_ADD_SUCCESS;
+import static seedu.internhunter.logic.commands.CommandTestUtil.METHOD_SHOULD_NOT_FAIL_MESSAGE;
 import static seedu.internhunter.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.internhunter.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.internhunter.logic.commands.CommandTestUtil.showCompanyAtIndex;
@@ -54,7 +54,7 @@ public class AddApplicationCommandTest {
     }
 
     @Test
-    public void execute_validUnfilteredList_addSuccess() {
+    public void execute_validIndexesUnfilteredList_addSuccess() {
         try {
             AddApplicationCommand addApplicationCommand = new AddApplicationCommand(INDEX_THIRD, INDEX_SECOND,
                     Status.APPLIED, VALID_STATUS_DATE_JUNE_2021);
@@ -73,12 +73,12 @@ public class AddApplicationCommandTest {
             assertCommandSuccess(addApplicationCommand, model, commandResult, expectedModel);
 
         } catch (CommandException e) {
-            fail(e.getMessage());
+            throw new AssertionError(METHOD_SHOULD_NOT_FAIL_MESSAGE, e);
         }
     }
 
     @Test
-    public void execute_validFilteredList_success() {
+    public void execute_validIndexesFilteredList_success() {
         try {
             showCompanyAtIndex(model, INDEX_THIRD);
             showCompanyAtIndex(expectedModel, INDEX_THIRD);
@@ -99,20 +99,30 @@ public class AddApplicationCommandTest {
             assertCommandSuccess(addApplicationCommand, model, commandResult, expectedModel);
 
         } catch (CommandException e) {
-            fail(e.getMessage());
+            throw new AssertionError(METHOD_SHOULD_NOT_FAIL_MESSAGE, e);
         }
     }
 
     @Test
     public void execute_validIndexesDuplicateApplication_throwsCommandException() {
-        AddApplicationCommand addApplicationCommand = new AddApplicationCommand(INDEX_SECOND, INDEX_FIRST,
-                Status.APPLIED, VALID_STATUS_DATE_JUNE_2021);
-        assertCommandFailure(addApplicationCommand, model, DUPLICATE_APPLICATION_MESSAGE);
+        try {
+            AddApplicationCommand addApplicationCommand = new AddApplicationCommand(INDEX_THIRD, INDEX_SECOND,
+                    Status.APPLIED, VALID_STATUS_DATE_JUNE_2021);
+            CompanyItem companyItem = model.getCompanyItemFromFilteredList(INDEX_THIRD.getZeroBased());
+            InternshipItem internshipItem = companyItem.getInternship(INDEX_SECOND);
+            ApplicationItem applicationToAdd = new ApplicationItem(internshipItem, Status.APPLIED,
+                    VALID_STATUS_DATE_JUNE_2021);
+
+            model.addApplication(applicationToAdd);
+            assertCommandFailure(addApplicationCommand, model, DUPLICATE_APPLICATION_MESSAGE);
+
+        } catch (CommandException e) {
+            throw new AssertionError(METHOD_SHOULD_NOT_FAIL_MESSAGE, e);
+        }
     }
 
     @Test
     public void execute_invalidCompanyIndexUnfilteredList_throwsCommandException() {
-
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredCompanyListSize() + 1);
         AddApplicationCommand addApplicationCommand = new AddApplicationCommand(outOfBoundIndex, INDEX_FIRST,
                 Status.APPLIED, VALID_STATUS_DATE_JUNE_2021);
@@ -122,7 +132,6 @@ public class AddApplicationCommandTest {
 
     @Test
     public void execute_invalidCompanyIndexFilteredList_throwsCommandException() {
-
         showCompanyAtIndex(model, INDEX_SECOND);
         Index outOfBoundIndex = INDEX_SECOND;
 

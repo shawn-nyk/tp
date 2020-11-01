@@ -15,6 +15,7 @@ import static seedu.internhunter.model.util.ItemUtil.APPLICATION_NAME;
 import static seedu.internhunter.model.util.StatusUtil.APPLIED_KEYWORD;
 import static seedu.internhunter.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.internhunter.testutil.TypicalIndexes.INDEX_SECOND;
+import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_WITH_TIME;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.getSampleApplicationItemList;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -99,26 +100,25 @@ public class EditApplicationCommandTest {
         assertCommandSuccess(editCommand, model, commandResult, expectedModel);
     }
 
-    // TODO: Fix when the edit index issue is resolved
-    // @Test
-    // public void execute_filteredList_success() {
-    //     showApplicationAtIndex(model, INDEX_SECOND);
-    //     ApplicationItem applicationInFilteredList =
-    //             model.getApplicationItemFromFilteredList(INDEX_FIRST.getZeroBased());
-    //     ApplicationItem editedApplication =
-    //             new ApplicationItemBuilder(applicationInFilteredList).withStatusDate(STATUS_DATE_WITH_TIME).build();
-    //     EditApplicationCommand editCommand = new EditApplicationCommand(INDEX_FIRST,
-    //             new EditApplicationDescriptorBuilder().withStatusDate(STATUS_DATE_WITH_TIME).build());
-    //
-    //     String expectedMessage = String.format(MESSAGE_EDIT_SUCCESS, APPLICATION_NAME, editedApplication);
-    //     expectedModel.setApplication(model.getApplicationItemFromFilteredList(INDEX_FIRST.getZeroBased()),
-    //             editedApplication);
-    //     expectedModel.setTabName(TabName.APPLICATION);
-    //     expectedModel.setApplicationViewIndex(INDEX_SECOND);
-    //     CommandResult commandResult = new CommandResult(expectedMessage, false, false, true, true);
-    //
-    //     assertCommandSuccess(editCommand, model, commandResult, expectedModel);
-    // }
+    @Test
+    public void execute_filteredList_success() {
+        showApplicationAtIndex(model, INDEX_SECOND);
+        showApplicationAtIndex(expectedModel, INDEX_SECOND);
+        ApplicationItem applicationInFilteredList =
+                model.getApplicationItemFromFilteredList(INDEX_FIRST.getZeroBased());
+        ApplicationItem editedApplication =
+                new ApplicationItemBuilder(applicationInFilteredList).withStatusDate(STATUS_DATE_WITH_TIME).build();
+        EditApplicationCommand editCommand = new EditApplicationCommand(INDEX_FIRST,
+                new EditApplicationDescriptorBuilder().withStatusDate(STATUS_DATE_WITH_TIME).build());
+
+        String expectedMessage = String.format(MESSAGE_EDIT_SUCCESS, APPLICATION_NAME, editedApplication);
+        expectedModel.setApplication(model.getApplicationItemFromFilteredList(INDEX_FIRST.getZeroBased()),
+                editedApplication);
+        expectedModel.setTabName(TabName.APPLICATION);
+        CommandResult commandResult = new CommandResult(expectedMessage, false, false, true, true);
+
+        assertCommandSuccess(editCommand, model, commandResult, expectedModel);
+    }
 
     @Test
     public void execute_invalidApplicationIndexUnfilteredList_failure() {

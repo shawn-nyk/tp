@@ -24,7 +24,7 @@ import seedu.internhunter.model.profile.ProfileItem;
 import seedu.internhunter.model.profile.ProfileItemContainsKeywordPredicate;
 
 /**
- * Contains helper methods for testing commands.
+ * Contains helper methods and strings for testing commands.
  */
 public class CommandTestUtil {
 
@@ -40,6 +40,9 @@ public class CommandTestUtil {
     // Invalid indexes
     public static final String INVALID_INDEX_RANDOM_STRING = " " + PREFIX_INDEX + "random";
 
+    public static final String METHOD_SHOULD_NOT_FAIL_MESSAGE = "Execution of method should not fail.";
+    private static final String EXECUTION_SHOULD_NOT_FAIL_MESSAGE = "Execution of command should not fail.";
+
     /**
      * Executes the given {@code command}, confirms that <br>
      * - the returned {@link CommandResult} matches {@code expectedCommandResult} <br>
@@ -52,7 +55,7 @@ public class CommandTestUtil {
             assertEquals(expectedCommandResult, result);
             assertEquals(expectedModel, actualModel);
         } catch (CommandException ce) {
-            throw new AssertionError("Execution of command should not fail.", ce);
+            throw new AssertionError(EXECUTION_SHOULD_NOT_FAIL_MESSAGE, ce);
         }
     }
 
