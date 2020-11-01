@@ -2,7 +2,6 @@ package seedu.internhunter.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE_ABRIDGED;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.internhunter.logic.commands.CommandTestUtil.VALID_INDEX_ONE;
@@ -57,24 +56,24 @@ public class MainParserTest {
     // todo: When com, profile has their prefixes and syntax ready
     @Test
     public void parseCommand_edit() throws Exception {
-        // assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + SPACE
+        // assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + " "
         //         + INDEX_FIRST.getOneBased() + JOB_TITLE_DESC_SWE) instanceof EditCommand);
         assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + " "
                 + INDEX_FIRST.getOneBased() + VALID_INDEX_ONE + JOB_TITLE_DESC_SWE) instanceof EditCommand);
         assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " "
                 + INDEX_FIRST.getOneBased() + STATUS_DESC_ACCEPTED) instanceof EditCommand);
-        // assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + SPACE
+        // assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + " "
         //         + INDEX_FIRST.getOneBased() + JOB_TITLE_DESC_SWE) instanceof EditCommand);
     }
 
     // todo: When com, profile has their prefixes and syntax ready
     @Test
     public void parseCommand_view_success() throws Exception {
-        // assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD +  + SPACE
+        // assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " " + COMPANY_ALIAS + " "
         //         + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
         assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " "
                 + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
-        // assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + SPACE + PROFILE_ALIAS + SPACE
+        // assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " " + PROFILE_ALIAS + " "
         //         + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
     }
 
@@ -112,11 +111,16 @@ public class MainParserTest {
 
         @Test
         public void parseCommand_findInvalidTypes_throwsParseException() {
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, () -> parser.parseCommand("find Com"));
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, () -> parser.parseCommand("find App"));
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, () -> parser.parseCommand("find Me"));
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, () -> parser.parseCommand("find Hello"));
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, () -> parser.parseCommand("find 1"));
+            assertThrows(ParseException.class,
+                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("find Com"));
+            assertThrows(ParseException.class,
+                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("find App"));
+            assertThrows(ParseException.class,
+                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("find Me"));
+            assertThrows(ParseException.class,
+                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("find Hello"));
+            assertThrows(ParseException.class,
+                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("find 1"));
         }
 
         @Test
@@ -157,11 +161,16 @@ public class MainParserTest {
 
         @Test
         public void parseCommand_listInvalidTypes_throwsParseException() {
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, () -> parser.parseCommand("list Com"));
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, () -> parser.parseCommand("list App"));
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, () -> parser.parseCommand("list Me"));
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, () -> parser.parseCommand("list hello"));
-            assertThrows(ParseException.class, MESSAGE_INVALID_ITEM_TYPE, () -> parser.parseCommand("list 1"));
+            assertThrows(ParseException.class,
+                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("list Com"));
+            assertThrows(ParseException.class,
+                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("list App"));
+            assertThrows(ParseException.class,
+                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("list Me"));
+            assertThrows(ParseException.class,
+                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("list hello"));
+            assertThrows(ParseException.class,
+                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("list 1"));
         }
 
         @Test

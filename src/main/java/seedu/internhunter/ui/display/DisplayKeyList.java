@@ -11,7 +11,6 @@ import static seedu.internhunter.ui.panel.PanelDisplayKeyword.PERIOD_DISPLAY_NAM
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.PHONE_DISPLAY_NAME;
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.REQUIREMENTS_DISPLAY_NAME;
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.STATUS_DISPLAY_NAME;
-import static seedu.internhunter.ui.panel.PanelDisplayKeyword.TITLE_DISPLAY_NAME;
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.TYPE_DISPLAY_NAME;
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.WAGE_DISPLAY_NAME;
 
@@ -30,14 +29,13 @@ public class DisplayKeyList {
     /**
      * A fix order for the key list to access the company display.
      */
-    public static final String[] COMPANY_DISPLAY_KEY_LIST = {COMPANY_DISPLAY_NAME, PHONE_DISPLAY_NAME,
-        EMAIL_DISPLAY_NAME, ADDRESS_DISPLAY_NAME, INDUSTRIES_DISPLAY_NAME, INTERNSHIPS_DISPLAY_NAME
+    public static final String[] COMPANY_DISPLAY_KEY_LIST = {PHONE_DISPLAY_NAME, EMAIL_DISPLAY_NAME,
+        ADDRESS_DISPLAY_NAME, INDUSTRIES_DISPLAY_NAME, INTERNSHIPS_DISPLAY_NAME
     };
 
     /**
      * A fix order for the key list to access the profile display.
      */
-    public static final String[] PROFILE_DISPLAY_KEY_LIST = {TITLE_DISPLAY_NAME, TYPE_DISPLAY_NAME,
-        DESCRIPTORS_DISPLAY_NAME
+    public static final String[] PROFILE_DISPLAY_KEY_LIST = {TYPE_DISPLAY_NAME, DESCRIPTORS_DISPLAY_NAME
     };
 }
