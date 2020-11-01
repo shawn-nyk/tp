@@ -53,7 +53,7 @@ public abstract class SampleApplicationItems {
         return applicationItemList;
     }
 
-    private static List<ApplicationItem> getApplicationItems() {
+    public static List<ApplicationItem> getApplicationItems() {
         return new ArrayList<>(Arrays.asList(GOLDMAN_OFFERED, SHOPEE_OFFERED, LAZADA_REJECTED));
     }
 }
