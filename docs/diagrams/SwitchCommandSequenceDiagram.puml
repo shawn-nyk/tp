@@ -57,6 +57,6 @@ ref over SwitchCommand, CommandUtil, Model : execute switch me command
 SwitchCommand --> LogicManager : result
 deactivate SwitchCommand
 
-[<--LogicManager
+[<--LogicManager : result
 deactivate LogicManager
 @enduml

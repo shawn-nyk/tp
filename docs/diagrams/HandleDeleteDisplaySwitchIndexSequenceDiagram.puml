@@ -23,10 +23,10 @@ alt current tab at company tab
     deactivate ViewManager
     Model --> CommandUtil : companyIndex
     deactivate Model
-    CommandUtil -> CommandUtil : handleViewIndex(model::setCompanyViewIndex, currentIndex, newIndex)
+    CommandUtil -> CommandUtil : check if set company view index to new Index
     opt current index greater than new index
         opt current index - 1  > 0
-            CommandUtil -> Model : setCompanyViewIndex(Index.fromOneBased(currentIndex.getOneBased() - 1))
+            CommandUtil -> Model : setCompanyViewIndex(new index)
             activate Model
             Model -> ViewManager : setCompanyViewIndex(index)
             activate ViewManager
@@ -45,10 +45,10 @@ else current tab at application tab
     deactivate ViewManager
     Model --> CommandUtil : applicationIndex
     deactivate Model
-    CommandUtil -> CommandUtil : handleViewIndex(model::setApplicationViewIndex, currentIndex, newIndex)
+    CommandUtil -> CommandUtil : check if set application view index to new Index
     opt current index greater than new index
         opt current index - 1  > 0
-            CommandUtil -> Model : setApplicationViewIndex(Index.fromOneBased(currentIndex.getOneBased() - 1))
+            CommandUtil -> Model : setApplicationViewIndex(new index)
             activate Model
             Model -> ViewManager : setApplicationViewIndex(index)
             activate ViewManager
@@ -67,10 +67,10 @@ else current tab at profile tab
     deactivate ViewManager
     Model --> CommandUtil : profileIndex
     deactivate Model
-    CommandUtil -> CommandUtil : handleViewIndex(model::setProfileViewIndex, currentIndex, newIndex)
+    CommandUtil -> CommandUtil : check if to set profile view index to new Index
     opt current index greater than new index
         opt current index - 1  > 0
-            CommandUtil -> Model : setProfileViewIndex(Index.fromOneBased(currentIndex.getOneBased() - 1))
+            CommandUtil -> Model : setProfileViewIndex(new index)
             activate Model
             Model -> ViewManager : setProfileViewIndex(index)
             activate ViewManager
