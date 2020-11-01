@@ -47,7 +47,6 @@ public class ViewApplicationCommandTest {
     public void execute_validAndNotCurrentIndexDifferentTabUnfilteredList_success() {
         ViewApplicationCommand viewCommand = new ViewApplicationCommand(INDEX_SECOND);
 
-
         final String messageViewSuccess = String.format(MESSAGE_VIEW_SUCCESS, APPLICATION_NAME, INDEX_SECOND);
         final CommandResult commandResultSuccess = new CommandResult(messageViewSuccess, false, false, true, true);
 
