@@ -16,7 +16,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ### Architecture
 
-<img src="images/ArchitectureDiagram.png" width="450" />
+<img src="images/ArchitectureDiagram.png" />
 
 The ***Architecture Diagram*** given above explains the high-level design of InternHunter. Given below is a quick
 overview of each component. As seen in the diagram, InternHunter follows a multi-layered architecture whereby
@@ -25,7 +25,7 @@ components of lower layers are independent of higher layers. e.g. the `Logic` co
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2021S1-CS2103T-T15-4/tp/tree/master/docs/diagrams) folder.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2021S1-CS2103T-T15-4/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 
 </div>
 
@@ -322,9 +322,10 @@ delete internship commands, i.e. by implementing delete internship command’s i
 
 ### User Profile feature
 
+#### What it is
+
 The user profile feature behaves like a resume for the user to keep track of noteworthy events and milestones in one
-'s professional life. There are three categories of profile items namely: `ACHIEVEMENT`, `SKILL` and `EXPERIENCE
-`.
+'s professional life. There are three categories of profile items namely: `ACHIEVEMENT`, `SKILL` and `EXPERIENCE`.
 
 #### Editing User profile item
 
@@ -334,16 +335,14 @@ specifying the targeted index and at least one field.
 #### Implementation
 
 * The `edit me` command is implemented by the `EditProfileCommandParser` and `EditProfileCommand`.
-* `EditProfileCommandParser#parse` method creates a `EditProfileItemDescriptor` based on the fields of the input
+* `EditProfileCommandParser#parse(...)` method creates a `EditProfileItemDescriptor` based on the fields of the input
  provided by the user. The `EditProfileItemDescriptor` is then used in instantiating the `EditProfileCommand`.
 
-* `EditProfileCommand` implements the `execute()` method from the `Command` abstract class whereby upon execution
-, the method will edit the specified profile item in the model’s profile item.
-
-
+* `EditProfileCommand` implements the `execute(...)` method from the `Command` abstract class whereby upon execution
+, the method will edit the specified profile item in the model’s profile list.
 
 The following sequence diagrams show how the editing profile Item feature works successfully, using the example command 
-`edit me t/HTML`:
+`edit me 1 t/Learn HTML`:
 
 ![EditProfileCommandSequenceDiagramSimplified](images/dg-profile/EditProfileCommandSequenceDiagramSimplified.png)
 
@@ -357,7 +356,7 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
 
 ![ExecuteEditMeCommand](images/dg-profile/ExecuteEditMeCommand.png)
 
-4. The `EditProfileCommand` is executed by `LogicManager` which retrieves the targeted `profileItemToEdit` from the
+4. When `EditProfileCommand` is executed it which retrieves the targeted `profileItemToEdit` from the
  `lastShownList` *(which contains the profile items the user is able to see)* and updates the model with the
   `editedProfileItem` associated with the `EditProfileCommand`.
 5. CommandResult is return to indicate a successful operation.
@@ -971,8 +970,9 @@ Guarantees: User will get directions to the user guide
 * Should work on any mainstream OS as long as it has Java 11 or above installed.
 * Should work on both 32-bit and 64-bit environment.
 * Should be for a single user i.e. (not a multi-user product).
+* Should respond to commands within 2 seconds.
 * The data should be stored locally and should be in a human editable text file.
-* InternHunter should work without requiring an installer.
+* Should work without requiring an installer.
 * Should only use third-party frameworks or libraries which are free, open-source and have permissive license term and 
 do not require installation by user of the software.
 * A user with above average typing speed for regular English text should be able to accomplish most of the tasks faster 
