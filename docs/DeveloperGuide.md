@@ -439,7 +439,7 @@ This is how the `CommandUtil#getCommandResult(...)` method works upon execution:
  2a. If both the tabs are the same, a `CommandResult` with a same tab message is return. <br/>
  2b. If both the tabs are different, we will change the tab to the input's tab name via `Model#setTabName(...)`. A `CommandResult` with a success message is return.
 
-<p align="center">The process of how <code>getCommandResult</code>.</p>
+<p align="center">The process of how <code>getCommandResult</code> is being generated.</p>
 
 <p align="center"><img src="images/GetCommandResultSequenceDiagram.png" width="95%" height="95%"/></p>
 
@@ -1016,6 +1016,197 @@ testers are expected to do more *exploratory* testing.
 
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
+       
+1. Shutting down
+   1. Quit the app by typing `exit` <br>
+      Expected: A Exit pop-out dialog will confirm the intention to exit InternHunter. For all users, you can use `tab` on keyboard to navigate. For **MacOS** users, use `spacebar` to confirm the exit, while the **rest** can use `enter` to confirm the exit.
+
+
+#### Note
+
+* If an item exist before in InternHunter, a duplicate error message will be shown.
+* If the command relating to a certain item type is executed on other tab, InternHunter will automatically switch the tab to correct tab. i.e  executing `add com` commands on application tab will bring the tab state of InternHunter from application tab to company tab.
+* When doing `add`, `edit`, the right display will automatically adjust and reflect the recently executed command.
+
+#### Adding a company
+
+1. Adding a company called garena with its non-optional relevant fields such as address being 201 Victoria St, email being GarenaHires@garena.com and phone number being 65093545
+
+   1. Prerequisites: Garena not already added in Internhunter.
+
+   1. Test case: `add com n/Garena a/201 Victoria St e/GarenaHires@garena.com p/65093545`  <br>
+      Expected: A card displaying information of the company is added. The right display will show full information of the company added.
+      
+   1. Test case: `add com n/Google a/101 Tampines St e/GoogleHires@google.com p/62343434 t/Cloud Computing t/Artificial Intelligence` <br>
+      Expected: The difference compared to the above test case, this adds some tags to the card which will show both `Cloud Computing` and `Artificial Intelligence`.
+   
+   1. Test case: `add com n/Facebook a/301 Raffles St e/FacebookHires@fb.com`  <br>
+      Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+      
+#### Adding an internship
+
+1. Adding an internship with Job title Machine Learning Engineer.
+
+   1. Prerequisites: A company have to exist first, and add it to the company via a valid index.
+   
+   1. Test case: `add int 1 j/Machine Learning Engineer` <br>
+   Expected: In the right display, the information of the internship will be shown.
+  
+   1. Test case: `add int 1` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+
+#### Adding an application
+
+1. Adding an application is simulating applying for an application.
+
+   1. Prerequisites: An internship must exist first before you can apply for it.
+   
+   1. Test case: `add app 1 i/1 d/24-12-20 s/interview`
+   Expected: A card displaying information of this application is added. There will be a status showing as **interview**. The date will be shown as 24 dec and the year is taken to be from year 2000-2099(Note that the date have to be in the future). 
+   
+   1. Test case: `add app 1 i/2` (ensure that you have a second internship first)
+   Expected: Similar to the above test case, however the status will be shown as the default test status **applied**. The date will be today's date and the time will be taken to be 2359.
+   
+   1. Test case: `add app 1` <br>
+      Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+      
+#### Adding a profile item      
+
+1. Adding a skill/experience/achievement set into our profile list.
+
+   1. Prerequisites: This particular skill set should not be already added in InternHunter.
+   
+   1. Test case: `add me c/skill t/React Native d/Created a mini MOBA game`
+   Expected: A card displaying information of this profile item is added. There will be a circular colorful icon on the right of the card that will represent skills.
+   
+   1. Test case: `add me c/achievement t/Hackathon d/1st place`
+   Expected: Similar to the above test case, instead of a circular colorful icon, there will be a trophy representing achievement.
+   
+   1. Test case: `add me c/experience t/Interned at google d/Worked as a frontend developer`
+   Expected: Similar to both the above test case, instead, there will be a clipboard icon to represent experience.
+   
+   1. Test case: `add me`
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+#### Editing a company
+
+1. Editing some fields in company.
+   
+   1. Prerequisites: The company must exist and access via a valid Index.
+   
+   1. Test case: `edit com 1 t/Frontend developer t/Backend developer t/Fullstack developer`
+   Expected: The tags that are in the blue box will be changed to Frontend developer, Backend developer, Fullstack developer.
+   
+   1. Test case: `edit com 1 p/91910808`
+   Expected: The phone number of the company will be changed. It is visible on both the card and the right display.
+   
+   1. Test case: `edit com 1 t/`
+   Expected: Removes all the tags for this card.
+   
+   1. Test case: `edit com 1`
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+  
+#### Editing an internship
+
+1. Editing some fields in internship.
+
+   1. Prerequisites: The internship must exist and access via a valid Index.
+   
+   1. Test case: `edit int 1 i/1 r/Java r/Python`
+   Expected: The 1st internship at the first company will have the requirement java and python. Note that it overides any existing requirements in that internship. (Note that if an application for this internship exist, these changes will be reflected as a tags in blue boxes on the card in the application tab)
+   
+   1. Test case: `edit int 1 i/2 r/React native`
+   Expected: The 2nd internship at the first company will have the requirement React native. Similarly to the above test case, any existing requirements in that internship will be overidden.
+   
+   1. Test case: `edit int 1`
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+
+#### Editing an application
+
+1. Editing some fields in application.
+
+   1. Prerequisites: The application must exist and access via a valid Index.
+   
+   1. Test case: `edit app 1 s/accepted`
+   Expected: The status that was on the card will be changed into a green status with the word accepted.
+   
+   1. Test case: `edit app`
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+#### Editing a profile item
+
+1. Editing some fields in the profile item.
+
+   1. Prerequisites: The profile item must exist and access via a valid Index.
+   
+   1. Test case: `edit me 1 c/achievement t/Hackathon d/2nd place`
+   Expected: The image on the card will be changed into a trophy with the title being Hackathon.
+   
+   1. Test case: `edit me`
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+#### Deleting a company
+
+#### Deleting an internship
+
+#### Deleting an application
+
+#### Deleting a profile item
+
+#### Viewing a company
+
+#### Viewing an application
+
+#### View a profile Item
+
+#### Finding company/companies
+
+#### Listing out all company/companies
+
+#### Finding application(s)
+
+#### Listing out all application(s)
+
+#### Finding profile item(s)
+
+#### Listing out all profile item(s)
+
+#### Matching skills to job requirements
+
+#### Switching of tabs
+
+#### Viewing help
+
+1. Viewing help
+   1. Test case: `help`
+   Expected: Help window appears with InternHunter's user guide url.
+
+#### Clearing all the data in the app
+
+1. Clearing all existing data in InternHunter.
+   1. Prerequisites: Some data has been added to Modulo.
+   
+   1. Test case: `clear`
+   Expected: All data cleared from all tabs.
+
+#### Saving the data
+
+1. Dealing with corrupted data files
+
+   1. Corrupt the current save file under ./data/. Edit the json with some random characters that make the JSON format unreadable. Alternatively, you could go to `profileitemlist.json` and add `-` to descriptors.
+
+   1. Double-click the jar file
+   Expected: Shows the GUI with no data.
+
+   1. Delete the current save file under ./data/.
+
+   1. Double-click the jar file
+   Expected: Shows the GUI with no data.
+
+
 
 ### Appendix G: Sequence Diagrams
 
