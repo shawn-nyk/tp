@@ -602,9 +602,11 @@ the list of matching internships.
  5b. Otherwise, the showing matching internships message will be passed to the `CommandResult`. This internship list
  will be passed into `CommandResult#setMatchingInternships(...)` method for display in the Ui. <br/>
 
-The following sequence diagram show how the match command works:
+The following sequence diagrams show how the match command works:
 
-![MatchCommandClassDiagram](images/MatchCommandSequenceDiagram.png)
+<p align="center"><img src="images/MatchCommandSequenceDiagram.png" width="100%" height="100%"/></p>
+
+<p align="center"><img src="images/MatchExecutionSequenceDiagram.png" width="100%" height="100%"/></p>
 
 #### Design considerations
 
