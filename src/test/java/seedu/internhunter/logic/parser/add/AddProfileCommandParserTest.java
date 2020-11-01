@@ -13,12 +13,12 @@ import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestU
 import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.INVALID_TITLE_DESC;
 import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.TITLE_DESC_COMPETITION;
 import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.TITLE_DESC_INTERNSHIP;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_CATEGORY_ACHIEVEMENT;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_DESCRIPTOR_IMPLEMENT;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_DESCRIPTOR_LEARN;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_TITLE_COMPETITION;
 import static seedu.internhunter.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.internhunter.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_CATEGORY_ACHIEVEMENT_INPUT;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_IMPLEMENT;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_LEARN;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_COMPETITION;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.BYTEDANCE_INTERN;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.ORBITAL_ACHIEVEMENT;
 
@@ -80,12 +80,12 @@ class AddProfileCommandParserTest {
 
         // missing category prefix
         assertParseFailure(parser,
-                TITLE_DESC_COMPETITION + VALID_CATEGORY_ACHIEVEMENT + DESCRIPTOR_DESC_LEARN,
+                TITLE_DESC_COMPETITION + VALID_CATEGORY_ACHIEVEMENT_INPUT + DESCRIPTOR_DESC_LEARN,
                 expectedMessage);
 
         // both prefixes missing
         assertParseFailure(parser,
-                VALID_TITLE_COMPETITION + VALID_CATEGORY_ACHIEVEMENT + VALID_DESCRIPTOR_LEARN,
+                VALID_TITLE_COMPETITION + VALID_CATEGORY_ACHIEVEMENT_INPUT + VALID_DESCRIPTOR_LEARN,
                 expectedMessage);
     }
 

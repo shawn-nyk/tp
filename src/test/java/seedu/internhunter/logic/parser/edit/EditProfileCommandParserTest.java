@@ -12,20 +12,20 @@ import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestU
 import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.INVALID_TITLE_DESC;
 import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.TITLE_DESC_COMPETITION;
 import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.TITLE_DESC_INTERNSHIP;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_CATEGORY_ACHIEVEMENT;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_CATEGORY_EXPERIENCE;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_CATEGORY_SKILL;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_DESCRIPTOR_IMPLEMENT;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_DESCRIPTOR_LEARN;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_TITLE_COMPETITION;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_TITLE_HTML;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_TITLE_INTERNSHIP;
 import static seedu.internhunter.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.internhunter.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.internhunter.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTOR;
 import static seedu.internhunter.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.internhunter.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.internhunter.testutil.TypicalIndexes.INDEX_THIRD;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_CATEGORY_ACHIEVEMENT;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_CATEGORY_EXPERIENCE;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_CATEGORY_SKILL;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_IMPLEMENT;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_LEARN;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_COMPETITION;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_HTML;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_INTERNSHIP;
 
 import org.junit.jupiter.api.Test;
 
@@ -33,10 +33,10 @@ import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.logic.commands.edit.EditCommand;
 import seedu.internhunter.logic.commands.edit.EditProfileCommand;
 import seedu.internhunter.logic.commands.edit.EditProfileCommand.EditProfileItemDescriptor;
+import seedu.internhunter.logic.commands.util.profile.EditProfileItemDescriptorBuilder;
 import seedu.internhunter.model.profile.Descriptor;
 import seedu.internhunter.model.profile.ProfileItemCategory;
 import seedu.internhunter.model.profile.Title;
-import seedu.internhunter.logic.commands.util.profile.EditProfileItemDescriptorBuilder;
 
 public class EditProfileCommandParserTest {
 
@@ -139,6 +139,7 @@ public class EditProfileCommandParserTest {
         String userInput = targetIndex.getOneBased() + TITLE_DESC_COMPETITION;
         EditProfileItemDescriptor descriptor =
                 new EditProfileItemDescriptorBuilder().withTitle(VALID_TITLE_COMPETITION).build();
+
         EditProfileCommand expectedCommand = new EditProfileCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 

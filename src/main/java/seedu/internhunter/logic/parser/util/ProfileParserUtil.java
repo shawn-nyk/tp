@@ -43,11 +43,11 @@ public class ProfileParserUtil {
     public static ProfileItemCategory parseCategory(String category) throws ParseException {
         requireNonNull(category);
         String trimmedCategory = category.trim();
-
-        if (!ProfileItemCategory.isValidProfileItemCategory(trimmedCategory)) {
+        String trimmedUpperCaseCategory = trimmedCategory.toUpperCase();
+        if (!ProfileItemCategory.isValidProfileItemCategory(trimmedUpperCaseCategory)) {
             throw new ParseException(ProfileItemCategory.MESSAGE_CONSTRAINTS);
         }
-        return ProfileItemCategory.valueOf(trimmedCategory.toUpperCase());
+        return ProfileItemCategory.valueOf(trimmedUpperCaseCategory);
     }
 
     /**

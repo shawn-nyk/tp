@@ -1,6 +1,5 @@
 package seedu.internhunter.logic.parser.delete;
 
-import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_INDEX;
 import static seedu.internhunter.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.internhunter.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -20,6 +19,6 @@ public class DeleteProfileCommandParserTest {
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_INVALID_INDEX));
+        assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_INDEX));
     }
 }
