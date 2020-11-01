@@ -8,20 +8,20 @@ skinparam classBackgroundColor LOGIC_COLOR
 skinparam defaultFontColor #DDDDDD
 
 class MatchCommand {
-    +execute(model: Model): CommandResult
-    -getSkillList(profileItemList : List<ProfileItem>): List<String>
-    -getInternshipList(companyItemList : List<CompanyItem>): List<InternshipItem>
-    -getMatchingInternships(internshipItemList : List<InternshipItem>, skillList : List<String>): List<InternshipItem>
-    -getMatchingInternshipsCommandResult(matchingInternships : List<InternshipItem>): CommandResult
+    +execute(model: Model) : CommandResult
+    -getSkillList(profileItemList : List<ProfileItem>) : List<String>
+    -getInternshipList(companyItemList : List<CompanyItem>) : List<InternshipItem>
+    -getMatchingInternships(internshipItemList : List<InternshipItem>, skillList : List<String>) : List<InternshipItem>
+    -getMatchingInternshipsCommandResult(matchingInternships : List<InternshipItem>) : CommandResult
 }
 
 class "ABSTRACT\nCommand" as Command {
-    +execute(model: Model): CommandResult
+    +execute(model: Model) : CommandResult
 }
 
 class Model <<interface>> {
-    +getProfileItemList(): ObservableList<ProfileItem>
-    +getCompanyItemList(): ObservableList<CompanyItem>
+    +getProfileItemList() : ObservableList<ProfileItem>
+    +getCompanyItemList() : ObservableList<CompanyItem>
 }
 
 Command <|-- MatchCommand

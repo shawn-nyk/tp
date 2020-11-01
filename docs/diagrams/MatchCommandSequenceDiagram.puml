@@ -5,14 +5,9 @@ box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":MainParser" as MainParser LOGIC_COLOR
 participant "m:MatchCommand" as MatchCommand LOGIC_COLOR
-participant "r:CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 autoactivate on
-
-box Model MODEL_COLOR_T1
-participant ":Model" as Model MODEL_COLOR
-end box
 
 [-> LogicManager : execute("match")
 
@@ -27,7 +22,7 @@ MainParser --> LogicManager : m
 
 LogicManager -> MatchCommand : execute()
 
-ref over MatchCommand, CommandResult, Model : execute match command
+ref over MatchCommand : execute match command
 
 MatchCommand --> LogicManager : r
 
