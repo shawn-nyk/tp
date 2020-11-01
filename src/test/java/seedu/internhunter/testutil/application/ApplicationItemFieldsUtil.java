@@ -1,5 +1,8 @@
 package seedu.internhunter.testutil.application;
 
+import seedu.internhunter.model.application.StatusDate;
+import seedu.internhunter.model.util.DateUtil;
+
 /**
  * Contains fields in the ApplicationItem class.
  */
@@ -28,5 +31,13 @@ public class ApplicationItemFieldsUtil {
     // Invalid date formats
     public static final String BLANK_STATUS_DATE = "";
     public static final String INVALID_STATUS_DATE = "12-12-2021";
+
+    // Valid status date objects
+    public static final StatusDate VALID_STATUS_DATE_JUNE_2021 =
+            new StatusDate(DateUtil.convertToDateTime(STATUS_DATE_JUNE_2021));
+    public static final StatusDate VALID_STATUS_DATE_MAY_2021 =
+            new StatusDate(DateUtil.convertToDateTime(STATUS_DATE_MAY_2021));
+    public static final StatusDate VALID_STATUS_DATE_JUNE_2022 =
+            new StatusDate(DateUtil.convertToDateTime(STATUS_DATE_JUNE_2022));
 
 }
