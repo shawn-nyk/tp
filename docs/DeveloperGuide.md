@@ -117,7 +117,7 @@ tabs or displaying the matching internships window to the user.
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete app 1")`
 API call.
 
-![Interactions Inside the Logic Component for the `delete app 1` Command](images/DeleteSequenceDiagram.png)
+![Interactions Inside the Logic Component for the `delete app 1` Command](images/DeleteSequenceDiagram1.png)
 
 ### Model component
 
@@ -601,9 +601,11 @@ the list of matching internships.
  5b. Otherwise, the showing matching internships message will be passed to the `CommandResult`. This internship list
  will be passed into `CommandResult#setMatchingInternships(...)` method for display in the Ui. <br/>
 
-The following sequence diagram show how the match command works:
+The following sequence diagrams show how the match command works:
 
-![MatchCommandClassDiagram](images/MatchCommandSequenceDiagram.png)
+<p align="center"><img src="images/MatchCommandSequenceDiagram1.png" width="65%" height="65%"/></p>
+
+<p align="center"><img src="images/MatchExecutionSequenceDiagram.png" width="65%" height="65%"/></p>
 
 #### Design considerations
 
