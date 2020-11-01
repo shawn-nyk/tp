@@ -70,16 +70,17 @@ public class EditApplicationCommandParserTest {
 
     @Test
     public void parse_invalidFields_failure() {
-        assertParseFailure(parser, "1" + INVALID_STATUS_DESC, Status.MESSAGE_CONSTRAINTS); // invalid status
-        assertParseFailure(parser, "1" + INVALID_STATUS_DATE_DESC, StatusDate.MESSAGE_CONSTRAINTS); // invalid status
-        // date
+        assertParseFailure(parser,
+                INDEX_FIRST.getOneBased() + INVALID_STATUS_DESC, Status.MESSAGE_CONSTRAINTS); // invalid status
+        assertParseFailure(parser, INDEX_FIRST.getOneBased()
+                + INVALID_STATUS_DATE_DESC, StatusDate.MESSAGE_CONSTRAINTS); // invalid status date
 
         // invalid status date followed by valid email
-        assertParseFailure(parser, "1" + INVALID_STATUS_DATE_DESC + STATUS_DESC_ACCEPTED,
+        assertParseFailure(parser, INDEX_FIRST.getOneBased() + INVALID_STATUS_DATE_DESC + STATUS_DESC_ACCEPTED,
                 StatusDate.MESSAGE_CONSTRAINTS);
 
         // Invalid status and status date, but only the status is captured
-        assertParseFailure(parser, "1" + INVALID_STATUS_DATE_DESC + INVALID_STATUS_DESC,
+        assertParseFailure(parser, INDEX_FIRST.getOneBased() + INVALID_STATUS_DATE_DESC + INVALID_STATUS_DESC,
                 Status.MESSAGE_CONSTRAINTS);
     }
 
@@ -87,7 +88,7 @@ public class EditApplicationCommandParserTest {
     public void parse_validFieldFollowedByInvalidField_failure() {
         // valid status date followed by invalid status date. The test case for invalid status date followed by valid
         // status date is tested at {@code parse_invalidFieldFollowedByValidField_success()}
-        assertParseFailure(parser, "1" + STATUS_DESC_ACCEPTED + INVALID_STATUS_DATE_DESC,
+        assertParseFailure(parser, INDEX_FIRST.getOneBased() + STATUS_DESC_ACCEPTED + INVALID_STATUS_DATE_DESC,
                 StatusDate.MESSAGE_CONSTRAINTS);
     }
 

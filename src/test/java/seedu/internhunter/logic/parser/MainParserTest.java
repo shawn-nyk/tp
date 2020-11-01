@@ -5,10 +5,13 @@ import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_COMMAND_F
 import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE_ABRIDGED;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.internhunter.logic.commands.CommandTestUtil.VALID_INDEX_ONE;
-import static seedu.internhunter.logic.commands.util.application.ApplicationCommandTestUtil.APPLICATION_ALIAS_DESC;
 import static seedu.internhunter.logic.commands.util.application.ApplicationCommandTestUtil.STATUS_DESC_ACCEPTED;
-import static seedu.internhunter.logic.commands.util.internship.InternshipCommandTestUtil.INTERNSHIP_ALIAS_DESC;
 import static seedu.internhunter.logic.commands.util.internship.InternshipCommandTestUtil.JOB_TITLE_DESC_SWE;
+import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.TITLE_DESC_INTERNSHIP;
+import static seedu.internhunter.model.util.ItemUtil.APPLICATION_ALIAS;
+import static seedu.internhunter.model.util.ItemUtil.COMPANY_ALIAS;
+import static seedu.internhunter.model.util.ItemUtil.INTERNSHIP_ALIAS;
+import static seedu.internhunter.model.util.ItemUtil.PROFILE_ALIAS;
 import static seedu.internhunter.testutil.Assert.assertThrows;
 import static seedu.internhunter.testutil.TypicalIndexes.INDEX_FIRST;
 
@@ -53,28 +56,27 @@ public class MainParserTest {
     //     assertEquals(new DeleteCommand(INDEX_FIRST), command);
     // }
 
-    // todo: When com, profile has their prefixes and syntax ready
+    // todo: When com has their prefixes ready
     @Test
     public void parseCommand_edit() throws Exception {
-        // assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + " "
-        //         + INDEX_FIRST.getOneBased() + JOB_TITLE_DESC_SWE) instanceof EditCommand);
-        assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + " "
+        // assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + " " + COMPANY_ALIAS + " "
+        //         + INDEX_FIRST.getOneBased() + STATUS_DESC_ACCEPTED) instanceof EditCommand);
+        assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + " " + INTERNSHIP_ALIAS + " "
                 + INDEX_FIRST.getOneBased() + VALID_INDEX_ONE + JOB_TITLE_DESC_SWE) instanceof EditCommand);
-        assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " "
+        assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + " " + APPLICATION_ALIAS + " "
                 + INDEX_FIRST.getOneBased() + STATUS_DESC_ACCEPTED) instanceof EditCommand);
-        // assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + INTERNSHIP_ALIAS_DESC + " "
-        //         + INDEX_FIRST.getOneBased() + JOB_TITLE_DESC_SWE) instanceof EditCommand);
+        assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + " " + PROFILE_ALIAS + " "
+                + INDEX_FIRST.getOneBased() + TITLE_DESC_INTERNSHIP) instanceof EditCommand);
     }
 
-    // todo: When com, profile has their prefixes and syntax ready
     @Test
     public void parseCommand_view_success() throws Exception {
-        // assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " " + COMPANY_ALIAS + " "
-        //         + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
-        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + APPLICATION_ALIAS_DESC + " "
+        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " " + COMPANY_ALIAS + " "
                 + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
-        // assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " " + PROFILE_ALIAS + " "
-        //         + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
+        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " " + APPLICATION_ALIAS + " "
+                + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
+        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " " + PROFILE_ALIAS + " "
+                + INDEX_FIRST.getOneBased()) instanceof ViewCommand);
     }
 
     @Test
@@ -113,15 +115,15 @@ public class MainParserTest {
         @Test
         public void parseCommand_findInvalidTypes_throwsParseException() {
             assertThrows(ParseException.class,
-                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("find Com"));
+                    MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("find Com"));
             assertThrows(ParseException.class,
-                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("find App"));
+                    MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("find App"));
             assertThrows(ParseException.class,
-                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("find Me"));
+                    MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("find Me"));
             assertThrows(ParseException.class,
-                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("find Hello"));
+                    MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("find Hello"));
             assertThrows(ParseException.class,
-                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("find 1"));
+                    MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("find 1"));
         }
 
         @Test
@@ -163,15 +165,15 @@ public class MainParserTest {
         @Test
         public void parseCommand_listInvalidTypes_throwsParseException() {
             assertThrows(ParseException.class,
-                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("list Com"));
+                    MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("list Com"));
             assertThrows(ParseException.class,
-                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("list App"));
+                    MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("list App"));
             assertThrows(ParseException.class,
-                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("list Me"));
+                    MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("list Me"));
             assertThrows(ParseException.class,
-                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("list hello"));
+                    MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("list hello"));
             assertThrows(ParseException.class,
-                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("list 1"));
+                    MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("list 1"));
         }
 
         @Test
@@ -203,25 +205,25 @@ public class MainParserTest {
         @Test
         public void parseCommand_switchInvalidTypes_throwsParseException() {
             assertThrows(ParseException.class,
-                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("switch hello"));
+                    MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("switch hello"));
             assertThrows(ParseException.class,
-                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("switch 1"));
+                    MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("switch 1"));
             assertThrows(ParseException.class,
-                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("switch Com"));
+                    MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("switch Com"));
             assertThrows(ParseException.class,
-                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("switch App"));
+                    MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("switch App"));
             assertThrows(ParseException.class,
-                MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("switch Me"));
+                    MESSAGE_INVALID_ITEM_TYPE_ABRIDGED, () -> parser.parseCommand("switch Me"));
         }
 
         @Test
         public void parseCommand_switchExcessInput_throwsParseException() {
             assertThrows(ParseException.class,
-                SwitchCommand.EXCESS_MESSAGE, () -> parser.parseCommand("switch com hello"));
+                    SwitchCommand.EXCESS_MESSAGE, () -> parser.parseCommand("switch com hello"));
             assertThrows(ParseException.class,
-                SwitchCommand.EXCESS_MESSAGE, () -> parser.parseCommand("switch app great"));
+                    SwitchCommand.EXCESS_MESSAGE, () -> parser.parseCommand("switch app great"));
             assertThrows(ParseException.class,
-                SwitchCommand.EXCESS_MESSAGE, () -> parser.parseCommand("switch me ok"));
+                    SwitchCommand.EXCESS_MESSAGE, () -> parser.parseCommand("switch me ok"));
         }
     }
 

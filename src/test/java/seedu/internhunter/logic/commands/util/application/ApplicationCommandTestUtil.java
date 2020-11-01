@@ -2,7 +2,6 @@ package seedu.internhunter.logic.commands.util.application;
 
 import static seedu.internhunter.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.internhunter.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
-import static seedu.internhunter.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.internhunter.model.util.ItemUtil.APPLICATION_NAME;
 import static seedu.internhunter.model.util.StatusUtil.ACCEPTED_KEYWORD;
 import static seedu.internhunter.model.util.StatusUtil.REJECTED_KEYWORD;
@@ -14,8 +13,6 @@ import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.
 import seedu.internhunter.commons.core.Messages;
 
 public class ApplicationCommandTestUtil {
-
-    public static final String APPLICATION_ALIAS_DESC = " " + APPLICATION_ALIAS;
 
     // Valid Statuses
     public static final String STATUS_DESC_ACCEPTED = " " + PREFIX_STATUS + ACCEPTED_KEYWORD;
