@@ -19,7 +19,7 @@ alt current tab at company tab
     activate Model
     Model -> ViewManager : getCompanyViewIndex()
     activate ViewManager
-    ViewManager -> Model :  companyIndex
+    ViewManager --> Model :  companyIndex
     deactivate ViewManager
     Model --> CommandUtil : companyIndex
     deactivate Model
@@ -41,7 +41,7 @@ else current tab at application tab
     activate Model
     Model -> ViewManager : getApplicationViewIndex()
     activate ViewManager
-    ViewManager -> Model :  applicationIndex
+    ViewManager --> Model :  applicationIndex
     deactivate ViewManager
     Model --> CommandUtil : applicationIndex
     deactivate Model
@@ -63,7 +63,7 @@ else current tab at profile tab
     activate Model
     Model -> ViewManager : getCompanyViewIndex()
     activate ViewManager
-    ViewManager -> Model :  profileIndex
+    ViewManager --> Model :  profileIndex
     deactivate ViewManager
     Model --> CommandUtil : profileIndex
     deactivate Model
