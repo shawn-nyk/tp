@@ -29,14 +29,14 @@ public class DateUtilTest {
     // DATE_TIME FORMATS
     private static final String VALID_DATE_TIME_ONE = "18-9-21 2240";
     private static final String VALID_DATE_TIME_TWO = "9-09-21 0000";
-    private static final String INVALID_DATE_TIME_ONE = "18-9-21   2240";
-    private static final String INVALID_DATE_TIME_TWO = "9-09-21 00 00";
+    private static final String INVALID_DATE_TIME_ONE = "18-9-20 2240"; // Date in the past
+    private static final String INVALID_DATE_TIME_TWO = "9-09-21 00 00"; // Wrong format
 
     // DATE FORMATS
     private static final String VALID_DATE_ONE = "18-9-21";
     private static final String VALID_DATE_TWO = "9-09-21";
-    private static final String INVALID_DATE_ONE = "20-09-20 ";
-    private static final String INVALID_DATE_TWO = " 9-09-21";
+    private static final String INVALID_DATE_ONE = "20-09-20"; // Date in the past
+    private static final String INVALID_DATE_TWO = " 9-09-21"; // Wrong format
 
     // OUTPUT FORMATS
     private static final String VALID_OUTPUT_FORMAT = "18 Sep 2021 @ 10.40 PM";

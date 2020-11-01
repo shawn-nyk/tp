@@ -12,19 +12,15 @@ import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.
 import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_JUNE_2022;
 import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_MAY_2021;
 import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_WITH_TIME;
+import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.VALID_STATUS_DATE_JUNE_2021;
+import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.VALID_STATUS_DATE_JUNE_2022;
+import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.VALID_STATUS_DATE_MAY_2021;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.internhunter.model.util.DateUtil;
 
 public class StatusDateTest {
-
-    private static final StatusDate VALID_STATUS_DATE_JUNE_2021 =
-            new StatusDate(DateUtil.convertToDateTime(STATUS_DATE_JUNE_2021));
-    private static final StatusDate VALID_STATUS_DATE_MAY_2021 =
-            new StatusDate(DateUtil.convertToDateTime(STATUS_DATE_MAY_2021));
-    private static final StatusDate VALID_STATUS_DATE_JUNE_2022 =
-            new StatusDate(DateUtil.convertToDateTime(STATUS_DATE_JUNE_2022));
 
     @Test
     public void constructor_null_throwsNullPointerException() {
