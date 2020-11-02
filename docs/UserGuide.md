@@ -144,6 +144,7 @@ Symbol | What it means
 -------|--------------
 :information_source: | Important information to take note.
 :bulb: | Extra tip.
+:warning:| Warning.
 `add` | Words that have a grey highlighted background are commands that can be keyed into the command box.
 *italics* | Words in italics represent additional information.
 
@@ -267,8 +268,6 @@ companies in your list.
 Format: `list com`
 
 ### **Internship**
-
-Note: You must be on the **Company** tab in order to execute these commands.
 
 #### Adding an internship: `add int`
 
@@ -628,7 +627,13 @@ Example:
 #### Clearing all entries: `clear`
 Clears all entries from InternHunter.
 
-format: `clear`
+Format: `clear`
+
+<div markdown="span" class="alert alert-warning">
+
+  :warning: **Warning:** `clear` will clear application, company, and profile item lists.
+  
+</div>
 
 Example:
 
