@@ -70,8 +70,7 @@ public class AddCommandParserTest {
     public void parse_addCommandParserPassingToCorrectParser_false() throws ParseException {
         assertFalse(addCommandParser.parse(VALID_APPLICATION_INPUT) instanceof AddInternshipCommand);
         assertFalse(addCommandParser.parse(VALID_APPLICATION_INPUT) instanceof AddCompanyCommand);
-        assertFalse(addCommandParser.parse(VALID_APPLICATION_INPUT) instanceof AddInternshipCommand);
-
+        assertFalse(addCommandParser.parse(VALID_APPLICATION_INPUT) instanceof AddProfileCommand);
 
         assertFalse(addCommandParser.parse(VALID_PROFILE_INPUT) instanceof AddCompanyCommand);
         assertFalse(addCommandParser.parse(VALID_PROFILE_INPUT) instanceof AddInternshipCommand);
