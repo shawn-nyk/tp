@@ -603,9 +603,9 @@ the list of matching internships.
 
 The following sequence diagrams show how the match command works:
 
-<p align="center"><img src="images/MatchCommandSequenceDiagram1.png" width="65%" height="65%"/></p>
+<p align="center"><img src="images/MatchCommandSequenceDiagram1.png" width="72%" height="72%"/></p>
 
-<p align="center"><img src="images/MatchExecutionSequenceDiagram.png" width="65%" height="65%"/></p>
+<p align="center"><img src="images/MatchExecutionSequenceDiagram.png" width="72%" height="72%"/></p>
 
 #### Design considerations
 
