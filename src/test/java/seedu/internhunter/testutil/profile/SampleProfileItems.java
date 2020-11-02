@@ -87,7 +87,7 @@ public abstract class SampleProfileItems {
         return profileItemList;
     }
 
-    private static List<ProfileItem> getProfileItems() {
+    public static List<ProfileItem> getProfileItems() {
         return new ArrayList<>(Arrays.asList(HTML_SKILL, GOVTECH_EXPERIENCE, NUS_MODS_EXPERIENCE,
                 MS_HACKATHON_ACHIEVEMENT));
     }
