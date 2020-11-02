@@ -54,7 +54,9 @@ public class ProfileDisplay extends InformationDisplay<ProfileItem> {
     /**
      * Factory method that creates and displays the particular profile item's information at that index.
      *
+     * @param profileItems The list of profile items.
      * @param index The Index of the display to be displayed.
+     * @param primaryStage The stage in which this display should show.
      * @return An Optional containing the display information of the profile at that particular Index.
      */
     public static Optional<InformationDisplay<? extends Item>> getProfileDisplay(

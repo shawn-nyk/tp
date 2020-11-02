@@ -13,7 +13,7 @@ end box
 
 mainframe sd get delete command result
 
-[-> CommandUtil : getCommandResult(model, deleteSuccessMessage, currentTabName, TabName.COMPANY, targetIndex)
+[-> CommandUtil : getCommandResult(...)
 activate CommandUtil
 
 CommandUtil -> Model : getTabName()
@@ -25,7 +25,7 @@ deactivate TabManager
 Model --> CommandUtil : currentTabName
 deactivate Model
 
-CommandUtil -> CommandUtil : handleDeleteDisplaySwitchIndex(model, changedTabName, newIndex)
+CommandUtil -> CommandUtil : handleDeleteDisplaySwitchIndex(...)
 ref over CommandUtil, CommandUtil : handle delete display switch index
 
 alt different tab
@@ -38,7 +38,7 @@ alt different tab
     Model --> CommandUtil
     deactivate Model
     create CommandResult
-    CommandUtil -> CommandResult : getCommandResult(message, false, false, true, true)
+    CommandUtil -> CommandResult : getCommandResult(...)
     activate CommandResult
     CommandResult --> CommandUtil : cr
     deactivate CommandResult
