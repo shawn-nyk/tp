@@ -2,6 +2,8 @@ package seedu.internhunter.model.profile;
 
 import static seedu.internhunter.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.internhunter.model.util.ItemUtil.PROFILE_NAME;
+import static seedu.internhunter.model.util.ProfileItemUtil.CATEGORY_OUTPUT_NAME;
+import static seedu.internhunter.model.util.ProfileItemUtil.DESCRIPTORS_OUTPUT_NAME;
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.DESCRIPTORS_DISPLAY_NAME;
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.TITLE_DISPLAY_NAME;
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.TYPE_DISPLAY_NAME;
@@ -50,10 +52,6 @@ public class ProfileItem extends Item {
 
     public ProfileItemCategory getCategory() {
         return category;
-    }
-
-    public String getCategoryString() {
-        return category.toString();
     }
 
     /**
@@ -118,10 +116,10 @@ public class ProfileItem extends Item {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle())
-                .append(" Type: ")
+                .append(CATEGORY_OUTPUT_NAME)
                 .append(getCategory())
-                .append(" Descriptors: ");
-        getDescriptors().forEach(builder::append);
+                .append(DESCRIPTORS_OUTPUT_NAME)
+                .append(getDescriptors().isEmpty() ? "-" : getDescriptors());
         return builder.toString();
     }
 

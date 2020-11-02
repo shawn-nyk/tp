@@ -53,6 +53,7 @@ public class EditProfileCommand extends EditCommand {
     private final EditProfileItemDescriptor editProfileItemDescriptor;
 
     /**
+     * Instantiates EditProfileCommand Object.
      * @param index of the profileItem in the filtered profile item list to edit
      * @param editProfileItemDescriptor details to edit the profile item with
      */

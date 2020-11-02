@@ -3,6 +3,7 @@ package seedu.internhunter.storage.profile;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.internhunter.storage.profile.JsonAdaptedProfileItem.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.internhunter.testutil.Assert.assertThrows;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.INVALID_CATEGORY_TYPE;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.HTML_SKILL;
 
 import java.util.HashSet;
@@ -18,7 +19,6 @@ import seedu.internhunter.model.profile.Title;
 
 public class JsonAdaptedProfileItemTest {
     public static final String INVALID_TITLE = "@w350M3";
-    public static final String INVALID_CATEGORY = "PROJECT";
     public static final String INVALID_DESCRIPTOR = "";
 
     public static final String VALID_TITLE = HTML_SKILL.getTitle().toString();
@@ -51,7 +51,7 @@ public class JsonAdaptedProfileItemTest {
     @Test
     public void toModelType_invalidCategory_throwsIllegalValueException() {
         JsonAdaptedProfileItem profileItem = new JsonAdaptedProfileItem(VALID_TITLE,
-                INVALID_CATEGORY, VALID_DESCRIPTOR);
+                INVALID_CATEGORY_TYPE, VALID_DESCRIPTOR);
         String expectedMessage = ProfileItemCategory.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, profileItem::toModelType);
     }
