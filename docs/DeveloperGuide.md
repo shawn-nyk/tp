@@ -1361,7 +1361,7 @@ testers are expected to do more *exploratory* testing.
 #### Clearing all the data in the app
 
 1. Clearing all existing data in InternHunter.
-   1. Prerequisites: Some data has been added to Modulo.
+   1. Prerequisites: Some data has been added to InternHunter.
    
    1. Test case: `clear` <br>
    Expected: All data cleared from all tabs.
