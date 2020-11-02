@@ -3,25 +3,28 @@ package seedu.internhunter.logic.commands.util.profile;
 import static seedu.internhunter.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEGORY;
 import static seedu.internhunter.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTOR;
 import static seedu.internhunter.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_TITLE;
+import static seedu.internhunter.model.util.ItemUtil.PROFILE_NAME;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_CATEGORY_ACHIEVEMENT_INPUT;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_CATEGORY_EXPERIENCE_INPUT;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_CATEGORY_SKILL_INPUT;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_IMPLEMENT;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_LEARN;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_COMPETITION;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_HTML;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_INTERNSHIP;
+
+import seedu.internhunter.commons.core.Messages;
 
 public class ProfileCommandTestUtil {
-    public static final String VALID_TITLE_HTML = "Learn HTML";
-    public static final String VALID_TITLE_INTERNSHIP = "Data Analyst Internship at ByteDance";
-    public static final String VALID_TITLE_COMPETITION = "Winner of Special Recognition in Orbital";
-    public static final String VALID_CATEGORY_SKILL = "skill";
-    public static final String VALID_CATEGORY_EXPERIENCE = "experience";
-    public static final String VALID_CATEGORY_ACHIEVEMENT = "achievement";
-    public static final String VALID_DESCRIPTOR_IMPLEMENT = "Implement automated tool to boost productivity by 15%";
-    public static final String VALID_DESCRIPTOR_LEARN = "Learn how to run a cron job";
 
     // Valid parameters
     public static final String TITLE_DESC_HTML = " " + PREFIX_TITLE + VALID_TITLE_HTML;
     public static final String TITLE_DESC_INTERNSHIP = " " + PREFIX_TITLE + VALID_TITLE_INTERNSHIP;
     public static final String TITLE_DESC_COMPETITION = " " + PREFIX_TITLE + VALID_TITLE_COMPETITION;
 
-    public static final String CATEGORY_DESC_SKILL = " " + PREFIX_CATEGORY + VALID_CATEGORY_SKILL;
-    public static final String CATEGORY_DESC_ACHIEVEMENT = " " + PREFIX_CATEGORY + VALID_CATEGORY_ACHIEVEMENT;
-    public static final String CATEGORY_DESC_EXPERIENCE = " " + PREFIX_CATEGORY + VALID_CATEGORY_EXPERIENCE;
+    public static final String CATEGORY_DESC_SKILL = " " + PREFIX_CATEGORY + VALID_CATEGORY_SKILL_INPUT;
+    public static final String CATEGORY_DESC_ACHIEVEMENT = " " + PREFIX_CATEGORY + VALID_CATEGORY_ACHIEVEMENT_INPUT;
+    public static final String CATEGORY_DESC_EXPERIENCE = " " + PREFIX_CATEGORY + VALID_CATEGORY_EXPERIENCE_INPUT;
 
     public static final String DESCRIPTOR_DESC_IMPLEMENT = " " + PREFIX_DESCRIPTOR + VALID_DESCRIPTOR_IMPLEMENT;
     public static final String DESCRIPTOR_DESC_LEARN = " " + PREFIX_DESCRIPTOR + VALID_DESCRIPTOR_LEARN;
@@ -30,4 +33,9 @@ public class ProfileCommandTestUtil {
     public static final String INVALID_TITLE_DESC = " " + PREFIX_TITLE + "Internship at cre@tive"; // '@' is not a
     public static final String INVALID_CATEGORY_DESC = " " + PREFIX_CATEGORY + "awards";
     public static final String INVALID_DESCRIPTOR_DESC = " " + PREFIX_DESCRIPTOR + "hubby*"; //
+
+    // Invalid profile item index
+    public static final String INVALID_PROFILE_INDEX_MESSAGE =
+            String.format(Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, PROFILE_NAME);
+
 }

@@ -1,10 +1,23 @@
 package seedu.internhunter.testutil.profile;
 
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_CATEGORY_ACHIEVEMENT;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_CATEGORY_EXPERIENCE;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_DESCRIPTOR_LEARN;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_TITLE_COMPETITION;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_TITLE_INTERNSHIP;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_CATEGORY_ACHIEVEMENT;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_CATEGORY_EXPERIENCE;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_CATEGORY_SKILL;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_COMPETITION;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_DEVELOP;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_FIX;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_GOVTECH;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_HTML;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_LEARN;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_SOLVE;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_COMPETITION;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_GOVTECH_INTERNSHIP;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_GRAPHQL;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_HACKATHON;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_HTML;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_INTERNSHIP;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_NUS_MODS;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_PARTICIPATE;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,40 +32,38 @@ import seedu.internhunter.model.profile.ProfileItem;
 public abstract class SampleProfileItems {
 
     public static final ProfileItem HTML_SKILL = new ProfileItemBuilder()
-            .withTitle("HTML")
-            .withCategory("skill")
-            .withDescriptors("Learn to create divs.", "learn to create tables.")
+            .withTitle(VALID_TITLE_HTML)
+            .withCategory(VALID_CATEGORY_SKILL)
+            .withDescriptors(VALID_DESCRIPTOR_HTML)
             .build();
 
     public static final ProfileItem HACKATHON_ACHIEVEMENT = new ProfileItemBuilder()
-            .withTitle("Won second place in Code Jam")
-            .withCategory("achievement")
-            .withDescriptors("Solved the Board Meeting Question.", "Solved the Jungle Struggle question.")
+            .withTitle(VALID_TITLE_COMPETITION)
+            .withCategory(VALID_CATEGORY_ACHIEVEMENT)
+            .withDescriptors(VALID_DESCRIPTOR_COMPETITION)
             .build();
 
     public static final ProfileItem GOVTECH_EXPERIENCE = new ProfileItemBuilder()
-            .withTitle("Internship with Govtech")
-            .withCategory("experience")
-            .withDescriptors("Implemented DevOps solution to speed up automated testing by 50%")
-            .withDescriptors("Developed dashboard to keep track of key performance metrics")
-            .withDescriptors("Build internal tooling for syncing data with remote servers")
+            .withTitle(VALID_TITLE_GOVTECH_INTERNSHIP)
+            .withCategory(VALID_CATEGORY_EXPERIENCE)
+            .withDescriptors(VALID_DESCRIPTOR_GOVTECH, VALID_DESCRIPTOR_DEVELOP)
             .build();
 
     public static final ProfileItem GRAPHQL_SKILL = new ProfileItemBuilder()
-            .withTitle("GraphQL")
-            .withCategory("skill")
+            .withTitle(VALID_TITLE_GRAPHQL)
+            .withCategory(VALID_CATEGORY_SKILL)
             .build();
 
     public static final ProfileItem NUS_MODS_EXPERIENCE = new ProfileItemBuilder()
-            .withTitle("Contribute to NUSMODS")
-            .withCategory("experience")
-            .withDescriptors("Fix UI bugs in Modules View")
+            .withTitle(VALID_TITLE_NUS_MODS)
+            .withCategory(VALID_CATEGORY_EXPERIENCE)
+            .withDescriptors(VALID_DESCRIPTOR_FIX)
             .build();
 
     public static final ProfileItem MS_HACKATHON_ACHIEVEMENT = new ProfileItemBuilder()
-            .withTitle("Participation in MS OpenHack")
-            .withCategory("achievement")
-            .withDescriptors("Solve the Agriculture challenge with satellite imagery")
+            .withTitle(VALID_TITLE_PARTICIPATE)
+            .withCategory(VALID_CATEGORY_ACHIEVEMENT)
+            .withDescriptors(VALID_DESCRIPTOR_SOLVE)
             .build();
 
     // Manually added - ProfileItem's details found in {@code ProfileCommandTestUtil}
@@ -61,7 +72,7 @@ public abstract class SampleProfileItems {
             .withCategory(VALID_CATEGORY_EXPERIENCE).build();
 
     public static final ProfileItem ORBITAL_ACHIEVEMENT = new ProfileItemBuilder()
-            .withTitle(VALID_TITLE_COMPETITION)
+            .withTitle(VALID_TITLE_HACKATHON)
             .withCategory(VALID_CATEGORY_ACHIEVEMENT)
             .withDescriptors(VALID_DESCRIPTOR_LEARN).build();
 

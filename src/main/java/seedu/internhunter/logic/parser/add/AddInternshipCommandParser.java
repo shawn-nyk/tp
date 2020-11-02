@@ -10,7 +10,6 @@ import static seedu.internhunter.logic.parser.util.GeneralParserUtil.argumentsAr
 import static seedu.internhunter.logic.parser.util.GeneralParserUtil.getIndexInPreamble;
 import static seedu.internhunter.logic.parser.util.InternshipParserUtil.parseJobTitle;
 import static seedu.internhunter.logic.parser.util.InternshipParserUtil.parseRequirements;
-import static seedu.internhunter.logic.parser.util.InternshipParserUtil.parseWage;
 
 import java.util.Set;
 
@@ -42,14 +41,13 @@ public class AddInternshipCommandParser implements Parser<AddInternshipCommand> 
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_JOB_TITLE,
                 PREFIX_PERIOD, PREFIX_WAGE, PREFIX_REQUIREMENT);
 
-        // Todo: Wage will be compulsory until its status can be resolved
-        if (!argumentsAreValid(true, argMultimap, PREFIX_JOB_TITLE, PREFIX_WAGE)) {
+        if (!argumentsAreValid(true, argMultimap, PREFIX_JOB_TITLE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddInternshipCommand.MESSAGE_USAGE));
         }
 
         Index companyIndex = getIndexInPreamble(argMultimap);
         JobTitle jobTitle = parseJobTitle(argMultimap.getValue(PREFIX_JOB_TITLE).get());
-        Wage wage = parseWage(argMultimap.getValue(PREFIX_WAGE).get());
+        Wage wage = getWage(argMultimap);
         Period period = getPeriod(argMultimap);
         Set<Requirement> requirements = parseRequirements(argMultimap.getAllValues(PREFIX_REQUIREMENT));
 
@@ -68,6 +66,21 @@ public class AddInternshipCommandParser implements Parser<AddInternshipCommand> 
             return InternshipParserUtil.parsePeriod(argMultimap.getValue(PREFIX_PERIOD).get());
         } else {
             return new Period("-");
+        }
+    }
+
+    /**
+     * Obtains the wage from the user input. Returns default "-" if unspecified.
+     *
+     * @param argMultimap ArgumentMultimap.
+     * @return Period for this application.
+     * @throws ParseException if the given {@code Period} is invalid.
+     */
+    private Wage getWage(ArgumentMultimap argMultimap) throws ParseException {
+        if (argMultimap.getValue(PREFIX_WAGE).isPresent()) {
+            return InternshipParserUtil.parseWage(argMultimap.getValue(PREFIX_WAGE).get());
+        } else {
+            return new Wage("-");
         }
     }
 

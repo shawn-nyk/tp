@@ -2,16 +2,16 @@ package seedu.internhunter.model.profile;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.internhunter.testutil.Assert.assertThrows;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.BLANK_CATEGORY;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.INVALID_CATEGORY_CASING;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.INVALID_CATEGORY_TYPE;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_CATEGORY_ACHIEVEMENT;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_CATEGORY_EXPERIENCE;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_CATEGORY_SKILL;
 
 import org.junit.jupiter.api.Test;
 
 public class ProfileItemCategoryTest {
-    static final String BLANK_CATEGORY = "";
-    static final String VALID_CATEGORY_SKILL = "SKILL";
-    static final String VALID_CATEGORY_ACHIEVEMENT = "ACHIEVEMENT";
-    static final String VALID_CATEGORY_EXPERIENCE = "EXPERIENCE";
-    static final String INVALID_CATEGORY_CASING = "sKiLl";
-    static final String INVALID_CATEGORY = "AWARDS";
 
     @Test
     public void constructor_null_throwsNullPointerException() {
@@ -21,7 +21,7 @@ public class ProfileItemCategoryTest {
     @Test
     public void constructor_invalidStatus_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> ProfileItemCategory.valueOf(BLANK_CATEGORY));
-        assertThrows(IllegalArgumentException.class, () -> ProfileItemCategory.valueOf(INVALID_CATEGORY));
+        assertThrows(IllegalArgumentException.class, () -> ProfileItemCategory.valueOf(INVALID_CATEGORY_TYPE));
         assertThrows(IllegalArgumentException.class, () -> ProfileItemCategory.valueOf(INVALID_CATEGORY_CASING));
     }
 

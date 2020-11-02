@@ -2,17 +2,18 @@ package seedu.internhunter.model.profile;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.internhunter.testutil.Assert.assertThrows;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.INVALID_EMPTY_TITLE;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.INVALID_SPACE_TITLE;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.INVALID_SYMBOL_TITLE;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.INVALID_SYMBOL_WITH_ALPHANUMERIC_TITLE;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.INVALID_TITLE_LEADING_SPACES;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.INVALID_TITLE_WITH_LEADING_AND_TRAILING_SPACES;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_FACEBOOK_INTERNSHIP_LOWERCASE;
 
 import org.junit.jupiter.api.Test;
 
 
 public class TitleTest {
-
-    static final String VALID_TITLE = "Internship at facebook";
-    static final String INVALID_EMPTY_TITLE = "";
-    static final String INVALID_SPACE_TITLE = " ";
-    static final String INVALID_SYMBOL_TITLE = "?";
-    static final String INVALID_TITLE = "C++";
 
     @Test
     public void constructor_null_throwsNullPointerException() {
@@ -21,29 +22,31 @@ public class TitleTest {
 
     @Test
     public void constructor_invalidJobTitle_throwsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> new Title(INVALID_TITLE));
+        assertThrows(IllegalArgumentException.class, () -> new Title(INVALID_EMPTY_TITLE));
         assertThrows(IllegalArgumentException.class, () -> new Title(INVALID_SPACE_TITLE));
         assertThrows(IllegalArgumentException.class, () -> new Title(INVALID_SYMBOL_TITLE));
-        assertThrows(IllegalArgumentException.class, () -> new Title(INVALID_EMPTY_TITLE));
+        assertThrows(IllegalArgumentException.class, () -> new Title(INVALID_SYMBOL_WITH_ALPHANUMERIC_TITLE));
+        assertThrows(IllegalArgumentException.class, () -> new Title(INVALID_TITLE_LEADING_SPACES));
+        assertThrows(IllegalArgumentException.class, () -> new Title(INVALID_TITLE_WITH_LEADING_AND_TRAILING_SPACES));
     }
 
     @Test
     public void toString_validFormats_success() {
-        Title title = new Title(VALID_TITLE);
-        assertEquals(VALID_TITLE, title.toString());
+        Title title = new Title(VALID_TITLE_FACEBOOK_INTERNSHIP_LOWERCASE);
+        assertEquals(VALID_TITLE_FACEBOOK_INTERNSHIP_LOWERCASE, title.toString());
     }
 
     @Test
     public void equals_equalityTest_success() {
-        Title title = new Title(VALID_TITLE);
-        Title titleTwo = new Title(VALID_TITLE);
+        Title title = new Title(VALID_TITLE_FACEBOOK_INTERNSHIP_LOWERCASE);
+        Title titleTwo = new Title(VALID_TITLE_FACEBOOK_INTERNSHIP_LOWERCASE);
         assertEquals(title, titleTwo);
     }
 
     @Test
     public void hashCode_equalityTest_success() {
-        Title title = new Title(VALID_TITLE);
-        Title titleTwo = new Title(VALID_TITLE);
+        Title title = new Title(VALID_TITLE_FACEBOOK_INTERNSHIP_LOWERCASE);
+        Title titleTwo = new Title(VALID_TITLE_FACEBOOK_INTERNSHIP_LOWERCASE);
         assertEquals(title.hashCode(), titleTwo.hashCode());
     }
 }
