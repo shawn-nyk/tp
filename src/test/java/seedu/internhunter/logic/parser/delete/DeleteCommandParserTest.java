@@ -3,7 +3,6 @@ package seedu.internhunter.logic.parser.delete;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.internhunter.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.internhunter.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.internhunter.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.internhunter.model.util.ItemUtil.INTERNSHIP_ALIAS;
@@ -12,16 +11,10 @@ import static seedu.internhunter.model.util.ItemUtil.PROFILE_ALIAS;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.internhunter.commons.core.Messages;
-import seedu.internhunter.logic.commands.add.AddApplicationCommand;
-import seedu.internhunter.logic.commands.add.AddCompanyCommand;
-import seedu.internhunter.logic.commands.add.AddInternshipCommand;
-import seedu.internhunter.logic.commands.add.AddProfileCommand;
 import seedu.internhunter.logic.commands.delete.DeleteApplicationCommand;
 import seedu.internhunter.logic.commands.delete.DeleteCompanyCommand;
 import seedu.internhunter.logic.commands.delete.DeleteInternshipCommand;
 import seedu.internhunter.logic.commands.delete.DeleteProfileCommand;
-import seedu.internhunter.logic.parser.add.AddCommandParser;
 import seedu.internhunter.logic.parser.exceptions.ParseException;
 
 /**
