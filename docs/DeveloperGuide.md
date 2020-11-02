@@ -1150,11 +1150,63 @@ testers are expected to do more *exploratory* testing.
 
 #### Deleting a company
 
+1. Deleting a module according to the index shown on the card.
+
+   1. Prerequisities: The company item must exist and access via a valid Index as indicated on a card.
+   
+   1. Test case `delete com 1`
+   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted company can be seen in the result display. Note that if there is an application that is linked to this company, it will be deleted as well. All the internships in this company will be deleted as well.
+   
+   1. Test case: `delete com 0`
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case:`delete com`
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
 #### Deleting an internship
+
+1. Deleting an internship from a certain company.
+
+   1. Prerequisites: The company item and internship item must exist and both to be access via a valid Index.
+   
+   1. Test case `delete int 1 i/1`
+   Expected: On the right display, it will remove the internship item from the company.
+   
+   1. Test case `delete int 1 i/0`
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case `delete int 1`
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
 #### Deleting an application
 
+1. Deleting an application.
+   
+   1. Prerequisites: The application item must exist and be access via a valid Index.
+   
+   1. Test case `delete app 1`
+   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted application can be seen in the result display.
+   
+   1. Test case `delete app 0`
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case `delete app`
+   Expected: Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
 #### Deleting a profile item
+
+1. Deleting a profile item.
+   
+   1. Prerequisites: The profile item must exist and be access via a valid Index.
+   
+   1. Test case `delete me 1`
+   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted profile can be seen in the result display.
+   
+   1. Test case `delete me 0`
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case `delete app`
+   Expected: Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
 #### Viewing a company
 
@@ -1177,6 +1229,22 @@ testers are expected to do more *exploratory* testing.
 #### Matching skills to job requirements
 
 #### Switching of tabs
+
+1. Switching tabs
+
+  1. Prerequisties: Assuming you are on the company tab.
+  
+  1. Test case: `switch com`
+  Expected: A message will be displayed in the result display to inform you that you are already on the company tab.
+  
+  1. Test case: `switch app`
+  Expected: The top left will show the tab will be at application. A message will be displayed in the result display to inform you that you have switched to application tab. The screen should now display cards that holds application information and the right display will show information of the last know index of the application tab.
+  
+  1. Test case: `switch int`
+  Expected: An error message wil be shown, stating that int is a invalid item type for this case. The command box text will turn red to inform you of the invalid command.
+  
+  1. Test case: `switch`
+  Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
 #### Viewing help
 
