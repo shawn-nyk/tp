@@ -33,8 +33,7 @@ public class AddInternshipCommand extends AddCommand {
             + "Parameters: "
             + "INDEX "
             + PREFIX_JOB_TITLE + "JOB_TITLE "
-            // Todo: Update Wage when its status is resolved.
-            + PREFIX_WAGE + "WAGE "
+            + "[" + PREFIX_WAGE + "WAGE] "
             + "[" + PREFIX_PERIOD + "PERIOD] "
             + "[" + PREFIX_REQUIREMENT + "REQUIREMENT]...\n"
             + "Note: Select a company to add an internship to using INDEX.\n"
