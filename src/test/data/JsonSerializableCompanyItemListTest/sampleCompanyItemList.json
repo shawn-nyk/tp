@@ -25,7 +25,7 @@
           "jobTitle": "Business Analyst",
           "period": "Summer break",
           "wage": "4000",
-          "requirements": []
+          "requirements": ["GraphQL", "R"]
         }
       ]
     },
@@ -57,7 +57,7 @@
           "jobTitle": "Software Engineer",
           "period": "Summer break",
           "wage": "4000",
-          "requirements": []
+          "requirements": ["HTML"]
         }
       ]
     }

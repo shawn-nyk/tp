@@ -49,6 +49,8 @@ public class InternshipItemFieldsUtil {
     public static final String VALID_REQUIREMENT_RN = "React Native";
     public static final String VALID_REQUIREMENT_PYTHON = "Python";
     public static final String VALID_REQUIREMENT_TENSOR = "TensorFlow";
+    public static final String VALID_REQUIREMENT_HTML = "HTML";
+    public static final String VALID_REQUIREMENT_GRAPHQL = "GraphQL";
 
     // Invalid requirements
     public static final String INVALID_REQUIREMENT_EMPTY = "";

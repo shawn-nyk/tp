@@ -95,7 +95,7 @@ public class InternshipItemTest {
 
     @Test
     public void matches_nullityCheck_throwsAssertionError() {
-        assertThrows(AssertionError.class, () -> SHOPEE_SWE.matches(null));
+        assertThrows(NullPointerException.class, () -> SHOPEE_SWE.matches(null));
     }
 
     @Test
@@ -127,7 +127,6 @@ public class InternshipItemTest {
         List<String> skillList = List.of(VALID_REQUIREMENT_PYTHON.toUpperCase());
         assertTrue(LAZADA_DS.matches(skillList));
     }
-
 
     @Test
     public void getItemName_equalityTest_success() {
