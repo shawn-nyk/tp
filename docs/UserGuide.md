@@ -195,8 +195,8 @@ You can then specify what internships the company is offering by using the [inte
 
 :information_source: **Note:**<br>
 * You must create a company before you can create internships that the company offers.
-* Company names are unique - you cannot add multiple companies with the same name (they will be regarded as the same
- company and will not be allowed to exist in the app).
+* Company names are unique - you cannot add multiple companies with the same case-sensitive name (they will be 
+ regarded as the same company and will not be allowed to exist in the app).
 
 </div>
 
