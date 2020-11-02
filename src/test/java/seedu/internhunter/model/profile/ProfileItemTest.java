@@ -4,13 +4,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_CATEGORY_ACHIEVEMENT;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_CATEGORY_SKILL;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_DESCRIPTOR_IMPLEMENT;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_DESCRIPTOR_LEARN;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_TITLE_HTML;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.VALID_TITLE_INTERNSHIP;
+import static seedu.internhunter.model.util.ProfileItemUtil.CATEGORY_OUTPUT_NAME;
+import static seedu.internhunter.model.util.ProfileItemUtil.DESCRIPTORS_OUTPUT_NAME;
 import static seedu.internhunter.testutil.Assert.assertThrows;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_CATEGORY_ACHIEVEMENT;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_CATEGORY_EXPERIENCE;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_CATEGORY_SKILL;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_IMPLEMENT;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_LEARN;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_GOVTECH_INTERNSHIP;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_HTML;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_INTERNSHIP;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.GOVTECH_EXPERIENCE;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.HTML_SKILL;
 
@@ -67,6 +71,8 @@ class ProfileItemTest {
                         .withCategory(VALID_CATEGORY_ACHIEVEMENT).build();
         assertFalse(editedExperience.isSameItem(GOVTECH_EXPERIENCE));
     }
+
+    @Test
     public void equals_true_success() {
         // same object -> returns true
         assertEquals(GOVTECH_EXPERIENCE, GOVTECH_EXPERIENCE);
@@ -101,5 +107,23 @@ class ProfileItemTest {
         editedExperience = new ProfileItemBuilder(GOVTECH_EXPERIENCE)
                 .withDescriptors(VALID_DESCRIPTOR_IMPLEMENT).build();
         assertNotEquals(editedExperience, GOVTECH_EXPERIENCE);
+    }
+
+    @Test
+    public void hashCode_equalityTest_success() {
+        assertEquals(GOVTECH_EXPERIENCE.hashCode(), GOVTECH_EXPERIENCE.hashCode());
+        ProfileItem govtechCopy = new ProfileItemBuilder(GOVTECH_EXPERIENCE).build();
+        assertEquals(GOVTECH_EXPERIENCE.hashCode(), govtechCopy.hashCode());
+    }
+
+    @Test
+    public void toString_nonEmptyIndustriesAndNonEmptyInternships_success() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(VALID_TITLE_GOVTECH_INTERNSHIP)
+                .append(CATEGORY_OUTPUT_NAME)
+                .append(VALID_CATEGORY_EXPERIENCE)
+                .append(DESCRIPTORS_OUTPUT_NAME)
+                .append(GOVTECH_EXPERIENCE.getDescriptors());
+        assertEquals(builder.toString(), GOVTECH_EXPERIENCE.toString());
     }
 }

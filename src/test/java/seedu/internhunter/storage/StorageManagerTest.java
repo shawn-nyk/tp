@@ -3,9 +3,11 @@ package seedu.internhunter.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.getSampleApplicationItemList;
+import static seedu.internhunter.testutil.company.SampleCompanyItems.getSampleCompanyList;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.getSampleProfileItemList;
 
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,6 +25,8 @@ import seedu.internhunter.storage.company.JsonAdaptedCompanyItem;
 import seedu.internhunter.storage.profile.JsonAdaptedProfileItem;
 
 public class StorageManagerTest {
+
+    public static final Path FILE_PATH = Paths.get("src", "test", "data", "StorageManagerTest");
 
     @TempDir
     public Path testFolder;
@@ -72,14 +76,58 @@ public class StorageManagerTest {
          * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
          */
         ItemList<ApplicationItem> original = getSampleApplicationItemList();
-        storageManager.saveApplicationItemList(original);
+        storageManager.saveApplicationItemList(original, storageManager.getApplicationItemListFilePath());
         ReadOnlyItemList<ApplicationItem> retrieved = storageManager.readApplicationItemList().get();
+        assertEquals(original, new ItemList<>(retrieved));
+    }
+
+    @Test
+    public void applicationItemListReadSaveFilePath() throws Exception {
+        /*
+         * Note: This is an integration test that verifies the StorageManager is properly wired to the
+         * {@link JsonItemListStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
+         */
+        ItemList<ApplicationItem> original = getSampleApplicationItemList();
+        storageManager.saveApplicationItemList(original, FILE_PATH);
+        ReadOnlyItemList<ApplicationItem> retrieved = storageManager.readApplicationItemList(FILE_PATH).get();
         assertEquals(original, new ItemList<>(retrieved));
     }
 
     @Test
     public void getApplicationItemListFilePath() {
         assertNotNull(storageManager.getApplicationItemListFilePath());
+    }
+
+    @Test
+    public void companyItemListReadSave() throws Exception {
+        /*
+         * Note: This is an integration test that verifies the StorageManager is properly wired to the
+         * {@link JsonItemListStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
+         */
+        ItemList<CompanyItem> original = getSampleCompanyList();
+        storageManager.saveCompanyItemList(original);
+        ReadOnlyItemList<CompanyItem> retrieved = storageManager.readCompanyItemList().get();
+        assertEquals(original, new ItemList<>(retrieved));
+    }
+
+    @Test
+    public void companyItemListReadSaveFilePath() throws Exception {
+        /*
+         * Note: This is an integration test that verifies the StorageManager is properly wired to the
+         * {@link JsonItemListStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
+         */
+        ItemList<CompanyItem> original = getSampleCompanyList();
+        storageManager.saveCompanyItemList(original, FILE_PATH);
+        ReadOnlyItemList<CompanyItem> retrieved = storageManager.readCompanyItemList(FILE_PATH).get();
+        assertEquals(original, new ItemList<>(retrieved));
+    }
+
+    @Test
+    public void getCompanyItemListFilePath() {
+        assertNotNull(storageManager.getCompanyItemListFilePath());
     }
 
     @Test
@@ -92,6 +140,19 @@ public class StorageManagerTest {
         ItemList<ProfileItem> original = getSampleProfileItemList();
         storageManager.saveProfileItemList(original);
         ReadOnlyItemList<ProfileItem> retrieved = storageManager.readProfileItemList().get();
+        assertEquals(original, new ItemList<>(retrieved));
+    }
+
+    @Test
+    public void profileItemListReadSaveFilePath() throws Exception {
+        /*
+         * Note: This is an integration test that verifies the StorageManager is properly wired to the
+         * {@link JsonItemListStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
+         */
+        ItemList<ProfileItem> original = getSampleProfileItemList();
+        storageManager.saveProfileItemList(original, FILE_PATH);
+        ReadOnlyItemList<ProfileItem> retrieved = storageManager.readProfileItemList(FILE_PATH).get();
         assertEquals(original, new ItemList<>(retrieved));
     }
 

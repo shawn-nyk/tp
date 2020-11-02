@@ -24,6 +24,7 @@ import seedu.internhunter.model.company.CompanyItem;
 import seedu.internhunter.model.item.ItemList;
 import seedu.internhunter.model.profile.ProfileItem;
 import seedu.internhunter.testutil.application.ApplicationItemBuilder;
+import seedu.internhunter.testutil.company.CompanyItemBuilder;
 import seedu.internhunter.testutil.profile.ProfileItemBuilder;
 import seedu.internhunter.ui.tabs.TabName;
 
@@ -35,16 +36,14 @@ public class CommandUtilTest {
     private Model modelWithData;
     private ApplicationItemBuilder applicationItemBuilder;
     private ProfileItemBuilder profileItemBuilder;
-    // TODO INCLUDE WHEN COMPANYITEM BUILDER IS READY
-    // private CompanyItemBuilder companyItemBuilder;
+    private CompanyItemBuilder companyItemBuilder;
 
     @BeforeEach
     public void setUp() {
         model = new ModelManager();
         applicationItemBuilder = new ApplicationItemBuilder();
         profileItemBuilder = new ProfileItemBuilder();
-        // companyItemBuilder = new CompanyItemBuilder();
-        // TODO CHANGE TO companyItemBuilder.build()
+        companyItemBuilder = new CompanyItemBuilder();
         initializeData();
     }
 
@@ -54,8 +53,7 @@ public class CommandUtilTest {
         ItemList<ProfileItem> profileItemItems = new ItemList<>();
         profileItemItems.addItem(profileItemBuilder.build());
         ItemList<CompanyItem> companyItems = new ItemList<>();
-        // TODO uncomment
-        // companyItems.addItem(companyItemBuilder.build());
+        companyItems.addItem(companyItemBuilder.build());
         modelWithData = new ModelManager(companyItems, applicationItems, profileItemItems, new UserPrefs());
     }
 
@@ -94,30 +92,26 @@ public class CommandUtilTest {
 
     @Test
     public void getCompany_equals_true() throws CommandException {
-        // TODO WHEN companyItemBuilder is ready
-        // CompanyItem companyItem = companyItemBuilder.build();
-        // assertTrue(getCompany(modelWithData, Index.fromOneBased(1)).equals(companyItem));
+        CompanyItem companyItem = companyItemBuilder.build();
+        assertTrue(getCompany(modelWithData, Index.fromOneBased(1)).equals(companyItem));
     }
 
     @Test
-    public void getCompany_equals_false() {
-        // TODO WHEN companyItemBuilder is ready to edit the with
-        // CompanyItem companyItem = companyItemBuilder.with().build();
-        //assertTrue(getCompany(modelWithData, Index.fromOneBased(1)).equals(companyItem));
+    public void getCompany_equals_false() throws CommandException {
+        CompanyItem companyItem = companyItemBuilder.withPhone("91919191").build();
+        assertFalse(getCompany(modelWithData, Index.fromOneBased(1)).equals(companyItem));
     }
 
     @Test
     public void getCompany_invalidIndex_throwCommandException() {
-        // TODO WHEN companyItemBuilder is ready
         assertThrows(CommandException.class, () -> getCompany(modelWithData, Index.fromOneBased(10)));
         assertThrows(CommandException.class, () -> getCompany(modelWithData, Index.fromZeroBased(1)));
     }
 
     @Test
     public void getCompany_validIndex_noExceptionThrown() {
-        // TODO WHEN companyItemBuilder is ready
-        // assertDoesNotThrow(() -> getCompany(modelWithData, Index.fromZeroBased(0)));
-        // assertDoesNotThrow(() -> getCompany(modelWithData, Index.fromOneBased(1)));
+        assertDoesNotThrow(() -> getCompany(modelWithData, Index.fromZeroBased(0)));
+        assertDoesNotThrow(() -> getCompany(modelWithData, Index.fromOneBased(1)));
     }
 
     @Test

@@ -6,6 +6,7 @@ import static seedu.internhunter.logic.parser.CommandParserTestUtil.assertParseF
 import static seedu.internhunter.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.internhunter.testutil.TypicalIndexes.INDEX_FIRST;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.internhunter.logic.commands.delete.DeleteApplicationCommand;
@@ -19,7 +20,12 @@ import seedu.internhunter.logic.commands.delete.DeleteApplicationCommand;
  */
 public class DeleteApplicationCommandParserTest {
 
-    private final DeleteApplicationCommandParser parser = new DeleteApplicationCommandParser();
+    private DeleteApplicationCommandParser parser;
+
+    @BeforeEach
+    public void setUp() {
+        parser = new DeleteApplicationCommandParser();
+    }
 
     @Test
     public void parse_validArgs_returnsDeleteApplicationCommand() {

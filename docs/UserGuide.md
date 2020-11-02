@@ -120,11 +120,13 @@ Ready to begin? Let's get hunting.
 
 ## **About**
 
-This section will bring you through the [GUI](#understanding-the-gui), [technical terminologies](#understanding-the-technical-terminologies), as well as commonly used [symbols](#understanding-the-symbols).
+This section will bring you through the [Graphical User Interface(GUI)](#understanding-the-gui), [technical terminologies](#understanding-the-technical-terminologies), as well as commonly used [symbols](#understanding-the-symbols).
 
 #### Understanding the GUI
 
 <p><img src="images/AnnotatedGui.png"/></p>
+
+<p align="center"><strong>Figure 1: Annotated GUI with component names and functionality</strong></p>
 
 #### Understanding the technical terminologies
 
@@ -134,6 +136,7 @@ Commands | Words that determines the action of InternHunter.
 Command word | The first word of every command.
 Parameters | Information that is supplied by you.
 Execute | Typing the information into the command box and pressing enter.
+Item type for command | com, int, app, me
 
 #### Understanding the symbols
 
@@ -141,6 +144,7 @@ Symbol | What it means
 -------|--------------
 :information_source: | Important information to take note.
 :bulb: | Extra tip.
+:warning:| Warning.
 `add` | Words that have a grey highlighted background are commands that can be keyed into the command box.
 *italics* | Words in italics represent additional information.
 
@@ -150,12 +154,14 @@ Symbol | What it means
 
 :information_source: **Notes about the commands:**<br>
 
+* Command word and the item type for command are case sensitive.
+
 * Words in `UPPER_CASE` are the parameters to be supplied by you.<br>
   e.g. in `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`, `COMPANY_NAME`, `PHONE_NUMBER`, `EMAIL`, `ADDRESS`, `INDUSTRY`,
   an example of how to fill up the parameters are `add com n/Google p/65218000 e/GoogleHire@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Industry`.
 
 * Items in square brackets `[]` are optional. This paramaters are optional because we allow the user to key in at a later date if they do not have the relevant information at hand.<br>
-  e.g `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...` can be used as <br/> `add int 1 j/Software Engineer` or
+  e.g `add int INDEX j/JOB_TITLE [w/WAGE] [p/PERIOD] [r/REQUIREMENT]...` can be used as <br/> `add int 1 j/Software Engineer` or
   `add int 3 j/Web Developer r/React w/3000 r/HTML5`.
 
 * Items with `...`​ after them can be used multiple times including zero times.<br>
@@ -263,17 +269,15 @@ Format: `list com`
 
 ### **Internship**
 
-Note: You must be on the **Company** tab in order to execute these commands.
-
 #### Adding an internship: `add int`
 
 Adds an internship to a company.
 
 Format: `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
-- `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`).
+- `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`, `Jun - Aug 2021`).
 
 Examples:
-- `add int 3 j/Web Developer w/3000 r/React r/HTML5`
+- `add int 3 j/Web Developer w/3000 p/30 May to 30 Aug r/React r/HTML5`
 - `add int 1 j/Machine Learning Engineer w/4700` 
 
 ![AddInternship](images/AddInternship.png)
@@ -314,10 +318,10 @@ Now that you have learnt how to manage your companies and internships, the next 
 how to use InternHunter to apply, track and manage your internship applications. Read on through this section to find 
 out how.
 
-<div markdown="span" class="alert alert-info">
-  :information_source: <strong>Note:</strong> Each application comes with a `STATUS` and `STATUS_DATE` field which indicates the
+#### All about applications
+
+Each application comes with a `STATUS` and `STATUS_DATE` field which indicates the
 date that the `STATUS` was set/updated.
-</div>
 
 Valid `STATUS` specifiers:
 - `Applied`
@@ -328,7 +332,9 @@ Valid `STATUS` specifiers:
 - `Accepted`
 
 <div markdown="span" class="alert alert-info">
-  :information_source: <strong>Note:</strong> Status added are case-insensitive
+
+  :information_source: **Note:** Status added is case-insensitive
+  
 </div>
 
 Valid `STATUS_DATE` formats:
@@ -340,13 +346,20 @@ Valid `STATUS_DATE` formats:
     - Time will be taken as 2359
 
 <div markdown="span" class="alert alert-info">
-  :information_source: <strong>Note:</strong> Dates added must be in the future
+
+  :information_source: **Note:** Date added must be in the future and all dates added will be from the current year to
+  the year 2099
+  
 </div>
+
+Here is how the application tab looks like: 
+
+<p align="center"><img src="images/ug-application/ApplicationAnnotated.png" width="100%"/></p>
 
 #### Applying for an internship: `add app`
 
 Selects an internship from a company and adds it to your list of applications. If unspecified, the application’s
-`STATUS` will be `Applied`, and it’s `STATUS_DATE` will be set as today’s date.
+`STATUS` will be `Applied`, and it’s `STATUS_DATE` will be set as today’s date and time to be 2359.
 
 Format: `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
 - Where `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
@@ -367,7 +380,10 @@ Deletes an application from your list of applications.
 Format: `delete app INDEX` 
 
 Example:
-- `delete app 3`
+- Suppose you have these 2 applications in your application list and you want to delete the 2nd application in the list.
+Executing `delete app 2` will delete the 2nd application and update the list to show the remaining applications:
+
+<p align="center"><img src="images/ug-application/DeleteApplication.png" width="100%"/></p>
 
 #### Updating an application: `edit app`
 
@@ -418,6 +434,13 @@ narrowed your list of applications down to a few search results. Use the `list a
 all the applications in your list.
 
 Format: `list app`
+
+Example:
+- Following the result of `find app engineer` on the application list from the example shown in the
+[find application command](#finding-applications-find-app), execution of `list app` will update the list to show 
+**all** applications in your list of applications:
+
+<p align="center"><img src="images/ug-application/ListApplication.png" width="100%"/></p>
 
 ### **Profile**
 
@@ -541,6 +564,7 @@ Format: `match`
 - An Internship with at least one `Requirement` matching any one `Skill` in the profile list will be
 considered as a successful match. e.g. Say you have a profile item which is of `Skill` category and titled `Python`, any
 internship that has a `Requirement` of `Python` will be successfully matched.
+- An Internship with no requirements will never be matched.
 - Matched internships can have `Requirements` that do not match with the profile `Skills`, since a match is found when
 an internship has **at least one and not all** `Requirements` that matches with the profile `Skills`.
 - Matching done is case-insensitive. e.g. `Python` will match `python`.
@@ -572,7 +596,9 @@ matching with the internships.
 <p align="center"><img src="images/ug-general/match-window.png" width="100%"/></p>
 
 <div markdown="span" class="alert alert-primary">
-  :bulb: <strong>Tip:</strong> You can press Esc key to close the popup window!
+
+  :bulb: **Tip:** You can press Esc key to close the popup window!
+  
 </div>
 
 #### Switching Tabs: `switch`
@@ -596,12 +622,18 @@ Example:
 
 2\. Note that the tabs have been changed as well as the cards and display.
 
-<p align="center"><img src="images/ug-general/switchAppResultAnnotated.png" width="110%" height="110%"/></p>
+<p align="center"><img src="images/ug-general/switchAppResultAnnotated.png"/></p>
 
 #### Clearing all entries: `clear`
 Clears all entries from InternHunter.
 
-format: `clear`
+Format: `clear`
+
+<div markdown="span" class="alert alert-warning">
+
+  :warning: **Warning:** `clear` will clear application, company, and profile item lists.
+  
+</div>
 
 Example:
 
@@ -619,7 +651,9 @@ Displays a link to the InternHunter user guide.
 Format: `help`
 
 <div markdown="span" class="alert alert-primary">
-  :bulb: <strong>Tip:</strong> You can press Esc key to close the help window!
+
+  :bulb: **Tip:** You can press Esc key to close the help window!
+  
 </div>
 <br/>
 

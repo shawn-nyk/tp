@@ -1,16 +1,24 @@
 package seedu.internhunter.testutil.company;
 
+import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_ADDRESS_AMAZON;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_ADDRESS_FACEBOOK;
+import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_ADDRESS_GARENA;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_ADDRESS_GOLDMAN;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_ADDRESS_GOOGLE;
+import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_COMPANY_NAME_AMAZON;
+import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_COMPANY_NAME_GARENA;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_COMPANY_NAME_GOOGLE;
+import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_EMAIL_AMAZON;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_EMAIL_FACEBOOK;
+import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_EMAIL_GARENA;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_EMAIL_GOLDMAN;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_EMAIL_GOOGLE;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_INDUSTRY_ARTIFICIAL_INTELLIGENCE;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_INDUSTRY_BANKING;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_INDUSTRY_CLOUD_COMPUTING;
+import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_PHONE_AMAZON;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_PHONE_FACEBOOK;
+import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_PHONE_GARENA;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_PHONE_GOLDMAN;
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_PHONE_GOOGLE;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_COMPANY_NAME_FACEBOOK;
@@ -55,6 +63,19 @@ public abstract class SampleCompanyItems {
             .withIndustries(VALID_INDUSTRY_ARTIFICIAL_INTELLIGENCE, VALID_INDUSTRY_ARTIFICIAL_INTELLIGENCE)
             .withInternships(FACEBOOK_BA, FACEBOOK_FE, FACEBOOK_SWE)
             .build();
+    public static final CompanyItem GARENA = new CompanyItemBuilder()
+            .withCompanyName(VALID_COMPANY_NAME_GARENA)
+            .withPhone(VALID_PHONE_GARENA)
+            .withEmail(VALID_EMAIL_GARENA)
+            .withAddress(VALID_ADDRESS_GARENA)
+            .build();
+    public static final CompanyItem AMAZON = new CompanyItemBuilder()
+            .withCompanyName(VALID_COMPANY_NAME_AMAZON)
+            .withPhone(VALID_PHONE_AMAZON)
+            .withEmail(VALID_EMAIL_AMAZON)
+            .withAddress(VALID_ADDRESS_AMAZON)
+            .withIndustries(VALID_INDUSTRY_ARTIFICIAL_INTELLIGENCE)
+            .build();
 
     /**
      * Returns an {@code ItemList<InternshipItem>} with all the sample internship items.
@@ -67,7 +88,8 @@ public abstract class SampleCompanyItems {
         return companyItemList;
     }
 
-    private static List<CompanyItem> getCompanyItems() {
-        return new ArrayList<>(Arrays.asList(GOOGLE, GOLDMAN, FACEBOOK));
+    public static List<CompanyItem> getCompanyItems() {
+        return new ArrayList<>(Arrays.asList(new CompanyItemBuilder(GOOGLE).build(),
+                new CompanyItemBuilder(GOLDMAN).build(), new CompanyItemBuilder(FACEBOOK).build()));
     }
 }

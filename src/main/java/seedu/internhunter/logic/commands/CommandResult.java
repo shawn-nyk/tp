@@ -99,7 +99,8 @@ public class CommandResult {
                 && isShowHelp == otherCommandResult.isShowHelp
                 && isExit == otherCommandResult.isExit
                 && isSwitchTab == otherCommandResult.isSwitchTab
-                && isSwitchDisplay == otherCommandResult.isSwitchDisplay;
+                && isSwitchDisplay == otherCommandResult.isSwitchDisplay
+                && matchingInternships.equals(otherCommandResult.matchingInternships);
     }
 
     @Override

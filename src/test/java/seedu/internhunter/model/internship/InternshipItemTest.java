@@ -20,7 +20,9 @@ import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VA
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_PERIOD_MAY_TO_JULY;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_PERIOD_THREE_MONTHS;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_PERIOD_TWO_MONTHS;
+import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_REQUIREMENT_PYTHON;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_REQUIREMENT_R;
+import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_REQUIREMENT_TENSOR;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_REQUIREMENT_VUE;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_WAGE_2000;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_WAGE_3000;
@@ -32,6 +34,7 @@ import static seedu.internhunter.testutil.internship.SampleInternshipItems.SHOPE
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
@@ -88,6 +91,41 @@ public class InternshipItemTest {
         InternshipItem editedInternshipItem = new InternshipItemBuilder(SHOPEE_SWE).build();
         editedInternshipItem.setRequirements(requirementSet);
         assertEquals(requirementSet, editedInternshipItem.getRequirements());
+    }
+
+    @Test
+    public void matches_nullityCheck_throwsAssertionError() {
+        assertThrows(NullPointerException.class, () -> SHOPEE_SWE.matches(null));
+    }
+
+    @Test
+    public void matches_oneRequirementMatch_returnsTrue() {
+        List<String> skillList = List.of(VALID_REQUIREMENT_PYTHON);
+        assertTrue(LAZADA_DS.matches(skillList));
+    }
+
+    @Test
+    public void matches_allRequirementsMatch_returnsTrue() {
+        List<String> skillList = List.of(VALID_REQUIREMENT_PYTHON, VALID_REQUIREMENT_TENSOR, VALID_REQUIREMENT_VUE);
+        assertTrue(LAZADA_DS.matches(skillList));
+    }
+
+    @Test
+    public void matches_noMatchingSkills_returnsFalse() {
+        List<String> skillList = List.of(VALID_REQUIREMENT_VUE, VALID_REQUIREMENT_R);
+        assertFalse(LAZADA_DS.matches(skillList));
+    }
+
+    @Test
+    public void matches_subString_returnsFalse() {
+        List<String> skillList = List.of(VALID_REQUIREMENT_PYTHON.substring(0, 2));
+        assertFalse(LAZADA_DS.matches(skillList));
+    }
+
+    @Test
+    public void matches_matchWithDifferentCase_returnsTrue() {
+        List<String> skillList = List.of(VALID_REQUIREMENT_PYTHON.toUpperCase());
+        assertTrue(LAZADA_DS.matches(skillList));
     }
 
     @Test

@@ -5,22 +5,13 @@
 !include style.puml
 
 Package " "<<Rectangle>>{
+    note "**Multi-Layered Architecture**\nEach layer can only interact with lower layers" as N
     Class Commons LOGIC_COLOR_T2
-    Package "Layer 3"<<Rectangle>>{
-        note "**Multi-Layered Architecture**\nEach layer can only interact with lower layers" as N
-        Class Main #grey
-    }
-
-    Package "Layer 2"<<Rectangle>>{
-        Class UI UI_COLOR
-    }
-    Package "Layer 1"<<Rectangle>>{
-        Class Logic LOGIC_COLOR
-    }
-    Package "Layer 0"<<Rectangle>>{
-        Class Storage STORAGE_COLOR
-        Class Model MODEL_COLOR
-    }
+    Class Main #grey
+    Class UI UI_COLOR
+    Class Logic LOGIC_COLOR
+    Class Storage STORAGE_COLOR
+    Class Model MODEL_COLOR
 }
 
 
@@ -30,11 +21,11 @@ Class "<$documents>" as File UI_COLOR_T1
 
 Main -[#grey]-> UI
 UI -[#green]> Logic
-UI ---[#green]-> Model
+UI --[#green]-> Model
 Main --down[#grey]-> Logic
 Main -[#grey]-> Storage
 Main -[#grey]-> Model
-Logic -left[#blue]-> Storage
+Logic -down[#blue]-> Storage
 Logic -down[#blue]-> Model
 
 Storage .left[STORAGE_COLOR].>File

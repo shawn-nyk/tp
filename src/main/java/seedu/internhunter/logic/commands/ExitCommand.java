@@ -8,7 +8,7 @@ import seedu.internhunter.model.Model;
 public class ExitCommand extends Command {
 
     public static final String COMMAND_WORD = "exit";
-    public static final String MESSAGE_EXIT_ACKNOWLEDGEMENT = "Exiting InternHunter as requested ...";
+    public static final String MESSAGE_EXIT_ACKNOWLEDGEMENT = "Opened exit dialog";
 
     @Override
     public CommandResult execute(Model model) {

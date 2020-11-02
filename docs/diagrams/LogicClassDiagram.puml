@@ -58,11 +58,11 @@ ABCItemCommand -up-|> ABCCommand
 ABCItemCommand -left..-> CommandUtil
 LogicManager .left.> Command : executes >
 
-note top of XYZCliSyntax: XYZCliSyntax = ProfileCliSyntax,\nGeneralCliSyntax, etc \n(Same definition of XYZ \nused for XYZParserUtil)
+note top of XYZCliSyntax: XYZCliSyntax = \nProfileCliSyntax,\nGeneralCliSyntax, etc \n(Same definition of XYZ \nused for XYZParserUtil)
 
 LogicManager --> Model
 Command .right.> Model
-note right of ABCItemCommand: ABCItemCommand = AddProfileCommand, \nViewCompanyCommand, etc
+note right of ABCItemCommand: ABCItemCommand = \nAddProfileCommand, \nViewCompanyCommand, etc
 
 Logic ..> CommandResult
 LogicManager .down.> CommandResult

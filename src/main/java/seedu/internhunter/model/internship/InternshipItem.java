@@ -178,7 +178,7 @@ public class InternshipItem extends Item {
      * @return True if the skill list provided matches the internship item, false otherwise.
      */
     public boolean matches(List<String> skillList) {
-        assert skillList != null;
+        requireNonNull(skillList);
         return requirements.stream().anyMatch(requirement ->
                 skillList.stream().anyMatch(skill -> skill.equalsIgnoreCase(requirement.toString())));
     }
@@ -210,7 +210,7 @@ public class InternshipItem extends Item {
     }
 
     /**
-     * Returns true if both InternshipItems have the same jobTitle and period.
+     * Returns true if both InternshipItems have the same company name, jobTitle and period.
      * This defines a weaker notion of equality between two InternshipItems.
      *
      * @param otherItem Other InternshipItem to compare to.

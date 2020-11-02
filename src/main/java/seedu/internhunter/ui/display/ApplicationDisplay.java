@@ -45,7 +45,9 @@ public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
     /**
      * Factory method that creates and displays the particular application item's information at that index.
      *
+     * @param applicationItems The list of application items.
      * @param index The Index of the display to be displayed.
+     * @param primaryStage The stage in which this display should show.
      * @return An Optional containing the display information of the Application at that particular Index.
      */
     public static Optional<InformationDisplay<? extends Item>> getApplicationDisplay(

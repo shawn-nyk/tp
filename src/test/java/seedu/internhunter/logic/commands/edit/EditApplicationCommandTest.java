@@ -15,7 +15,7 @@ import static seedu.internhunter.model.util.ItemUtil.APPLICATION_NAME;
 import static seedu.internhunter.model.util.StatusUtil.APPLIED_KEYWORD;
 import static seedu.internhunter.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.internhunter.testutil.TypicalIndexes.INDEX_SECOND;
-import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_JUNE_2021;
+import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_WITH_TIME;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.getSampleApplicationItemList;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -23,6 +23,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.logic.commands.ClearCommand;
+import seedu.internhunter.logic.commands.CommandResult;
 import seedu.internhunter.logic.commands.util.application.EditApplicationDescriptorBuilder;
 import seedu.internhunter.model.Model;
 import seedu.internhunter.model.ModelManager;
@@ -45,21 +46,24 @@ public class EditApplicationCommandTest {
     public void setUp() {
         model = new ModelManager(new ItemList<>(), getSampleApplicationItemList(), new ItemList<>(), new UserPrefs());
         expectedModel = new ModelManager(new ItemList<>(), model.getUnfilteredApplicationList(), new ItemList<>(),
-            new UserPrefs());
-        model.setTabName(TabName.APPLICATION);
-        expectedModel.setTabName(TabName.APPLICATION);
+                new UserPrefs());
     }
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         ApplicationItem editedApplication = new ApplicationItemBuilder().build();
         EditApplicationDescriptor descriptor = new EditApplicationDescriptorBuilder(editedApplication).build();
-        EditApplicationCommand editCommand = new EditApplicationCommand(INDEX_FIRST, descriptor);
+        EditApplicationCommand editCommand = new EditApplicationCommand(INDEX_SECOND, descriptor);
 
         String expectedMessage = String.format(MESSAGE_EDIT_SUCCESS, APPLICATION_NAME, editedApplication);
-        expectedModel.setApplication(model.getApplicationItemFromFilteredList(
-                INDEX_FIRST.getZeroBased()), editedApplication);
-        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+
+        CommandResult commandResult = new CommandResult(expectedMessage, false, false, true, true);
+        expectedModel.setApplication(model.getApplicationItemFromFilteredList(INDEX_SECOND.getZeroBased()),
+                editedApplication);
+        expectedModel.setTabName(TabName.APPLICATION);
+        expectedModel.setApplicationViewIndex(INDEX_SECOND);
+
+        assertCommandSuccess(editCommand, model, commandResult, expectedModel);
     }
 
     @Test
@@ -75,36 +79,45 @@ public class EditApplicationCommandTest {
         EditApplicationCommand editCommand = new EditApplicationCommand(indexLastApplication, descriptor);
 
         String expectedMessage = String.format(MESSAGE_EDIT_SUCCESS, APPLICATION_NAME, editedApplication);
+        CommandResult commandResult = new CommandResult(expectedMessage, false, false, true, true);
 
         expectedModel.setApplication(lastApplication, editedApplication);
         expectedModel.setApplicationViewIndex(indexLastApplication);
-        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+        expectedModel.setTabName(TabName.APPLICATION);
+        assertCommandSuccess(editCommand, model, commandResult, expectedModel);
     }
 
     @Test
     public void execute_noFieldSpecifiedUnfilteredList_success() {
-        EditApplicationCommand editCommand = new EditApplicationCommand(INDEX_FIRST, new EditApplicationDescriptor());
-        ApplicationItem editedApplication = model.getApplicationItemFromFilteredList(INDEX_FIRST.getZeroBased());
+        EditApplicationCommand editCommand = new EditApplicationCommand(INDEX_SECOND, new EditApplicationDescriptor());
+        ApplicationItem editedApplication = model.getApplicationItemFromFilteredList(INDEX_SECOND.getZeroBased());
 
         String expectedMessage = String.format(MESSAGE_EDIT_SUCCESS, APPLICATION_NAME, editedApplication);
-        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+        CommandResult commandResult = new CommandResult(expectedMessage, false, false, true, true);
+        expectedModel.setTabName(TabName.APPLICATION);
+        expectedModel.setApplicationViewIndex(INDEX_SECOND);
+
+        assertCommandSuccess(editCommand, model, commandResult, expectedModel);
     }
 
     @Test
     public void execute_filteredList_success() {
-        showApplicationAtIndex(model, INDEX_FIRST);
+        showApplicationAtIndex(model, INDEX_SECOND);
+        showApplicationAtIndex(expectedModel, INDEX_SECOND);
         ApplicationItem applicationInFilteredList =
                 model.getApplicationItemFromFilteredList(INDEX_FIRST.getZeroBased());
         ApplicationItem editedApplication =
-                new ApplicationItemBuilder(applicationInFilteredList).withStatusDate(STATUS_DATE_JUNE_2021).build();
+                new ApplicationItemBuilder(applicationInFilteredList).withStatusDate(STATUS_DATE_WITH_TIME).build();
         EditApplicationCommand editCommand = new EditApplicationCommand(INDEX_FIRST,
-                new EditApplicationDescriptorBuilder().withStatusDate(STATUS_DATE_JUNE_2021).build());
+                new EditApplicationDescriptorBuilder().withStatusDate(STATUS_DATE_WITH_TIME).build());
 
         String expectedMessage = String.format(MESSAGE_EDIT_SUCCESS, APPLICATION_NAME, editedApplication);
         expectedModel.setApplication(model.getApplicationItemFromFilteredList(INDEX_FIRST.getZeroBased()),
                 editedApplication);
+        expectedModel.setTabName(TabName.APPLICATION);
+        CommandResult commandResult = new CommandResult(expectedMessage, false, false, true, true);
 
-        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editCommand, model, commandResult, expectedModel);
     }
 
     @Test
@@ -137,12 +150,12 @@ public class EditApplicationCommandTest {
     @Test
     public void equals_test_success() {
 
-        final EditApplicationCommand standardCommand = new EditApplicationCommand(INDEX_FIRST,
+        final EditApplicationCommand standardCommand = new EditApplicationCommand(INDEX_SECOND,
                 DESC_GOLDMAN);
 
         // same values -> returns true
         EditApplicationDescriptor copyDescriptor = new EditApplicationDescriptor(DESC_GOLDMAN);
-        EditApplicationCommand commandWithSameValues = new EditApplicationCommand(INDEX_FIRST, copyDescriptor);
+        EditApplicationCommand commandWithSameValues = new EditApplicationCommand(INDEX_SECOND, copyDescriptor);
         assertEquals(commandWithSameValues, standardCommand);
 
         // same object -> returns true
@@ -155,10 +168,10 @@ public class EditApplicationCommandTest {
         assertNotEquals(new ClearCommand(), standardCommand);
 
         // different index -> returns false
-        assertNotEquals(new EditApplicationCommand(INDEX_SECOND, DESC_GOLDMAN), standardCommand);
+        assertNotEquals(new EditApplicationCommand(INDEX_FIRST, DESC_GOLDMAN), standardCommand);
 
         // different descriptor -> returns false
-        assertNotEquals(new EditApplicationCommand(INDEX_FIRST, DESC_SHOPEE), standardCommand);
+        assertNotEquals(new EditApplicationCommand(INDEX_SECOND, DESC_SHOPEE), standardCommand);
     }
 
 }

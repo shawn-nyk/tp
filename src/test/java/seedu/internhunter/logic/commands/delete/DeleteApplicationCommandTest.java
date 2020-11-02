@@ -13,10 +13,13 @@ import static seedu.internhunter.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.internhunter.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.getSampleApplicationItemList;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.internhunter.commons.core.index.Index;
+import seedu.internhunter.logic.commands.CommandResult;
 import seedu.internhunter.model.Model;
 import seedu.internhunter.model.ModelManager;
 import seedu.internhunter.model.UserPrefs;
@@ -37,9 +40,7 @@ public class DeleteApplicationCommandTest {
     public void setUp() {
         model = new ModelManager(new ItemList<>(), getSampleApplicationItemList(), new ItemList<>(), new UserPrefs());
         expectedModel = new ModelManager(new ItemList<>(), model.getUnfilteredApplicationList(), new ItemList<>(),
-            new UserPrefs());
-        model.setTabName(TabName.APPLICATION);
-        expectedModel.setTabName(TabName.APPLICATION);
+                new UserPrefs());
     }
 
     @Test
@@ -48,9 +49,11 @@ public class DeleteApplicationCommandTest {
         DeleteApplicationCommand deleteCommand = new DeleteApplicationCommand(INDEX_FIRST);
 
         String deleteSuccessMessage = String.format(MESSAGE_DELETED_ITEM, APPLICATION_NAME, applicationToDelete);
+        CommandResult commandResult = new CommandResult(deleteSuccessMessage, false, false, true, true);
 
         expectedModel.deleteApplication(applicationToDelete);
-        assertCommandSuccess(deleteCommand, model, deleteSuccessMessage, expectedModel);
+        expectedModel.setTabName(TabName.APPLICATION); // changes model tab from the default company to application
+        assertCommandSuccess(deleteCommand, model, commandResult, expectedModel);
     }
 
     @Test
@@ -68,10 +71,13 @@ public class DeleteApplicationCommandTest {
 
         String deleteSuccessMessage = String.format(MESSAGE_DELETED_ITEM, APPLICATION_NAME, applicationToDelete);
 
+        CommandResult commandResult = new CommandResult(deleteSuccessMessage, false, false, true, true);
+
         expectedModel.deleteApplication(applicationToDelete);
         showNoApplication(expectedModel);
-
-        assertCommandSuccess(deleteCommand, model, deleteSuccessMessage, expectedModel);
+        expectedModel.setTabName(TabName.APPLICATION); // changes model tab from the default company to application
+        assertCommandSuccess(deleteCommand, model, commandResult, expectedModel);
+        assertEquals(Collections.emptyList(), model.getFilteredApplicationList());
     }
 
     @Test
@@ -109,7 +115,7 @@ public class DeleteApplicationCommandTest {
     }
 
     /**
-     * Updates {@code model}'s filtered list to show no one.
+     * Updates {@code model}'s filtered list to show no applications.
      */
     private void showNoApplication(Model model) {
         model.updateFilteredApplicationList(p -> false);

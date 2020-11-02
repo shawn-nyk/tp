@@ -67,13 +67,13 @@ public class StringUtil {
     }
 
     /**
-     * Converts a string to title case.
+     * Converts a string to title case. The input string has to be more than 1 character long.
      *
      * @param string String input.
      * @return Title case representation of string.
      */
     public static String toTitleCase(String string) {
-
+        requireNonNull(string);
         assert string.length() > 1;
 
         char firstLetter = string.charAt(0);

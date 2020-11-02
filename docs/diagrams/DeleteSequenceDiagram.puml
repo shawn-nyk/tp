@@ -1,5 +1,5 @@
 @startuml
-!include style.puml
+!include InternHunterStyle.puml
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
@@ -7,7 +7,7 @@ participant ":MainParser" as MainParser LOGIC_COLOR
 participant ":DeleteCommandParser" as DeleteCommandParser LOGIC_COLOR
 participant ":DeleteApplicationCommandParser" as DeleteApplicationCommandParser LOGIC_COLOR
 participant "d:DeleteApplicationCommand" as DeleteApplicationCommand LOGIC_COLOR
-participant ":CommandResult" as CommandResult LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
@@ -27,7 +27,7 @@ activate DeleteCommandParser
 DeleteCommandParser --> MainParser
 deactivate DeleteCommandParser
 
-MainParser -> DeleteCommandParser : parse("app 1")
+MainParser -> DeleteCommandParser : parse(" app 1")
 activate DeleteCommandParser
 
 create DeleteApplicationCommandParser
@@ -37,11 +37,11 @@ activate DeleteApplicationCommandParser
 DeleteApplicationCommandParser --> DeleteCommandParser
 deactivate DeleteApplicationCommandParser
 
-DeleteCommandParser -> DeleteApplicationCommandParser : parse("1")
+DeleteCommandParser -> DeleteApplicationCommandParser : parse(" 1")
 activate DeleteApplicationCommandParser
 
 create DeleteApplicationCommand
-DeleteApplicationCommandParser -> DeleteApplicationCommand : DeleteApplicationCommand(1)
+DeleteApplicationCommandParser -> DeleteApplicationCommand
 activate DeleteApplicationCommand
 
 DeleteApplicationCommand --> DeleteApplicationCommandParser : d
@@ -49,15 +49,9 @@ deactivate DeleteApplicationCommand
 
 DeleteApplicationCommandParser --> DeleteCommandParser : d
 deactivate DeleteApplicationCommandParser
-'Hidden arrow to position the destroy marker below the end of the activation bar.
-DeleteApplicationCommandParser -[hidden]-> DeleteCommandParser
-destroy DeleteApplicationCommandParser
 
 DeleteCommandParser --> MainParser : d
 deactivate DeleteCommandParser
-'Hidden arrow to position the destroy marker below the end of the activation bar.
-DeleteCommandParser -[hidden]-> MainParser
-destroy DeleteCommandParser
 
 MainParser --> LogicManager : d
 deactivate MainParser
@@ -75,12 +69,12 @@ create CommandResult
 DeleteApplicationCommand -> CommandResult
 activate CommandResult
 
-CommandResult --> DeleteApplicationCommand : result
+CommandResult --> DeleteApplicationCommand : r
 deactivate CommandResult
 
-DeleteApplicationCommand --> LogicManager : result
+DeleteApplicationCommand --> LogicManager : r
 deactivate DeleteApplicationCommand
 
-[<--LogicManager
+[<--LogicManager : r
 deactivate LogicManager
 @enduml
