@@ -1,8 +1,9 @@
 package seedu.internhunter.logic.commands.util.application;
 
+import static seedu.internhunter.commons.core.Messages.MESSAGE_DUPLICATE_ITEM;
+import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX;
 import static seedu.internhunter.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.internhunter.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
-import static seedu.internhunter.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.internhunter.model.util.ItemUtil.APPLICATION_NAME;
 import static seedu.internhunter.model.util.StatusUtil.ACCEPTED_KEYWORD;
 import static seedu.internhunter.model.util.StatusUtil.REJECTED_KEYWORD;
@@ -11,11 +12,7 @@ import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.
 import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_JUNE_2021;
 import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_JUNE_2022;
 
-import seedu.internhunter.commons.core.Messages;
-
 public class ApplicationCommandTestUtil {
-
-    public static final String APPLICATION_ALIAS_DESC = " " + APPLICATION_ALIAS;
 
     // Valid Statuses
     public static final String STATUS_DESC_ACCEPTED = " " + PREFIX_STATUS + ACCEPTED_KEYWORD;
@@ -33,6 +30,10 @@ public class ApplicationCommandTestUtil {
 
     // Invalid application index
     public static final String INVALID_APPLICATION_INDEX_MESSAGE =
-            String.format(Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, APPLICATION_NAME);
+            String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, APPLICATION_NAME);
+
+    // Duplicate application message
+    public static final String DUPLICATE_APPLICATION_MESSAGE =
+            String.format(MESSAGE_DUPLICATE_ITEM, APPLICATION_NAME);
 
 }
