@@ -180,9 +180,7 @@ public class CompanyItem extends Item {
 
         CompanyItem otherCompanyItem = (CompanyItem) otherItem;
 
-        return otherCompanyItem != null
-                && otherCompanyItem.getCompanyName().equals(getCompanyName())
-                && otherCompanyItem.getAddress().equals(getAddress());
+        return otherCompanyItem.getCompanyName().equals(getCompanyName());
     }
 
     /**

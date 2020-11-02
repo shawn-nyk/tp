@@ -278,23 +278,9 @@ The following sequence diagrams show how the delete company feature works succes
 HandleDeleteDisplaySwitchIndexSequenceDiagram can be found [here](#handle-delete-display-switch-index-sequence-diagram)
 
 #### Design considerations
-* Obtaining the tab that the user is currently viewing has to be done before deleting all the company’s internships 
-via the `DeleteCompanyCommand#deleteAllInternshipsInCompany()` method. This is because the 
-`DeleteCompanyCommand#deleteAllInternshipsInCompany()` method executes `DeleteInternshipCommands`, and 
-`DeleteInternshipCommands` will cause the model to switch tabs to the Company tab internally (i.e. updates are made to 
-the relevant objects’ fields but this change is not reflected via the GUI). The implication of this behaviour is that 
-if the model’s tab is obtained after the `DeleteCompanyCommand#deleteAllInternshipsInCompany()` method is executed, 
-then it will always reflect that the model is on the Company tab and hence no switching of tabs is necessary GUI-wise. 
-In other words, if the user successfully executes the delete company command whilst not on the Company tab, the tab 
-will not be switched to the Company tab in the GUI, which is undesirable. Our implementation resolves this issue.
-* The `DeleteCompanyCommand#deleteAllInternshipsInCompany()` method works by creating and executing a 
-`DeleteInternshipCommand` for every internship in the company’s list of internships. This implementation was chosen 
-because `DeleteInternshipCommand` handles deleting any application made to the internship that is being deleted. As 
-such, the delete company command will exhibit the behaviour whereby any applications made to internships offered by a 
-company that is being deleted will also be deleted, which is the behaviour we believe is appropriate and hence wanted 
-to achieve.
 
-#### Alternatives considered
+#### Aspect: How applications made to internships from the company to be deleted are deleted
+##### Alternatives considered
 * **Alternative 1 (current choice)**: Delete all applications made to internships from the company to be deleted by
  executing delete internship commands.
   * Pros:
@@ -708,7 +694,7 @@ Priority | As a …​    | I want to …​                                    
 
 (For all use cases below, the **System** is `InternHunter` and the **Actor** is the `user`)
 
-#### Use case: UC01 - Add a company
+**Use case: UC01 - Add a company**
 
 Guarantees: Addition of company is successful
 
@@ -724,7 +710,7 @@ Use case ends.
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
   Use case resumes from step 1.
     		
-#### Use case: UC02 - Delete a company
+**Use case: UC02 - Delete a company**
 
 Precondition: User already has an existing list of companies <br/>
 Guarantees: Deletion of company is successful
@@ -745,7 +731,7 @@ Use case ends.
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
-#### Use case: UC03 - Edit a company
+**Use case: UC03 - Edit a company**
 
 Precondition: User already has an existing list of companies <br/>
 Guarantees: Editing of company is successful
@@ -766,7 +752,7 @@ Use case ends.
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
-#### Use case: UC04 - View a company
+**Use case: UC04 - View a company**
 
 Precondition: User already has an existing list of companies <br/>
 Guarantees: Viewing of company is successful
@@ -787,7 +773,7 @@ Use case ends.
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
-#### Use case: UC05 - Find companies
+**Use case: UC05 - Find companies**
 
 Precondition: User already has an existing list of companies <br/>
 Guarantees: Companies whose names matches the keywords specified are listed 
@@ -805,7 +791,7 @@ Use case ends.
   Use case resumes from step 1.
 
 
-#### Use case: UC06 - List all companies
+**Use case: UC06 - List all companies**
 
 Precondition: User already has an existing list of companies <br/>
 Guarantees: All companies stored in Internhunter are shown
@@ -823,7 +809,7 @@ Use case ends.
   Use case resumes from step 1.
 
 
-#### Use case: UC07 - Add an internship
+**Use case: UC07 - Add an internship**
 
 Precondition: User already has an existing list of companies <br/>
 Guarantees: Addition of internship to company is successful
@@ -839,15 +825,15 @@ Guarantees: Addition of internship to company is successful
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
-#### Use case: UC08 - Delete an internship
+**Use case: UC08 - Delete an internship**
 
 * Similar to UC02 - delete a company except user is deleting an internship
   
-#### Use case: UC09 - Edit an internship
+**Use case: UC09 - Edit an internship**
 
 * Similar to UC03 - editing a company except user is editing an internship
 
-#### Use case: UC10 - Add an application
+**Use case: UC10 - Add an application**
 
 Precondition: User already has an existing list of internships in a company <br/>
 Guarantees: Addition of application is successful
@@ -860,51 +846,51 @@ Guarantees: Addition of application is successful
 
 * Similar to extension of UC07 - Add an internship.
 
-#### Use case: UC11 - Delete an application
+**Use case: UC11 - Delete an application**
 
 * Similar to UC02 - deleting a company except user is deleting an application.
 
-#### Use case: UC12 - Edit an application
+**Use case: UC12 - Edit an application**
 
 * Similar to UC03 - editing a company except user is editing an application.
 
-#### Use case: UC13 - View an application
+**Use case: UC13 - View an application**
 
 * Similar to UC04 - viewing a company except  user is viewing an application.
 
-#### Use case: UC14 - Find applications
+**Use case: UC14 - Find applications**
 
 * Similar to UC05 - finding companies except user is finding applications.
 
-#### Use case: UC15 - List all applications
+**Use case: UC15 - List all applications**
 
 * Similar to UC06 - listing all companies except user is listing all applications.
 
-#### Use case: UC16 - Add user profile item
+**Use case: UC16 - Add user profile item**
 
 * Similar to UC01 - adding a company except user is adding a user profile item.
 
-#### Use case: UC17 - Delete a user profile item 
+**Use case: UC17 - Delete a user profile item**
 
 * Similar to UC02 - deleting a company except user is deleting a user profile item.
 
-#### Use case: UC18 - Edit a user profile item
+**Use case: UC18 - Edit a user profile item**
 
 * Similar to UC03 - editing a company except user is editing a user profile item.
 
-#### Use case: UC19 - View a user profile item
+**Use case: UC19 - View a user profile item**
 
 * Similar to UC04 - viewing a company except  user is viewing a user profile item.
 
-#### Use case: UC20 - Find user profile items
+**Use case: UC20 - Find user profile items**
 
 * Similar to UC05 - finding companies except user is finding user profile items.
 
-#### Use case: UC21 - List all user profile items
+**Use case: UC21 - List all user profile items**
 
 * Similar to UC06 - listing all companies except user is listing all user profiles items.
 
-#### Use case: UC22 - Match skills in user profile to internship requirements
+**Use case: UC22 - Match skills in user profile to internship requirements**
 
 **MSS**
 
@@ -917,7 +903,7 @@ Guarantees: Addition of application is successful
   2a1. InternHunter displays an error message and informs the user that she has no matching internships. <br/>
   2a2. Use case ends.
 
-#### Use case: UC23 - Switch tabs
+**Use case: UC23 - Switch tabs**
 
 Guarantees: InternHunter switches to the queried tab.
 
@@ -933,7 +919,7 @@ Guarantees: InternHunter switches to the queried tab.
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
   Use case resumes from step 1.
 
-#### Use case: UC24 - Clear all entries
+**Use case: UC24 - Clear all entries**
 
 Guarantees: All entries in InternHunter will be cleared
 
@@ -943,7 +929,7 @@ Guarantees: All entries in InternHunter will be cleared
 2.  InternHunter deletes all of its entries. <br/>
     Use case ends.
 
-#### Use case: UC25 - Get help
+**Use case: UC25 - Get help**
 
 Guarantees: User will get directions to the user guide
 
@@ -954,7 +940,7 @@ Guarantees: User will get directions to the user guide
     Use case ends.
 
 
-#### Use case: UC26 - Exit 
+**Use case: UC26 - Exit**
 
 **MSS**
 
@@ -984,6 +970,7 @@ using commands than using the mouse.
 
 ### Appendix E: Glossary
 
+* **CLI**: Command-Line Interface
 * **OS**: Operating System
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Json**: JavaScript Object Notation
