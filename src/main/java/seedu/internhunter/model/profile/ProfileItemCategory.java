@@ -10,7 +10,7 @@ public enum ProfileItemCategory {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "ProfileItem category c/ can only be experience, achievement or skill";
+            "Profile Item category c/ can only be experience, achievement or skill";
 
     /**
      * Returns true if the profile item category is valid.
