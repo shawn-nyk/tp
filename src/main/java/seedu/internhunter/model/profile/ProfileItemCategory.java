@@ -19,7 +19,6 @@ public enum ProfileItemCategory {
      * @return True if status is valid, false otherwise.
      */
     public static boolean isValidProfileItemCategory(String profileItemCategory) {
-        profileItemCategory = profileItemCategory.toUpperCase();
         return profileItemCategory.equals(EXPERIENCE.toString())
                 || profileItemCategory.equals(ACHIEVEMENT.toString())
                 || profileItemCategory.equals(SKILL.toString());

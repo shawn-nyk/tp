@@ -1,10 +1,9 @@
 {
   "items": [
     {
-      "title": "HTML",
+      "title": "Learn HTML",
       "profileType": "SKILL",
       "descriptors": [
-        "Learn to create divs.",
         "learn to create tables."
       ]
     },
@@ -12,7 +11,8 @@
       "title": "Internship with Govtech",
       "profileType": "EXPERIENCE",
       "descriptors": [
-        "Build internal tooling for syncing data with remote servers"
+        "DevOps solution to speed up automated testing by 50%",
+        "Developed dashboard to keep track of performance metrics"
       ]
     },
     {
