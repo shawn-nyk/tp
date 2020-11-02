@@ -331,4 +331,11 @@ public class UniqueItemListTest {
         assertNotEquals(companyItemUniqueItemList.hashCode(), profileItemUniqueItemList.hashCode());
         assertNotEquals(applicationItemUniqueItemList.hashCode(), profileItemUniqueItemList.hashCode());
     }
+
+    @Test
+    public void iterator_givesSameItem_equals() {
+        assertEquals(uniqueCompanyItemOne.iterator().next(), companyItems.iterator().next());
+        assertEquals(uniqueApplicationItemOne.iterator().next(), applicationItems.iterator().next());
+        assertEquals(uniqueProfileItemOne.iterator().next(), profileItems.iterator().next());
+    }
 }
