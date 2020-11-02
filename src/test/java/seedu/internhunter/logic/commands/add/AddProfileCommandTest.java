@@ -22,6 +22,9 @@ import seedu.internhunter.logic.commands.exceptions.CommandException;
 import seedu.internhunter.model.profile.ProfileItem;
 import seedu.internhunter.testutil.profile.ProfileItemBuilder;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for {@code AddProfileCommand}.
+ */
 public class AddProfileCommandTest {
 
     @Test

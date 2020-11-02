@@ -14,6 +14,9 @@ import seedu.internhunter.model.item.ItemList;
 import seedu.internhunter.model.profile.ProfileItem;
 import seedu.internhunter.ui.tabs.TabName;
 
+/**
+ * Model Stub which implements all of models methods.
+ */
 public class ModelStub implements Model {
 
     @Override
