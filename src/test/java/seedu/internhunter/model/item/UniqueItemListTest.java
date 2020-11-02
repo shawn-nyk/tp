@@ -5,14 +5,17 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.VALID_STATUS_APPLIED_MIX_CASE;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.FACEBOOK_ACCEPTED;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.GOLDMAN_OFFERED;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.LAZADA_REJECTED;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.SHOPEE_OFFERED;
+import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_PHONE_AMAZON;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.AMAZON;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.FACEBOOK;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.GOLDMAN;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.GOOGLE;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_LEARN;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.GOVTECH_EXPERIENCE;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.GRAPHQL_SKILL;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.HACKATHON_ACHIEVEMENT;
@@ -34,6 +37,9 @@ import seedu.internhunter.model.company.CompanyItem;
 import seedu.internhunter.model.item.exceptions.DuplicateItemException;
 import seedu.internhunter.model.item.exceptions.ItemNotFoundException;
 import seedu.internhunter.model.profile.ProfileItem;
+import seedu.internhunter.testutil.application.ApplicationItemBuilder;
+import seedu.internhunter.testutil.company.CompanyItemBuilder;
+import seedu.internhunter.testutil.profile.ProfileItemBuilder;
 
 public class UniqueItemListTest {
 
@@ -157,7 +163,7 @@ public class UniqueItemListTest {
     public void setItem_itemNotFound_throwsItemNotFoundException() {
         assertThrows(ItemNotFoundException.class, () -> companyItemUniqueItemList.setItem(AMAZON, AMAZON));
         assertThrows(ItemNotFoundException.class, () -> applicationItemUniqueItemList.setItem(FACEBOOK_ACCEPTED,
-            GOLDMAN_OFFERED));
+                GOLDMAN_OFFERED));
         assertThrows(ItemNotFoundException.class, () -> profileItemUniqueItemList.setItem(GRAPHQL_SKILL, HTML_SKILL));
     }
 
@@ -165,9 +171,9 @@ public class UniqueItemListTest {
     public void setItem_itemExist_throwsDuplicateItemException() {
         assertThrows(DuplicateItemException.class, () -> companyItemUniqueItemList.setItem(GOOGLE, GOLDMAN));
         assertThrows(DuplicateItemException.class, () -> applicationItemUniqueItemList.setItem(GOLDMAN_OFFERED,
-            LAZADA_REJECTED));
+                LAZADA_REJECTED));
         assertThrows(DuplicateItemException.class, () -> profileItemUniqueItemList.setItem(HTML_SKILL,
-            HACKATHON_ACHIEVEMENT));
+                HACKATHON_ACHIEVEMENT));
     }
 
     @Test
@@ -187,6 +193,31 @@ public class UniqueItemListTest {
         assertThrows(ItemNotFoundException.class, () -> companyItemUniqueItemList.remove(AMAZON));
         assertThrows(ItemNotFoundException.class, () -> applicationItemUniqueItemList.remove(FACEBOOK_ACCEPTED));
         assertThrows(ItemNotFoundException.class, () -> profileItemUniqueItemList.remove(ORBITAL_ACHIEVEMENT));
+    }
+
+    @Test
+    public void removeSameItem_sameItem_success() {
+        // use contains to test as there is successful removal
+
+        ApplicationItem editApplicationItem =
+                new ApplicationItemBuilder(GOLDMAN_OFFERED).withStatus(VALID_STATUS_APPLIED_MIX_CASE).build();
+        CompanyItem editedCompanyItem = new CompanyItemBuilder(GOOGLE).withPhone(VALID_PHONE_AMAZON).build();
+        ProfileItem editedProfileItem =
+                new ProfileItemBuilder(HTML_SKILL).withDescriptors(VALID_DESCRIPTOR_LEARN).build();
+
+        companyItemUniqueItemList.removeSameItem(editedCompanyItem);
+        applicationItemUniqueItemList.removeSameItem(editApplicationItem);
+        profileItemUniqueItemList.removeSameItem(editedProfileItem);
+
+        assertFalse(companyItemUniqueItemList.contains(GOOGLE));
+        assertFalse(applicationItemUniqueItemList.contains(GOLDMAN_OFFERED));
+        assertFalse(profileItemUniqueItemList.contains(HTML_SKILL));
+    }
+
+    @Test
+    public void removeSameItem_nullItem_throwsNullPointerException() {
+        // use contains to test as there is successful removal
+        assertThrows(NullPointerException.class, () -> companyItemUniqueItemList.removeSameItem(null));
     }
 
     @Test
@@ -210,18 +241,18 @@ public class UniqueItemListTest {
     @Test
     public void setItems_usingUniqueItemListWithNull_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> companyItemUniqueItemList
-            .setItems((UniqueItemList<CompanyItem>) null));
+                .setItems((UniqueItemList<CompanyItem>) null));
         assertThrows(NullPointerException.class, () -> applicationItemUniqueItemList
-            .setItems((UniqueItemList<ApplicationItem>) null));
+                .setItems((UniqueItemList<ApplicationItem>) null));
         assertThrows(NullPointerException.class, () -> profileItemUniqueItemList
-            .setItems((UniqueItemList<ProfileItem>) null));
+                .setItems((UniqueItemList<ProfileItem>) null));
     }
 
     @Test
     public void setItems_usingListWithNull_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> companyItemUniqueItemList.setItems((List<CompanyItem>) null));
         assertThrows(NullPointerException.class, () -> applicationItemUniqueItemList
-            .setItems((List<ApplicationItem>) null));
+                .setItems((List<ApplicationItem>) null));
         assertThrows(NullPointerException.class, () -> profileItemUniqueItemList.setItems((List<ProfileItem>) null));
     }
 
