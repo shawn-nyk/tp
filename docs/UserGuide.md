@@ -63,7 +63,7 @@ app in your pursuit to land that desired internship.
 
 Let's dive in.
 
-*\*If you're unfamiliar with Command-Line Interfaces (CLIs), you can find out more about them [here](https://en.wikipedia.org/wiki/Command-line_interface)*
+*\*If you're unfamiliar with Command-Line Interfaces (CLIs), you can find out about them [here](https://en.wikipedia.org/wiki/Command-line_interface)!*
 
 ### **Overview**
 
