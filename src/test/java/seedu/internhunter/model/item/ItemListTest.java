@@ -4,18 +4,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.VALID_STATUS_APPLIED_MIX_CASE;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.FACEBOOK_ACCEPTED;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.GOLDMAN_OFFERED;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.LAZADA_REJECTED;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.SHOPEE_OFFERED;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.getApplicationItems;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.getSampleApplicationItemList;
+import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_PHONE_AMAZON;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.AMAZON;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.FACEBOOK;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.GOLDMAN;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.GOOGLE;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.getCompanyItems;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.getSampleCompanyList;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_LEARN;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.BYTEDANCE_INTERN;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.GOVTECH_EXPERIENCE;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.GRAPHQL_SKILL;
@@ -38,6 +41,9 @@ import javafx.collections.ObservableList;
 import seedu.internhunter.model.application.ApplicationItem;
 import seedu.internhunter.model.company.CompanyItem;
 import seedu.internhunter.model.profile.ProfileItem;
+import seedu.internhunter.testutil.application.ApplicationItemBuilder;
+import seedu.internhunter.testutil.company.CompanyItemBuilder;
+import seedu.internhunter.testutil.profile.ProfileItemBuilder;
 
 public class ItemListTest {
 
@@ -173,6 +179,25 @@ public class ItemListTest {
         profileItems.removeItem(HTML_SKILL);
 
         // use hasItems to test since it is bug-free
+        assertFalse(companyItems.hasItem(GOOGLE));
+        assertFalse(applicationItems.hasItem(GOLDMAN_OFFERED));
+        assertFalse(profileItems.hasItem(HTML_SKILL));
+    }
+
+    @Test
+    public void removeSameItem_sameItem_success() {
+        // use contains to test as there is successful removal
+
+        ApplicationItem editApplicationItem =
+                new ApplicationItemBuilder(GOLDMAN_OFFERED).withStatus(VALID_STATUS_APPLIED_MIX_CASE).build();
+        CompanyItem editedCompanyItem = new CompanyItemBuilder(GOOGLE).withPhone(VALID_PHONE_AMAZON).build();
+        ProfileItem editedProfileItem =
+                new ProfileItemBuilder(HTML_SKILL).withDescriptors(VALID_DESCRIPTOR_LEARN).build();
+
+        companyItems.removeSameItem(editedCompanyItem);
+        applicationItems.removeSameItem(editApplicationItem);
+        profileItems.removeSameItem(editedProfileItem);
+
         assertFalse(companyItems.hasItem(GOOGLE));
         assertFalse(applicationItems.hasItem(GOLDMAN_OFFERED));
         assertFalse(profileItems.hasItem(HTML_SKILL));

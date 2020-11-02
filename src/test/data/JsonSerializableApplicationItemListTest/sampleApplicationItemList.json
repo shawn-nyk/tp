@@ -8,8 +8,7 @@
         "jobTitle": "Business Analyst",
         "period": "Summer break",
         "wage": "4000",
-        "requirements": [
-        ]
+        "requirements": ["GraphQL", "R"]
       }
     },
     {

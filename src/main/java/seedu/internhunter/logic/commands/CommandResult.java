@@ -108,15 +108,4 @@ public class CommandResult {
         return Objects.hash(feedbackToUser, isShowHelp, isExit, isSwitchTab, isSwitchDisplay);
     }
 
-    // TODO: Delete as soon as testing is done
-    @Override
-    public String toString() {
-        return "Feedback message: " + feedbackToUser + "\n"
-                + "isShowHelp: " + isShowHelp + "\n"
-                + "isExit: " + isExit + "\n"
-                + "isSwitchTab: " + isSwitchTab + "\n"
-                + "isSwitchDisplay: " + isSwitchDisplay + "\n"
-                + "matching internships: " + matchingInternships;
-    }
-
 }
