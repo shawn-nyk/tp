@@ -439,7 +439,7 @@ This is how the `CommandUtil#getCommandResult(...)` method works upon execution:
  2a. If both the tabs are the same, a `CommandResult` with a same tab message is return. <br/>
  2b. If both the tabs are different, we will change the tab to the input's tab name via `Model#setTabName(...)`. A `CommandResult` with a success message is return.
 
-<p align="center">The process of how <code>getCommandResult</code>.</p>
+<p align="center">The process of how <code>getCommandResult</code> is being generated.</p>
 
 <p align="center"><img src="images/GetCommandResultSequenceDiagram.png" width="95%" height="95%"/></p>
 
@@ -1016,6 +1016,371 @@ testers are expected to do more *exploratory* testing.
 
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
+       
+1. Shutting down
+   1. Quit the app by typing `exit` <br>
+      Expected: A Exit pop-out dialog will confirm the intention to exit InternHunter. For all users, you can use `tab` on keyboard to navigate. For **MacOS** users, use `spacebar` to confirm the exit, while the **rest** can use `enter` to confirm the exit.
+
+
+#### Note
+
+* If an item exist before in InternHunter, a duplicate error message will be shown.
+* If the command relating to a certain item type is executed on other tab, InternHunter will automatically switch the tab to correct tab. i.e  executing `add com` commands on application tab will bring the tab state of InternHunter from application tab to company tab.
+* When doing `add`, `edit`, the right display will automatically adjust and reflect the recently executed command.
+
+#### Adding a company
+
+1. Adding a company called garena with its non-optional relevant fields such as address being `201 Victoria St`, email being `garenaHires@garena.com` and phone number being `65093545`
+
+   1. Prerequisites: Garena not already added in Internhunter.
+
+   1. Test case: `add com n/Garena a/201 Victoria St e/GarenaHires@garena.com p/65093545`  <br>
+      Expected: A card displaying information of the company is added. The right display will show full information of the company added.
+      
+   1. Test case: `add com n/Google a/101 Tampines St e/GoogleHires@google.com p/62343434 t/Cloud Computing t/Artificial Intelligence` <br>
+      Expected: The differences compared to the above test case is, this adds some tags to the card which will show both `Cloud Computing` and `Artificial Intelligence`. It is reflected inside a blue box inside the card.
+   
+   1. Test case: `add com n/Facebook a/301 Raffles St e/FacebookHires@fb.com`  <br>
+      Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+      
+#### Adding an internship
+
+1. Adding an internship with Job title Machine Learning Engineer.
+
+   1. Prerequisites: A company have to exist first, and add it to the company via a valid index.
+   
+   1. Test case: `add int 1 j/Machine Learning Engineer` <br>
+   Expected: In the right display, the information of the internship will be shown.
+  
+   1. Test case: `add int 1` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+
+#### Adding an application
+
+1. Adding an application is simulating applying for an application.
+
+   1. Prerequisites: An internship must exist first before you can apply for it.
+   
+   1. Test case: `add app 1 i/1 d/24-12-20 s/interview` <br>
+   Expected: A card displaying information of this application is added. There will be a status showing as **interview**. The date will be shown as 24 dec and the year is taken to be from year 2000-2099(Note that the date have to be in the future). 
+   
+   1. Test case: `add app 1 i/2` (ensure that you have a second internship first) <br>
+   Expected: Similar to the above test case, however the status will be shown as the default test status **applied**. The date will be today's date and the time will be taken to be 2359.
+   
+   1. Test case: `add app 1` <br>
+      Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+      
+#### Adding a profile item      
+
+1. Adding a skill/experience/achievement set into our profile list.
+
+   1. Prerequisites: This particular skill set should not be already added in InternHunter.
+   
+   1. Test case: `add me c/skill t/React Native d/Created a mini MOBA game` <br>
+   Expected: A card displaying information of this profile item is added. There will be a circular colorful icon on the right of the card that will represent skills.
+   
+   1. Test case: `add me c/achievement t/Hackathon d/1st place` <br>
+   Expected: Similar to the above test case, instead of a circular colorful icon, there will be a trophy representing achievement.
+   
+   1. Test case: `add me c/experience t/Interned at google d/Worked as a frontend developer` <br>
+   Expected: Similar to both the above test case, instead, there will be a clipboard icon to represent experience.
+   
+   1. Test case: `add me` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+#### Editing a company
+
+1. Editing some fields in company.
+   
+   1. Prerequisites: The company must exist and access via a valid index.
+   
+   1. Test case: `edit com 1 t/Frontend developer t/Backend developer t/Fullstack developer` <br>
+   Expected: The tags that are in the blue box will be changed to Frontend developer, Backend developer, Fullstack developer.
+   
+   1. Test case: `edit com 1 p/91910808` <br>
+   Expected: The phone number of the company will be changed. It is visible on both the card and the right display.
+   
+   1. Test case: `edit com 1 t/` <br>
+   Expected: Removes all the tags for this card.
+   
+   1. Test case: `edit com 1` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+  
+#### Editing an internship
+
+1. Editing some fields in internship.
+
+   1. Prerequisites: The internship must exist and access via a valid index.
+   
+   1. Test case: `edit int 1 i/1 r/Java r/Python` <br>
+   Expected: The 1st internship at the first company will have the requirement java and python. Note that it overides any existing requirements in that internship. (Note that if an application for this internship exist, these changes will be reflected as tags in blue boxes on the card in the application tab)
+   
+   1. Test case: `edit int 1 i/2 r/React native` <br>
+   Expected: The 2nd internship at the first company will have the requirement React native. Similarly to the above test case, any existing requirements in that internship will be overidden.
+   
+   1. Test case: `edit int 1` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+
+#### Editing an application
+
+1. Editing some fields in application.
+
+   1. Prerequisites: The application must exist and access via a valid index.
+   
+   1. Test case: `edit app 1 s/accepted` <br>
+   Expected: The status that was on the card will be changed into a green status with the word accepted.
+   
+   1. Test case: `edit app` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+#### Editing a profile item
+
+1. Editing some fields in the profile item.
+
+   1. Prerequisites: The profile item must exist and access via a valid index.
+   
+   1. Test case: `edit me 1 c/achievement t/Hackathon d/2nd place` <br>
+   Expected: The image on the card will be changed into a trophy with the title being Hackathon.
+   
+   1. Test case: `edit me` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+#### Deleting a company
+
+1. Deleting a module according to the index shown on the card.
+
+   1. Prerequisities: The company item must exist and access via a valid index as indicated on a card.
+   
+   1. Test case: `delete com 1` <br>
+   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted company can be seen in the result display. All the internships in this company will be deleted as well. Note that if there is an application that is linked to any internships that this company had, it will be deleted as well.
+   
+   1. Test case: `delete com 0` <br>
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case:`delete com` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+#### Deleting an internship
+
+1. Deleting an internship from a certain company.
+
+   1. Prerequisites: The company item and internship item must exist and both to be access via a valid index.
+   
+   1. Test case: `delete int 1 i/1` <br>
+   Expected: On the right display, it will remove the internship item from the company.
+   
+   1. Test case: `delete int 1 i/0` <br>
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case: `delete int 1` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+#### Deleting an application
+
+1. Deleting an application.
+   
+   1. Prerequisites: The application item must exist and be access via a valid index.
+   
+   1. Test case: `delete app 1` <br>
+   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted application can be seen in the result display.
+   
+   1. Test case: `delete app 0` <br>
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case: `delete app` <br>
+   Expected: Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+#### Deleting a profile item
+
+1. Deleting a profile item.
+   
+   1. Prerequisites: The profile item must exist and be access via a valid index.
+   
+   1. Test case: `delete me 1` <br>
+   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted profile can be seen in the result display.
+   
+   1. Test case: `delete me 0` <br>
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case: `delete me` <br>
+   Expected: Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+#### Viewing a company
+
+1. Viewing full information of a company.
+
+   1. Prerequisites: The company item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card.
+   
+   1. Test case: `view com 2` <br>
+   Expected: The right display will change and show the full information of the 2nd company in the list.
+   
+   1. Test case: `view com 0` <br>
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case: `view com` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+#### Viewing an application
+
+1. Viewing full information of an application.
+
+   1. Prerequisites: The application item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card.
+   
+   1. Test case: `view app 2` <br>
+   Expected: The right display will change and show the full information of the 2nd application in the list.
+   
+   1. Test case: `view app 0` <br>
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case: `view app` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+#### View a profile Item
+
+1. Viewing full information of a profile item.
+
+   1. Prerequisites: The profile item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card.
+   
+   1. Test case: `view me 1` <br>
+   Expected: The right display will change and show the full information of the 2nd profile item in the list.
+   
+   1. Test case: `view me 0` <br>
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case: `view me` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+#### Finding company/companies
+
+1. Finding specific keyword(s) in the list of company/companies
+
+   1. Prerequisities: List all companies using the `list com` command. At least one company. `Find` method and `list` method works hand in hand.
+   
+   1. Test case: `find com facebook` <br>
+   Expected: Any titles in the card that contains `facebook` will be matched. i.e `Facebook`, `Facebook Singapore`. However `FacebookMalaysia` will not be matched.
+   
+   1. Test case: `find com` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+#### Listing out all company/companies
+
+1. Listing out all company/companies
+
+   1. Prerequisities: Assuming that you have used `find` for company in the earlier manual testing.
+   
+   1. Test case: `list com` <br>
+   Expected: All the companies that the user have will be displayed.
+   
+   1. Test case: `list com 2` <br>
+   Expected: An error message will be shown, stating that there should not be any inputs after the `ITEM_TYPE`.
+
+#### Finding application(s)
+
+1. Finding specific keyword(s) in the list of application(s)
+
+   1. Prerequisities: List all applications using the `list app` command. At least one application. `Find` method and `list` method works hand in hand.
+   
+   1. Test case: `find app software` <br>
+   Expected: Any titles in the card that contains `software` will be matched. i.e `Software`, `Software Engineer`. However `SoftwareEngineer` will not be matched.
+   
+   1. Test case: `find app` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+#### Listing out all application(s)
+
+1. Listing out all application(s)
+
+   1. Prerequisities: Assuming that you have used `find` for application in the earlier manual testing.
+   
+   1. Test case: `list app` <br>
+   Expected: All the application that the user have will be displayed.
+   
+   1. Test case: `list app 2` <br>
+   Expected: An error message will be shown, stating that there should not be any inputs after the `ITEM_TYPE`.
+
+#### Finding profile item(s)
+
+1. Finding specific keyword(s) in the list of profile item(s)
+
+   1. Prerequisities: List all profile items using the `list me` command. At least one profile item. `Find` method and `list` method works hand in hand.
+   
+   1. Test case: `find me hackathon` <br>
+   Expected: Any titles in the card that contains `hackathon` will be matched. i.e `Hackathon`, `2020 Hackathon`. However `ShoppeeHackathon` will not be matched.
+   
+   1. Test case: `find me` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+   
+#### Listing out all profile item(s)
+
+1. Listing out all profile item(s)
+
+   1. Prerequisities: Assuming that you have used `find` for profile items in the earlier manual testing.
+   
+   1. Test case: `list me` <br>
+   Expected: All the profile items that the user have will be displayed.
+   
+   1. Test case: `list me 2` <br>
+   Expected: An error message will be shown, stating that there should not be any inputs after the `ITEM_TYPE`.
+
+#### Matching skills to internship requirements
+
+1. Finding if any internships requirements matches the skills that you have.
+
+   1. Prerequisities: There is some internships added and the skills that you have put into the profile matches the requirements in internship. You can try to add some internships with requirements for example HTML and add the skill with title being html.
+   
+   1. Test case: `match` <br>
+   Expected: A new window will pop-up and show you all the matched internships.
+
+#### Switching of tabs
+
+1. Switching tabs
+
+   1. Prerequisties: Assuming you are on the company tab.
+  
+   1. Test case: `switch com` <br>
+   Expected: A message will be displayed in the result display to inform you that you are already on the company tab.
+  
+   1. Test case: `switch app` <br>
+   Expected: The top left will show the tab will be at application. A message will be displayed in the result display to inform you that you have switched to application tab. The screen should now display cards that holds application information and the right display will show information of the last know index of the application tab.
+  
+   1. Test case: `switch int` <br>
+   Expected: An error message wil be shown, stating that int is a invalid item type for this case. The command box text will turn red to inform you of the invalid command.
+  
+   1. Test case: `switch` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+#### Viewing help
+
+1. Viewing help
+   1. Test case: `help` <br>
+   Expected: Help window appears with InternHunter's user guide url.
+
+#### Clearing all the data in the app
+
+1. Clearing all existing data in InternHunter.
+   1. Prerequisites: Some data has been added to InternHunter.
+   
+   1. Test case: `clear` <br>
+   Expected: All data cleared from all tabs.
+
+#### Saving the data
+
+1. Dealing with corrupted data files
+
+   1. Corrupt the current save file under ./data/. Edit the json with some random characters that make the JSON format unreadable. Alternatively, you could go to `profileitemlist.json` and add `-` to descriptors.
+
+   1. Double-click the jar file <br>
+   Expected: Shows the GUI with no data.
+
+   1. Delete the current save file under ./data/.
+
+   1. Double-click the jar file <br>
+   Expected: Shows the GUI with no data.
+
+
 
 ### Appendix G: Sequence Diagrams
 
