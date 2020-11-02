@@ -96,7 +96,7 @@ public class JsonAdaptedInternshipItem extends JsonAdaptedItem {
         if (wage == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Wage.class.getSimpleName()));
         }
-        if (!Wage.isValidWage(wage)) {
+        if (!Wage.isValidOutputWage(wage)) {
             throw new IllegalValueException(Wage.MESSAGE_CONSTRAINTS);
         }
         final Wage itemWage = new Wage(wage);
