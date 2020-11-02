@@ -1,6 +1,8 @@
 package seedu.internhunter.logic.commands.util.profile;
 
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -40,6 +42,7 @@ public class EditProfileItemDescriptorBuilder {
      * Sets the {@code ProfileItemCategory} of the {@code EditProfileItemDescriptor} that we are building.
      */
     public EditProfileItemDescriptorBuilder withProfileItemCategory(String category) {
+        requireNonNull(category);
         descriptor.setProfileItemCategory(ProfileItemCategory.valueOf(category.toUpperCase()));
         return this;
     }
