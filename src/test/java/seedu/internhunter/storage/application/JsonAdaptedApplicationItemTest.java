@@ -2,6 +2,11 @@ package seedu.internhunter.storage.application;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.internhunter.storage.application.JsonAdaptedApplicationItem.MISSING_FIELD_MESSAGE_FORMAT;
+import static seedu.internhunter.storage.internship.JsonAdaptedInternshipItemTest.INVALID_JOB_TITLE;
+import static seedu.internhunter.storage.internship.JsonAdaptedInternshipItemTest.VALID_COMPANY_NAME;
+import static seedu.internhunter.storage.internship.JsonAdaptedInternshipItemTest.VALID_PERIOD;
+import static seedu.internhunter.storage.internship.JsonAdaptedInternshipItemTest.VALID_REQUIREMENT;
+import static seedu.internhunter.storage.internship.JsonAdaptedInternshipItemTest.VALID_WAGE;
 import static seedu.internhunter.testutil.Assert.assertThrows;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.SHOPEE_OFFERED;
 
@@ -11,6 +16,7 @@ import seedu.internhunter.commons.exceptions.IllegalValueException;
 import seedu.internhunter.model.application.Status;
 import seedu.internhunter.model.application.StatusDate;
 import seedu.internhunter.model.internship.InternshipItem;
+import seedu.internhunter.model.internship.JobTitle;
 import seedu.internhunter.storage.internship.JsonAdaptedInternshipItem;
 
 public class JsonAdaptedApplicationItemTest {
@@ -60,7 +66,15 @@ public class JsonAdaptedApplicationItemTest {
         assertThrows(IllegalValueException.class, expectedMessage, applicationItem::toModelType);
     }
 
-    // To do: invalid internship item
+    @Test
+    public void toModelType_invalidInternshipItem_throwsIllegalValueException() {
+        JsonAdaptedInternshipItem invalidInternshipItem = new JsonAdaptedInternshipItem(VALID_COMPANY_NAME,
+                INVALID_JOB_TITLE, VALID_WAGE, VALID_PERIOD, VALID_REQUIREMENT);
+        JsonAdaptedApplicationItem applicationItem = new JsonAdaptedApplicationItem(VALID_STATUS, VALID_STATUS_DATE,
+                invalidInternshipItem);
+        String expectedMessage = JobTitle.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, applicationItem::toModelType);
+    }
 
     @Test
     public void toModelType_nullInternshipItem_throwsIllegalValueException() {
