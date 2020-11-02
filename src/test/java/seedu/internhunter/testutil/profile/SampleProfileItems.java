@@ -18,6 +18,7 @@ import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TI
 import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_INTERNSHIP;
 import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_NUS_MODS;
 import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_PARTICIPATE;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,6 +75,11 @@ public abstract class SampleProfileItems {
     public static final ProfileItem ORBITAL_ACHIEVEMENT = new ProfileItemBuilder()
             .withTitle(VALID_TITLE_HACKATHON)
             .withCategory(VALID_CATEGORY_ACHIEVEMENT)
+            .withDescriptors(VALID_DESCRIPTOR_LEARN).build();
+
+    public static final ProfileItem R_SKILL = new ProfileItemBuilder()
+            .withTitle(VALID_TITLE_R)
+            .withCategory(VALID_CATEGORY_SKILL)
             .withDescriptors(VALID_DESCRIPTOR_LEARN).build();
 
     /**

@@ -8,8 +8,9 @@ public class ProfileItemFieldsUtil {
     // Valid titles
     public static final String VALID_TITLE_FACEBOOK_INTERNSHIP_LOWERCASE = "internship at facebook";
     public static final String VALID_TITLE_GOVTECH_INTERNSHIP = "Internship with Govtech";
-    public static final String VALID_TITLE_HTML = "Learn HTML";
-    public static final String VALID_TITLE_GRAPHQL = "Learn GraphQL";
+    public static final String VALID_TITLE_HTML = "HTML";
+    public static final String VALID_TITLE_R = "R";
+    public static final String VALID_TITLE_GRAPHQL = "GraphQL";
     public static final String VALID_TITLE_INTERNSHIP = "Data Analyst Internship at ByteDance";
     public static final String VALID_TITLE_COMPETITION = "Won second place in Code Jam";
     public static final String VALID_TITLE_HACKATHON = "Winner of Special Recognition in Orbital";
