@@ -6,21 +6,23 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_ADD_SUCCESS;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_DUPLICATE_ITEM;
-import static seedu.internhunter.model.util.ItemUtil.PROFILE_ITEM_NAME;
 import static seedu.internhunter.model.util.ItemUtil.PROFILE_NAME;
 import static seedu.internhunter.testutil.Assert.assertThrows;
 import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_GOVTECH_INTERNSHIP;
 import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_HACKATHON;
+import static seedu.internhunter.testutil.profile.SampleProfileItems.BYTEDANCE_INTERN;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.logic.commands.CommandResult;
 import seedu.internhunter.logic.commands.exceptions.CommandException;
 import seedu.internhunter.model.profile.ProfileItem;
 import seedu.internhunter.testutil.profile.ProfileItemBuilder;
+import seedu.internhunter.ui.tabs.TabName;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for {@code AddProfileCommand}.
@@ -39,18 +41,20 @@ public class AddProfileCommandTest {
 
         CommandResult commandResult = new AddProfileCommand(validProfileItem).execute(modelStub);
 
-        assertEquals(String.format(MESSAGE_ADD_SUCCESS, PROFILE_NAME, validProfileItem), commandResult.getFeedbackToUser());
+        assertEquals(String.format(MESSAGE_ADD_SUCCESS, PROFILE_NAME, validProfileItem),
+                     commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validProfileItem), modelStub.profileItems);
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
-        ProfileItem validProfileItem = new ProfileItemBuilder().build();
+    public void execute_duplicateProfileItem_throwsCommandException() {
+        ProfileItem validProfileItem = new ProfileItemBuilder(BYTEDANCE_INTERN).build();
         AddProfileCommand addProfileCommand = new AddProfileCommand(validProfileItem);
         ModelStub modelStub = new ModelStubAcceptingProfileItemAdded();
+        modelStub.addProfileItem(validProfileItem);
 
-        assertThrows(CommandException.class, String.format(MESSAGE_DUPLICATE_ITEM, PROFILE_ITEM_NAME),
-            () -> addProfileCommand.execute(modelStub));
+        assertThrows(CommandException.class,
+            String.format(MESSAGE_DUPLICATE_ITEM, PROFILE_NAME), () -> addProfileCommand.execute(modelStub));
     }
 
     @Test
@@ -73,7 +77,7 @@ public class AddProfileCommandTest {
         // null -> returns false
         assertFalse(addProfileInternshipCommand.equals(null));
 
-        // different person -> returns false
+        // different profile item -> returns false
         assertFalse(addProfileInternshipCommand.equals(addProfileHackathonCommand));
     }
 
@@ -94,6 +98,21 @@ public class AddProfileCommandTest {
         public void addProfileItem(ProfileItem profileItem) {
             requireNonNull(profileItem);
             profileItems.add(profileItem);
+        }
+
+        @Override
+        public int getFilteredProfileListSize() {
+            return profileItems.size();
+        }
+
+        @Override
+        public void setProfileViewIndex(Index index) {
+            // do nothing
+        }
+
+        @Override
+        public TabName getTabName() {
+            return TabName.valueOf("PROFILE");
         }
     }
 }

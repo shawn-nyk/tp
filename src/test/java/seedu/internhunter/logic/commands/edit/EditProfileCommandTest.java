@@ -145,12 +145,12 @@ public class EditProfileCommandTest {
 
     @Test
     public void equals_test_success() {
-        EditProfileItemDescriptor DESC_GOVTECH = new EditProfileItemDescriptorBuilder(GOVTECH_EXPERIENCE).build();
-        EditProfileItemDescriptor DESC_HTML = new EditProfileItemDescriptorBuilder(HTML_SKILL).build();
-        final EditProfileCommand standardCommand = new EditProfileCommand(INDEX_SECOND, DESC_GOVTECH);
+        EditProfileItemDescriptor govtechInternship = new EditProfileItemDescriptorBuilder(GOVTECH_EXPERIENCE).build();
+        EditProfileItemDescriptor htmlSkill = new EditProfileItemDescriptorBuilder(HTML_SKILL).build();
+        final EditProfileCommand standardCommand = new EditProfileCommand(INDEX_SECOND, govtechInternship);
 
         // same values -> returns true
-        EditProfileItemDescriptor copyDescriptor = new EditProfileItemDescriptor(DESC_GOVTECH);
+        EditProfileItemDescriptor copyDescriptor = new EditProfileItemDescriptor(govtechInternship);
         EditProfileCommand commandWithSameValues = new EditProfileCommand(INDEX_SECOND, copyDescriptor);
         assertEquals(commandWithSameValues, standardCommand);
 
@@ -164,9 +164,9 @@ public class EditProfileCommandTest {
         assertNotEquals(new ExitCommand(), standardCommand);
 
         // different index -> returns false
-        assertNotEquals(new EditProfileCommand(INDEX_FIRST, DESC_GOVTECH), standardCommand);
+        assertNotEquals(new EditProfileCommand(INDEX_FIRST, govtechInternship), standardCommand);
 
         // different descriptor -> returns false
-        assertNotEquals(new EditProfileCommand(INDEX_SECOND, DESC_HTML), standardCommand);
+        assertNotEquals(new EditProfileCommand(INDEX_SECOND, htmlSkill), standardCommand);
     }
 }

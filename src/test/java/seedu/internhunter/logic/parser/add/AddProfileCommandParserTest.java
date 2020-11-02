@@ -3,7 +3,6 @@ package seedu.internhunter.logic.parser.add;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.internhunter.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY_RANDOM;
 import static seedu.internhunter.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
-import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.CATEGORY_DESC_ACHIEVEMENT;
 import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.CATEGORY_DESC_EXPERIENCE;
 import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.CATEGORY_DESC_SKILL;
 import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.DESCRIPTOR_DESC_IMPLEMENT;
@@ -20,7 +19,6 @@ import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DE
 import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_DESCRIPTOR_LEARN;
 import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_COMPETITION;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.BYTEDANCE_INTERN;
-import static seedu.internhunter.testutil.profile.SampleProfileItems.ORBITAL_ACHIEVEMENT;
 
 import org.junit.jupiter.api.Test;
 
@@ -65,8 +63,8 @@ class AddProfileCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero descriptors
-        ProfileItem expectedProfileItem = new ProfileItemBuilder(ORBITAL_ACHIEVEMENT).withDescriptors().build();
-        assertParseSuccess(parser, TITLE_DESC_COMPETITION + CATEGORY_DESC_ACHIEVEMENT,
+        ProfileItem expectedProfileItem = new ProfileItemBuilder(BYTEDANCE_INTERN).withDescriptors().build();
+        assertParseSuccess(parser, TITLE_DESC_INTERNSHIP + CATEGORY_DESC_EXPERIENCE,
                 new AddProfileCommand(expectedProfileItem));
     }
 
