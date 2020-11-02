@@ -62,7 +62,7 @@ public class DeleteCommandParserTest {
     }
 
     @Test
-    public void parse_addCommandParserPassingToCorrectParser_true() throws ParseException {
+    public void parse_deleteCommandParserPassingToCorrectParser_true() throws ParseException {
         // item type app, description present -> FindApplicationCommand
         assertTrue(deleteCommandParser.parse(VALID_APPLICATION_INPUT) instanceof DeleteApplicationCommand);
 
@@ -74,7 +74,7 @@ public class DeleteCommandParserTest {
     }
 
     @Test
-    public void parse_addCommandParserPassingToCorrectParser_false() throws ParseException {
+    public void parse_deleteCommandParserPassingToCorrectParser_false() throws ParseException {
         assertFalse(deleteCommandParser.parse(VALID_APPLICATION_INPUT) instanceof DeleteInternshipCommand);
         assertFalse(deleteCommandParser.parse(VALID_APPLICATION_INPUT) instanceof DeleteCompanyCommand);
         assertFalse(deleteCommandParser.parse(VALID_APPLICATION_INPUT) instanceof DeleteProfileCommand);
