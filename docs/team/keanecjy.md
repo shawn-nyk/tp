@@ -75,8 +75,6 @@ morph the existing AB3 implementation into our own, adding a total of more than 
   (Pull request [\#60](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/60), [\#357](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/357))
   * Managed the [issue tracker](https://github.com/AY2021S1-CS2103T-T15-4/tp/issues?q=is%3Aissue+author%3Akeanecjy)
 
-## Other contributions
-
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [\#79](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/79),
   [\#92](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/92), [\#97](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/97),
