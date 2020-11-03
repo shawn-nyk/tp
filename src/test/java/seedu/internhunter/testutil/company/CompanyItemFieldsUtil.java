@@ -7,6 +7,7 @@ public class CompanyItemFieldsUtil {
     public static final String VALID_COMPANY_NAME_GOLDMAN = "Goldman Sachs";
     public static final String VALID_COMPANY_NAME_GOOGLE = "Google";
     public static final String VALID_COMPANY_NAME_GOOGLE_WITH_TRAILING_SPACES = "Google  ";
+    public static final String VALID_COMPANY_NAME_AMAZON = "Amazon";
     public static final String VALID_COMPANY_NAME_GARENA = "Garena";
 
     // Invalid company names
@@ -24,6 +25,7 @@ public class CompanyItemFieldsUtil {
     public static final String VALID_PHONE_FACEBOOK = "61112111";
     public static final String VALID_PHONE_GOLDMAN = "69792525";
     public static final String VALID_PHONE_GOOGLE = "61231234";
+    public static final String VALID_PHONE_AMAZON = "62343434";
     public static final String VALID_PHONE_GARENA = "986876587";
 
     // Invalid phone numbers
@@ -52,6 +54,7 @@ public class CompanyItemFieldsUtil {
     public static final String VALID_EMAIL_DOMAIN_HYPHEN = "CompanyHires@tech-company";
     public static final String VALID_EMAIL_SHORTEST = "a@bc";
     public static final String VALID_EMAIL_LOCAL_PART_AND_DOMAIN_SPECIAL_CHARS = "-@a.--.a";
+    public static final String VALID_EMAIL_AMAZON = "Amazon@hires.com";
 
     // Invalid emails
     public static final String INVALID_EMAIL_EMPTY = "";
@@ -78,10 +81,11 @@ public class CompanyItemFieldsUtil {
     public static final String VALID_ADDRESS_FACEBOOK = "9 Straits View, Marina One";
     public static final String VALID_ADDRESS_GOLDMAN = "60 Anson Rd, #14-01 Mapletree Anson";
     public static final String VALID_ADDRESS_GOOGLE = "70 Pasir Panjang Rd, #03-71";
-    public static final String VALID_ADDRESS_GARENA = "201 Victoria St,";
+    public static final String VALID_ADDRESS_GARENA = "201 Victoria St";
     public static final String VALID_ADDRESS_GOOGLE_LEADING_SPACES = "  70 Pasir Panjang Rd, #03-71";
     public static final String VALID_ADDRESS_GOOGLE_TRAILING_SPACES = "70 Pasir Panjang Rd, #03-71  ";
     public static final String VALID_ADDRESS_GOOGLE_LEADING_AND_TRAILING_SPACES = "  70 Pasir Panjang Rd, #03-71  ";
+    public static final String VALID_ADDRESS_AMAZON = "201 Tampines street";
 
     // Invalid addresses
     public static final String INVALID_ADDRESS_EMPTY = "";

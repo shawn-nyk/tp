@@ -18,6 +18,7 @@ import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TI
 import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_INTERNSHIP;
 import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_NUS_MODS;
 import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_PARTICIPATE;
+import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,6 +77,11 @@ public abstract class SampleProfileItems {
             .withCategory(VALID_CATEGORY_ACHIEVEMENT)
             .withDescriptors(VALID_DESCRIPTOR_LEARN).build();
 
+    public static final ProfileItem R_SKILL = new ProfileItemBuilder()
+            .withTitle(VALID_TITLE_R)
+            .withCategory(VALID_CATEGORY_SKILL)
+            .withDescriptors(VALID_DESCRIPTOR_LEARN).build();
+
     /**
      * Returns an {@code ProfileItem} with all the sample profile items.
      */
@@ -87,7 +93,7 @@ public abstract class SampleProfileItems {
         return profileItemList;
     }
 
-    private static List<ProfileItem> getProfileItems() {
+    public static List<ProfileItem> getProfileItems() {
         return new ArrayList<>(Arrays.asList(HTML_SKILL, GOVTECH_EXPERIENCE, NUS_MODS_EXPERIENCE,
                 MS_HACKATHON_ACHIEVEMENT));
     }

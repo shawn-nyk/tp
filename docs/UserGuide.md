@@ -51,20 +51,25 @@ title: User Guide
 
 ## **Introduction**
 
-**InternHunter is a CLI-centric desktop application which aids university students in applying for internships**.
+**InternHunter is a CLI-centric\* desktop application which aids university students in applying
+ for internships**.
 It lets you manage your own customisable collection of companies, internships, internship applications and your 
 user profile, so that you can keep track of internships that you are interested in - all from one centralised place.
 
 Never lose track of a good internship opportunity again.
 
-This User Guide will help you - the user - find out about what InternHunter is and how to use it. It'll get you up and 
-running with the app in your pursuit to land that desired internship. Let's dive in.
+This User Guide will help you find out about what InternHunter is and how to use it. It'll get you started with the 
+app in your pursuit to land that desired internship.
+
+Let's dive in.
+
+*\*If you're unfamiliar with Command-Line Interfaces (CLIs), you can find out about them [here](https://en.wikipedia.org/wiki/Command-line_interface)!*
 
 ### **Overview**
 
 You're searching for an internship.
 
-You've got 100 tabs open in Chrome.
+You've got 101 tabs open in Chrome.
 
 You're viewing multiple internship listings and companies' details, comparing salaries and job requirements across 
 webpages all while trying to recall your own skill set and finding what role best suits you.
@@ -120,20 +125,23 @@ Ready to begin? Let's get hunting.
 
 ## **About**
 
-This section will bring you through the [GUI](#understanding-the-gui), [technical terminologies](#understanding-the-technical-terminologies), as well as commonly used [symbols](#understanding-the-symbols).
+This section will bring you through the [Graphical User Interface(GUI)](#understanding-the-gui), [technical terminologies](#understanding-the-technical-terminologies), as well as commonly used [symbols](#understanding-the-symbols).
 
 #### Understanding the GUI
 
 <p><img src="images/AnnotatedGui.png"/></p>
 
+<p align="center"><strong>Figure 1: Annotated GUI with component names and functionality</strong></p>
+
 #### Understanding the technical terminologies
 
 Word | What it means
 -----|---------------
-Commands | Words that determines the action of InternHunter.
+Commands | Words that determine the action of InternHunter.
 Command word | The first word of every command.
 Parameters | Information that is supplied by you.
 Execute | Typing the information into the command box and pressing enter.
+Item type for command | com, int, app, me
 
 #### Understanding the symbols
 
@@ -151,12 +159,15 @@ Symbol | What it means
 
 :information_source: **Notes about the commands:**<br>
 
+* The command word and the item type for the command are case-sensitive.
+
 * Words in `UPPER_CASE` are the parameters to be supplied by you.<br>
   e.g. in `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`, `COMPANY_NAME`, `PHONE_NUMBER`, `EMAIL`, `ADDRESS`, `INDUSTRY`,
   an example of how to fill up the parameters are `add com n/Google p/65218000 e/GoogleHire@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Industry`.
 
-* Items in square brackets `[]` are optional. This paramaters are optional because we allow the user to key in at a later date if they do not have the relevant information at hand.<br>
-  e.g `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...` can be used as <br/> `add int 1 j/Software Engineer` or
+* Items in square brackets `[]` are optional. These paramaters are optional because they are additional information 
+  and you can key them in at a later date if you do not have the relevant information at hand.<br>
+  e.g `add int INDEX j/JOB_TITLE [w/WAGE] [p/PERIOD] [r/REQUIREMENT]...` can be used as <br/> `add int 1 j/Software Engineer` or
   `add int 3 j/Web Developer r/React w/3000 r/HTML5`.
 
 * Items with `...`​ after them can be used multiple times including zero times.<br>
@@ -176,10 +187,26 @@ Symbol | What it means
 
 ### **Company**
 
-This represents a company, any company, but typically one that you are interested in applying for an internship to.
+This represents a company, any company, but typically one you are interested in applying for an internship to.
 You can record and maintain a company's name, phone number, email address, physical address, and its industry types.
-You can then later specify what internships the company is offering by using the [internship commands](#internship).
-*(Note that you must create a company first before you can create internships that the company offers)*
+You can then specify what internships the company is offering by using the [internship commands](#internship).
+
+<div markdown="block" class="alert alert-info">
+
+:information_source: **Note:**<br>
+* You must create a company before you can create internships that the company offers.
+* Company names are unique - you cannot add multiple companies with the same case-sensitive name (they will be 
+ regarded as the same company and will not be allowed to exist in the app).
+
+</div>
+
+<div markdown="span" class="alert alert-primary">
+
+  :bulb: **Tip:** If you would like to store multiple different instances of the same company that differ by location
+   (e.g. Google in Singapore and Google in San Francisco), since companies cannot share the same name, you can simply
+    include the company's location in their name (e.g. `n/Google Singapore` and `n/Google San Francisco`)!
+  
+</div>
 
 #### Adding a company: `add com`
 
@@ -620,13 +647,14 @@ Example:
 <p align="center"><img src="images/ug-general/switchAppResultAnnotated.png"/></p>
 
 #### Clearing all entries: `clear`
+
 Clears all entries from InternHunter.
 
 Format: `clear`
 
 <div markdown="span" class="alert alert-warning">
 
-  :warning: **Warning:** `clear` will clear application, company, and profile item lists.
+  :warning: **Warning:** `clear` will clear all data, i.e. all companies, internships, applications and profile items.
   
 </div>
 
@@ -641,6 +669,7 @@ Example:
 <p align="center"><img src="images/ug-general/clearResult.png" width="70%" height="70%"/></p>
 
 #### Viewing Help: `help`
+
 Displays a link to the InternHunter user guide.
 
 Format: `help`
@@ -665,6 +694,7 @@ Example:
 
 
 #### Exiting the Program: `exit`
+
 Shows an exit confirmation dialog.
 
 Format: `exit`
@@ -694,16 +724,28 @@ Example:
 ## **FAQ**
 
 **Where does InternHunter store its data?** <br/>
-By default, InternHunter will save all the information into a folder called data. The information is then stored into 3 different Json files: `applicationitemlist.json`, `companyitemlist.json`, `profileitemlist.json`.
+By default, InternHunter will save all the information into a folder called "data" in the app's home directory (i.e. the 
+folder in which you placed the app). The data is stored in 3 separate JSON files: `applicationitemlist.json`, 
+`companyitemlist.json` and `profileitemlist.json`.
 
-**How do I transfer my data to another computer?** <br/>
-You can copy the data file and transfer it into the same directory of the other computer. InternHunter will then be able to reuse this data.
+**How do I transfer my data to another computer I would like to run InternHunter on?** <br/>
+Simply copy the data folder from the app's home directory and transfer it into the directory of the other computer in 
+which you've placed InternHunter. InternHunter will then be able to reuse this data.
 
 **Do I have to save my data manually?** <br/>
-There isn't a need for you to manually save your data, InternHunter will automatically save your data into the relevant json files.
+There isn't a need for you to manually save your data. InternHunter will automatically save your data while you are 
+running the app.
 
 **What happens if I accidentally clear all my data using `clear`?** <br/>
-Unfortunately InternHunter does not provide an `undo` method.
+InternHunter currently does not provide an undo command so it is not possible to retrieve any deleted data. 
+Make sure to run `clear` only if you are completely certain that you would like to delete all your data!
+
+**When does InternHunter use sample data?** <br/>
+InternHunter uses sample data when the user first launches the app. More specifically, 
+when **all** of applicationitemlist.json, companyitemlist.json, and profileitemlist.json are missing.
+
+**Why is my data missing?** <br/>
+Make sure your data is not missing and in the correct format. If not, InternHunter will use empty lists.
 
 --------------------------------------------------------------------------------------------------------------------
 

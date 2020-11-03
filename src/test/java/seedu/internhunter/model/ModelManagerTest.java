@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.testutil.Assert.assertThrows;
 
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,17 +16,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.internhunter.commons.core.GuiSettings;
 import seedu.internhunter.model.application.ApplicationItem;
+import seedu.internhunter.model.application.ApplicationNameContainsKeyWordsPredicate;
 import seedu.internhunter.model.company.CompanyItem;
-import seedu.internhunter.model.internship.InternshipItem;
+import seedu.internhunter.model.company.CompanyNameContainsKeyWordsPredicate;
 import seedu.internhunter.model.item.ItemList;
 import seedu.internhunter.model.profile.ProfileItem;
+import seedu.internhunter.model.profile.ProfileItemContainsKeywordPredicate;
 import seedu.internhunter.testutil.application.ApplicationItemBuilder;
+import seedu.internhunter.testutil.company.CompanyItemBuilder;
 import seedu.internhunter.testutil.profile.ProfileItemBuilder;
 
 public class ModelManagerTest {
 
     private ModelManager modelManager;
-    // private CompanyItemBuilder companyItemBuilder;
+    private CompanyItemBuilder companyItemBuilder;
     private ApplicationItemBuilder applicationItemBuilder;
     private ProfileItemBuilder profileItemBuilder;
     private ObservableList<CompanyItem> companyItemList;
@@ -39,12 +43,12 @@ public class ModelManagerTest {
     public void setUp() {
         modelManager = new ModelManager();
 
-        // companyItemBuilder = new CompanyItemBuilder();
+        companyItemBuilder = new CompanyItemBuilder();
         applicationItemBuilder = new ApplicationItemBuilder();
         profileItemBuilder = new ProfileItemBuilder();
 
         companyItemList = FXCollections.observableArrayList();
-        // companyItemList.add(companyItemBuilder.build());
+        companyItemList.add(companyItemBuilder.build());
 
         applicationItemList = FXCollections.observableArrayList();
         applicationItemList.add(applicationItemBuilder.build());
@@ -118,8 +122,7 @@ public class ModelManagerTest {
 
     @Test
     public void hasCompany_companyNotInCompanyList_returnsFalse() {
-        // TODO when company item is ready
-        // assertFalse(modelManager.hasCompany(companyItemBuilder.build()));
+        assertFalse(modelManager.hasCompany(companyItemBuilder.build()));
     }
 
     @Test
@@ -134,9 +137,8 @@ public class ModelManagerTest {
 
     @Test
     public void addCompany_addCompanyItemToList_returnsEquals() {
-        // TODO when company item is ready
-        // modelManager.addCompany(companyItemBuilder.build());
-        // assertEquals(modelManager.getFilteredCompanyList(), companyItems);
+        modelManager.addCompany(companyItemBuilder.build());
+        assertEquals(modelManager.getFilteredCompanyList(), companyItemList);
     }
 
     @Test
@@ -153,9 +155,8 @@ public class ModelManagerTest {
 
     @Test
     public void hasCompany_companyInCompanyList_returnsTrue() {
-        // TODO when company item is ready
-        // modelManager.addCompany(companyItemBuilder.build());
-        // assertTrue(modelManager.hasCompany(companyItemBuilder.build()));
+        modelManager.addCompany(companyItemBuilder.build());
+        assertTrue(modelManager.hasCompany(companyItemBuilder.build()));
     }
 
     @Test
@@ -189,29 +190,54 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void getFilteredCompanyListSize_getCompanyListSize_returnsEqual() {
-        // TODO when company item is ready
-        // modelManager.addCompany(companyItemBuilder.build());
-        // assertEquals(modelManager.getFilteredCompanyListSize(), 1);
+    public void getUnFilteredCompanyListSize_true() {
+        modelManager.addCompany(companyItemBuilder.build());
+        assertEquals(1, modelManager.getUnFilteredCompanyListSize());
     }
 
     @Test
-    public void getFilteredApplicationListSize_getApplicationListSize_returnsEqual() {
+    public void getUnFilteredApplicationListSize_true() {
         modelManager.addApplication(applicationItemBuilder.build());
-        assertEquals(modelManager.getFilteredApplicationListSize(), 1);
+        assertEquals(1, modelManager.getUnFilteredApplicationListSize());
     }
 
     @Test
-    public void getFilteredProfileListSize_getProfileListSize_returnsEqual() {
+    public void getUnfilteredProfileListSize_true() {
         modelManager.addProfileItem(profileItemBuilder.build());
-        assertEquals(modelManager.getFilteredProfileListSize(), 1);
+        assertEquals(1, modelManager.getUnFilteredProfileListSize());
+    }
+
+    @Test
+    public void getFilteredCompanyListSize_getCompanyListSize_returnsEqual() {
+        modelManager.addCompany(companyItemBuilder.build());
+        CompanyNameContainsKeyWordsPredicate predicate =
+            new CompanyNameContainsKeyWordsPredicate(Arrays.asList("empty"));
+        modelManager.updateFilteredCompanyList(predicate);
+        assertEquals(0, modelManager.getFilteredCompanyListSize());
+    }
+
+    @Test
+    public void getFilteredApplicationListSize_returnsEqual() {
+        modelManager.addApplication(applicationItemBuilder.build());
+        ApplicationNameContainsKeyWordsPredicate predicate =
+            new ApplicationNameContainsKeyWordsPredicate(Arrays.asList("empty"));
+        modelManager.updateFilteredApplicationList(predicate);
+        assertEquals(0, modelManager.getFilteredApplicationListSize());
+    }
+
+    @Test
+    public void getFilteredProfileListSize_returnsEqual() {
+        modelManager.addProfileItem(profileItemBuilder.build());
+        ProfileItemContainsKeywordPredicate predicate =
+            new ProfileItemContainsKeywordPredicate(Arrays.asList("empty"));
+        modelManager.updateFilteredProfileList(predicate);
+        assertEquals(0, modelManager.getFilteredProfileListSize());
     }
 
     @Test
     public void getCompanyList_testIfEqualCompanyList_returnsEqual() {
-        // TODO when company item is ready
-        // modelManager.addCompany(companyItemBuilder.build());
-        // assertEquals(modelManager.getCompanyList(), companyItems);
+        modelManager.addCompany(companyItemBuilder.build());
+        assertEquals(modelManager.getCompanyItemList(), companyItemList);
     }
 
     @Test
@@ -222,10 +248,9 @@ public class ModelManagerTest {
 
     @Test
     public void deleteCompany_deleteCompanyFromList_returnsEqual() {
-        // TODO when company item is ready
-        // modelManager.addCompany(companyItemBuilder.build());
-        // modelManager.deleteCompany(companyItemBuilder.build());
-        // assertEquals(modelManager.getFilteredCompanyList(), emptyCompanyItemList);
+        modelManager.addCompany(companyItemBuilder.build());
+        modelManager.deleteCompany(companyItemBuilder.build());
+        assertEquals(modelManager.getFilteredCompanyList(), emptyCompanyItemList);
     }
 
     @Test
@@ -243,14 +268,83 @@ public class ModelManagerTest {
     }
 
     @Test
+    public void getUnfilteredCompanyList_equals_true() {
+        modelManager.addCompany(companyItemBuilder.build());
+        ItemList<CompanyItem> companyItemItemList = new ItemList<>();
+        companyItemItemList.addItem(companyItemBuilder.build());
+        assertEquals(modelManager.getUnfilteredCompanyList(), companyItemItemList);
+    }
+
+    @Test
+    public void getUnfilteredProfileList_equals_true() {
+        modelManager.addProfileItem(profileItemBuilder.build());
+        ItemList<ProfileItem> profileItemItemList = new ItemList<>();
+        profileItemItemList.addItem(profileItemBuilder.build());
+        assertEquals(modelManager.getUnfilteredProfileList(), profileItemItemList);
+    }
+
+    @Test
+    public void getUnfilteredApplicationList_equals_true() {
+        modelManager.addApplication(applicationItemBuilder.build());
+        ItemList<ApplicationItem> applicationItemItemList = new ItemList<>();
+        applicationItemItemList.addItem(applicationItemBuilder.build());
+        assertEquals(modelManager.getFilteredApplicationList(), applicationItemList);
+    }
+
+    @Test
+    public void getCompanyList_equals() {
+        modelManager.addCompany(companyItemBuilder.build());
+        ItemList<CompanyItem> companyItemItemList = new ItemList<>();
+        companyItemItemList.addItem(companyItemBuilder.build());
+        ItemListManager<CompanyItem> companyItemItemListManager = new ItemListManager<>(companyItemItemList);
+        FilterableItemList<CompanyItem> companyList = modelManager.getCompanyList();
+        assertEquals(companyItemItemListManager, companyList);
+
+        // testing equality also
+        assertTrue(companyList.equals(companyList));
+        assertFalse(companyList.equals(null));
+        assertFalse(companyList.equals(0.5f));
+    }
+
+    @Test
+    public void getApplicationList_equals() {
+        modelManager.addApplication(applicationItemBuilder.build());
+        ItemList<ApplicationItem> applicationItemItemList = new ItemList<>();
+        applicationItemItemList.addItem(applicationItemBuilder.build());
+        ItemListManager<ApplicationItem> applicationItemItemListManager =
+            new ItemListManager<>(applicationItemItemList);
+        FilterableItemList<ApplicationItem> applicationList = modelManager.getApplicationList();
+        assertEquals(applicationItemItemListManager, applicationList);
+
+        // testing equality also
+        assertTrue(applicationList.equals(applicationList));
+        assertFalse(applicationList.equals(null));
+        assertFalse(applicationList.equals(0.5f));
+    }
+
+    @Test
+    public void getProfileList_equals_true() {
+        modelManager.addProfileItem(profileItemBuilder.build());
+        ItemList<ProfileItem> profileItemItemList = new ItemList<>();
+        profileItemItemList.addItem(profileItemBuilder.build());
+        ItemListManager<ProfileItem> profileItemItemListManager = new ItemListManager<>(profileItemItemList);
+        FilterableItemList<ProfileItem> profileItemList = modelManager.getProfileList();
+        assertEquals(profileItemItemListManager, profileItemList);
+
+        // testing equality also
+        assertTrue(profileItemList.equals(profileItemList));
+        assertFalse(profileItemList.equals(null));
+        assertFalse(profileItemList.equals(0.5f));
+    }
+
+    @Test
     public void setCompany_changeCompanyItem_returnsEqual() {
-        // TODO when company item is ready
-        // modelManager.addCompany(companyItemList.build());
-        // CompanyItemBuilder secondCompanyItemBuilder = new CompanyItemBuilder();
-        // secondCompanyItemBuilder.
-        // modelManager.setCompany(companyItemList.build(), secondCompanyItemBuilder.build());
-        // emptyCompanyItemList.add(secondCompanyItemBuilder.build());
-        // assertEquals(modelManager.getFilteredCompanyList(), emptyCompanyItemList);
+        modelManager.addCompany(companyItemBuilder.build());
+        CompanyItemBuilder secondCompanyItemBuilder = new CompanyItemBuilder();
+        secondCompanyItemBuilder.withPhone("91919191");
+        modelManager.setCompany(companyItemBuilder.build(), secondCompanyItemBuilder.build());
+        emptyCompanyItemList.add(secondCompanyItemBuilder.build());
+        assertEquals(modelManager.getFilteredCompanyList(), emptyCompanyItemList);
     }
 
     @Test
@@ -276,7 +370,6 @@ public class ModelManagerTest {
     @Test
     public void equals() {
         ItemList<CompanyItem> companyList = new ItemList<>();
-        ItemList<InternshipItem> internshipList = new ItemList<>();
         ItemList<ApplicationItem> applicationList = new ItemList<>();
         ItemList<ProfileItem> profileList = new ItemList<>();
         UserPrefs userPrefs = new UserPrefs();
@@ -295,21 +388,10 @@ public class ModelManagerTest {
         // different types -> returns false
         assertNotEquals(modelManager, 5);
 
-        // TODO REMOVE
-        // different filteredList -> returns false
-        // String[] keywords = ALICE.getName().fullName.split("\\s+");
-        // modelManager.getAddressBook()
-        //        .updateFilteredItemList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        // assertNotEquals(new ModelManager(addressBook, companyList,
-        //        applicationList, profileList, userPrefs), modelManager);
-
-        // resets modelManager to initial state for upcoming tests
-        // modelManager.getAddressBook().updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
-
         // different userPrefs -> returns false
-        // UserPrefs differentUserPrefs = new UserPrefs();
-        // differentUserPrefs.setApplicationItemListFilePath(Paths.get("differentFilePath"));
-        // assertNotEquals(new ModelManager(addressBook, companyList,
-        //        applicationList, profileList, differentUserPrefs), modelManager);
+        UserPrefs differentUserPrefs = new UserPrefs();
+        differentUserPrefs.setApplicationItemListFilePath(Paths.get("differentFilePath"));
+        assertNotEquals(new ModelManager(companyList, applicationList, profileList, differentUserPrefs),
+            modelManager);
     }
 }

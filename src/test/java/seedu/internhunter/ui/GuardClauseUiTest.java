@@ -3,24 +3,21 @@ package seedu.internhunter.ui;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.getSampleApplicationItemList;
+import static seedu.internhunter.testutil.company.SampleCompanyItems.getSampleCompanyList;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.getSampleProfileItemList;
 import static seedu.internhunter.ui.GuardClauseUi.IS_EMPTY_DATA_LIST;
 import static seedu.internhunter.ui.GuardClauseUi.IS_EMPTY_LIST_STRING;
 import static seedu.internhunter.ui.GuardClauseUi.IS_EMPTY_STRING;
 import static seedu.internhunter.ui.GuardClauseUi.IS_SAME_STRING;
 
-import java.util.LinkedHashMap;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import seedu.internhunter.model.application.ApplicationItem;
-import seedu.internhunter.model.item.Item;
+import seedu.internhunter.model.company.CompanyItem;
 import seedu.internhunter.model.item.ItemList;
 import seedu.internhunter.model.profile.ProfileItem;
-import seedu.internhunter.storage.item.JsonAdaptedItem;
 
 public class GuardClauseUiTest {
 
@@ -30,13 +27,13 @@ public class GuardClauseUiTest {
     private static final String NON_EMPTY_LIST_STRING = "[a]";
     private ItemList<ApplicationItem> applicationItemList;
     private ItemList<ProfileItem> profileItemList;
-    private ObservableList<CompanyItemStub> companyItemStubList;
+    private ItemList<CompanyItem> companyItemList;
 
     @BeforeEach
     public void setUp() {
         applicationItemList = getSampleApplicationItemList();
         profileItemList = getSampleProfileItemList();
-        companyItemStubList = FXCollections.observableArrayList();
+        companyItemList = getSampleCompanyList();
     }
 
     @Test
@@ -71,8 +68,7 @@ public class GuardClauseUiTest {
         assertFalse(IS_EMPTY_DATA_LIST.test(profileItemList.getItemList()));
 
         // company item list
-        companyItemStubList.add(new CompanyItemStub());
-        assertFalse(IS_EMPTY_DATA_LIST.test(companyItemStubList));
+        assertFalse(IS_EMPTY_DATA_LIST.test(companyItemList.getItemList()));
 
         // null test
         assertFalse(IS_EMPTY_DATA_LIST.test(null));
@@ -123,35 +119,6 @@ public class GuardClauseUiTest {
 
         // both null
         assertFalse(IS_SAME_STRING.test(null, null));
-    }
-
-
-    /**
-     * TODO Note that all stub class to be removed after all the sample is made
-     * SampleApplicationItems, SampleInternshipItems, SampleCompanyItems, SampleProfileItems.
-     */
-
-    static class CompanyItemStub extends Item {
-
-        @Override
-        public boolean isSameItem(Item otherItem) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public String getItemName() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public LinkedHashMap<String, Object> getMapping() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public JsonAdaptedItem getJsonAdaptedItem() {
-            throw new AssertionError("This method should not be called.");
-        }
     }
 
 }

@@ -1,5 +1,9 @@
 package seedu.internhunter;
 
+import static seedu.internhunter.model.util.SampleDataUtil.getSampleApplicationItemList;
+import static seedu.internhunter.model.util.SampleDataUtil.getSampleCompanyItemList;
+import static seedu.internhunter.model.util.SampleDataUtil.getSampleProfileItemList;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -31,6 +35,9 @@ import seedu.internhunter.storage.UserPrefsStorage;
 public class MainAppUtil {
 
     private static final Logger logger = LogsCenter.getLogger(MainAppUtil.class);
+    private static boolean isMissingApplicationList = false;
+    private static boolean isMissingCompanyList = false;
+    private static boolean isMissingProfileList = false;
 
     /**
      * Gets the initial application item list.
@@ -44,17 +51,17 @@ public class MainAppUtil {
         try {
             itemListOptional = storage.readApplicationItemList();
             if (itemListOptional.isEmpty()) {
-                logger.info("Data file not found. Will be starting with a sample application item list");
+                isMissingApplicationList = true;
             }
             //to do sample data
             initialItemListData = itemListOptional.orElse(new ItemList<>());
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. "
-                    + "Will be starting with an empty application item list");
+                + "Will be starting with an empty application item list");
             initialItemListData = new ItemList<>();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. "
-                    + "Will be starting with an empty application item list");
+                + "Will be starting with an empty application item list");
             initialItemListData = new ItemList<>();
         }
 
@@ -73,17 +80,17 @@ public class MainAppUtil {
         try {
             itemListOptional = storage.readCompanyItemList();
             if (itemListOptional.isEmpty()) {
-                logger.info("Data file not found. Will be starting with a sample company item list");
+                isMissingCompanyList = true;
             }
             //to do sample data
             initialItemListData = itemListOptional.orElse(new ItemList<>());
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. "
-                    + "Will be starting with an empty company item list");
+                + "Will be starting with an empty company item list");
             initialItemListData = new ItemList<>();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. "
-                    + "Will be starting with an empty company item list");
+                + "Will be starting with an empty company item list");
             initialItemListData = new ItemList<>();
         }
 
@@ -102,21 +109,35 @@ public class MainAppUtil {
         try {
             itemListOptional = storage.readProfileItemList();
             if (itemListOptional.isEmpty()) {
-                logger.info("Data file not found. Will be starting with a sample profile item list");
+                isMissingProfileList = true;
             }
             //to do sample data
             initialItemListData = itemListOptional.orElse(new ItemList<>());
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. "
-                    + "Will be starting with an empty profile item list");
+                + "Will be starting with an empty profile item list");
             initialItemListData = new ItemList<>();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. "
-                    + "Will be starting with an empty profile item list");
+                + "Will be starting with an empty profile item list");
             initialItemListData = new ItemList<>();
         }
 
         return initialItemListData;
+    }
+
+    /**
+     * Initiates InternHunter with sample data.
+     *
+     * @param applicationItemList InternHunter's application item list.
+     * @param companyItemList     InternHunter's company item list.
+     * @param profileItemList     InternHunter's profile item list.
+     */
+    public static void initSampleData(ItemList<ApplicationItem> applicationItemList,
+        ItemList<CompanyItem> companyItemList, ItemList<ProfileItem> profileItemList) {
+        applicationItemList.resetData(getSampleApplicationItemList());
+        companyItemList.resetData(getSampleCompanyItemList());
+        profileItemList.resetData(getSampleProfileItemList());
     }
 
     /**
@@ -128,16 +149,16 @@ public class MainAppUtil {
      *                                         that does not exist in any company's list of internships.
      */
     private static void matchInternships(ItemList<ApplicationItem> applicationItemList,
-            ItemList<CompanyItem> companyItemList) throws InconsistentInternshipException {
+        ItemList<CompanyItem> companyItemList) throws InconsistentInternshipException {
         for (ApplicationItem applicationItem : applicationItemList.getItemList()) {
             final InternshipItem applicationInternshipItem = applicationItem.getInternshipItem();
 
             final Optional<InternshipItem> correctInternshipItem = companyItemList.getItemList().stream()
-                    .map(CompanyItem::getInternships).reduce(new ArrayList<>(), (x, y) -> {
-                        x.addAll(y);
-                        return x;
-                    }).stream().filter(companyInternshipItem -> companyInternshipItem.equals(applicationInternshipItem))
-                    .findAny();
+                .map(CompanyItem::getInternships).reduce(new ArrayList<>(), (x, y) -> {
+                    x.addAll(y);
+                    return x;
+                }).stream().filter(companyInternshipItem -> companyInternshipItem.equals(applicationInternshipItem))
+                .findAny();
 
             if (correctInternshipItem.isEmpty()) {
                 applicationItemList.resetData(new ItemList<>());
@@ -147,7 +168,7 @@ public class MainAppUtil {
 
             //Changes the current application item with the one with the correct internship object.
             applicationItemList.setItem(applicationItem, new ApplicationItem(correctInternshipItem.get(),
-                    applicationItem.getStatus(), applicationItem.getStatusDate()));
+                applicationItem.getStatus(), applicationItem.getStatusDate()));
         }
     }
 
@@ -160,6 +181,12 @@ public class MainAppUtil {
         ItemList<CompanyItem> companyItemList = new ItemList<>(initCompanyItemList(storage));
         ItemList<ApplicationItem> applicationItemList = new ItemList<>(initApplicationItemList(storage));
         ItemList<ProfileItem> profileItemList = new ItemList<>(initProfileItemList(storage));
+
+        boolean isMissingAllLists = isMissingApplicationList && isMissingCompanyList && isMissingProfileList;
+
+        if (isMissingAllLists) {
+            initSampleData(applicationItemList, companyItemList, profileItemList);
+        }
 
         try {
             matchInternships(applicationItemList, companyItemList);
@@ -197,7 +224,7 @@ public class MainAppUtil {
             initializedConfig = configOptional.orElse(new Config());
         } catch (DataConversionException e) {
             logger.warning("Config file at " + configFilePathUsed + " is not in the correct format. "
-                    + "Using default config properties");
+                + "Using default config properties");
             initializedConfig = new Config();
         }
 
@@ -225,7 +252,7 @@ public class MainAppUtil {
             initializedPrefs = prefsOptional.orElse(new UserPrefs());
         } catch (DataConversionException e) {
             logger.warning("UserPrefs file at " + prefsFilePath + " is not in the correct format. "
-                    + "Using default user prefs");
+                + "Using default user prefs");
             initializedPrefs = new UserPrefs();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
