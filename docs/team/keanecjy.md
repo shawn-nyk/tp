@@ -60,7 +60,7 @@ morph the existing AB3 implementation into our own, adding a total of more than 
         [\#156](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/156), [\#169](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/169),
         [\#180](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/180), [\#192](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/192),
         [\#220](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/220), [\#341](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/341)
-        [\#220](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/355))
+        [\#355](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/355))
 
 - **Documentation:**
     - User Guide:
@@ -68,7 +68,7 @@ morph the existing AB3 implementation into our own, adding a total of more than 
         [\#78](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/78), [\#125](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/125))
         - Added documentation for match internships command (Pull requests: [\#282](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/282))
     - Developer Guide:
-        - Added implementation details and UML diagrams for [Match Command feature]((https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/282)),
+        - Added implementation details and UML diagrams for [Match Command feature](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/282),
         [Command implementation component](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/214), [Logic component](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/276),
         [Glossary and some use cases](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/85/files)
 
@@ -78,7 +78,9 @@ morph the existing AB3 implementation into our own, adding a total of more than 
   * Create GeneralParserUtil to hold common parsing methods for all classes (Pull request [\#126](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/126))
   * Update readme and landing page (Pull requests [\#81](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/81),
   [\#162](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/162))
-  * Setup codecov for the team so that we can track our code coverage and work on remaining tests
+  * Setup codecov for the team so that we can track our code coverage and work on remaining tests 
+  (Pull request [\#81](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/60))
+  * Managed the [issue tracker](https://github.com/AY2021S1-CS2103T-T15-4/tp/issues?q=is%3Aissue+author%3Akeanecjy)
 
 ## Other contributions
 
