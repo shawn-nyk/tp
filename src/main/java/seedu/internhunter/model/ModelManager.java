@@ -257,7 +257,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Returns the profile item list
+     * Returns the profile item list.
      */
     @Override
     public ObservableList<ProfileItem> getProfileItemList() {

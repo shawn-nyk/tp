@@ -13,7 +13,6 @@ import java.util.LinkedHashMap;
 import java.util.Objects;
 
 import seedu.internhunter.model.internship.InternshipItem;
-import seedu.internhunter.model.internship.JobTitle;
 import seedu.internhunter.model.item.Item;
 import seedu.internhunter.storage.application.JsonAdaptedApplicationItem;
 import seedu.internhunter.storage.item.JsonAdaptedItem;
@@ -65,15 +64,6 @@ public class ApplicationItem extends Item {
      */
     public InternshipItem getInternshipItem() {
         return internshipItem;
-    }
-
-    /**
-     * Retrieves the JobTitle of the InternshipItem of this ApplicationItem.
-     *
-     * @return InternshipItem of this ApplicationItem.
-     */
-    public JobTitle getJobTitleOfInternshipItem() {
-        return internshipItem.getJobTitle();
     }
 
     /**

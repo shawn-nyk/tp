@@ -55,7 +55,9 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
     /**
      * Factory method that creates and displays the particular company item's information at that index.
      *
+     * @param companyItems The list of company items.
      * @param index The Index of the display to be displayed.
+     * @param primaryStage The stage in which this display should show.
      * @return An Optional containing the display information of the company at that particular Index.
      */
     public static Optional<InformationDisplay<? extends Item>> getCompanyDisplay(
