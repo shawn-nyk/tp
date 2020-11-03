@@ -72,7 +72,7 @@ public class AddCompanyCommandTest {
         // null -> returns false
         assertFalse(addCompanyGoogleCommand.equals(null));
 
-        // different profile item -> returns false
+        // different company -> returns false
         assertFalse(addCompanyGoogleCommand.equals(addCompanyFacebookCommand));
     }
 

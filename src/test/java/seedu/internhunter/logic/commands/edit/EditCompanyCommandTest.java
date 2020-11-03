@@ -32,7 +32,6 @@ import seedu.internhunter.model.item.ItemList;
 import seedu.internhunter.testutil.company.CompanyItemBuilder;
 import seedu.internhunter.ui.tabs.TabName;
 
-// todo javadocs (shawn)
 public class EditCompanyCommandTest {
     private Model model;
     private Model expectedModel;
@@ -132,13 +131,13 @@ public class EditCompanyCommandTest {
 
     /**
      * Edit filtered list where index is larger than size of filtered list,
-     * but smaller than size of profile list
+     * but smaller than size of company list
      */
     @Test
     public void execute_invalidCompanyIndexFilteredList_failure() {
         showCompanyAtIndex(model, INDEX_FIRST);
         Index outOfBoundIndex = INDEX_SECOND;
-        // ensures that outOfBoundIndex is still in bounds of profile list
+        // ensures that outOfBoundIndex is still in bounds of company list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getUnFilteredCompanyListSize());
 
         EditCompanyCommand editCommand = new EditCompanyCommand(outOfBoundIndex,
