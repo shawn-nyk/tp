@@ -740,6 +740,13 @@ running the app.
 InternHunter currently does not provide an undo command so it is not possible to retrieve any deleted data. 
 Make sure to run `clear` only if you are completely certain that you would like to delete all your data!
 
+**When does InternHunter use sample data?** <br/>
+InternHunter uses sample data when the user first launches the app. More specifically, 
+when **all** of applicationitemlist.json, companyitemlist.json, and profileitemlist.json are missing.
+
+**Why is my data missing?** <br/>
+Make sure your data is not missing and in the correct format. If not, InternHunter will use empty lists.
+
 --------------------------------------------------------------------------------------------------------------------
 
 
