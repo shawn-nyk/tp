@@ -92,7 +92,7 @@ morph the existing AB3 implementation into our own, adding a total of more than 
   [8](https://github.com/keanecjy/ped/issues/8), [9](https://github.com/keanecjy/ped/issues/9),
   [10](https://github.com/keanecjy/ped/issues/10), [11](https://github.com/keanecjy/ped/issues/9)
 
-## Contributions to user guides
+## Contributions to guides
 - User Guide:
     - Added [documentation](https://ay2021s1-cs2103t-t15-4.github.io/tp/UserGuide.html#application) for all commands in application, i.e. add, delete, edit, view, find, list
     - Added [documentation](https://ay2021s1-cs2103t-t15-4.github.io/tp/UserGuide.html#generating-matching-internships-match) for match internships command
