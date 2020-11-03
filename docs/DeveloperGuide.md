@@ -1381,8 +1381,32 @@ testers are expected to do more *exploratory* testing.
    Expected: Shows the GUI with no data.
 
 
+### Appendix G: Effort 
 
-### Appendix G: Sequence Diagrams
+InternHunter is a challenging endeavour as it deals with 4 different entities (company, internship, application and
+profile items) and much consideration has to be put into the interaction, management and storage of these entities
+that seeks to reduce code duplication as much as possible by using Object Oriented Principles and other design
+ patterns. 
+
+To approach the management different entities in the model. The abstract `Item` class is used a blueprint for
+the other entities to extend. After which, `Itemlist` can be used as the sole collection offering common methods to
+manipulate the collection of different entities by leveraging on the polymorphism and dynamic binding. This negates
+ the need for the creation of different individual collections types for each entity, thereby abiding to
+ the DRY principle.
+
+Another challenge faced was dealing the the close coupling of the company, internship and application objects whereby
+company shares a composition relationship with its internships and an internship share a composition 
+relationship with the application. This means that an internship cannot exists without the company it
+belongs to and the application cannot exist without the internship that it is applied to. This creates a need for
+interesting commands such as the delete company command which has a cascading effect, where a deletion of a company
+will require its internships and the internship's applications to be deleted as well. This preserves data integrity
+ of InternHunter by ensuring that data is consistent.
+
+The UI has also been completely revamped to have a different look and feel from Address Book 3. It uses a tab
+ interface for switching between and displaying the different entities of InternHunter and a right display panel to show
+ the details of each entity item which the cards in the list cannot show.
+
+### Appendix H: Sequence Diagrams
 
 <p align="center">Sequence diagram for HandleDeleteDisplaySwitchIndex</p>
 
