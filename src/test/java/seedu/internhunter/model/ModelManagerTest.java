@@ -235,13 +235,13 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void getCompanyList_testIfEqualCompanyList_returnsEqual() {
+    public void getCompanyItemList_testIfEqualCompanyList_returnsEqual() {
         modelManager.addCompany(companyItemBuilder.build());
         assertEquals(modelManager.getCompanyItemList(), companyItemList);
     }
 
     @Test
-    public void getProfileList_testIfEqualProfileList_returnsEqual() {
+    public void getProfileItemList_testIfEqualProfileList_returnsEqual() {
         modelManager.addProfileItem(profileItemBuilder.build());
         assertEquals(modelManager.getProfileItemList(), profileItemList);
     }

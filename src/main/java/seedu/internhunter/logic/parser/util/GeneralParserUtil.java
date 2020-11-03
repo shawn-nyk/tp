@@ -13,7 +13,6 @@ import seedu.internhunter.logic.parser.exceptions.ParseException;
 
 /**
  * Handles the general parsing of all commands.
- * TODO: Javadocs
  */
 public class GeneralParserUtil {
 
@@ -114,7 +113,11 @@ public class GeneralParserUtil {
     }
 
     /**
-     * todo javadocs
+     * Checks if the input command details is empty. Else throws a specified message.
+     *
+     * @param commandDetails String representing the input command details.
+     * @param message A String representing a specific error message.
+     * @throws ParseException if {@code commandDetails} is blank.
      */
     public static void checkCommandDetailsIsNotBlank(String commandDetails, String message) throws ParseException {
         if (commandDetails.isBlank()) {
@@ -123,7 +126,11 @@ public class GeneralParserUtil {
     }
 
     /**
-     * todo javadocs
+     * Removes whitespace from both ends of a string, and split the {@code args} by white space(s) between each words.
+     *
+     * @param args A string representing the input argument.
+     * @return An array of strings computed by splitting {@code args} around matches of the given white spaces between
+     * each words.
      */
     public static String[] getTrimmedArgsKeywords(String args) {
         String trimmedArgs = args.trim();

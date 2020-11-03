@@ -38,7 +38,7 @@ public interface Model {
 
     /**
      * Returns the company list
-     */ // todo: remove if ultimately not needed
+     */
     FilterableItemList<CompanyItem> getCompanyList();
 
     /**
@@ -95,7 +95,7 @@ public interface Model {
 
     /**
      * Returns the application list
-     */ // todo: remove if ultimately not needed
+     */
     FilterableItemList<ApplicationItem> getApplicationList();
 
     /**
@@ -160,7 +160,7 @@ public interface Model {
 
     /**
      * Returns the profile list
-     */ // todo: remove if ultimately not needed
+     */
     FilterableItemList<ProfileItem> getProfileList();
 
     /**
