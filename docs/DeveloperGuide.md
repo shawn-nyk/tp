@@ -1342,12 +1342,14 @@ testers are expected to do more *exploratory* testing.
 **Viewing help**
 
 1. Viewing help
+
    1. Test case: `help` <br>
    Expected: Help window appears with InternHunter's user guide url.
 
 **Clearing all the data in the app**
 
 1. Clearing all existing data in InternHunter.
+
    1. Prerequisites: Some data has been added to InternHunter.
    
    1. Test case: `clear` <br>
