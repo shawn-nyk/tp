@@ -23,12 +23,12 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
   * Switch tab (Pull request [\#104](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/104))
     * What it does: Allows the user to switch tabs to view the different data types available.
     * Highlights: This command required careful planning as we were considering how should the app "work" for the best User Experience. Ultimately, we decided that we will help to improve the User Experience by helping them to switch tabs if they were to execute commands for other tabs. Thus this command become solely for the user to just switch between the tabs without having to execute commands that might cause changes.
-  * Find Applications (Pull request [\#190](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/190)), (Pull request [\#198](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/198))
+  * Find Applications (Pull request [\#190](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/190), [\#198](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/198))
     * What it does: Allows the user to find applications by Job Title from the app's application list.
-  * List all applications (Pull request [\#190](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/190)), (Pull request [\#198](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/198))
+  * List all applications (Pull request [\#190](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/190), [\#198](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/198))
     * What it does: Allows the user to list all applications in the app's application list.
-  * Contributed significantly to increase test coverage. [\#178](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/178), [\#198](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/198) ,[\#273](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/273), [\#298](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/298), [\#353](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/353), [\#356](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/356)
-  * Did javadocs [\#179](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/179), as well as in some general pull request.
+  * Contributed significantly to increase test coverage. (Pull request [\#178](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/178), [\#198](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/198) ,[\#273](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/273), [\#298](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/298), [\#353](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/353), [\#356](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/356))
+  * Did javadocs (Pull request [\#179](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/179)), as well as in some general pull request.
 
 * **Documentation**:
   * User guide:
