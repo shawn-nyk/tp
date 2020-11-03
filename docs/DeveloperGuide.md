@@ -988,7 +988,7 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-#### Launch and shutdown
+**Launch and shutdown**
 
 1. Initial launch
 
@@ -1009,13 +1009,13 @@ testers are expected to do more *exploratory* testing.
       Expected: A Exit pop-out dialog will confirm the intention to exit InternHunter. For all users, you can use `tab` on keyboard to navigate. For **MacOS** users, use `spacebar` to confirm the exit, while the **rest** can use `enter` to confirm the exit.
 
 
-#### Note
+**Note**
 
 * If an item exist before in InternHunter, a duplicate error message will be shown.
 * If the command relating to a certain item type is executed on other tab, InternHunter will automatically switch the tab to correct tab. i.e  executing `add com` commands on application tab will bring the tab state of InternHunter from application tab to company tab.
 * When doing `add`, `edit`, the right display will automatically adjust and reflect the recently executed command.
 
-#### Adding a company
+**Adding a company**
 
 1. Adding a company called garena with its non-optional relevant fields such as address being `201 Victoria St`, email being `garenaHires@garena.com` and phone number being `65093545`
 
@@ -1030,7 +1030,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `add com n/Facebook a/301 Raffles St e/FacebookHires@fb.com`  <br>
       Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
       
-#### Adding an internship
+**Adding an internship**
 
 1. Adding an internship with Job title Machine Learning Engineer.
 
@@ -1043,7 +1043,7 @@ testers are expected to do more *exploratory* testing.
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
 
-#### Adding an application
+**Adding an application**
 
 1. Adding an application is simulating applying for an application.
 
@@ -1058,7 +1058,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `add app 1` <br>
       Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
       
-#### Adding a profile item      
+**Adding a profile item**
 
 1. Adding a skill/experience/achievement set into our profile list.
 
@@ -1076,7 +1076,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `add me` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Editing a company
+**Editing a company**
 
 1. Editing some fields in company.
    
@@ -1095,7 +1095,7 @@ testers are expected to do more *exploratory* testing.
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
   
-#### Editing an internship
+**Editing an internship**
 
 1. Editing some fields in internship.
 
@@ -1111,7 +1111,7 @@ testers are expected to do more *exploratory* testing.
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
 
-#### Editing an application
+**Editing an application**
 
 1. Editing some fields in application.
 
@@ -1123,7 +1123,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `edit app` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Editing a profile item
+**Editing a profile item**
 
 1. Editing some fields in the profile item.
 
@@ -1135,7 +1135,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `edit me` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Deleting a company
+**Deleting a company**
 
 1. Deleting a module according to the index shown on the card.
 
@@ -1150,7 +1150,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case:`delete com` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Deleting an internship
+**Deleting an internship**
 
 1. Deleting an internship from a certain company.
 
@@ -1165,7 +1165,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `delete int 1` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Deleting an application
+**Deleting an application**
 
 1. Deleting an application.
    
@@ -1180,7 +1180,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `delete app` <br>
    Expected: Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Deleting a profile item
+**Deleting a profile item**
 
 1. Deleting a profile item.
    
@@ -1195,7 +1195,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `delete me` <br>
    Expected: Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Viewing a company
+**Viewing a company**
 
 1. Viewing full information of a company.
 
@@ -1210,7 +1210,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `view com` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Viewing an application
+**Viewing an application**
 
 1. Viewing full information of an application.
 
@@ -1225,7 +1225,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `view app` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### View a profile Item
+**View a profile Item**
 
 1. Viewing full information of a profile item.
 
@@ -1240,7 +1240,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `view me` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Finding company/companies
+**Finding company/companies**
 
 1. Finding specific keyword(s) in the list of company/companies
 
@@ -1252,7 +1252,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `find com` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Listing out all company/companies
+**Listing out all company/companies**
 
 1. Listing out all company/companies
 
@@ -1264,7 +1264,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `list com 2` <br>
    Expected: An error message will be shown, stating that there should not be any inputs after the `ITEM_TYPE`.
 
-#### Finding application(s)
+**Finding application(s)**
 
 1. Finding specific keyword(s) in the list of application(s)
 
@@ -1276,7 +1276,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `find app` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Listing out all application(s)
+**Listing out all application(s)**
 
 1. Listing out all application(s)
 
@@ -1288,7 +1288,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `list app 2` <br>
    Expected: An error message will be shown, stating that there should not be any inputs after the `ITEM_TYPE`.
 
-#### Finding profile item(s)
+**Finding profile item(s)**
 
 1. Finding specific keyword(s) in the list of profile item(s)
 
@@ -1300,7 +1300,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `find me` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
    
-#### Listing out all profile item(s)
+**Listing out all profile item(s)**
 
 1. Listing out all profile item(s)
 
@@ -1312,7 +1312,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `list me 2` <br>
    Expected: An error message will be shown, stating that there should not be any inputs after the `ITEM_TYPE`.
 
-#### Matching skills to internship requirements
+**Matching skills to internship requirements**
 
 1. Finding if any internships requirements matches the skills that you have.
 
@@ -1321,7 +1321,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `match` <br>
    Expected: A new window will pop-up and show you all the matched internships.
 
-#### Switching of tabs
+**Switching of tabs**
 
 1. Switching tabs
 
@@ -1339,13 +1339,13 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `switch` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Viewing help
+**Viewing help**
 
 1. Viewing help
    1. Test case: `help` <br>
    Expected: Help window appears with InternHunter's user guide url.
 
-#### Clearing all the data in the app
+**Clearing all the data in the app**
 
 1. Clearing all existing data in InternHunter.
    1. Prerequisites: Some data has been added to InternHunter.
@@ -1353,7 +1353,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `clear` <br>
    Expected: All data cleared from all tabs.
 
-#### Saving the data
+**Saving the data**
 
 1. Dealing with corrupted data files
 
@@ -1397,7 +1397,7 @@ The UI has also been completely revamped to have a different look and feel from 
 
 <p align="center">Sequence diagram for HandleDeleteDisplaySwitchIndex</p>
 
-<p id="handle-delete-display-switch-index-sequence-diagram" align="center"><img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png"  width ="70%" height=70%"/></p>
+<p id="handle-delete-display-switch-index-sequence-diagram" align="center"><img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png" width ="70%" height="70%"/></p>
 
 
 --------------------------------------------------------------------------------------------------------------------
