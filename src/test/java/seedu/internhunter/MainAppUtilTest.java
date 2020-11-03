@@ -1,6 +1,9 @@
 package seedu.internhunter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.internhunter.model.util.SampleDataUtil.getSampleApplicationItemList;
+import static seedu.internhunter.model.util.SampleDataUtil.getSampleCompanyItemList;
+import static seedu.internhunter.model.util.SampleDataUtil.getSampleProfileItemList;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.GOLDMAN_OFFERED;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.LAZADA_REJECTED;
 import static seedu.internhunter.testutil.application.SampleApplicationItems.SHOPEE_OFFERED;
@@ -39,23 +42,23 @@ import seedu.internhunter.storage.profile.JsonAdaptedProfileItem;
 public class MainAppUtilTest {
 
     private static final Path TEST_DATA_FOLDER_APPLICATION = Paths.get("src",
-            "test", "data", "JsonSerializableApplicationItemListTest");
+        "test", "data", "JsonSerializableApplicationItemListTest");
     private static final Path SAMPLE_APPLICATION_ITEMS_FILE = TEST_DATA_FOLDER_APPLICATION.resolve(
-            "sampleApplicationItemList.json");
+        "sampleApplicationItemList.json");
     private static final Path INVALID_APPLICATION_ITEM_FILE = TEST_DATA_FOLDER_APPLICATION.resolve(
-            "invalidApplicationItemList.json");
+        "invalidApplicationItemList.json");
     private static final Path TEST_DATA_FOLDER_COMPANY = Paths.get("src",
-            "test", "data", "JsonSerializableCompanyItemListTest");
+        "test", "data", "JsonSerializableCompanyItemListTest");
     private static final Path SAMPLE_COMPANY_ITEMS_FILE = TEST_DATA_FOLDER_COMPANY.resolve(
-            "sampleCompanyItemList.json");
+        "sampleCompanyItemList.json");
     private static final Path INVALID_COMPANY_ITEM_FILE = TEST_DATA_FOLDER_COMPANY.resolve(
-            "invalidCompanyItemList.json");
+        "invalidCompanyItemList.json");
     private static final Path TEST_DATA_FOLDER_PROFILE = Paths.get("src",
-            "test", "data", "JsonSerializableProfileItemListTest");
+        "test", "data", "JsonSerializableProfileItemListTest");
     private static final Path SAMPLE_PROFILE_ITEMS_FILE = TEST_DATA_FOLDER_PROFILE.resolve(
-            "sampleProfileItemList.json");
+        "sampleProfileItemList.json");
     private static final Path INVALID_PROFILE_ITEM_FILE = TEST_DATA_FOLDER_PROFILE.resolve(
-            "invalidProfileItemList.json");
+        "invalidProfileItemList.json");
 
     @TempDir
     public Path testFolder;
@@ -127,10 +130,10 @@ public class MainAppUtilTest {
             new JsonItemListStorage<>(getTempFilePath("app"), ApplicationItem.class,
                 JsonAdaptedApplicationItem.class);
         JsonItemListStorage<CompanyItem, JsonAdaptedCompanyItem> companyItemListStorage =
-            new JsonItemListStorage<>(getTempFilePath("app"), CompanyItem.class,
+            new JsonItemListStorage<>(getTempFilePath("com"), CompanyItem.class,
                 JsonAdaptedCompanyItem.class);
         JsonItemListStorage<ProfileItem, JsonAdaptedProfileItem> profileItemListStorage =
-            new JsonItemListStorage<>(getTempFilePath("app"), ProfileItem.class,
+            new JsonItemListStorage<>(getTempFilePath("me"), ProfileItem.class,
                 JsonAdaptedProfileItem.class);
 
         emptyStorageManager = new StorageManager(applicationItemListStorage, companyItemListStorage,
@@ -191,8 +194,8 @@ public class MainAppUtilTest {
 
     @Test
     public void initModelManager_emptyList_equals() {
-        Model model = new ModelManager(companyItemReadOnlyItemList, applicationItemReadOnlyItemList,
-            profileItemReadOnlyItemList, new UserPrefs());
+        Model model = new ModelManager(getSampleCompanyItemList(), getSampleApplicationItemList(),
+            getSampleProfileItemList(), new UserPrefs());
         assertEquals(model, MainAppUtil.initModelManager(emptyStorageManager, new UserPrefs()));
     }
 
