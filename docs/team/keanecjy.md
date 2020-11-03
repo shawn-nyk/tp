@@ -26,7 +26,6 @@ morph the existing AB3 implementation into our own, adding a total of more than 
     internships that matches the users' skills in the profile. Implementation of this command required a thorough
     consideration of design alternatives, since it required both the company and profile lists to interact with
     each other. Keen insight on the types of algorithms needed was also required to allow more accurate matching.
-    
   * Delete an internship (Pull request [\#140](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/140))
     * What it does: Deletes the internship from the internship list.
     * Highlights: This command was particularly tricky to implement, since deleting an internship would mean that
@@ -34,28 +33,22 @@ morph the existing AB3 implementation into our own, adding a total of more than 
     have any association nor dependency to the application item. Therefore, the deletion has to be done through the
     model instead and there is a need to create additional methods to delete an application that corresponds to this
     internship.
-    
   * Apply for an internship (Pull request [\#132](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/132))
     * What it does: Allows the user to add an application.
     * Highlights: This command required careful parsing of the input since an internship can only be accessed
     through a company in the company list. Thus double indexing was required for the user to reference the internship
     and add it into the application list. Moreover, all internship applications also come with a date, which required
     proper parsing so that user matches to the date formats accepted in our app.
-    
   * Added Item, ItemList and UniqueItemList classes (Pull request [\#98](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/98))
     * Justification: By adding the idea of a general Item class and the generic Item lists, it paved the way for the
     general code structure of our application, as this helped to greatly reduce code duplication and allowed for smooth
     interaction between the 4 data types in the model, logic and storage component.
-    
   * Delete an application (Pull request [\#140](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/140))
     * Allows the user to delete an application.
-  
   * Update an application (Pull request [\#152](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/152))
     * Allows the user to edit an application.  
-    
   * View an application (Pull request [\#152](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/152))
     * What it does: Allows the user to view an application in full detail.
-  
   * Contributed significantly to improving the test coverage (Pull requests 
         [\#156](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/156), [\#169](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/169),
         [\#180](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/180), [\#192](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/192),
