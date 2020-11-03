@@ -235,14 +235,15 @@ public class CompanyItemTest {
         CompanyItem googleCopy = new CompanyItemBuilder(GOOGLE).build();
         assertTrue(GOOGLE.isSameItem(googleCopy));
 
-        // same company name and address, everything else different -> same item
-        CompanyItem googleOnlySameNameAndAddress = new CompanyItemBuilder(GOOGLE)
+        // same company name, everything else different -> same item
+        CompanyItem googleOnlySameName = new CompanyItemBuilder(GOOGLE)
+                .withAddress(VALID_ADDRESS_FACEBOOK)
                 .withPhone(VALID_PHONE_FACEBOOK)
                 .withEmail(VALID_EMAIL_FACEBOOK)
                 .withIndustries(VALID_INDUSTRY_SOCIAL_MEDIA, VALID_INDUSTRY_ARTIFICIAL_INTELLIGENCE)
                 .withInternships(GOOGLE_SWE)
                 .build();
-        assertTrue(GOOGLE.isSameItem(googleOnlySameNameAndAddress));
+        assertTrue(GOOGLE.isSameItem(googleOnlySameName));
     }
 
     @Test
@@ -252,12 +253,6 @@ public class CompanyItemTest {
                 .withCompanyName(VALID_COMPANY_NAME_FACEBOOK)
                 .build();
         assertFalse(GOOGLE.isSameItem(googleDifferentName));
-
-        // different address, everything else the same -> not the same item
-        CompanyItem googleDifferentAddress = new CompanyItemBuilder(GOOGLE)
-                .withAddress(VALID_ADDRESS_FACEBOOK)
-                .build();
-        assertFalse(GOOGLE.isSameItem(googleDifferentAddress));
 
         // null -> returns false
         assertFalse(GOLDMAN.isSameItem(null));
