@@ -70,7 +70,7 @@ morph the existing AB3 implementation into our own, adding a total of more than 
     - Developer Guide:
         - Added implementation details and UML diagrams for [Match Command feature](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/282),
         [Command implementation component](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/214), [Logic component](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/276),
-        [Glossary and some use cases](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/85/files)
+        [Glossary and some use cases](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/85)
 
 * **Team-based tasks**:
   * Refactor the code to match application (Pull request [\#284](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/284))
@@ -79,7 +79,7 @@ morph the existing AB3 implementation into our own, adding a total of more than 
   * Update readme and landing page (Pull requests [\#81](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/81),
   [\#162](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/162))
   * Setup codecov for the team so that we can track our code coverage and work on remaining tests 
-  (Pull request [\#81](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/60))
+  (Pull request [\#60](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/60), [\#357](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/357))
   * Managed the [issue tracker](https://github.com/AY2021S1-CS2103T-T15-4/tp/issues?q=is%3Aissue+author%3Akeanecjy)
 
 ## Other contributions
