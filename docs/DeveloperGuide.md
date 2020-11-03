@@ -1388,8 +1388,8 @@ profile items) and much consideration has to be put into the interaction, manage
 that seeks to reduce code duplication as much as possible by using Object Oriented Principles and other design
  patterns. 
 
-To approach the management different entities in the model. The abstract `Item` class is used a blueprint for
-the other entities to extend. After which, `Itemlist` can be used as the sole collection offering common methods to
+To approach the management of different entities in the model. The abstract `Item` class is used a blueprint for
+the other entities to extend. After which, `Itemlist` can be used as a collection type offering common methods to
 manipulate the collection of different entities by leveraging on the polymorphism and dynamic binding. This negates
  the need for the creation of different individual collections types for each entity, thereby abiding to
  the DRY principle.
