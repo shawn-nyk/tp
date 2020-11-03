@@ -1,5 +1,9 @@
 package seedu.internhunter;
 
+import static seedu.internhunter.model.util.SampleDataUtil.getSampleApplicationItemList;
+import static seedu.internhunter.model.util.SampleDataUtil.getSampleCompanyItemList;
+import static seedu.internhunter.model.util.SampleDataUtil.getSampleProfileItemList;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -31,6 +35,9 @@ import seedu.internhunter.storage.UserPrefsStorage;
 public class MainAppUtil {
 
     private static final Logger logger = LogsCenter.getLogger(MainAppUtil.class);
+    private static boolean isMissingApplicationList = false;
+    private static boolean isMissingCompanyList = false;
+    private static boolean isMissingProfileList = false;
 
     /**
      * Gets the initial application item list.
@@ -44,7 +51,7 @@ public class MainAppUtil {
         try {
             itemListOptional = storage.readApplicationItemList();
             if (itemListOptional.isEmpty()) {
-                logger.info("Data file not found. Will be starting with a sample application item list");
+                isMissingApplicationList = true;
             }
             //to do sample data
             initialItemListData = itemListOptional.orElse(new ItemList<>());
@@ -73,7 +80,7 @@ public class MainAppUtil {
         try {
             itemListOptional = storage.readCompanyItemList();
             if (itemListOptional.isEmpty()) {
-                logger.info("Data file not found. Will be starting with a sample company item list");
+                isMissingCompanyList = true;
             }
             //to do sample data
             initialItemListData = itemListOptional.orElse(new ItemList<>());
@@ -102,7 +109,7 @@ public class MainAppUtil {
         try {
             itemListOptional = storage.readProfileItemList();
             if (itemListOptional.isEmpty()) {
-                logger.info("Data file not found. Will be starting with a sample profile item list");
+                isMissingProfileList = true;
             }
             //to do sample data
             initialItemListData = itemListOptional.orElse(new ItemList<>());
@@ -117,6 +124,20 @@ public class MainAppUtil {
         }
 
         return initialItemListData;
+    }
+
+    /**
+     * Initiates InternHunter with sample data.
+     *
+     * @param applicationItemList InternHunter's application item list.
+     * @param companyItemList     InternHunter's company item list.
+     * @param profileItemList     InternHunter's profile item list.
+     */
+    public static void initSampleData(ItemList<ApplicationItem> applicationItemList,
+            ItemList<CompanyItem> companyItemList, ItemList<ProfileItem> profileItemList) {
+        applicationItemList.resetData(getSampleApplicationItemList());
+        companyItemList.resetData(getSampleCompanyItemList());
+        profileItemList.resetData(getSampleProfileItemList());
     }
 
     /**
@@ -160,6 +181,11 @@ public class MainAppUtil {
         ItemList<CompanyItem> companyItemList = new ItemList<>(initCompanyItemList(storage));
         ItemList<ApplicationItem> applicationItemList = new ItemList<>(initApplicationItemList(storage));
         ItemList<ProfileItem> profileItemList = new ItemList<>(initProfileItemList(storage));
+
+        boolean isMissingAllLists = isMissingApplicationList && isMissingCompanyList && isMissingProfileList;
+        if (isMissingAllLists) {
+            initSampleData(applicationItemList, companyItemList, profileItemList);
+        }
 
         try {
             matchInternships(applicationItemList, companyItemList);

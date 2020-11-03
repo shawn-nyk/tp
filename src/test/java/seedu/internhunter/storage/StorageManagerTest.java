@@ -26,7 +26,14 @@ import seedu.internhunter.storage.profile.JsonAdaptedProfileItem;
 
 public class StorageManagerTest {
 
-    public static final Path FILE_PATH = Paths.get("src", "test", "data", "StorageManagerTest");
+    private static final Path TEST_DATA_FOLDER = Paths.get("src",
+            "test", "data", "StorageManagerTest");
+    private static final Path APPLICATION_ITEMS_FILE = TEST_DATA_FOLDER.resolve(
+            "applicationItemList.json");
+    private static final Path COMPANY_ITEMS_FILE = TEST_DATA_FOLDER.resolve(
+            "companyItemList.json");
+    private static final Path PROFILE_ITEMS_FILE = TEST_DATA_FOLDER.resolve(
+            "profileItemList.json");
 
     @TempDir
     public Path testFolder;
@@ -89,8 +96,9 @@ public class StorageManagerTest {
          * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
          */
         ItemList<ApplicationItem> original = getSampleApplicationItemList();
-        storageManager.saveApplicationItemList(original, FILE_PATH);
-        ReadOnlyItemList<ApplicationItem> retrieved = storageManager.readApplicationItemList(FILE_PATH).get();
+        storageManager.saveApplicationItemList(original, APPLICATION_ITEMS_FILE);
+        ReadOnlyItemList<ApplicationItem> retrieved = storageManager
+                .readApplicationItemList(APPLICATION_ITEMS_FILE).get();
         assertEquals(original, new ItemList<>(retrieved));
     }
 
@@ -120,8 +128,8 @@ public class StorageManagerTest {
          * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
          */
         ItemList<CompanyItem> original = getSampleCompanyList();
-        storageManager.saveCompanyItemList(original, FILE_PATH);
-        ReadOnlyItemList<CompanyItem> retrieved = storageManager.readCompanyItemList(FILE_PATH).get();
+        storageManager.saveCompanyItemList(original, COMPANY_ITEMS_FILE);
+        ReadOnlyItemList<CompanyItem> retrieved = storageManager.readCompanyItemList(COMPANY_ITEMS_FILE).get();
         assertEquals(original, new ItemList<>(retrieved));
     }
 
@@ -151,8 +159,8 @@ public class StorageManagerTest {
          * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
          */
         ItemList<ProfileItem> original = getSampleProfileItemList();
-        storageManager.saveProfileItemList(original, FILE_PATH);
-        ReadOnlyItemList<ProfileItem> retrieved = storageManager.readProfileItemList(FILE_PATH).get();
+        storageManager.saveProfileItemList(original, PROFILE_ITEMS_FILE);
+        ReadOnlyItemList<ProfileItem> retrieved = storageManager.readProfileItemList(PROFILE_ITEMS_FILE).get();
         assertEquals(original, new ItemList<>(retrieved));
     }
 

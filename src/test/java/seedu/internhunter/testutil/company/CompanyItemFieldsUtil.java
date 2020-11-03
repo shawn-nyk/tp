@@ -78,7 +78,7 @@ public class CompanyItemFieldsUtil {
     public static final String VALID_ADDRESS_FACEBOOK = "9 Straits View, Marina One";
     public static final String VALID_ADDRESS_GOLDMAN = "60 Anson Rd, #14-01 Mapletree Anson";
     public static final String VALID_ADDRESS_GOOGLE = "70 Pasir Panjang Rd, #03-71";
-    public static final String VALID_ADDRESS_GARENA = "201 Victoria St,";
+    public static final String VALID_ADDRESS_GARENA = "201 Victoria St";
     public static final String VALID_ADDRESS_GOOGLE_LEADING_SPACES = "  70 Pasir Panjang Rd, #03-71";
     public static final String VALID_ADDRESS_GOOGLE_TRAILING_SPACES = "70 Pasir Panjang Rd, #03-71  ";
     public static final String VALID_ADDRESS_GOOGLE_LEADING_AND_TRAILING_SPACES = "  70 Pasir Panjang Rd, #03-71  ";

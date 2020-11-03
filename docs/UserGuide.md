@@ -705,6 +705,13 @@ There isn't a need for you to manually save your data, InternHunter will automat
 **What happens if I accidentally clear all my data using `clear`?** <br/>
 Unfortunately InternHunter does not provide an `undo` method.
 
+**When does InternHunter use sample data?** <br/>
+InternHunter uses sample data when the user first launches the app. More specifically, 
+when **all** of applicationitemlist.json, companyitemlist.json, and profileitemlist.json are missing.
+
+**Why is my data missing?** <br/>
+Make sure your data is not missing and in the correct format. If not, InternHunter will use empty lists.
+
 --------------------------------------------------------------------------------------------------------------------
 
 
