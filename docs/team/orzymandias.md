@@ -115,11 +115,3 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
   [14](https://github.com/AY2021S1-CS2103T-W11-4/tp/issues/186), 
   [15](https://github.com/AY2021S1-CS2103T-W11-4/tp/issues/185)
   
-* **Tools**:
-  * Integrated a new Github plugin (CircleCI) to the team repo
-
-* _{you can add/remove categories in the list above}_
-
-## Contributions to the User Guide
-
-## Contributions to the Developer Guide
