@@ -49,6 +49,9 @@ morph the existing AB3 implementation into our own, adding a total of more than 
     * Allows the user to edit an application.  
   * View an application (Pull request [\#152](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/152))
     * What it does: Allows the user to view an application in full detail.
+  * Refactor the code to match application (Pull request [\#284](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/284))
+  * Created general wrapper regex classes for items in the model (Pull request [\#126](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/126))
+  * Create GeneralParserUtil to hold common parsing methods for all classes (Pull request [\#152](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/152))
   * Contributed significantly to improving the test coverage (Pull requests 
         [\#156](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/156), [\#169](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/169),
         [\#180](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/180), [\#192](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/192),
@@ -66,14 +69,12 @@ morph the existing AB3 implementation into our own, adding a total of more than 
         [Glossary and some use cases](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/85)
 
 * **Team-based tasks**:
-  * Refactor the code to match application (Pull request [\#284](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/284))
-  * Created general wrapper regex classes for items in the model (Pull request [\#126](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/126))
-  * Create GeneralParserUtil to hold common parsing methods for all classes (Pull request [\#126](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/126))
   * Update readme and landing page (Pull requests [\#81](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/81),
   [\#162](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/162))
   * Setup codecov for the team so that we can track our code coverage and work on remaining tests 
   (Pull request [\#60](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/60), [\#357](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/357))
   * Managed the issue tracker ([Link to issues I created](https://github.com/AY2021S1-CS2103T-T15-4/tp/issues?q=is%3Aissue+author%3Akeanecjy))
+  * Managed milestones on GitHub
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [\#79](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/79),
