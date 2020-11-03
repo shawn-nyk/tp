@@ -7,7 +7,6 @@ import static seedu.internhunter.testutil.company.SampleCompanyItems.getSampleCo
 import static seedu.internhunter.testutil.profile.SampleProfileItems.getSampleProfileItemList;
 
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,28 +25,26 @@ import seedu.internhunter.storage.profile.JsonAdaptedProfileItem;
 
 public class StorageManagerTest {
 
-    public static final Path FILE_PATH = Paths.get("src", "test", "data", "StorageManagerTest");
-
     @TempDir
-    public Path testFolder;
+    public static Path testFolder;
 
     private StorageManager storageManager;
 
     @BeforeEach
     public void setUp() {
         JsonItemListStorage<ApplicationItem, JsonAdaptedApplicationItem> applicationItemListStorage =
-                new JsonItemListStorage<>(getTempFilePath("app"), ApplicationItem.class,
-                        JsonAdaptedApplicationItem.class);
+            new JsonItemListStorage<>(getTempFilePath("app"), ApplicationItem.class,
+                JsonAdaptedApplicationItem.class);
         JsonItemListStorage<CompanyItem, JsonAdaptedCompanyItem> companyItemListStorage =
-                new JsonItemListStorage<>(getTempFilePath("app"), CompanyItem.class,
-                        JsonAdaptedCompanyItem.class);
+            new JsonItemListStorage<>(getTempFilePath("app"), CompanyItem.class,
+                JsonAdaptedCompanyItem.class);
         JsonItemListStorage<ProfileItem, JsonAdaptedProfileItem> profileItemListStorage =
-                new JsonItemListStorage<>(getTempFilePath("app"), ProfileItem.class,
-                        JsonAdaptedProfileItem.class);
+            new JsonItemListStorage<>(getTempFilePath("app"), ProfileItem.class,
+                JsonAdaptedProfileItem.class);
 
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
         storageManager = new StorageManager(applicationItemListStorage, companyItemListStorage, profileItemListStorage,
-                userPrefsStorage);
+            userPrefsStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -89,8 +86,9 @@ public class StorageManagerTest {
          * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
          */
         ItemList<ApplicationItem> original = getSampleApplicationItemList();
-        storageManager.saveApplicationItemList(original, FILE_PATH);
-        ReadOnlyItemList<ApplicationItem> retrieved = storageManager.readApplicationItemList(FILE_PATH).get();
+        storageManager.saveApplicationItemList(original, getTempFilePath("app.json"));
+        ReadOnlyItemList<ApplicationItem> retrieved = storageManager
+            .readApplicationItemList(getTempFilePath("app.json")).get();
         assertEquals(original, new ItemList<>(retrieved));
     }
 
@@ -120,8 +118,9 @@ public class StorageManagerTest {
          * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
          */
         ItemList<CompanyItem> original = getSampleCompanyList();
-        storageManager.saveCompanyItemList(original, FILE_PATH);
-        ReadOnlyItemList<CompanyItem> retrieved = storageManager.readCompanyItemList(FILE_PATH).get();
+        storageManager.saveCompanyItemList(original, getTempFilePath("com.json"));
+        ReadOnlyItemList<CompanyItem> retrieved = storageManager.readCompanyItemList(
+            getTempFilePath("com.json")).get();
         assertEquals(original, new ItemList<>(retrieved));
     }
 
@@ -151,8 +150,9 @@ public class StorageManagerTest {
          * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBoolStorageTest} class.
          */
         ItemList<ProfileItem> original = getSampleProfileItemList();
-        storageManager.saveProfileItemList(original, FILE_PATH);
-        ReadOnlyItemList<ProfileItem> retrieved = storageManager.readProfileItemList(FILE_PATH).get();
+        storageManager.saveProfileItemList(original, getTempFilePath("me.json"));
+        ReadOnlyItemList<ProfileItem> retrieved = storageManager.readProfileItemList(
+            getTempFilePath("me.json")).get();
         assertEquals(original, new ItemList<>(retrieved));
     }
 
