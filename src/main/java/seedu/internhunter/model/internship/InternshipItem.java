@@ -178,7 +178,7 @@ public class InternshipItem extends Item {
      * @return True if the skill list provided matches the internship item, false otherwise.
      */
     public boolean matches(List<String> skillList) {
-        assert skillList != null;
+        requireNonNull(skillList);
         return requirements.stream().anyMatch(requirement ->
                 skillList.stream().anyMatch(skill -> skill.equalsIgnoreCase(requirement.toString())));
     }

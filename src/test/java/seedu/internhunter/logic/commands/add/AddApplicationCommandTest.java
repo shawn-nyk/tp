@@ -38,7 +38,7 @@ import seedu.internhunter.model.item.ItemList;
 import seedu.internhunter.ui.tabs.TabName;
 
 /**
- * Contains integration tests (interaction with the Model) and unit tests for {@code AddApplicationCommand}.
+ * Contains integration tests (interaction with the Model).
  */
 public class AddApplicationCommandTest {
 
@@ -183,11 +183,11 @@ public class AddApplicationCommandTest {
                 Status.APPLIED, VALID_STATUS_DATE_JUNE_2021));
 
         // different status -> returns false
-        assertNotEquals(addApplicationCommand, new AddApplicationCommand(INDEX_THIRD, INDEX_SECOND,
+        assertNotEquals(addApplicationCommand, new AddApplicationCommand(INDEX_FIRST, INDEX_SECOND,
                 Status.ACCEPTED, VALID_STATUS_DATE_JUNE_2021));
 
         // different status date -> returns false
-        assertNotEquals(addApplicationCommand, new AddApplicationCommand(INDEX_THIRD, INDEX_SECOND,
+        assertNotEquals(addApplicationCommand, new AddApplicationCommand(INDEX_FIRST, INDEX_SECOND,
                 Status.APPLIED, VALID_STATUS_DATE_JUNE_2022));
     }
 
