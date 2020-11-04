@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_EDIT_SUCCESS;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCompany;
+import static seedu.internhunter.logic.commands.util.CommandUtil.getFullListIndex;
 import static seedu.internhunter.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_ADDRESS;
 import static seedu.internhunter.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_COMPANY_NAME;
 import static seedu.internhunter.logic.parser.clisyntax.CompanyCliSyntax.PREFIX_EMAIL;
@@ -78,8 +79,8 @@ public class EditCompanyCommand extends EditCommand {
             throw new CommandException(String.format(Messages.MESSAGE_DUPLICATE_ITEM, COMPANY_NAME));
         }
 
+        model.setCompanyViewIndex(getFullListIndex(companyToEdit, model.getCompanyItemList()));
         model.setCompany(companyToEdit, editedCompany);
-        model.setCompanyViewIndex(index);
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, COMPANY_NAME, editedCompany);
         return getCommandResult(model, editSuccessMessage, TabName.COMPANY);
     }

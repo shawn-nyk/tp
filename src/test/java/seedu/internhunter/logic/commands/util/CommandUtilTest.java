@@ -8,7 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getApplication;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCompany;
+import static seedu.internhunter.logic.commands.util.CommandUtil.getFullListIndex;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getProfileItem;
+import static seedu.internhunter.testutil.internship.SampleInternshipItems.LAZADA_DS;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,6 +33,10 @@ import seedu.internhunter.ui.tabs.TabName;
 public class CommandUtilTest {
 
     private static final String FEEDBACK = "feedback";
+    private static final String HELLO_WORLD = "hello world";
+    private static final String OK = "Ok";
+    private static final String ACCEPTED = "accepted";
+    private static final String VALID_PHONE_NUMBER = "91918282";
 
     private Model model;
     private Model modelWithData;
@@ -98,7 +104,7 @@ public class CommandUtilTest {
 
     @Test
     public void getCompany_equals_false() throws CommandException {
-        CompanyItem companyItem = companyItemBuilder.withPhone("91919191").build();
+        CompanyItem companyItem = companyItemBuilder.withPhone(VALID_PHONE_NUMBER).build();
         assertFalse(getCompany(modelWithData, Index.fromOneBased(1)).equals(companyItem));
     }
 
@@ -122,7 +128,7 @@ public class CommandUtilTest {
 
     @Test
     public void getApplication_equals_false() throws CommandException {
-        ApplicationItem applicationItem = applicationItemBuilder.withStatus("accepted").build();
+        ApplicationItem applicationItem = applicationItemBuilder.withStatus(ACCEPTED).build();
         assertFalse(getApplication(modelWithData, Index.fromOneBased(1)).equals(applicationItem));
     }
 
@@ -146,7 +152,7 @@ public class CommandUtilTest {
 
     @Test
     public void getProfile_equals_false() throws CommandException {
-        ProfileItem profileItem = profileItemBuilder.withDescriptors("HELLO WORLD").build();
+        ProfileItem profileItem = profileItemBuilder.withDescriptors(HELLO_WORLD).build();
         assertFalse(getProfileItem(modelWithData, Index.fromOneBased(1)).equals(profileItem));
     }
 
@@ -160,5 +166,20 @@ public class CommandUtilTest {
     public void getProfile_validIndex_noExceptionThrown() {
         assertDoesNotThrow(() -> getProfileItem(modelWithData, Index.fromOneBased(1)));
         assertDoesNotThrow(() -> getProfileItem(modelWithData, Index.fromZeroBased(0)));
+    }
+
+    @Test
+    public void getFullListIndex_equals_success() {
+        ProfileItem profileItem = profileItemBuilder.withTitle(HELLO_WORLD).withDescriptors(OK).build();
+        modelWithData.addProfileItem(profileItem);
+        ApplicationItem applicationItem = applicationItemBuilder.withInternshipItem(LAZADA_DS)
+            .withStatus(ACCEPTED).build();
+        modelWithData.addApplication(applicationItem);
+        CompanyItem companyItem = companyItemBuilder.withCompanyName(HELLO_WORLD).withAddress(OK).build();
+        modelWithData.addCompany(companyItem);
+
+        assertEquals(Index.fromOneBased(2), getFullListIndex(companyItem, modelWithData.getCompanyItemList()));
+        assertEquals(Index.fromOneBased(2), getFullListIndex(applicationItem, modelWithData.getApplicationItemList()));
+        assertEquals(Index.fromOneBased(2), getFullListIndex(profileItem, modelWithData.getProfileItemList()));
     }
 }

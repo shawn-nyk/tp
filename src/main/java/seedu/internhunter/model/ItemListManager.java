@@ -73,6 +73,7 @@ public class ItemListManager<T extends Item> implements FilterableItemList<T> {
     public void setItem(T target, T editedItem) {
         requireAllNonNull(target, editedItem);
         itemList.setItem(target, editedItem);
+        updateFilteredItemList(PREDICATE_SHOW_ALL_ITEMS);
     }
 
     //=========== Filtered Item List Accessors =============================================================

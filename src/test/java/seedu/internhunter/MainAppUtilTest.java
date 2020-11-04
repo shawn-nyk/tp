@@ -1,6 +1,7 @@
 package seedu.internhunter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static seedu.internhunter.model.util.SampleDataUtil.getSampleApplicationItemList;
 import static seedu.internhunter.model.util.SampleDataUtil.getSampleCompanyItemList;
 import static seedu.internhunter.model.util.SampleDataUtil.getSampleProfileItemList;
@@ -22,6 +23,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import seedu.internhunter.commons.core.Config;
 import seedu.internhunter.model.Model;
 import seedu.internhunter.model.ModelManager;
 import seedu.internhunter.model.UserPrefs;
@@ -35,6 +37,7 @@ import seedu.internhunter.storage.JsonItemListStorage;
 import seedu.internhunter.storage.JsonUserPrefsStorage;
 import seedu.internhunter.storage.Storage;
 import seedu.internhunter.storage.StorageManager;
+import seedu.internhunter.storage.UserPrefsStorage;
 import seedu.internhunter.storage.application.JsonAdaptedApplicationItem;
 import seedu.internhunter.storage.company.JsonAdaptedCompanyItem;
 import seedu.internhunter.storage.profile.JsonAdaptedProfileItem;
@@ -206,5 +209,24 @@ public class MainAppUtilTest {
         Model model = new ModelManager(companyItemReadOnlyItemList, applicationItemReadOnlyItemList,
             profileItemReadOnlyItemList, new UserPrefs());
         assertEquals(model, MainAppUtil.initModelManager(nonEmptyStorageManager, new UserPrefs()));
+    }
+
+    /**
+     * Note that we are only able to test the invalid path as valid path will have its result being overwritten.
+     */
+    @Test
+    public void initConfig_testInvalidPath_equals() {
+        assertEquals(MainAppUtil.initConfig(getTempFilePath("invalid")), new Config());
+        assertEquals(MainAppUtil.initConfig(null), new Config());
+    }
+
+    /**
+     * Note that we are only able to test the invalid storage as valid storage will have its result being overwritten.
+     */
+    @Test
+    public void initPrefs_testPathForStorage() {
+        UserPrefsStorage invalidUserPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("invalid"));
+        assertEquals(MainAppUtil.initPrefs(invalidUserPrefsStorage), new UserPrefs());
+        assertThrows(NullPointerException.class, () -> MainAppUtil.initPrefs(null));
     }
 }
