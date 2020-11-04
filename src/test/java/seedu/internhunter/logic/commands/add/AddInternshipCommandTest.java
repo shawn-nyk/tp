@@ -58,8 +58,8 @@ public class AddInternshipCommandTest {
 
     @Test
     public void constructor_nullFields_throwsNullPointerException() {
-        assertThrows(NullPointerException.class,
-        () -> new AddInternshipCommand(null, null, null, null, null));
+        assertThrows(NullPointerException.class, () -> new AddInternshipCommand(
+            null, null, null, null, null));
     }
 
     @Test
@@ -164,7 +164,7 @@ public class AddInternshipCommandTest {
     }
 
     private AddInternshipCommand makeAddInternshipCommand() {
-        return  new AddInternshipCommand(INDEX_FIRST,
+        return new AddInternshipCommand(INDEX_FIRST,
                 new JobTitle(VALID_JOB_TITLE_SWE),
                 new Wage(VALID_WAGE_4000),
                 new Period(VALID_PERIOD_SUMMER),
