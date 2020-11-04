@@ -34,7 +34,7 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
   * User guide:
      * Add About and FAQ sections as well as maintaing the table of contents.
      (Pull request [\#257](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/257/files))
-     * Added documentation for profile features - switch, help, clear, exit.
+     * Added documentation for general features - switch, help, clear, exit.
      (Pull request [\#291](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/291/files))
      * Contributed to introduction and quick start section.
      (Pull request [\#129](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/129/files))

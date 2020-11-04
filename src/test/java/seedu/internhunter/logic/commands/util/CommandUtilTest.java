@@ -8,7 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getApplication;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCompany;
+import static seedu.internhunter.logic.commands.util.CommandUtil.getFullListIndex;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getProfileItem;
+import static seedu.internhunter.testutil.internship.SampleInternshipItems.LAZADA_DS;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -160,5 +162,20 @@ public class CommandUtilTest {
     public void getProfile_validIndex_noExceptionThrown() {
         assertDoesNotThrow(() -> getProfileItem(modelWithData, Index.fromOneBased(1)));
         assertDoesNotThrow(() -> getProfileItem(modelWithData, Index.fromZeroBased(0)));
+    }
+
+    @Test
+    public void getFullListIndex_equals_success() {
+        ProfileItem profileItem = profileItemBuilder.withTitle("hello world").withDescriptors("ok").build();
+        modelWithData.addProfileItem(profileItem);
+        ApplicationItem applicationItem = applicationItemBuilder.withInternshipItem(LAZADA_DS)
+            .withStatus("accepted").build();
+        modelWithData.addApplication(applicationItem);
+        CompanyItem companyItem = companyItemBuilder.withCompanyName("hello world").withAddress("abc").build();
+        modelWithData.addCompany(companyItem);
+
+        assertEquals(Index.fromOneBased(2), getFullListIndex(companyItem, modelWithData.getCompanyItemList()));
+        assertEquals(Index.fromOneBased(2), getFullListIndex(applicationItem, modelWithData.getApplicationItemList()));
+        assertEquals(Index.fromOneBased(2), getFullListIndex(profileItem, modelWithData.getProfileItemList()));
     }
 }
