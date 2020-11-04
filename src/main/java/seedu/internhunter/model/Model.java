@@ -37,22 +37,22 @@ public interface Model {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the company list
+     * Returns the company list.
      */
     FilterableItemList<CompanyItem> getCompanyList();
 
     /**
-     * Returns an unmodifiable view of the filtered company list
+     * Returns an unmodifiable view of the filtered company list.
      */
     ObservableList<CompanyItem> getFilteredCompanyList();
 
     /**
-     * Returns the unfiltered company list
+     * Returns the unfiltered company list.
      */
     ItemList<CompanyItem> getUnfilteredCompanyList();
 
     /**
-     * Returns the company item list
+     * Returns the company item list.
      */
     ObservableList<CompanyItem> getCompanyItemList();
 
@@ -94,17 +94,17 @@ public interface Model {
     void setCompanyList(ItemList<CompanyItem> companyList);
 
     /**
-     * Returns the application list
+     * Returns the application list.
      */
     FilterableItemList<ApplicationItem> getApplicationList();
 
     /**
-     * Returns an unmodifiable view of the filtered application list
+     * Returns an unmodifiable view of the filtered application list.
      */
     ObservableList<ApplicationItem> getFilteredApplicationList();
 
     /**
-     * Returns the unfiltered application list
+     * Returns the unfiltered application list.
      */
     ItemList<ApplicationItem> getUnfilteredApplicationList();
 
@@ -159,23 +159,23 @@ public interface Model {
     ObservableList<ApplicationItem> getApplicationItemList();
 
     /**
-     * Returns the profile list
+     * Returns the profile list.
      */
     FilterableItemList<ProfileItem> getProfileList();
 
     /**
-     * Returns an unmodifiable view of the filtered profile list
+     * Returns an unmodifiable view of the filtered profile list.
      */
     ObservableList<ProfileItem> getFilteredProfileList();
 
 
     /**
-     * Returns the unfiltered profile list
+     * Returns the unfiltered profile list.
      */
     ItemList<ProfileItem> getUnfilteredProfileList();
 
     /**
-     * Returns the profile item list
+     * Returns the profile item list.
      */
     ObservableList<ProfileItem> getProfileItemList();
 
@@ -222,7 +222,7 @@ public interface Model {
     void setTabName(TabName tabName);
 
     /**
-     * Retrieves the current tab name
+     * Retrieves the current tab name.
      */
     TabName getTabName();
 
