@@ -1,5 +1,6 @@
 package seedu.internhunter.logic.commands.util.internship;
 
+import static seedu.internhunter.commons.core.Messages.MESSAGE_DUPLICATE_ITEM;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX;
 import static seedu.internhunter.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_JOB_TITLE;
 import static seedu.internhunter.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_PERIOD;
@@ -52,5 +53,9 @@ public class InternshipCommandTestUtil {
     // Invalid internship index
     public static final String INVALID_INTERNSHIP_INDEX_MESSAGE =
             String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, INTERNSHIP_NAME);
+
+    // Duplicate internship message
+    public static final String DUPLICATE_INTERNSHIP_MESSAGE =
+            String.format(MESSAGE_DUPLICATE_ITEM, INTERNSHIP_NAME);
 
 }
