@@ -221,6 +221,8 @@
     -fx-font-family: "Nunito";
     -fx-font-size: 23px;
     -fx-font-weight: bold;
+    -fx-pref-width: 300;
+    -fx-alignment: center;
 }
 
 .windowTextDisplay {
@@ -241,7 +243,6 @@
     -fx-spacing: 5;
     -fx-alignment: center;
     -fx-min-height: 90;
-    -fx-max-height: 90;
 }
 
 #cardPane {

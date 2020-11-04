@@ -83,7 +83,7 @@ public class AddProfileCommandTest {
 
 
     /**
-     * A Model stub that always accept the profile item being added.
+     * A Model stub that always accepts the profile item being added.
      */
     private class ModelStubAcceptingProfileItemAdded extends ModelStub {
         final ArrayList<ProfileItem> profileItems = new ArrayList<>();
