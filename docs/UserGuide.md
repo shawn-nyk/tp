@@ -131,8 +131,6 @@ This section will bring you through the [Graphical User Interface(GUI)](#underst
 
 <p><img src="images/AnnotatedGui.png"/></p>
 
-<p align="center"><strong>Figure 1: Annotated GUI with component names and functionality</strong></p>
-
 #### Understanding the technical terminologies
 
 Word | What it means
@@ -191,6 +189,18 @@ This represents a company, any company, but typically one you are interested in 
 You can record and maintain a company's name, phone number, email address, physical address, and its industry types.
 You can then specify what internships the company is offering by using the [internship commands](#internship).
 
+Note that all Company commands follow the following general 2-step process:
+
+Step 1: Enter the command into the command box. An example command is given in the image below.
+
+![GeneralStep1MarkUp](images/ug-company/GeneralStep1MarkUp.png)
+
+Step 2: Press 'Enter' on your keyboard to execute the command. Upon successful execution, you will see the results of 
+your command reflected immediately in the app. An appropriate result message will also be displayed in the result 
+display.
+
+![GeneralStep2MarkUp](images/ug-company/GeneralStep2MarkUp.png)
+
 <div markdown="block" class="alert alert-info">
 
 :information_source: **Note:**<br>
@@ -219,7 +229,7 @@ Examples:
  need not be specified)*
 - Executing `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Intelligence`
 on an empty company list will add the company as follows: <br />
-![AddCompanySS](images/AddCompanySS.PNG)
+![AddCompany](images/ug-company/AddCompany.png)
 
 #### Deleting a company: `delete com`
 
@@ -229,6 +239,8 @@ Format: `delete com INDEX`
 
 Example:
 - `delete com 5`
+- Executing `delete com 2` on the following list will delete the 2nd company as follows: <br />
+  ![DeleteCompany](images/ug-company/DeleteCom.png)
 
 #### Editing a company: `edit com`
 
@@ -244,7 +256,8 @@ Examples:
 - `edit com 2 p/61234567`
 - For the following example, executing `edit com 1 n/Google Singapore e/GoogleIsHiring@google.com t/Internet` will
  edit company 1 as follows: <br />
- ![EditCompanySS](images/EditCompanySS.PNG) <br />
+ ![EditCompany](images/ug-company/EditCom.png) <br />
+ 
  *(Notice that by editing industry types, the existing industry types get replaced i.e. industry types do not
   accumulate)*
 
@@ -258,7 +271,7 @@ Examples:
 - `view com 3`
 - Suppose you are currently viewing the first company and you want to view the second company. Executing `view com 2` 
 will update the right panel to display the second company: <br />
-   ![ViewComSS](images/ViewComSS.PNG) <br />
+   ![ViewCompany](images/ug-company/ViewCom.png) <br />
 
 #### Finding companies: `find com`
 
@@ -268,18 +281,28 @@ Format: `find com KEYWORD [ANOTHER_KEYWORD]...`
 - Only the company name will be searched for.
 - The search is case-insensitive. e.g. `google` will match `Google`.
 - Companies with names matching at least one keyword will be returned. e.g. `Google Facebook` will return companies
- whose names contain the word `Google` *or* `Facebook`.
+ whose names contain the word `Google` or `Facebook`.
 - The order of the keywords does not matter. e.g. `Google Facebook` and `Facebook Google` will return the same results.
 - Only full words will be matched. e.g. `Googl` will not match `Google`.
+
+<div markdown="block" class="alert alert-info">
+
+:information_source: **Note:**<br>
+Upon successful execution of this command, your company list will be updated to only show matching results. All 
+subsequent delete, edit and view company commands will use indexing based on this updated list. Switching tabs will 
+not return the list to its full state. If you wish to return to seeing all the companies in your list, 
+execute [`list com`](#listing-all-companies-list-com).
+
+</div>
 
 Examples:
 - `find com Amazon`
 - Suppose you have this list of companies. Executing `find com google` will update the list to show matching
  companies: <br />
-     ![FindComGoogleSS](images/FindComGoogleSS.png) <br />
+     ![FindComGoogleSS](images/ug-company/FindComGoogleSS.png) <br />
      
      And executing `find com google facebook` will return the following: <br />
-     ![FindComGoogleFacebookSS](images/FindComGoogleFacebookSS.png) <br />
+     ![FindComGoogleFacebookSS](images/ug-company/FindComGoogleFacebookSS.png) <br />
 
 #### Listing all companies: `list com`
 
@@ -288,6 +311,11 @@ narrowed your list of companies down to a few search results. Use the `list com`
 companies in your list.
 
 Format: `list com`
+
+Example:
+- If you have 4 companies in total in your company list, and your list is currently only showing 2 companies after
+ having executed a `find com` command, to view all the companies in your list, execute `list com`: <br />
+ ![ListCompanies](images/ug-company/ListCom.png)
 
 ### **Internship**
 
@@ -562,7 +590,7 @@ Format: `find me KEYWORD [ANOTHER_KEYWORD]...`
 - Only the profile item's title will be searched for.
 - The search is case-insensitive. e.g. `HTML` will match and return items with `html` in its title.
 - Profile items with titles matching at least one keyword will be returned. e.g. `Hackathon Internship` will return
- a list of profile items whose titles contain the word `Hackathon` *or* `Internship`.
+ a list of profile items whose titles contain the word `Hackathon` or `Internship`.
 - The ordering of the keywords does not affect the outcome of the query. e.g. `Hackathon Internship` and `Internship
  Hackathon` will return the same results.
 - Only full words will be matched. e.g. `Intern` will not match `Internship`.
