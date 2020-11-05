@@ -9,6 +9,8 @@
     </a>
 </p>
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2f97ccafd9c34a85a1a6e15617662159)](https://www.codacy.com/gh/AY2021S1-CS2103T-T15-4/tp/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AY2021S1-CS2103T-T15-4/tp&amp;utm_campaign=Badge_Grade)
+
 <p align="center"><img src="docs/images/Ui.png" width="100%"/></p>
 
 <div>
