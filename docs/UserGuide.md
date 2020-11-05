@@ -522,11 +522,13 @@ Note that all Profile commands follow the following general 2-step process:
 
 Step 1: Enter the command into the command box. An example command is given in the image below.
 
+![GeneralStepOneMarkUp](images/ug-profile/GeneralStepProfile.png)
 
 Step 2: Press 'Enter' on your keyboard to execute the command. Upon successful execution, you will see the results of 
 your command reflected immediately in the app. An appropriate result message will also be displayed in the result 
 display.
 
+![GeneralStepTwoMarkUp](images/ug-profile/GeneralStepProfileTwo.png)
 
 #### Adding item to profile: `add me`
 
@@ -541,7 +543,7 @@ Examples:
  c/experience d/Implemented automate testing using TravisCI d/Implemented dashboard to track code coverage` on an empty 
  profile will add the profile item as follows: <br />
  
-![AddProfileSS](images/ug-profile/AddProfileItem.png)
+![AddProfileSS](images/ug-profile/AddProfile.png)
 
 #### Deleting item in profile: `delete me`
 
@@ -553,6 +555,8 @@ Example:
 * `delete me 2`
 * Executing `delete me 2` on the following list will delete the 2nd profile item as follows: <br />
 
+![DeleteProfile](images/ug-profile/DeleteProfile.png)
+
 #### Editing item in profile: `edit me`
 
 Edit the experience, skills or achievements descriptors of your profile.
@@ -561,13 +565,13 @@ Format: `edit me INDEX [t/TITLE] [c/CATEGORY] [d/DESCRIPTORS]`
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing `DESCRIPTORS`, all existing descriptors get replaced by the new specified descriptors.
-* You can remove all `DESCRIPTORS` by adding d/ without anything after it.
+* You can remove all `DESCRIPTORS` by adding `d/` without anything after it.
 
 Examples:
 * `edit me 2 t/CSS c/skill d/learnt how to use flexbox`
 * For example if you want to update the title and descriptor of the first item in your profile.
-* Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the profile item to:<br />
-![EditProfileSS](images/ug-profile/EditProfile.PNG)<br />
+* Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the profile item as follows:<br />
+![EditProfile](images/ug-profile/EditProfile.png)<br />
  *(Note that the existing descriptors get replaced)*
  
 #### Viewing item in profile: `view me`
@@ -580,7 +584,7 @@ Example:
 * `view me 3`
 * For example if you have the following profile items and you want to view the third item in your user profile. Executing `view me 3` will show the following:<br />
 
-![ViewProfile](images/ug-profile/ViewProfile.png)<br />
+![ViewProfile](images/ug-profile/ViewProfileThree.png)<br />
 *(As you can see the details of the third item can be seen in the right panel)*
 
 #### Finding items in profile: `find me`
@@ -621,6 +625,11 @@ your list of profile items down to a few search results. You can then use the `l
 all the items in your profile.
 
 Format: `list me`
+
+Example:
+- If you have 5 items total in profile list, and your list is currently only showing 2 profile items after
+ having executed a `find me` command, to view all the items in your profile list, execute `list me`: <br />
+ ![ListProfile](images/ug-profile/ListProfile.png)
 
 ### **General**
 
