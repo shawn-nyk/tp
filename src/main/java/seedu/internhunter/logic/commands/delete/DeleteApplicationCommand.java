@@ -30,10 +30,22 @@ public class DeleteApplicationCommand extends DeleteCommand {
 
     private final Index targetIndex;
 
+    /**
+     * Creates an DeleteApplicationCommand to add the specified {@code DeleteApplicationCommand}.
+     *
+     * @param targetIndex Target index of the
+     */
     public DeleteApplicationCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
 
+    /**
+     * Executes the DeleteApplicationCommand and returns the result message.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return Feedback message of the operation result for display.
+     * @throws CommandException If an error occurs during command execution.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -44,6 +56,12 @@ public class DeleteApplicationCommand extends DeleteCommand {
         return getCommandResult(model, deleteSuccessMessage, currentTabName, TabName.APPLICATION, targetIndex);
     }
 
+    /**
+     * Returns true if the 2 DeleteApplicationCommand have the same indexes.
+     *
+     * @param other Other object to compare to.
+     * @return True if the other DeleteApplicationCommand object has the same index as this one.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
