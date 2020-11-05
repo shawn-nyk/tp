@@ -1009,23 +1009,24 @@ testers are expected to do more *exploratory* testing.
 
 **Launch and shutdown**
 
-1. Initial launch
+1. Initial launch.
 
    1. Download the jar file and copy into an empty folder.
 
    1. Double-click the jar file. <br>
        Expected: Shows the GUI with a set of sample data. The window size may not be optimum.
 
-1. Saving window preferences
+1. Saving window preferences.
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+   1. Re-launch the app by double-clicking the jar file. <br>
        Expected: The most recent window size and location is retained.
        
-1. Shutting down
-   1. Quit the app by typing `exit` <br>
-      Expected: An Exit pop-out dialog will confirm the intention to exit InternHunter. For all users, you can use `tab` on keyboard to navigate. For **MacOS** users, use `spacebar` to confirm the exit, while the **rest** can use `enter` to confirm the exit.
+1. Shutting down.
+
+   1. Quit the app by typing `exit`. <br>
+      Expected: An Exit pop-out dialog will confirm the intention to exit InternHunter. For all users, you can use <kbd>tab</kbd> on keyboard to navigate. For **MacOS** users, use <kbd>spacebar</kbd> to confirm the exit, while the **rest** can use <kbd>Enter</kbd> to confirm the exit.
 
 
 **Note**
@@ -1036,7 +1037,7 @@ testers are expected to do more *exploratory* testing.
 
 **Adding a company**
 
-1. Adding a company called garena with its non-optional relevant fields such as address being `201 Victoria St`, email being `garenaHires@garena.com` and phone number being `65093545`
+1. Adding a company called garena with its non-optional relevant fields such as address being `201 Victoria St`, email being `garenaHires@garena.com` and phone number being `65093545`.
 
    1. Prerequisites: Garena not already added in InternHunter.
 
@@ -1148,11 +1149,128 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: The profile item must exist and access via a valid index.
    
-   1. Test case: `edit me 1 c/achievement t/Hackathon d/2nd place` <br>
+   1. Test case: `edit me 1 c/achievement t/Hackathon at Shoppee d/2nd place` <br>
    Expected: The image on the card will be changed into a trophy with the title being Hackathon.
    
    1. Test case: `edit me` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+   
+**Viewing a company**
+
+1. Viewing full information of a company.
+
+   1. Prerequisites: The company item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card.
+   
+   1. Test case: `view com 2` <br>
+   Expected: The right display will change and show the full information of the 2nd company in the list.
+   
+   1. Test case: `view com 0` <br>
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case: `view com` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+**Viewing an application**
+
+1. Viewing full information of an application.
+
+   1. Prerequisites: The application item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card.
+   
+   1. Test case: `view app 2` <br>
+   Expected: The right display will change and show the full information of the 2nd application in the list.
+   
+   1. Test case: `view app 0` <br>
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case: `view app` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+**View a profile Item**
+
+1. Viewing full information of a profile item.
+
+   1. Prerequisites: The profile item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card.
+   
+   1. Test case: `view me 1` <br>
+   Expected: The right display will change and show the full information of the 2nd profile item in the list.
+   
+   1. Test case: `view me 0` <br>
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case: `view me` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+   
+**Finding company/companies**
+
+1. Finding specific keyword(s) in the list of company/companies.
+
+   1. Prerequisites: List all companies using the `list com` command. At least one company. `Find` method and `list` method works hand in hand.
+   
+   1. Test case: `find com facebook` <br>
+   Expected: Any titles in the card that contains `facebook` will be matched. i.e `Facebook`, `Facebook Singapore`. However `FacebookMalaysia` will not be matched.
+   
+   1. Test case: `find com` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+**Listing out all company/companies**
+
+1. Listing out all company/companies.
+
+   1. Prerequisites: Assuming that you have used `find` for company in the earlier manual testing.
+   
+   1. Test case: `list com` <br>
+   Expected: All the companies that the user have will be displayed.
+   
+   1. Test case: `list com 2` <br>
+   Expected: An error message will be shown, stating that there should not be any inputs after the `ITEM_TYPE`.
+
+**Finding application(s)**
+
+1. Finding specific keyword(s) in the list of application(s).
+
+   1. Prerequisites: List all applications using the `list app` command. At least one application. `Find` method and `list` method works hand in hand.
+   
+   1. Test case: `find app software` <br>
+   Expected: Any titles in the card that contains `software` will be matched. i.e `Software`, `Software Engineer`. However `SoftwareEngineer` will not be matched.
+   
+   1. Test case: `find app` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+**Listing out all application(s)**
+
+1. Listing out all application(s).
+
+   1. Prerequisites: Assuming that you have used `find` for application in the earlier manual testing.
+   
+   1. Test case: `list app` <br>
+   Expected: All the application that the user have will be displayed.
+   
+   1. Test case: `list app 2` <br>
+   Expected: An error message will be shown, stating that there should not be any inputs after the `ITEM_TYPE`.
+
+**Finding profile item(s)**
+
+1. Finding specific keyword(s) in the list of profile item(s).
+
+   1. Prerequisites: List all profile items using the `list me` command. At least one profile item. `Find` method and `list` method works hand in hand.
+   
+   1. Test case: `find me hackathon` <br>
+   Expected: Any titles in the card that contains `hackathon` will be matched. i.e `Hackathon`, `2020 Hackathon`. However `ShoppeeHackathon` will not be matched.
+   
+   1. Test case: `find me` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+   
+**Listing out all profile item(s)**
+
+1. Listing out all profile item(s).
+
+   1. Prerequisites: Assuming that you have used `find` for profile items in the earlier manual testing.
+   
+   1. Test case: `list me` <br>
+   Expected: All the profile items that the user have will be displayed.
+   
+   1. Test case: `list me 2` <br>
+   Expected: An error message will be shown, stating that there should not be any inputs after the `ITEM_TYPE`.
 
 **Deleting a company**
 
@@ -1214,123 +1332,6 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `delete me` <br>
    Expected: Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-**Viewing a company**
-
-1. Viewing full information of a company.
-
-   1. Prerequisites: The company item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card.
-   
-   1. Test case: `view com 2` <br>
-   Expected: The right display will change and show the full information of the 2nd company in the list.
-   
-   1. Test case: `view com 0` <br>
-   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
-   
-   1. Test case: `view com` <br>
-   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
-
-**Viewing an application**
-
-1. Viewing full information of an application.
-
-   1. Prerequisites: The application item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card.
-   
-   1. Test case: `view app 2` <br>
-   Expected: The right display will change and show the full information of the 2nd application in the list.
-   
-   1. Test case: `view app 0` <br>
-   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
-   
-   1. Test case: `view app` <br>
-   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
-
-**View a profile Item**
-
-1. Viewing full information of a profile item.
-
-   1. Prerequisites: The profile item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card.
-   
-   1. Test case: `view me 1` <br>
-   Expected: The right display will change and show the full information of the 2nd profile item in the list.
-   
-   1. Test case: `view me 0` <br>
-   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
-   
-   1. Test case: `view me` <br>
-   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
-
-**Finding company/companies**
-
-1. Finding specific keyword(s) in the list of company/companies
-
-   1. Prerequisites: List all companies using the `list com` command. At least one company. `Find` method and `list` method works hand in hand.
-   
-   1. Test case: `find com facebook` <br>
-   Expected: Any titles in the card that contains `facebook` will be matched. i.e `Facebook`, `Facebook Singapore`. However `FacebookMalaysia` will not be matched.
-   
-   1. Test case: `find com` <br>
-   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
-
-**Listing out all company/companies**
-
-1. Listing out all company/companies
-
-   1. Prerequisites: Assuming that you have used `find` for company in the earlier manual testing.
-   
-   1. Test case: `list com` <br>
-   Expected: All the companies that the user have will be displayed.
-   
-   1. Test case: `list com 2` <br>
-   Expected: An error message will be shown, stating that there should not be any inputs after the `ITEM_TYPE`.
-
-**Finding application(s)**
-
-1. Finding specific keyword(s) in the list of application(s)
-
-   1. Prerequisites: List all applications using the `list app` command. At least one application. `Find` method and `list` method works hand in hand.
-   
-   1. Test case: `find app software` <br>
-   Expected: Any titles in the card that contains `software` will be matched. i.e `Software`, `Software Engineer`. However `SoftwareEngineer` will not be matched.
-   
-   1. Test case: `find app` <br>
-   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
-
-**Listing out all application(s)**
-
-1. Listing out all application(s)
-
-   1. Prerequisites: Assuming that you have used `find` for application in the earlier manual testing.
-   
-   1. Test case: `list app` <br>
-   Expected: All the application that the user have will be displayed.
-   
-   1. Test case: `list app 2` <br>
-   Expected: An error message will be shown, stating that there should not be any inputs after the `ITEM_TYPE`.
-
-**Finding profile item(s)**
-
-1. Finding specific keyword(s) in the list of profile item(s)
-
-   1. Prerequisites: List all profile items using the `list me` command. At least one profile item. `Find` method and `list` method works hand in hand.
-   
-   1. Test case: `find me hackathon` <br>
-   Expected: Any titles in the card that contains `hackathon` will be matched. i.e `Hackathon`, `2020 Hackathon`. However `ShoppeeHackathon` will not be matched.
-   
-   1. Test case: `find me` <br>
-   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
-   
-**Listing out all profile item(s)**
-
-1. Listing out all profile item(s)
-
-   1. Prerequisites: Assuming that you have used `find` for profile items in the earlier manual testing.
-   
-   1. Test case: `list me` <br>
-   Expected: All the profile items that the user have will be displayed.
-   
-   1. Test case: `list me 2` <br>
-   Expected: An error message will be shown, stating that there should not be any inputs after the `ITEM_TYPE`.
-
 **Matching skills to internship requirements**
 
 1. Finding if any internships requirements matches the skills that you have.
@@ -1342,7 +1343,7 @@ testers are expected to do more *exploratory* testing.
 
 **Switching of tabs**
 
-1. Switching tabs
+1. Switching tabs.
 
    1. Prerequisites: Assuming you are on the company tab.
   
@@ -1360,7 +1361,7 @@ testers are expected to do more *exploratory* testing.
 
 **Viewing help**
 
-1. Viewing help
+1. Viewing help.
 
    1. Test case: `help` <br>
    Expected: Help window appears with InternHunter's user guide url.
@@ -1376,7 +1377,7 @@ testers are expected to do more *exploratory* testing.
 
 **Saving the data**
 
-1. Dealing with corrupted data files
+1. Dealing with corrupted data files.
 
    1. Corrupt the current save file under ./data/. Edit the json with some random characters that make the JSON format unreadable. Alternatively, you could go to `profileitemlist.json` and add `-` to descriptors.
 
