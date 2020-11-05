@@ -10,10 +10,10 @@ import seedu.internhunter.model.util.DateUtil;
 import seedu.internhunter.testutil.internship.SampleInternshipItems;
 
 /**
- * TODO: Javadocs (Keane)
  * A utility class to help with building ApplicationItem objects.
  */
 public class ApplicationItemBuilder {
+
     public static final String DEFAULT_STATUS = "APPLIED";
     public static final String DEFAULT_STATUS_DATE = "5-12-21";
 
@@ -67,6 +67,11 @@ public class ApplicationItemBuilder {
         return this;
     }
 
+    /**
+     * Creates an ApplicationItem.
+     *
+     * @return ApplicationItem.
+     */
     public ApplicationItem build() {
         return new ApplicationItem(internshipItem, status, statusDate);
     }
