@@ -73,7 +73,7 @@ morph the existing AB3 implementation into our own, adding a total of more than 
   [\#162](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/162))
   * Setup codecov for the team so that we can track our code coverage and work on remaining tests 
   (Pull request [\#60](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/60), [\#357](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/357))
-  * Managed the issue tracker ([Link to issues I created](https://github.com/AY2021S1-CS2103T-T15-4/tp/issues?q=is%3Aissue+author%3Akeanecjy))
+  * Managed the issue tracker ([Link to the 70 issues I created](https://github.com/AY2021S1-CS2103T-T15-4/tp/issues?q=is%3Aissue+author%3Akeanecjy))
   * Managed milestones on GitHub
 
 * **Community**:
