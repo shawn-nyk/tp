@@ -163,7 +163,7 @@ Symbol | What it means
   e.g. in `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`, `COMPANY_NAME`, `PHONE_NUMBER`, `EMAIL`, `ADDRESS`, `INDUSTRY`,
   an example of how to fill up the parameters are `add com n/Google p/65218000 e/GoogleHire@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Industry`.
 
-* Items in square brackets `[]` are optional. These paramaters are optional because they are additional information 
+* Items in square brackets `[]` are optional. These parameters are optional because they are additional information 
   and you can key them in at a later date if you do not have the relevant information at hand.<br>
   e.g `add int INDEX j/JOB_TITLE [w/WAGE] [p/PERIOD] [r/REQUIREMENT]...` can be used as <br/> `add int 1 j/Software Engineer` or
   `add int 3 j/Web Developer r/React w/3000 r/HTML5`.
@@ -404,7 +404,21 @@ Valid `STATUS_DATE` formats:
 
 Here is how the application tab looks like: 
 
-<p align="center"><img src="images/ug-application/ApplicationAnnotated.png" width="100%"/></p>
+<p align="center"><img src="images/ug-application/ApplicationAnnotated1.png" width="100%"/></p>
+
+#### Command execution
+
+All application commands follow the following general 2-step process:
+
+Step 1: Enter the command into the command box. An example command is given in the image below.
+
+![GeneralApplicationCommand1](images/ug-application/GeneralApplicationCommand01.png)
+
+Step 2: Press 'Enter' on your keyboard to execute the command. Upon successful execution, you will see the results of 
+your command reflected immediately in the app. An appropriate result message will also be displayed in the result 
+display.
+
+![GeneralApplicationCommand2](images/ug-application/GeneralApplicationCommand02.png)
 
 #### Applying for an internship: `add app`
 
@@ -470,6 +484,16 @@ Format: `find app KEYWORD [ANOTHER_KEYWORD]...`
 applications whose job titles contain the word `Software` or `Engineer`.
 - The order of the keywords does not matter. e.g. `Software Engineer` and `Engineer Software` will return the same results.
 - Only full words will be matched. e.g. `Engineer` will not match `Engine`.
+
+<div markdown="block" class="alert alert-info">
+
+:information_source: **Note:**<br>
+Upon successful execution of this command, your application list will be updated to only show matching results. All 
+subsequent delete, edit and view application commands will use indexing based on this updated list. Switching tabs will 
+not return the list to its full state. If you wish to return to seeing all the applications in your list, 
+execute [`list app`](#listing-all-applications-list-app).
+
+</div>
 
 Example:
 - Suppose you have this list of applications. Executing `find app engineer` will update the list to show matching
@@ -629,11 +653,11 @@ Example:
 2\. And this is your current profile item list. Note that only the 2 profile items of `Skill` type will be used for
 matching with the internships.
 
-<p align="center"><img src="images/ug-general/match-skills1.png" width="100%"/></p>
+<p align="center"><img src="images/ug-general/match-skills.png" width="100%"/></p>
 
 3\. All that's left to do is to type the `match` word in the command box.
 
-<p align="center"><img src="images/ug-general/match-type1.png" width="100%"/></p>
+<p align="center"><img src="images/ug-general/match-type.png" width="100%"/></p>
 
 <div markdown="span" class="alert alert-info">
 
@@ -643,7 +667,7 @@ matching with the internships.
 
 4\. A pop-up window showing the list of matching internships will be displayed!
 
-<p align="center"><img src="images/ug-general/match-window.png" width="100%"/></p>
+<p align="center"><img src="images/ug-general/match-window1.png" width="100%"/></p>
 
 <div markdown="span" class="alert alert-primary">
 
