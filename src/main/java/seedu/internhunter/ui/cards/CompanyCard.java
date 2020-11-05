@@ -38,7 +38,7 @@ public class CompanyCard extends Card<CompanyItem> {
     }
 
     /**
-     * Sets the name on the card.
+     * Sets the company name on the card.
      */
     private void setCompanyName() {
         Object companyName = mapping.get(COMPANY_DISPLAY_NAME);

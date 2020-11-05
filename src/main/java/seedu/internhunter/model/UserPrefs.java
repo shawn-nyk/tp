@@ -26,6 +26,8 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     /**
      * Creates a {@code UserPrefs} with the prefs in {@code userPrefs}.
+     *
+     * @param userPrefs The user prefs to use.
      */
     public UserPrefs(ReadOnlyUserPrefs userPrefs) {
         this();
@@ -34,6 +36,8 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     /**
      * Resets the existing data of this {@code UserPrefs} with {@code newUserPrefs}.
+     *
+     * @param newUserPrefs The new user prefs to use.
      */
     public void resetData(ReadOnlyUserPrefs newUserPrefs) {
         requireNonNull(newUserPrefs);
@@ -43,41 +47,73 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         setProfileItemListFilePath(newUserPrefs.getProfileItemListFilePath());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public GuiSettings getGuiSettings() {
         return guiSettings;
     }
 
+    /**
+     * Sets the user prefs' GUI settings with {@code guiSettings}.
+     *
+     * @param guiSettings The new gui settings.
+     */
     public void setGuiSettings(GuiSettings guiSettings) {
         requireNonNull(guiSettings);
         this.guiSettings = guiSettings;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Path getApplicationItemListFilePath() {
         return applicationItemListFilePath;
     }
 
+    /**
+     * Sets the application item list file path with {@code applicationItemListFilePath}.
+     *
+     * @param applicationItemListFilePath The application item list file path to change to.
+     */
     public void setApplicationItemListFilePath(Path applicationItemListFilePath) {
         requireNonNull(applicationItemListFilePath);
         this.applicationItemListFilePath = applicationItemListFilePath;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Path getCompanyItemListFilePath() {
         return companyItemListFilePath;
     }
 
+    /**
+     * Sets the company item list file path with {@code companyItemListFilePath}.
+     *
+     * @param companyItemListFilePath The company item list file path to change to.
+     */
     public void setCompanyItemListFilePath(Path companyItemListFilePath) {
         requireNonNull(companyItemListFilePath);
         this.companyItemListFilePath = companyItemListFilePath;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Path getProfileItemListFilePath() {
         return profileItemListFilePath;
     }
 
+    /**
+     * Sets the profile item list file path with {@code profileItemListFilePath}.
+     *
+     * @param profileItemListFilePath The profile item list file path to change to.
+     */
     public void setProfileItemListFilePath(Path profileItemListFilePath) {
         requireNonNull(profileItemListFilePath);
         this.profileItemListFilePath = profileItemListFilePath;

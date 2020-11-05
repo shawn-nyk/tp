@@ -13,8 +13,10 @@ public class Index {
     private final int zeroBasedIndex;
 
     /**
-     * Index can only be created by calling {@link Index#fromZeroBased(int)} or
-     * {@link Index#fromOneBased(int)}.
+     * Creates a Index based on {@code zeroBasedIndex}. Index can only be created by calling
+     * {@link Index#fromZeroBased(int)} or {@link Index#fromOneBased(int)}.
+     *
+     * @param zeroBasedIndex Integer based on the zero-based index.
      */
     private Index(int zeroBasedIndex) {
         if (zeroBasedIndex < 0) {
@@ -34,6 +36,9 @@ public class Index {
 
     /**
      * Creates a new {@code Index} using a zero-based index.
+     *
+     * @param zeroBasedIndex Integer based on the zero-based index.
+     * @return A new {@code Index} using a zero-based index.
      */
     public static Index fromZeroBased(int zeroBasedIndex) {
         return new Index(zeroBasedIndex);
@@ -41,6 +46,9 @@ public class Index {
 
     /**
      * Creates a new {@code Index} using a one-based index.
+     *
+     * @param oneBasedIndex Integer based on the one-based index.
+     * @return A new {@code Index} using a one-based index.
      */
     public static Index fromOneBased(int oneBasedIndex) {
         return new Index(oneBasedIndex - 1);
