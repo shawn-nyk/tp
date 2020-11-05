@@ -1,8 +1,18 @@
 <h1 align="center">InternHunter</h1>
 
-[![Java CI](https://github.com/AY2021S1-CS2103T-T15-4/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2021S1-CS2103T-T15-4/tp/actions)
-[![codecov](https://codecov.io/gh/AY2021S1-CS2103T-T15-4/tp/branch/master/graph/badge.svg)](https://codecov.io/gh/AY2021S1-CS2103T-T15-4/tp)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2f97ccafd9c34a85a1a6e15617662159)](https://www.codacy.com/gh/AY2021S1-CS2103T-T15-4/tp/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AY2021S1-CS2103T-T15-4/tp&amp;utm_campaign=Badge_Grade)
+<p align="center">
+    <a href="https://github.com/AY2021S1-CS2103T-T15-4/tp/actions">
+        <img src="https://github.com/AY2021S1-CS2103T-T15-4/tp/workflows/Java%20CI/badge.svg" />
+    </a>
+    <a href="https://codecov.io/gh/AY2021S1-CS2103T-T15-4/tp">
+        <img src="https://codecov.io/gh/AY2021S1-CS2103T-T15-4/tp/branch/master/graph/badge.svg" />
+    </a>
+    <a href="https://www.codacy.com/gh/AY2021S1-CS2103T-T15-4/tp/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AY2021S1-CS2103T-T15-4/tp&amp;utm_campaign=Badge_Grade">
+        <img src="https://app.codacy.com/project/badge/Grade/2f97ccafd9c34a85a1a6e15617662159"/>
+    </a>
+</p>
+
+
 
 <p align="center"><img src="docs/images/Ui.png" width="100%"/></p>
 
