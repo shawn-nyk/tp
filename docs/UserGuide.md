@@ -131,7 +131,7 @@ This section will bring you through the [Graphical User Interface(GUI)](#underst
 
 <p><img src="images/AnnotatedGui.png"/></p>
 
-<p align="center"><strong>Figure 1: Annotated GUI with component names and functionality</strong></p>
+<p align="center">Figure 1: Annotated GUI with component names and functionality</p>
 
 #### Understanding the technical terminologies
 
@@ -191,6 +191,22 @@ This represents a company, any company, but typically one you are interested in 
 You can record and maintain a company's name, phone number, email address, physical address, and its industry types.
 You can then specify what internships the company is offering by using the [internship commands](#internship).
 
+Note that all Company commands follow the following general 2-step process:
+
+Step 1: Enter the command into the command box. An example command is given in the image below.
+
+![GeneralStep1MarkUp](images/ug-company/GeneralStep1MarkUp.png)
+
+<p align="center">Figure 2: Step 1 for all Company commands, with an example</p>
+
+Step 2: Press 'Enter' on your keyboard to execute the command. Upon successful execution, you will see the results of 
+your command reflected immediately in the app. An appropriate result message will also be displayed in the result 
+display.
+
+![GeneralStep2MarkUp](images/ug-company/GeneralStep2MarkUp.png)
+
+<p align="center">Figure 3: Step 2 for all Company commands, with an example</p>
+
 <div markdown="block" class="alert alert-info">
 
 :information_source: **Note:**<br>
@@ -219,7 +235,9 @@ Examples:
  need not be specified)*
 - Executing `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Intelligence`
 on an empty company list will add the company as follows: <br />
-![AddCompanySS](images/AddCompanySS.PNG)
+![AddCompany](images/ug-company/AddCompany.png)
+
+<p align="center">Figure 4: Result of adding a company</p>
 
 #### Deleting a company: `delete com`
 
@@ -244,7 +262,9 @@ Examples:
 - `edit com 2 p/61234567`
 - For the following example, executing `edit com 1 n/Google Singapore e/GoogleIsHiring@google.com t/Internet` will
  edit company 1 as follows: <br />
- ![EditCompanySS](images/EditCompanySS.PNG) <br />
+ ![EditCompany](images/ug-company/EditCom.png) <br />
+ <p align="center">Figure 5: Result of editing a company</p>
+ 
  *(Notice that by editing industry types, the existing industry types get replaced i.e. industry types do not
   accumulate)*
 
@@ -258,7 +278,8 @@ Examples:
 - `view com 3`
 - Suppose you are currently viewing the first company and you want to view the second company. Executing `view com 2` 
 will update the right panel to display the second company: <br />
-   ![ViewComSS](images/ViewComSS.PNG) <br />
+   ![ViewCom](images/ug-company/ViewCom.png) <br />
+   <p align="center">Figure 6: Result of viewing a company</p>
 
 #### Finding companies: `find com`
 
@@ -272,14 +293,26 @@ Format: `find com KEYWORD [ANOTHER_KEYWORD]...`
 - The order of the keywords does not matter. e.g. `Google Facebook` and `Facebook Google` will return the same results.
 - Only full words will be matched. e.g. `Googl` will not match `Google`.
 
+<div markdown="block" class="alert alert-info">
+
+:information_source: **Note:**<br>
+Upon successful execution of this command, your company list will be updated to only show matching results. All 
+subsequent delete, edit and view company commands will use indexing based on this updated list. Switching tabs will 
+not return the list to its full state. If you wish to return to seeing all the companies in your list, 
+execute [`list com`](#listing-all-companies-list-com).
+
+</div>
+
 Examples:
 - `find com Amazon`
 - Suppose you have this list of companies. Executing `find com google` will update the list to show matching
  companies: <br />
-     ![FindComGoogleSS](images/FindComGoogleSS.png) <br />
+     ![FindComGoogleSS](images/ug-company/FindComGoogleSS.png) <br />
+     <p align="center">Figure 7: Result of finding companies (example 1)</p>
      
      And executing `find com google facebook` will return the following: <br />
-     ![FindComGoogleFacebookSS](images/FindComGoogleFacebookSS.png) <br />
+     ![FindComGoogleFacebookSS](images/ug-company/FindComGoogleFacebookSS.png) <br />
+     <p align="center">Figure 8: Result of finding companies (example 2)</p>
 
 #### Listing all companies: `list com`
 
