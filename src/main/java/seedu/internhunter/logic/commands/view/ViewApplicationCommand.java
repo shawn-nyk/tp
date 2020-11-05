@@ -16,6 +16,9 @@ import seedu.internhunter.model.Model;
 import seedu.internhunter.model.application.ApplicationItem;
 import seedu.internhunter.ui.tabs.TabName;
 
+/**
+ * Views an application in the Application list.
+ */
 public class ViewApplicationCommand extends ViewCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
@@ -30,7 +33,11 @@ public class ViewApplicationCommand extends ViewCommand {
     private final String messageAlreadyViewing;
     private final Index targetIndex;
 
-    /** todo javadocs */
+    /**
+     * Creates an ViewApplicationCommand to view the specified {@code ApplicationItem}.
+     *
+     * @param targetIndex Index used to reference the application item in the application list.
+     */
     public ViewApplicationCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
         this.messageViewSuccess = String.format(MESSAGE_VIEW_SUCCESS, APPLICATION_NAME, targetIndex);
@@ -55,12 +62,18 @@ public class ViewApplicationCommand extends ViewCommand {
         }
 
         if (model.getTabName() == TabName.APPLICATION && model.getApplicationViewIndex().equals(targetIndex)) {
-            return new CommandResult(messageAlreadyViewing, false, false, false, false);
+            return getAlreadyViewingCommandResult(messageAlreadyViewing);
         }
         model.setApplicationViewIndex(targetIndex);
         return getCommandResult(model, messageViewSuccess, TabName.APPLICATION);
     }
 
+    /**
+     * Returns true if the 2 ViewApplicationCommand have the same indexes.
+     *
+     * @param other Other object to compare to.
+     * @return True if the other ViewApplicationCommand object has the same index as this one.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

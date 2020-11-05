@@ -161,7 +161,7 @@ public class ApplicationItem extends Item {
      * Returns true if both ApplicationItems have the same data fields.
      * This defines a stronger notion of equality between two ApplicationItem objects.
      *
-     * @param other Object object to compare to.
+     * @param other Other object to compare to.
      * @return True if the other ApplicationItem object has the same identity and data fields as this one.
      */
     @Override

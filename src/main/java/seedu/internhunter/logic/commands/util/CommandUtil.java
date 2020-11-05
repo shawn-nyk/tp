@@ -28,6 +28,14 @@ import seedu.internhunter.ui.tabs.TabName;
  */
 public class CommandUtil {
 
+    /**
+     * Obtains the company from the company list in the model.
+     *
+     * @param model {@code Model} which the method should operate on.
+     * @param companyIndex Index of company.
+     * @return CompanyItem.
+     * @throws CommandException If the index provided is larger than the size of the last shown company list.
+     */
     public static CompanyItem getCompany(Model model, Index companyIndex) throws CommandException {
         List<CompanyItem> lastShownList = model.getFilteredCompanyList();
 
@@ -38,6 +46,14 @@ public class CommandUtil {
         return model.getCompanyItemFromFilteredList(companyIndex.getZeroBased());
     }
 
+    /**
+     * Obtains the application from the application list in the model.
+     *
+     * @param model {@code Model} which the method should operate on.
+     * @param applicationIndex Index of application.
+     * @return ApplicationItem.
+     * @throws CommandException If the index provided is larger than the size of the last shown application list.
+     */
     public static ApplicationItem getApplication(Model model, Index applicationIndex) throws CommandException {
         List<ApplicationItem> lastShownList = model.getFilteredApplicationList();
 
@@ -48,6 +64,14 @@ public class CommandUtil {
         return model.getApplicationItemFromFilteredList(applicationIndex.getZeroBased());
     }
 
+    /**
+     * Obtains the profile from the profile list in the model.
+     *
+     * @param model {@code Model} which the method should operate on.
+     * @param profileItemIndex Index of profile.
+     * @return ProfileItem.
+     * @throws CommandException If the index provided is larger than the size of the last shown profile list.
+     */
     public static ProfileItem getProfileItem(Model model, Index profileItemIndex) throws CommandException {
         List<ProfileItem> lastShownList = model.getFilteredProfileList();
 

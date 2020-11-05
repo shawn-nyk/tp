@@ -192,6 +192,8 @@ Figure xx. `ABCCommand` refers to a command dependent on type while `XYZCommand`
 
 ##### Aspect: Whether `ABCCommand` should be abstract and split into 4 other `ABCItemCommand` or handle the 4 `Item` types on its own
 
+**Alternatives considered**
+
 **Alternative 1 (current choice)**: `ABCCommand` is split into 4 other `ABCItemCommand`. Parser parses the
 user input and creates the specific `ABCItemCommand` for execution. The following activity diagram shows how the 
 execution of the `AddApplicationCommand` will work.
@@ -234,7 +236,7 @@ have broken down as it might not be suited to the different parsing requirements
 ### Delete company feature
 
 #### What it is
-Users are able to execute a command to delete a company from their list of companies in InterHunter. Upon the 
+Users are able to execute a command to delete a company from their list of companies in InternHunter. Upon the 
 successful deletion of a company, all internships within that company, if any, will also be deleted (as they are a 
 part of the company, i.e. companies and the internships that they offer have a whole-part / composition relationship). 
 As a result, all applications made to internships from the company to be deleted, if any, will also be deleted as per 
@@ -279,8 +281,10 @@ HandleDeleteDisplaySwitchIndexSequenceDiagram can be found [here](#handle-delete
 
 #### Design considerations
 
-#### Aspect: How applications made to internships from the company to be deleted are deleted
-##### Alternatives considered
+##### Aspect: How applications made to internships from the company to be deleted are deleted
+
+**Alternatives considered**
+
 * **Alternative 1 (current choice)**: Delete all applications made to internships from the company to be deleted by
  executing delete internship commands.
   * Pros:
@@ -351,8 +355,10 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
  
 #### Design considerations
 
-#### Aspect: How EditProfileCommand Object interacts with Model
-##### Alternatives considered
+##### Aspect: How EditProfileCommand Object interacts with Model
+
+**Alternatives considered**
+
 * **Alternative 1 (current choice)**: `EditProfileCommand` interact with the model solely and not directly with model's 
  internal components: `ProfileItemList` and `FilteredProfileItemList`.
   * Pros:
@@ -388,7 +394,9 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
 ### Switch screen feature
 
 #### What it is
-Users are able to execute a command to switch their tabs in InterHunter. There are 3 tabs, Company, Application, Profile. Take for example swithcing to the company tab, upon the successful switch of the tabs, the screen will now display a list of companies and also display the information of the last known index of that tab, i.e if the index that was previously saved in that tab was the 3rd index, when switching back to this tab, it will show the information of the 3rd index.
+Users are able to execute a command to switch their tabs in InternHunter. There are 3 tabs: Company, Application, and 
+Profile. Take for example, switching to the company tab. Upon the successful switching of tabs, the screen will 
+display a list of companies and also display the information of the last known index of that tab, i.e if the index that was previously saved in that tab was the 3rd index, when switching back to this tab, it will show the information of the 3rd index.
 
 **Command format**: `switch TYPE`
 `TYPE` is the type of tab.
@@ -436,7 +444,11 @@ The following activity diagram summarizes what happens when a user executes a sw
 The above activity diagram shows the logic and the path execution when the switch command is executed. The code will check if there is any missing input or if the input is not one of the three mentioned in the `Command format` above. If the aforementioned 2 conditions are not met, an error message is displayed. If the input is one of the three mentioned above in the `Command format`, there will be further checks if the user are already in the same tab.
 
 #### Design considerations
-#### Aspect: Should the tabs be allowed to change only by the `SwitchCommand`.
+
+##### Aspect: Should the tabs be allowed to change only by the `SwitchCommand`.
+
+**Alternatives Considered**
+
 * **Alternative 1 (current choice):** Allow the switch of tabs to not only be accessible via the switch command, but rather extract it out for all commands excluding `exit` and `help`.
     * Pros:
         * Allows user to type once instead of twice when executing a single command and wanting to view it. (This optimzation is to allow for a faster way to type and view the changes). <br/>
@@ -493,8 +505,11 @@ InternHunter does it. Let `commandString` be any valid command string.
 
 ##### Aspect: How to handle 3 types of 'Item' list
 
-InternHunter maintains 3 types of `Item` list: `ApplicationItem`, `CompanyItem`, and `ProfileItem` lists.
+InternHunter maintains 3 types of `Item` lists: `ApplicationItem`, `CompanyItem`, and `ProfileItem` lists.
 Both `ItemListStorage` and `JsonSerializableItemList` use  the same logic regardless of the `Item` type.
+
+**Alternatives Considered**
+
 * **Alternative 1: current choice**: Creates a base abstract class `JsonAdaptedItem` and makes `ItemListStorage` 
 and `JsonSerializableItemList` use generics.
     * Pros: 
@@ -539,6 +554,8 @@ InternHunter does it.
 ##### Aspect: How to clear the lists
 
 InternHunter only lets users create applications for internships already added to companies.
+
+**Alternatives Considered**
 
 * **Alternative 1: current choice**: Clear all three lists at once.
     * Pros: 
@@ -598,6 +615,8 @@ The following sequence diagrams show how the match command works:
 #### Design considerations
 
 ##### Aspect: How to generate the matching internships
+
+**Alternatives Considered**
 
 **Alternative 1 (current choice):** Methods to generate the matching internships, namely `getSkillList`, 
 `getInternshipList`, and `getMatchingInternships` are implemented within `MatchCommand`.

@@ -14,7 +14,7 @@ class DeleteCompanyCommand {
     -deleteAllInternshipsInCompany(model: Model, company: CompanyItem)
 }
 
-class "ABSTRACT\nDeleteCommandAbstract" as DeleteCommandAbstract {
+class "ABSTRACT\nDeleteCommand" as DeleteCommand {
     {static} +COMMAND_WORD: String
     {static} +MESSAGE_USAGE: String
 }
@@ -23,6 +23,6 @@ class "ABSTRACT\nCommand" as Command {
     +execute(model: Model): CommandResult ABSTRACT
 }
 
-DeleteCommandAbstract <|-- DeleteCompanyCommand
-Command <|-- DeleteCommandAbstract
+DeleteCommand <|-- DeleteCompanyCommand
+Command <|-- DeleteCommand
 @enduml
