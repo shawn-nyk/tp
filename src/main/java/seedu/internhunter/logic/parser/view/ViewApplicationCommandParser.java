@@ -19,7 +19,7 @@ public class ViewApplicationCommandParser implements Parser<ViewApplicationComma
      * and returns a ViewApplicationCommand object for execution.
      *
      * @param args Arguments to be parsed.
-     * @return ViewApplicationCommand object for execution
+     * @return ViewApplicationCommand object for execution.
      * @throws ParseException if the user input does not conform to the expected format.
      */
     public ViewApplicationCommand parse(String args) throws ParseException {
