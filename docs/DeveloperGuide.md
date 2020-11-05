@@ -234,7 +234,7 @@ have broken down as it might not be suited to the different parsing requirements
 ### Delete company feature
 
 #### What it is
-Users are able to execute a command to delete a company from their list of companies in InterHunter. Upon the 
+Users are able to execute a command to delete a company from their list of companies in InternHunter. Upon the 
 successful deletion of a company, all internships within that company, if any, will also be deleted (as they are a 
 part of the company, i.e. companies and the internships that they offer have a whole-part / composition relationship). 
 As a result, all applications made to internships from the company to be deleted, if any, will also be deleted as per 
@@ -388,7 +388,8 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
 ### Switch screen feature
 
 #### What it is
-Users are able to execute a command to switch their tabs in InterHunter. There are 3 tabs, Company, Application, Profile. Take for example swithcing to the company tab, upon the successful switch of the tabs, the screen will now display a list of companies and also display the information of the last known index of that tab, i.e if the index that was previously saved in that tab was the 3rd index, when switching back to this tab, it will show the information of the 3rd index.
+Users are able to execute a command to switch their tabs in InternHunter. There are 3 tabs, Company, Application, 
+Profile. Take for example swithcing to the company tab, upon the successful switch of the tabs, the screen will now display a list of companies and also display the information of the last known index of that tab, i.e if the index that was previously saved in that tab was the 3rd index, when switching back to this tab, it will show the information of the 3rd index.
 
 **Command format**: `switch TYPE`
 `TYPE` is the type of tab.

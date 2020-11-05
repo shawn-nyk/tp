@@ -131,8 +131,6 @@ This section will bring you through the [Graphical User Interface(GUI)](#underst
 
 <p><img src="images/AnnotatedGui.png"/></p>
 
-<p align="center">Figure 1: Annotated GUI with component names and functionality</p>
-
 #### Understanding the technical terminologies
 
 Word | What it means
@@ -197,15 +195,11 @@ Step 1: Enter the command into the command box. An example command is given in t
 
 ![GeneralStep1MarkUp](images/ug-company/GeneralStep1MarkUp.png)
 
-<p align="center">Figure 2: Step 1 for all Company commands, with an example</p>
-
 Step 2: Press 'Enter' on your keyboard to execute the command. Upon successful execution, you will see the results of 
 your command reflected immediately in the app. An appropriate result message will also be displayed in the result 
 display.
 
 ![GeneralStep2MarkUp](images/ug-company/GeneralStep2MarkUp.png)
-
-<p align="center">Figure 3: Step 2 for all Company commands, with an example</p>
 
 <div markdown="block" class="alert alert-info">
 
@@ -237,8 +231,6 @@ Examples:
 on an empty company list will add the company as follows: <br />
 ![AddCompany](images/ug-company/AddCompany.png)
 
-<p align="center">Figure 4: Result of adding a company</p>
-
 #### Deleting a company: `delete com`
 
 Deletes a company from your list of companies. All internships and applications associated with this company will also be deleted.
@@ -247,6 +239,8 @@ Format: `delete com INDEX`
 
 Example:
 - `delete com 5`
+- Executing `delete com 2` on the following list will delete the 2nd company as follows: <br />
+  ![DeleteCompany](images/ug-company/DeleteCom.png)
 
 #### Editing a company: `edit com`
 
@@ -263,7 +257,6 @@ Examples:
 - For the following example, executing `edit com 1 n/Google Singapore e/GoogleIsHiring@google.com t/Internet` will
  edit company 1 as follows: <br />
  ![EditCompany](images/ug-company/EditCom.png) <br />
- <p align="center">Figure 5: Result of editing a company</p>
  
  *(Notice that by editing industry types, the existing industry types get replaced i.e. industry types do not
   accumulate)*
@@ -278,8 +271,7 @@ Examples:
 - `view com 3`
 - Suppose you are currently viewing the first company and you want to view the second company. Executing `view com 2` 
 will update the right panel to display the second company: <br />
-   ![ViewCom](images/ug-company/ViewCom.png) <br />
-   <p align="center">Figure 6: Result of viewing a company</p>
+   ![ViewCompany](images/ug-company/ViewCom.png) <br />
 
 #### Finding companies: `find com`
 
@@ -308,11 +300,9 @@ Examples:
 - Suppose you have this list of companies. Executing `find com google` will update the list to show matching
  companies: <br />
      ![FindComGoogleSS](images/ug-company/FindComGoogleSS.png) <br />
-     <p align="center">Figure 7: Result of finding companies (example 1)</p>
      
      And executing `find com google facebook` will return the following: <br />
      ![FindComGoogleFacebookSS](images/ug-company/FindComGoogleFacebookSS.png) <br />
-     <p align="center">Figure 8: Result of finding companies (example 2)</p>
 
 #### Listing all companies: `list com`
 
@@ -321,6 +311,11 @@ narrowed your list of companies down to a few search results. Use the `list com`
 companies in your list.
 
 Format: `list com`
+
+Example:
+- If you have 4 companies in total in your company list, and your list is currently only showing 2 companies after
+ having executed a `find com` command, to view all the companies in your list, execute `list com`: <br />
+ ![ListCompanies](images/ug-company/ListCom.png)
 
 ### **Internship**
 
