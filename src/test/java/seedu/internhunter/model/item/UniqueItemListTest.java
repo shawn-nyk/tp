@@ -229,10 +229,10 @@ public class UniqueItemListTest {
 
     @Test
     public void setItems_usingListWithNull_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> companyItemUniqueItemList.setItems((List<CompanyItem>) null));
+        assertThrows(NullPointerException.class, () -> companyItemUniqueItemList.setItems(null));
         assertThrows(NullPointerException.class, () -> applicationItemUniqueItemList
-                .setItems((List<ApplicationItem>) null));
-        assertThrows(NullPointerException.class, () -> profileItemUniqueItemList.setItems((List<ProfileItem>) null));
+                .setItems(null));
+        assertThrows(NullPointerException.class, () -> profileItemUniqueItemList.setItems(null));
     }
 
     @Test
