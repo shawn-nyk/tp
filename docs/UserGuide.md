@@ -281,7 +281,7 @@ Format: `find com KEYWORD [ANOTHER_KEYWORD]...`
 - Only the company name will be searched for.
 - The search is case-insensitive. e.g. `google` will match `Google`.
 - Companies with names matching at least one keyword will be returned. e.g. `Google Facebook` will return companies
- whose names contain the word `Google` *or* `Facebook`.
+ whose names contain the word `Google` or `Facebook`.
 - The order of the keywords does not matter. e.g. `Google Facebook` and `Facebook Google` will return the same results.
 - Only full words will be matched. e.g. `Googl` will not match `Google`.
 
@@ -467,7 +467,7 @@ Format: `find app KEYWORD [ANOTHER_KEYWORD]...`
 - Only the application job title will be searched for.
 - The search is case-insensitive. e.g. `engineer` will match `Engineer`.
 - Applications with job titles matching at least one keyword will be returned. e.g. `Software Engineer` will return
-applications whose job titles contain the word `Software` *or* `Engineer`.
+applications whose job titles contain the word `Software` or `Engineer`.
 - The order of the keywords does not matter. e.g. `Software Engineer` and `Engineer Software` will return the same results.
 - Only full words will be matched. e.g. `Engineer` will not match `Engine`.
 
@@ -580,7 +580,7 @@ Format: `find me KEYWORD [ANOTHER_KEYWORD]...`
 - Only the profile item's title will be searched for.
 - The search is case-insensitive. e.g. `HTML` will match and return items with `html` in its title.
 - Profile items with titles matching at least one keyword will be returned. e.g. `Hackathon Internship` will return
- a list of profile items whose titles contain the word `Hackathon` *or* `Internship`.
+ a list of profile items whose titles contain the word `Hackathon` or `Internship`.
 - The ordering of the keywords does not affect the outcome of the query. e.g. `Hackathon Internship` and `Internship
  Hackathon` will return the same results.
 - Only full words will be matched. e.g. `Intern` will not match `Internship`.
