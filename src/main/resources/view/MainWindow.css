@@ -12,28 +12,28 @@
 }
 
 .main_background_style {
-  -fx-background-color: #F5F6F8;
+  -fx-background-color: #f5F6f8;
   -fx-min-width: 740;
   -fx-pref-width: 740;
   -fx-pref-height: 600;
 }
 
 .tabs_background_style {
-  -fx-background: #DFE8F8;
-  -fx-border-color: #DFE8F8;
+  -fx-background: #dfe8f8;
+  -fx-border-color: #dfe8f8;
   -fx-min-width: 95;
   -fx-max-width: 95;
   -fx-translate-y: -2;
 }
 
 .tabs_container_style {
-  -fx-background-color: #DFE8F8;
+  -fx-background-color: #dfe8f8;
   -fx-pref-height: 600;
   -fx-pref-width: 95;
 }
 
 .tab_button_style {
-  -fx-background-color: #DFE8F8;
+  -fx-background-color: #dfe8f8;
   -fx-pref-height: 100;
   -fx-pref-width: 91;
 }
@@ -50,13 +50,15 @@
   -fx-max-width: 4;
   -fx-min-width: 4;
 }
+
 .tab_container_style {
-  -fx-background-color: #DFE8F8;
+  -fx-background-color: #dfe8f8;
   -fx-spacing: 10;
   -fx-pref-width: 91;
   -fx-pref-height: 100;
   -fx-alignment: center;
 }
+
 .tab_parameter_style {
   -fx-min-height: 95;
   -fx-max-height: 95;
@@ -84,7 +86,7 @@
 }
 
 .cards_container_style {
-  -fx-background: #F5F6F8;
+  -fx-background: #f5f6f8;
   -fx-background-color:transparent;
 }
 
@@ -107,7 +109,7 @@
 
 .list-view {
   -fx-background-insets: 0;
-  -fx-background-color: #F5F6F8;
+  -fx-background-color: #f5f6f8;
 }
 
 .list-view .scroll-bar:vertical .increment-arrow,
@@ -120,25 +122,25 @@
 .list-cell {
   -fx-label-padding: 0 0 0 0;
   -fx-graphic-text-gap : 0px;
-  -fx-background-color: #F5F6F8;
+  -fx-background-color: #f5f6f8;
 }
 
 .list-cell:filled {
-  -fx-background-color: #F5F6F8;
+  -fx-background-color: #f5f6f8;
 }
 
 .cell_big_label {
   -fx-font-family: "Nunito";
   -fx-font-weight: bold;
   -fx-font-size: 16px;
-  -fx-text-fill: #5A4DEB;
+  -fx-text-fill: #5a4deb;
 }
 
 .cell_small_label {
   -fx-font-family: "Nunito";
   -fx-font-weight: bold;
   -fx-font-size: 13px;
-  -fx-text-fill: #363F80;
+  -fx-text-fill: #363f80;
 }
 
 .cell_status_label {
@@ -152,7 +154,7 @@
   -fx-font-family: "Nunito";
   -fx-font-weight: bold;
   -fx-font-size: 9px;
-  -fx-text-fill: #8092CC;
+  -fx-text-fill: #8092cc;
   -fx-translate-y: 30;
 }
 
@@ -195,7 +197,7 @@
 
 .information_container {
   -fx-border-width: 1 0 0 0;
-  -fx-border-color: #6A9DF7 transparent #6A9DF7 transparent;
+  -fx-border-color: #6a9df7 transparent #6a9df7 transparent;
   -fx-fill-width: true;
   -fx-spacing: 5;
   -fx-alignment: center;
@@ -203,7 +205,7 @@
 
 .title_description_container {
   -fx-border-width: 0 0 1 0;
-  -fx-border-color: #6A9DF7 transparent #6A9DF7 transparent;
+  -fx-border-color: #6a9df7 transparent #6a9df7 transparent;
   -fx-min-height: 35;
 }
 
@@ -217,7 +219,7 @@
 }
 
 .information_display_title {
-  -fx-text-fill: #6F67C6;
+  -fx-text-fill: #6f67c6;
   -fx-font-family: "Nunito";
   -fx-font-size: 23px;
   -fx-font-weight: bold;
@@ -230,12 +232,12 @@
   -fx-control-inner-background: "white";
   -fx-font-family: "Droid Sans";
   -fx-font-size: 20px;
-  -fx-text-fill: #6F67C6;
+  -fx-text-fill: #6f67c6;
 }
 
 .information_display_bar {
   -fx-pref-height: 1;
-  -fx-background-color: #DBE8FF;
+  -fx-background-color: #dbe8ff;
 }
 
 .information_display_container {
@@ -253,7 +255,7 @@
 
 #commandTypeLabel {
   -fx-font-size: 11px;
-  -fx-text-fill: #F70D1A;
+  -fx-text-fill: #f70D1a;
 }
 
 #filterField, #personListPanel, #personWebpage {
@@ -266,8 +268,8 @@
 }
 
 #tags .label {
-  -fx-text-fill: #004CF7;
-  -fx-background-color: #E0EAFA;
+  -fx-text-fill: #004cf7;
+  -fx-background-color: #e0eafa;
   -fx-font-family: Nunito;
   -fx-font-weight: 600;
   -fx-padding: 1 3 1 3;
@@ -277,7 +279,7 @@
 }
 
 .error {
-  -fx-text-fill: #FF3333 !important; /* The error class should always override the default text-fill style */
+  -fx-text-fill: #ff3333 !important; /* The error class should always override the default text-fill style */
 }
 
 .list-cell:empty {
