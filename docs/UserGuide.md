@@ -551,6 +551,7 @@ Format: `delete me INDEX`
 
 Example:
 * `delete me 2`
+* Executing `delete me 2` on the following list will delete the 2nd profile item as follows: <br />
 
 #### Editing item in profile: `edit me`
 
