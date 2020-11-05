@@ -5,6 +5,7 @@ import static seedu.internhunter.commons.core.Messages.MESSAGE_EDIT_SUCCESS;
 import static seedu.internhunter.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getApplication;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCommandResult;
+import static seedu.internhunter.logic.commands.util.CommandUtil.getFullListIndex;
 import static seedu.internhunter.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.internhunter.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
 import static seedu.internhunter.model.util.ItemUtil.APPLICATION_ALIAS;
@@ -61,9 +62,9 @@ public class EditApplicationCommand extends EditCommand {
         // Application items will always be equal since we are not able to edit internship items using edit application
         // command
         assert applicationItemToEdit.isSameItem(editedApplicationItem);
-
+        model.setApplicationViewIndex(getFullListIndex(applicationItemToEdit, model.getApplicationItemList()));
         model.setApplication(applicationItemToEdit, editedApplicationItem);
-        model.setApplicationViewIndex(targetIndex);
+
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, APPLICATION_NAME, editedApplicationItem);
         return getCommandResult(model, editSuccessMessage, TabName.APPLICATION);
     }

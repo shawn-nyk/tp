@@ -295,7 +295,7 @@ Format: `list com`
 
 Adds an internship to a company.
 
-Format: `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
+Format: `add int INDEX j/JOB_TITLE [w/WAGE] [p/PERIOD] [r/REQUIREMENT]...`
 - `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`, `Jun - Aug 2021`).
 
 Examples:
@@ -745,7 +745,7 @@ InternHunter uses sample data when the user first launches the app. More specifi
 when **all** of applicationitemlist.json, companyitemlist.json, and profileitemlist.json are missing.
 
 **Why is my data missing?** <br/>
-Make sure your data is not missing and in the correct format. If not, InternHunter will use empty lists.
+Make sure your json files are in the correct folder and format. If not, InternHunter will use empty lists.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -767,7 +767,7 @@ Action     | Format
 
 Action     | Format
 -----------|------------------
-**Add**    | `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
+**Add**    | `add int INDEX j/JOB_TITLE [w/WAGE] [p/PERIOD] [r/REQUIREMENT]...`
 **Delete** | `delete int INDEX i/INDEX`
 **Edit**   | `edit int INDEX i/INDEX [j/JOB_TITLE] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
 

@@ -11,6 +11,7 @@ import static seedu.internhunter.ui.tabs.TabName.PROFILE;
 import java.util.List;
 import java.util.function.Consumer;
 
+import javafx.collections.ObservableList;
 import seedu.internhunter.commons.core.Messages;
 import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.logic.commands.CommandResult;
@@ -18,6 +19,7 @@ import seedu.internhunter.logic.commands.exceptions.CommandException;
 import seedu.internhunter.model.Model;
 import seedu.internhunter.model.application.ApplicationItem;
 import seedu.internhunter.model.company.CompanyItem;
+import seedu.internhunter.model.item.Item;
 import seedu.internhunter.model.profile.ProfileItem;
 import seedu.internhunter.ui.tabs.TabName;
 
@@ -54,6 +56,17 @@ public class CommandUtil {
         }
 
         return model.getProfileItemFromFilteredList(profileItemIndex.getZeroBased());
+    }
+
+    public static <T extends Item> Index getFullListIndex(T item, ObservableList<T> items) {
+        int index = 0;
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).equals(item)) {
+                index = i;
+                break;
+            }
+        }
+        return Index.fromZeroBased(index);
     }
 
     /**

@@ -114,6 +114,7 @@ public class EditCompanyCommandTest {
         String expectedMessage = String.format(MESSAGE_EDIT_SUCCESS, COMPANY_NAME, editedCompany);
         expectedModel.setCompany(model.getCompanyItemFromFilteredList(INDEX_FIRST.getZeroBased()), editedCompany);
         expectedModel.setTabName(TabName.COMPANY);
+        expectedModel.setCompanyViewIndex(INDEX_SECOND);
         CommandResult commandResult = new CommandResult(expectedMessage, false, false, false, true);
 
         assertCommandSuccess(editCommand, model, commandResult, expectedModel);
