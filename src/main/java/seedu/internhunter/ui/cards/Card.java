@@ -6,7 +6,6 @@ import static seedu.internhunter.ui.textstyle.TitleDescription.createTitleDescri
 import java.util.LinkedHashMap;
 
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
