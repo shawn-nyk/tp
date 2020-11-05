@@ -439,9 +439,19 @@ Format: `find app KEYWORD [ANOTHER_KEYWORD]...`
 - Only the application job title will be searched for.
 - The search is case-insensitive. e.g. `engineer` will match `Engineer`.
 - Applications with job titles matching at least one keyword will be returned. e.g. `Software Engineer` will return
-applications whose job titles contain the word `Software` *or* `Engineer`.
+applications whose job titles contain the word `Software` or `Engineer`.
 - The order of the keywords does not matter. e.g. `Software Engineer` and `Engineer Software` will return the same results.
 - Only full words will be matched. e.g. `Engineer` will not match `Engine`.
+
+<div markdown="block" class="alert alert-info">
+
+:information_source: **Note:**<br>
+Upon successful execution of this command, your application list will be updated to only show matching results. All 
+subsequent delete, edit and view application commands will use indexing based on this updated list. Switching tabs will 
+not return the list to its full state. If you wish to return to seeing all the applications in your list, 
+execute [`list app`](#listing-all-applications-list-app).
+
+</div>
 
 Example:
 - Suppose you have this list of applications. Executing `find app engineer` will update the list to show matching
@@ -596,16 +606,16 @@ Example:
 
 1. Say you currently have these 2 list of internships from Google Singapore and Garena:
 
-<p align="center"><img src="images/ug-general/match-internships1.png" width="100%"/></p>
+<p align="center"><img src="images/ug-general/match-internships.png" width="100%"/></p>
 
 2\. And this is your current profile item list. Note that only the 2 profile items of `Skill` type will be used for
 matching with the internships.
 
-<p align="center"><img src="images/ug-general/match-skills1.png" width="100%"/></p>
+<p align="center"><img src="images/ug-general/match-skills.png" width="100%"/></p>
 
 3\. All that's left to do is to type the `match` word in the command box.
 
-<p align="center"><img src="images/ug-general/match-type1.png" width="100%"/></p>
+<p align="center"><img src="images/ug-general/match-type.png" width="100%"/></p>
 
 <div markdown="span" class="alert alert-info">
 
@@ -615,7 +625,7 @@ matching with the internships.
 
 4\. A pop-up window showing the list of matching internships will be displayed!
 
-<p align="center"><img src="images/ug-general/match-window.png" width="100%"/></p>
+<p align="center"><img src="images/ug-general/match-window1.png" width="100%"/></p>
 
 <div markdown="span" class="alert alert-primary">
 
