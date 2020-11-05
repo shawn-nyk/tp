@@ -398,15 +398,15 @@ Users are able to execute a command to switch their tabs in InternHunter. There 
 Profile. Take for example, switching to the company tab. Upon the successful switching of tabs, the screen will 
 display a list of companies and also display the information of the last known index of that tab, i.e if the index that was previously saved in that tab was the 3rd index, when switching back to this tab, it will show the information of the 3rd index.
 
-**Command format**: `switch TYPE`
-`TYPE` is the type of tab.
+**Command format**: `switch TYPE` <br />
+`TYPE` is the type of tab. <br />
 There are three `TYPE`s:
 * `com`
 * `app`
 * `me`
 
 #### Implementation
-Upon a user’s entry of a valid switch command, a `SwitchCommand` object is created. `SwitchCommand` is a class that extends the Command abstract class as well as having direct association with TabName, an enumeration, as well as having a dependency to the Model interface as it relies on some of its method.
+Upon a user’s entry of a valid switch command, a `SwitchCommand` object is created. `SwitchCommand` is a class that extends the `Command` abstract class as well as having direct association with `TabName`, an enumeration, as well as having a dependency to the `Model` interface as it relies on some of its method.
 
 <p align="left"><img src="images/switchcommand/SwitchCommandClassDiagram.png" width="70%" height="70%"/></p>
 
@@ -419,11 +419,11 @@ This is how the `SwitchCommand#execute(...)` method works upon execution:
  2a. If both the tabs are the same, a same tab message will be passed to `CommandUtil#getCommandResult(...)`method. <br/>
  2b. If both the tabs are different, a success message will be passed to `CommandUtil#getCommandResult(...)`method. <br/>
 
-<p align="center">The overall process of how <code>SwitchCommand</code> was generated.</p>
+<p align="center">The overall process of how <code>SwitchCommand</code> was generated:</p>
 
 <p align="center"><img src="images/switchcommand/SwitchCommandSequenceDiagram.png"/></p>
 
-<p align="center">The process of how <code>SwitchCommand</code> interacts with the model.</p>
+<p align="center">The process of how <code>SwitchCommand</code> interacts with the model:</p>
 
 <p align="center"><img src="images/ExecuteSwitchMeCommandSequenceDiagram.png" width="75%" height="75%"/></p>
 
@@ -433,7 +433,7 @@ This is how the `CommandUtil#getCommandResult(...)` method works upon execution:
  2a. If both the tabs are the same, a `CommandResult` with a same tab message is return. <br/>
  2b. If both the tabs are different, we will change the tab to the input's tab name via `Model#setTabName(...)`. A `CommandResult` with a success message is return.
 
-<p align="center">The process of how <code>getCommandResult</code> is being generated.</p>
+<p align="center">The process of how <code>getCommandResult</code> is being generated:</p>
 
 <p align="center"><img src="images/GetCommandResultSequenceDiagram.png" width="95%" height="95%"/></p>
 
@@ -454,7 +454,7 @@ The above activity diagram shows the logic and the path execution when the switc
         * Allows user to type once instead of twice when executing a single command and wanting to view it. (This optimization is to allow for a faster way to type and view the changes). <br/>
         * By abstract the method out from switch command, it obeys the DRY principle as all the commands will be calling a single method.
         * This allows and obeys the Open-Close principle as new implementation of commands can just be calling this single method at the end.
-        * Allows user to have a second alternative to switch tabs for just viewing purpose.
+        * Allows user to have a second alternative to switch tabs just for viewing purpose.
     * Cons:
         * User might switch tab accidentally because of inputting the wrong `TYPE`.
         * Increases some form of coupling between all commands as they are now linked to this single method.
@@ -1025,7 +1025,7 @@ testers are expected to do more *exploratory* testing.
        
 1. Shutting down
    1. Quit the app by typing `exit` <br>
-      Expected: A Exit pop-out dialog will confirm the intention to exit InternHunter. For all users, you can use `tab` on keyboard to navigate. For **MacOS** users, use `spacebar` to confirm the exit, while the **rest** can use `enter` to confirm the exit.
+      Expected: An Exit pop-out dialog will confirm the intention to exit InternHunter. For all users, you can use `tab` on keyboard to navigate. For **MacOS** users, use `spacebar` to confirm the exit, while the **rest** can use `enter` to confirm the exit.
 
 
 **Note**
