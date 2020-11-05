@@ -9,7 +9,7 @@ import static seedu.internhunter.model.util.ItemUtil.PROFILE_ALIAS;
 import seedu.internhunter.logic.commands.Command;
 
 /**
- * todo javadocs
+ * Edits an item from the item list.
  */
 public abstract class EditCommand extends Command {
 

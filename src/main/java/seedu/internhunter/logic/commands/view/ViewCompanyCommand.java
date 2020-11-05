@@ -55,7 +55,7 @@ public class ViewCompanyCommand extends ViewCommand {
         }
 
         if (model.getTabName() == TabName.COMPANY && model.getCompanyViewIndex().equals(targetIndex)) {
-            return new CommandResult(messageAlreadyViewing, false, false , false, false);
+            return getAlreadyViewingCommandResult(messageAlreadyViewing);
         }
         model.setCompanyViewIndex(targetIndex);
         return getCommandResult(model, messageViewSuccess, TabName.COMPANY);

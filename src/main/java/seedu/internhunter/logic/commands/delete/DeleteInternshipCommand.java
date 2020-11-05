@@ -40,6 +40,9 @@ public class DeleteInternshipCommand extends DeleteCommand {
 
     /**
      * Creates an DeleteInternshipCommand to delete the specified {@code InternshipItem}.
+     *
+     * @param companyIndex Index used to reference a company item in the company list.
+     * @param internshipIndex Index used to reference an internship item in the internship list.
      */
     public DeleteInternshipCommand(Index companyIndex, Index internshipIndex) {
         requireAllNonNull(companyIndex, internshipIndex);
@@ -48,7 +51,7 @@ public class DeleteInternshipCommand extends DeleteCommand {
     }
 
     /**
-     * Executes the command and returns the result message.
+     * Executes the DeleteInternshipCommand and returns the result message.
      *
      * @param model {@code Model} which the command should operate on.
      * @return feedback message of the operation result for display.
@@ -72,6 +75,12 @@ public class DeleteInternshipCommand extends DeleteCommand {
         return getCommandResult(model, deleteSuccessMessage, TabName.COMPANY);
     }
 
+    /**
+     * Returns true if the 2 DeleteInternshipCommand have the same indexes.
+     *
+     * @param other Other object to compare to.
+     * @return True if the other DeleteInternshipCommand object has the same indexes as this one.
+     */
     @Override
     public boolean equals(Object other) {
         // short circuit if same object
