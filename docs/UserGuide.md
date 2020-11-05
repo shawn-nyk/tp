@@ -141,7 +141,7 @@ Commands | Words that determine the action of InternHunter.
 Command word | The first word of every command.
 Parameters | Information that is supplied by you.
 Execute | Typing the information into the command box and pressing enter.
-Item type for command | com, int, app, me
+Item type for command | com, int, app, me.
 
 #### Understanding the symbols
 
