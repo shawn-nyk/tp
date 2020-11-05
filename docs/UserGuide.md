@@ -406,6 +406,20 @@ Here is how the application tab looks like:
 
 <p align="center"><img src="images/ug-application/ApplicationAnnotated.png" width="100%"/></p>
 
+#### Command execution
+
+All application commands follow the following general 2-step process:
+
+Step 1: Enter the command into the command box. An example command is given in the image below.
+
+![GeneralApplicationCommand1](images/ug-application/GeneralApplicationCommand1.png)
+
+Step 2: Press 'Enter' on your keyboard to execute the command. Upon successful execution, you will see the results of 
+your command reflected immediately in the app. An appropriate result message will also be displayed in the result 
+display.
+
+![GeneralApplicationCommand2](images/ug-application/GeneralApplicationCommand2.png)
+
 #### Applying for an internship: `add app`
 
 Selects an internship from a company and adds it to your list of applications. If unspecified, the application’s
