@@ -139,7 +139,7 @@ Commands | Words that determine the action of InternHunter.
 Command word | The first word of every command.
 Parameters | Information that is supplied by you.
 Execute | Typing the information into the command box and pressing enter.
-Item type for command | com, int, app, me
+Item type for command | com, int, app, me.
 
 #### Understanding the symbols
 
@@ -174,7 +174,7 @@ Symbol | What it means
 * Parameters can be in any order.<br>
   e.g. if the command specifies `p/PERIOD w/WAGE`, `w/WAGE p/PERIOD` is also acceptable. Note that the command word and the item type should still come first.
 
-* `INDEX` refers to the index of the item (Company, Application, or Profile Item) in its respective displayed list of
+* `INDEX` refers to the index of the item (Company, Internship, Application, or Profile Item) in its respective displayed list of
  items unless stated otherwise. All `INDEX`es are positive integers *(1, 2, 3, ...)*.<br>
  
 </div>

@@ -35,7 +35,7 @@ public class ModelManager implements Model {
     private final View viewControl;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given InternHunter and userPrefs.
      */
     public ModelManager(
             ReadOnlyItemList<CompanyItem> companyList,

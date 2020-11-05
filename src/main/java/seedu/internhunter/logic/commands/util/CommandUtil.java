@@ -93,6 +93,13 @@ public class CommandUtil {
         return Index.fromZeroBased(index);
     }
 
+    public static <T extends Item> void setIndexWhenDeletion(T item, ObservableList<T> items, Model model,
+        TabName tabName) {
+
+        Index index = getFullListIndex(item, items).minusOne();
+        handleDeleteDisplaySwitchIndex(model, tabName, index);
+    }
+
     /**
      * Gets the feedback message of the operation result for display and indicates whether tabs need to be switched or
      * not.
