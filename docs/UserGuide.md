@@ -518,6 +518,16 @@ Each category is represented by the following icons in the UI:
 Each profile item also contains a `TITLE` that describes the item, and you can optionally 
 add additional `DESCRIPTOR`s to further describe the item in point form.
 
+Note that all Profile commands follow the following general 2-step process:
+
+Step 1: Enter the command into the command box. An example command is given in the image below.
+
+
+Step 2: Press 'Enter' on your keyboard to execute the command. Upon successful execution, you will see the results of 
+your command reflected immediately in the app. An appropriate result message will also be displayed in the result 
+display.
+
+
 #### Adding item to profile: `add me`
 
 Adds a profile item to your profile.
@@ -585,8 +595,17 @@ Format: `find me KEYWORD [ANOTHER_KEYWORD]...`
  Hackathon` will return the same results.
 - Only full words will be matched. e.g. `Intern` will not match `Internship`.
 
+<div markdown="block" class="alert alert-info">
+
+:information_source: **Note:**<br>
+Upon successful execution of this command, your profile list will be updated to only show matching results. All 
+subsequent delete, edit and view application commands will use indexing based on this updated list. Switching tabs will 
+not return the list to its full state. If you wish to return to seeing all the profile items in your list, 
+execute [`list me`](#listing-all-items-profile).
+
+</div>
+
 Examples:
-- `find me Internship`
 - For the following example, if the profile contains the following items. Executing `find me internship` will return
  the following: <br />
      ![FindProfile](images/ug-profile/FindProfileSingle.png) <br />
