@@ -174,10 +174,10 @@ There are 2 types of commands:
     - e.g. `AddCommand`, `DeleteCommand`, `EditCommand`
     - These commands are implemented as _abstract_ classes that inherit from the `Command` class. Type specific
     commands like `AddCompanyCommand` and `AddApplicationCommand` inherit from the _abstract_ `AddCommand`
-    class
+    class.
 - Commands that are not dependent on the type of `Item`
-    - e.g. `SwitchCommand`, `HelpCommand`, `ExitCommand`
-    - These commands are implemented as _concrete_ classes and inherit directly from the `Command` class
+    - e.g. `HelpCommand`, `ExitCommand`
+    - These commands are implemented as _concrete_ classes and inherit directly from the `Command` class.
 
 From this point on, we will be using `ABCCommand` to represent commands that are dependent on type and
 `XYZCommand` to represent commands that are independent of type.
@@ -605,19 +605,19 @@ The following sequence diagrams show how the match command works:
 - Pros:
     - Still adheres to the Single Responsibility Principle as the `MatchCommand` is meant to generate the list of
     matching internships. Having additional methods to match internships to profile skills are still within the
-    responsibility of this class
-    - Higher cohesion as `Model` does not need to have additional responsibilities like executing algorithms
-    - Increased flexibility as the matching algorithm can be easily changed within this `MatchCommand`
+    responsibility of this class.
+    - Higher cohesion as `Model` does not need to have additional responsibilities like executing algorithms.
+    - Increased flexibility as the matching algorithm can be easily changed within this `MatchCommand`.
     
 - Cons:
-    - `MatchCommand` becomes longer as it needs additional methods to generate the list of matching internships
+    - `MatchCommand` becomes longer as it needs additional methods to generate the list of matching internships.
 
 **Alternative 2:** Methods to generate the matching internships, namely `getSkillList`, 
 `getInternshipList`, and `getMatchingInternships` are implemented within `Model`.
 
 - Pros:
     - `MatchCommand` will be very short as it just needs to call the `getMatchingInternships` method from the
-    `Model` interface and generate the correct `CommandResult` from there
+    `Model` interface and generate the correct `CommandResult` from there.
     
 - Cons:
     - `Model` becomes more complicated as it needs to support more methods. This in turns causes the `ModelManager`
