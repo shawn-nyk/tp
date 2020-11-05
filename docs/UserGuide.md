@@ -404,7 +404,7 @@ Valid `STATUS_DATE` formats:
 
 Here is how the application tab looks like: 
 
-<p align="center"><img src="images/ug-application/ApplicationAnnotated.png" width="100%"/></p>
+<p align="center"><img src="images/ug-application/ApplicationAnnotated1.png" width="100%"/></p>
 
 #### Command execution
 
@@ -412,13 +412,13 @@ All application commands follow the following general 2-step process:
 
 Step 1: Enter the command into the command box. An example command is given in the image below.
 
-![GeneralApplicationCommand1](images/ug-application/GeneralApplicationCommand1.png)
+![GeneralApplicationCommand1](images/ug-application/GeneralApplicationCommand01.png)
 
 Step 2: Press 'Enter' on your keyboard to execute the command. Upon successful execution, you will see the results of 
 your command reflected immediately in the app. An appropriate result message will also be displayed in the result 
 display.
 
-![GeneralApplicationCommand2](images/ug-application/GeneralApplicationCommand2.png)
+![GeneralApplicationCommand2](images/ug-application/GeneralApplicationCommand02.png)
 
 #### Applying for an internship: `add app`
 
@@ -648,7 +648,7 @@ Example:
 
 1. Say you currently have these 2 list of internships from Google Singapore and Garena:
 
-<p align="center"><img src="images/ug-general/match-internships.png" width="100%"/></p>
+<p align="center"><img src="images/ug-general/match-internships1.png" width="100%"/></p>
 
 2\. And this is your current profile item list. Note that only the 2 profile items of `Skill` type will be used for
 matching with the internships.
