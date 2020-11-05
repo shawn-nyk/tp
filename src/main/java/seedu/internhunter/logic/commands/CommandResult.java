@@ -13,6 +13,7 @@ import seedu.internhunter.model.internship.InternshipItem;
  */
 public class CommandResult {
 
+    /** Feedback message to show to the user after a command execution. */
     private final String feedbackToUser;
 
     /** Help information should be shown to the user. */
@@ -71,6 +72,11 @@ public class CommandResult {
         return isSwitchDisplay;
     }
 
+    /**
+     * Returns true if the matching internships is empty.
+     *
+     * @return True if the matching internships list is empty.
+     */
     public boolean isShowMatchingInternships() {
         return !matchingInternships.isEmpty();
     }
@@ -79,10 +85,21 @@ public class CommandResult {
         matchingInternships = listOfInternships;
     }
 
+    /**
+     * Obtains the matching internships list.
+     *
+     * @return Matching internship list.
+     */
     public ObservableList<InternshipItem> getMatchingInternships() {
         return matchingInternships;
     }
 
+    /**
+     * Returns true if the 2 CommandResult have the same fields.
+     *
+     * @param other Other object to compare to.
+     * @return True if the other CommandResult object has the same fields as this one.
+     */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -103,9 +120,14 @@ public class CommandResult {
                 && matchingInternships.equals(otherCommandResult.matchingInternships);
     }
 
+    /**
+     * Returns the hashcode of this CommandResult object, which is the hashcode of its fields.
+     *
+     * @return Hashcode of this CommandResult object.
+     */
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, isShowHelp, isExit, isSwitchTab, isSwitchDisplay);
+        return Objects.hash(feedbackToUser, isShowHelp, isExit, isSwitchTab, isSwitchDisplay, matchingInternships);
     }
 
 }
