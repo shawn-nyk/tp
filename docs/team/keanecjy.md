@@ -49,9 +49,10 @@ morph the existing AB3 implementation into our own, adding a total of more than 
     * Allows the user to edit an application.  
   * View an application (Pull request [\#152](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/152))
     * What it does: Allows the user to view an application in full detail.
+  * Created and maintained the ApplicationItem and InternshipItem classes and fields in the model. (Pull request [\#98](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/98))
   * Refactor the code to match application (Pull request [\#284](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/284))
   * Created general wrapper regex classes for items in the model (Pull request [\#126](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/126))
-  * Create GeneralParserUtil to hold common parsing methods for all classes (Pull request [\#152](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/152))
+  * Created GeneralParserUtil to hold common parsing methods for all classes (Pull request [\#152](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/152))
   * Contributed significantly to improving the test coverage (Pull requests 
         [\#156](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/156), [\#169](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/169),
         [\#180](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/180), [\#192](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/192),
@@ -83,7 +84,7 @@ morph the existing AB3 implementation into our own, adding a total of more than 
   [\#159](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/159), [\#161](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/161),
   [\#178](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/178), [\#190](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/190),
   [\#256](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/256), [\#258](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/258),
-  [\#277](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/277)
+  [\#277](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/277), [\#373](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/373)
   * All other PRs reviewed: [Link to the other 40+ PRs reviewed](https://github.com/AY2021S1-CS2103T-T15-4/tp/pulls?q=is%3Apr+reviewed-by%3Akeanecjy+is%3Aclosed+sort%3Acomments-asc)
   * Reported bugs and suggestions for other teams in the class: [1](https://github.com/keanecjy/ped/issues/1),
   [2](https://github.com/keanecjy/ped/issues/2), [3](https://github.com/keanecjy/ped/issues/3),
