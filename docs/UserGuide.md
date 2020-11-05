@@ -532,13 +532,13 @@ display.
 
 Adds a profile item to your profile.
 
-Format: `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
+Format: `add me t/TITLE c/CATEGORY [d/DESCRIPTOR]...`
 
 Examples:
-* `add me c/skill t/HTML d/Learn how to create divs`
-* `add me c/achievement t/special recognition in Hack n Roll`
-* For example, you have just completed an internship at Govtech. Executing `add me c/experience t/Internship at
- Govtech d/Implemented automate testing using TravisCI d/Implemented dashboard to track code coverage` on an empty 
+* `add me t/HTML c/skill d/Learn how to create divs`
+* `add me t/special recognition in Hack n Roll c/achievement`
+* For example, you have just completed an internship at Govtech. Executing `add me t/Internship at Govtech 
+ c/experience d/Implemented automate testing using TravisCI d/Implemented dashboard to track code coverage` on an empty 
  profile will add the profile item as follows: <br />
  
 ![AddProfileSS](images/ug-profile/AddProfileItem.png)
@@ -557,14 +557,14 @@ Example:
 
 Edit the experience, skills or achievements descriptors of your profile.
 
-Format: `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTORS]`
+Format: `edit me INDEX [t/TITLE] [c/CATEGORY] [d/DESCRIPTORS]`
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing `DESCRIPTORS`, all existing descriptors get replaced by the new specified descriptors.
 * You can remove all `DESCRIPTORS` by adding d/ without anything after it.
 
 Examples:
-* `edit me 2 c/skill t/CSS d/learnt how to use flexbox`
+* `edit me 2 t/CSS c/skill d/learnt how to use flexbox`
 * For example if you want to update the title and descriptor of the first item in your profile.
 * Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the profile item to:<br />
 ![EditProfileSS](images/ug-profile/EditProfile.PNG)<br />
@@ -834,9 +834,9 @@ Action     | Format
 
 Action     | Format
 -----------|------------------
-**Add**    | `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
+**Add**    | `add me t/TITLE c/CATEGORY [d/DESCRIPTOR]...`
 **Delete** | `delete me INDEX`
-**Edit**   | `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTOR]...`
+**Edit**   | `edit me INDEX [t/TITLE] [c/CATEGORY] [d/DESCRIPTOR]...`
 **View**   | `view me INDEX`
 **Find**   | `find me KEYWORD [ANOTHER_KEYWORD]...`
 **List**   | `list me`
