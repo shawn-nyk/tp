@@ -131,8 +131,6 @@ This section will bring you through the [Graphical User Interface(GUI)](#underst
 
 <p><img src="images/AnnotatedGui.png"/></p>
 
-<p align="center"><strong>Figure 1: Annotated GUI with component names and functionality</strong></p>
-
 #### Understanding the technical terminologies
 
 Word | What it means
@@ -141,7 +139,7 @@ Commands | Words that determine the action of InternHunter.
 Command word | The first word of every command.
 Parameters | Information that is supplied by you.
 Execute | Typing the information into the command box and pressing enter.
-Item type for command | com, int, app, me
+Item type for command | com, int, app, me.
 
 #### Understanding the symbols
 
@@ -165,7 +163,7 @@ Symbol | What it means
   e.g. in `add com n/COMPANY_NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/INDUSTRY]...`, `COMPANY_NAME`, `PHONE_NUMBER`, `EMAIL`, `ADDRESS`, `INDUSTRY`,
   an example of how to fill up the parameters are `add com n/Google p/65218000 e/GoogleHire@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Industry`.
 
-* Items in square brackets `[]` are optional. These paramaters are optional because they are additional information 
+* Items in square brackets `[]` are optional. These parameters are optional because they are additional information 
   and you can key them in at a later date if you do not have the relevant information at hand.<br>
   e.g `add int INDEX j/JOB_TITLE [w/WAGE] [p/PERIOD] [r/REQUIREMENT]...` can be used as <br/> `add int 1 j/Software Engineer` or
   `add int 3 j/Web Developer r/React w/3000 r/HTML5`.
@@ -176,7 +174,7 @@ Symbol | What it means
 * Parameters can be in any order.<br>
   e.g. if the command specifies `p/PERIOD w/WAGE`, `w/WAGE p/PERIOD` is also acceptable. Note that the command word and the item type should still come first.
 
-* `INDEX` refers to the index of the item (Company, Application, or Profile Item) in its respective displayed list of
+* `INDEX` refers to the index of the item (Company, Internship, Application, or Profile Item) in its respective displayed list of
  items unless stated otherwise. All `INDEX`es are positive integers *(1, 2, 3, ...)*.<br>
  
 </div>
@@ -190,6 +188,18 @@ Symbol | What it means
 This represents a company, any company, but typically one you are interested in applying for an internship to.
 You can record and maintain a company's name, phone number, email address, physical address, and its industry types.
 You can then specify what internships the company is offering by using the [internship commands](#internship).
+
+Note that all Company commands follow the following general 2-step process:
+
+Step 1: Enter the command into the command box. An example command is given in the image below.
+
+![GeneralStep1MarkUp](images/ug-company/GeneralStep1MarkUp.png)
+
+Step 2: Press 'Enter' on your keyboard to execute the command. Upon successful execution, you will see the results of 
+your command reflected immediately in the app. An appropriate result message will also be displayed in the result 
+display.
+
+![GeneralStep2MarkUp](images/ug-company/GeneralStep2MarkUp.png)
 
 <div markdown="block" class="alert alert-info">
 
@@ -219,7 +229,7 @@ Examples:
  need not be specified)*
 - Executing `add com n/Google p/65218000 e/GoogleHires@gmail.com a/70 Pasir Panjang Rd, #03-71 t/Cloud Computing t/Artificial Intelligence`
 on an empty company list will add the company as follows: <br />
-![AddCompanySS](images/AddCompanySS.PNG)
+![AddCompany](images/ug-company/AddCompany.png)
 
 #### Deleting a company: `delete com`
 
@@ -229,6 +239,8 @@ Format: `delete com INDEX`
 
 Example:
 - `delete com 5`
+- Executing `delete com 2` on the following list will delete the 2nd company as follows: <br />
+  ![DeleteCompany](images/ug-company/DeleteCom.png)
 
 #### Editing a company: `edit com`
 
@@ -244,7 +256,8 @@ Examples:
 - `edit com 2 p/61234567`
 - For the following example, executing `edit com 1 n/Google Singapore e/GoogleIsHiring@google.com t/Internet` will
  edit company 1 as follows: <br />
- ![EditCompanySS](images/EditCompanySS.PNG) <br />
+ ![EditCompany](images/ug-company/EditCom.png) <br />
+ 
  *(Notice that by editing industry types, the existing industry types get replaced i.e. industry types do not
   accumulate)*
 
@@ -258,7 +271,7 @@ Examples:
 - `view com 3`
 - Suppose you are currently viewing the first company and you want to view the second company. Executing `view com 2` 
 will update the right panel to display the second company: <br />
-   ![ViewComSS](images/ViewComSS.PNG) <br />
+   ![ViewCompany](images/ug-company/ViewCom.png) <br />
 
 #### Finding companies: `find com`
 
@@ -268,18 +281,28 @@ Format: `find com KEYWORD [ANOTHER_KEYWORD]...`
 - Only the company name will be searched for.
 - The search is case-insensitive. e.g. `google` will match `Google`.
 - Companies with names matching at least one keyword will be returned. e.g. `Google Facebook` will return companies
- whose names contain the word `Google` *or* `Facebook`.
+ whose names contain the word `Google` or `Facebook`.
 - The order of the keywords does not matter. e.g. `Google Facebook` and `Facebook Google` will return the same results.
 - Only full words will be matched. e.g. `Googl` will not match `Google`.
+
+<div markdown="block" class="alert alert-info">
+
+:information_source: **Note:**<br>
+Upon successful execution of this command, your company list will be updated to only show matching results. All 
+subsequent delete, edit and view company commands will use indexing based on this updated list. Switching tabs will 
+not return the list to its full state. If you wish to return to seeing all the companies in your list, 
+execute [`list com`](#listing-all-companies-list-com).
+
+</div>
 
 Examples:
 - `find com Amazon`
 - Suppose you have this list of companies. Executing `find com google` will update the list to show matching
  companies: <br />
-     ![FindComGoogleSS](images/FindComGoogleSS.png) <br />
+     ![FindComGoogleSS](images/ug-company/FindComGoogleSS.png) <br />
      
      And executing `find com google facebook` will return the following: <br />
-     ![FindComGoogleFacebookSS](images/FindComGoogleFacebookSS.png) <br />
+     ![FindComGoogleFacebookSS](images/ug-company/FindComGoogleFacebookSS.png) <br />
 
 #### Listing all companies: `list com`
 
@@ -289,13 +312,18 @@ companies in your list.
 
 Format: `list com`
 
+Example:
+- If you have 4 companies in total in your company list, and your list is currently only showing 2 companies after
+ having executed a `find com` command, to view all the companies in your list, execute `list com`: <br />
+ ![ListCompanies](images/ug-company/ListCom.png)
+
 ### **Internship**
 
 #### Adding an internship: `add int`
 
 Adds an internship to a company.
 
-Format: `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
+Format: `add int INDEX j/JOB_TITLE [w/WAGE] [p/PERIOD] [r/REQUIREMENT]...`
 - `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`, `Jun - Aug 2021`).
 
 Examples:
@@ -376,7 +404,21 @@ Valid `STATUS_DATE` formats:
 
 Here is how the application tab looks like: 
 
-<p align="center"><img src="images/ug-application/ApplicationAnnotated.png" width="100%"/></p>
+<p align="center"><img src="images/ug-application/ApplicationAnnotated1.png" width="100%"/></p>
+
+#### Command execution
+
+All application commands follow the following general 2-step process:
+
+Step 1: Enter the command into the command box. An example command is given in the image below.
+
+![GeneralApplicationCommand1](images/ug-application/GeneralApplicationCommand01.png)
+
+Step 2: Press 'Enter' on your keyboard to execute the command. Upon successful execution, you will see the results of 
+your command reflected immediately in the app. An appropriate result message will also be displayed in the result 
+display.
+
+![GeneralApplicationCommand2](images/ug-application/GeneralApplicationCommand02.png)
 
 #### Applying for an internship: `add app`
 
@@ -389,7 +431,7 @@ internship in the company’s internship list.
 
 Example:
 - Suppose you are interested in applying for the Software Engineer internship in Google Singapore:
-<p align="center"><img src="images/ug-application/Internship.png" width="100%"/></p>
+<p align="center"><img src="images/ug-application/Internship1.png" width="100%"/></p>
 
 Executing `add app 1 i/1 d/24-12-20` will apply for the internship as follows.
 Note that you will be automatically switched to the application tab to view the application made:
@@ -439,9 +481,19 @@ Format: `find app KEYWORD [ANOTHER_KEYWORD]...`
 - Only the application job title will be searched for.
 - The search is case-insensitive. e.g. `engineer` will match `Engineer`.
 - Applications with job titles matching at least one keyword will be returned. e.g. `Software Engineer` will return
-applications whose job titles contain the word `Software` *or* `Engineer`.
+applications whose job titles contain the word `Software` or `Engineer`.
 - The order of the keywords does not matter. e.g. `Software Engineer` and `Engineer Software` will return the same results.
 - Only full words will be matched. e.g. `Engineer` will not match `Engine`.
+
+<div markdown="block" class="alert alert-info">
+
+:information_source: **Note:**<br>
+Upon successful execution of this command, your application list will be updated to only show matching results. All 
+subsequent delete, edit and view application commands will use indexing based on this updated list. Switching tabs will 
+not return the list to its full state. If you wish to return to seeing all the applications in your list, 
+execute [`list app`](#listing-all-applications-list-app).
+
+</div>
 
 Example:
 - Suppose you have this list of applications. Executing `find app engineer` will update the list to show matching
@@ -490,45 +542,75 @@ Each category is represented by the following icons in the UI:
 Each profile item also contains a `TITLE` that describes the item, and you can optionally 
 add additional `DESCRIPTOR`s to further describe the item in point form.
 
+Here is how the profile tab looks like: 
+
+<p align="center"><img src="images/ug-profile/ProfileOverview.png" width="100%"/></p>
+
+#### Command execution
+
+Note that all Profile commands follow the following general 2-step process:
+
+Step 1: Enter the command into the command box. An example command is given in the image below.
+
+![GeneralStepOneMarkUp](images/ug-profile/GeneralStepProfile.png)
+
+Step 2: Press 'Enter' on your keyboard to execute the command. Upon successful execution, you will see the results of 
+your command reflected immediately in the app. An appropriate result message will also be displayed in the result 
+display.
+
+![GeneralStepTwoMarkUp](images/ug-profile/GeneralStepProfileTwo.png)
+
+<div markdown="span" class="alert alert-primary">
+
+  :bulb: **Tip:** If you want to store multiple experiences or achievements of the same name, for example taking part
+   in the Open Hack Hackathon in 2 different years, since profile items cannot have identical titles, you can simply
+    include when the event occurred in the title. (e.g. `t/Participated in Open Hack 2020` and `t/Participated in
+     Open Hack 2019`)!
+     
+</div>
+
 #### Adding item to profile: `add me`
 
 Adds a profile item to your profile.
 
-Format: `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
+Format: `add me t/TITLE c/CATEGORY [d/DESCRIPTOR]...`
 
 Examples:
-* `add me c/skill t/HTML d/Learn how to create divs`
-* `add me c/achievement t/special recognition in Hack n Roll`
-* For example, you have just completed an internship at Govtech. Executing `add me c/experience t/Internship at
- Govtech d/Implemented automate testing using TravisCI d/Implemented dashboard to track code coverage` on an empty 
+* `add me t/HTML c/skill d/Learn how to create divs`
+* `add me t/special recognition in Hack n Roll c/achievement`
+* For example, you have just completed an internship at Govtech. Executing `add me t/Internship at Govtech 
+ c/experience d/Implemented automate testing using TravisCI d/Implemented dashboard to track code coverage` on an empty 
  profile will add the profile item as follows: <br />
  
-![AddProfileSS](images/ug-profile/AddProfileItem.png)
+![AddProfileSS](images/ug-profile/AddProfile.png)
 
 #### Deleting item in profile: `delete me`
 
-Deletes experience, skills or achievements descriptors from your profile.
+Deletes experience, skills or achievements from your profile.
 
 Format: `delete me INDEX`
 
 Example:
 * `delete me 2`
+* Executing `delete me 2` on the following list will delete the 2nd profile item as follows: <br />
+
+![DeleteProfile](images/ug-profile/DeleteProfile.png)
 
 #### Editing item in profile: `edit me`
 
-Edit the experience, skills or achievements descriptors of your profile.
+Edit the experience, skills or achievements of your profile.
 
-Format: `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTORS]`
+Format: `edit me INDEX [t/TITLE] [c/CATEGORY] [d/DESCRIPTORS]`
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing `DESCRIPTORS`, all existing descriptors get replaced by the new specified descriptors.
-* You can remove all `DESCRIPTORS` by adding d/ without anything after it.
+* You can remove all `DESCRIPTORS` by adding `d/` without anything after it.
 
 Examples:
-* `edit me 2 c/skill t/CSS d/learnt how to use flexbox`
+* `edit me 2 t/CSS c/skill d/learnt how to use flexbox`
 * For example if you want to update the title and descriptor of the first item in your profile.
-* Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the profile item to:<br />
-![EditProfileSS](images/ug-profile/EditProfile.PNG)<br />
+* Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the profile item as follows:<br />
+![EditProfile](images/ug-profile/EditProfile.png)<br />
  *(Note that the existing descriptors get replaced)*
  
 #### Viewing item in profile: `view me`
@@ -541,7 +623,7 @@ Example:
 * `view me 3`
 * For example if you have the following profile items and you want to view the third item in your user profile. Executing `view me 3` will show the following:<br />
 
-![ViewProfile](images/ug-profile/ViewProfile.png)<br />
+![ViewProfile](images/ug-profile/ViewProfileThree.png)<br />
 *(As you can see the details of the third item can be seen in the right panel)*
 
 #### Finding items in profile: `find me`
@@ -552,13 +634,22 @@ Format: `find me KEYWORD [ANOTHER_KEYWORD]...`
 - Only the profile item's title will be searched for.
 - The search is case-insensitive. e.g. `HTML` will match and return items with `html` in its title.
 - Profile items with titles matching at least one keyword will be returned. e.g. `Hackathon Internship` will return
- a list of profile items whose titles contain the word `Hackathon` *or* `Internship`.
+ a list of profile items whose titles contain the word `Hackathon` or `Internship`.
 - The ordering of the keywords does not affect the outcome of the query. e.g. `Hackathon Internship` and `Internship
  Hackathon` will return the same results.
 - Only full words will be matched. e.g. `Intern` will not match `Internship`.
 
+<div markdown="block" class="alert alert-info">
+
+:information_source: **Note:**<br>
+Upon successful execution of this command, your profile list will be updated to only show matching results. All 
+subsequent delete, edit and view application commands will use indexing based on this updated list. Switching tabs will 
+not return the list to its full state. If you wish to return to seeing all the profile items in your list, 
+execute [`list me`](#listing-all-items-profile).
+
+</div>
+
 Examples:
-- `find me Internship`
 - For the following example, if the profile contains the following items. Executing `find me internship` will return
  the following: <br />
      ![FindProfile](images/ug-profile/FindProfileSingle.png) <br />
@@ -573,6 +664,11 @@ your list of profile items down to a few search results. You can then use the `l
 all the items in your profile.
 
 Format: `list me`
+
+Example:
+- If you have 5 items total in profile list, and your list is currently only showing 2 profile items after
+ having executed a `find me` command, to view all the items in your profile list, execute `list me`: <br />
+ ![ListProfile](images/ug-profile/ListProfile.png)
 
 ### **General**
 
@@ -601,11 +697,11 @@ Example:
 2\. And this is your current profile item list. Note that only the 2 profile items of `Skill` type will be used for
 matching with the internships.
 
-<p align="center"><img src="images/ug-general/match-skills1.png" width="100%"/></p>
+<p align="center"><img src="images/ug-general/match-skills.png" width="100%"/></p>
 
 3\. All that's left to do is to type the `match` word in the command box.
 
-<p align="center"><img src="images/ug-general/match-type1.png" width="100%"/></p>
+<p align="center"><img src="images/ug-general/match-type.png" width="100%"/></p>
 
 <div markdown="span" class="alert alert-info">
 
@@ -615,7 +711,7 @@ matching with the internships.
 
 4\. A pop-up window showing the list of matching internships will be displayed!
 
-<p align="center"><img src="images/ug-general/match-window.png" width="100%"/></p>
+<p align="center"><img src="images/ug-general/match-window1.png" width="100%"/></p>
 
 <div markdown="span" class="alert alert-primary">
 
@@ -745,7 +841,7 @@ InternHunter uses sample data when the user first launches the app. More specifi
 when **all** of applicationitemlist.json, companyitemlist.json, and profileitemlist.json are missing.
 
 **Why is my data missing?** <br/>
-Make sure your data is not missing and in the correct format. If not, InternHunter will use empty lists.
+Make sure your json files are in the correct folder and format. If not, InternHunter will use empty lists.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -767,7 +863,7 @@ Action     | Format
 
 Action     | Format
 -----------|------------------
-**Add**    | `add int INDEX j/JOB_TITLE w/WAGE [p/PERIOD] [r/REQUIREMENT]...`
+**Add**    | `add int INDEX j/JOB_TITLE [w/WAGE] [p/PERIOD] [r/REQUIREMENT]...`
 **Delete** | `delete int INDEX i/INDEX`
 **Edit**   | `edit int INDEX i/INDEX [j/JOB_TITLE] [p/PERIOD] [w/WAGE] [r/REQUIREMENT]...`
 
@@ -786,9 +882,9 @@ Action     | Format
 
 Action     | Format
 -----------|------------------
-**Add**    | `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
+**Add**    | `add me t/TITLE c/CATEGORY [d/DESCRIPTOR]...`
 **Delete** | `delete me INDEX`
-**Edit**   | `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTOR]...`
+**Edit**   | `edit me INDEX [t/TITLE] [c/CATEGORY] [d/DESCRIPTOR]...`
 **View**   | `view me INDEX`
 **Find**   | `find me KEYWORD [ANOTHER_KEYWORD]...`
 **List**   | `list me`

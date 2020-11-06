@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import seedu.internhunter.model.item.Item;
 import seedu.internhunter.ui.UiPart;
@@ -115,7 +116,8 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
      */
     private void setAllTags(String ... tagList) {
         for (String tag : tagList) {
-            Label label = new Label(tag); // figure out how to text align
+            Label label = new Label(tag);
+            label.setTextAlignment(TextAlignment.CENTER);
             tags.getChildren().add(label);
         }
     }

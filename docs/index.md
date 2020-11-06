@@ -7,6 +7,9 @@
     <a href="https://codecov.io/gh/AY2021S1-CS2103T-T15-4/tp">
         <img src="https://codecov.io/gh/AY2021S1-CS2103T-T15-4/tp/branch/master/graph/badge.svg" />
     </a>
+    <a href="https://www.codacy.com/gh/AY2021S1-CS2103T-T15-4/tp/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AY2021S1-CS2103T-T15-4/tp&amp;utm_campaign=Badge_Grade">
+        <img src="https://app.codacy.com/project/badge/Grade/2f97ccafd9c34a85a1a6e15617662159"/>
+    </a>
 </p>
 
 <p align="center"><img src="images/Ui.png" width="100%"/></p>
@@ -17,7 +20,7 @@
 </div>
 
 Welcome to **InternHunter**, a CLI-centric desktop application which aids university students in applying for tech
-internships. It lets users manage their own customisable collection of companies, internships, internship applications
+internships. It lets users manage their own customizable collection of companies, internships, internship applications
 and their own user profile, so that they can keep track of internships that they are interested in.
 
 ## Site Map

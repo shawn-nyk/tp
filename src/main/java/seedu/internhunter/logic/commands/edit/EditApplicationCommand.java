@@ -5,6 +5,7 @@ import static seedu.internhunter.commons.core.Messages.MESSAGE_EDIT_SUCCESS;
 import static seedu.internhunter.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getApplication;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCommandResult;
+import static seedu.internhunter.logic.commands.util.CommandUtil.getFullListIndex;
 import static seedu.internhunter.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.internhunter.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
 import static seedu.internhunter.model.util.ItemUtil.APPLICATION_ALIAS;
@@ -23,6 +24,9 @@ import seedu.internhunter.model.application.StatusDate;
 import seedu.internhunter.model.internship.InternshipItem;
 import seedu.internhunter.ui.tabs.TabName;
 
+/**
+ * Edits an application from the application list.
+ */
 public class EditApplicationCommand extends EditCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + APPLICATION_ALIAS
@@ -40,6 +44,8 @@ public class EditApplicationCommand extends EditCommand {
     private final EditApplicationDescriptor editApplicationDescriptor;
 
     /**
+     * Creates an EditApplicationCommand to edit the specified {@code ApplicationItem}.
+     *
      * @param targetIndex of the application in the filtered application list to edit.
      * @param editApplicationDescriptor details to edit the application with.
      */
@@ -50,6 +56,13 @@ public class EditApplicationCommand extends EditCommand {
         this.editApplicationDescriptor = new EditApplicationDescriptor(editApplicationDescriptor);
     }
 
+    /**
+     * Executes the EditApplicationCommand and returns the result message.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return feedback message of the operation result for display.
+     * @throws CommandException If an error occurs during command execution.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -58,12 +71,13 @@ public class EditApplicationCommand extends EditCommand {
         ApplicationItem editedApplicationItem = createEditedApplicationItem(applicationItemToEdit,
                 editApplicationDescriptor);
 
-        // Application items will always be equal since we are not able to edit internship items using edit application
-        // command
+        // Application items will always be equal since we are not able to edit internship items using the
+        // edit application command
         assert applicationItemToEdit.isSameItem(editedApplicationItem);
 
+        model.setApplicationViewIndex(getFullListIndex(applicationItemToEdit, model.getApplicationItemList()));
         model.setApplication(applicationItemToEdit, editedApplicationItem);
-        model.setApplicationViewIndex(targetIndex);
+
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, APPLICATION_NAME, editedApplicationItem);
         return getCommandResult(model, editSuccessMessage, TabName.APPLICATION);
     }
@@ -87,6 +101,12 @@ public class EditApplicationCommand extends EditCommand {
         return new ApplicationItem(internshipItem, updatedStatus, updatedStatusDate);
     }
 
+    /**
+     * Returns true if the 2 EditApplicationCommand have the same fields.
+     *
+     * @param other Other object to compare to.
+     * @return True if the other EditApplicationCommand object has the same fields as this one.
+     */
     @Override
     public boolean equals(Object other) {
         // short circuit if same object
@@ -132,22 +152,48 @@ public class EditApplicationCommand extends EditCommand {
             return CollectionUtil.isAnyNonNull(status, statusDate);
         }
 
+        /**
+         * Sets the status of the EditApplicationDescriptor.
+         *
+         * @param status Status of the EditApplicationDescriptor.
+         */
         public void setStatus(Status status) {
             this.status = status;
         }
 
+        /**
+         * Returns an optional wrapper containing the status of the EditApplicationDescriptor.
+         *
+         * @return Optional wrapper containing the status of the EditApplicationDescriptor.
+         */
         public Optional<Status> getStatus() {
             return Optional.ofNullable(status);
         }
 
+        /**
+         * Sets the status of the EditApplicationDescriptor.
+         *
+         * @param statusDate StatusDate of the EditApplicationDescriptor.
+         */
         public void setStatusDate(StatusDate statusDate) {
             this.statusDate = statusDate;
         }
 
+        /**
+         * Returns an optional wrapper containing the status date of the EditApplicationDescriptor.
+         *
+         * @return Optional wrapper containing the status date of the EditApplicationDescriptor.
+         */
         public Optional<StatusDate> getStatusDate() {
             return Optional.ofNullable(statusDate);
         }
 
+        /**
+         * Returns true if the 2 EditApplicationDescriptor have the same status and status date.
+         *
+         * @param other Other object to compare to.
+         * @return True if the other EditApplicationDescriptor object has the same status and status date as this one.
+         */
         @Override
         public boolean equals(Object other) {
             // short circuit if same object

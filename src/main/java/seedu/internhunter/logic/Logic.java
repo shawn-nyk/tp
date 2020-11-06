@@ -26,67 +26,93 @@ public interface Logic {
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns an unmodifiable view of the filtered list of Application Item
+     * Retrieves an unmodifiable view of the filtered application list.
+     *
+     * @return an unmodifiable view of the filtered application list.
      */
     ObservableList<ApplicationItem> getFilteredApplicationItemList();
 
     /**
-     * Returns an unmodifiable view of the filtered list of Company Item
+     * Retrieves an unmodifiable view of the filtered company list.
+     *
+     * @return an unmodifiable view of the filtered company list.
      */
     ObservableList<CompanyItem> getFilteredCompanyItemList();
 
     /**
-     * Returns an unmodifiable view of the filtered list of Profile Item
+     * Retrieves an unmodifiable view of the filtered profile list.
+     *
+     * @return an unmodifiable view of the filtered profile list.
      */
     ObservableList<ProfileItem> getFilteredProfileItemList();
 
     /**
-     * Returns the user prefs' GUI settings.
+     * Retrieves the user prefs' GUI settings.
+     *
+     * @return the user prefs' GUI settings.
      */
     GuiSettings getGuiSettings();
 
     /**
-     * Set the user prefs' GUI settings.
+     * Sets the user prefs' GUI settings with {@code guiSettings}.
+     *
+     * @param guiSettings The new gui settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the current tab of InternHunter.
+     * Retrieves the current tab name.
+     *
+     * @return the current tab name.
      */
     TabName getTabName();
 
     /**
-     * Sets the current tab of InternHunter.
+     * Sets the current tab name with {@code tabName}.
+     *
+     * @param tabName The new TabName to change to.
      */
     void setTabName(TabName tabName);
 
     /**
-     * Returns the current company view Index.
+     * Retrieves the current company view Index.
+     *
+     * @return the current company view Index.
      */
     Index getCompanyViewIndex();
 
     /**
-     * Returns the current application view Index.
+     * Retrieves the current application view Index.
+     *
+     * @return the current application view Index.
      */
     Index getApplicationViewIndex();
 
     /**
-     * Returns the current profile view Index.
+     * Retrieves the current profile view Index.
+     *
+     * @return the current profile view Index.
      */
     Index getProfileViewIndex();
 
     /**
-     * Sets the current company view index to {@code index}.
+     * Sets the current company view index with {@code index}.
+     *
+     * @param index The new Index for company view index.
      */
     void setCompanyViewIndex(Index index);
 
     /**
-     * Sets the current application view index to {@code index}.
+     * Sets the current application view index with {@code index}.
+     *
+     * @param index The new Index for application view index.
      */
     void setApplicationViewIndex(Index index);
 
     /**
-     * Sets the current profile view index to {@code index}.
+     * Sets the current profile view index with {@code index}.
+     *
+     * @param index The new Index for profile view index.
      */
     void setProfileViewIndex(Index index);
 }

@@ -111,6 +111,7 @@ public class EditProfileCommandTest {
         expectedModel.setProfileItem(model.getProfileItemFromFilteredList(INDEX_FIRST.getZeroBased()),
                 editedProfileItem);
         expectedModel.setTabName(TabName.PROFILE);
+        expectedModel.setProfileViewIndex(INDEX_SECOND);
         CommandResult commandResult = new CommandResult(expectedMessage, false, false, true, true);
 
         assertCommandSuccess(editCommand, model, commandResult, expectedModel);

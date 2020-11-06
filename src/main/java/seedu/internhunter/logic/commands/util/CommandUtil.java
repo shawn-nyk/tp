@@ -11,6 +11,7 @@ import static seedu.internhunter.ui.tabs.TabName.PROFILE;
 import java.util.List;
 import java.util.function.Consumer;
 
+import javafx.collections.ObservableList;
 import seedu.internhunter.commons.core.Messages;
 import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.logic.commands.CommandResult;
@@ -18,6 +19,7 @@ import seedu.internhunter.logic.commands.exceptions.CommandException;
 import seedu.internhunter.model.Model;
 import seedu.internhunter.model.application.ApplicationItem;
 import seedu.internhunter.model.company.CompanyItem;
+import seedu.internhunter.model.item.Item;
 import seedu.internhunter.model.profile.ProfileItem;
 import seedu.internhunter.ui.tabs.TabName;
 
@@ -26,6 +28,14 @@ import seedu.internhunter.ui.tabs.TabName;
  */
 public class CommandUtil {
 
+    /**
+     * Obtains the company from the company list in the model.
+     *
+     * @param model {@code Model} which the method should operate on.
+     * @param companyIndex Index of company.
+     * @return CompanyItem.
+     * @throws CommandException If the index provided is larger than the size of the last shown company list.
+     */
     public static CompanyItem getCompany(Model model, Index companyIndex) throws CommandException {
         List<CompanyItem> lastShownList = model.getFilteredCompanyList();
 
@@ -36,6 +46,14 @@ public class CommandUtil {
         return model.getCompanyItemFromFilteredList(companyIndex.getZeroBased());
     }
 
+    /**
+     * Obtains the application from the application list in the model.
+     *
+     * @param model {@code Model} which the method should operate on.
+     * @param applicationIndex Index of application.
+     * @return ApplicationItem.
+     * @throws CommandException If the index provided is larger than the size of the last shown application list.
+     */
     public static ApplicationItem getApplication(Model model, Index applicationIndex) throws CommandException {
         List<ApplicationItem> lastShownList = model.getFilteredApplicationList();
 
@@ -46,6 +64,14 @@ public class CommandUtil {
         return model.getApplicationItemFromFilteredList(applicationIndex.getZeroBased());
     }
 
+    /**
+     * Obtains the profile from the profile list in the model.
+     *
+     * @param model {@code Model} which the method should operate on.
+     * @param profileItemIndex Index of profile.
+     * @return ProfileItem.
+     * @throws CommandException If the index provided is larger than the size of the last shown profile list.
+     */
     public static ProfileItem getProfileItem(Model model, Index profileItemIndex) throws CommandException {
         List<ProfileItem> lastShownList = model.getFilteredProfileList();
 
@@ -54,6 +80,24 @@ public class CommandUtil {
         }
 
         return model.getProfileItemFromFilteredList(profileItemIndex.getZeroBased());
+    }
+
+    public static <T extends Item> Index getFullListIndex(T item, ObservableList<T> items) {
+        int index = 0;
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).equals(item)) {
+                index = i;
+                break;
+            }
+        }
+        return Index.fromZeroBased(index);
+    }
+
+    public static <T extends Item> void setIndexWhenDeletion(T item, ObservableList<T> items, Model model,
+        TabName tabName) {
+
+        Index index = getFullListIndex(item, items).minusOne();
+        handleDeleteDisplaySwitchIndex(model, tabName, index);
     }
 
     /**

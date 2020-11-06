@@ -82,7 +82,7 @@ The `ListPanel` is located at the center of the application and it consists of U
 
 The `InformationDisplay` appears at the right of the application and it consists of UI `CompanyDisplay`, `ApplicationDisplay`, `ProfileDisplay`. The `InformationDisplay` displays the full information regarding the data item. <br/>
 
-The `ResultDisplay` and `CommandBox` appears at the bottom of the application and the `ResultDisplay` is above the `CommandBox` even though the UI does not show it explictly. <br/>
+The `ResultDisplay` and `CommandBox` appears at the bottom of the application and the `ResultDisplay` is above the `CommandBox` even though the UI does not show it explicitly. <br/>
 
 The `UI` components uses the JavaFX UI framework. The layout of these UI parts are defined in matching .fxml files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/resources/view/MainWindow.fxml). The styling of the application is mainly at [`MainWindow.css`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/resources/view/MainWindow.css).
 
@@ -174,10 +174,10 @@ There are 2 types of commands:
     - e.g. `AddCommand`, `DeleteCommand`, `EditCommand`
     - These commands are implemented as _abstract_ classes that inherit from the `Command` class. Type specific
     commands like `AddCompanyCommand` and `AddApplicationCommand` inherit from the _abstract_ `AddCommand`
-    class
+    class.
 - Commands that are not dependent on the type of `Item`
-    - e.g. `SwitchCommand`, `HelpCommand`, `ExitCommand`
-    - These commands are implemented as _concrete_ classes and inherit directly from the `Command` class
+    - e.g. `HelpCommand`, `ExitCommand`
+    - These commands are implemented as _concrete_ classes and inherit directly from the `Command` class.
 
 From this point on, we will be using `ABCCommand` to represent commands that are dependent on type and
 `XYZCommand` to represent commands that are independent of type.
@@ -186,11 +186,11 @@ The following shows the class diagram for `Command` and its subclasses:
 
 ![CommandClassDiagram](images/CommandClassDiagram.png)
 
-Figure xx. `ABCCommand` refers to a command dependent on type while `XYZCommand` refers to a command indepedent of type
-
 #### Design considerations
 
 ##### Aspect: Whether `ABCCommand` should be abstract and split into 4 other `ABCItemCommand` or handle the 4 `Item` types on its own
+
+**Alternatives considered**
 
 **Alternative 1 (current choice)**: `ABCCommand` is split into 4 other `ABCItemCommand`. Parser parses the
 user input and creates the specific `ABCItemCommand` for execution. The following activity diagram shows how the 
@@ -234,7 +234,7 @@ have broken down as it might not be suited to the different parsing requirements
 ### Delete company feature
 
 #### What it is
-Users are able to execute a command to delete a company from their list of companies in InterHunter. Upon the 
+Users are able to execute a command to delete a company from their list of companies in InternHunter. Upon the 
 successful deletion of a company, all internships within that company, if any, will also be deleted (as they are a 
 part of the company, i.e. companies and the internships that they offer have a whole-part / composition relationship). 
 As a result, all applications made to internships from the company to be deleted, if any, will also be deleted as per 
@@ -273,14 +273,16 @@ The following sequence diagrams show how the delete company feature works succes
 ![DeleteCompanyCommandSequenceDiagram](images/dg-company/DeleteCompanyCommandSequenceDiagram.png)
 ![ExecuteDeleteCompany3CommandSequenceDiagram](images/dg-company/ExecuteDeleteCompany3CommandSequenceDiagram.png)
 
-<p align="center"><img src="images/GetDeleteCommandResultSequenceDiagram.png" width="80%", height="80%"/></p>
+<p align="center"><img src="images/GetDeleteCommandResultSequenceDiagram.png" width="80%" height="80%"/></p>
 
 HandleDeleteDisplaySwitchIndexSequenceDiagram can be found [here](#handle-delete-display-switch-index-sequence-diagram)
 
 #### Design considerations
 
-#### Aspect: How applications made to internships from the company to be deleted are deleted
-##### Alternatives considered
+##### Aspect: How applications made to internships from the company to be deleted are deleted
+
+**Alternatives considered**
+
 * **Alternative 1 (current choice)**: Delete all applications made to internships from the company to be deleted by
  executing delete internship commands.
   * Pros:
@@ -312,8 +314,8 @@ delete internship commands, i.e. by implementing delete internship command’s i
 
 #### What it is
 
-The user profile feature behaves like a resume for the user to keep track of noteworthy events and milestones in one
-'s professional life. There are three categories of profile items namely: `ACHIEVEMENT`, `SKILL` and `EXPERIENCE`.
+The user profile feature behaves like a resume for the user to keep track of noteworthy events and milestones in one's professional life.
+There are three categories of profile items namely: `ACHIEVEMENT`, `SKILL` and `EXPERIENCE`.
 
 #### Editing User profile item
 
@@ -351,8 +353,10 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
  
 #### Design considerations
 
-#### Aspect: How EditProfileCommand Object interacts with Model
-##### Alternatives considered
+##### Aspect: How EditProfileCommand Object interacts with Model
+
+**Alternatives considered**
+
 * **Alternative 1 (current choice)**: `EditProfileCommand` interact with the model solely and not directly with model's 
  internal components: `ProfileItemList` and `FilteredProfileItemList`.
   * Pros:
@@ -388,17 +392,19 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
 ### Switch screen feature
 
 #### What it is
-Users are able to execute a command to switch their tabs in InterHunter. There are 3 tabs, Company, Application, Profile. Take for example swithcing to the company tab, upon the successful switch of the tabs, the screen will now display a list of companies and also display the information of the last known index of that tab, i.e if the index that was previously saved in that tab was the 3rd index, when switching back to this tab, it will show the information of the 3rd index.
+Users are able to execute a command to switch their tabs in InternHunter. There are 3 tabs: Company, Application, and 
+Profile. Take for example, switching to the company tab. Upon the successful switching of tabs, the screen will 
+display a list of companies and also display the information of the last known index of that tab, i.e if the index that was previously saved in that tab was the 3rd index, when switching back to this tab, it will show the information of the 3rd index.
 
-**Command format**: `switch TYPE`
-`TYPE` is the type of tab.
+**Command format**: `switch TYPE` <br />
+`TYPE` is the type of tab. <br />
 There are three `TYPE`s:
 * `com`
 * `app`
 * `me`
 
 #### Implementation
-Upon a user’s entry of a valid switch command, a `SwitchCommand` object is created. `SwitchCommand` is a class that extends the Command abstract class as well as having direct association with TabName, an enumeration, as well as having a dependency to the Model interface as it relies on some of its method.
+Upon a user’s entry of a valid switch command, a `SwitchCommand` object is created. `SwitchCommand` is a class that extends the `Command` abstract class as well as having direct association with `TabName`, an enumeration, as well as having a dependency to the `Model` interface as it relies on some of its method.
 
 <p align="left"><img src="images/switchcommand/SwitchCommandClassDiagram.png" width="70%" height="70%"/></p>
 
@@ -411,11 +417,11 @@ This is how the `SwitchCommand#execute(...)` method works upon execution:
  2a. If both the tabs are the same, a same tab message will be passed to `CommandUtil#getCommandResult(...)`method. <br/>
  2b. If both the tabs are different, a success message will be passed to `CommandUtil#getCommandResult(...)`method. <br/>
 
-<p align="center">The overall process of how <code>SwitchCommand</code> was generated.</p>
+<p align="center">The overall process of how <code>SwitchCommand</code> was generated:</p>
 
 <p align="center"><img src="images/switchcommand/SwitchCommandSequenceDiagram.png"/></p>
 
-<p align="center">The process of how <code>SwitchCommand</code> interacts with the model.</p>
+<p align="center">The process of how <code>SwitchCommand</code> interacts with the model:</p>
 
 <p align="center"><img src="images/ExecuteSwitchMeCommandSequenceDiagram.png" width="75%" height="75%"/></p>
 
@@ -425,7 +431,7 @@ This is how the `CommandUtil#getCommandResult(...)` method works upon execution:
  2a. If both the tabs are the same, a `CommandResult` with a same tab message is return. <br/>
  2b. If both the tabs are different, we will change the tab to the input's tab name via `Model#setTabName(...)`. A `CommandResult` with a success message is return.
 
-<p align="center">The process of how <code>getCommandResult</code> is being generated.</p>
+<p align="center">The process of how <code>getCommandResult</code> is being generated:</p>
 
 <p align="center"><img src="images/GetCommandResultSequenceDiagram.png" width="95%" height="95%"/></p>
 
@@ -436,13 +442,17 @@ The following activity diagram summarizes what happens when a user executes a sw
 The above activity diagram shows the logic and the path execution when the switch command is executed. The code will check if there is any missing input or if the input is not one of the three mentioned in the `Command format` above. If the aforementioned 2 conditions are not met, an error message is displayed. If the input is one of the three mentioned above in the `Command format`, there will be further checks if the user are already in the same tab.
 
 #### Design considerations
-#### Aspect: Should the tabs be allowed to change only by the `SwitchCommand`.
+
+##### Aspect: Should the tabs be allowed to change only by the `SwitchCommand`.
+
+**Alternatives Considered**
+
 * **Alternative 1 (current choice):** Allow the switch of tabs to not only be accessible via the switch command, but rather extract it out for all commands excluding `exit` and `help`.
     * Pros:
-        * Allows user to type once instead of twice when executing a single command and wanting to view it. (This optimzation is to allow for a faster way to type and view the changes). <br/>
+        * Allows user to type once instead of twice when executing a single command and wanting to view it. (This optimization is to allow for a faster way to type and view the changes). <br/>
         * By abstract the method out from switch command, it obeys the DRY principle as all the commands will be calling a single method.
-        * This allows and obeys the Open-Close princple as new implementation of commands can just be calling this single method at the end.
-        * Allows user to have a second alternative to switch tabs for just viewing purpose.
+        * This allows and obeys the Open-Close principle as new implementation of commands can just be calling this single method at the end.
+        * Allows user to have a second alternative to switch tabs just for viewing purpose.
     * Cons:
         * User might switch tab accidentally because of inputting the wrong `TYPE`.
         * Increases some form of coupling between all commands as they are now linked to this single method.
@@ -493,8 +503,11 @@ InternHunter does it. Let `commandString` be any valid command string.
 
 ##### Aspect: How to handle 3 types of 'Item' list
 
-InternHunter maintains 3 types of `Item` list: `ApplicationItem`, `CompanyItem`, and `ProfileItem` lists.
+InternHunter maintains 3 types of `Item` lists: `ApplicationItem`, `CompanyItem`, and `ProfileItem` lists.
 Both `ItemListStorage` and `JsonSerializableItemList` use  the same logic regardless of the `Item` type.
+
+**Alternatives Considered**
+
 * **Alternative 1: current choice**: Creates a base abstract class `JsonAdaptedItem` and makes `ItemListStorage` 
 and `JsonSerializableItemList` use generics.
     * Pros: 
@@ -539,6 +552,8 @@ InternHunter does it.
 ##### Aspect: How to clear the lists
 
 InternHunter only lets users create applications for internships already added to companies.
+
+**Alternatives Considered**
 
 * **Alternative 1: current choice**: Clear all three lists at once.
     * Pros: 
@@ -599,25 +614,27 @@ The following sequence diagrams show how the match command works:
 
 ##### Aspect: How to generate the matching internships
 
+**Alternatives Considered**
+
 **Alternative 1 (current choice):** Methods to generate the matching internships, namely `getSkillList`, 
 `getInternshipList`, and `getMatchingInternships` are implemented within `MatchCommand`.
 
 - Pros:
     - Still adheres to the Single Responsibility Principle as the `MatchCommand` is meant to generate the list of
     matching internships. Having additional methods to match internships to profile skills are still within the
-    responsibility of this class
-    - Higher cohesion as `Model` does not need to have additional responsibilities like executing algorithms
-    - Increased flexibility as the matching algorithm can be easily changed within this `MatchCommand`
+    responsibility of this class.
+    - Higher cohesion as `Model` does not need to have additional responsibilities like executing algorithms.
+    - Increased flexibility as the matching algorithm can be easily changed within this `MatchCommand`.
     
 - Cons:
-    - `MatchCommand` becomes longer as it needs additional methods to generate the list of matching internships
+    - `MatchCommand` becomes longer as it needs additional methods to generate the list of matching internships.
 
 **Alternative 2:** Methods to generate the matching internships, namely `getSkillList`, 
 `getInternshipList`, and `getMatchingInternships` are implemented within `Model`.
 
 - Pros:
     - `MatchCommand` will be very short as it just needs to call the `getMatchingInternships` method from the
-    `Model` interface and generate the correct `CommandResult` from there
+    `Model` interface and generate the correct `CommandResult` from there.
     
 - Cons:
     - `Model` becomes more complicated as it needs to support more methods. This in turns causes the `ModelManager`
@@ -794,7 +811,7 @@ Use case ends.
 **Use case: UC06 - List all companies**
 
 Precondition: User already has an existing list of companies <br/>
-Guarantees: All companies stored in Internhunter are shown
+Guarantees: All companies stored in InternHunter are shown
 
 **MSS**
 
@@ -988,38 +1005,39 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-#### Launch and shutdown
+**Launch and shutdown**
 
-1. Initial launch
+1. Initial launch.
 
    1. Download the jar file and copy into an empty folder.
 
    1. Double-click the jar file. <br>
        Expected: Shows the GUI with a set of sample data. The window size may not be optimum.
 
-1. Saving window preferences
+1. Saving window preferences.
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+   1. Re-launch the app by double-clicking the jar file. <br>
        Expected: The most recent window size and location is retained.
        
-1. Shutting down
-   1. Quit the app by typing `exit` <br>
-      Expected: A Exit pop-out dialog will confirm the intention to exit InternHunter. For all users, you can use `tab` on keyboard to navigate. For **MacOS** users, use `spacebar` to confirm the exit, while the **rest** can use `enter` to confirm the exit.
+1. Shutting down.
+
+   1. Quit the app by typing `exit`. <br>
+      Expected: An Exit pop-out dialog will confirm the intention to exit InternHunter. For all users, you can use <kbd>tab</kbd> on keyboard to navigate. For **MacOS** users, use <kbd>spacebar</kbd> to confirm the exit, while the **rest** can use <kbd>Enter</kbd> to confirm the exit.
 
 
-#### Note
+**Note**
 
 * If an item exist before in InternHunter, a duplicate error message will be shown.
 * If the command relating to a certain item type is executed on other tab, InternHunter will automatically switch the tab to correct tab. i.e  executing `add com` commands on application tab will bring the tab state of InternHunter from application tab to company tab.
 * When doing `add`, `edit`, the right display will automatically adjust and reflect the recently executed command.
 
-#### Adding a company
+**Adding a company**
 
-1. Adding a company called garena with its non-optional relevant fields such as address being `201 Victoria St`, email being `garenaHires@garena.com` and phone number being `65093545`
+1. Adding a company called garena with its non-optional relevant fields such as address being `201 Victoria St`, email being `garenaHires@garena.com` and phone number being `65093545`.
 
-   1. Prerequisites: Garena not already added in Internhunter.
+   1. Prerequisites: Garena not already added in InternHunter.
 
    1. Test case: `add com n/Garena a/201 Victoria St e/GarenaHires@garena.com p/65093545`  <br>
       Expected: A card displaying information of the company is added. The right display will show full information of the company added.
@@ -1030,7 +1048,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `add com n/Facebook a/301 Raffles St e/FacebookHires@fb.com`  <br>
       Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
       
-#### Adding an internship
+**Adding an internship**
 
 1. Adding an internship with Job title Machine Learning Engineer.
 
@@ -1043,7 +1061,7 @@ testers are expected to do more *exploratory* testing.
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
 
-#### Adding an application
+**Adding an application**
 
 1. Adding an application is simulating applying for an application.
 
@@ -1058,7 +1076,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `add app 1` <br>
       Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
       
-#### Adding a profile item      
+**Adding a profile item**
 
 1. Adding a skill/experience/achievement set into our profile list.
 
@@ -1076,7 +1094,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `add me` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Editing a company
+**Editing a company**
 
 1. Editing some fields in company.
    
@@ -1095,14 +1113,14 @@ testers are expected to do more *exploratory* testing.
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
   
-#### Editing an internship
+**Editing an internship**
 
 1. Editing some fields in internship.
 
    1. Prerequisites: The internship must exist and access via a valid index.
    
    1. Test case: `edit int 1 i/1 r/Java r/Python` <br>
-   Expected: The 1st internship at the first company will have the requirement java and python. Note that it overides any existing requirements in that internship. (Note that if an application for this internship exist, these changes will be reflected as tags in blue boxes on the card in the application tab)
+   Expected: The 1st internship at the first company will have the requirement java and python. Note that it overrides any existing requirements in that internship. (Note that if an application for this internship exist, these changes will be reflected as tags in blue boxes on the card in the application tab)
    
    1. Test case: `edit int 1 i/2 r/React native` <br>
    Expected: The 2nd internship at the first company will have the requirement React native. Similarly to the above test case, any existing requirements in that internship will be overidden.
@@ -1111,7 +1129,7 @@ testers are expected to do more *exploratory* testing.
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
 
-#### Editing an application
+**Editing an application**
 
 1. Editing some fields in application.
 
@@ -1123,79 +1141,19 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `edit app` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Editing a profile item
+**Editing a profile item**
 
 1. Editing some fields in the profile item.
 
    1. Prerequisites: The profile item must exist and access via a valid index.
    
-   1. Test case: `edit me 1 c/achievement t/Hackathon d/2nd place` <br>
+   1. Test case: `edit me 1 c/achievement t/Hackathon at Shoppee d/2nd place` <br>
    Expected: The image on the card will be changed into a trophy with the title being Hackathon.
    
    1. Test case: `edit me` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
-
-#### Deleting a company
-
-1. Deleting a module according to the index shown on the card.
-
-   1. Prerequisities: The company item must exist and access via a valid index as indicated on a card.
    
-   1. Test case: `delete com 1` <br>
-   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted company can be seen in the result display. All the internships in this company will be deleted as well. Note that if there is an application that is linked to any internships that this company had, it will be deleted as well.
-   
-   1. Test case: `delete com 0` <br>
-   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
-   
-   1. Test case:`delete com` <br>
-   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
-
-#### Deleting an internship
-
-1. Deleting an internship from a certain company.
-
-   1. Prerequisites: The company item and internship item must exist and both to be access via a valid index.
-   
-   1. Test case: `delete int 1 i/1` <br>
-   Expected: On the right display, it will remove the internship item from the company.
-   
-   1. Test case: `delete int 1 i/0` <br>
-   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
-   
-   1. Test case: `delete int 1` <br>
-   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
-
-#### Deleting an application
-
-1. Deleting an application.
-   
-   1. Prerequisites: The application item must exist and be access via a valid index.
-   
-   1. Test case: `delete app 1` <br>
-   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted application can be seen in the result display.
-   
-   1. Test case: `delete app 0` <br>
-   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
-   
-   1. Test case: `delete app` <br>
-   Expected: Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
-
-#### Deleting a profile item
-
-1. Deleting a profile item.
-   
-   1. Prerequisites: The profile item must exist and be access via a valid index.
-   
-   1. Test case: `delete me 1` <br>
-   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted profile can be seen in the result display.
-   
-   1. Test case: `delete me 0` <br>
-   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
-   
-   1. Test case: `delete me` <br>
-   Expected: Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
-
-#### Viewing a company
+**Viewing a company**
 
 1. Viewing full information of a company.
 
@@ -1210,7 +1168,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `view com` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Viewing an application
+**Viewing an application**
 
 1. Viewing full information of an application.
 
@@ -1225,7 +1183,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `view app` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### View a profile Item
+**View a profile Item**
 
 1. Viewing full information of a profile item.
 
@@ -1239,12 +1197,12 @@ testers are expected to do more *exploratory* testing.
    
    1. Test case: `view me` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+   
+**Finding company/companies**
 
-#### Finding company/companies
+1. Finding specific keyword(s) in the list of company/companies.
 
-1. Finding specific keyword(s) in the list of company/companies
-
-   1. Prerequisities: List all companies using the `list com` command. At least one company. `Find` method and `list` method works hand in hand.
+   1. Prerequisites: List all companies using the `list com` command. At least one company. `Find` method and `list` method works hand in hand.
    
    1. Test case: `find com facebook` <br>
    Expected: Any titles in the card that contains `facebook` will be matched. i.e `Facebook`, `Facebook Singapore`. However `FacebookMalaysia` will not be matched.
@@ -1252,11 +1210,11 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `find com` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Listing out all company/companies
+**Listing out all company/companies**
 
-1. Listing out all company/companies
+1. Listing out all company/companies.
 
-   1. Prerequisities: Assuming that you have used `find` for company in the earlier manual testing.
+   1. Prerequisites: Assuming that you have used `find` for company in the earlier manual testing.
    
    1. Test case: `list com` <br>
    Expected: All the companies that the user have will be displayed.
@@ -1264,11 +1222,11 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `list com 2` <br>
    Expected: An error message will be shown, stating that there should not be any inputs after the `ITEM_TYPE`.
 
-#### Finding application(s)
+**Finding application(s)**
 
-1. Finding specific keyword(s) in the list of application(s)
+1. Finding specific keyword(s) in the list of application(s).
 
-   1. Prerequisities: List all applications using the `list app` command. At least one application. `Find` method and `list` method works hand in hand.
+   1. Prerequisites: List all applications using the `list app` command. At least one application. `Find` method and `list` method works hand in hand.
    
    1. Test case: `find app software` <br>
    Expected: Any titles in the card that contains `software` will be matched. i.e `Software`, `Software Engineer`. However `SoftwareEngineer` will not be matched.
@@ -1276,11 +1234,11 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `find app` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Listing out all application(s)
+**Listing out all application(s)**
 
-1. Listing out all application(s)
+1. Listing out all application(s).
 
-   1. Prerequisities: Assuming that you have used `find` for application in the earlier manual testing.
+   1. Prerequisites: Assuming that you have used `find` for application in the earlier manual testing.
    
    1. Test case: `list app` <br>
    Expected: All the application that the user have will be displayed.
@@ -1288,11 +1246,11 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `list app 2` <br>
    Expected: An error message will be shown, stating that there should not be any inputs after the `ITEM_TYPE`.
 
-#### Finding profile item(s)
+**Finding profile item(s)**
 
-1. Finding specific keyword(s) in the list of profile item(s)
+1. Finding specific keyword(s) in the list of profile item(s).
 
-   1. Prerequisities: List all profile items using the `list me` command. At least one profile item. `Find` method and `list` method works hand in hand.
+   1. Prerequisites: List all profile items using the `list me` command. At least one profile item. `Find` method and `list` method works hand in hand.
    
    1. Test case: `find me hackathon` <br>
    Expected: Any titles in the card that contains `hackathon` will be matched. i.e `Hackathon`, `2020 Hackathon`. However `ShoppeeHackathon` will not be matched.
@@ -1300,11 +1258,11 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `find me` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
    
-#### Listing out all profile item(s)
+**Listing out all profile item(s)**
 
-1. Listing out all profile item(s)
+1. Listing out all profile item(s).
 
-   1. Prerequisities: Assuming that you have used `find` for profile items in the earlier manual testing.
+   1. Prerequisites: Assuming that you have used `find` for profile items in the earlier manual testing.
    
    1. Test case: `list me` <br>
    Expected: All the profile items that the user have will be displayed.
@@ -1312,20 +1270,80 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `list me 2` <br>
    Expected: An error message will be shown, stating that there should not be any inputs after the `ITEM_TYPE`.
 
-#### Matching skills to internship requirements
+**Deleting a company**
+
+1. Deleting a module according to the index shown on the card.
+
+   1. Prerequisites: The company item must exist and access via a valid index as indicated on a card.
+   
+   1. Test case: `delete com 1` <br>
+   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted company can be seen in the result display. All the internships in this company will be deleted as well. Note that if there is an application that is linked to any internships that this company had, it will be deleted as well.
+   
+   1. Test case: `delete com 0` <br>
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case:`delete com` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+**Deleting an internship**
+
+1. Deleting an internship from a certain company.
+
+   1. Prerequisites: The company item and internship item must exist and both to be access via a valid index.
+   
+   1. Test case: `delete int 1 i/1` <br>
+   Expected: On the right display, it will remove the internship item from the company.
+   
+   1. Test case: `delete int 1 i/0` <br>
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case: `delete int 1` <br>
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+**Deleting an application**
+
+1. Deleting an application.
+   
+   1. Prerequisites: The application item must exist and be access via a valid index.
+   
+   1. Test case: `delete app 1` <br>
+   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted application can be seen in the result display.
+   
+   1. Test case: `delete app 0` <br>
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case: `delete app` <br>
+   Expected: Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+**Deleting a profile item**
+
+1. Deleting a profile item.
+   
+   1. Prerequisites: The profile item must exist and be access via a valid index.
+   
+   1. Test case: `delete me 1` <br>
+   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted profile can be seen in the result display.
+   
+   1. Test case: `delete me 0` <br>
+   Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
+   
+   1. Test case: `delete me` <br>
+   Expected: Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+
+**Matching skills to internship requirements**
 
 1. Finding if any internships requirements matches the skills that you have.
 
-   1. Prerequisities: There is some internships added and the skills that you have put into the profile matches the requirements in internship. You can try to add some internships with requirements for example HTML and add the skill with title being html.
+   1. Prerequisites: There is some internships added and the skills that you have put into the profile matches the requirements in internship. You can try to add some internships with requirements for example HTML and add the skill with title being html.
    
    1. Test case: `match` <br>
    Expected: A new window will pop-up and show you all the matched internships.
 
-#### Switching of tabs
+**Switching of tabs**
 
-1. Switching tabs
+1. Switching tabs.
 
-   1. Prerequisties: Assuming you are on the company tab.
+   1. Prerequisites: Assuming you are on the company tab.
   
    1. Test case: `switch com` <br>
    Expected: A message will be displayed in the result display to inform you that you are already on the company tab.
@@ -1339,23 +1357,25 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `switch` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-#### Viewing help
+**Viewing help**
 
-1. Viewing help
+1. Viewing help.
+
    1. Test case: `help` <br>
    Expected: Help window appears with InternHunter's user guide url.
 
-#### Clearing all the data in the app
+**Clearing all the data in the app**
 
 1. Clearing all existing data in InternHunter.
+
    1. Prerequisites: Some data has been added to InternHunter.
    
    1. Test case: `clear` <br>
    Expected: All data cleared from all tabs.
 
-#### Saving the data
+**Saving the data**
 
-1. Dealing with corrupted data files
+1. Dealing with corrupted data files.
 
    1. Corrupt the current save file under ./data/. Edit the json with some random characters that make the JSON format unreadable. Alternatively, you could go to `profileitemlist.json` and add `-` to descriptors.
 
@@ -1397,7 +1417,7 @@ The UI has also been completely revamped to have a different look and feel from 
 
 <p align="center">Sequence diagram for HandleDeleteDisplaySwitchIndex</p>
 
-<p id="handle-delete-display-switch-index-sequence-diagram" align="center"><img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png"  width ="70%" height=70%"/></p>
+<p id="handle-delete-display-switch-index-sequence-diagram" align="center"><img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png" width ="70%" height="70%"/></p>
 
 
 --------------------------------------------------------------------------------------------------------------------

@@ -59,7 +59,7 @@ public abstract class NonEmptyString {
     /**
      * Returns true if the other NonEmptyString object have the same value.
      *
-     * @param other Object object to compare to.
+     * @param other Other object to compare to.
      * @return True if the other NonEmptyString object has the same value as this object.
      */
     @Override

@@ -40,6 +40,9 @@ public class LogicManager implements Logic {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
@@ -58,66 +61,105 @@ public class LogicManager implements Logic {
         return commandResult;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ObservableList<ApplicationItem> getFilteredApplicationItemList() {
         return model.getFilteredApplicationList();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ObservableList<CompanyItem> getFilteredCompanyItemList() {
         return model.getFilteredCompanyList();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ObservableList<ProfileItem> getFilteredProfileItemList() {
         return model.getFilteredProfileList();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public GuiSettings getGuiSettings() {
         return model.getGuiSettings();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public TabName getTabName() {
         return model.getTabName();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setTabName(TabName tabName) {
         model.setTabName(tabName);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Index getCompanyViewIndex() {
         return model.getCompanyViewIndex();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Index getApplicationViewIndex() {
         return model.getApplicationViewIndex();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Index getProfileViewIndex() {
         return model.getProfileViewIndex();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setCompanyViewIndex(Index index) {
         model.setCompanyViewIndex(index);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setApplicationViewIndex(Index index) {
         model.setApplicationViewIndex(index);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setProfileViewIndex(Index index) {
         model.setProfileViewIndex(index);
