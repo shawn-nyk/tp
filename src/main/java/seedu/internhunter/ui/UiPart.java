@@ -60,6 +60,8 @@ public abstract class UiPart<T> {
     }
 
     /**
+     * Retrieves the root object of the scene graph of this UiPart.
+     *
      * @return the root object of the scene graph of this UiPart.
      */
     public T getRoot() {

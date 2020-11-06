@@ -46,7 +46,7 @@ public class ResultDisplay extends UiPart<Region> {
     /**
      * Sets the color and font of the {@code text}.
      *
-     * @param text The text to be styled.
+     * @param text The {@code text} to be styled.
      */
     private void setTextStyle(Text text) {
         requireNonNull(text);

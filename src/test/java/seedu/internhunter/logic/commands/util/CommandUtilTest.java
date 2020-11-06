@@ -10,13 +10,18 @@ import static seedu.internhunter.logic.commands.util.CommandUtil.getCommandResul
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCompany;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getFullListIndex;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getProfileItem;
+import static seedu.internhunter.testutil.internship.SampleInternshipItems.FACEBOOK_SWE;
+import static seedu.internhunter.testutil.internship.SampleInternshipItems.GOLDMAN_FE;
+import static seedu.internhunter.testutil.internship.SampleInternshipItems.GOOGLE_SWE;
 import static seedu.internhunter.testutil.internship.SampleInternshipItems.LAZADA_DS;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.logic.commands.CommandResult;
+import seedu.internhunter.logic.commands.delete.DeleteCompanyCommand;
 import seedu.internhunter.logic.commands.exceptions.CommandException;
 import seedu.internhunter.model.Model;
 import seedu.internhunter.model.ModelManager;
@@ -182,4 +187,65 @@ public class CommandUtilTest {
         assertEquals(Index.fromOneBased(2), getFullListIndex(applicationItem, modelWithData.getApplicationItemList()));
         assertEquals(Index.fromOneBased(2), getFullListIndex(profileItem, modelWithData.getProfileItemList()));
     }
+
+    @Nested
+    class SetIndexWhenDeletionTest {
+        @Test
+        public void setIndexWhenDeletion_applicationViewIndexAtLastPosition_success() throws CommandException {
+            ApplicationItem applicationItem1 = applicationItemBuilder.withInternshipItem(FACEBOOK_SWE).build();
+            ApplicationItem applicationItem2 = applicationItemBuilder.withInternshipItem(LAZADA_DS).build();
+            ApplicationItem applicationItem3 = applicationItemBuilder.withInternshipItem(GOLDMAN_FE).build();
+            ApplicationItem applicationItemLast = applicationItemBuilder.withInternshipItem(GOOGLE_SWE).build();
+            CompanyItem companyItem = companyItemBuilder.withInternships(FACEBOOK_SWE, LAZADA_DS, GOLDMAN_FE).build();
+            model.addCompany(companyItem);
+            model.addApplication(applicationItem1);
+            model.addApplication(applicationItem2);
+            model.addApplication(applicationItem3);
+            model.addApplication(applicationItemLast);
+            model.setApplicationViewIndex(Index.fromOneBased(4)); // added 4 items
+            DeleteCompanyCommand deleteCompanyCommand = new DeleteCompanyCommand(Index.fromOneBased(1));
+            deleteCompanyCommand.execute(model); // delete the first company
+            // expected the index to be 1
+            assertEquals(Index.fromOneBased(1), model.getApplicationViewIndex());
+        }
+
+        @Test
+        public void setIndexWhenDeletion_applicationViewIndexAtFirstPosition_success() throws CommandException {
+            ApplicationItem applicationItem1 = applicationItemBuilder.withInternshipItem(FACEBOOK_SWE).build();
+            ApplicationItem applicationItem2 = applicationItemBuilder.withInternshipItem(LAZADA_DS).build();
+            ApplicationItem applicationItem3 = applicationItemBuilder.withInternshipItem(GOLDMAN_FE).build();
+            ApplicationItem applicationItemFirst = applicationItemBuilder.withInternshipItem(GOOGLE_SWE).build();
+            CompanyItem companyItem = companyItemBuilder.withInternships(FACEBOOK_SWE, LAZADA_DS, GOLDMAN_FE).build();
+            model.addCompany(companyItem);
+            model.addApplication(applicationItemFirst);
+            model.addApplication(applicationItem1);
+            model.addApplication(applicationItem2);
+            model.addApplication(applicationItem3);
+            model.setApplicationViewIndex(Index.fromOneBased(4)); // added 4 items
+            DeleteCompanyCommand deleteCompanyCommand = new DeleteCompanyCommand(Index.fromOneBased(1));
+            deleteCompanyCommand.execute(model); // delete the first company
+            // expected the index to be 1
+            assertEquals(Index.fromOneBased(1), model.getApplicationViewIndex());
+        }
+
+        @Test
+        public void setIndexWhenDeletion_applicationViewIndexAtMiddlePosition_success() throws CommandException {
+            ApplicationItem applicationItem1 = applicationItemBuilder.withInternshipItem(FACEBOOK_SWE).build();
+            ApplicationItem applicationItem2 = applicationItemBuilder.withInternshipItem(LAZADA_DS).build();
+            ApplicationItem applicationItem3 = applicationItemBuilder.withInternshipItem(GOLDMAN_FE).build();
+            ApplicationItem applicationItemThird = applicationItemBuilder.withInternshipItem(GOOGLE_SWE).build();
+            CompanyItem companyItem = companyItemBuilder.withInternships(FACEBOOK_SWE, LAZADA_DS, GOLDMAN_FE).build();
+            model.addCompany(companyItem);
+            model.addApplication(applicationItem1);
+            model.addApplication(applicationItem2);
+            model.addApplication(applicationItemThird);
+            model.addApplication(applicationItem3);
+            model.setApplicationViewIndex(Index.fromOneBased(4)); // added 4 items
+            DeleteCompanyCommand deleteCompanyCommand = new DeleteCompanyCommand(Index.fromOneBased(1));
+            deleteCompanyCommand.execute(model); // delete the first company
+            // expected the index to be 1
+            assertEquals(Index.fromOneBased(1), model.getApplicationViewIndex());
+        }
+    }
+
 }

@@ -37,6 +37,17 @@ public class IndexTest {
     }
 
     @Test
+    public void minusOne() {
+        // zero index 1 one -> gives back zero index
+        assertEquals(Index.fromZeroBased(0), Index.fromOneBased(1).minusOne());
+        assertEquals(Index.fromZeroBased(0), Index.fromZeroBased(0).minusOne());
+
+        // random index minus
+        assertEquals(Index.fromZeroBased(4), Index.fromZeroBased(5).minusOne());
+        assertEquals(Index.fromZeroBased(4), Index.fromOneBased(6).minusOne());
+    }
+
+    @Test
     public void equals() {
         final Index fifthIndex = Index.fromOneBased(5);
 
