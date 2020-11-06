@@ -101,7 +101,7 @@ morph the existing AB3 implementation into our own, adding a total of more than 
     - Added [documentation](https://ay2021s1-cs2103t-t15-4.github.io/tp/UserGuide.html#application) for all commands in application, i.e. add, delete, edit, view, find, list
     - Added [documentation](https://ay2021s1-cs2103t-t15-4.github.io/tp/UserGuide.html#generating-matching-internships-match) for match internships command
 - Developer Guide:
-    - Added UML and  [Logic component](https://ay2021s1-cs2103t-t15-4.github.io/tp/DeveloperGuide.html#logic-component),
+    - Added UML and documentation for [Logic component](https://ay2021s1-cs2103t-t15-4.github.io/tp/DeveloperGuide.html#logic-component),
     [Implementation of Command classes](https://ay2021s1-cs2103t-t15-4.github.io/tp/DeveloperGuide.html#implementation-of-command-classes), 
     [Match Command feature](https://ay2021s1-cs2103t-t15-4.github.io/tp/DeveloperGuide.html#match-command-feature),
     [Glossary](https://ay2021s1-cs2103t-t15-4.github.io/tp/DeveloperGuide.html#appendix-e-glossary)
