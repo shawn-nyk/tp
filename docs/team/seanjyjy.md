@@ -18,7 +18,7 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
 * Code contributed: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=seanjyjy&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
 
 * **Features and Enhancements implemented:**
-  * Convert the whole mock-ui into code and link it to be functional code. (Pull request [\#100](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/100), [\#144](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/144), [\#157](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/157), [\#165](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/165))
+  * Convert the whole mock-ui into code and link it to be functional code. (Pull request [\#100](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/100), [\#144](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/144), [\#157](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/157), [\#164](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/164))
     * Highlights: It has a very modern design that is very different from AB3. There were much consideration into designing and implementing the Ui to fix the 4 data types that we have. There are tabs to simulate the different screens for the different data types. Careful use of generics are required even at the Ui side. In order to allow the user to see more information regarding a particular item, an extra view section is included on the right of the Ui. As there were quite a number of commands, the Ui have to be carefully implemented to avoid any Ui bugs.
   * Switch tab (Pull request [\#104](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/104))
     * What it does: Allows the user to switch tabs to view the different data types available.
@@ -27,6 +27,8 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
     * What it does: Allows the user to find applications by Job Title from the app's application list.
   * List all applications (Pull request [\#190](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/190), [\#198](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/198))
     * What it does: Allows the user to list all applications in the app's application list.
+  * Add match command GUI (Pull request [\#277](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/277)
+    * What it does: Creates a new window to display all the matched internship to requirements.
   * Contributed significantly to increase test coverage. (Pull request [\#178](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/178), [\#198](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/198) ,[\#273](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/273), [\#298](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/298), [\#353](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/353), [\#356](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/356), [\#398](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/398))
   * Did javadocs (Pull request [\#179](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/179), [\#395](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/395/files)), as well as in some general pull request.
 
