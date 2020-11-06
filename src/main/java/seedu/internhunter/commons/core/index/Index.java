@@ -46,6 +46,18 @@ public class Index {
         return new Index(oneBasedIndex - 1);
     }
 
+    /**
+     * Returns an Index that is one lesser than {@code this}.
+     *
+     * @return An Index that has a its {@code zeroBasedIndex} minus 1.
+     */
+    public Index minusOne() {
+        if (zeroBasedIndex - 1 < 0) {
+            return new Index(0);
+        }
+        return new Index(zeroBasedIndex - 1);
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

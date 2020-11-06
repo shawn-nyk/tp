@@ -5,6 +5,7 @@ import static seedu.internhunter.commons.core.Messages.MESSAGE_DELETED_ITEM;
 import static seedu.internhunter.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCompany;
+import static seedu.internhunter.logic.commands.util.CommandUtil.setIndexWhenDeletion;
 import static seedu.internhunter.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_INDEX;
 import static seedu.internhunter.model.util.ItemUtil.APPLICATION_NAME;
 import static seedu.internhunter.model.util.ItemUtil.COMPANY_NAME;
@@ -65,6 +66,7 @@ public class DeleteInternshipCommand extends DeleteCommand {
 
         // Delete applications for this deleted internship
         ApplicationItem applicationItemToDelete = new ApplicationItem(internshipItem);
+        setIndexWhenDeletion(applicationItemToDelete, model.getFilteredApplicationList(), model, TabName.APPLICATION);
         model.deleteSameApplication(applicationItemToDelete);
 
         // Delete the internship

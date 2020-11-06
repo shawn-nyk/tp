@@ -61,7 +61,7 @@ else current tab at application tab
 else current tab at profile tab
     CommandUtil -> Model : getProfileViewIndex()
     activate Model
-    Model -> ViewManager : getCompanyViewIndex()
+    Model -> ViewManager : getProfileViewIndex()
     activate ViewManager
     ViewManager --> Model :  profileIndex
     deactivate ViewManager

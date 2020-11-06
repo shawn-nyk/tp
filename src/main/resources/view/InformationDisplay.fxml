@@ -12,7 +12,7 @@
         </columnConstraints>
         <VBox fx:id="informationDisplay" GridPane.columnIndex="0" styleClass="information_display">
             <VBox fx:id="informationDisplayContainer"  styleClass="information_display_container">
-                <Label fx:id="informationTitle" styleClass="information_display_title" wrapText="true">
+                <Label fx:id="informationTitle" styleClass="information_display_title" wrapText="true" textAlignment="CENTER">
                     <minWidth>
                         <!-- Ensures that the label text is never truncated -->
                         <Region fx:constant="USE_PREF_SIZE" />
