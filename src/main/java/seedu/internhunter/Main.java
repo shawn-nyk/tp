@@ -20,11 +20,6 @@ import javafx.application.Application;
  */
 public class Main {
 
-    /**
-     * Launches the InternHunter app.
-     *
-     * @param args null.
-     */
     public static void main(String[] args) {
         Application.launch(MainApp.class, args);
     }
