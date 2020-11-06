@@ -81,16 +81,16 @@ public class ItemListTest {
 
     @Test
     public void getItemList_equals_true() {
-        assertEquals(companyItems.getItemList(), getCompanyItems());
-        assertEquals(applicationItems.getItemList(), getApplicationItems());
-        assertEquals(profileItems.getItemList(), getProfileItems());
+        assertEquals(getCompanyItems(), companyItems.getItemList());
+        assertEquals(getApplicationItems(), applicationItems.getItemList());
+        assertEquals(getProfileItems(), profileItems.getItemList());
     }
 
     @Test
     public void getItemList_equals_false() {
-        assertNotEquals(companyItems.getItemList(), emptyCompanyList);
-        assertNotEquals(applicationItems.getItemList(), emptyApplicationList);
-        assertNotEquals(profileItems.getItemList(), emptyProfileList);
+        assertNotEquals(emptyCompanyList, companyItems.getItemList());
+        assertNotEquals(emptyApplicationList, applicationItems.getItemList());
+        assertNotEquals(emptyProfileList, profileItems.getItemList());
     }
 
     @Test
@@ -99,9 +99,9 @@ public class ItemListTest {
         applicationItems.setItems(applicationItemOne);
         profileItems.setItems(profileItemOne);
 
-        assertEquals(companyItems.getItemList(), companyItemObservableList);
-        assertEquals(applicationItems.getItemList(), applicationItemObservableList);
-        assertEquals(profileItems.getItemList(), profileItemObservableList);
+        assertEquals(companyItemObservableList, companyItems.getItemList());
+        assertEquals(applicationItemObservableList, applicationItems.getItemList());
+        assertEquals(profileItemObservableList, profileItems.getItemList());
     }
 
     @Test
@@ -109,10 +109,13 @@ public class ItemListTest {
         companyItems.setItems(companyItemOne);
         applicationItems.setItems(applicationItemOne);
         profileItems.setItems(profileItemOne);
+        ObservableList<CompanyItem> emptyCompanyItemObservableList = FXCollections.observableArrayList();
+        ObservableList<ApplicationItem> emptyApplicationItemObservableList = FXCollections.observableArrayList();
+        ObservableList<ProfileItem> emptyProfileItemObservableList = FXCollections.observableArrayList();
 
-        assertNotEquals(companyItems.getItemList(), FXCollections.observableArrayList());
-        assertNotEquals(applicationItems.getItemList(), FXCollections.observableArrayList());
-        assertNotEquals(profileItems.getItemList(), FXCollections.observableArrayList());
+        assertNotEquals(emptyCompanyItemObservableList, companyItems.getItemList());
+        assertNotEquals(emptyApplicationItemObservableList, applicationItems.getItemList());
+        assertNotEquals(emptyProfileItemObservableList, profileItems.getItemList());
     }
 
     @Test
@@ -205,9 +208,9 @@ public class ItemListTest {
 
     @Test
     public void testToString_equals_true() {
-        assertEquals(companyItems.toString(), "3 items");
-        assertEquals(applicationItems.toString(), "3 items");
-        assertEquals(profileItems.toString(), "4 items");
+        assertEquals("3 items", companyItems.toString());
+        assertEquals("3 items", applicationItems.toString());
+        assertEquals("4 items", profileItems.toString());
     }
 
     @Test
@@ -242,9 +245,9 @@ public class ItemListTest {
         assertEquals(profileItems.hashCode(), profileItems.hashCode());
 
         // same value item, same hash -> equals
-        assertEquals(companyItems.hashCode(), getCompanyItems().hashCode());
-        assertEquals(applicationItems.hashCode(), getApplicationItems().hashCode());
-        assertEquals(profileItems.hashCode(), getProfileItems().hashCode());
+        assertEquals(getCompanyItems().hashCode(), companyItems.hashCode());
+        assertEquals(getApplicationItems().hashCode(), applicationItems.hashCode());
+        assertEquals(getProfileItems().hashCode(), profileItems.hashCode());
 
         // different ItemList, different hash -> not equals
         assertNotEquals(companyItems.hashCode(), applicationItems.hashCode());
