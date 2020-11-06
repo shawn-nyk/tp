@@ -7,12 +7,16 @@ import static seedu.internhunter.ui.panel.PanelDisplayKeyword.PERIOD_DISPLAY_NAM
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.REQUIREMENTS_DISPLAY_NAME;
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.WAGE_DISPLAY_NAME;
 
+import java.util.LinkedHashMap;
+
 import seedu.internhunter.model.internship.InternshipItem;
 
 /**
  * A UI component that displays some information of a {@code InternshipItem}.
  */
 public class InternshipCard extends Card<InternshipItem> {
+
+    private final LinkedHashMap<String, Object> mapping;
 
     /**
      * Creates a card with information regarding {@code InternshipItem} with index of {@code displayedIndex}.
@@ -22,6 +26,7 @@ public class InternshipCard extends Card<InternshipItem> {
      */
     public InternshipCard(InternshipItem internshipItem, int displayedIndex) {
         super(internshipItem, displayedIndex);
+        mapping = getMapping();
         initializedInternshipCardGui();
     }
 
@@ -29,7 +34,7 @@ public class InternshipCard extends Card<InternshipItem> {
      * sets the id, company name, requirements, job title, wage, period.
      */
     private void initializedInternshipCardGui() {
-        setId(displayedIndex);
+        setId(getDisplayedIndex());
         setCompanyName();
         setRequirements();
         setJobTitle();
