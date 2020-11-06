@@ -5,8 +5,14 @@ import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_COMMAND_F
 import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE_ABRIDGED;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.internhunter.logic.commands.CommandTestUtil.VALID_INDEX_ONE;
+import static seedu.internhunter.logic.commands.util.application.ApplicationCommandTestUtil.INDEX_DESC_FIRST;
 import static seedu.internhunter.logic.commands.util.application.ApplicationCommandTestUtil.STATUS_DESC_ACCEPTED;
+import static seedu.internhunter.logic.commands.util.company.CompanyCommandTestUtil.ADDRESS_DESC_FACEBOOK;
+import static seedu.internhunter.logic.commands.util.company.CompanyCommandTestUtil.EMAIL_DESC_FACEBOOK;
+import static seedu.internhunter.logic.commands.util.company.CompanyCommandTestUtil.NAME_DESC_FACEBOOK;
+import static seedu.internhunter.logic.commands.util.company.CompanyCommandTestUtil.PHONE_DESC_FACEBOOK;
 import static seedu.internhunter.logic.commands.util.internship.InternshipCommandTestUtil.JOB_TITLE_DESC_SWE;
+import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.CATEGORY_DESC_EXPERIENCE;
 import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.TITLE_DESC_INTERNSHIP;
 import static seedu.internhunter.model.util.ItemUtil.APPLICATION_ALIAS;
 import static seedu.internhunter.model.util.ItemUtil.COMPANY_ALIAS;
@@ -23,6 +29,8 @@ import seedu.internhunter.logic.commands.ExitCommand;
 import seedu.internhunter.logic.commands.HelpCommand;
 import seedu.internhunter.logic.commands.MatchCommand;
 import seedu.internhunter.logic.commands.SwitchCommand;
+import seedu.internhunter.logic.commands.add.AddCommand;
+import seedu.internhunter.logic.commands.delete.DeleteCommand;
 import seedu.internhunter.logic.commands.edit.EditCommand;
 import seedu.internhunter.logic.commands.find.FindApplicationCommand;
 import seedu.internhunter.logic.commands.find.FindCommand;
@@ -41,26 +49,32 @@ public class MainParserTest {
 
     @Test
     public void parseCommand_add() throws Exception {
-        // Person person = new PersonBuilder().build();
-        // Todo: Update test cases after add commands are added.
-        //        AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(person));
-        //        AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand()
-        //        assertEquals(new AddCommand(person), command);
-    }
+        assertTrue(parser.parseCommand(AddCommand.COMMAND_WORD + " " + COMPANY_ALIAS
+                +  NAME_DESC_FACEBOOK + PHONE_DESC_FACEBOOK + ADDRESS_DESC_FACEBOOK
+                + EMAIL_DESC_FACEBOOK) instanceof AddCommand);
+        assertTrue(parser.parseCommand(AddCommand.COMMAND_WORD + " " + INTERNSHIP_ALIAS + " "
+                + INDEX_FIRST.getOneBased() + JOB_TITLE_DESC_SWE) instanceof AddCommand);
+        assertTrue(parser.parseCommand(AddCommand.COMMAND_WORD + " " + APPLICATION_ALIAS + " "
+                + INDEX_FIRST.getOneBased() + INDEX_DESC_FIRST) instanceof AddCommand);
+        assertTrue(parser.parseCommand(AddCommand.COMMAND_WORD + " " + PROFILE_ALIAS + " "
+                + TITLE_DESC_INTERNSHIP + CATEGORY_DESC_EXPERIENCE) instanceof AddCommand); }
 
-    // todo: add delete test (Issac)
-    // @Test
-    // public void parseCommand_delete() throws Exception {
-    //     DeleteCommand command = (DeleteCommand) parser.parseCommand(
-    //             DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST.getOneBased());
-    //     assertEquals(new DeleteCommand(INDEX_FIRST), command);
-    // }
+     @Test
+     public void parseCommand_delete() throws Exception {
+         assertTrue(parser.parseCommand(DeleteCommand.COMMAND_WORD + " " + COMPANY_ALIAS + " "
+                 + INDEX_FIRST.getOneBased()) instanceof DeleteCommand);
+         assertTrue(parser.parseCommand(DeleteCommand.COMMAND_WORD + " " + INTERNSHIP_ALIAS + " "
+                 + INDEX_FIRST.getOneBased() + INDEX_DESC_FIRST) instanceof DeleteCommand);
+         assertTrue(parser.parseCommand(DeleteCommand.COMMAND_WORD + " " + APPLICATION_ALIAS + " "
+                 + INDEX_FIRST.getOneBased()) instanceof DeleteCommand);
+         assertTrue(parser.parseCommand(DeleteCommand.COMMAND_WORD + " " + PROFILE_ALIAS + " "
+                 + INDEX_FIRST.getOneBased()) instanceof DeleteCommand);
+     }
 
-    // todo: When com has their prefixes ready
     @Test
     public void parseCommand_edit() throws Exception {
-        // assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + " " + COMPANY_ALIAS + " "
-        //         + INDEX_FIRST.getOneBased() + STATUS_DESC_ACCEPTED) instanceof EditCommand);
+         assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + " " + COMPANY_ALIAS + " "
+                + INDEX_FIRST.getOneBased() + NAME_DESC_FACEBOOK) instanceof EditCommand);
         assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + " " + INTERNSHIP_ALIAS + " "
                 + INDEX_FIRST.getOneBased() + VALID_INDEX_ONE + JOB_TITLE_DESC_SWE) instanceof EditCommand);
         assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + " " + APPLICATION_ALIAS + " "

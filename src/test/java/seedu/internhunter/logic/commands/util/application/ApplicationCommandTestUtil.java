@@ -4,15 +4,19 @@ import static seedu.internhunter.commons.core.Messages.MESSAGE_DUPLICATE_ITEM;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX;
 import static seedu.internhunter.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS;
 import static seedu.internhunter.logic.parser.clisyntax.ApplicationCliSyntax.PREFIX_STATUS_DATE;
+import static seedu.internhunter.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_INDEX;
 import static seedu.internhunter.model.util.ItemUtil.APPLICATION_NAME;
 import static seedu.internhunter.model.util.StatusUtil.ACCEPTED_KEYWORD;
 import static seedu.internhunter.model.util.StatusUtil.REJECTED_KEYWORD;
+import static seedu.internhunter.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.INVALID_STATUS;
 import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.INVALID_STATUS_DATE;
 import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_JUNE_2021;
 import static seedu.internhunter.testutil.application.ApplicationItemFieldsUtil.STATUS_DATE_JUNE_2022;
 
 public class ApplicationCommandTestUtil {
+    // Valid Index
+    public static final String INDEX_DESC_FIRST = " " + PREFIX_INDEX + INDEX_FIRST.getOneBased();
 
     // Valid Statuses
     public static final String STATUS_DESC_ACCEPTED = " " + PREFIX_STATUS + ACCEPTED_KEYWORD;

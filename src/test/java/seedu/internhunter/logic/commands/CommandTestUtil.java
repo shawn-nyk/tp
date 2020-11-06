@@ -129,7 +129,7 @@ public class CommandTestUtil {
      * {@code model}'s company list.
      */
     public static void showCompanyAtIndex(Model model, Index targetIndex) {
-        assertTrue(targetIndex.getZeroBased() < model.getFilteredCompanyList().size());
+        assertTrue(targetIndex.getZeroBased() < model.getUnFilteredProfileListSize());
 
         CompanyItem companyItem = model.getCompanyItemFromFilteredList(targetIndex.getZeroBased());
         final String[] splitJobTitle = companyItem.getCompanyNameValue().split("\\s+");
