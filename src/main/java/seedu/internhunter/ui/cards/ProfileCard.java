@@ -41,7 +41,7 @@ public class ProfileCard extends Card<ProfileItem> {
     }
 
     /**
-     * Sets the name on the card.
+     * Sets the title on the card.
      */
     protected void setTitle() {
         Object title = mapping.get(TITLE_DISPLAY_NAME);

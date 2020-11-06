@@ -2,6 +2,9 @@ package seedu.internhunter.logic.parser.clisyntax;
 
 import seedu.internhunter.logic.parser.Prefix;
 
+/**
+ * Contains the cli syntax used for parsing Application commands input.
+ */
 public class ApplicationCliSyntax {
 
     /* Prefix definitions */

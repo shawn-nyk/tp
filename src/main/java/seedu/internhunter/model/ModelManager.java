@@ -35,7 +35,7 @@ public class ModelManager implements Model {
     private final View viewControl;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given InternHunter and userPrefs.
      */
     public ModelManager(
             ReadOnlyItemList<CompanyItem> companyList,
@@ -59,27 +59,42 @@ public class ModelManager implements Model {
         this.viewControl = new ViewManager();
     }
 
+    /**
+     * Initializes a ModelManager with empty lists and with the de facto user prefs of InternHunter.
+     */
     public ModelManager() {
         this(new ItemList<>(), new ItemList<>(), new ItemList<>(), new UserPrefs());
     }
 
     //=========== Company Methods ============================================================================
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public FilterableItemList<CompanyItem> getCompanyList() {
         return companyList;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ObservableList<CompanyItem> getFilteredCompanyList() {
         return companyList.getFilteredItemList();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getFilteredCompanyListSize() {
         return companyList.getSize();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ItemList<CompanyItem> getUnfilteredCompanyList() {
         return companyList.getUnfilteredItemList();
@@ -93,40 +108,56 @@ public class ModelManager implements Model {
         return companyList.getItemList();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean hasCompany(CompanyItem companyItem) {
         return companyList.hasItem(companyItem);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void deleteCompany(CompanyItem target) {
         companyList.deleteItem(target);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void addCompany(CompanyItem companyItem) {
         companyList.addItem(companyItem);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setCompany(CompanyItem target, CompanyItem editedCompanyItem) {
         companyList.setItem(target, editedCompanyItem);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void updateFilteredCompanyList(Predicate<? super CompanyItem> predicate) {
         companyList.updateFilteredItemList(predicate);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setCompanyList(ItemList<CompanyItem> companyList) {
         this.companyList.setItemList(companyList);
     }
 
     /**
-     * Gets CompanyItem from Filtered Company list.
-     *
-     * @param index of item in filtered company list.
+     * {@inheritDoc}
      */
     @Override
     public CompanyItem getCompanyItemFromFilteredList(int index) {
@@ -135,65 +166,96 @@ public class ModelManager implements Model {
 
     //=========== Application Methods ========================================================================
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public FilterableItemList<ApplicationItem> getApplicationList() {
         return applicationList;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ObservableList<ApplicationItem> getFilteredApplicationList() {
         return applicationList.getFilteredItemList();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getFilteredApplicationListSize() {
         return applicationList.getSize();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ItemList<ApplicationItem> getUnfilteredApplicationList() {
         return applicationList.getUnfilteredItemList();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean hasApplication(ApplicationItem applicationItem) {
         return applicationList.hasItem(applicationItem);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void deleteApplication(ApplicationItem target) {
         applicationList.deleteItem(target);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void deleteSameApplication(ApplicationItem target) {
         applicationList.deleteSameItem(target);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void addApplication(ApplicationItem applicationItem) {
         applicationList.addItem(applicationItem);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setApplication(ApplicationItem target, ApplicationItem editedApplicationItem) {
         applicationList.setItem(target, editedApplicationItem);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void updateFilteredApplicationList(Predicate<? super ApplicationItem> predicate) {
         applicationList.updateFilteredItemList(predicate);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setApplicationList(ItemList<ApplicationItem> applicationList) {
         this.applicationList.setItemList(applicationList);
     }
 
     /**
-     * Gets the application item list.
-     *
-     * @return Application Item list.
+     * {@inheritDoc}
      */
     @Override
     public ObservableList<ApplicationItem> getApplicationItemList() {
@@ -201,9 +263,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Gets ApplicationItem from Filtered Application list.
-     *
-     * @param index of item in filtered application list.
+     * {@inheritDoc}
      */
     @Override
     public ApplicationItem getApplicationItemFromFilteredList(int index) {
@@ -212,23 +272,32 @@ public class ModelManager implements Model {
 
     //=========== Profile Methods ============================================================================
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public FilterableItemList<ProfileItem> getProfileList() {
         return profileList;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ObservableList<ProfileItem> getFilteredProfileList() {
         return profileList.getFilteredItemList();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getFilteredProfileListSize() {
         return profileList.getSize();
     }
 
     /**
-     * Gets the size of the unfiltered company list.
+     * {@inheritDoc}
      */
     @Override
     public int getUnFilteredCompanyListSize() {
@@ -236,7 +305,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Gets the size of the unfiltered application list.
+     * {@inheritDoc}
      */
     @Override
     public int getUnFilteredApplicationListSize() {
@@ -244,60 +313,79 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Gets the size of the unfiltered profile list.
+     * {@inheritDoc}
      */
     @Override
     public int getUnFilteredProfileListSize() {
         return getProfileItemList().size();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ItemList<ProfileItem> getUnfilteredProfileList() {
         return profileList.getUnfilteredItemList();
     }
 
     /**
-     * Returns the profile item list.
+     * {@inheritDoc}
      */
     @Override
     public ObservableList<ProfileItem> getProfileItemList() {
         return profileList.getItemList();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean hasProfileItem(ProfileItem profileItem) {
         return profileList.hasItem(profileItem);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void deleteProfileItem(ProfileItem target) {
         profileList.deleteItem(target);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void addProfileItem(ProfileItem profileItem) {
         profileList.addItem(profileItem);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setProfileItem(ProfileItem target, ProfileItem editedProfileItem) {
         profileList.setItem(target, editedProfileItem);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void updateFilteredProfileList(Predicate<? super ProfileItem> predicate) {
         profileList.updateFilteredItemList(predicate);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setProfileList(ItemList<ProfileItem> profileList) {
         this.profileList.setItemList(profileList);
     }
 
     /**
-     * Gets ProfileItem from Filtered Profile list.
-     *
-     * @param index of item in filtered profile list.
+     * {@inheritDoc}
      */
     @Override
     public ProfileItem getProfileItemFromFilteredList(int index) {
@@ -305,22 +393,34 @@ public class ModelManager implements Model {
     }
     //=========== UserPrefs ==================================================================================
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
         requireNonNull(userPrefs);
         this.userPrefs.resetData(userPrefs);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ReadOnlyUserPrefs getUserPrefs() {
         return userPrefs;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public GuiSettings getGuiSettings() {
         return userPrefs.getGuiSettings();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         requireNonNull(guiSettings);
@@ -331,7 +431,7 @@ public class ModelManager implements Model {
     //=========== Tab Control Accessors =============================================================
 
     /**
-     * Retrieves the current tab name.
+     * {@inheritDoc}
      */
     @Override
     public TabName getTabName() {
@@ -339,7 +439,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Sets the current tab name with {@code tabName}.
+     * {@inheritDoc}
      */
     @Override
     public void setTabName(TabName tabName) {
@@ -349,7 +449,7 @@ public class ModelManager implements Model {
     //=========== View Control Accessors =============================================================
 
     /**
-     * Retrieves the current index of company view.
+     * {@inheritDoc}
      */
     @Override
     public Index getCompanyViewIndex() {
@@ -357,7 +457,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Retrieves the current index of application view.
+     * {@inheritDoc}
      */
     @Override
     public Index getApplicationViewIndex() {
@@ -365,7 +465,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Retrieves the current index of profile view.
+     * {@inheritDoc}
      */
     @Override
     public Index getProfileViewIndex() {
@@ -373,7 +473,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Sets the current company view index with {@code index}.
+     * {@inheritDoc}
      */
     @Override
     public void setCompanyViewIndex(Index index) {
@@ -381,7 +481,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Sets the current application view index with {@code index}.
+     * {@inheritDoc}
      */
     @Override
     public void setApplicationViewIndex(Index index) {
@@ -389,7 +489,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Sets the current profile view index with {@code index}.
+     * {@inheritDoc}
      */
     @Override
     public void setProfileViewIndex(Index index) {

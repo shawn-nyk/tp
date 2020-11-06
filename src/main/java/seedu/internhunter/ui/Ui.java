@@ -7,7 +7,11 @@ import javafx.stage.Stage;
  */
 public interface Ui {
 
-    /** Starts the UI (and the App).  */
+    /**
+     * Starts the UI (and the App).
+     *
+     * @param primaryStage The stage in which the the UI resides.
+     */
     void start(Stage primaryStage);
 
 }

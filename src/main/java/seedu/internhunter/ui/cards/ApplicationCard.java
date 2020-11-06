@@ -70,7 +70,7 @@ public class ApplicationCard extends Card<ApplicationItem> {
     }
 
     /**
-     * Sets the name on the card.
+     * Sets the job title on the card.
      */
     private void setJobTitle() {
         Object jobTitle = mapping.get(JOB_TITLE_DISPLAY_NAME);

@@ -56,7 +56,7 @@ public class ViewProfileCommand extends ViewCommand {
         }
 
         if (model.getTabName() == TabName.PROFILE && model.getProfileViewIndex().equals(targetIndex)) {
-            return new CommandResult(messageAlreadyViewing, false, false , false, false);
+            return getAlreadyViewingCommandResult(messageAlreadyViewing);
         }
         model.setProfileViewIndex(targetIndex);
         return getCommandResult(model, messageViewSuccess, TabName.PROFILE);

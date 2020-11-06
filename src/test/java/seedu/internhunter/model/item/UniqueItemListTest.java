@@ -228,32 +228,11 @@ public class UniqueItemListTest {
     }
 
     @Test
-    public void setItems_usingUniqueItemList_equals() {
-        companyItemUniqueItemList.setItems(uniqueCompanyItemOne);
-        applicationItemUniqueItemList.setItems(uniqueApplicationItemOne);
-        profileItemUniqueItemList.setItems(uniqueProfileItemOne);
-
-        assertEquals(companyItemUniqueItemList.asUnmodifiableObservableList(), companyItems);
-        assertEquals(applicationItemUniqueItemList.asUnmodifiableObservableList(), applicationItems);
-        assertEquals(profileItemUniqueItemList.asUnmodifiableObservableList(), profileItems);
-    }
-
-    @Test
-    public void setItems_usingUniqueItemListWithNull_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> companyItemUniqueItemList
-                .setItems((UniqueItemList<CompanyItem>) null));
-        assertThrows(NullPointerException.class, () -> applicationItemUniqueItemList
-                .setItems((UniqueItemList<ApplicationItem>) null));
-        assertThrows(NullPointerException.class, () -> profileItemUniqueItemList
-                .setItems((UniqueItemList<ProfileItem>) null));
-    }
-
-    @Test
     public void setItems_usingListWithNull_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> companyItemUniqueItemList.setItems((List<CompanyItem>) null));
+        assertThrows(NullPointerException.class, () -> companyItemUniqueItemList.setItems(null));
         assertThrows(NullPointerException.class, () -> applicationItemUniqueItemList
-                .setItems((List<ApplicationItem>) null));
-        assertThrows(NullPointerException.class, () -> profileItemUniqueItemList.setItems((List<ProfileItem>) null));
+                .setItems(null));
+        assertThrows(NullPointerException.class, () -> profileItemUniqueItemList.setItems(null));
     }
 
     @Test

@@ -36,7 +36,7 @@ public class ItemList<T extends Item> implements ReadOnlyItemList<T> {
         resetData(toBeCopied);
     }
 
-    //// list overwrite operations
+    // list overwrite operations
 
     /**
      * Replaces the contents of the item list with {@code items}.
@@ -54,7 +54,7 @@ public class ItemList<T extends Item> implements ReadOnlyItemList<T> {
         setItems(newData.getItemList());
     }
 
-    //// item-level operations
+    // item-level operations
 
     /**
      * Returns true if an item with the same identity as {@code item} exists in the item list.
@@ -101,16 +101,32 @@ public class ItemList<T extends Item> implements ReadOnlyItemList<T> {
 
     // util methods
 
+    /**
+     * Returns the string representation of this wage object.
+     *
+     * @return String representation of this wage object.
+     */
     @Override
     public String toString() {
         return items.asUnmodifiableObservableList().size() + " items";
     }
 
+    /**
+     * Returns the item list.
+     *
+     * @return Returns the item list.
+     */
     @Override
     public ObservableList<T> getItemList() {
         return items.asUnmodifiableObservableList();
     }
 
+    /**
+     * Returns true if the 2 item lists have the same items.
+     *
+     * @param other Other object to compare to.
+     * @return True if the other ItemList object has the same items as this one.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -118,6 +134,11 @@ public class ItemList<T extends Item> implements ReadOnlyItemList<T> {
                 && items.equals(((ItemList) other).items));
     }
 
+    /**
+     * Returns the hashcode of this ItemList object, which is the hashcode of its UniqueItemList items.
+     *
+     * @return Hashcode of this ItemList object.
+     */
     @Override
     public int hashCode() {
         return items.hashCode();
