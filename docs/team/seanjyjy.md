@@ -52,7 +52,7 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
   * Designed the mockups for the app using [Adobe XD](https://www.adobe.com/products/xd.html).
   * Ensure and sufficiently test and [release](https://github.com/AY2021S1-CS2103T-T15-4/tp/releases) jar files for each iteration.
   * Did the [demo videos](https://docs.google.com/document/d/1CkYsVvewbjA4TZkfzKLBhu2uviXBE9_q-1hQXOxekeo/edit#heading=h.28i4rmmvhv4q) for each iteration.
-  * Contributed to some version control. (help to update the version for each iteration) (Pull request [\#251](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/251), [\#259]((https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/259))
+  * Contributed to some version control. (help to update the version for each iteration) (Pull request [\#251](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/251), [\#259](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/259))
   * Managed the [issue tracker](https://github.com/AY2021S1-CS2103T-T15-4/tp/issues?q=is%3Aissue+author%3Aseanjyjy)
   * Did the readme for Ui-mock up as well as image credits. (Pull request [\#95](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/95), [\#172](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/172), [\#353](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/353))
   * Did tweaks to the app icon. (Pull request [\#257](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/257))
