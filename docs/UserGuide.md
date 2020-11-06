@@ -542,6 +542,12 @@ Each category is represented by the following icons in the UI:
 Each profile item also contains a `TITLE` that describes the item, and you can optionally 
 add additional `DESCRIPTOR`s to further describe the item in point form.
 
+Here is how the profile tab looks like: 
+
+<p align="center"><img src="images/ug-profile/ProfileOverview.png" width="100%"/></p>
+
+#### Command execution
+
 Note that all Profile commands follow the following general 2-step process:
 
 Step 1: Enter the command into the command box. An example command is given in the image below.
