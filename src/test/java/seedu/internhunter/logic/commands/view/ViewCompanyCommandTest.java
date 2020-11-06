@@ -135,5 +135,4 @@ public class ViewCompanyCommandTest {
         // different index -> returns false
         assertNotEquals(viewSecondCommand, viewFirstCommand);
     }
-
 }

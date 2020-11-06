@@ -11,13 +11,12 @@ import static seedu.internhunter.model.util.ItemUtil.PROFILE_ITEM_NAME;
 
 import seedu.internhunter.logic.commands.Command;
 
-/**
+/*
  * Represents an Add Command for Items.
  */
 public abstract class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
-    //todo Update Message Usage to standardised format
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Adds a "
             + COMPANY_NAME + ", "

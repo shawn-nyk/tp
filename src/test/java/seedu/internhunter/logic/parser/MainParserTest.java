@@ -50,7 +50,7 @@ public class MainParserTest {
     @Test
     public void parseCommand_add() throws Exception {
         assertTrue(parser.parseCommand(AddCommand.COMMAND_WORD + " " + COMPANY_ALIAS
-                +  NAME_DESC_FACEBOOK + PHONE_DESC_FACEBOOK + ADDRESS_DESC_FACEBOOK
+                + NAME_DESC_FACEBOOK + PHONE_DESC_FACEBOOK + ADDRESS_DESC_FACEBOOK
                 + EMAIL_DESC_FACEBOOK) instanceof AddCommand);
         assertTrue(parser.parseCommand(AddCommand.COMMAND_WORD + " " + INTERNSHIP_ALIAS + " "
                 + INDEX_FIRST.getOneBased() + JOB_TITLE_DESC_SWE) instanceof AddCommand);
@@ -59,21 +59,21 @@ public class MainParserTest {
         assertTrue(parser.parseCommand(AddCommand.COMMAND_WORD + " " + PROFILE_ALIAS + " "
                 + TITLE_DESC_INTERNSHIP + CATEGORY_DESC_EXPERIENCE) instanceof AddCommand); }
 
-     @Test
-     public void parseCommand_delete() throws Exception {
-         assertTrue(parser.parseCommand(DeleteCommand.COMMAND_WORD + " " + COMPANY_ALIAS + " "
-                 + INDEX_FIRST.getOneBased()) instanceof DeleteCommand);
-         assertTrue(parser.parseCommand(DeleteCommand.COMMAND_WORD + " " + INTERNSHIP_ALIAS + " "
-                 + INDEX_FIRST.getOneBased() + INDEX_DESC_FIRST) instanceof DeleteCommand);
-         assertTrue(parser.parseCommand(DeleteCommand.COMMAND_WORD + " " + APPLICATION_ALIAS + " "
-                 + INDEX_FIRST.getOneBased()) instanceof DeleteCommand);
-         assertTrue(parser.parseCommand(DeleteCommand.COMMAND_WORD + " " + PROFILE_ALIAS + " "
-                 + INDEX_FIRST.getOneBased()) instanceof DeleteCommand);
-     }
+    @Test
+    public void parseCommand_delete() throws Exception {
+        assertTrue(parser.parseCommand(DeleteCommand.COMMAND_WORD + " " + COMPANY_ALIAS + " "
+                + INDEX_FIRST.getOneBased()) instanceof DeleteCommand);
+        assertTrue(parser.parseCommand(DeleteCommand.COMMAND_WORD + " " + INTERNSHIP_ALIAS + " "
+                + INDEX_FIRST.getOneBased() + INDEX_DESC_FIRST) instanceof DeleteCommand);
+        assertTrue(parser.parseCommand(DeleteCommand.COMMAND_WORD + " " + APPLICATION_ALIAS + " "
+                + INDEX_FIRST.getOneBased()) instanceof DeleteCommand);
+        assertTrue(parser.parseCommand(DeleteCommand.COMMAND_WORD + " " + PROFILE_ALIAS + " "
+                + INDEX_FIRST.getOneBased()) instanceof DeleteCommand);
+    }
 
     @Test
     public void parseCommand_edit() throws Exception {
-         assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + " " + COMPANY_ALIAS + " "
+        assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + " " + COMPANY_ALIAS + " "
                 + INDEX_FIRST.getOneBased() + NAME_DESC_FACEBOOK) instanceof EditCommand);
         assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + " " + INTERNSHIP_ALIAS + " "
                 + INDEX_FIRST.getOneBased() + VALID_INDEX_ONE + JOB_TITLE_DESC_SWE) instanceof EditCommand);

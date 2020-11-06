@@ -35,7 +35,7 @@ class ViewProfileCommandTest {
     private Model expectedModel;
 
     private final String messageAlreadyViewing = String.format(MESSAGE_ALREADY_VIEWING, PROFILE_ITEM_NAME,
-     INDEX_SECOND);
+        INDEX_SECOND);
 
     @BeforeEach
     public void setUp() {

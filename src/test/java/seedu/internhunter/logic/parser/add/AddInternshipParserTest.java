@@ -42,7 +42,8 @@ import seedu.internhunter.model.internship.Wage;
 public class AddInternshipParserTest {
 
     private AddInternshipCommandParser parser = new AddInternshipCommandParser();
-    private String expectedGeneralMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddInternshipCommand.MESSAGE_USAGE);
+    private String expectedGeneralMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+        AddInternshipCommand.MESSAGE_USAGE);
     private AddInternshipCommand expectedCommand = new AddInternshipCommand(INDEX_FIRST,
             new JobTitle(VALID_JOB_TITLE_SWE),
             new Wage(VALID_WAGE_2000),
@@ -119,8 +120,8 @@ public class AddInternshipParserTest {
                 new HashSet<>());
 
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + INDEX_FIRST.getOneBased()
-                + JOB_TITLE_DESC_SWE + WAGE_DESC_SWE + PERIOD_DESC_TWO_MONTHS
-                , expectedCommandNoRequirements);
+                + JOB_TITLE_DESC_SWE + WAGE_DESC_SWE + PERIOD_DESC_TWO_MONTHS,
+                expectedCommandNoRequirements);
 
         // missing all optional
         AddInternshipCommand expectedCommandNoOptional = new AddInternshipCommand(INDEX_FIRST,
