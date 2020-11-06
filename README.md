@@ -12,8 +12,6 @@
     </a>
 </p>
 
-
-
 <p align="center"><img src="docs/images/Ui.png" width="100%"/></p>
 
 <div>
