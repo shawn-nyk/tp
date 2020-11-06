@@ -542,45 +542,75 @@ Each category is represented by the following icons in the UI:
 Each profile item also contains a `TITLE` that describes the item, and you can optionally 
 add additional `DESCRIPTOR`s to further describe the item in point form.
 
+Here is how the profile tab looks like: 
+
+<p align="center"><img src="images/ug-profile/ProfileOverview.png" width="100%"/></p>
+
+#### Command execution
+
+Note that all Profile commands follow the following general 2-step process:
+
+Step 1: Enter the command into the command box. An example command is given in the image below.
+
+![GeneralStepOneMarkUp](images/ug-profile/GeneralStepProfile.png)
+
+Step 2: Press 'Enter' on your keyboard to execute the command. Upon successful execution, you will see the results of 
+your command reflected immediately in the app. An appropriate result message will also be displayed in the result 
+display.
+
+![GeneralStepTwoMarkUp](images/ug-profile/GeneralStepProfileTwo.png)
+
+<div markdown="span" class="alert alert-primary">
+
+  :bulb: **Tip:** If you want to store multiple experiences or achievements of the same name, for example taking part
+   in the Open Hack Hackathon in 2 different years, since profile items cannot have identical titles, you can simply
+    include when the event occurred in the title. (e.g. `t/Participated in Open Hack 2020` and `t/Participated in
+     Open Hack 2019`)!
+     
+</div>
+
 #### Adding item to profile: `add me`
 
 Adds a profile item to your profile.
 
-Format: `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
+Format: `add me t/TITLE c/CATEGORY [d/DESCRIPTOR]...`
 
 Examples:
-* `add me c/skill t/HTML d/Learn how to create divs`
-* `add me c/achievement t/special recognition in Hack n Roll`
-* For example, you have just completed an internship at Govtech. Executing `add me c/experience t/Internship at
- Govtech d/Implemented automate testing using TravisCI d/Implemented dashboard to track code coverage` on an empty 
+* `add me t/HTML c/skill d/Learn how to create divs`
+* `add me t/special recognition in Hack n Roll c/achievement`
+* For example, you have just completed an internship at Govtech. Executing `add me t/Internship at Govtech 
+ c/experience d/Implemented automate testing using TravisCI d/Implemented dashboard to track code coverage` on an empty 
  profile will add the profile item as follows: <br />
  
-![AddProfileSS](images/ug-profile/AddProfileItem.png)
+![AddProfileSS](images/ug-profile/AddProfile.png)
 
 #### Deleting item in profile: `delete me`
 
-Deletes experience, skills or achievements descriptors from your profile.
+Deletes experience, skills or achievements from your profile.
 
 Format: `delete me INDEX`
 
 Example:
 * `delete me 2`
+* Executing `delete me 2` on the following list will delete the 2nd profile item as follows: <br />
+
+![DeleteProfile](images/ug-profile/DeleteProfile.png)
 
 #### Editing item in profile: `edit me`
 
-Edit the experience, skills or achievements descriptors of your profile.
+Edit the experience, skills or achievements of your profile.
 
-Format: `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTORS]`
+Format: `edit me INDEX [t/TITLE] [c/CATEGORY] [d/DESCRIPTORS]`
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing `DESCRIPTORS`, all existing descriptors get replaced by the new specified descriptors.
-* You can remove all `DESCRIPTORS` by adding d/ without anything after it.
+* You can remove all `DESCRIPTORS` by adding `d/` without anything after it.
 
 Examples:
-* `edit me 2 c/skill t/CSS d/learnt how to use flexbox`
+* `edit me 2 t/CSS c/skill d/learnt how to use flexbox`
 * For example if you want to update the title and descriptor of the first item in your profile.
-* Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the profile item to:<br />
-![EditProfileSS](images/ug-profile/EditProfile.PNG)<br />
+* Executing `edit me 1 t/Internship at Google d/Build a dashboard` will edit the profile item as follows:<br />
+![EditProfile](images/ug-profile/EditProfile.png)<br />
  *(Note that the existing descriptors get replaced)*
  
 #### Viewing item in profile: `view me`
@@ -593,7 +623,7 @@ Example:
 * `view me 3`
 * For example if you have the following profile items and you want to view the third item in your user profile. Executing `view me 3` will show the following:<br />
 
-![ViewProfile](images/ug-profile/ViewProfile.png)<br />
+![ViewProfile](images/ug-profile/ViewProfileThree.png)<br />
 *(As you can see the details of the third item can be seen in the right panel)*
 
 #### Finding items in profile: `find me`
@@ -609,8 +639,17 @@ Format: `find me KEYWORD [ANOTHER_KEYWORD]...`
  Hackathon` will return the same results.
 - Only full words will be matched. e.g. `Intern` will not match `Internship`.
 
+<div markdown="block" class="alert alert-info">
+
+:information_source: **Note:**<br>
+Upon successful execution of this command, your profile list will be updated to only show matching results. All 
+subsequent delete, edit and view application commands will use indexing based on this updated list. Switching tabs will 
+not return the list to its full state. If you wish to return to seeing all the profile items in your list, 
+execute [`list me`](#listing-all-items-profile).
+
+</div>
+
 Examples:
-- `find me Internship`
 - For the following example, if the profile contains the following items. Executing `find me internship` will return
  the following: <br />
      ![FindProfile](images/ug-profile/FindProfileSingle.png) <br />
@@ -625,6 +664,11 @@ your list of profile items down to a few search results. You can then use the `l
 all the items in your profile.
 
 Format: `list me`
+
+Example:
+- If you have 5 items total in profile list, and your list is currently only showing 2 profile items after
+ having executed a `find me` command, to view all the items in your profile list, execute `list me`: <br />
+ ![ListProfile](images/ug-profile/ListProfile.png)
 
 ### **General**
 
@@ -838,9 +882,9 @@ Action     | Format
 
 Action     | Format
 -----------|------------------
-**Add**    | `add me c/CATEGORY t/TITLE [d/DESCRIPTOR]...`
+**Add**    | `add me t/TITLE c/CATEGORY [d/DESCRIPTOR]...`
 **Delete** | `delete me INDEX`
-**Edit**   | `edit me INDEX [c/CATEGORY] [t/TITLE] [d/DESCRIPTOR]...`
+**Edit**   | `edit me INDEX [t/TITLE] [c/CATEGORY] [d/DESCRIPTOR]...`
 **View**   | `view me INDEX`
 **Find**   | `find me KEYWORD [ANOTHER_KEYWORD]...`
 **List**   | `list me`
