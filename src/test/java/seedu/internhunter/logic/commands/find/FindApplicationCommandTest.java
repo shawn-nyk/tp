@@ -35,7 +35,7 @@ public class FindApplicationCommandTest {
     @BeforeEach
     public void setUp() {
         model = new ModelManager(new ItemList<>(), getSampleApplicationItemList(), new ItemList<>(), new UserPrefs());
-        expectedModel = new ModelManager(new ItemList<>(), model.getApplicationList().getUnfilteredItemList(),
+        expectedModel = new ModelManager(new ItemList<>(), model.getUnfilteredApplicationList(),
             new ItemList<>(), new UserPrefs());
     }
 
@@ -79,13 +79,13 @@ public class FindApplicationCommandTest {
         FindApplicationCommand command = new FindApplicationCommand(predicate);
 
         // update for expected model
-        expectedModel.getApplicationList().updateFilteredItemList(predicate);
+        expectedModel.updateFilteredApplicationList(predicate);
         expectedModel.setApplicationViewIndex(Index.fromOneBased(1));
         expectedModel.setTabName(TabName.APPLICATION); // default is Company
 
         // test
         assertCommandSuccess(command, model, commandResult, expectedModel);
-        assertEquals(Collections.emptyList(), model.getApplicationList().getFilteredItemList());
+        assertEquals(Collections.emptyList(), model.getFilteredApplicationList());
     }
 
     @Test
@@ -96,13 +96,13 @@ public class FindApplicationCommandTest {
         FindApplicationCommand command = new FindApplicationCommand(predicate);
 
         // update for expected model
-        expectedModel.getApplicationList().updateFilteredItemList(predicate);
+        expectedModel.updateFilteredApplicationList(predicate);
         expectedModel.setApplicationViewIndex(Index.fromOneBased(1));
         expectedModel.setTabName(TabName.APPLICATION); // default is Company
 
         // test
         assertCommandSuccess(command, model, commandResult, expectedModel);
-        assertEquals(Arrays.asList(SHOPEE_OFFERED), model.getApplicationList().getFilteredItemList());
+        assertEquals(Arrays.asList(SHOPEE_OFFERED), model.getFilteredApplicationList());
     }
 
     /**
