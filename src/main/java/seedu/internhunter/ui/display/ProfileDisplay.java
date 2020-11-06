@@ -80,8 +80,8 @@ public class ProfileDisplay extends InformationDisplay<ProfileItem> {
      * Sets the title of the {@code profileItem} for display.
      */
     private void setDisplayName() {
-        Object jobTitle = mapping.get(TITLE_DISPLAY_NAME);
-        setInformationTitle(jobTitle.toString());
+        Object title = mapping.get(TITLE_DISPLAY_NAME);
+        setInformationTitle(title.toString());
     }
 
     /**

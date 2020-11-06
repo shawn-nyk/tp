@@ -35,6 +35,9 @@ public class UiManager implements Ui {
         this.logic = logic;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void start(Stage primaryStage) {
         logger.info("Starting UI...");

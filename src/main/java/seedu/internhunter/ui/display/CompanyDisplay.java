@@ -33,6 +33,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
      */
     private final Function<String, String> formatInternshipDetail = string -> {
         String s = string.substring(0, string.length() - 1);
+        // replaces all the new line with a space with simply a new line
         s = s.replaceAll("\n, ", "\n");
         StringBuffer buffer = new StringBuffer(s);
         buffer.insert(0, 1 + ". ");
@@ -70,7 +71,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
     }
 
     /**
-     * Sets the title and information of the {@code companyItem} for display.
+     * Sets the company name and information of the {@code companyItem} for display.
      */
     private void initializeCompanyDisplayGui() {
         setCompanyName();
@@ -78,7 +79,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
     }
 
     /**
-     * Sets the title of the {@code companyItem} for display.
+     * Sets the company name of the {@code companyItem} for display.
      */
     private void setCompanyName() {
         Object jobTitle = mapping.get(COMPANY_DISPLAY_NAME);
