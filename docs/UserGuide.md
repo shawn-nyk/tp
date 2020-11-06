@@ -431,7 +431,7 @@ internship in the company’s internship list.
 
 Example:
 - Suppose you are interested in applying for the Software Engineer internship in Google Singapore:
-<p align="center"><img src="images/ug-application/Internship.png" width="100%"/></p>
+<p align="center"><img src="images/ug-application/Internship1.png" width="100%"/></p>
 
 Executing `add app 1 i/1 d/24-12-20` will apply for the internship as follows.
 Note that you will be automatically switched to the application tab to view the application made:
