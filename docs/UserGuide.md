@@ -554,7 +554,7 @@ Examples:
 
 #### Deleting item in profile: `delete me`
 
-Deletes experience, skills or achievements descriptors from your profile.
+Deletes experience, skills or achievements from your profile.
 
 Format: `delete me INDEX`
 
@@ -566,7 +566,7 @@ Example:
 
 #### Editing item in profile: `edit me`
 
-Edit the experience, skills or achievements descriptors of your profile.
+Edit the experience, skills or achievements of your profile.
 
 Format: `edit me INDEX [t/TITLE] [c/CATEGORY] [d/DESCRIPTORS]`
 * At least one of the optional fields must be provided.
