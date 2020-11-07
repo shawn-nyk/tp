@@ -210,10 +210,10 @@ public class CommandResultTest {
         internshipItems.add(internshipItemBuilder.build());
 
         // command result which contains some matching internship
-        assertEquals(commandResultWithMatchingInternship.getMatchingInternships(), internshipItems);
+        assertEquals(internshipItems, commandResultWithMatchingInternship.getMatchingInternships());
 
         // command result which doesnt contain any matching internship
-        assertEquals(commandResult.getMatchingInternships(), FXCollections.observableArrayList());
+        assertEquals(FXCollections.observableArrayList(), commandResult.getMatchingInternships());
     }
 
     @Test

@@ -222,9 +222,9 @@ public class UniqueItemListTest {
 
     @Test
     public void asUnmodifiableObservableList_equals() {
-        assertEquals(uniqueCompanyItemOne.asUnmodifiableObservableList(), companyItems);
-        assertEquals(uniqueApplicationItemOne.asUnmodifiableObservableList(), applicationItems);
-        assertEquals(uniqueProfileItemOne.asUnmodifiableObservableList(), profileItems);
+        assertEquals(companyItems, uniqueCompanyItemOne.asUnmodifiableObservableList());
+        assertEquals(applicationItems, uniqueApplicationItemOne.asUnmodifiableObservableList());
+        assertEquals(profileItems, uniqueProfileItemOne.asUnmodifiableObservableList());
     }
 
     @Test

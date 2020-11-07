@@ -216,8 +216,8 @@ public class MainAppUtilTest {
      */
     @Test
     public void initConfig_testInvalidPath_equals() {
-        assertEquals(MainAppUtil.initConfig(getTempFilePath("invalid")), new Config());
-        assertEquals(MainAppUtil.initConfig(null), new Config());
+        assertEquals(new Config(), MainAppUtil.initConfig(getTempFilePath("invalid")));
+        assertEquals(new Config(), MainAppUtil.initConfig(null));
     }
 
     /**
@@ -226,7 +226,7 @@ public class MainAppUtilTest {
     @Test
     public void initPrefs_testPathForStorage() {
         UserPrefsStorage invalidUserPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("invalid"));
-        assertEquals(MainAppUtil.initPrefs(invalidUserPrefsStorage), new UserPrefs());
+        assertEquals(new UserPrefs(), MainAppUtil.initPrefs(invalidUserPrefsStorage));
         assertThrows(NullPointerException.class, () -> MainAppUtil.initPrefs(null));
     }
 }
