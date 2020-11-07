@@ -14,7 +14,7 @@ title: User Guide
 [3. About](#about) <br />
 [4. Features](#features) <br />
  [4.1. Navigating InternHunter](#navigating-internhunter) <br />
-  [4.1.1. Switching tabs][#switching-tabs] <br />
+  [4.1.1. Switching tabs][#switching-tabs-switch] <br />
  [4.2. Company](#company) <br />
   [4.2.1. Adding a company: `add com`](#adding-a-company-add-com) <br />
   [4.2.2. Deleting a company: `delete com`](#deleting-a-company-delete-com) <br />
@@ -188,7 +188,7 @@ Symbol | What it means
 
 InternHunter screen consists of 3 tabs. Mainly the company, application and profile tab. Each tab will display information of its own data type. 
 
-#### Switching Tabs: `switch`
+#### Switching tabs: `switch`
 
 Switches between tabs.
 
