@@ -13,37 +13,38 @@ title: User Guide
 [2. Quick start](#quick-start) <br />
 [3. About](#about) <br />
 [4. Features](#features) <br />
- [4.1. Company](#company) <br />
-  [4.1.1. Adding a company: `add com`](#adding-a-company-add-com) <br />
-  [4.1.2. Deleting a company: `delete com`](#deleting-a-company-delete-com) <br />
-  [4.1.3. Editing a company: `edit com`](#editing-a-company-edit-com) <br />
-  [4.1.4. Viewing a company: `view com`](#viewing-a-company-view-com) <br />
-  [4.1.5. Finding companies: `find com`](#finding-companies-find-com) <br />
-  [4.1.6. Listing all companies: `list com`](#listing-all-companies-list-com) <br />
- [4.2. Internship](#internship) <br />
-  [4.2.1. Adding an internship: `add int`](#adding-an-internship-add-int) <br />
-  [4.2.2. Deleting an internship: `delete int`](#deleting-an-internship-delete-int) <br />
-  [4.2.3. Editing an internship: `edit int`](#editing-an-internship-edit-int) <br />
- [4.3. Application](#application) <br />
-  [4.3.1. Applying for an internship: `add app`](#applying-for-an-internship-add-app) <br />
-  [4.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
-  [4.3.3. Updating an application: `edit app`](#updating-an-application-edit-app) <br />
-  [4.3.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
-  [4.3.5. Finding applications: `find app`](#finding-applications-find-app) <br />
-  [4.3.6. Listing all applications: `list app`](#listing-all-applications-list-app) <br />
- [4.4. Profile](#profile) <br />
-  [4.4.1. Adding item to profile: `add me`](#adding-item-to-profile-add-me) <br />
-  [4.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
-  [4.4.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
-  [4.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
-  [4.4.5. Finding items in profile: `find me`](#finding-items-in-profile-find-me) <br />
-  [4.4.6. Listing all profile items: `list me`](#listing-all-items-in-profile-list-me) <br />
- [4.5 General](#general) <br />
-  [4.5.1. Generating matching internships: `match`](#generating-matching-internships-match) <br />
-  [4.5.2. Switching Tabs: `switch`](#switching-tabs-switch) <br />
-  [4.5.3. Viewing Help: `help`](#viewing-help-help) <br />
-  [4.5.4. Clearing all entries: `clear`](#clearing-all-entries-clear) <br />
-  [4.5.5. Exiting the program: `exit`](#exiting-the-program-exit) <br />
+ [4.1. Navigating InternHunter](#navigating-internhunter) <br />
+  [4.1.1. Switching tabs][#switching-tabs] <br />
+ [4.2. Company](#company) <br />
+  [4.2.1. Adding a company: `add com`](#adding-a-company-add-com) <br />
+  [4.2.2. Deleting a company: `delete com`](#deleting-a-company-delete-com) <br />
+  [4.2.3. Editing a company: `edit com`](#editing-a-company-edit-com) <br />
+  [4.2.4. Viewing a company: `view com`](#viewing-a-company-view-com) <br />
+  [4.2.5. Finding companies: `find com`](#finding-companies-find-com) <br />
+  [4.2.6. Listing all companies: `list com`](#listing-all-companies-list-com) <br />
+ [4.3. Internship](#internship) <br />
+  [4.3.1. Adding an internship: `add int`](#adding-an-internship-add-int) <br />
+  [4.3.2. Deleting an internship: `delete int`](#deleting-an-internship-delete-int) <br />
+  [4.3.3. Editing an internship: `edit int`](#editing-an-internship-edit-int) <br />
+ [4.4. Application](#application) <br />
+  [4.4.1. Applying for an internship: `add app`](#applying-for-an-internship-add-app) <br />
+  [4.4.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
+  [4.4.3. Updating an application: `edit app`](#updating-an-application-edit-app) <br />
+  [4.4.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
+  [4.4.5. Finding applications: `find app`](#finding-applications-find-app) <br />
+  [4.4.6. Listing all applications: `list app`](#listing-all-applications-list-app) <br />
+ [4.5. Profile](#profile) <br />
+  [4.5.1. Adding item to profile: `add me`](#adding-item-to-profile-add-me) <br />
+  [4.5.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
+  [4.5.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
+  [4.5.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
+  [4.5.5. Finding items in profile: `find me`](#finding-items-in-profile-find-me) <br />
+  [4.5.6. Listing all profile items: `list me`](#listing-all-items-in-profile-list-me) <br />
+ [4.6. General](#general) <br />
+  [4.6.1. Generating matching internships: `match`](#generating-matching-internships-match) <br />
+  [4.6.2. Viewing Help: `help`](#viewing-help-help) <br />
+  [4.6.3. Clearing all entries: `clear`](#clearing-all-entries-clear) <br />
+  [4.6.4. Exiting the program: `exit`](#exiting-the-program-exit) <br />
 [5. FAQ](#faq) <br/>
 [6. Command Summary](#command-summary) <br />
 
@@ -182,6 +183,34 @@ Symbol | What it means
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Features**
+
+### **Navigating InternHunter**
+
+InternHunter screen consists of 3 tabs. Mainly the company, application and profile tab. Each tab will display information of its own data type. 
+
+#### Switching Tabs: `switch`
+
+Switches between tabs.
+
+Format: `switch TYPE`
+
+There are three `TYPE`s:
+* `com`
+* `app`
+* `me`
+
+`com` refers to Company tab, `app` refers to Application tab, `me` refers to Profile tab.
+
+Example:
+
+1. Suppose you want to switch tabs to the application tab. Executing `switch app` will switch the tabs to application tab.
+
+<p align="center"><img src="images/ug-general/switchApp.png" width="70%" height="70%"/></p>
+
+2\. Note that the tabs have been changed as well as the cards and display.
+
+<p align="center"><img src="images/ug-general/switchAppResultAnnotated.png"/></p>
+
 
 ### **Company**
 
@@ -720,29 +749,6 @@ matching with the internships.
 </div>
 
 ### **General**
-
-#### Switching Tabs: `switch`
-
-Switches between tabs.
-
-Format: `switch TYPE`
-
-There are three `TYPE`s:
-* `com`
-* `app`
-* `me`
-
-`com` refers to Company tab, `app` refers to Application tab, `me` refers to Profile tab.
-
-Example:
-
-1. Suppose you want to switch tabs to the application tab. Executing `switch app` will switch the tabs to application tab.
-
-<p align="center"><img src="images/ug-general/switchApp.png" width="70%" height="70%"/></p>
-
-2\. Note that the tabs have been changed as well as the cards and display.
-
-<p align="center"><img src="images/ug-general/switchAppResultAnnotated.png"/></p>
 
 #### Clearing all entries: `clear`
 
