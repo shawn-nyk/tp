@@ -316,7 +316,7 @@ delete internship commands, i.e. by implementing delete internship command’s i
 
 The user profile feature behaves like a resume for the user to keep track of noteworthy events and milestones in one's professional life.
 There are three categories of profile items namely: `ACHIEVEMENT`, `SKILL` and `EXPERIENCE`. One of the operations
-that can be applied on profile items is the editing.
+that can be applied on profile items is editing.
 
 #### Editing User profile item
 
