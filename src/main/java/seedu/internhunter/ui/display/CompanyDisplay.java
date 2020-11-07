@@ -13,7 +13,6 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 import seedu.internhunter.model.company.CompanyItem;
-import seedu.internhunter.model.item.Item;
 import seedu.internhunter.ui.tabs.TabName;
 
 /**
@@ -61,7 +60,7 @@ public class CompanyDisplay extends InformationDisplay<CompanyItem> {
      * @param primaryStage The stage in which this display should show.
      * @return An Optional containing the display information of the company at that particular Index.
      */
-    public static Optional<InformationDisplay<? extends Item>> getCompanyDisplay(
+    public static Optional<CompanyDisplay> getCompanyDisplay(
         ObservableList<CompanyItem> companyItems, int index, Stage primaryStage) {
 
         if (IS_EMPTY_DATA_LIST.test(companyItems)) {

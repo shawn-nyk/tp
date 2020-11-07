@@ -7,16 +7,12 @@ import static seedu.internhunter.ui.panel.PanelDisplayKeyword.EMAIL_DISPLAY_NAME
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.INDUSTRIES_DISPLAY_NAME;
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.PHONE_DISPLAY_NAME;
 
-import java.util.LinkedHashMap;
-
 import seedu.internhunter.model.company.CompanyItem;
 
 /**
  * A UI component that displays some information of a {@code CompanyItem}.
  */
 public class CompanyCard extends Card<CompanyItem> {
-
-    private final LinkedHashMap<String, Object> mapping;
 
     /**
      * Creates a card display with information of {@code companyItem} and with a index of {@code displayIndex}.
@@ -26,7 +22,7 @@ public class CompanyCard extends Card<CompanyItem> {
      */
     public CompanyCard(CompanyItem companyItem, int displayedIndex) {
         super(companyItem, displayedIndex);
-        mapping = getMapping();
+
         initializeCompanyCardGui();
     }
 
@@ -34,7 +30,7 @@ public class CompanyCard extends Card<CompanyItem> {
      * Sets the id, name, industries, phone, email, address on the card.
      */
     private void initializeCompanyCardGui() {
-        setId(getDisplayedIndex());
+        setId(displayedIndex);
         setCompanyName();
         setIndustries();
         setPhone();

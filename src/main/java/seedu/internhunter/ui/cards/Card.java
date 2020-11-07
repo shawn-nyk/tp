@@ -28,6 +28,10 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
     //FXML
     private static final String FXML = "Card.fxml";
 
+    protected final T item;
+    protected final int displayedIndex;
+    protected final LinkedHashMap<String, Object> mapping;
+
     @FXML
     protected VBox statusBox;
     @FXML
@@ -51,10 +55,6 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
     @FXML
     private TextFlow l3;
 
-    private final T item;
-    private final int displayedIndex;
-    private final LinkedHashMap<String, Object> mapping;
-
     /**
      * Creates a card with information regarding {@code item} with index of {@code displayedIndex}.
      *
@@ -66,33 +66,6 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
         this.item = item;
         this.displayedIndex = displayedIndex;
         this.mapping = item.getMapping();
-    }
-
-    /**
-     * Retrieves the item in the card.
-     *
-     * @return The item in the card.
-     */
-    public T getItem() {
-        return item;
-    }
-
-    /**
-     * Retrieves the index in the card.
-     *
-     * @return The index in the card.
-     */
-    public int getDisplayedIndex() {
-        return displayedIndex;
-    }
-
-    /**
-     * Retrieves the item mapping.
-     *
-     * @return The item mapping.
-     */
-    public LinkedHashMap<String, Object> getMapping() {
-        return mapping;
     }
 
     /**

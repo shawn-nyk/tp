@@ -16,8 +16,6 @@ import static seedu.internhunter.ui.panel.PanelDisplayKeyword.REQUIREMENTS_DISPL
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.STATUS_DISPLAY_NAME;
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.WAGE_DISPLAY_NAME;
 
-import java.util.LinkedHashMap;
-
 import javafx.scene.image.Image;
 import seedu.internhunter.model.application.ApplicationItem;
 
@@ -46,8 +44,6 @@ public class ApplicationCard extends Card<ApplicationItem> {
     private static final String OFFERED_COLOR = "-fx-background-color: #0e2578;";
     private static final int IMAGE_HEIGHT_WIDTH = 23;
 
-    private final LinkedHashMap<String, Object> mapping;
-
     /**
      * Creates a card display with information of {@code ApplicationItem} and with a index of {@code displayIndex}.
      *
@@ -56,7 +52,7 @@ public class ApplicationCard extends Card<ApplicationItem> {
      */
     public ApplicationCard(ApplicationItem applicationItem, int displayedIndex) {
         super(applicationItem, displayedIndex);
-        mapping = getMapping();
+
         initializeInternshipCardGui();
     }
 
@@ -64,7 +60,7 @@ public class ApplicationCard extends Card<ApplicationItem> {
      * Sets the id, name, requirements, status, period, wages, company name, date on the card.
      */
     private void initializeInternshipCardGui() {
-        setId(getDisplayedIndex());
+        setId(displayedIndex);
         setJobTitle();
         setRequirements();
         setStatus();
