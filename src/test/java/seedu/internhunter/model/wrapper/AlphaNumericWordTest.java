@@ -16,6 +16,7 @@ public class AlphaNumericWordTest {
     @Test
     public void isValidAlphaNumericWord_validInput_success() {
         assertTrue(AlphaNumericWord.isValidAlphaNumericWord("Engineer")); // alphabets only
+        assertTrue(AlphaNumericWord.isValidAlphaNumericWord("Engineer    ")); // alphabets with trailing spaces
         assertTrue(AlphaNumericWord.isValidAlphaNumericWord("12345")); // numbers only
         assertTrue(AlphaNumericWord.isValidAlphaNumericWord("Software 2")); // alphanumeric characters
         assertTrue(AlphaNumericWord.isValidAlphaNumericWord("Machine Learning")); // with capital letters
@@ -26,9 +27,13 @@ public class AlphaNumericWordTest {
     public void isValidAlphaNumericWord_invalidInput_success() {
         assertFalse(AlphaNumericWord.isValidAlphaNumericWord("")); // empty string
         assertFalse(AlphaNumericWord.isValidAlphaNumericWord("    ")); // spaces only
+        assertFalse(AlphaNumericWord.isValidAlphaNumericWord("   Google")); // leading spaces
+        assertFalse(AlphaNumericWord.isValidAlphaNumericWord("   Google   ")); // leading and trailing spaces
         assertFalse(AlphaNumericWord.isValidAlphaNumericWord("^")); // only non-alphanumeric characters
         assertFalse(AlphaNumericWord.isValidAlphaNumericWord("-")); // only non-alphanumeric characters
-        assertFalse(AlphaNumericWord.isValidAlphaNumericWord("Google*")); // contains non-alphanumeric characters
+        assertFalse(AlphaNumericWord.isValidAlphaNumericWord("Google*")); // special char *
+        assertFalse(AlphaNumericWord.isValidAlphaNumericWord("Google.")); // special char .
+        assertFalse(AlphaNumericWord.isValidAlphaNumericWord("Google &")); // special char &
     }
 
 }

@@ -18,12 +18,14 @@ public class NonEmptyStringTest {
         assertTrue(NonEmptyString.isValidNonEmptyString("Engineer")); // alphabets only
         assertTrue(NonEmptyString.isValidNonEmptyString("12345")); // numbers only
         assertTrue(NonEmptyString.isValidNonEmptyString("Machine Learning")); // with capital letters
+        assertTrue(NonEmptyString.isValidNonEmptyString("Machine Learning   ")); // trailing spaces
         assertTrue(NonEmptyString.isValidNonEmptyString("   Senior       Software       Engineer,"
                 + "Engineering, Data and   Machine L  earning")); // Random spaces
 
         assertTrue(NonEmptyString.isValidNonEmptyString("---")); // only non-alphanumeric characters
         assertTrue(NonEmptyString.isValidNonEmptyString("-/")); // only non-alphanumeric characters
         assertTrue(NonEmptyString.isValidNonEmptyString("20-2-20 to 30-2-20")); // contains non-alphanumeric characters
+        assertTrue(NonEmptyString.isValidNonEmptyString("`~!@#$%^&*()_-+=[]{}|;':,.<>?/\\")); // special chars
     }
 
     @Test

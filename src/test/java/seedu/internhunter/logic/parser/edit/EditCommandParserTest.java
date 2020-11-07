@@ -5,9 +5,11 @@ import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_COMMAND_F
 import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_ITEM_TYPE;
 import static seedu.internhunter.logic.commands.CommandTestUtil.VALID_INDEX_ONE;
 import static seedu.internhunter.logic.commands.util.application.ApplicationCommandTestUtil.STATUS_DESC_ACCEPTED;
+import static seedu.internhunter.logic.commands.util.company.CompanyCommandTestUtil.NAME_DESC_FACEBOOK;
 import static seedu.internhunter.logic.commands.util.internship.InternshipCommandTestUtil.JOB_TITLE_DESC_SWE;
 import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.TITLE_DESC_INTERNSHIP;
 import static seedu.internhunter.model.util.ItemUtil.APPLICATION_ALIAS;
+import static seedu.internhunter.model.util.ItemUtil.COMPANY_ALIAS;
 import static seedu.internhunter.model.util.ItemUtil.INTERNSHIP_ALIAS;
 import static seedu.internhunter.model.util.ItemUtil.PROFILE_ALIAS;
 import static seedu.internhunter.testutil.Assert.assertThrows;
@@ -18,6 +20,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.internhunter.logic.commands.edit.EditApplicationCommand;
 import seedu.internhunter.logic.commands.edit.EditCommand;
+import seedu.internhunter.logic.commands.edit.EditCompanyCommand;
 import seedu.internhunter.logic.commands.edit.EditInternshipCommand;
 import seedu.internhunter.logic.commands.edit.EditProfileCommand;
 import seedu.internhunter.logic.parser.exceptions.ParseException;
@@ -50,9 +53,8 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_correctFormat_success() throws ParseException {
-        // TODO: For company command
-        // assertTrue(parser.parseCommand(EditCommand.COMMAND_WORD + " " + COMPANY_ALIAS + " "
-        //         + INDEX_FIRST.getOneBased() + STATUS_DESC_ACCEPTED) instanceof EditCommand);
+        assertTrue(editCommandParser.parse(COMPANY_ALIAS + " "
+                + INDEX_FIRST.getOneBased() + NAME_DESC_FACEBOOK) instanceof EditCompanyCommand);
         assertTrue(editCommandParser.parse(INTERNSHIP_ALIAS + " "
                 + INDEX_FIRST.getOneBased() + VALID_INDEX_ONE + JOB_TITLE_DESC_SWE) instanceof EditInternshipCommand);
         assertTrue(editCommandParser.parse(APPLICATION_ALIAS + " "

@@ -1,5 +1,6 @@
 package seedu.internhunter.logic.commands.util.profile;
 
+import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX;
 import static seedu.internhunter.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEGORY;
 import static seedu.internhunter.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTOR;
 import static seedu.internhunter.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_TITLE;
@@ -16,6 +17,10 @@ import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TI
 import seedu.internhunter.commons.core.Messages;
 
 public class ProfileCommandTestUtil {
+
+    // Invalid company index
+    public static final String INVALID_PROFILE_ITEM_INDEX_MESSAGE =
+            String.format(MESSAGE_INVALID_ITEM_DISPLAYED_INDEX, PROFILE_NAME);
 
     // Valid parameters
     public static final String TITLE_DESC_HTML = " " + PREFIX_TITLE + VALID_TITLE_HTML;

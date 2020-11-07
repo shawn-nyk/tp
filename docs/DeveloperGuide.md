@@ -315,7 +315,8 @@ delete internship commands, i.e. by implementing delete internship command’s i
 #### What it is
 
 The user profile feature behaves like a resume for the user to keep track of noteworthy events and milestones in one's professional life.
-There are three categories of profile items namely: `ACHIEVEMENT`, `SKILL` and `EXPERIENCE`.
+There are three categories of profile items namely: `ACHIEVEMENT`, `SKILL` and `EXPERIENCE`. One of the operations
+that can be applied on profile items is editing.
 
 #### Editing User profile item
 
@@ -326,12 +327,16 @@ specifying the targeted index and at least one field.
 
 * The `edit me` command is implemented by the `EditProfileCommandParser` and `EditProfileCommand`.
 * `EditProfileCommandParser#parse(...)` method creates a `EditProfileItemDescriptor` based on the fields of the input
- provided by the user. The `EditProfileItemDescriptor` is then used in instantiating the `EditProfileCommand`.
+ provided by the user. The `EditProfileItemDescriptor` is then used in instantiating the `EditProfileCommand` by the 
+ `EditProfileCommandParser`.
 
-* `EditProfileCommand` implements the `execute(...)` method from the `Command` abstract class whereby upon execution
-, the method will edit the specified profile item in the model’s profile list.
+* `EditProfileCommand` implements the `execute(...)` method from the `Command` abstract class whereby upon execution, 
+the method will edit the specified profile item in the model’s profile list.
+
+![EditProfileCommandClassDiagram](images/dg-profile/EditCommandClassDiagram.png)
 
 The following sequence diagrams show how the editing profile Item feature works successfully, using the example command 
+
 `edit me 1 t/Learn HTML`:
 
 ![EditProfileCommandSequenceDiagramSimplified](images/dg-profile/EditProfileCommandSequenceDiagramSimplified.png)
@@ -348,7 +353,8 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
 
 4. When `EditProfileCommand` is executed it which retrieves the targeted `profileItemToEdit` from the
  `lastShownList` *(which contains the profile items the user is able to see)* and updates the model with the
-  `editedProfileItem` associated with the `EditProfileCommand`.
+ `editedProfileItem` created from the `editProfileItemDescriptor` using the `createEditedProfileItem(...)` of the
+  `EditProfileCommand`.
 5. CommandResult is return to indicate a successful operation.
  
 #### Design considerations
@@ -357,22 +363,22 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
 
 **Alternatives considered**
 
-* **Alternative 1 (current choice)**: `EditProfileCommand` interact with the model solely and not directly with model's 
- internal components: `ProfileItemList` and `FilteredProfileItemList`.
+* **Alternative 1 (current choice)**: Logic components interact with the model interface solely and not directly
+ with model's internal components: `profileList` and `FilteredList` in the `profileList`.
   * Pros:
     * This obeys the Law of Demeter which stresses for components to avoid interacting directly with internal
      components of other objects. This reduces coupling which increases testability as `EditProfileCommand` only
-     requires one model
-      stub as opposed to more objects stubs for testing.
+     requires one model stub as opposed to more objects stubs of the model for testing.
     * This also increases maintainability as `EditProfileCommand` only has to be concerned with the methods that
-     `Model` provides and not the other implementation details should they be subjected to change.
+     `Model` interface provides and not the other implementation details should they be subjected to change.
   * Cons:
-    * This increases code volume within `Model` as the model need to hold every method to interact with all the
-   collections it contains.
+    * This increases code volume within `Model` as the model interface needs to hold every method to interact with all
+     the collections it contains.
 
-* **Alternative 2 (used in v1.2)**: Due to the presence of other collections such as `companyList` in the model, the
- `filteredProfileLists` and `profileList` are both retrieved from the model within the `EditProfileCommand` and then the
-  `setItemList()` operation is called directly on the `profileList` to update its value.
+* **Alternative 2 (used in v1.2)**: The model acts as a container for its collections, allowing clients to retrieve
+ these collections and directly operate on it. For example, `FilteredList` and `profileList` are both retrieved from the
+  model from within the `EditProfileCommand` and then the `setItemList()` operation is called directly on the
+  `profileList` to update its value.
   
   ```
   model.getProfileList().setItem(profileItemToEdit, EditedProfileItem)
@@ -380,14 +386,13 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
 ![ExecuteEditMeCommandAlt.png](images/dg-profile/ExecuteEditMeCommandAlt.png)
 
   * Pros: 
-    * This reduces code volume by keeping `Model` lean and for `EditProfileObject`to interact with the objects it needs.
-    * This may marginally improve performance as it bypasses the `Model` to interact with the `profileList` and
-     `filteredProfileList` directly.
+    * This reduces code volume by keeping the model interface lean as it no longer has to provide methods for all
+     operations of its internal components.
+    * This may marginally improve performance as it bypasses the model interface to interact with the `profileList
+    ` and `FilteredList` directly.
   * Cons:
     * This exposes the internal components of the `Model` which increases coupling as `EditProfileCommand` is now
-     dependent on `filteredProfileList` and `profileList` of the `ItemListManager` reduces testability and
-      maintainability.
-    
+     dependent on `FilteredList` and of the `ItemListManager` reduces testability and maintainability.
 
 ### Switch screen feature
 
@@ -713,7 +718,7 @@ Priority | As a …​    | I want to …​                                    
 
 **Use case: UC01 - Add a company**
 
-Guarantees: Addition of company is successful
+Guarantees: Addition of company is successful.
 
 **MSS**
 
@@ -729,8 +734,8 @@ Use case ends.
     		
 **Use case: UC02 - Delete a company**
 
-Precondition: User already has an existing list of companies <br/>
-Guarantees: Deletion of company is successful
+Precondition: User already has an existing list of companies. <br/>
+Guarantees: Deletion of company is successful.
 
 **MSS**
 
@@ -750,8 +755,8 @@ Use case ends.
 
 **Use case: UC03 - Edit a company**
 
-Precondition: User already has an existing list of companies <br/>
-Guarantees: Editing of company is successful
+Precondition: User already has an existing list of companies. <br/>
+Guarantees: Editing of company is successful.
 
 **MSS**
 
@@ -771,8 +776,8 @@ Use case ends.
 
 **Use case: UC04 - View a company**
 
-Precondition: User already has an existing list of companies <br/>
-Guarantees: Viewing of company is successful
+Precondition: User already has an existing list of companies. <br/>
+Guarantees: Viewing of company is successful.
 
 **MSS**
 
@@ -792,8 +797,8 @@ Use case ends.
 
 **Use case: UC05 - Find companies**
 
-Precondition: User already has an existing list of companies <br/>
-Guarantees: Companies whose names matches the keywords specified are listed 
+Precondition: User already has an existing list of companies. <br/>
+Guarantees: Companies whose names matches the keywords specified are listed.
 
 **MSS**
 
@@ -810,8 +815,8 @@ Use case ends.
 
 **Use case: UC06 - List all companies**
 
-Precondition: User already has an existing list of companies <br/>
-Guarantees: All companies stored in InternHunter are shown
+Precondition: User already has an existing list of companies. <br/>
+Guarantees: All companies stored in InternHunter are shown.
 
 **MSS**
 
@@ -828,8 +833,8 @@ Use case ends.
 
 **Use case: UC07 - Add an internship**
 
-Precondition: User already has an existing list of companies <br/>
-Guarantees: Addition of internship to company is successful
+Precondition: User already has an existing list of companies. <br/>
+Guarantees: Addition of internship to company is successful.
 
 **MSS**
 *  Similar MSS to adding a company except user is now adding an internship.
@@ -844,20 +849,20 @@ Guarantees: Addition of internship to company is successful
 
 **Use case: UC08 - Delete an internship**
 
-* Similar to UC02 - delete a company except user is deleting an internship
+* Similar to UC02 - delete a company except user is deleting an internship.
   
 **Use case: UC09 - Edit an internship**
 
-* Similar to UC03 - editing a company except user is editing an internship
+* Similar to UC03 - editing a company except user is editing an internship.
 
 **Use case: UC10 - Add an application**
 
-Precondition: User already has an existing list of internships in a company <br/>
-Guarantees: Addition of application is successful
+Precondition: User already has an existing list of internships in a company. <br/>
+Guarantees: Addition of application is successful.
 
 **MSS**
 
-*  Similar MSS to UC01 - adding a company except user is now adding an application
+*  Similar MSS to UC01 - adding a company except user is now adding an application.
 
 **Extensions**
 
@@ -938,7 +943,7 @@ Guarantees: InternHunter switches to the queried tab.
 
 **Use case: UC24 - Clear all entries**
 
-Guarantees: All entries in InternHunter will be cleared
+Guarantees: All entries in InternHunter will be cleared.
 
 **MSS**
 
@@ -948,7 +953,7 @@ Guarantees: All entries in InternHunter will be cleared
 
 **Use case: UC25 - Get help**
 
-Guarantees: User will get directions to the user guide
+Guarantees: User will get directions to the user guide.
 
 **MSS**
 
