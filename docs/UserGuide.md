@@ -32,10 +32,10 @@ title: User Guide
   [4.3.5. Finding applications: `find app`](#finding-applications-find-app) <br />
   [4.3.6. Listing all applications: `list app`](#listing-all-applications-list-app) <br />
  [4.4. Profile](#profile) <br />
-  [4.4.1. Adding item to profile: `add me`](#adding-item-to-profile-add-me) <br />
-  [4.4.2. Deleting item in profile: `delete me`](#deleting-item-in-profile-delete-me) <br />
-  [4.4.3. Editing item in profile: `edit me`](#editing-item-in-profile-edit-me) <br />
-  [4.4.4. Viewing item in profile: `view me`](#viewing-item-in-profile-view-me) <br />
+  [4.4.1. Adding an item to profile: `add me`](#adding-an-item-to-your-profile-add-me) <br />
+  [4.4.2. Deleting an item from your profile: `delete me`](#deleting-an-item-from-your-profile-delete-me) <br />
+  [4.4.3. Updating profile item details: `edit me`](#updating-profile-item-details-edit-me) <br />
+  [4.4.4. Viewing a profile item's details in full: `view me`](#viewing-a-profile-items-details-in-full-view-me) <br />
   [4.4.5. Finding items in profile: `find me`](#finding-items-in-profile-find-me) <br />
   [4.4.6. Listing all profile items: `list me`](#listing-all-items-in-profile-list-me) <br />
  [4.5 General](#general) <br />
@@ -569,7 +569,7 @@ display.
      
 </div>
 
-#### Adding item to profile: `add me`
+#### Adding an item to your profile: `add me`
 
 Adds a profile item to your profile.
 
@@ -584,7 +584,7 @@ Examples:
  
 ![AddProfileSS](images/ug-profile/AddProfile.png)
 
-#### Deleting item in profile: `delete me`
+#### Deleting an item from your profile: `delete me`
 
 Deletes experience, skills or achievements from your profile.
 
@@ -596,7 +596,7 @@ Example:
 
 ![DeleteProfile](images/ug-profile/DeleteProfile.png)
 
-#### Editing item in profile: `edit me`
+#### Updating profile item details: `edit me`
 
 Edit the experience, skills or achievements of your profile.
 
@@ -613,7 +613,7 @@ Examples:
 ![EditProfile](images/ug-profile/EditProfile.png)<br />
  *(Note that the existing descriptors get replaced)*
  
-#### Viewing item in profile: `view me`
+#### Viewing a profile item's details in full: `view me`
 
 Selects an item in the profile to show in detail on the right panel.
 

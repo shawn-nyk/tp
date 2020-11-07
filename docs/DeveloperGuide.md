@@ -310,7 +310,7 @@ delete internship commands, i.e. by implementing delete internship command’s i
         internship command was executed directly by the user for the same internship.
         * Updating this behaviour will require updating code in both places rather than one centralised place.
 
-### User Profile feature
+### User profile feature
 
 #### What it is
 
@@ -1103,7 +1103,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Editing some fields in company.
    
-   1. Prerequisites: The company must exist and access via a valid index.
+   1. Prerequisites: The company must exist and accessed via a valid index.
    
    1. Test case: `edit com 1 t/Frontend developer t/Backend developer t/Fullstack developer` <br>
    Expected: The tags that are in the blue box will be changed to Frontend developer, Backend developer, Fullstack developer.
@@ -1122,7 +1122,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Editing some fields in internship.
 
-   1. Prerequisites: The internship must exist and access via a valid index.
+   1. Prerequisites: The internship must exist and accessed via a valid index.
    
    1. Test case: `edit int 1 i/1 r/Java r/Python` <br>
    Expected: The 1st internship at the first company will have the requirement java and python. Note that it overrides any existing requirements in that internship. (Note that if an application for this internship exist, these changes will be reflected as tags in blue boxes on the card in the application tab)
@@ -1138,7 +1138,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Editing some fields in application.
 
-   1. Prerequisites: The application must exist and access via a valid index.
+   1. Prerequisites: The application must exist and accessed via a valid index.
    
    1. Test case: `edit app 1 s/accepted` <br>
    Expected: The status that was on the card will be changed into a green status with the word accepted.
@@ -1150,7 +1150,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Editing some fields in the profile item.
 
-   1. Prerequisites: The profile item must exist and access via a valid index.
+   1. Prerequisites: The profile item must exist and accessed via a valid index.
    
    1. Test case: `edit me 1 c/achievement t/Hackathon at Shoppee d/2nd place` <br>
    Expected: The image on the card will be changed into a trophy with the title being Hackathon.
