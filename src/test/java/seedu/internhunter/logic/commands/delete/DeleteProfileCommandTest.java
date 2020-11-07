@@ -1,11 +1,11 @@
 package seedu.internhunter.logic.commands.delete;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_DELETED_ITEM;
 import static seedu.internhunter.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.internhunter.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.internhunter.logic.commands.CommandTestUtil.showNoProfile;
 import static seedu.internhunter.logic.commands.CommandTestUtil.showProfileItemAtIndex;
 import static seedu.internhunter.logic.commands.util.profile.ProfileCommandTestUtil.INVALID_PROFILE_INDEX_MESSAGE;
 import static seedu.internhunter.model.util.ItemUtil.PROFILE_NAME;
@@ -112,11 +112,4 @@ public class DeleteProfileCommandTest {
         assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
     }
 
-    /**
-     * Updates {@code model}'s filtered list to show no profile items.
-     */
-    private void showNoProfile(Model model) {
-        model.updateFilteredProfileList(p -> false);
-        assertEquals(model.getFilteredProfileListSize(), 0);
-    }
 }

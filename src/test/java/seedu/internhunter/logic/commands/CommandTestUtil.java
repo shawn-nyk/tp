@@ -139,4 +139,20 @@ public class CommandTestUtil {
         assertEquals(1, model.getFilteredCompanyListSize());
     }
 
+    /**
+     * Updates {@code model}'s filtered list to show no profile items.
+     */
+    public static void showNoProfile(Model model) {
+        model.updateFilteredProfileList(p -> false);
+        assertEquals(model.getFilteredProfileListSize(), 0);
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show no companies.
+     */
+    public static void showNoCompany(Model model) {
+        model.updateFilteredProfileList(p -> false);
+        assertEquals(model.getFilteredProfileListSize(), 0);
+    }
+
 }
