@@ -19,7 +19,7 @@ public class ViewManagerTest {
 
     @Test
     public void setCompanyViewIndex_false_success() {
-        // different company index
+        // different company view index
         ViewManager viewManagerDifferentCompanyIndex = new ViewManager();
         viewManagerDifferentCompanyIndex.setCompanyViewIndex(Index.fromOneBased(3));
         assertFalse(viewManager.equals(viewManagerDifferentCompanyIndex));
@@ -27,7 +27,7 @@ public class ViewManagerTest {
 
     @Test
     public void setCompanyViewIndex_true_success() {
-        // different company index
+        // same company view index
         ViewManager viewManagerDifferentCompanyIndex = new ViewManager();
         viewManagerDifferentCompanyIndex.setCompanyViewIndex(Index.fromOneBased(1));
         assertTrue(viewManager.equals(viewManagerDifferentCompanyIndex));
@@ -35,7 +35,7 @@ public class ViewManagerTest {
 
     @Test
     public void setApplicationViewIndex_false_success() {
-        // different company index
+        // different application index
         ViewManager viewManagerDifferentApplicationIndex = new ViewManager();
         viewManagerDifferentApplicationIndex.setApplicationViewIndex(Index.fromOneBased(3));
         assertFalse(viewManager.equals(viewManagerDifferentApplicationIndex));
@@ -43,7 +43,7 @@ public class ViewManagerTest {
 
     @Test
     public void setApplicationViewIndex_true_success() {
-        // different company index
+        // different application view index
         ViewManager viewManagerDifferentApplicationIndex = new ViewManager();
         viewManagerDifferentApplicationIndex.setApplicationViewIndex(Index.fromOneBased(1));
         assertTrue(viewManager.equals(viewManagerDifferentApplicationIndex));
@@ -51,7 +51,7 @@ public class ViewManagerTest {
 
     @Test
     public void setProfileViewIndex_false_success() {
-        // different company index
+        // different profile view index
         ViewManager viewManagerDifferentProfileIndex = new ViewManager();
         viewManagerDifferentProfileIndex.setProfileViewIndex(Index.fromOneBased(3));
         assertFalse(viewManager.equals(viewManagerDifferentProfileIndex));
@@ -59,7 +59,7 @@ public class ViewManagerTest {
 
     @Test
     public void setProfileViewIndex_true_success() {
-        // different company index
+        // same profile view index
         ViewManager viewManagerDifferentProfileIndex = new ViewManager();
         viewManagerDifferentProfileIndex.setProfileViewIndex(Index.fromOneBased(1));
         assertTrue(viewManager.equals(viewManagerDifferentProfileIndex));
@@ -85,6 +85,10 @@ public class ViewManagerTest {
 
     @Test
     public void equals() {
+        // same value -> return true
+        ViewManager viewManagerSameValue = new ViewManager();
+        assertTrue(viewManager.equals(viewManagerSameValue));
+
         // same object -> returns true
         assertTrue(viewManager.equals(viewManager));
 

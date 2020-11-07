@@ -65,15 +65,18 @@ morph the existing AB3 implementation into our own, adding a total of more than 
         [\#78](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/78), [\#125](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/125))
         - Added documentation for match internships command (Pull requests: [\#282](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/282))
     - Developer Guide:
-        - Added implementation details and UML diagrams for [Match Command feature](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/282),
-        [Command implementation component](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/214), [Logic component](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/276),
-        [Glossary and some use cases](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/85)
+        - Added implementation details and UML diagrams for Command implementation (Pull request [\#214](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/214))
+        - Added implementation details and UML diagrams for Logic component (Pull request [\#276](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/276))
+        - Added implementation details and UML diagrams for Match Command feature (Pull request [\#282](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/282))
+        - Added glossary section and some use cases (Pull request [\#85](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/85))
 
 * **Team-based tasks**:
   * Update readme and landing page (Pull requests [\#81](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/81),
   [\#162](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/162))
   * Setup codecov for the team so that we can track our code coverage and work on remaining tests 
   (Pull request [\#60](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/60), [\#357](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/357))
+  * Setup codacy for the team so that we can track our code quality 
+  (Pull request [\#397](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/397))
   * Managed the issue tracker ([Link to the 70 issues I created](https://github.com/AY2021S1-CS2103T-T15-4/tp/issues?q=is%3Aissue+author%3Akeanecjy))
   * Managed milestones on GitHub
 
@@ -93,12 +96,12 @@ morph the existing AB3 implementation into our own, adding a total of more than 
   [8](https://github.com/keanecjy/ped/issues/8), [9](https://github.com/keanecjy/ped/issues/9),
   [10](https://github.com/keanecjy/ped/issues/10), [11](https://github.com/keanecjy/ped/issues/9)
 
-## Contributions to guides
+## Links to sections I contributed
 - User Guide:
     - Added [documentation](https://ay2021s1-cs2103t-t15-4.github.io/tp/UserGuide.html#application) for all commands in application, i.e. add, delete, edit, view, find, list
     - Added [documentation](https://ay2021s1-cs2103t-t15-4.github.io/tp/UserGuide.html#generating-matching-internships-match) for match internships command
 - Developer Guide:
-    - Added [Logic component](https://ay2021s1-cs2103t-t15-4.github.io/tp/DeveloperGuide.html#logic-component),
+    - Added UML and documentation for [Logic component](https://ay2021s1-cs2103t-t15-4.github.io/tp/DeveloperGuide.html#logic-component),
     [Implementation of Command classes](https://ay2021s1-cs2103t-t15-4.github.io/tp/DeveloperGuide.html#implementation-of-command-classes), 
     [Match Command feature](https://ay2021s1-cs2103t-t15-4.github.io/tp/DeveloperGuide.html#match-command-feature),
     [Glossary](https://ay2021s1-cs2103t-t15-4.github.io/tp/DeveloperGuide.html#appendix-e-glossary)
