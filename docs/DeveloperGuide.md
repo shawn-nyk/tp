@@ -359,7 +359,7 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
  
 #### Design considerations
 
-##### Aspect: How EditProfileCommand Object interacts with Model
+##### Aspect: How Logic components interacts with Model
 
 **Alternatives considered**
 
@@ -370,9 +370,9 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
      components of other objects. This reduces coupling which increases testability as `EditProfileCommand` only
      requires one model stub as opposed to more objects stubs of the model for testing.
     * This also increases maintainability as `EditProfileCommand` only has to be concerned with the methods that
-     `Model` interface provides and not the other implementation details should they be subjected to change.
+     Model interface provides and not the other implementation details should they be subjected to change.
   * Cons:
-    * This increases code volume within `Model` as the model interface needs to hold every method to interact with all
+    * This increases code volume within `Model` as the Model interface needs to hold every method to interact with all
      the collections it contains.
 
 * **Alternative 2 (used in v1.2)**: The model acts as a container for its collections, allowing clients to retrieve
@@ -392,7 +392,7 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
     ` and `FilteredList` directly.
   * Cons:
     * This exposes the internal components of the `Model` which increases coupling as `EditProfileCommand` is now
-     dependent on `FilteredList` and of the `ItemListManager` reduces testability and maintainability.
+     dependent on `FilteredList` and the `ItemListManager` which reduces testability and maintainability.
 
 ### Switch screen feature
 
