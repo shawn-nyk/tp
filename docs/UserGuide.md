@@ -21,9 +21,9 @@ title: User Guide
   [4.1.5. Finding companies: `find com`](#finding-companies-find-com) <br />
   [4.1.6. Listing all companies: `list com`](#listing-all-companies-list-com) <br />
  [4.2. Internship](#internship) <br />
-  [4.2.1. Adding an internship: `add int`](#adding-an-internship-add-int) <br />
-  [4.2.2. Deleting an internship: `delete int`](#deleting-an-internship-delete-int) <br />
-  [4.2.3. Editing an internship: `edit int`](#editing-an-internship-edit-int) <br />
+  [4.2.1. Adding an internship to a company: `add int`](#adding-an-internship-to-a-company-add-int) <br />
+  [4.2.2. Deleting an internship from a company: `delete int`](#deleting-an-internship-from-a-company-delete-int) <br />
+  [4.2.3. Modifying an internship's details: `edit int`](#modifying-an-internships-details-edit-int) <br />
  [4.3. Application](#application) <br />
   [4.3.1. Applying for an internship: `add app`](#applying-for-an-internship-add-app) <br />
   [4.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
@@ -325,6 +325,7 @@ Adds an internship to a company.
 
 Format: `add int INDEX j/JOB_TITLE [w/WAGE] [p/PERIOD] [r/REQUIREMENT]...`
 - `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`, `Jun - Aug 2021`).
+- 'WAGE' must be a positive integer.
 
 Examples:
 - `add int 3 j/Web Developer w/3000 p/30 May to 30 Aug r/React r/HTML5`
