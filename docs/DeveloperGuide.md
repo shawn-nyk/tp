@@ -78,15 +78,15 @@ All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `Tabs` is located at the most left of the application and it consists of three tabs which defines the main three data item `CompanyItem`, `ApplicationItem`, `ProfileItem`. <br/>
 
-The `ListPanel` is located at the center of the application and it consists of UI `CompanyCard`, `ApplicationCard`, `ProfileCard` to display key information of each data idea. <br/>
+The `ListPanel` is located at the center of the application and it consists of Ui `CompanyCard`, `ApplicationCard`, `ProfileCard` to display key information of each data idea. <br/>
 
-The `InformationDisplay` appears at the right of the application and it consists of UI `CompanyDisplay`, `ApplicationDisplay`, `ProfileDisplay`. The `InformationDisplay` displays the full information regarding the data item. <br/>
+The `InformationDisplay` appears at the right of the application and it consists of Ui `CompanyDisplay`, `ApplicationDisplay`, `ProfileDisplay`. The `InformationDisplay` displays the full information regarding the data item. <br/>
 
-The `ResultDisplay` and `CommandBox` appears at the bottom of the application and the `ResultDisplay` is above the `CommandBox` even though the UI does not show it explicitly. <br/>
+The `ResultDisplay` and `CommandBox` appears at the bottom of the application and the `ResultDisplay` is above the `CommandBox` even though the Ui does not show it explicitly. <br/>
 
-The `UI` components uses the JavaFX UI framework. The layout of these UI parts are defined in matching .fxml files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/resources/view/MainWindow.fxml). The styling of the application is mainly at [`MainWindow.css`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/resources/view/MainWindow.css).
+The `Ui` components uses the JavaFX UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/resources/view/MainWindow.fxml). The styling of the application is mainly at [`MainWindow.css`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/resources/view/MainWindow.css).
 
-The `UI` component,
+The `Ui` component,
 
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
@@ -275,7 +275,7 @@ The following sequence diagrams show how the delete company feature works succes
 
 <p align="center"><img src="images/GetDeleteCommandResultSequenceDiagram.png" width="80%" height="80%"/></p>
 
-HandleDeleteDisplaySwitchIndexSequenceDiagram can be found [here](#handle-delete-display-switch-index-sequence-diagram)
+Sequence diagram for handle delete display switch index can be found [here](#handle-delete-display-switch-index-sequence-diagram)
 
 #### Design considerations
 
@@ -452,18 +452,20 @@ The above activity diagram shows the logic and the path execution when the switc
 
 **Alternatives Considered**
 
-* **Alternative 1 (current choice):** Allow the switch of tabs to not only be accessible via the switch command, but rather extract it out for all commands excluding `exit` and `help`.
+* **Alternative 1 (current choice):** Allow the switch of tabs to not only be accessible via the switch command, but rather extract it out for all commands excluding `exit`, `help` and `clear`.
     * Pros:
         * Allows user to type once instead of twice when executing a single command and wanting to view it. (This optimization is to allow for a faster way to type and view the changes). <br/>
         * By abstract the method out from switch command, it obeys the DRY principle as all the commands will be calling a single method.
         * This allows and obeys the Open-Close principle as new implementation of commands can just be calling this single method at the end.
         * Allows user to have a second alternative to switch tabs just for viewing purpose.
+        * Reduces some dependency between each commands as they would not need to call the switch command to switch tabs.
     * Cons:
         * User might switch tab accidentally because of inputting the wrong `TYPE`.
         * Increases some form of coupling between all commands as they are now linked to this single method.
 * **Alternative 2:** Only allow switch command to be the only way to switch tabs.
     * Pros:
-        * This introduces a "type-safe" checks like in Java where only if the user is in the correct tab, then he or she will be able to add items to that item type. <br/>
+        * This introduces a "type-safe" checks like in Java where only if the user is in the correct tab, then he or she will be able to add items to that item type.
+        * Easier to implement. <br />
     * Cons:
         * This introduces the need to type twice in order to view the execution of the command.
 
@@ -939,8 +941,11 @@ Guarantees: InternHunter switches to the queried tab.
 
  1a. InternHunter detects an error in the input format. <br/>
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
-  Use case resumes from step 1.
-
+  Use case resumes from step 1. <br/>
+ 1b. InternHunter detects that the user is already in that tab. <br/>
+  1b1. InternHunter displays a message and informs the user that he is already in that tab. <br/>
+  Use case ends. <br/>
+  
 **Use case: UC24 - Clear all entries**
 
 Guarantees: All entries in InternHunter will be cleared.
@@ -1044,23 +1049,26 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: Garena not already added in InternHunter.
 
-   1. Test case: `add com n/Garena a/201 Victoria St e/GarenaHires@garena.com p/65093545`  <br>
+   1. Test case: `add com n/Amazon a/201 Victoria St e/AmazonHires@gamazon.com p/65000545`  <br>
       Expected: A card displaying information of the company is added. The right display will show full information of the company added.
       
-   1. Test case: `add com n/Google a/101 Tampines St e/GoogleHires@google.com p/62343434 t/Cloud Computing t/Artificial Intelligence` <br>
-      Expected: The differences compared to the above test case is, this adds some tags to the card which will show both `Cloud Computing` and `Artificial Intelligence`. It is reflected inside a blue box inside the card.
+   1. Test case: `add com n/Google Florida a/101 Tampines St e/GoogleHires@google.com p/62343434 t/Cloud Computing t/Artificial Intelligence` <br>
+      Expected: The difference compared to the above test case is, this adds some tags to the card which will show both `Cloud Computing` and `Artificial Intelligence`. It is reflected inside a blue box inside the card.
    
    1. Test case: `add com n/Facebook a/301 Raffles St e/FacebookHires@fb.com`  <br>
       Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
       
 **Adding an internship**
 
-1. Adding an internship with Job title Machine Learning Engineer.
+1. Adding an internship with Job title `Machine Learning Engineer`.
 
    1. Prerequisites: A company have to exist first, and add it to the company via a valid index.
    
    1. Test case: `add int 1 j/Machine Learning Engineer` <br>
    Expected: In the right display, the information of the internship will be shown.
+   
+   1. Test case: `add int 1 j/Frontend developer r/React` <br>
+   Expected: In the right display, the information of the internship will be shown with requirements.
   
    1. Test case: `add int 1` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
@@ -1072,11 +1080,11 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: An internship must exist first before you can apply for it.
    
-   1. Test case: `add app 1 i/1 d/24-12-20 s/interview` <br>
+   1. Test case: `add app 5 i/1 d/24-12-20 s/interview` <br>
    Expected: A card displaying information of this application is added. There will be a status showing as **interview**. The date will be shown as 24 dec and the year is taken to be from year 2000-2099(Note that the date have to be in the future). 
    
-   1. Test case: `add app 1 i/2` (ensure that you have a second internship first) <br>
-   Expected: Similar to the above test case, however the status will be shown as the default test status **applied**. The date will be today's date and the time will be taken to be 2359.
+   1. Test case: `add app 5 i/3` (ensure that you have a third internship first) <br>
+   Expected: Similar to the above test case, however the status will be shown as the default status **applied**. The date will be today's date and the time will be taken to be 2359.
    
    1. Test case: `add app 1` <br>
       Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
@@ -1085,9 +1093,9 @@ testers are expected to do more *exploratory* testing.
 
 1. Adding a skill/experience/achievement set into our profile list.
 
-   1. Prerequisites: This particular skill set should not be already added in InternHunter.
+   1. Prerequisites: This particular profile item's title should not be already added in InternHunter.
    
-   1. Test case: `add me c/skill t/React Native d/Created a mini MOBA game` <br>
+   1. Test case: `add me c/skill t/React d/Created a mini MOBA game` <br>
    Expected: A card displaying information of this profile item is added. There will be a circular colorful icon on the right of the card that will represent skills.
    
    1. Test case: `add me c/achievement t/Hackathon d/1st place` <br>
@@ -1106,7 +1114,7 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: The company must exist and access via a valid index.
    
    1. Test case: `edit com 1 t/Frontend developer t/Backend developer t/Fullstack developer` <br>
-   Expected: The tags that are in the blue box will be changed to Frontend developer, Backend developer, Fullstack developer.
+   Expected: The tags that are in the blue box will be changed to Frontend developer, Backend developer, Fullstack developer. It is visible on both the card and the right display.
    
    1. Test case: `edit com 1 p/91910808` <br>
    Expected: The phone number of the company will be changed. It is visible on both the card and the right display.
@@ -1125,9 +1133,9 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: The internship must exist and access via a valid index.
    
    1. Test case: `edit int 1 i/1 r/Java r/Python` <br>
-   Expected: The 1st internship at the first company will have the requirement java and python. Note that it overrides any existing requirements in that internship. (Note that if an application for this internship exist, these changes will be reflected as tags in blue boxes on the card in the application tab)
+   Expected: The 1st internship at the first company will have the requirement java and python. Note that it overrides any existing requirements in that internship. (Note that if an application for this internship exist, these changes will be reflected as tags in blue boxes on the card in the application tab). Execute `switch app` to confirm it.
    
-   1. Test case: `edit int 1 i/2 r/React native` <br>
+   1. Test case: `edit int 1 i/2 r/React r/CSS r/HTML` <br>
    Expected: The 2nd internship at the first company will have the requirement React native. Similarly to the above test case, any existing requirements in that internship will be overidden.
    
    1. Test case: `edit int 1` <br>
@@ -1152,8 +1160,8 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: The profile item must exist and access via a valid index.
    
-   1. Test case: `edit me 1 c/achievement t/Hackathon at Shoppee d/2nd place` <br>
-   Expected: The image on the card will be changed into a trophy with the title being Hackathon.
+   1. Test case: `edit me 2 c/achievement t/Hackathon at Shoppee d/2nd place` <br>
+   Expected: Its description on the right display will be 2nd place instead.
    
    1. Test case: `edit me` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
@@ -1162,7 +1170,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Viewing full information of a company.
 
-   1. Prerequisites: The company item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card.
+   1. Prerequisites: The company item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card. You can execute `view com 1` first.
    
    1. Test case: `view com 2` <br>
    Expected: The right display will change and show the full information of the 2nd company in the list.
@@ -1177,7 +1185,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Viewing full information of an application.
 
-   1. Prerequisites: The application item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card.
+   1. Prerequisites: The application item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card. You can execute `view app 1` first.
    
    1. Test case: `view app 2` <br>
    Expected: The right display will change and show the full information of the 2nd application in the list.
@@ -1192,9 +1200,9 @@ testers are expected to do more *exploratory* testing.
 
 1. Viewing full information of a profile item.
 
-   1. Prerequisites: The profile item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card.
+   1. Prerequisites: The profile item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card. You can execute `view me 1` first.
    
-   1. Test case: `view me 1` <br>
+   1. Test case: `view me 2` <br>
    Expected: The right display will change and show the full information of the 2nd profile item in the list.
    
    1. Test case: `view me 0` <br>
@@ -1207,10 +1215,10 @@ testers are expected to do more *exploratory* testing.
 
 1. Finding specific keyword(s) in the list of company/companies.
 
-   1. Prerequisites: List all companies using the `list com` command. At least one company. `Find` method and `list` method works hand in hand.
+   1. Prerequisites: List all companies using the `list com` command. At least one company. `find` method and `list` method works hand in hand.
    
-   1. Test case: `find com facebook` <br>
-   Expected: Any titles in the card that contains `facebook` will be matched. i.e `Facebook`, `Facebook Singapore`. However `FacebookMalaysia` will not be matched.
+   1. Test case: `find com google` <br>
+   Expected: Any titles in the card that contains `google` will be matched. i.e `Google`, `Google Florida`. However `GoogleMalaysia` will not be matched.
    
    1. Test case: `find com` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
@@ -1231,10 +1239,10 @@ testers are expected to do more *exploratory* testing.
 
 1. Finding specific keyword(s) in the list of application(s).
 
-   1. Prerequisites: List all applications using the `list app` command. At least one application. `Find` method and `list` method works hand in hand.
+   1. Prerequisites: List all applications using the `list app` command. At least one application. `find` method and `list` method works hand in hand.
    
-   1. Test case: `find app software` <br>
-   Expected: Any titles in the card that contains `software` will be matched. i.e `Software`, `Software Engineer`. However `SoftwareEngineer` will not be matched.
+   1. Test case: `find app engineer` <br>
+   Expected: Any titles in the card that contains `software` will be matched. i.e `Engineer`, `Front End Engineer`. However `FrontEndEngineer` will not be matched.
    
    1. Test case: `find app` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
@@ -1255,7 +1263,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Finding specific keyword(s) in the list of profile item(s).
 
-   1. Prerequisites: List all profile items using the `list me` command. At least one profile item. `Find` method and `list` method works hand in hand.
+   1. Prerequisites: List all profile items using the `list me` command. At least one profile item. `find` method and `list` method works hand in hand.
    
    1. Test case: `find me hackathon` <br>
    Expected: Any titles in the card that contains `hackathon` will be matched. i.e `Hackathon`, `2020 Hackathon`. However `ShoppeeHackathon` will not be matched.
@@ -1281,8 +1289,8 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: The company item must exist and access via a valid index as indicated on a card.
    
-   1. Test case: `delete com 1` <br>
-   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted company can be seen in the result display. All the internships in this company will be deleted as well. Note that if there is an application that is linked to any internships that this company had, it will be deleted as well.
+   1. Test case: `delete com 2` <br>
+   Expected: The second card will be deleted. Details of the deleted company can be seen in the result display. All the internships in this company will be deleted as well. Note that if there is an application that is linked to any internships that this company had, it will be deleted as well.
    
    1. Test case: `delete com 0` <br>
    Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
@@ -1312,7 +1320,7 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: The application item must exist and be access via a valid index.
    
    1. Test case: `delete app 1` <br>
-   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted application can be seen in the result display.
+   Expected: The first card will be deleted. Details of the deleted application can be seen in the result display.
    
    1. Test case: `delete app 0` <br>
    Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
@@ -1324,10 +1332,10 @@ testers are expected to do more *exploratory* testing.
 
 1. Deleting a profile item.
    
-   1. Prerequisites: The profile item must exist and be access via a valid index.
+   1. Prerequisites: The profile item must exist and be access via a valid index. At least 2 profile items for this manual testing.
    
-   1. Test case: `delete me 1` <br>
-   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted profile can be seen in the result display.
+   1. Test case: `delete me 2` <br>
+   Expected: The second card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted profile can be seen in the result display.
    
    1. Test case: `delete me 0` <br>
    Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
@@ -1335,20 +1343,11 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `delete me` <br>
    Expected: Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-**Matching skills to internship requirements**
-
-1. Finding if any internships requirements matches the skills that you have.
-
-   1. Prerequisites: There is some internships added and the skills that you have put into the profile matches the requirements in internship. You can try to add some internships with requirements for example HTML and add the skill with title being html.
-   
-   1. Test case: `match` <br>
-   Expected: A new window will pop-up and show you all the matched internships.
-
 **Switching of tabs**
 
 1. Switching tabs.
 
-   1. Prerequisites: Assuming you are on the company tab.
+   1. Prerequisites: Assuming you are on the company tab. If not execute `switch com`.
   
    1. Test case: `switch com` <br>
    Expected: A message will be displayed in the result display to inform you that you are already on the company tab.
@@ -1362,12 +1361,21 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `switch` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
+**Matching skills to internship requirements**
+
+1. Finding if any internships requirements matches the skills that you have.
+
+   1. Prerequisites: There is some internships added and the skills that you have put into the profile matches the requirements in internship. Now that now you have learnt how to use `switch` and `view`, use `switch com` and `switch me` and the relevant `view` commands to check the skills as well as some internships requirements.
+   
+   1. Test case: `match` <br>
+   Expected: A new window will pop-up and show you all the matched internships. Note that you can use <kbd>esc</kbd> on your keyboard to close the window.
+
 **Viewing help**
 
 1. Viewing help.
 
    1. Test case: `help` <br>
-   Expected: Help window appears with InternHunter's user guide url.
+   Expected: Help window appears with InternHunter's user guide url. Note that you can use <kbd>esc</kbd> on your keyboard to close the window.
 
 **Clearing all the data in the app**
 
@@ -1420,7 +1428,7 @@ The UI has also been completely revamped to have a different look and feel from 
 
 ### Appendix H: Sequence Diagrams
 
-<p align="center">Sequence diagram for HandleDeleteDisplaySwitchIndex</p>
+<p align="center">Sequence diagram for handle delete display switch index</p>
 
 <p id="handle-delete-display-switch-index-sequence-diagram" align="center"><img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png" width ="70%" height="70%"/></p>
 
