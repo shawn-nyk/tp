@@ -1068,7 +1068,7 @@ testers are expected to do more *exploratory* testing.
    Expected: In the right display, the information of the internship will be shown.
    
    1. Test case: `add int 1 j/Frontend developer r/React` <br>
-   Expected: In the right display, the information of the internship will be shown with requirements. Note that this test case is to facilitate the match command later on.
+   Expected: In the right display, the information of the internship will be shown with requirements.
   
    1. Test case: `add int 1` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
@@ -1096,7 +1096,7 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: This particular profile item's title should not be already added in InternHunter.
    
    1. Test case: `add me c/skill t/React d/Created a mini MOBA game` <br>
-   Expected: A card displaying information of this profile item is added. There will be a circular colorful icon on the right of the card that will represent skills. Note that this test case is to facilitate the match command.
+   Expected: A card displaying information of this profile item is added. There will be a circular colorful icon on the right of the card that will represent skills.
    
    1. Test case: `add me c/achievement t/Hackathon d/1st place` <br>
    Expected: Similar to the above test case, instead of a circular colorful icon, there will be a trophy representing achievement.
@@ -1136,7 +1136,7 @@ testers are expected to do more *exploratory* testing.
    Expected: The 1st internship at the first company will have the requirement java and python. Note that it overrides any existing requirements in that internship. (Note that if an application for this internship exist, these changes will be reflected as tags in blue boxes on the card in the application tab). Execute `switch app` to confirm it.
    
    1. Test case: `edit int 1 i/2 r/React r/CSS r/HTML` <br>
-   Expected: The 2nd internship at the first company will have the requirement React native. Similarly to the above test case, any existing requirements in that internship will be overidden. This test case is to facilitate the match command.
+   Expected: The 2nd internship at the first company will have the requirement React native. Similarly to the above test case, any existing requirements in that internship will be overidden.
    
    1. Test case: `edit int 1` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
@@ -1320,7 +1320,7 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: The application item must exist and be access via a valid index.
    
    1. Test case: `delete app 1` <br>
-   Expected: The first card will be deleted. Details of the deleted application can be seen in the result display. Note that if you have followed step by step, you will realised that the application tab is now empty. This is because in the previous command `delete int 1 i/1` it removes one of the internship along with it. And now since we execute `delete app 1` the last remaining application is deleted as well.
+   Expected: The first card will be deleted. Details of the deleted application can be seen in the result display.
    
    1. Test case: `delete app 0` <br>
    Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
@@ -1365,7 +1365,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Finding if any internships requirements matches the skills that you have.
 
-   1. Prerequisites: There is some internships added and the skills that you have put into the profile matches the requirements in internship. Now that now you have learnt how to use `switch`, use `switch com` and `switch me` to check the skills as well as some internships requirements. If you have followed step by step, in the profile tab, you will be able to see a skill with React as well in the company tab, you will be able to see a internship with the requirements for React.
+   1. Prerequisites: There is some internships added and the skills that you have put into the profile matches the requirements in internship. Now that now you have learnt how to use `switch` and `view`, use `switch com` and `switch me` and the relevant `view` commands to check the skills as well as some internships requirements.
    
    1. Test case: `match` <br>
    Expected: A new window will pop-up and show you all the matched internships. Note that you can use <kbd>esc</kbd> on your keyboard to close the window.
