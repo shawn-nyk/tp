@@ -2,11 +2,13 @@ package seedu.internhunter.logic.commands.util.internship;
 
 import static seedu.internhunter.commons.core.Messages.MESSAGE_DUPLICATE_ITEM;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_INVALID_ITEM_DISPLAYED_INDEX;
+import static seedu.internhunter.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_INDEX;
 import static seedu.internhunter.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_JOB_TITLE;
 import static seedu.internhunter.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_PERIOD;
 import static seedu.internhunter.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_REQUIREMENT;
 import static seedu.internhunter.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_WAGE;
 import static seedu.internhunter.model.util.ItemUtil.INTERNSHIP_NAME;
+import static seedu.internhunter.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.INVALID_JOB_TITLE_DASH;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.INVALID_PERIOD_EMPTY;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.INVALID_REQUIREMENT_EMPTY;
@@ -21,6 +23,9 @@ import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VA
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VALID_WAGE_3000;
 
 public class InternshipCommandTestUtil {
+
+    // Valid index
+    public static final String INDEX_DESC_FIRST = " " + PREFIX_INDEX + INDEX_FIRST.getOneBased();
 
     // Valid job titles
     public static final String JOB_TITLE_DESC_SWE = " " + PREFIX_JOB_TITLE + VALID_JOB_TITLE_SWE;

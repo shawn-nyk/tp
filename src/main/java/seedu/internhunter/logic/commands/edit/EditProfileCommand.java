@@ -34,8 +34,6 @@ import seedu.internhunter.ui.tabs.TabName;
  */
 public class EditProfileCommand extends EditCommand {
 
-    public static final String COMMAND_WORD = "edit";
-
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + PROFILE_ALIAS
             + ": Edits the details of a " + PROFILE_ITEM_NAME + " from InternHunter accessed "
             + "by the index number used in the displayed list.\n"
