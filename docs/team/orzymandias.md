@@ -51,6 +51,7 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
         [\#204](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/204), 
         [\#203](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/203),
         [\#168](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/168))
+        [\#400](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/400))
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=orzymandias&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
 
@@ -71,7 +72,7 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
     * Refactoring of Developer guide. (Pull request [\#256](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/256))
     
 * **Team-based tasks**:
-  * Maintaining the issue tracker.
+  * Maintaining the issue tracker and milestone management.
   * Integration code for common functions.
   * Documenting team effort.
 
@@ -119,4 +120,3 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
   [13](https://github.com/AY2021S1-CS2103T-W11-4/tp/issues/187), 
   [14](https://github.com/AY2021S1-CS2103T-W11-4/tp/issues/186), 
   [15](https://github.com/AY2021S1-CS2103T-W11-4/tp/issues/185)
-  

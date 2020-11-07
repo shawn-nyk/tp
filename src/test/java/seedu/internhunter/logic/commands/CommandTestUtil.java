@@ -129,7 +129,7 @@ public class CommandTestUtil {
      * {@code model}'s company list.
      */
     public static void showCompanyAtIndex(Model model, Index targetIndex) {
-        assertTrue(targetIndex.getZeroBased() < model.getFilteredCompanyList().size());
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredCompanyListSize());
 
         CompanyItem companyItem = model.getCompanyItemFromFilteredList(targetIndex.getZeroBased());
         final String[] splitJobTitle = companyItem.getCompanyNameValue().split("\\s+");
@@ -137,6 +137,22 @@ public class CommandTestUtil {
                 new CompanyNameContainsKeyWordsPredicate(Collections.singletonList(splitJobTitle[0])));
 
         assertEquals(1, model.getFilteredCompanyListSize());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show no profile items.
+     */
+    public static void showNoProfile(Model model) {
+        model.updateFilteredProfileList(p -> false);
+        assertEquals(model.getFilteredProfileListSize(), 0);
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show no companies.
+     */
+    public static void showNoCompany(Model model) {
+        model.updateFilteredProfileList(p -> false);
+        assertEquals(model.getFilteredProfileListSize(), 0);
     }
 
 }

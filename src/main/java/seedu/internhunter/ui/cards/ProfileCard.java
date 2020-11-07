@@ -2,6 +2,8 @@ package seedu.internhunter.ui.cards;
 
 import static seedu.internhunter.ui.panel.PanelDisplayKeyword.TITLE_DISPLAY_NAME;
 
+import java.util.LinkedHashMap;
+
 import javafx.scene.image.Image;
 import javafx.scene.transform.Translate;
 import seedu.internhunter.model.profile.ProfileItem;
@@ -20,6 +22,8 @@ public class ProfileCard extends Card<ProfileItem> {
     private static final int IMAGE_HEIGHT_WIDTH = 60;
     private static final int IMAGE_TRANSLATE_Y = -25;
 
+    private final LinkedHashMap<String, Object> mapping;
+
     /**
      * Creates a card display with information of {@code profileItem} and with a index of {@code displayIndex}.
      *
@@ -28,6 +32,7 @@ public class ProfileCard extends Card<ProfileItem> {
      */
     public ProfileCard(ProfileItem profileItem, int displayedIndex) {
         super(profileItem, displayedIndex);
+        mapping = getMapping();
         initializeUserCardGui();
     }
 
@@ -35,7 +40,7 @@ public class ProfileCard extends Card<ProfileItem> {
      * Sets the id, name and image on the card.
      */
     private void initializeUserCardGui() {
-        setId(displayedIndex);
+        setId(getDisplayedIndex());
         setTitle();
         setImageType();
     }

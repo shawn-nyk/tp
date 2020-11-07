@@ -1,6 +1,8 @@
 package seedu.internhunter.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.internhunter.logic.commands.CommandTestUtil.showNoCompany;
+import static seedu.internhunter.logic.commands.CommandTestUtil.showNoProfile;
 import static seedu.internhunter.logic.commands.MatchCommand.NO_MATCHING_INTERNSHIPS_MESSAGE;
 import static seedu.internhunter.logic.commands.MatchCommand.SHOWING_MATCH_COMMAND_MESSAGE;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.getSampleCompanyList;
@@ -13,6 +15,7 @@ import static seedu.internhunter.testutil.profile.SampleProfileItems.R_SKILL;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.getSampleProfileItemList;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
@@ -40,7 +43,7 @@ public class MatchCommandTest {
     }
 
     @Test
-    public void execute_noChangesToModel_success() {
+    public void execute_noChangesToModel_successfulMatch() {
         Model expectedModel = new ModelManager(getSampleCompanyList(), new ItemList<>(), getSampleProfileItemList(),
                 new UserPrefs());
         matchCommand.execute(model);
@@ -48,21 +51,76 @@ public class MatchCommandTest {
     }
 
     @Test
-    public void execute_onlyOneCompanyMatched_success() {
+    public void execute_onlyOneCompanyMatched_successfulMatch() {
         CommandResult actualCommandResult = matchCommand.execute(model);
         CommandResult expectedCommandResult = new CommandResult(SHOWING_MATCH_COMMAND_MESSAGE);
         expectedCommandResult.setMatchingInternships(FXCollections.observableArrayList(FACEBOOK_SWE));
         assertMatchCommandSuccess(actualCommandResult, expectedCommandResult, 1);
     }
 
-    @Test
-    public void execute_multipleCompaniesInternships_success() {
-        model.addProfileItem(R_SKILL);
-        CommandResult actualCommandResult = matchCommand.execute(model);
-        CommandResult expectedCommandResult = new CommandResult(SHOWING_MATCH_COMMAND_MESSAGE);
-        expectedCommandResult.setMatchingInternships(
-                FXCollections.observableArrayList(GOLDMAN_BA, FACEBOOK_SWE));
-        assertMatchCommandSuccess(actualCommandResult, expectedCommandResult, 2);
+    @Nested
+    class MultipleInternshipMatches {
+
+        @Test
+        public void execute_multipleCompaniesInternships_successfulMatch() {
+            model.addProfileItem(R_SKILL);
+            CommandResult actualCommandResult = matchCommand.execute(model);
+            CommandResult expectedCommandResult = new CommandResult(SHOWING_MATCH_COMMAND_MESSAGE);
+            expectedCommandResult.setMatchingInternships(FXCollections.observableArrayList(GOLDMAN_BA, FACEBOOK_SWE));
+            assertMatchCommandSuccess(actualCommandResult, expectedCommandResult, 2);
+        }
+
+        @Test
+        public void execute_filteredEmptyProfileList_successfulMatch() {
+            model.addProfileItem(R_SKILL);
+            showNoProfile(model);
+            CommandResult actualCommandResult = matchCommand.execute(model);
+            CommandResult expectedCommandResult = new CommandResult(SHOWING_MATCH_COMMAND_MESSAGE);
+            expectedCommandResult.setMatchingInternships(FXCollections.observableArrayList(GOLDMAN_BA, FACEBOOK_SWE));
+            assertMatchCommandSuccess(actualCommandResult, expectedCommandResult, 2);
+        }
+
+        @Test
+        public void execute_filteredEmptyCompanyList_successfulMatch() {
+            model.addProfileItem(R_SKILL);
+            showNoCompany(model);
+            CommandResult actualCommandResult = matchCommand.execute(model);
+            CommandResult expectedCommandResult = new CommandResult(SHOWING_MATCH_COMMAND_MESSAGE);
+            expectedCommandResult.setMatchingInternships(FXCollections.observableArrayList(GOLDMAN_BA, FACEBOOK_SWE));
+            assertMatchCommandSuccess(actualCommandResult, expectedCommandResult, 2);
+        }
+
+        @Test
+        public void execute_filteredBothLists_successfulMatch() {
+            model.addProfileItem(R_SKILL);
+            showNoCompany(model);
+            showNoProfile(model);
+            CommandResult actualCommandResult = matchCommand.execute(model);
+            CommandResult expectedCommandResult = new CommandResult(SHOWING_MATCH_COMMAND_MESSAGE);
+            expectedCommandResult.setMatchingInternships(FXCollections.observableArrayList(GOLDMAN_BA, FACEBOOK_SWE));
+            assertMatchCommandSuccess(actualCommandResult, expectedCommandResult, 2);
+        }
+
+        @Test
+        public void execute_differentCategoryNonMatch_successfulMatch() {
+            // Checks for achievement category
+            model = new ModelManager(getSampleCompanyList(), new ItemList<>(), new ItemList<>(), new UserPrefs());
+            ProfileItem profileItemToAdd =
+                    new ProfileItemBuilder(HTML_SKILL).withCategory(VALID_CATEGORY_ACHIEVEMENT).build();
+            model.addProfileItem(profileItemToAdd);
+            CommandResult actualCommandResult = matchCommand.execute(model);
+            CommandResult expectedCommandResult = new CommandResult(NO_MATCHING_INTERNSHIPS_MESSAGE);
+            assertMatchCommandSuccess(actualCommandResult, expectedCommandResult, 0);
+
+            // Checks for experience category
+            model = new ModelManager(getSampleCompanyList(), new ItemList<>(), new ItemList<>(), new UserPrefs());
+            profileItemToAdd = new ProfileItemBuilder(HTML_SKILL).withCategory(VALID_CATEGORY_EXPERIENCE).build();
+            model.addProfileItem(profileItemToAdd);
+            actualCommandResult = matchCommand.execute(model);
+            expectedCommandResult = new CommandResult(NO_MATCHING_INTERNSHIPS_MESSAGE);
+            assertMatchCommandSuccess(actualCommandResult, expectedCommandResult, 0);
+        }
+
     }
 
     @Test
@@ -80,26 +138,6 @@ public class MatchCommandTest {
                 new UserPrefs());
         CommandResult actualCommandResult = matchCommand.execute(model);
         CommandResult expectedCommandResult = new CommandResult(NO_MATCHING_INTERNSHIPS_MESSAGE);
-        assertMatchCommandSuccess(actualCommandResult, expectedCommandResult, 0);
-    }
-
-    @Test
-    public void execute_differentCategoryNonMatch_success() {
-        // Checks for achievement category
-        model = new ModelManager(getSampleCompanyList(), new ItemList<>(), new ItemList<>(), new UserPrefs());
-        ProfileItem profileItemToAdd =
-                new ProfileItemBuilder(HTML_SKILL).withCategory(VALID_CATEGORY_ACHIEVEMENT).build();
-        model.addProfileItem(profileItemToAdd);
-        CommandResult actualCommandResult = matchCommand.execute(model);
-        CommandResult expectedCommandResult = new CommandResult(NO_MATCHING_INTERNSHIPS_MESSAGE);
-        assertMatchCommandSuccess(actualCommandResult, expectedCommandResult, 0);
-
-        // Checks for experience category
-        model = new ModelManager(getSampleCompanyList(), new ItemList<>(), new ItemList<>(), new UserPrefs());
-        profileItemToAdd = new ProfileItemBuilder(HTML_SKILL).withCategory(VALID_CATEGORY_EXPERIENCE).build();
-        model.addProfileItem(profileItemToAdd);
-        actualCommandResult = matchCommand.execute(model);
-        expectedCommandResult = new CommandResult(NO_MATCHING_INTERNSHIPS_MESSAGE);
         assertMatchCommandSuccess(actualCommandResult, expectedCommandResult, 0);
     }
 
