@@ -941,10 +941,11 @@ Guarantees: InternHunter switches to the queried tab.
 
  1a. InternHunter detects an error in the input format. <br/>
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
-  Use case resumes from step 1.
+  Use case resumes from step 1. <br/>
  1b. InternHunter detects that the user is already in that tab. <br/>
   1b1. InternHunter displays a message and informs the user that he is already in that tab. <br/>
-
+  Use case resumes from step 1. <br/>
+  
 **Use case: UC24 - Clear all entries**
 
 Guarantees: All entries in InternHunter will be cleared.
