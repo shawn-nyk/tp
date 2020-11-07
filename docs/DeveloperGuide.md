@@ -1084,7 +1084,7 @@ testers are expected to do more *exploratory* testing.
    Expected: A card displaying information of this application is added. There will be a status showing as **interview**. The date will be shown as 24 dec and the year is taken to be from year 2000-2099(Note that the date have to be in the future). 
    
    1. Test case: `add app 1 i/2` (ensure that you have a second internship first) <br>
-   Expected: Similar to the above test case, however the status will be shown as the default test status **applied**. The date will be today's date and the time will be taken to be 2359.
+   Expected: Similar to the above test case, however the status will be shown as the default status **applied**. The date will be today's date and the time will be taken to be 2359.
    
    1. Test case: `add app 1` <br>
       Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
@@ -1133,7 +1133,7 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: The internship must exist and access via a valid index.
    
    1. Test case: `edit int 1 i/1 r/Java r/Python` <br>
-   Expected: The 1st internship at the first company will have the requirement java and python. Note that it overrides any existing requirements in that internship. (Note that if an application for this internship exist, these changes will be reflected as tags in blue boxes on the card in the application tab)
+   Expected: The 1st internship at the first company will have the requirement java and python. Note that it overrides any existing requirements in that internship. (Note that if an application for this internship exist, these changes will be reflected as tags in blue boxes on the card in the application tab). Execute `switch app` to confirm it.
    
    1. Test case: `edit int 1 i/2 r/React r/CSS r/HTML` <br>
    Expected: The 2nd internship at the first company will have the requirement React native. Similarly to the above test case, any existing requirements in that internship will be overidden. This test case is to facilitate the match command.
