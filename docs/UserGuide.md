@@ -854,6 +854,13 @@ Make sure your json files are in the correct folder and format. If not, InternHu
 
 ## **Command summary**
 
+### Navigating InternHunter
+
+Action     | Format
+-----------|------------------
+**Switch** | `switch TYPE`
+
+
 ### Company
 
 Action     | Format
@@ -895,17 +902,11 @@ Action     | Format
 **Find**   | `find me KEYWORD [ANOTHER_KEYWORD]...`
 **List**   | `list me`
 
-### Navigating InternHunter
-
-Action     | Format
------------|------------------
-**Match**  | `match`
-
 ### Finding the most suitable internships
 
 Action     | Format
 -----------|------------------
-**Switch** | `switch TYPE`
+**Match**  | `match`
 
 ### General
 
