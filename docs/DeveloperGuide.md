@@ -944,7 +944,7 @@ Guarantees: InternHunter switches to the queried tab.
   Use case resumes from step 1. <br/>
  1b. InternHunter detects that the user is already in that tab. <br/>
   1b1. InternHunter displays a message and informs the user that he is already in that tab. <br/>
-  Use case resumes from step 1. <br/>
+  Use case ends. <br/>
   
 **Use case: UC24 - Clear all entries**
 
