@@ -363,22 +363,22 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
 
 **Alternatives considered**
 
-* **Alternative 1 (current choice)**: `EditProfileCommand` interact with the model solely and not directly with model's 
- internal components: `ProfileItemList` and `FilteredProfileItemList`.
+* **Alternative 1 (current choice)**: Logic components interact with the model interface solely and not directly
+ with model's internal components: `profileList` and `FilteredList` in the `profileList`.
   * Pros:
     * This obeys the Law of Demeter which stresses for components to avoid interacting directly with internal
      components of other objects. This reduces coupling which increases testability as `EditProfileCommand` only
-     requires one model
-      stub as opposed to more objects stubs for testing.
+     requires one model stub as opposed to more objects stubs of the model for testing.
     * This also increases maintainability as `EditProfileCommand` only has to be concerned with the methods that
-     `Model` provides and not the other implementation details should they be subjected to change.
+     `Model` interface provides and not the other implementation details should they be subjected to change.
   * Cons:
-    * This increases code volume within `Model` as the model need to hold every method to interact with all the
-   collections it contains.
+    * This increases code volume within `Model` as the model interface needs to hold every method to interact with all
+     the collections it contains.
 
-* **Alternative 2 (used in v1.2)**: Due to the presence of other collections such as `companyList` in the model, the
- `filteredProfileLists` and `profileList` are both retrieved from the model within the `EditProfileCommand` and then the
-  `setItemList()` operation is called directly on the `profileList` to update its value.
+* **Alternative 2 (used in v1.2)**: The model acts as a container for its collections, allowing clients to retrieve
+ these collections and directly operate on it. For example, `FilteredList` and `profileList` are both retrieved from the
+  model from within the `EditProfileCommand` and then the `setItemList()` operation is called directly on the
+  `profileList` to update its value.
   
   ```
   model.getProfileList().setItem(profileItemToEdit, EditedProfileItem)
@@ -386,14 +386,13 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
 ![ExecuteEditMeCommandAlt.png](images/dg-profile/ExecuteEditMeCommandAlt.png)
 
   * Pros: 
-    * This reduces code volume by keeping `Model` lean and for `EditProfileObject`to interact with the objects it needs.
-    * This may marginally improve performance as it bypasses the `Model` to interact with the `profileList` and
-     `filteredProfileList` directly.
+    * This reduces code volume by keeping the `Model` interface lean as it no longer has to provide methods for all
+     operations of its internal components.
+    * This may marginally improve performance as it bypasses the `Model` interface to interact with the `profileList
+    ` and `FilteredList` directly.
   * Cons:
     * This exposes the internal components of the `Model` which increases coupling as `EditProfileCommand` is now
-     dependent on `filteredProfileList` and `profileList` of the `ItemListManager` reduces testability and
-      maintainability.
-    
+     dependent on `FilteredList` and of the `ItemListManager` reduces testability and maintainability.
 
 ### Switch screen feature
 
