@@ -291,7 +291,7 @@ Format: `list com`
 
 ### **Internship**
 
-#### Adding an internship: `add int`
+#### Adding an internship to a company: `add int`
 
 Adds an internship to a company.
 
@@ -304,7 +304,7 @@ Examples:
 
 ![AddInternship](images/AddInternship.png)
 
-#### Deleting an internship: `delete int`
+#### Deleting an internship from a company: `delete int`
 
 Deletes an internship from a company. The application (if any) made with this internship will also be deleted.
  
@@ -315,14 +315,17 @@ internship in the company’s list of internships.
 Example:
 - `delete int 3 i/2`
 
-#### Editing an internship: `edit int`
+#### Modifying an internship's details: `edit int`
 
 Edits an internship from a company. The application (if any) made with this internship will also be edited.
 
 Format:  `edit int INDEX i/INDEX [j/JOB_TITLE] [w/WAGE] [p/PERIOD] [r/REQUIREMENT]...`
 - `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
 internship in the company’s list of internships.
-- At least one of the optional fields must be provided.
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing `REQUIREMENTS`, all existing requirements get replaced by the new specified requirements.
+* You can remove all `REQUIREMENTS` by adding r/ without anything after it.
 
 Examples:
 - `edit int 3 i/1 j/Frontend Developer`
@@ -668,7 +671,7 @@ Example:
 
 <p align="center"><img src="images/ug-general/clearResult.png" width="70%" height="70%"/></p>
 
-#### Viewing Help: `help`
+#### Viewing help: `help`
 
 Displays a link to the InternHunter user guide.
 
@@ -693,7 +696,7 @@ Example:
 
 
 
-#### Exiting the Program: `exit`
+#### Exiting the program: `exit`
 
 Shows an exit confirmation dialog.
 
