@@ -112,7 +112,7 @@ Ready to begin? Let's get hunting.
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `InternHunter.jar` [here](https://github.com/AY2021S1-CS2103T-T15-4/tp/releases/tag/v1.2).
+1. Download the latest `InternHunter.jar` [here](https://github.com/AY2021S1-CS2103T-T15-4/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for InternHunter.
 
