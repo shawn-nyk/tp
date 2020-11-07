@@ -12,6 +12,10 @@ import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VA
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests the JobTitle field in an InternshipItem. Tests for the isValidJobTitle is little since the
+ * isValidAlphaNumericWord accounts for more of the tests.
+ */
 public class JobTitleTest {
 
     private static final JobTitle VALID_JOB_TITLE_ONE = new JobTitle(VALID_JOB_TITLE_SWE);
