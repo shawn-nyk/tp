@@ -512,7 +512,7 @@ Format: `list app`
 Example:
 - Following the result of `find app engineer` on the application list from the example shown in the
 [find application command](#finding-applications-find-app), execution of `list app` will update the list to show 
-**all** applications in your list of applications:
+**all** 4 applications in your list of applications:
 
 <p align="center"><img src="images/ug-application/ListApplication.png" width="100%"/></p>
 
