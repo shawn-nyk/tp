@@ -11,7 +11,7 @@ import static seedu.internhunter.model.util.ItemUtil.PROFILE_ITEM_NAME;
 
 import seedu.internhunter.logic.commands.Command;
 
-/*
+/**
  * Represents an Add Command for Items.
  */
 public abstract class AddCommand extends Command {
