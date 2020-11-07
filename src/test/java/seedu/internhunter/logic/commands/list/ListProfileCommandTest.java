@@ -35,7 +35,7 @@ class ListProfileCommandTest {
 
     @Test
     public void execute_listProfileIsNotFiltered_showsSameList() {
-        expectedModel.setProfileViewIndex(Index.fromOneBased(1));
+        expectedModel.setProfileViewIndex(INDEX_FIRST);
         expectedModel.setTabName(TabName.PROFILE); // default is Company
         assertCommandSuccess(new ListProfileCommand(), model, commandResult, expectedModel);
     }
@@ -43,7 +43,7 @@ class ListProfileCommandTest {
     @Test
     public void execute_listProfileIsFiltered_showsEverything() {
         showProfileItemAtIndex(model, INDEX_FIRST);
-        expectedModel.setProfileViewIndex(Index.fromOneBased(1));
+        expectedModel.setProfileViewIndex(INDEX_FIRST);
         expectedModel.setTabName(TabName.PROFILE); // default is Company
         assertCommandSuccess(new ListProfileCommand(), model, commandResult, expectedModel);
     }
