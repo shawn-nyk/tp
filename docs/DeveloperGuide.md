@@ -1049,10 +1049,10 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: Garena not already added in InternHunter.
 
-   1. Test case: `add com n/Garena a/201 Victoria St e/GarenaHires@garena.com p/65093545`  <br>
+   1. Test case: `add com n/Amazon a/201 Victoria St e/AmazonHires@gamazon.com p/65000545`  <br>
       Expected: A card displaying information of the company is added. The right display will show full information of the company added.
       
-   1. Test case: `add com n/Google a/101 Tampines St e/GoogleHires@google.com p/62343434 t/Cloud Computing t/Artificial Intelligence` <br>
+   1. Test case: `add com n/Google Florida a/101 Tampines St e/GoogleHires@google.com p/62343434 t/Cloud Computing t/Artificial Intelligence` <br>
       Expected: The difference compared to the above test case is, this adds some tags to the card which will show both `Cloud Computing` and `Artificial Intelligence`. It is reflected inside a blue box inside the card.
    
    1. Test case: `add com n/Facebook a/301 Raffles St e/FacebookHires@fb.com`  <br>
@@ -1080,10 +1080,10 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: An internship must exist first before you can apply for it.
    
-   1. Test case: `add app 1 i/1 d/24-12-20 s/interview` <br>
+   1. Test case: `add app 5 i/1 d/24-12-20 s/interview` <br>
    Expected: A card displaying information of this application is added. There will be a status showing as **interview**. The date will be shown as 24 dec and the year is taken to be from year 2000-2099(Note that the date have to be in the future). 
    
-   1. Test case: `add app 1 i/2` (ensure that you have a second internship first) <br>
+   1. Test case: `add app 5 i/3` (ensure that you have a third internship first) <br>
    Expected: Similar to the above test case, however the status will be shown as the default status **applied**. The date will be today's date and the time will be taken to be 2359.
    
    1. Test case: `add app 1` <br>
@@ -1218,7 +1218,7 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: List all companies using the `list com` command. At least one company. `find` method and `list` method works hand in hand.
    
    1. Test case: `find com google` <br>
-   Expected: Any titles in the card that contains `google` will be matched. i.e `Google`, `Google Singapore`. However `GoogleMalaysia` will not be matched.
+   Expected: Any titles in the card that contains `google` will be matched. i.e `Google`, `Google Florida`. However `GoogleMalaysia` will not be matched.
    
    1. Test case: `find com` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
@@ -1241,8 +1241,8 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: List all applications using the `list app` command. At least one application. `find` method and `list` method works hand in hand.
    
-   1. Test case: `find app frontend` <br>
-   Expected: Any titles in the card that contains `software` will be matched. i.e `Frontend`, `Frontend developer`. However `FrontendDeveloper` will not be matched.
+   1. Test case: `find app engineer` <br>
+   Expected: Any titles in the card that contains `software` will be matched. i.e `Engineer`, `Front End Engineer`. However `FrontEndEngineer` will not be matched.
    
    1. Test case: `find app` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
