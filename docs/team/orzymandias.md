@@ -12,11 +12,26 @@ own user profile, so that they can keep track of internships that they are inter
 It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
 
 ## Summary of contributions
-    
+
+  * Parser and Command Structure Design (Pull request [\#118](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/118))
+    * What it is: Allows one command word to be used for multiple entity types.
+    * Highlights: Instead of the need to implement a long switch statement for all the command words (where more than
+     20 commands words will need to be specified for every operation of each entity type), the parser is designed such
+     that a single command word can be used to specify the operation for multiple entity types. Similar commands
+     classes for different entities all extend the same abstract class so that the the operation's CommandParser can
+     leverage on polymorphism to return the command for execution. This is a useful design as it can be
+     applied to all the other kinds of entities which share common operations.
+  * Add internship (Pull request [\#151](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/151/))
+    * What it is: Allows the user to add an internship to a company's internship list.
+    * Highlights: The add internship command is a challenging feature to implement as it
+      needs to account for the composition relationship between the company and internship objects and how they interact. 
+      The addInternshipCommand has retrieve the company targeted, check for duplicates in a company's internship list
+      and then parse its fields carefully before it can be added. Careful consideration of how the addition of
+      internship would affect subsequent features such as application objects applying to it is also needed.
   * Add Profile Items (Pull request [\#142](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/142))
     * What it is: Allows the user to add a profile item to the profile list 
     * Highlights: This enhancement affects other commands like the match command and commands to be added in future. It
-     required an in-depth analysis of design alternatives. It allows users to keep track of profile item which stores
+     required an analysis of other design alternatives. It allows users to keep track of profile item which stores
       an title, category which is an enum type and a set of descriptors complying with a fixed set of characters.
      AddProfileParser has to ensure that user input obey certain constraints before it can be added to the profile
       list. 
@@ -26,24 +41,17 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
     * What it does: Allows the user to edit a profile item.
   * View a Profile Item (Pull request [\#155](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/155))
     * What it does: Allows the user to view a profile item from the app's profile list in full detail.
-  * Find profile items (Pull request [\#253](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/253))
+  * Find Profile Items (Pull request [\#253](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/253))
     * What it does: Allows the user to find profile items by title from the profile list.
-  * List all profiles(Pull request [\#253](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/253))
+  * List all Profiles Items (Pull request [\#253](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/253))
     * What it does: Allows the user to list all profile items.
-  * Add internship (Pull request [\#151](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/151/))
-    * What it is: Allows the user to add an internship to a company's internship list.
-    * Highlights: Unlike the add profile command, the add internship command is a more challenging feature as it
-     needs to account for the composition relationship between the company and internship objects. The
-      addInternshipCommand has retrieve the company targeted, check for duplicates in a company's internship list
-      
-  * Parser and Command Structure Design (Pull request [\#118](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/118)
-    * What it is: Allows one command word to be used for multiple entity types.
-    * Highlights: Instead of the need to implement a long switch statement for all the command words (where more than
-     20 commands words will need to be specified for every operation of each entity type), the parser is designed such
-     that a single command word can be used to specify the operation for multiple entity types. Similar commands
-     classes for different entities all extend the same abstract class so that the the operation's CommandParser can
-     leverage on polymorphism to return the command for execution. This is a useful design as it can be
-     applied to all the other kinds of entities which share common operations.
+  * Contributed significantly to improving the test coverage (Pull requests 
+        [\#352](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/352), 
+        [\#253](https://github.com/AY2021S1-CS2103-T15-4/tp/pull/253),
+        [\#204](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/204), 
+        [\#203](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/203),
+        [\#168](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/168))
+        [\#400](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/400))
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=orzymandias&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
 
@@ -64,11 +72,9 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
     * Refactoring of Developer guide. (Pull request [\#256](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/256))
     
 * **Team-based tasks**:
-  * Maintaining the issue tracker.
+  * Maintaining the issue tracker and milestone management.
   * Integration code for common functions.
   * Documenting team effort.
-
-* **Enhancements to existing features**:
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): 
@@ -114,4 +120,3 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
   [13](https://github.com/AY2021S1-CS2103T-W11-4/tp/issues/187), 
   [14](https://github.com/AY2021S1-CS2103T-W11-4/tp/issues/186), 
   [15](https://github.com/AY2021S1-CS2103T-W11-4/tp/issues/185)
-  

@@ -13,7 +13,6 @@ import seedu.internhunter.logic.parser.exceptions.ParseException;
 
 /**
  * Handles the general parsing of all commands.
- * TODO: Javadocs
  */
 public class GeneralParserUtil {
 
@@ -33,13 +32,14 @@ public class GeneralParserUtil {
      * Checks if the arguments provided by the user are valid. Arguments are valid if prefixes are all present and a
      * preamble is present when {@code isPreambleNeeded} is true, or that a preamble is absent when
      * {@code isPreambleNeeded} is false.
+     *
      * @param isPreambleNeeded Indicates if there should be a preamble or not.
      * @param argumentMultimap Argument multimap.
      * @param prefixes Prefixes required in the multimap.
      * @return True if and only if the prefixes are valid.
      */
     public static boolean argumentsAreValid(boolean isPreambleNeeded, ArgumentMultimap argumentMultimap,
-                                            Prefix... prefixes) {
+            Prefix... prefixes) {
         boolean prefixesArePresent = arePrefixesPresent(argumentMultimap, prefixes);
         boolean preambleIsEmpty = isPreambleEmpty(argumentMultimap);
         return prefixesArePresent && (preambleIsEmpty != isPreambleNeeded);
@@ -55,6 +55,13 @@ public class GeneralParserUtil {
         return argumentMultimap.getPreamble().isEmpty();
     }
 
+    /**
+     * Retrieves the index in the preamble.
+     *
+     * @param argumentMultimap Argument multimap.
+     * @return The index provided by the user, if it exists.
+     * @throws ParseException If the given index by the user is invalid.
+     */
     public static Index getIndexInPreamble(ArgumentMultimap argumentMultimap) throws ParseException {
         return parseIndex(argumentMultimap.getPreamble());
     }
@@ -95,6 +102,12 @@ public class GeneralParserUtil {
         }
     }
 
+    /**
+     * Obtains the array containing the arguments provided by the user.
+     *
+     * @param args Arguments provided by the user.
+     * @return Array containing the arguments provided by the user.
+     */
     private static String[] getArgumentsArr(String args) {
         return args.strip().split(" ", NUMBER_OF_ARGUMENTS);
     }
@@ -114,7 +127,11 @@ public class GeneralParserUtil {
     }
 
     /**
-     * todo javadocs
+     * Checks if the input command details is empty. Else throws a specified message.
+     *
+     * @param commandDetails String representing the input command details.
+     * @param message A String representing a specific error message.
+     * @throws ParseException if {@code commandDetails} is blank.
      */
     public static void checkCommandDetailsIsNotBlank(String commandDetails, String message) throws ParseException {
         if (commandDetails.isBlank()) {
@@ -123,7 +140,11 @@ public class GeneralParserUtil {
     }
 
     /**
-     * todo javadocs
+     * Removes whitespace from both ends of a string, and split the {@code args} by white space(s) between each words.
+     *
+     * @param args A string representing the input argument.
+     * @return An array of strings computed by splitting {@code args} around matches of the given white spaces between
+     * each words.
      */
     public static String[] getTrimmedArgsKeywords(String args) {
         String trimmedArgs = args.trim();

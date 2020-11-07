@@ -87,11 +87,6 @@ public class UniqueItemList<T extends Item> implements Iterable<T> {
         internalList.removeIf(item -> item.isSameItem(toRemove));
     }
 
-    public void setItems(UniqueItemList<T> replacement) {
-        requireNonNull(replacement);
-        internalList.setAll(replacement.internalList);
-    }
-
     /**
      * Replaces the contents of this list with {@code items}.
      * {@code items} must not contain duplicate items.
@@ -112,11 +107,22 @@ public class UniqueItemList<T extends Item> implements Iterable<T> {
         return internalUnmodifiableList;
     }
 
+    /**
+     * Returns the iterator of the internalList.
+     *
+     * @return Iterator representing the internalList.
+     */
     @Override
     public Iterator<T> iterator() {
         return internalList.iterator();
     }
 
+    /**
+     * Returns true if the 2 UniqueItemList lists have the same internalList.
+     *
+     * @param other Other object to compare to.
+     * @return True if the other UniqueItemList object has the same internalList as this one.
+     */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -124,6 +130,11 @@ public class UniqueItemList<T extends Item> implements Iterable<T> {
                 && internalList.equals(((UniqueItemList) other).internalList));
     }
 
+    /**
+     * Returns the hashcode of this internalList object, which is the hashcode of its internalList.
+     *
+     * @return Hashcode of this internalList object.
+     */
     @Override
     public int hashCode() {
         return internalList.hashCode();

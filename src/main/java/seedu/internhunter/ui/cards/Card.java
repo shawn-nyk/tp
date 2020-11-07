@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import seedu.internhunter.model.item.Item;
 import seedu.internhunter.ui.UiPart;
@@ -26,10 +27,6 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
 
     //FXML
     private static final String FXML = "Card.fxml";
-
-    protected T item;
-    protected int displayedIndex;
-    protected LinkedHashMap<String, Object> mapping;
 
     @FXML
     protected VBox statusBox;
@@ -54,6 +51,10 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
     @FXML
     private TextFlow l3;
 
+    private final T item;
+    private final int displayedIndex;
+    private final LinkedHashMap<String, Object> mapping;
+
     /**
      * Creates a card with information regarding {@code item} with index of {@code displayedIndex}.
      *
@@ -72,8 +73,26 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
      *
      * @return The item in the card.
      */
-    protected T getItem() {
+    public T getItem() {
         return item;
+    }
+
+    /**
+     * Retrieves the index in the card.
+     *
+     * @return The index in the card.
+     */
+    public int getDisplayedIndex() {
+        return displayedIndex;
+    }
+
+    /**
+     * Retrieves the item mapping.
+     *
+     * @return The item mapping.
+     */
+    public LinkedHashMap<String, Object> getMapping() {
+        return mapping;
     }
 
     /**
@@ -115,7 +134,8 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
      */
     private void setAllTags(String ... tagList) {
         for (String tag : tagList) {
-            Label label = new Label(tag); // figure out how to text align
+            Label label = new Label(tag);
+            label.setTextAlignment(TextAlignment.CENTER);
             tags.getChildren().add(label);
         }
     }

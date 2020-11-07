@@ -236,7 +236,7 @@ public class InternshipItem extends Item {
      * Returns true if both InternshipItems have the same identity and data fields.
      * This defines a stronger notion of equality between two InternshipItems.
      *
-     * @param other Object object to compare to.
+     * @param other Other object to compare to.
      * @return True if the other InternshipItem object has the same identity and data fields as this one.
      */
     @Override

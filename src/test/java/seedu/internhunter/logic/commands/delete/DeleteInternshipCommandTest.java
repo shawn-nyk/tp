@@ -131,26 +131,26 @@ public class DeleteInternshipCommandTest {
 
     @Test
     public void equals_test_success() {
-        DeleteInternshipCommand addInternshipCommand = new DeleteInternshipCommand(INDEX_FIRST, INDEX_SECOND);
+        DeleteInternshipCommand deleteInternshipCommand = new DeleteInternshipCommand(INDEX_FIRST, INDEX_SECOND);
 
         // same object -> returns true
-        assertEquals(addInternshipCommand, addInternshipCommand);
+        assertEquals(deleteInternshipCommand, deleteInternshipCommand);
 
         // same values -> returns true
-        DeleteInternshipCommand addCommandCopy = new DeleteInternshipCommand(INDEX_FIRST, INDEX_SECOND);
-        assertEquals(addCommandCopy, addInternshipCommand);
+        DeleteInternshipCommand deleteInternshipCommandCopy = new DeleteInternshipCommand(INDEX_FIRST, INDEX_SECOND);
+        assertEquals(deleteInternshipCommandCopy, deleteInternshipCommand);
 
         // different type -> returns false
-        assertNotEquals(addInternshipCommand, new DeleteApplicationCommand(INDEX_FIRST));
+        assertNotEquals(deleteInternshipCommand, new DeleteApplicationCommand(INDEX_FIRST));
 
         // null -> returns false
-        assertNotEquals(addInternshipCommand, null);
+        assertNotEquals(deleteInternshipCommand, null);
 
         // different company index -> returns false
-        assertNotEquals(addInternshipCommand, new DeleteInternshipCommand(INDEX_THIRD, INDEX_SECOND));
+        assertNotEquals(deleteInternshipCommand, new DeleteInternshipCommand(INDEX_THIRD, INDEX_SECOND));
 
         // different internship index -> returns false
-        assertNotEquals(addInternshipCommand, new DeleteInternshipCommand(INDEX_FIRST, INDEX_FIRST));
+        assertNotEquals(deleteInternshipCommand, new DeleteInternshipCommand(INDEX_FIRST, INDEX_FIRST));
     }
 
 }

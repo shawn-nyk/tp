@@ -26,10 +26,12 @@ import seedu.internhunter.model.util.DateUtil;
 public class AddApplicationCommandParser implements Parser<AddApplicationCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the AddCommand
-     * and returns an AddCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the AddApplicationCommand
+     * and returns a AddApplicationCommand object for execution.
      *
-     * @throws ParseException if the user input does not conform to the expected format
+     * @param args Arguments to be parsed.
+     * @return AddApplicationCommand object for execution.
+     * @throws ParseException if the user input does not conform to the expected format.
      */
     public AddApplicationCommand parse(String args) throws ParseException {
         requireNonNull(args);

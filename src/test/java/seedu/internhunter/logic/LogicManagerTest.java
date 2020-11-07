@@ -139,58 +139,58 @@ public class LogicManagerTest {
 
     @Test
     public void getProfileViewIndex_equals_success() {
-        assertEquals(logic.getProfileViewIndex(), Index.fromOneBased(1));
+        assertEquals(Index.fromOneBased(1), logic.getProfileViewIndex());
     }
 
     @Test
     public void getCompanyViewIndex_equals_success() {
-        assertEquals(logic.getCompanyViewIndex(), Index.fromOneBased(1));
+        assertEquals(Index.fromOneBased(1), logic.getCompanyViewIndex());
     }
 
     @Test
     public void getApplicationViewIndex_equals_success() {
-        assertEquals(logic.getApplicationViewIndex(), Index.fromOneBased(1));
+        assertEquals(Index.fromOneBased(1), logic.getApplicationViewIndex());
     }
 
     @Test
     public void setProfileViewIndex_equals_success() {
         logic.setProfileViewIndex(Index.fromOneBased(10));
-        assertEquals(logic.getProfileViewIndex(), Index.fromOneBased(10));
+        assertEquals(Index.fromOneBased(10), logic.getProfileViewIndex());
     }
 
     @Test
     public void setCompanyViewIndex_equals_success() {
         logic.setCompanyViewIndex(Index.fromOneBased(10));
-        assertEquals(logic.getCompanyViewIndex(), Index.fromOneBased(10));
+        assertEquals(Index.fromOneBased(10), logic.getCompanyViewIndex());
     }
 
     @Test
     public void setApplicationViewIndex_equals_success() {
         logic.setApplicationViewIndex(Index.fromOneBased(10));
-        assertEquals(logic.getApplicationViewIndex(), Index.fromOneBased(10));
+        assertEquals(Index.fromOneBased(10), logic.getApplicationViewIndex());
     }
 
     @Test
     public void getTabName_equals_success() {
-        assertEquals(logic.getTabName(), TabName.COMPANY);
+        assertEquals(TabName.COMPANY, logic.getTabName());
     }
 
     @Test
     public void setTabName_changeTabNameToCompanyTestEquals_success() {
         logic.setTabName(TabName.COMPANY);
-        assertEquals(logic.getTabName(), TabName.COMPANY);
+        assertEquals(TabName.COMPANY, logic.getTabName());
     }
 
     @Test
     public void setTabName_changeTabNameToApplicationTestEquals_success() {
         logic.setTabName(TabName.APPLICATION);
-        assertEquals(logic.getTabName(), TabName.APPLICATION);
+        assertEquals(TabName.APPLICATION, logic.getTabName());
     }
 
     @Test
     public void setTabName_changeTabNameToProfileTestEquals_success() {
         logic.setTabName(TabName.PROFILE);
-        assertEquals(logic.getTabName(), TabName.PROFILE);
+        assertEquals(TabName.PROFILE, logic.getTabName());
     }
 
     /**

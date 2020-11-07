@@ -34,9 +34,9 @@ public abstract class Item {
     public abstract LinkedHashMap<String, Object> getMapping();
 
     /**
-     * Gets the json adapted version of item.
+     * Gets the Json adapted version of item.
      *
-     * @return json adapted item.
+     * @return Json adapted item.
      */
     public abstract JsonAdaptedItem getJsonAdaptedItem();
 

@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_EDIT_SUCCESS;
 import static seedu.internhunter.commons.util.CollectionUtil.isAnyNonNull;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCommandResult;
+import static seedu.internhunter.logic.commands.util.CommandUtil.getFullListIndex;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getProfileItem;
 import static seedu.internhunter.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_CATEGORY;
 import static seedu.internhunter.logic.parser.clisyntax.ProfileCliSyntax.PREFIX_DESCRIPTOR;
@@ -32,8 +33,6 @@ import seedu.internhunter.ui.tabs.TabName;
  * Edits the details of a existing profileItem in the InternHunter.
  */
 public class EditProfileCommand extends EditCommand {
-
-    public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + PROFILE_ALIAS
             + ": Edits the details of a " + PROFILE_ITEM_NAME + " from InternHunter accessed "
@@ -75,8 +74,8 @@ public class EditProfileCommand extends EditCommand {
             throw new CommandException(String.format(Messages.MESSAGE_DUPLICATE_ITEM, PROFILE_NAME));
         }
 
+        model.setProfileViewIndex(getFullListIndex(profileItemToEdit, model.getProfileItemList()));
         model.setProfileItem(profileItemToEdit, editedProfileItem);
-        model.setProfileViewIndex(targetIndex);
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, PROFILE_NAME, editedProfileItem);
         return getCommandResult(model, editSuccessMessage, TabName.PROFILE);
     }

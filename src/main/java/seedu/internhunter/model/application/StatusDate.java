@@ -55,7 +55,7 @@ public class StatusDate {
     /**
      * Returns true if both StatusDates have the same year and day.
      *
-     * @param other Object object to compare to.
+     * @param other Other object to compare to.
      * @return True if the other StatusDate object has the same year and day as this one.
      */
     @Override

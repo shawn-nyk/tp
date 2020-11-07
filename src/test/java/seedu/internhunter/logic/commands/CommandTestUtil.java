@@ -41,7 +41,7 @@ public class CommandTestUtil {
     public static final String INVALID_INDEX_RANDOM_STRING = " " + PREFIX_INDEX + "random";
 
     public static final String METHOD_SHOULD_NOT_FAIL_MESSAGE = "Execution of method should not fail.";
-    private static final String EXECUTION_SHOULD_NOT_FAIL_MESSAGE = "Execution of command should not fail.";
+    public static final String EXECUTION_SHOULD_NOT_FAIL_MESSAGE = "Execution of command should not fail.";
 
     /**
      * Executes the given {@code command}, confirms that <br>
@@ -73,7 +73,7 @@ public class CommandTestUtil {
      * Executes the given {@code command}, confirms that <br>
      * - a {@code CommandException} is thrown <br>
      * - the CommandException message matches {@code expectedMessage} <br>
-     * - the address book, filtered person list and selected person in {@code actualModel} remain unchanged
+     * - the itemList, filtered item list and selected item in {@code actualModel} remain unchanged
      */
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
@@ -129,7 +129,7 @@ public class CommandTestUtil {
      * {@code model}'s company list.
      */
     public static void showCompanyAtIndex(Model model, Index targetIndex) {
-        assertTrue(targetIndex.getZeroBased() < model.getFilteredCompanyList().size());
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredCompanyListSize());
 
         CompanyItem companyItem = model.getCompanyItemFromFilteredList(targetIndex.getZeroBased());
         final String[] splitJobTitle = companyItem.getCompanyNameValue().split("\\s+");
@@ -137,6 +137,22 @@ public class CommandTestUtil {
                 new CompanyNameContainsKeyWordsPredicate(Collections.singletonList(splitJobTitle[0])));
 
         assertEquals(1, model.getFilteredCompanyListSize());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show no profile items.
+     */
+    public static void showNoProfile(Model model) {
+        model.updateFilteredProfileList(p -> false);
+        assertEquals(model.getFilteredProfileListSize(), 0);
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show no companies.
+     */
+    public static void showNoCompany(Model model) {
+        model.updateFilteredProfileList(p -> false);
+        assertEquals(model.getFilteredProfileListSize(), 0);
     }
 
 }

@@ -31,7 +31,11 @@ public class ViewProfileCommand extends ViewCommand {
     private final String messageAlreadyViewing;
     private final Index targetIndex;
 
-    /** todo javadocs */
+    /**
+     * Creates an ViewProfileCommand to view the specified {@code ProfileItem}.
+     *
+     * @param targetIndex Index used to reference the profile item in the profile list.
+     */
     public ViewProfileCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
         this.messageViewSuccess = String.format(MESSAGE_VIEW_SUCCESS, PROFILE_ITEM_NAME, targetIndex);
@@ -56,7 +60,7 @@ public class ViewProfileCommand extends ViewCommand {
         }
 
         if (model.getTabName() == TabName.PROFILE && model.getProfileViewIndex().equals(targetIndex)) {
-            return new CommandResult(messageAlreadyViewing, false, false , false, false);
+            return getAlreadyViewingCommandResult(messageAlreadyViewing);
         }
         model.setProfileViewIndex(targetIndex);
         return getCommandResult(model, messageViewSuccess, TabName.PROFILE);

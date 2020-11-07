@@ -2,6 +2,7 @@ package seedu.internhunter.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_ADD_SUCCESS;
+import static seedu.internhunter.commons.core.Messages.MESSAGE_DUPLICATE_ITEM;
 import static seedu.internhunter.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCompany;
@@ -44,8 +45,6 @@ public class AddInternshipCommand extends AddCommand {
             + PREFIX_PERIOD + "3 months "
             + PREFIX_REQUIREMENT + "React "
             + PREFIX_REQUIREMENT + "Vue ";
-
-    public static final String MESSAGE_DUPLICATE_ITEM = "This %1$s already exists in %2$s";
 
     private final Index companyIndex;
     private final JobTitle jobTitle;
@@ -92,4 +91,23 @@ public class AddInternshipCommand extends AddCommand {
         return getCommandResult(model, addSuccessMessage, TabName.COMPANY);
     }
 
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof AddInternshipCommand)) {
+            return false;
+        }
+
+        AddInternshipCommand otherAddInternshipCommand = (AddInternshipCommand) other;
+        return companyIndex.equals(otherAddInternshipCommand.companyIndex)
+                && jobTitle.equals(otherAddInternshipCommand.jobTitle)
+                && wage.equals(otherAddInternshipCommand.wage)
+                && period.equals(otherAddInternshipCommand.period)
+                && requirements.equals(otherAddInternshipCommand.requirements);
+    }
 }

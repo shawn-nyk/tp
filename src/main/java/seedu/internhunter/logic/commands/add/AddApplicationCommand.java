@@ -47,6 +47,11 @@ public class AddApplicationCommand extends AddCommand {
 
     /**
      * Creates an AddApplicationCommand to add the specified {@code ApplicationItem}.
+     *
+     * @param companyIndex Index used to reference a company item in the company list.
+     * @param internshipIndex Index used to reference an internship item in the internship list.
+     * @param status Status of this application.
+     * @param statusDate Status date of this application.
      */
     public AddApplicationCommand(Index companyIndex, Index internshipIndex, Status status, StatusDate statusDate) {
         requireAllNonNull(companyIndex, internshipIndex, status, statusDate);
@@ -57,10 +62,10 @@ public class AddApplicationCommand extends AddCommand {
     }
 
     /**
-     * Executes the command and returns the result message.
+     * Executes the AddApplicationCommand and returns the result message.
      *
      * @param model {@code Model} which the command should operate on.
-     * @return feedback message of the operation result for display.
+     * @return Feedback message of the operation result for display.
      * @throws CommandException If an error occurs during command execution.
      */
     @Override
@@ -90,6 +95,12 @@ public class AddApplicationCommand extends AddCommand {
         model.setApplicationViewIndex(Index.fromOneBased(size));
     }
 
+    /**
+     * Returns true if the 2 AddApplicationCommand have the same fields.
+     *
+     * @param other Other object to compare to.
+     * @return True if the other AddApplicationCommand object has the same fields as this one.
+     */
     @Override
     public boolean equals(Object other) {
         // short circuit if same object

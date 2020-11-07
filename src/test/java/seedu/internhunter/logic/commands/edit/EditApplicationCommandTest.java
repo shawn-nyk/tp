@@ -115,6 +115,7 @@ public class EditApplicationCommandTest {
         expectedModel.setApplication(model.getApplicationItemFromFilteredList(INDEX_FIRST.getZeroBased()),
                 editedApplication);
         expectedModel.setTabName(TabName.APPLICATION);
+        expectedModel.setApplicationViewIndex(INDEX_SECOND);
         CommandResult commandResult = new CommandResult(expectedMessage, false, false, true, true);
 
         assertCommandSuccess(editCommand, model, commandResult, expectedModel);

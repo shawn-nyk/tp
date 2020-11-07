@@ -17,7 +17,6 @@ import seedu.internhunter.logic.commands.Command;
 public abstract class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
-    //todo Update Message Usage to standardised format
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Adds a "
             + COMPANY_NAME + ", "
