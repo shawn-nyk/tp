@@ -462,7 +462,7 @@ for an interview on the 28 Dec 2020, 2pm. Executing `edit app 1 s/interview d/28
 application as follows:
 <p align="center"><img src="images/ug-application/EditApplication1.png" width="90%" height="90%"/></p>
 
-#### Viewing an application: `view app`
+#### Viewing an application's details in full: `view app`
 
 Selects an application in the list of applications to show in detail on the right panel.
  
@@ -670,7 +670,7 @@ Example:
  having executed a `find me` command, to view all the items in your profile list, execute `list me`: <br />
  ![ListProfile](images/ug-profile/ListProfile.png)
 
-### **General**
+### **Finding the most suitable internships**
 
 #### Generating matching internships: `match`
 
@@ -718,6 +718,8 @@ matching with the internships.
   :bulb: **Tip:** You can press Esc key to close the popup window!
   
 </div>
+
+### **General**
 
 #### Switching Tabs: `switch`
 
