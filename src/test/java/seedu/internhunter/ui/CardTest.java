@@ -185,7 +185,7 @@ public class CardTest {
 
             // different type -> return false
             assertFalse(companyCard.equals(0.5f));
-            assertFalse(companyCard.equals(0.5f));
+            assertFalse(companyCardWithIndustries.equals(0.5f));
 
             /* Test for profile card. The 3 methods that are being tested are getItem, getDisplayedIndex
              * and the equals method */

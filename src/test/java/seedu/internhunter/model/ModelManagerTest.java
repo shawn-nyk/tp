@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.internhunter.commons.core.GuiSettings;
+import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.model.application.ApplicationItem;
 import seedu.internhunter.model.application.ApplicationNameContainsKeyWordsPredicate;
 import seedu.internhunter.model.company.CompanyItem;
@@ -25,6 +26,7 @@ import seedu.internhunter.model.profile.ProfileItemContainsKeywordPredicate;
 import seedu.internhunter.testutil.application.ApplicationItemBuilder;
 import seedu.internhunter.testutil.company.CompanyItemBuilder;
 import seedu.internhunter.testutil.profile.ProfileItemBuilder;
+import seedu.internhunter.ui.tabs.TabName;
 
 public class ModelManagerTest {
 
@@ -247,6 +249,12 @@ public class ModelManagerTest {
     }
 
     @Test
+    public void getApplicationItemList_testIfEqualApplicationList_returnsEquals() {
+        modelManager.addApplication(applicationItemBuilder.build());
+        assertEquals(applicationItemList, modelManager.getApplicationItemList());
+    }
+
+    @Test
     public void deleteCompany_deleteCompanyFromList_returnsEqual() {
         modelManager.addCompany(companyItemBuilder.build());
         modelManager.deleteCompany(companyItemBuilder.build());
@@ -288,7 +296,7 @@ public class ModelManagerTest {
         modelManager.addApplication(applicationItemBuilder.build());
         ItemList<ApplicationItem> applicationItemItemList = new ItemList<>();
         applicationItemItemList.addItem(applicationItemBuilder.build());
-        assertEquals(applicationItemList, modelManager.getFilteredApplicationList());
+        assertEquals(applicationItemItemList, modelManager.getUnfilteredApplicationList());
     }
 
     @Test
@@ -365,6 +373,62 @@ public class ModelManagerTest {
         modelManager.setProfileItem(profileItemBuilder.build(), secondProfileItemBuilder.build());
         emptyProfileItemList.add(secondProfileItemBuilder.build());
         assertEquals(emptyProfileItemList, modelManager.getFilteredProfileList());
+    }
+
+    @Test
+    public void getProfileViewIndex_equals_success() {
+        assertEquals(Index.fromOneBased(1), modelManager.getProfileViewIndex());
+    }
+
+    @Test
+    public void getCompanyViewIndex_equals_success() {
+        assertEquals(Index.fromOneBased(1), modelManager.getCompanyViewIndex());
+    }
+
+    @Test
+    public void getApplicationViewIndex_equals_success() {
+        assertEquals(Index.fromOneBased(1), modelManager.getApplicationViewIndex());
+    }
+
+    @Test
+    public void setProfileViewIndex_equals_success() {
+        modelManager.setProfileViewIndex(Index.fromOneBased(10));
+        assertEquals(Index.fromOneBased(10), modelManager.getProfileViewIndex());
+    }
+
+    @Test
+    public void setCompanyViewIndex_equals_success() {
+        modelManager.setCompanyViewIndex(Index.fromOneBased(10));
+        assertEquals(Index.fromOneBased(10), modelManager.getCompanyViewIndex());
+    }
+
+    @Test
+    public void setApplicationViewIndex_equals_success() {
+        modelManager.setApplicationViewIndex(Index.fromOneBased(10));
+        assertEquals(Index.fromOneBased(10), modelManager.getApplicationViewIndex());
+    }
+
+    @Test
+    public void getTabName_equals_success() {
+        assertEquals(TabName.COMPANY, modelManager.getTabName());
+    }
+
+    @Test
+    public void setTabName_changeTabNameToCompanyTestEquals_success() {
+        modelManager.setTabName(TabName.COMPANY);
+        assertEquals(TabName.COMPANY, modelManager.getTabName());
+    }
+
+    @Test
+    public void setTabName_changeTabNameToApplicationTestEquals_success() {
+        modelManager.setTabName(TabName.APPLICATION);
+        assertEquals(TabName.APPLICATION, modelManager.getTabName());
+    }
+
+    @Test
+    public void setTabName_changeTabNameToProfileTestEquals_success() {
+        modelManager.setTabName(TabName.PROFILE);
+        assertEquals(TabName.PROFILE, modelManager.getTabName());
     }
 
     @Test
