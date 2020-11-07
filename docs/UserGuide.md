@@ -14,7 +14,7 @@ title: User Guide
 [3. About](#about) <br />
 [4. Features](#features) <br />
  [4.1. Navigating InternHunter](#navigating-internhunter) <br />
-  [4.1.1. Switching tabs][#switching-tabs-switch] <br />
+  [4.1.1. Switching tabs: `switch`](#switching-tabs-switch) <br />
  [4.2. Company](#company) <br />
   [4.2.1. Adding a company: `add com`](#adding-a-company-add-com) <br />
   [4.2.2. Deleting a company: `delete com`](#deleting-a-company-delete-com) <br />
