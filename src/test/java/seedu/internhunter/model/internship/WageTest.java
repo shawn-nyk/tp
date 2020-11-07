@@ -49,6 +49,8 @@ public class WageTest {
     @Test
     public void isValidWage_invalidDigits_success() {
         assertFalse(Wage.isValidWage("0")); // Zero
+        assertFalse(Wage.isValidWage("0123")); // Zero
+        assertFalse(Wage.isValidWage("+123")); // Starting with positive
         assertFalse(Wage.isValidWage("-4")); // Negative number
         assertFalse(Wage.isValidWage("400.00")); // Decimals
         assertFalse(Wage.isValidWage("0.400")); // Decimals
@@ -58,7 +60,8 @@ public class WageTest {
     public void isValidWage_invalidInput_success() {
         assertFalse(Wage.isValidWage("")); // empty string
         assertFalse(Wage.isValidWage("    ")); // spaces only
-        assertFalse(Wage.isValidWage("   213")); // space then number
+        assertFalse(Wage.isValidWage("   213")); // leading spaces
+        assertFalse(Wage.isValidWage("213  ")); // trailing spaces
         assertFalse(Wage.isValidWage("1221abc2131")); // alphabets within digits
         assertFalse(Wage.isValidWage("90 41")); // spaces within digits
     }
@@ -66,7 +69,6 @@ public class WageTest {
     @Test
     public void isValidOutputWage_validInput_success() {
         assertTrue(Wage.isValidOutputWage("1")); // Min value of 1
-        assertTrue(Wage.isValidOutputWage("12345")); // Normal wage
         assertTrue(Wage.isValidOutputWage("3000")); // Normal wage
         assertTrue(Wage.isValidOutputWage("123456789123456789123456789123456789")); // Very large number
 

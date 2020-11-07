@@ -105,7 +105,13 @@ public class InternshipItemTest {
     }
 
     @Test
-    public void matches_allRequirementsMatch_returnsTrue() {
+    public void matches_exactRequirementsMatch_returnsTrue() {
+        List<String> skillList = List.of(VALID_REQUIREMENT_PYTHON, VALID_REQUIREMENT_TENSOR);
+        assertTrue(LAZADA_DS.matches(skillList));
+    }
+
+    @Test
+    public void matches_moreRequirements_returnsTrue() {
         List<String> skillList = List.of(VALID_REQUIREMENT_PYTHON, VALID_REQUIREMENT_TENSOR, VALID_REQUIREMENT_VUE);
         assertTrue(LAZADA_DS.matches(skillList));
     }
@@ -123,7 +129,13 @@ public class InternshipItemTest {
     }
 
     @Test
-    public void matches_matchWithDifferentCase_returnsTrue() {
+    public void matches_emptySpace_returnsFalse() {
+        List<String> skillList = List.of(VALID_REQUIREMENT_PYTHON + " ");
+        assertFalse(LAZADA_DS.matches(skillList));
+    }
+
+    @Test
+    public void matches_differentCase_returnsTrue() {
         List<String> skillList = List.of(VALID_REQUIREMENT_PYTHON.toUpperCase());
         assertTrue(LAZADA_DS.matches(skillList));
     }
