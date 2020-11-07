@@ -895,12 +895,22 @@ Action     | Format
 **Find**   | `find me KEYWORD [ANOTHER_KEYWORD]...`
 **List**   | `list me`
 
-### General
+### Navigating InternHunter
 
 Action     | Format
 -----------|------------------
 **Match**  | `match`
+
+### Finding the most suitable internships
+
+Action     | Format
+-----------|------------------
 **Switch** | `switch TYPE`
+
+### General
+
+Action     | Format
+-----------|------------------
 **Clear**  | `clear`
 **Help**   | `help`
 **Exit**   | `exit`
