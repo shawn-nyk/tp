@@ -172,7 +172,7 @@ Symbol | What it means
   e.g. `[r/REQUIREMENT]...` can be used as `r/Rust`, `r/React native r/JavaScript` etc.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `p/PERIOD w/WAGE`, `w/WAGE p/PERIOD` is also acceptable. Note that the command word and the item type should still come first.
+  e.g. if the command specifies `e/EMAIL a/ADDRESS`, `a/ADDRESS e/EMAIL` is also acceptable. Note that the command word and the item type should still come first.
 
 * `INDEX` refers to the index of the item (Company, Internship, Application, or Profile Item) in its respective displayed list of
  items unless stated otherwise. All `INDEX`es are positive integers *(1, 2, 3, ...)*.<br>
