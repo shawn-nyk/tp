@@ -386,9 +386,9 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
 ![ExecuteEditMeCommandAlt.png](images/dg-profile/ExecuteEditMeCommandAlt.png)
 
   * Pros: 
-    * This reduces code volume by keeping the `Model` interface lean as it no longer has to provide methods for all
+    * This reduces code volume by keeping the model interface lean as it no longer has to provide methods for all
      operations of its internal components.
-    * This may marginally improve performance as it bypasses the `Model` interface to interact with the `profileList
+    * This may marginally improve performance as it bypasses the model interface to interact with the `profileList
     ` and `FilteredList` directly.
   * Cons:
     * This exposes the internal components of the `Model` which increases coupling as `EditProfileCommand` is now
