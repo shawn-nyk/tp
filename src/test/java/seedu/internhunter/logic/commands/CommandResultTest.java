@@ -78,6 +78,9 @@ public class CommandResultTest {
 
         // different isSwitchDisplay value -> returns false
         assertFalse(commandResult.equals(commandResultIsSwitchDisplayFalse));
+
+        // different isSwitchDisplay value -> returns false
+        assertFalse(commandResult.equals(commandResultWithMatchingInternship));
     }
 
     @Test
@@ -99,6 +102,9 @@ public class CommandResultTest {
 
         // different isSwitchDisplay value -> returns different hashcode
         assertNotEquals(commandResult.hashCode(), commandResultIsSwitchDisplayFalse.hashCode());
+
+        // different matchingInternships value -> returns different hashcode
+        assertNotEquals(commandResult.hashCode(), commandResultWithMatchingInternship.hashCode());
     }
 
     @Test
