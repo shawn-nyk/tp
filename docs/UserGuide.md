@@ -21,9 +21,9 @@ title: User Guide
   [4.1.5. Finding companies: `find com`](#finding-companies-find-com) <br />
   [4.1.6. Listing all companies: `list com`](#listing-all-companies-list-com) <br />
  [4.2. Internship](#internship) <br />
-  [4.2.1. Adding an internship: `add int`](#adding-an-internship-add-int) <br />
-  [4.2.2. Deleting an internship: `delete int`](#deleting-an-internship-delete-int) <br />
-  [4.2.3. Editing an internship: `edit int`](#editing-an-internship-edit-int) <br />
+  [4.2.1. Adding an internship to a company: `add int`](#adding-an-internship-to-a-company-add-int) <br />
+  [4.2.2. Deleting an internship from a company: `delete int`](#deleting-an-internship-from-a-company-delete-int) <br />
+  [4.2.3. Modifying an internship's details: `edit int`](#modifying-an-internships-details-edit-int) <br />
  [4.3. Application](#application) <br />
   [4.3.1. Applying for an internship: `add app`](#applying-for-an-internship-add-app) <br />
   [4.3.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
@@ -319,12 +319,13 @@ Example:
 
 ### **Internship**
 
-#### Adding an internship: `add int`
+#### Adding an internship to a company: `add int`
 
 Adds an internship to a company.
 
 Format: `add int INDEX j/JOB_TITLE [w/WAGE] [p/PERIOD] [r/REQUIREMENT]...`
 - `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`, `Jun - Aug 2021`).
+- 'WAGE' must be a positive integer.
 
 Examples:
 - `add int 3 j/Web Developer w/3000 p/30 May to 30 Aug r/React r/HTML5`
@@ -332,7 +333,7 @@ Examples:
 
 ![AddInternship](images/AddInternship.png)
 
-#### Deleting an internship: `delete int`
+#### Deleting an internship from a company: `delete int`
 
 Deletes an internship from a company. The application (if any) made with this internship will also be deleted.
  
@@ -343,14 +344,17 @@ internship in the company’s list of internships.
 Example:
 - `delete int 3 i/2`
 
-#### Editing an internship: `edit int`
+#### Modifying an internship's details: `edit int`
 
 Edits an internship from a company. The application (if any) made with this internship will also be edited.
 
 Format:  `edit int INDEX i/INDEX [j/JOB_TITLE] [w/WAGE] [p/PERIOD] [r/REQUIREMENT]...`
 - `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
 internship in the company’s list of internships.
-- At least one of the optional fields must be provided.
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing `REQUIREMENTS`, all existing requirements get replaced by the new specified requirements.
+* You can remove all `REQUIREMENTS` by adding r/ without anything after it.
 
 Examples:
 - `edit int 3 i/1 j/Frontend Developer`
@@ -462,7 +466,7 @@ for an interview on the 28 Dec 2020, 2pm. Executing `edit app 1 s/interview d/28
 application as follows:
 <p align="center"><img src="images/ug-application/EditApplication1.png" width="90%" height="90%"/></p>
 
-#### Viewing an application: `view app`
+#### Viewing an application's details in full: `view app`
 
 Selects an application in the list of applications to show in detail on the right panel.
  
@@ -512,7 +516,7 @@ Format: `list app`
 Example:
 - Following the result of `find app engineer` on the application list from the example shown in the
 [find application command](#finding-applications-find-app), execution of `list app` will update the list to show 
-**all** applications in your list of applications:
+**all** 4 applications in your list of applications:
 
 <p align="center"><img src="images/ug-application/ListApplication.png" width="100%"/></p>
 
@@ -670,7 +674,7 @@ Example:
  having executed a `find me` command, to view all the items in your profile list, execute `list me`: <br />
  ![ListProfile](images/ug-profile/ListProfile.png)
 
-### **General**
+### **Finding the most suitable internships**
 
 #### Generating matching internships: `match`
 
@@ -719,6 +723,8 @@ matching with the internships.
   
 </div>
 
+### **General**
+
 #### Switching Tabs: `switch`
 
 Switches between tabs.
@@ -764,7 +770,7 @@ Example:
 
 <p align="center"><img src="images/ug-general/clearResult.png" width="70%" height="70%"/></p>
 
-#### Viewing Help: `help`
+#### Viewing help: `help`
 
 Displays a link to the InternHunter user guide.
 
@@ -789,7 +795,7 @@ Example:
 
 
 
-#### Exiting the Program: `exit`
+#### Exiting the program: `exit`
 
 Shows an exit confirmation dialog.
 
@@ -848,6 +854,13 @@ Make sure your json files are in the correct folder and format. If not, InternHu
 
 ## **Command summary**
 
+### Navigating InternHunter
+
+Action     | Format
+-----------|------------------
+**Switch** | `switch TYPE`
+
+
 ### Company
 
 Action     | Format
@@ -889,12 +902,16 @@ Action     | Format
 **Find**   | `find me KEYWORD [ANOTHER_KEYWORD]...`
 **List**   | `list me`
 
-### General
+### Finding the most suitable internships
 
 Action     | Format
 -----------|------------------
 **Match**  | `match`
-**Switch** | `switch TYPE`
+
+### General
+
+Action     | Format
+-----------|------------------
 **Clear**  | `clear`
 **Help**   | `help`
 **Exit**   | `exit`

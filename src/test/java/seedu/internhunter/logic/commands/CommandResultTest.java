@@ -78,6 +78,9 @@ public class CommandResultTest {
 
         // different isSwitchDisplay value -> returns false
         assertFalse(commandResult.equals(commandResultIsSwitchDisplayFalse));
+
+        // different isSwitchDisplay value -> returns false
+        assertFalse(commandResult.equals(commandResultWithMatchingInternship));
     }
 
     @Test
@@ -99,6 +102,9 @@ public class CommandResultTest {
 
         // different isSwitchDisplay value -> returns different hashcode
         assertNotEquals(commandResult.hashCode(), commandResultIsSwitchDisplayFalse.hashCode());
+
+        // different matchingInternships value -> returns different hashcode
+        assertNotEquals(commandResult.hashCode(), commandResultWithMatchingInternship.hashCode());
     }
 
     @Test
@@ -210,10 +216,10 @@ public class CommandResultTest {
         internshipItems.add(internshipItemBuilder.build());
 
         // command result which contains some matching internship
-        assertEquals(commandResultWithMatchingInternship.getMatchingInternships(), internshipItems);
+        assertEquals(internshipItems, commandResultWithMatchingInternship.getMatchingInternships());
 
         // command result which doesnt contain any matching internship
-        assertEquals(commandResult.getMatchingInternships(), FXCollections.observableArrayList());
+        assertEquals(FXCollections.observableArrayList(), commandResult.getMatchingInternships());
     }
 
     @Test

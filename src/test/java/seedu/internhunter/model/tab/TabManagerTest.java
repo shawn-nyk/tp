@@ -29,12 +29,12 @@ public class TabManagerTest {
     public void setTabName_false_success() {
         // default tab state for tab manager is at Company
 
-        // tab manager state for tab is now at profile
+        // tabManagerProfileTab state for tab is now at profile
         TabManager tabManagerProfileTab = new TabManager();
         tabManagerProfileTab.setTabName(TabName.PROFILE);
         assertFalse(tabManagerProfileTab.equals(tabManager));
 
-        // tab manager state for tab is now at profile
+        // tabManagerApplicationTab state for tab is now at profile
         TabManager tabManagerApplicationTab = new TabManager();
         tabManagerApplicationTab.setTabName(TabName.APPLICATION);
         assertFalse(tabManagerApplicationTab.equals(tabManager));
@@ -75,6 +75,10 @@ public class TabManagerTest {
 
     @Test
     public void equals() {
+        // same value -> return true
+        TabManager tabManagerSameValue = new TabManager();
+        assertTrue(tabManager.equals(tabManagerSameValue));
+
         // same object -> returns true
         assertTrue(tabManager.equals(tabManager));
 

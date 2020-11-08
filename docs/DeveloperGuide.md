@@ -471,7 +471,7 @@ The above activity diagram shows the logic and the path execution when the switc
 
 #### What it is
 After a command is successfully executed, InternHunter automatically saves users' data to JSON files. Moreover, 
-everytime the `GuiSettings` is modified, InternHunter updates the user preferences JSON file. Users can transfer or 
+every time the `GuiSettings` is modified, InternHunter updates the user preferences JSON file. Users can transfer or 
 backup the JSON files manually. The storage component is responsible for both reading and saving the data.
 
 #### Implementation
@@ -491,7 +491,7 @@ object.
  
  ![JsonAdaptedItemClassDiagram](images/JsonAdaptedItemClassDiagram.png)
  
- `JsonAdaptedItem` is an abstract class representing Jackson-friendly version of the `Item` class in the model component.
+ `JsonAdaptedItem` is an abstract class representing a Jackson-friendly version of the `Item` class in the model component.
   It has one method `toModelType()` which convert itself to an `Item` object. There are 4 classes extending 
   `JsonAdaptedItem`:
   * `JsonAdaptedApplicationItem` the Jackson-friendly version of `ApplicationItem`.
@@ -516,7 +516,7 @@ Both `ItemListStorage` and `JsonSerializableItemList` use  the same logic regard
 * **Alternative 1: current choice**: Creates a base abstract class `JsonAdaptedItem` and makes `ItemListStorage` 
 and `JsonSerializableItemList` use generics.
     * Pros: 
-        * Adheres to OOP principle, polymorphism.
+        * Adheres to OOP principle, specifically polymorphism.
         * Less code duplication.
         * Makes adding a new `Item` type easy. To be able to save and read a new `Item` type, only a new 
         class representing its Jackson-friendly version needs to be created.
@@ -538,16 +538,16 @@ and `JsonSerializableItemList` use generics.
 ### Clear Feature
 
 #### What it is
-In the beginning, user can see how the app works with sample data. After that, user can decide to 
+In the beginning, users can see how the app works with sample data. After that, users can decide to 
 clear all the entries in InternHunter with just a `clear` command.
 
 #### Implementation
 
-The following diagram illustrates whether InternHunter use sample data.
+The following diagram illustrates whether InternHunter uses sample data.
 
 ![SampleDataActivityDiagram](images/SampleDataActivityDiagram.png)
 
-When user enters the `clear` command, InternHunter will reset all three lists. Here is a sequence diagram showcasing how
+When users enters the `clear` command, InternHunter will reset all three lists. Here is a sequence diagram showcasing how
 InternHunter does it.
 
 ![ClearCommandSequenceDiagram](images/ClearCommandSequenceDiagram.png)
@@ -556,7 +556,9 @@ InternHunter does it.
 
 ##### Aspect: How to clear the lists
 
-InternHunter only lets users create applications for internships already added to companies.
+InternHunter only lets users create applications for internships already added to companies. When users apply for an internship,
+ InternHunter will create an `ApplicationItem` with the given `InternsipItem`. Hence, InternHunter needs to
+check whether the internships in both lists are consistent.
 
 **Alternatives Considered**
 
@@ -565,11 +567,11 @@ InternHunter only lets users create applications for internships already added t
         * Guarantees data consistency.
         
     * Cons:
-        * Less freedom for the users.
+        * Less freedom for users.
 
-* **Alternative 2**: Each list can be cleared individually.
+* **Alternative 2**: Clear each list individually.
     * Pros:
-        * Users can choose which lists to be cleared.
+        * Users can choose which list to be cleared.
     
     * Cons:
         * High risk of data inconsistency due to the linkage between company and application lists.

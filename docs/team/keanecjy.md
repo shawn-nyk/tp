@@ -27,14 +27,14 @@ morph the existing AB3 implementation into our own, adding a total of more than 
     consideration of design alternatives, since it required both the company and profile lists to interact with
     each other. Keen insight on the types of algorithms needed was also required to allow more accurate matching.
   * Delete an internship (Pull request [\#140](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/140))
-    * What it does: Deletes the internship from the internship list.
+    * What it does: Deletes an internship from the internship list.
     * Highlights: This command was particularly tricky to implement, since deleting an internship would mean that
     any application linked to this internship has to be deleted as well. Difficulty comes in since internship does not
     have any association nor dependency to the application item. Therefore, the deletion has to be done through the
     model instead and there is a need to create additional methods to delete an application that corresponds to this
     internship.
   * Apply for an internship (Pull request [\#132](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/132))
-    * What it does: Allows the user to add an application.
+    * What it does: Selects an internship from a company and adds it to the list of applications.
     * Highlights: This command required careful parsing of the input since an internship can only be accessed
     through a company in the company list. Thus double indexing was required for the user to reference the internship
     and add it into the application list. Moreover, all internship applications also come with a date, which required
@@ -46,7 +46,7 @@ morph the existing AB3 implementation into our own, adding a total of more than 
   * Delete an application (Pull request [\#140](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/140))
     * Allows the user to delete an application.
   * Update an application (Pull request [\#152](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/152))
-    * Allows the user to edit an application.  
+    * Updates an application in the list of applications.
   * View an application (Pull request [\#152](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/152))
     * What it does: Allows the user to view an application in full detail.
   * Created and maintained the ApplicationItem and InternshipItem classes and fields in the model. (Pull request [\#98](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/98))
@@ -101,7 +101,7 @@ morph the existing AB3 implementation into our own, adding a total of more than 
     - Added [documentation](https://ay2021s1-cs2103t-t15-4.github.io/tp/UserGuide.html#application) for all commands in application, i.e. add, delete, edit, view, find, list
     - Added [documentation](https://ay2021s1-cs2103t-t15-4.github.io/tp/UserGuide.html#generating-matching-internships-match) for match internships command
 - Developer Guide:
-    - Added UML and  [Logic component](https://ay2021s1-cs2103t-t15-4.github.io/tp/DeveloperGuide.html#logic-component),
+    - Added UML and documentation for [Logic component](https://ay2021s1-cs2103t-t15-4.github.io/tp/DeveloperGuide.html#logic-component),
     [Implementation of Command classes](https://ay2021s1-cs2103t-t15-4.github.io/tp/DeveloperGuide.html#implementation-of-command-classes), 
     [Match Command feature](https://ay2021s1-cs2103t-t15-4.github.io/tp/DeveloperGuide.html#match-command-feature),
     [Glossary](https://ay2021s1-cs2103t-t15-4.github.io/tp/DeveloperGuide.html#appendix-e-glossary)
