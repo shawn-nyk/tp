@@ -12,7 +12,6 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 import seedu.internhunter.model.application.ApplicationItem;
-import seedu.internhunter.model.item.Item;
 import seedu.internhunter.ui.tabs.TabName;
 
 /**
@@ -50,7 +49,7 @@ public class ApplicationDisplay extends InformationDisplay<ApplicationItem> {
      * @param primaryStage The stage in which this display should show.
      * @return An Optional containing the display information of the Application at that particular Index.
      */
-    public static Optional<InformationDisplay<? extends Item>> getApplicationDisplay(
+    public static Optional<ApplicationDisplay> getApplicationDisplay(
         ObservableList<ApplicationItem> applicationItems, int index, Stage primaryStage) {
 
         if (IS_EMPTY_DATA_LIST.test(applicationItems)) {

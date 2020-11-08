@@ -5,6 +5,7 @@ import static seedu.internhunter.commons.core.Messages.MESSAGE_EDIT_SUCCESS;
 import static seedu.internhunter.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCommandResult;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCompany;
+import static seedu.internhunter.logic.commands.util.CommandUtil.getFullListIndex;
 import static seedu.internhunter.logic.parser.clisyntax.GeneralCliSyntax.PREFIX_INDEX;
 import static seedu.internhunter.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_JOB_TITLE;
 import static seedu.internhunter.logic.parser.clisyntax.InternshipCliSyntax.PREFIX_PERIOD;
@@ -80,10 +81,10 @@ public class EditInternshipCommand extends EditCommand {
                 .anyMatch(editedInternship::isSameItem)) {
             throw new CommandException(String.format(Messages.MESSAGE_DUPLICATE_ITEM, INTERNSHIP_NAME));
         }
-
+        model.setCompanyViewIndex(getFullListIndex(companyItem, model.getCompanyItemList()));
         editInternship(internshipToEdit, editedInternship);
         model.updateFilteredCompanyList(PREDICATE_SHOW_ALL_ITEMS);
-        model.setCompanyViewIndex(companyIndex);
+
         String editSuccessMessage = String.format(MESSAGE_EDIT_SUCCESS, INTERNSHIP_NAME, editedInternship);
         return getCommandResult(model, editSuccessMessage, TabName.COMPANY);
     }

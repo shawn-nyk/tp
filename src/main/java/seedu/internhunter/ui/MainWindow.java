@@ -186,7 +186,7 @@ public class MainWindow extends UiPart<Stage> {
      * Adds the information display to the {@code MainWindow}.
      */
     void addInformationDisplay() {
-        Optional<InformationDisplay<? extends Item>> newInformationDisplay = getCompanyDisplay(companyItems,
+        Optional<? extends InformationDisplay<? extends Item>> newInformationDisplay = getCompanyDisplay(companyItems,
             0, primaryStage);
 
         if (!IS_EMPTY_DISPLAY.test(newInformationDisplay)) {
@@ -296,7 +296,7 @@ public class MainWindow extends UiPart<Stage> {
     public void changeDisplay() {
         TabName tabName = logic.getTabName();
         int index;
-        Optional<InformationDisplay<? extends Item>> newInformationDisplay = Optional.empty();
+        Optional<? extends InformationDisplay<? extends Item>> newInformationDisplay = Optional.empty();
         switch (tabName) {
         case COMPANY:
             index = logic.getCompanyViewIndex().getZeroBased();

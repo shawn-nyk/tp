@@ -8,12 +8,16 @@ import seedu.internhunter.ui.tabs.TabName;
 public interface Tab {
 
     /**
-     * Replaces the current tab name with {@code tabName}.
+     * Sets the current tab name with {@code tabName}.
+     *
+     * @param tabName The new TabName to change to.
      */
     void setTabName(TabName tabName);
 
     /**
-     * Retrieves the current tab name
+     * Retrieves the current tab name.
+     *
+     * @return the current tab name.
      */
     TabName getTabName();
 

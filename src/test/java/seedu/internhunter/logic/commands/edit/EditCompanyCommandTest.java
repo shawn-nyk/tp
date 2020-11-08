@@ -2,6 +2,7 @@ package seedu.internhunter.logic.commands.edit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_EDIT_SUCCESS;
 import static seedu.internhunter.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -15,6 +16,7 @@ import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_EM
 import static seedu.internhunter.testutil.company.CompanyItemFieldsUtil.VALID_PHONE_EIGHT_NUMBERS;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.AMAZON;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.GARENA;
+import static seedu.internhunter.testutil.company.SampleCompanyItems.GOLDMAN;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.getSampleCompanyList;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -23,6 +25,7 @@ import org.junit.jupiter.api.Test;
 import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.logic.commands.CommandResult;
 import seedu.internhunter.logic.commands.ExitCommand;
+import seedu.internhunter.logic.commands.exceptions.CommandException;
 import seedu.internhunter.logic.commands.util.company.EditCompanyDescriptorBuilder;
 import seedu.internhunter.model.Model;
 import seedu.internhunter.model.ModelManager;
@@ -145,6 +148,14 @@ public class EditCompanyCommandTest {
                 new EditCompanyDescriptorBuilder().withEmail(VALID_EMAIL_AMAZON).build());
 
         assertCommandFailure(editCommand, model, INVALID_COMPANY_INDEX_MESSAGE);
+    }
+
+    @Test
+    public void execute_editAnItemToBeTheSameAsAnItemWhichAlreadyExist_throwsCommandException() {
+        EditCompanyCommand.EditCompanyDescriptor descriptor =
+            new EditCompanyDescriptorBuilder(GOLDMAN).build();
+        EditCompanyCommand editCommand = new EditCompanyCommand(INDEX_FIRST, descriptor);
+        assertThrows(CommandException.class, () -> editCommand.execute(model));
     }
 
     @Test

@@ -28,6 +28,8 @@ public class SwitchCommand extends Command {
 
     /**
      * Creates a SwitchCommand to switch {@code tabName}.
+     *
+     * @param tabName The tab to switch to.
      */
     public SwitchCommand(TabName tabName) {
         this.tabName = tabName;
@@ -35,6 +37,12 @@ public class SwitchCommand extends Command {
         switchedScreenText = String.format(MESSAGE_SWITCH_SUCCESS, tabName.toString());
     }
 
+    /**
+     * Executes the SwitchCommand and returns the result message.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return Feedback message of the operation result for display.
+     */
     @Override
     public CommandResult execute(Model model) {
 

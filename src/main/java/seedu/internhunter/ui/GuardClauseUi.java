@@ -27,7 +27,8 @@ public class GuardClauseUi {
     /**
      * Checks if the given display is empty
      */
-    public static final Predicate<Optional<InformationDisplay<? extends Item>>> IS_EMPTY_DISPLAY = Optional::isEmpty;
+    public static final Predicate<Optional<? extends InformationDisplay<? extends Item>>> IS_EMPTY_DISPLAY =
+        Optional::isEmpty;
 
     /**
      * Checks if the given string is empty
