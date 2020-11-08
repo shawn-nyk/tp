@@ -463,6 +463,14 @@ Format: `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
 - Where `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
 internship in the company’s internship list.
 
+<div markdown="span" class="alert alert-primary">
+
+  :bulb: **Tip:** The optional STATUS field can be used as freely as you want it too! Say you have applied and already
+  got the interview, you can immediately add the application with status <code>Interview</code> without needing to add
+  the application and update it afterwards.
+     
+</div>
+
 Example:
 - Suppose you are interested in applying for the Software Engineer internship in Google Singapore:
 <p align="center"><img src="images/ug-application/Internship1.png" width="100%"/></p>
