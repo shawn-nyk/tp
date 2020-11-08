@@ -677,7 +677,7 @@ Format: `find me KEYWORD [ANOTHER_KEYWORD]...`
 
 :information_source: **Note:**<br>
 Upon successful execution of this command, your profile list will be updated to only show matching results. All 
-subsequent delete, edit and view application commands will use indexing based on this updated list. Switching tabs will 
+subsequent delete, edit and view profile commands will use indexing based on this updated list. Switching tabs will 
 not return the list to its full state. If you wish to return to seeing all the profile items in your list, 
 execute [`list me`](#listing-all-items-in-profile-list-me).
 
@@ -700,7 +700,7 @@ all the items in your profile.
 Format: `list me`
 
 Example:
-- If you have 5 items total in profile list, and your list is currently only showing 2 profile items after
+- If you have 5 items total in the profile list, and your list is currently only showing 2 profile items after
  having executed a `find me` command, to view all the items in your profile list, execute `list me`: <br />
  ![ListProfile](images/ug-profile/ListProfile.png)
 

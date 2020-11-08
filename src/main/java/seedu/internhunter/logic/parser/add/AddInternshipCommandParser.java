@@ -26,14 +26,16 @@ import seedu.internhunter.model.internship.Requirement;
 import seedu.internhunter.model.internship.Wage;
 
 /**
- * Parses input arguments and creates a new AddApplicationCommand object.
+ * Parses input arguments and creates a new AddInternshipCommand object.
  */
 public class AddInternshipCommandParser implements Parser<AddInternshipCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the AddCommand
-     * and returns an AddCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the AddInternshipCommand
+     * and returns an AddInternshipCommand object for execution.
      *
+     * @param args to be parsed.
+     * @return AddInternshipCommand object for execution.
      * @throws ParseException if the user input does not conform to the expected format
      */
     public AddInternshipCommand parse(String args) throws ParseException {
@@ -58,7 +60,7 @@ public class AddInternshipCommandParser implements Parser<AddInternshipCommand> 
      * Obtains the period from the user input. Returns default "-" if unspecified.
      *
      * @param argMultimap ArgumentMultimap.
-     * @return Period for this application.
+     * @return Period for this Internship.
      * @throws ParseException if the given {@code Period} is invalid.
      */
     private Period getPeriod(ArgumentMultimap argMultimap) throws ParseException {
@@ -73,8 +75,8 @@ public class AddInternshipCommandParser implements Parser<AddInternshipCommand> 
      * Obtains the wage from the user input. Returns default "-" if unspecified.
      *
      * @param argMultimap ArgumentMultimap.
-     * @return Period for this application.
-     * @throws ParseException if the given {@code Period} is invalid.
+     * @return Wage for this Internship.
+     * @throws ParseException if the given {@code Wage} is invalid.
      */
     private Wage getWage(ArgumentMultimap argMultimap) throws ParseException {
         if (argMultimap.getValue(PREFIX_WAGE).isPresent()) {
@@ -83,5 +85,4 @@ public class AddInternshipCommandParser implements Parser<AddInternshipCommand> 
             return new Wage("-");
         }
     }
-
 }

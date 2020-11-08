@@ -10,7 +10,7 @@ import seedu.internhunter.logic.parser.exceptions.ParseException;
 import seedu.internhunter.ui.tabs.TabName;
 
 /**
- * Parses input arguments and creates a new SwitchCommand object
+ * Parses input arguments and creates a new SwitchCommand object.
  */
 public class SwitchCommandParser implements Parser<SwitchCommand> {
 
