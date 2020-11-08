@@ -57,7 +57,7 @@ public class ApplicationCard extends Card<ApplicationItem> {
     }
 
     /**
-     * Sets the id, name, requirements, status, period, wages, company name, date on the card.
+     * Sets the id, job title, requirements, status, period, wages, company name, date on the card.
      */
     private void initializeInternshipCardGui() {
         setId(displayedIndex);

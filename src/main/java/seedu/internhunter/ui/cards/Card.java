@@ -156,7 +156,6 @@ public abstract class Card<T extends Item> extends UiPart<Region> {
      * @param textFlow The text flow to be displayed
      * @param styledTitle A text containing the styled title.
      * @param styledDescription A text containing the styled description.
-     * @param <K> The type of text flow.
      */
     private <K extends Pane> void setLineText(K textFlow, Text styledTitle, Text styledDescription) {
         textFlow.getChildren().addAll(styledTitle, styledDescription);

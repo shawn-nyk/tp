@@ -138,7 +138,6 @@ public class Tabs extends UiPart<Region> {
      *
      * @param scene The scene to be changed in color.
      * @param distance The distance of the scene in the {@code mainWindow}.
-     * @param <T> The type of scene.
      */
     private <T extends Pane> void setTransparent(T scene, String distance) {
         scene.setStyle(TRANSPARENT + distance);
@@ -149,7 +148,6 @@ public class Tabs extends UiPart<Region> {
      *
      * @param scene The scene to be changed in color.
      * @param distance The distance of the scene in the {@code mainWindow}.
-     * @param <T> The type of scene.
      */
     private <T extends Pane> void setColor(T scene, String distance) {
         scene.setStyle(TAB_COLOR + distance);

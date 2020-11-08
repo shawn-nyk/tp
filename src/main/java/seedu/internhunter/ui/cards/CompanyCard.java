@@ -27,7 +27,7 @@ public class CompanyCard extends Card<CompanyItem> {
     }
 
     /**
-     * Sets the id, name, industries, phone, email, address on the card.
+     * Sets the id, company name, industries, phone, email, address on the card.
      */
     private void initializeCompanyCardGui() {
         setId(displayedIndex);

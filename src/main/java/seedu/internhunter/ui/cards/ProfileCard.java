@@ -33,7 +33,7 @@ public class ProfileCard extends Card<ProfileItem> {
     }
 
     /**
-     * Sets the id, name and image on the card.
+     * Sets the id, title and image on the card.
      */
     private void initializeUserCardGui() {
         setId(displayedIndex);
