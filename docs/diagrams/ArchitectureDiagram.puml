@@ -5,7 +5,6 @@
 !include style.puml
 
 Package " "<<Rectangle>>{
-    note "**Multi-Layered Architecture**\nEach layer can only interact with lower layers" as N
     Class Commons LOGIC_COLOR_T2
     Class Main #grey
     Class UI UI_COLOR

@@ -359,7 +359,7 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
  
 #### Design considerations
 
-##### Aspect: How Logic components interacts with Model
+##### Aspect: How Logic components interact with Model
 
 **Alternatives considered**
 
@@ -372,8 +372,8 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
     * This also increases maintainability as `EditProfileCommand` only has to be concerned with the methods that
      Model interface provides and not the other implementation details should they be subjected to change.
   * Cons:
-    * This increases code volume within `Model` as the Model interface needs to hold every method to interact with all
-     the collections it contains.
+    * This increases code volume within `Model` as the model interface needs to provide every method to interact with
+     all the collections it contains.
 
 * **Alternative 2 (used in v1.2)**: The model acts as a container for its collections, allowing clients to retrieve
  these collections and directly operate on it. For example, `FilteredList` and `profileList` are both retrieved from the
@@ -383,6 +383,9 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
   ```
   model.getProfileList().setItem(profileItemToEdit, EditedProfileItem)
   ```
+The following sequence diagram shows how the logic components bypass with model interface to interact directly with the
+`FilteredList` and the `profileList`:
+
 ![ExecuteEditMeCommandAlt.png](images/dg-profile/ExecuteEditMeCommandAlt.png)
 
   * Pros: 
@@ -814,6 +817,9 @@ Use case ends.
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
   Use case resumes from step 1.
 
+ 2a. InternHunter does not find any companies that matches query. <br/>
+  2a1. InternHunter informs user that no companies are found. <br/>
+  Use case ends.
 
 **Use case: UC06 - List all companies**
 
@@ -822,7 +828,7 @@ Guarantees: All companies stored in InternHunter are shown.
 
 **MSS**
 
-1. User queries for all companies. 
+1. User queries for all companies.
 2. InternHunter displays all company it stores.<br/>
 Use case ends.
 
@@ -839,11 +845,11 @@ Precondition: User already has an existing list of companies. <br/>
 Guarantees: Addition of internship to company is successful.
 
 **MSS**
-*  Similar MSS to adding a company except user is now adding an internship.
+*  Similar MSS to UC01 - adding a company except user is now adding an internship.
 
 **Extensions**
 
- 1a. Similar to extension 1a of adding a company.
+ 1a. Similar to extension 1a of UC01 - adding a company except user is adding an internship.
 
  1b. InternHunter detects an invalid index. <br/>
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
@@ -864,11 +870,11 @@ Guarantees: Addition of application is successful.
 
 **MSS**
 
-*  Similar MSS to UC01 - adding a company except user is now adding an application.
+*  Similar MSS to UC01 - adding a company except user is adding an application.
 
 **Extensions**
 
-* Similar to extension of UC07 - Add an internship.
+* Similar to extension of UC07 - adding an internship except user is adding an application.
 
 **Use case: UC11 - Delete an application**
 
@@ -989,8 +995,6 @@ Guarantees: User will get directions to the user guide.
 * Should work without requiring an installer.
 * Should only use third-party frameworks or libraries which are free, open-source and have permissive license term and 
 do not require installation by user of the software.
-* A user with above average typing speed for regular English text should be able to accomplish most of the tasks faster 
-using commands than using the mouse.
 
 ### Appendix E: Glossary
 
