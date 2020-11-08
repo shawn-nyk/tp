@@ -19,14 +19,14 @@ public class TabManager implements Tab {
     }
 
     /**
-     * Retrieves the current {@code tabName}.
+     * {@inheritDoc}
      */
     public TabName getTabName() {
         return tabName;
     }
 
     /**
-     * Replaces {@code this.tabName} with {@code tabName}.
+     * {@inheritDoc}
      */
     public void setTabName(TabName tabName) {
         requireNonNull(tabName);

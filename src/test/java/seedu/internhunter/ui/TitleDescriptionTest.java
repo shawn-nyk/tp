@@ -43,10 +43,10 @@ public class TitleDescriptionTest {
         assertFalse(helloDescription.equals(TitleDescription.createTitleDescription("T", DESCRIPTION)));
 
         // different description -> returns false
-        assertFalse(helloDescription.equals(TitleDescription.createTitleDescription(TITLE, "D")));
+        assertFalse(helloDescription.equals(TitleDescription.createTitleDescription(HELLO, "D")));
 
         // different title and description -> returns false
-        assertFalse(helloDescription.equals(TitleDescription.createTitleDescription("HELLO", WORLD)));
+        assertFalse(helloDescription.equals(TitleDescription.createTitleDescription(TITLE, WORLD)));
     }
 
     @Test
