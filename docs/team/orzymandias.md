@@ -50,7 +50,7 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
         [\#253](https://github.com/AY2021S1-CS2103-T15-4/tp/pull/253),
         [\#204](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/204), 
         [\#203](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/203),
-        [\#168](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/168))
+        [\#168](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/168),
         [\#400](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/400))
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=orzymandias&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
@@ -78,7 +78,9 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): 
+  [\#87](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/87),
   [\#98](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/98), 
+  [\#104](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/104),
   [\#141](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/141), 
   [\#258](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/258), 
   [\#140](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/140)
@@ -87,10 +89,8 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
   [\#79](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/79),
   [\#80](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/80),
   [\#86](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/86),
-  [\#87](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/87),
   [\#95](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/95),
   [\#100](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/100),
-  [\#104](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/104),
   [\#122](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/122),
   [\#146](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/146),
   [\#164](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/164),
