@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 public class ApplicationNameContainsKeyWordsPredicateTest {
 
     private final ApplicationNameContainsKeyWordsPredicate applicationNameContainsKeyWordsPredicate =
-        new ApplicationNameContainsKeyWordsPredicate(List.of("test"));
+        new ApplicationNameContainsKeyWordsPredicate(List.of("software"));
 
     @Test
     public void equals() {
@@ -20,7 +20,7 @@ public class ApplicationNameContainsKeyWordsPredicateTest {
 
         // same value -> return true
         assertTrue(applicationNameContainsKeyWordsPredicate.equals(
-            new ApplicationNameContainsKeyWordsPredicate(List.of("test"))));
+            new ApplicationNameContainsKeyWordsPredicate(List.of("software"))));
 
         // null -> return false
         assertFalse(applicationNameContainsKeyWordsPredicate.equals(null));
@@ -30,6 +30,6 @@ public class ApplicationNameContainsKeyWordsPredicateTest {
 
         // different value -> return false
         assertFalse(applicationNameContainsKeyWordsPredicate.equals(
-            new ApplicationNameContainsKeyWordsPredicate(List.of("test2"))));
+            new ApplicationNameContainsKeyWordsPredicate(List.of("hardware"))));
     }
 }
