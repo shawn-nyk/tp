@@ -140,7 +140,7 @@ public class AddCompanyCommandParserTest {
         assertParseFailure(parser, PREAMBLE_WHITESPACE + NAME_DESC_FACEBOOK + ADDRESS_DESC_FACEBOOK
                 + PHONE_DESC_FACEBOOK + EMAIL_DESC_FACEBOOK + INVALID_INDUSTRY_DESC, Industry.MESSAGE_CONSTRAINTS);
 
-        // two invalid values, only first invalid value reported
+        // multiple invalid values, only first invalid value reported
         assertParseFailure(parser, PREAMBLE_WHITESPACE + INVALID_NAME_DESC + INVALID_ADDRESS_DESC
                 + PHONE_DESC_FACEBOOK + EMAIL_DESC_FACEBOOK + INDUSTRY_DESC_FACEBOOK_AI,
                 CompanyName.MESSAGE_CONSTRAINTS);
@@ -148,5 +148,9 @@ public class AddCompanyCommandParserTest {
         assertParseFailure(parser, PREAMBLE_WHITESPACE + NAME_DESC_FACEBOOK + INVALID_ADDRESS_DESC
                         + PHONE_DESC_FACEBOOK + INVALID_EMAIL_DESC + INDUSTRY_DESC_FACEBOOK_AI,
                 Email.MESSAGE_CONSTRAINTS);
+
+        assertParseFailure(parser, PREAMBLE_WHITESPACE + INVALID_NAME_DESC + INVALID_ADDRESS_DESC
+                        + INVALID_PHONE_DESC + INVALID_EMAIL_DESC + INVALID_INDUSTRY_DESC,
+                CompanyName.MESSAGE_CONSTRAINTS);
     }
 }
