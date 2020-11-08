@@ -8,7 +8,6 @@ import static seedu.internhunter.testutil.profile.SampleProfileItems.getSamplePr
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.logic.commands.CommandResult;
 import seedu.internhunter.model.Model;
 import seedu.internhunter.model.ModelManager;
@@ -35,7 +34,7 @@ class ListProfileCommandTest {
 
     @Test
     public void execute_listProfileIsNotFiltered_showsSameList() {
-        expectedModel.setProfileViewIndex(Index.fromOneBased(1));
+        expectedModel.setProfileViewIndex(INDEX_FIRST);
         expectedModel.setTabName(TabName.PROFILE); // default is Company
         assertCommandSuccess(new ListProfileCommand(), model, commandResult, expectedModel);
     }
@@ -43,7 +42,7 @@ class ListProfileCommandTest {
     @Test
     public void execute_listProfileIsFiltered_showsEverything() {
         showProfileItemAtIndex(model, INDEX_FIRST);
-        expectedModel.setProfileViewIndex(Index.fromOneBased(1));
+        expectedModel.setProfileViewIndex(INDEX_FIRST);
         expectedModel.setTabName(TabName.PROFILE); // default is Company
         assertCommandSuccess(new ListProfileCommand(), model, commandResult, expectedModel);
     }

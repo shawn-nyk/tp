@@ -60,7 +60,6 @@ public class CompanyItemFieldsUtil {
     public static final String INVALID_EMAIL_EMPTY = "";
     public static final String INVALID_EMAIL_BLANK = "   ";
     public static final String INVALID_EMAIL_GOOGLE_LEADING_SPACES = "  GoogleHires@google.com";
-
     public static final String INVALID_EMAIL_GOOGLE_TRAILING_SPACES = "GoogleHires@google.com  ";
     public static final String INVALID_EMAIL_GOOGLE_LEADING_AND_TRAILING_SPACES = "  GoogleHires@google.com  ";
     public static final String INVALID_EMAIL_NO_AT = "CompanyHirescompany.com";
