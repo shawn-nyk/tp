@@ -98,9 +98,9 @@ The `Ui` component,
 
 <div markdown="span" class="alert alert-info">
 
-  :information_source: <strong>Note:</strong> Implementation of the command class is not accurate for commands
+  :information_source: **Note:** Implementation of the command class is not accurate for commands
   independent of type as the diagram is simplified for better readability.
-  Refer to the [command implementation](#implementation-of-command-classes) to see how is it implemented in full.
+  Refer to the [command implementation](#command-classes) to see how is it implemented in full.
 
 </div>
 
@@ -166,8 +166,8 @@ This section describes some noteworthy details on how certain features are imple
 ### `Command` classes
 
 #### Implementation
-There are 4 different subclasses of `Item` in InternHunter, namely `Company`, `Internship`, `Application`, and
-`Profile`. <br/>
+There are 4 different subclasses of `Item` in InternHunter, namely `CompanyItem`, `InternshipItem`, `ApplicationItem`, and
+`ProfileItem`. <br/>
 
 There are 2 types of commands:
 - Commands that are dependent on the type of `Item`
@@ -206,7 +206,7 @@ execution of the `AddApplicationCommand` will work.
 - Cons:
     - More classes have to be created
         
-- **Alternative 2**: `ABCCommand` is a _concrete_ class and handles the execution of all 4 `Item` types.
+**Alternative 2**: `ABCCommand` is a _concrete_ class and handles the execution of all 4 `Item` types.
 Parser parses the user input and creates the general `ABCCommand` for execution. The following
 activity diagram shows how the `AddCommand` will work.
 
@@ -228,8 +228,8 @@ Single Responsibility Principle. Our design meant that each specific `Item` comm
 itself and not subjected to the changes in implementation of the other `Item` classes. This means that it will only
 have one reason to change. Moreover, this leads to lower coupling, which makes maintenance, integration and
 testing easier. This ended up being a good choice as we had some changes in the parsing requirements of one
-of the `Item` classes, `Internship`. If we had gone with the second design, the concrete `ABCCommand` might
-have broken down as it might not be suited to the different parsing requirements in the of the `Internship` item.
+of the `Item` classes, `InternshipItem`. If we had gone with the second design, the concrete `ABCCommand` might
+have broken down as it might not be suited to the different parsing requirements in the `InternshipItem`.
 
 ### Delete company feature
 
@@ -619,7 +619,7 @@ Here is a class diagram to show how the `MatchCommand` is implemented:
 
 ![MatchCommandClassDiagram](images/MatchCommandClassDiagram.png)
 
-This is how the `MatchCommand#execute()` method works upon execution:
+This is how the `MatchCommand#execute(...)` method works upon execution:
 
 1. The list of profile items and company items are first obtained via the `Model#getProfileItemList()` method and
 `Model#getCompanyItemList()` respectively.
@@ -1025,7 +1025,7 @@ do not require installation by user of the software.
 * **CLI**: Command-Line Interface
 * **OS**: Operating System
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Json**: JavaScript Object Notation
+* **JSON**: JavaScript Object Notation
 * **DRY**: Don't Repeat Yourself
 * **OOP**: Object-oriented programming
 
