@@ -508,6 +508,16 @@ InternHunter automatically saves user data after every command. The following se
 InternHunter does it. Let `commandString` be any valid command string.
   
 ![SavingDataSequenceDiagram](images/SavingDataSequenceDiagram.png)
+
+This is how the `LogicManager#execute()` method works upon execution:
+
+1. `LogicManager` will execute the given `commandString`.
+2. `LogicManager` calls the `ModelManager#getUnfilteredApplicationList()` to get the current application item list.
+3. `LogicManager` calls the `StorageManager#saveApplicationItemList(...)` to save the current application item list.
+4. `LogicManager` calls the `ModelManager#getUnfilteredCompanyList()` to get the current company item list.
+5. `LogicManager` calls the `StorageManager#saveCompanyItemList(...)` to save the current company item list.
+6. `LogicManager` calls the `ModelManager#getUnfilteredProfileList()` to get the current profile item list.
+7. `LogicManager` calls the `StorageManager#saveProfileItemList(...)` to save the current profile item list.
   
 #### Design considerations
 
@@ -556,6 +566,15 @@ When users enters the `clear` command, InternHunter will reset all three lists. 
 InternHunter does it.
 
 ![ClearCommandSequenceDiagram](images/ClearCommandSequenceDiagram.png)
+
+This is how the `ClearCommand#execute()` method works upon execution:
+
+1. A new empty `ItemList` for the application item list is created.
+2. `ModelManager#setApplicationList(...)` is called with the recently created empty list as the argument.
+3. A new empty `ItemList` for the company item list is created.
+4. `ModelManager#setCompanyList(...)` is called with the recently created empty list as the argument.
+5. A new empty `ItemList` for the profile item list is created.
+6. `ModelManager#setProfileList(...)` is called with the recently created empty list as the argument.
 
 #### Design considerations
 
