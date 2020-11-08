@@ -521,7 +521,7 @@ This is how the `LogicManager#execute()` method works upon execution:
   
 #### Design considerations
 
-##### Aspect: How to handle 3 types of 'Item' list
+##### Aspect: How to handle 3 types of `Item` list
 
 InternHunter maintains 3 types of `Item` lists: `ApplicationItem`, `CompanyItem`, and `ProfileItem` lists.
 Both `ItemListStorage` and `JsonSerializableItemList` use  the same logic regardless of the `Item` type.
