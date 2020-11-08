@@ -17,13 +17,13 @@ public class ViewManager implements View {
      * Initializes ViewManger which controls the current {@code index}. By default, it is always of Index 1.
      */
     public ViewManager() {
-        companyIndex = Index.fromOneBased(1); // default Index is 1 which is 0
-        applicationIndex = Index.fromOneBased(1); // default Index is 1 which is 0
-        profileIndex = Index.fromOneBased(1); // default Index is 1 which is 0
+        companyIndex = Index.fromOneBased(1); // default Index is 1
+        applicationIndex = Index.fromOneBased(1); // default Index is 1
+        profileIndex = Index.fromOneBased(1); // default Index is 1
     }
 
     /**
-     * Replaces {@code companyIndex} with {@code index}.
+     * {@inheritDoc}
      */
     public void setCompanyViewIndex(Index index) {
         requireNonNull(index);
@@ -31,7 +31,7 @@ public class ViewManager implements View {
     }
 
     /**
-     * Replaces {@code companyIndex} with {@code index}.
+     * {@inheritDoc}
      */
     public void setApplicationViewIndex(Index index) {
         requireNonNull(index);
@@ -39,7 +39,7 @@ public class ViewManager implements View {
     }
 
     /**
-     * Replaces {@code companyIndex} with {@code index}.
+     * {@inheritDoc}
      */
     public void setProfileViewIndex(Index index) {
         requireNonNull(index);
@@ -47,21 +47,21 @@ public class ViewManager implements View {
     }
 
     /**
-     * Retrieves the current {@code index}.
+     * {@inheritDoc}
      */
     public Index getCompanyViewIndex() {
         return companyIndex;
     }
 
     /**
-     * Retrieves the current {@code index}.
+     * {@inheritDoc}
      */
     public Index getApplicationViewIndex() {
         return applicationIndex;
     }
 
     /**
-     * Retrieves the current {@code index}.
+     * {@inheritDoc}
      */
     public Index getProfileViewIndex() {
         return profileIndex;

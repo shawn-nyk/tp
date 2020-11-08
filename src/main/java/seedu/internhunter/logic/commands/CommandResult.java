@@ -52,22 +52,49 @@ public class CommandResult {
         this(feedbackToUser, false, false, false, true);
     }
 
+    /**
+     * Retrieves the feedback of the command being executed.
+     *
+     * @return A string representing the feedback of the command being executed.
+     */
     public String getFeedbackToUser() {
         return feedbackToUser;
     }
 
+    /**
+     * Retrieves a boolean value denoting whether a help command is being executed.
+     *
+     * @return A boolean value denoting whether a help command is being executed.
+     */
     public boolean isShowHelp() {
         return isShowHelp;
     }
 
+    /**
+     * Retrieves a boolean value denoting whether an exit command is being executed.
+     *
+     * @return A boolean value denoting whether an exit command is being executed.
+     */
     public boolean isExit() {
         return isExit;
     }
 
+    /**
+     * Retrieves a boolean value denoting whether a switch command is being executed.
+     *
+     * @return A boolean value denoting whether a switch command is being executed.
+     */
     public boolean isSwitchTab() {
         return isSwitchTab;
     }
 
+    /**
+     * Retrieves a boolean value denoting whether a view command is being executed or if there is a need to switch
+     * display.
+     *
+     * @return A boolean value denoting whether a view command is being executed or if there is a need to
+     * switch display.
+     */
     public boolean isSwitchDisplay() {
         return isSwitchDisplay;
     }
@@ -81,6 +108,11 @@ public class CommandResult {
         return !matchingInternships.isEmpty();
     }
 
+    /**
+     * Sets the matching internships with {@code listOfInternships}.
+     *
+     * @param listOfInternships The list of internships with requirements that matches the user's skills.
+     */
     public void setMatchingInternships(ObservableList<InternshipItem> listOfInternships) {
         matchingInternships = listOfInternships;
     }

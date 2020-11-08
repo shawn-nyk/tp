@@ -81,8 +81,7 @@ public class ProfileItem extends Item {
 
         ProfileItem otherProfileItem = (ProfileItem) otherItem;
 
-        return otherItem != null
-                && otherProfileItem.getCategory().equals(getCategory())
+        return otherProfileItem.getCategory().equals(getCategory())
                 && (otherProfileItem.getTitle().equals(getTitle()));
     }
 
@@ -100,8 +99,7 @@ public class ProfileItem extends Item {
             return false;
         }
         ProfileItem otherProfileItem = (ProfileItem) other;
-        return otherProfileItem != null
-                && otherProfileItem.getCategory().equals(getCategory())
+        return otherProfileItem.getCategory().equals(getCategory())
                 && (otherProfileItem.getTitle().equals(getTitle()))
                 && (otherProfileItem.getDescriptors().equals(getDescriptors()));
     }
