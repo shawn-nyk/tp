@@ -39,7 +39,7 @@ public class PrefixTest {
 
         // different value -> different hash code
         assertNotEquals(prefix.hashCode(), new Prefix("t/").hashCode());
-        
+
         // null -> 0
         assertEquals(0, nullPrefix.hashCode());
     }
