@@ -12,6 +12,10 @@ import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VA
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests the Period field in an InternshipItem. Tests for the isValidPeriod is little since the isValidNonEmptyString
+ * accounts for more of the tests.
+ */
 public class PeriodTest {
 
     private static final Period VALID_PERIOD_ONE = new Period(VALID_PERIOD_SUMMER);
