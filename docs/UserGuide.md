@@ -325,7 +325,7 @@ Adds an internship to a company.
 
 Format: `add int INDEX j/JOB_TITLE [w/WAGE] [p/PERIOD] [r/REQUIREMENT]...`
 - `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`, `Jun - Aug 2021`).
-- 'WAGE' must be a positive integer.
+- `WAGE` must be a positive integer (without leading zeroes or + symbol).
 
 Examples:
 - `add int 3 j/Web Developer w/3000 p/30 May to 30 Aug r/React r/HTML5`
