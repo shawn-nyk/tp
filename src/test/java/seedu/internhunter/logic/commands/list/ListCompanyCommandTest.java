@@ -2,22 +2,18 @@ package seedu.internhunter.logic.commands.list;
 
 
 import static seedu.internhunter.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.internhunter.logic.commands.CommandTestUtil.showApplicationAtIndex;
 import static seedu.internhunter.logic.commands.CommandTestUtil.showCompanyAtIndex;
 import static seedu.internhunter.testutil.TypicalIndexes.INDEX_FIRST;
-import static seedu.internhunter.testutil.application.SampleApplicationItems.getSampleApplicationItemList;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.getSampleCompanyList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.logic.commands.CommandResult;
 import seedu.internhunter.model.Model;
 import seedu.internhunter.model.ModelManager;
 import seedu.internhunter.model.UserPrefs;
 import seedu.internhunter.model.item.ItemList;
-import seedu.internhunter.ui.tabs.TabName;
 
 public class ListCompanyCommandTest {
 

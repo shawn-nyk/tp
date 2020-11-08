@@ -21,6 +21,8 @@ import static seedu.internhunter.testutil.internship.SampleInternshipItems.FACEB
 import static seedu.internhunter.testutil.internship.SampleInternshipItems.GOLDMAN_FE;
 import static seedu.internhunter.testutil.internship.SampleInternshipItems.LAZADA_DS;
 
+import java.util.Set;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -34,6 +36,10 @@ import seedu.internhunter.model.ModelManager;
 import seedu.internhunter.model.UserPrefs;
 import seedu.internhunter.model.company.CompanyItem;
 import seedu.internhunter.model.internship.InternshipItem;
+import seedu.internhunter.model.internship.JobTitle;
+import seedu.internhunter.model.internship.Period;
+import seedu.internhunter.model.internship.Requirement;
+import seedu.internhunter.model.internship.Wage;
 import seedu.internhunter.model.item.ItemList;
 import seedu.internhunter.testutil.internship.InternshipItemBuilder;
 import seedu.internhunter.ui.tabs.TabName;
@@ -65,16 +71,28 @@ public class EditInternshipCommandTest {
                 expectedModel.getCompanyItemFromFilteredList(INDEX_SECOND.getZeroBased());
         try {
             InternshipItem internshipToEdit = companyOfInternshipToEdit.getInternship(INDEX_FIRST);
+
+            JobTitle initialJobTitle = internshipToEdit.getJobTitle();
+            Period initialPeriod = internshipToEdit.getPeriod();
+            Wage initialWage = internshipToEdit.getWage();
+            Set<Requirement> initialRequirements = internshipToEdit.getRequirements();
+
             internshipToEdit.setJobTitle(editedInternship.getJobTitle());
             internshipToEdit.setPeriod(editedInternship.getPeriod());
             internshipToEdit.setWage(editedInternship.getWage());
             internshipToEdit.setRequirements(editedInternship.getRequirements());
+
+            expectedModel.setCompanyViewIndex(INDEX_SECOND);
+            assertCommandSuccess(editCommand, model, commandResult, expectedModel);
+
+            // Restore internship back to its previous state
+            internshipToEdit.setJobTitle(initialJobTitle);
+            internshipToEdit.setPeriod(initialPeriod);
+            internshipToEdit.setWage(initialWage);
+            internshipToEdit.setRequirements(initialRequirements);
         } catch (CommandException e) {
             fail(e);
         }
-
-        expectedModel.setCompanyViewIndex(INDEX_SECOND);
-        assertCommandSuccess(editCommand, model, commandResult, expectedModel);
     }
 
     @Test
@@ -95,6 +113,12 @@ public class EditInternshipCommandTest {
             CompanyItem companyOfEditedInternship =
                     expectedModel.getCompanyItemFromFilteredList(INDEX_SECOND.getZeroBased());
             InternshipItem internshipToEdit = companyOfEditedInternship.getInternship(INDEX_FIRST);
+
+            JobTitle initialJobTitle = internshipToEdit.getJobTitle();
+            Period initialPeriod = internshipToEdit.getPeriod();
+            Wage initialWage = internshipToEdit.getWage();
+            Set<Requirement> initialRequirements = internshipToEdit.getRequirements();
+
             internshipToEdit.setJobTitle(editedInternship.getJobTitle());
             internshipToEdit.setPeriod(editedInternship.getPeriod());
             internshipToEdit.setWage(editedInternship.getWage());
@@ -102,6 +126,12 @@ public class EditInternshipCommandTest {
 
             expectedModel.setCompanyViewIndex(INDEX_SECOND);
             assertCommandSuccess(editCommand, model, commandResult, expectedModel);
+
+            // Restore internship back to its previous state
+            internshipToEdit.setJobTitle(initialJobTitle);
+            internshipToEdit.setPeriod(initialPeriod);
+            internshipToEdit.setWage(initialWage);
+            internshipToEdit.setRequirements(initialRequirements);
         } catch (CommandException e) {
             fail(e);
         }
@@ -144,6 +174,12 @@ public class EditInternshipCommandTest {
             CompanyItem companyOfEditedInternship =
                     expectedModel.getCompanyItemFromFilteredList(INDEX_FIRST.getZeroBased());
             InternshipItem internshipToEdit = companyOfEditedInternship.getInternship(INDEX_FIRST);
+
+            JobTitle initialJobTitle = internshipToEdit.getJobTitle();
+            Period initialPeriod = internshipToEdit.getPeriod();
+            Wage initialWage = internshipToEdit.getWage();
+            Set<Requirement> initialRequirements = internshipToEdit.getRequirements();
+
             internshipToEdit.setJobTitle(editedInternship.getJobTitle());
             internshipToEdit.setPeriod(editedInternship.getPeriod());
             internshipToEdit.setWage(editedInternship.getWage());
@@ -152,6 +188,12 @@ public class EditInternshipCommandTest {
             expectedModel.updateFilteredCompanyList(PREDICATE_SHOW_ALL_ITEMS);
             expectedModel.setCompanyViewIndex(INDEX_FIRST);
             assertCommandSuccess(editCommand, model, commandResult, expectedModel);
+
+            // Restore internship back to its previous state
+            internshipToEdit.setJobTitle(initialJobTitle);
+            internshipToEdit.setPeriod(initialPeriod);
+            internshipToEdit.setWage(initialWage);
+            internshipToEdit.setRequirements(initialRequirements);
         } catch (CommandException e) {
             fail(e);
         }

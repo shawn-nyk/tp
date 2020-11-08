@@ -9,7 +9,6 @@ import static seedu.internhunter.testutil.application.SampleApplicationItems.get
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.logic.commands.CommandResult;
 import seedu.internhunter.model.Model;
 import seedu.internhunter.model.ModelManager;

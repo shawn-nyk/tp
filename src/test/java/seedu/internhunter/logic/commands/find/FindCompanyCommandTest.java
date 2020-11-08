@@ -5,10 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_FIND_SUCCESS;
 import static seedu.internhunter.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.internhunter.model.util.ItemUtil.APPLICATION_NAME;
 import static seedu.internhunter.model.util.ItemUtil.COMPANY_NAME;
-import static seedu.internhunter.testutil.application.SampleApplicationItems.SHOPEE_OFFERED;
-import static seedu.internhunter.testutil.application.SampleApplicationItems.getSampleApplicationItemList;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.FACEBOOK;
 import static seedu.internhunter.testutil.company.SampleCompanyItems.getSampleCompanyList;
 
@@ -23,10 +20,8 @@ import seedu.internhunter.logic.commands.CommandResult;
 import seedu.internhunter.model.Model;
 import seedu.internhunter.model.ModelManager;
 import seedu.internhunter.model.UserPrefs;
-import seedu.internhunter.model.application.ApplicationNameContainsKeyWordsPredicate;
 import seedu.internhunter.model.company.CompanyNameContainsKeyWordsPredicate;
 import seedu.internhunter.model.item.ItemList;
-import seedu.internhunter.ui.tabs.TabName;
 
 /**
  * Test for find company command.
