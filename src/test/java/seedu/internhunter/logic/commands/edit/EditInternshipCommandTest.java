@@ -186,7 +186,7 @@ public class EditInternshipCommandTest {
             internshipToEdit.setRequirements(editedInternship.getRequirements());
 
             expectedModel.updateFilteredCompanyList(PREDICATE_SHOW_ALL_ITEMS);
-            expectedModel.setCompanyViewIndex(INDEX_FIRST);
+            expectedModel.setCompanyViewIndex(INDEX_SECOND);
             assertCommandSuccess(editCommand, model, commandResult, expectedModel);
 
             // Restore internship back to its previous state

@@ -59,7 +59,7 @@ public class InternshipCommandTestUtil {
     public static final String REQUIREMENT_DESC_VUE = " " + PREFIX_REQUIREMENT + VALID_REQUIREMENT_VUE;
     public static final String REQUIREMENT_DESC_R = " " + PREFIX_REQUIREMENT + VALID_REQUIREMENT_R;
 
-    // Invalid requirements
+    // Invalid requirement
     public static final String INVALID_REQUIREMENT_DESC = " " + PREFIX_REQUIREMENT + INVALID_REQUIREMENT_EMPTY;
 
     // Invalid internship index
