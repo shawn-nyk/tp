@@ -45,7 +45,9 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
     * Highlights: The implementation of this feature required keen insight into the relationship between internship and
      application data types as it required honoring the established relationship that internship and application data types 
      have, since editing an internship directly affects an application made to it.
-  * Contributed significantly to improving the test coverage (Pull requests [\#329](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/329), [\#369](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/369), [\#418](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/418))
+  * Contributed significantly to improving the test coverage (Pull requests [\#329](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/329),
+  [\#369](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/369), [\#418](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/418),
+  [\#424](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/424))
 
 * **Documentation**:
   * User Guide:
@@ -74,7 +76,8 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
   [\#251](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/251), [\#256](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/256), 
   [\#257](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/257), [\#260](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/260), 
   [\#356](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/356), [\#371](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/371),
-  [\#398](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/398), [\#409](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/409)
+  [\#398](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/398), [\#409](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/409),
+  [\#422](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/422)
   * Reported bugs and suggestions for other teams in the class. Bug reports:
   [1](https://github.com/AY2021S1-CS2103T-T09-3/tp/issues/240), [2](https://github.com/AY2021S1-CS2103T-T09-3/tp/issues/241), 
   [3](https://github.com/AY2021S1-CS2103T-T09-3/tp/issues/242), [4](https://github.com/AY2021S1-CS2103T-T09-3/tp/issues/243), 
