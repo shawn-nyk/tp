@@ -30,6 +30,8 @@ public class AddProfileCommandParser implements Parser<AddProfileCommand> {
      * Parses the given {@code String} of arguments in the context of the AddProfileCommand
      * and returns an AddProfileCommand object for execution.
      *
+     * @param args to be parsed.
+     * @return AddProfileCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format.
      */
     public AddProfileCommand parse(String args) throws ParseException {
@@ -50,6 +52,4 @@ public class AddProfileCommandParser implements Parser<AddProfileCommand> {
 
         return new AddProfileCommand(profileItem);
     }
-
 }
-

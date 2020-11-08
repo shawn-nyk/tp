@@ -12,17 +12,17 @@ import seedu.internhunter.logic.parser.exceptions.ParseException;
 import seedu.internhunter.model.profile.ProfileItemContainsKeywordPredicate;
 
 /**
- * Parses input arguments and creates a new FindProfileCommand object
+ * Parses input arguments and creates a new FindProfileCommand object.
  */
 public class FindProfileCommandParser implements Parser<FindProfileCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the FindProfileCommand
-     * and returns a FindProfileCommand object for execution.
+     * and returns an FindProfileCommand object for execution.
      *
-     * @param args User's input.
-     * @return A FindProfileCommand object that contains the input predicate.
-     * @throws ParseException if the user input does not conform the expected format
+     * @param args to be parsed.
+     * @return FindProfileCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format.
      */
     @Override
     public FindProfileCommand parse(String args) throws ParseException {

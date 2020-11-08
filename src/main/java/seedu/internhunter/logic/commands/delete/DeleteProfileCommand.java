@@ -16,6 +16,9 @@ import seedu.internhunter.model.Model;
 import seedu.internhunter.model.profile.ProfileItem;
 import seedu.internhunter.ui.tabs.TabName;
 
+/**
+ * Deletes the ProfileItem from the Profile list.
+ */
 public class DeleteProfileCommand extends DeleteCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + PROFILE_ALIAS
@@ -29,10 +32,22 @@ public class DeleteProfileCommand extends DeleteCommand {
 
     private final Index targetIndex;
 
+    /**
+     * Creates an DeleteProfileCommand to delete the specified profile item at the targetIndex.
+     *
+     * @param targetIndex Target index of the profile item to be deleted.
+     */
     public DeleteProfileCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
 
+    /**
+     * Executes the DeleteProfileCommand and returns the result message.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return Feedback message of the operation result for display.
+     * @throws CommandException If an error occurs during command execution.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
