@@ -645,7 +645,7 @@ Format: `find me KEYWORD [ANOTHER_KEYWORD]...`
 Upon successful execution of this command, your profile list will be updated to only show matching results. All 
 subsequent delete, edit and view application commands will use indexing based on this updated list. Switching tabs will 
 not return the list to its full state. If you wish to return to seeing all the profile items in your list, 
-execute [`list me`](#listing-all-items-profile).
+execute [`list me`](#listing-all-items-in-profile-list-me).
 
 </div>
 
