@@ -30,7 +30,7 @@ title: User Guide
   [4.4.1. Applying for an internship: `add app`](#applying-for-an-internship-add-app) <br />
   [4.4.2. Deleting an application: `delete app`](#deleting-an-application-delete-app) <br />
   [4.4.3. Updating an application: `edit app`](#updating-an-application-edit-app) <br />
-  [4.4.4. Viewing an application: `view app`](#viewing-an-application-view-app) <br />
+  [4.4.4. Viewing an application: `view app`](#viewing-an-applications-details-in-full-view-app) <br />
   [4.4.5. Finding applications: `find app`](#finding-applications-find-app) <br />
   [4.4.6. Listing all applications: `list app`](#listing-all-applications-list-app) <br />
  [4.5. Profile](#profile) <br />
