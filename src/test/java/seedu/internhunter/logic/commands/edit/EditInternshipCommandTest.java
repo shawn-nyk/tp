@@ -26,6 +26,7 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.internhunter.commons.core.Messages;
 import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.logic.commands.CommandResult;
 import seedu.internhunter.logic.commands.ExitCommand;
@@ -224,6 +225,18 @@ public class EditInternshipCommandTest {
     }
 
     @Test
+    public void execute_editIntoDuplicateInternship_failure() {
+        InternshipItem editedInternship = new InternshipItemBuilder(FACEBOOK_FE).build();
+        EditInternshipCommand.EditInternshipDescriptor descriptor =
+                new EditInternshipDescriptorBuilder(editedInternship).build();
+        EditInternshipCommand editCommand = new EditInternshipCommand(INDEX_THIRD, INDEX_FIRST, descriptor);
+
+        String expectedMessage = String.format(Messages.MESSAGE_DUPLICATE_ITEM, INTERNSHIP_NAME);
+
+        assertCommandFailure(editCommand, model, expectedMessage);
+    }
+
+    @Test
     public void equals_test_success() {
         EditInternshipCommand.EditInternshipDescriptor facebookFe =
                 new EditInternshipDescriptorBuilder(FACEBOOK_FE).build();
@@ -245,7 +258,7 @@ public class EditInternshipCommandTest {
         assertNotEquals(standardCommand, null);
 
         // different types -> returns false
-        assertNotEquals(new ExitCommand(), standardCommand);
+        assertNotEquals(standardCommand, new ExitCommand());
 
         // different internship index -> returns false
         assertNotEquals(new EditInternshipCommand(INDEX_THIRD, INDEX_SECOND, facebookFe), standardCommand);
