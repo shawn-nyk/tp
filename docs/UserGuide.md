@@ -567,9 +567,9 @@ display.
 <div markdown="span" class="alert alert-primary">
 
   :bulb: **Tip:** If you want to store multiple experiences or achievements of the same name, for example taking part
-   in the Open Hack Hackathon in 2 different years, since profile items cannot have identical titles, you can simply
-    include when the event occurred in the title. (e.g. `t/Participated in Open Hack 2020` and `t/Participated in
-     Open Hack 2019`)!
+   in the Open Hack Hackathon in 2 different years, since profile items cannot have identical titles of the same
+    category, you can simply include when the event occurred in the title. (e.g. `t/Participated in Open Hack 2020
+    ` and `t/Participated in Open Hack 2019`)!
      
 </div>
 
