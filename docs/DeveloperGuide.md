@@ -121,13 +121,13 @@ API call.
 
 ### Model component
 
-<p id="model-class-diagram"><img src="images/dg-model/ModelClassDiagram.png" width="55%" height="55%"/></p>
+<p id="model-class-diagram"><img src="images/dg-model/ModelClassDiagram.png" width="60%" height="60%"/></p>
 
 Breakdown of the Company, Internship and Application packages:
 ![Structure of the Company, Internship and Application Classes](images/dg-model/CompanyInternshipApplicationClassDiagram.png)
 
 Breakdown of the Profile package:
-<p id="profile-class-diagram"><img src="images/dg-model/ProfileClassDiagram.png" width="40%" height="40%"/></p>
+<p id="profile-class-diagram"><img src="images/dg-model/ProfileClassDiagram.png" width="45%" height="45%"/></p>
 
 **API** :
 [`Model.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/model/Model.java)
@@ -141,7 +141,7 @@ The `Model`,
  list changes.
 * does not depend on any of the other three components.
 
-### Storage Component
+### Storage component
 
 <p id="storage-class-diagram"><img src="images/StorageClassDiagram.png"/></p>
 
@@ -163,9 +163,9 @@ Classes used by multiple components are in the `seedu.internhunter.commons` pack
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### Implementation of `Command` classes
+### `Command` classes
 
-#### Current Implementation
+#### Implementation
 There are 4 different subclasses of `Item` in InternHunter, namely `Company`, `Internship`, `Application`, and
 `Profile`. <br/>
 
@@ -250,7 +250,7 @@ Upon a user’s entry of a valid delete company command, a `DeleteCompanyCommand
 `DeleteCompanyCommand` is a class that extends the `DeleteCommandAbstract` abstract class that in turn extends the 
 `Command` abstract class.
 
-![DeleteCompanyCommandClassDiagram](images/dg-company/DeleteCompanyCommandClassDiagram.png)
+<p id="delete-company-command-class-diagram"><img src="images/dg-company/DeleteCompanyCommandClassDiagram.png" width="70%" height="70%"/></p>
 
 `DeleteCompanyCommand` implements the `execute()` method from the `Command` abstract class whereby upon execution, the 
 method will delete the respective company in the model’s list of companies if a valid index is given.
@@ -318,7 +318,7 @@ The user profile feature behaves like a resume for the user to keep track of not
 There are three categories of profile items namely: `ACHIEVEMENT`, `SKILL` and `EXPERIENCE`. One of the operations
 that can be applied on profile items is editing.
 
-#### Editing User profile item
+#### Editing user profile item
 
 The `edit me` command for the user profile allows the user to update the fields of the each profile item by
 specifying the targeted index and at least one field. 
@@ -472,7 +472,7 @@ The above activity diagram shows the logic and the path execution when the switc
     * Cons:
         * This introduces the need to type twice in order to view the execution of the command.
 
-### Storage Feature
+### Storage feature
 
 #### What it is
 After a command is successfully executed, InternHunter automatically saves users' data to JSON files. Moreover, 
@@ -540,7 +540,7 @@ and `JsonSerializableItemList` use generics.
         * Extending the `ItemListStorage` and `JsonSerializableItemList` class would require changes to all the
         different versions corresponding to the different `Item` types.
 
-### Clear Feature
+### Clear feature
 
 #### What it is
 In the beginning, users can see how the app works with sample data. After that, users can decide to 
@@ -581,7 +581,7 @@ check whether the internships in both lists are consistent.
     * Cons:
         * High risk of data inconsistency due to the linkage between company and application lists.
 
-### Match Command feature
+### Match command feature
 
 #### What it is
 Users are able to execute a command to generate a list of matching internships that matches their current profile
@@ -1010,7 +1010,7 @@ do not require installation by user of the software.
 * **DRY**: Don't Repeat Yourself
 * **OOP**: Object-oriented programming
 
-### Appendix F: Instructions for manual testing
+### Appendix F: Instructions for Manual Testing
 
 Given below are instructions to test the app manually.
 
