@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 
@@ -43,6 +44,17 @@ public class ConfigTest {
 
         // different types -> return false
         assertFalse(defaultConfig.equals(0.5f));
+
+        // different config level -> return false
+        Config configDifferentLevel = new Config();
+        configDifferentLevel.setLogLevel(Level.FINEST);
+        assertFalse(defaultConfig.equals(configDifferentLevel));
+
+        // different user prefs file path
+        Config configDifferentUserPrefsFilePath = new Config();
+        Path path = Paths.get("random");
+        configDifferentUserPrefsFilePath.setUserPrefsFilePath(path);
+        assertFalse(defaultConfig.equals(configDifferentUserPrefsFilePath));
     }
 
     @Test

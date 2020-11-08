@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.testutil.Assert.assertThrows;
+import static seedu.internhunter.testutil.application.SampleApplicationItems.getSampleApplicationItemList;
+import static seedu.internhunter.testutil.company.SampleCompanyItems.getSampleCompanyList;
+import static seedu.internhunter.testutil.profile.SampleProfileItems.getSampleProfileItemList;
 
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -309,6 +312,9 @@ public class ModelManagerTest {
         assertEquals(companyItemItemListManager, companyList);
 
         // testing equality also
+        ItemListManager<CompanyItem> companyItemItemListManagerSample =
+            new ItemListManager<>(getSampleCompanyList());
+        assertFalse(applicationItemList.equals(companyItemItemListManagerSample));
         assertTrue(companyList.equals(companyList));
         assertFalse(companyList.equals(null));
         assertFalse(companyList.equals(0.5f));
@@ -325,6 +331,9 @@ public class ModelManagerTest {
         assertEquals(applicationItemItemListManager, applicationList);
 
         // testing equality also
+        ItemListManager<ApplicationItem> applicationItemItemListManagerSample =
+            new ItemListManager<>(getSampleApplicationItemList());
+        assertFalse(applicationList.equals(applicationItemItemListManagerSample));
         assertTrue(applicationList.equals(applicationList));
         assertFalse(applicationList.equals(null));
         assertFalse(applicationList.equals(0.5f));
@@ -340,6 +349,9 @@ public class ModelManagerTest {
         assertEquals(profileItemItemListManager, profileItemList);
 
         // testing equality also
+        ItemListManager<ProfileItem> profileItemItemListManagerSample =
+            new ItemListManager<>(getSampleProfileItemList());
+        assertFalse(profileItemList.equals(profileItemItemListManagerSample));
         assertTrue(profileItemList.equals(profileItemList));
         assertFalse(profileItemList.equals(null));
         assertFalse(profileItemList.equals(0.5f));
@@ -456,5 +468,27 @@ public class ModelManagerTest {
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setApplicationItemListFilePath(Paths.get("differentFilePath"));
         assertNotEquals(modelManager, new ModelManager(companyList, applicationList, profileList, differentUserPrefs));
+
+        // different company list -> return false
+        assertNotEquals(modelManager, new ModelManager(getSampleCompanyList(), applicationList, profileList,
+            userPrefs));
+
+        // different application list -> return false
+        assertNotEquals(modelManager, new ModelManager(companyList, getSampleApplicationItemList(), profileList,
+            userPrefs));
+
+        // different profile list -> return false
+        assertNotEquals(modelManager, new ModelManager(companyList, applicationList, getSampleProfileItemList(),
+            userPrefs));
+
+        // different tab -> return false
+        ModelManager modelManagerDifferentTab = new ModelManager(companyList, applicationList, profileList, userPrefs);
+        modelManagerDifferentTab.setTabName(TabName.APPLICATION);
+        assertNotEquals(modelManager, modelManagerDifferentTab);
+
+        // different view -> return false
+        ModelManager modelManagerDifferentView = new ModelManager(companyList, applicationList, profileList, userPrefs);
+        modelManagerDifferentView.setApplicationViewIndex(Index.fromOneBased(2));
+        assertNotEquals(modelManager, modelManagerDifferentView);
     }
 }

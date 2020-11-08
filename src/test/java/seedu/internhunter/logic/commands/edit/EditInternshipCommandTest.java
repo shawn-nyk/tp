@@ -265,5 +265,8 @@ public class EditInternshipCommandTest {
 
         // different descriptor -> returns false
         assertNotEquals(new EditInternshipCommand(INDEX_THIRD, INDEX_FIRST, lazadaDs), standardCommand);
+
+        // different company index -> returns false
+        assertNotEquals(new EditInternshipCommand(INDEX_SECOND, INDEX_FIRST, lazadaDs), standardCommand);
     }
 }

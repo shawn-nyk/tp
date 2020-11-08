@@ -146,4 +146,9 @@ public class JsonAdaptedCompanyItemTest {
         assertThrows(IllegalValueException.class, expectedMessage, companyItem::toModelType);
     }
 
+    @Test
+    public void constructor_nullInput_throwsAssertionError() {
+        assertThrows(AssertionError.class, () -> new JsonAdaptedCompanyItem(null));
+    }
+
 }

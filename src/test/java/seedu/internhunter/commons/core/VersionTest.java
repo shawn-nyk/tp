@@ -146,10 +146,14 @@ public class VersionTest {
         // same object -> return true
         assertTrue(version.equals(version));
 
+        // same value -> return true
+        assertTrue(version.equals(new Version(1, 2, 3, true)));
+
         // null -> return false
         assertFalse(version.equals(null));
 
         // different types -> return false
         assertFalse(version.equals(0.5f));
+
     }
 }
