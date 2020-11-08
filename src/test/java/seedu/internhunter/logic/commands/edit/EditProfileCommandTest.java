@@ -2,6 +2,7 @@ package seedu.internhunter.logic.commands.edit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.commons.core.Messages.MESSAGE_EDIT_SUCCESS;
 import static seedu.internhunter.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -25,6 +26,7 @@ import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.logic.commands.CommandResult;
 import seedu.internhunter.logic.commands.ExitCommand;
 import seedu.internhunter.logic.commands.edit.EditProfileCommand.EditProfileItemDescriptor;
+import seedu.internhunter.logic.commands.exceptions.CommandException;
 import seedu.internhunter.logic.commands.util.profile.EditProfileItemDescriptorBuilder;
 import seedu.internhunter.model.Model;
 import seedu.internhunter.model.ModelManager;
@@ -142,6 +144,14 @@ public class EditProfileCommandTest {
                 new EditProfileItemDescriptorBuilder().withProfileItemCategory(VALID_CATEGORY_ACHIEVEMENT).build());
 
         assertCommandFailure(editCommand, model, INVALID_PROFILE_INDEX_MESSAGE);
+    }
+
+    @Test
+    public void execute_editAnItemToBeTheSameAsAnItemWhichAlreadyExist_throwsCommandException() {
+        EditProfileCommand.EditProfileItemDescriptor descriptor =
+            new EditProfileItemDescriptorBuilder(GOVTECH_EXPERIENCE).build();
+        EditProfileCommand editCommand = new EditProfileCommand(INDEX_FIRST, descriptor);
+        assertThrows(CommandException.class, () -> editCommand.execute(model));
     }
 
     @Test

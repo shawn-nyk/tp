@@ -99,6 +99,7 @@ public class ItemListManager<T extends Item> implements FilterableItemList<T> {
 
     /**
      * Returns an {@code Item} from filteredItems.
+     *
      * @param index of item to be returned.
      * @return Item at index specified.
      */
