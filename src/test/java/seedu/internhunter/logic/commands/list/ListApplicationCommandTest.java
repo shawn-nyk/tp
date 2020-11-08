@@ -9,7 +9,6 @@ import static seedu.internhunter.testutil.application.SampleApplicationItems.get
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.internhunter.commons.core.index.Index;
 import seedu.internhunter.logic.commands.CommandResult;
 import seedu.internhunter.model.Model;
 import seedu.internhunter.model.ModelManager;
@@ -33,7 +32,7 @@ public class ListApplicationCommandTest {
 
     @Test
     public void execute_listApplicationIsNotFiltered_showsSameList() {
-        expectedModel.setApplicationViewIndex(Index.fromOneBased(1));
+        expectedModel.setApplicationViewIndex(INDEX_FIRST);
         expectedModel.setTabName(TabName.APPLICATION); // default is Company
         assertCommandSuccess(new ListApplicationCommand(), model, commandResult, expectedModel);
     }
@@ -41,7 +40,7 @@ public class ListApplicationCommandTest {
     @Test
     public void execute_listApplicationIsFiltered_showsEverything() {
         showApplicationAtIndex(model, INDEX_FIRST);
-        expectedModel.setApplicationViewIndex(Index.fromOneBased(1));
+        expectedModel.setApplicationViewIndex(INDEX_FIRST);
         expectedModel.setTabName(TabName.APPLICATION); // default is Company
         assertCommandSuccess(new ListApplicationCommand(), model, commandResult, expectedModel);
     }
