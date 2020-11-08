@@ -15,7 +15,7 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=shawn-nyk&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
 
-* **Features added**:
+* **Features and enhancements implemented**:
   * Add a company (Pull request [\#143](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/143))
     * What it does: Allows the user to add a company to the app's company list.
     * Highlights: How the company class would be structured was decided upon and it laid the structural foundation for
@@ -45,6 +45,7 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
     * Highlights: The implementation of this feature required keen insight into the relationship between internship and
      application data types as it required honoring the established relationship that internship and application data types 
      have, since editing an internship directly affects an application made to it.
+  * Contributed significantly to improving the test coverage (Pull requests [\#329](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/329), [\#369](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/369), [\#418](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/418))
 
 * **Documentation**:
   * User Guide:
@@ -60,9 +61,8 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
     * Standardized certain formatting aspects.
 
 * **Team-based tasks**:
-  * Maintaining the issue tracker
-  * Documenting the target user profile
-  * Documenting the value proposition
+  * Maintaining the issue tracker and managing milestones.
+  * Documenting the target user profile and value proposition.
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [\#98](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/98), [\#129](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/129), [\#140](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/140), [\#164](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/164), [\#198](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/198)
@@ -73,7 +73,8 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
   [\#157](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/157), [\#215](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/215), 
   [\#251](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/251), [\#256](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/256), 
   [\#257](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/257), [\#260](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/260), 
-  [\#356](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/356)
+  [\#356](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/356), [\#371](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/371),
+  [\#398](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/398), [\#409](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/409)
   * Reported bugs and suggestions for other teams in the class. Bug reports:
   [1](https://github.com/AY2021S1-CS2103T-T09-3/tp/issues/240), [2](https://github.com/AY2021S1-CS2103T-T09-3/tp/issues/241), 
   [3](https://github.com/AY2021S1-CS2103T-T09-3/tp/issues/242), [4](https://github.com/AY2021S1-CS2103T-T09-3/tp/issues/243), 

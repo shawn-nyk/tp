@@ -19,9 +19,10 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
   * Added storage to InternHunter (Pull request [\#141](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/141), [\#158](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/158))
     * What it does: Allows InternHunter to read and save its data to JSON files.
     * Highlights:
-      * Created the `JsonAdaptedItem` abstract class which represent the JSON adapted version of an `Item`.
-      * Created generic `JsonItemListStorage` and `JsonSerializableItemList` classes that work for all classes extending `JsonAdaptedItem`,
-      * Update the `JsonUtil#readJsonFile()` method to allow Jackson deserializing to a generic class.
+      * Created the `JsonAdaptedItem` abstract class which represent the Jackson-friendly version of an `Item`. 
+      * Created generic `JsonItemListStorage` and `JsonSerializableItemList` classes that work for all classes extending `JsonAdaptedItem`.
+      * Updated the `JsonUtil#readJsonFile()` method to allow Jackson deserializing to a generic class.
+      * Lets InternHunter reads and saves `ApplicationItemList`, `CompanyItemList`, and `ProfileItemList`.
       * Ensures the consistency between internships in application and company lists.
   * Created generic `FilterableItemList` and `ItemListManager` classes. (Pull request [\#108](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/108))
     * What it does: Lets future addition of `Item` subtypes to the model easy and reduce current code duplication.
@@ -80,5 +81,5 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
   * Reported bugs and suggestions for other teams in the class. Bug reports:
   [1](https://github.com/AY2021S1-CS2103T-T17-2/tp/issues/113), [2](https://github.com/AY2021S1-CS2103T-T17-2/tp/issues/114), 
   [3](https://github.com/AY2021S1-CS2103T-T17-2/tp/issues/115), [4](https://github.com/AY2021S1-CS2103T-T17-2/tp/issues/116), 
-  [5](https://github.com/AY2021S1-CS2103T-T17-2/tp/issues/117), [6](https://github.com/AY2021S1-CS2103T-T09-3/tp/issues/245), 
+  [5](https://github.com/AY2021S1-CS2103T-T17-2/tp/issues/117), [6](https://github.com/AY2021S1-CS2103T-T17-2/tp/issues/118), 
 

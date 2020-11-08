@@ -1,7 +1,7 @@
 package seedu.internhunter.model.util;
 
 /**
- * Contains strings used in the InternshipItem.
+ * Contains strings used in the ProfileItem.
  */
 public class ProfileItemUtil {
     public static final String CATEGORY_OUTPUT_NAME = " Type: ";
