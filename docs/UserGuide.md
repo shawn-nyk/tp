@@ -43,8 +43,8 @@ title: User Guide
  [4.6. Finding the most suitable internships](#finding-the-most-suitable-internships) <br />
   [4.6.1. Generating matching internships: `match`](#generating-matching-internships-match) <br />
  [4.7. General](#general) <br />
-  [4.7.1. Viewing help: `help`](#viewing-help-help) <br />
-  [4.7.2. Clearing all entries: `clear`](#clearing-all-entries-clear) <br />
+  [4.7.1. Clearing all entries: `clear`](#clearing-all-entries-clear) <br />
+  [4.7.2. Viewing help: `help`](#viewing-help-help) <br />
   [4.7.3. Exiting the program: `exit`](#exiting-the-program-exit) <br />
 [5. FAQ](#faq) <br/>
 [6. Command Summary](#command-summary) <br />
@@ -462,6 +462,14 @@ Selects an internship from a company and adds it to your list of applications. I
 Format: `add app INDEX i/INDEX [s/STATUS] [d/STATUS_DATE]`
 - Where `INDEX` refers to the index of the company in the company list, and `i/INDEX` refers to the index of the
 internship in the company’s internship list.
+
+<div markdown="span" class="alert alert-primary">
+
+  :bulb: **Tip:** The optional STATUS field can be used as freely as you want it too! Say you have applied and already
+  got the interview, you can immediately add the application with status <code>Interview</code> without needing to add
+  the application and update it afterwards.
+     
+</div>
 
 Example:
 - Suppose you are interested in applying for the Software Engineer internship in Google Singapore:

@@ -72,4 +72,10 @@ public class JsonAdaptedProfileItemTest {
         String expectedMessage = Descriptor.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, profileItem::toModelType);
     }
+
+    @Test
+    public void constructor_nullInput_throwsAssertionError() {
+        assertThrows(AssertionError.class, () -> new JsonAdaptedProfileItem(null));
+    }
+
 }
