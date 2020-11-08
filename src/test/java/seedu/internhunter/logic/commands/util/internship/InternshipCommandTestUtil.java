@@ -27,6 +27,13 @@ public class InternshipCommandTestUtil {
     // Valid index
     public static final String INDEX_DESC_FIRST = " " + PREFIX_INDEX + INDEX_FIRST.getOneBased();
 
+    // Invalid indexes
+    public static final String INDEX_DESC_NEGATIVE = " " + PREFIX_INDEX + "-5";
+    public static final String INDEX_DESC_ZERO = " " + PREFIX_INDEX + "0";
+    public static final String INDEX_DESC_NAN = " " + PREFIX_INDEX + "1 some random string";
+    public static final String INDEX_DESC_INVALID_PREFIX = " " + PREFIX_INDEX + INDEX_FIRST.getOneBased()
+            + " d/string";
+
     // Valid job titles
     public static final String JOB_TITLE_DESC_SWE = " " + PREFIX_JOB_TITLE + VALID_JOB_TITLE_SWE;
     public static final String JOB_TITLE_DESC_FE = " " + PREFIX_JOB_TITLE + VALID_JOB_TITLE_FE;
@@ -52,7 +59,7 @@ public class InternshipCommandTestUtil {
     public static final String REQUIREMENT_DESC_VUE = " " + PREFIX_REQUIREMENT + VALID_REQUIREMENT_VUE;
     public static final String REQUIREMENT_DESC_R = " " + PREFIX_REQUIREMENT + VALID_REQUIREMENT_R;
 
-    // Invalid requirement
+    // Invalid requirements
     public static final String INVALID_REQUIREMENT_DESC = " " + PREFIX_REQUIREMENT + INVALID_REQUIREMENT_EMPTY;
 
     // Invalid internship index
