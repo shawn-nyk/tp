@@ -819,7 +819,7 @@ Format: `exit`
 
 Example:
 
-1. Suppose you want to exit InternHunter without clicking the cross button, executing `exit` will generate a new window to confirm your request of exitting.
+1. Suppose you want to exit InternHunter without clicking the cross button, executing `exit` will generate a new window to confirm your request of exiting.
 
 <p align="center"><img src="images/ug-general/exit.png" width="70%" height="70%"/></p>
 
