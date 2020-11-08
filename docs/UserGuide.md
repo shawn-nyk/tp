@@ -40,11 +40,11 @@ title: User Guide
   [4.5.4. Viewing a profile item's details in full: `view me`](#viewing-a-profile-items-details-in-full-view-me) <br />
   [4.5.5. Finding items in profile: `find me`](#finding-items-in-profile-find-me) <br />
   [4.5.6. Listing all profile items: `list me`](#listing-all-items-in-profile-list-me) <br />
- [4.6. General](#general) <br />
-  [4.6.1. Generating matching internships: `match`](#generating-matching-internships-match) <br />
-  [4.6.2. Viewing Help: `help`](#viewing-help-help) <br />
-  [4.6.3. Clearing all entries: `clear`](#clearing-all-entries-clear) <br />
-  [4.6.4. Exiting the program: `exit`](#exiting-the-program-exit) <br />
+ [4.6. Generating matching internships: `match`](#generating-matching-internships-match) <br />
+ [4.7. General](#general) <br />
+  [4.7.1. Viewing Help: `help`](#viewing-help-help) <br />
+  [4.7.2. Clearing all entries: `clear`](#clearing-all-entries-clear) <br />
+  [4.7.3. Exiting the program: `exit`](#exiting-the-program-exit) <br />
 [5. FAQ](#faq) <br/>
 [6. Command Summary](#command-summary) <br />
 
