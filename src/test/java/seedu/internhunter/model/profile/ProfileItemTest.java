@@ -17,6 +17,12 @@ import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TI
 import static seedu.internhunter.testutil.profile.ProfileItemFieldsUtil.VALID_TITLE_INTERNSHIP;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.GOVTECH_EXPERIENCE;
 import static seedu.internhunter.testutil.profile.SampleProfileItems.HTML_SKILL;
+import static seedu.internhunter.ui.panel.PanelDisplayKeyword.DESCRIPTORS_DISPLAY_NAME;
+import static seedu.internhunter.ui.panel.PanelDisplayKeyword.TITLE_DISPLAY_NAME;
+import static seedu.internhunter.ui.panel.PanelDisplayKeyword.TYPE_DISPLAY_NAME;
+
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 
 import org.junit.jupiter.api.Test;
 
@@ -125,5 +131,14 @@ class ProfileItemTest {
                 .append(DESCRIPTORS_OUTPUT_NAME)
                 .append(GOVTECH_EXPERIENCE.getDescriptors());
         assertEquals(builder.toString(), GOVTECH_EXPERIENCE.toString());
+    }
+
+    @Test
+    public void getMapping_correctOrdering_success() {
+        LinkedHashMap<String, Object> mapping = HTML_SKILL.getMapping();
+        Iterator<Object> fields = mapping.values().iterator();
+        assertEquals(fields.next(), mapping.get(TITLE_DISPLAY_NAME));
+        assertEquals(fields.next(), mapping.get(TYPE_DISPLAY_NAME));
+        assertEquals(fields.next(), mapping.get(DESCRIPTORS_DISPLAY_NAME));
     }
 }
