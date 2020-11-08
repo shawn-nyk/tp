@@ -92,7 +92,7 @@ And here's what you can do:
 1. When you find a company that you are interested in, add it to your list of companies with the: <br />
 [`add com` command](#adding-a-company-add-com)
 2. Next, note down the internships offered by that company that interest you with the: <br />
-[`add int` command](#adding-an-internship-add-int)
+[`add int` command](#adding-an-internship-to-a-company-add-int)
 3. And once you've applied for an internship, record it down to keep track of it with the: <br />
 [`add app` command](#applying-for-an-internship-add-app)
 
