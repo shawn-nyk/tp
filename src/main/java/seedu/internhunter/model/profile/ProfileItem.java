@@ -125,9 +125,9 @@ public class ProfileItem extends Item {
 
 
     /**
-     * Obtains the name of the item.
+     * Obtains the name of the profile item.
      *
-     * @return Item name.
+     * @return profile name.
      */
     @Override
     public String getItemName() {

@@ -35,6 +35,8 @@ public class EditProfileCommandParser implements Parser<EditProfileCommand> {
      * Parses the given {@code String} of arguments in the context of the EditProfileCommand.
      * and returns an EditProfileCommand object for execution.
      *
+     * @param args Arguments provided by the user.
+     * @return EditProfileCommand Object.
      * @throws ParseException if the user input does not conform to the expected format.
      */
     public EditProfileCommand parse(String args) throws ParseException {
@@ -48,9 +50,8 @@ public class EditProfileCommandParser implements Parser<EditProfileCommand> {
         }
 
         Index index = getIndexInPreamble(argMultimap);
-
         EditProfileItemDescriptor editProfileItem = new EditProfileItemDescriptor();
-        // Update the setters
+
         if (argMultimap.getValue(PREFIX_TITLE).isPresent()) {
             editProfileItem.setTitle(parseTitle(argMultimap.getValue(PREFIX_TITLE).get()));
         }
