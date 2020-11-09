@@ -381,9 +381,9 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
   `EditProfileCommand`.
 5. CommandResult is return to indicate a successful operation.
  
-#### Design considerations
-
 <div style="page-break-after: always;"></div>
+ 
+#### Design considerations
 
 ##### Aspect: How Logic components interact with Model
 
