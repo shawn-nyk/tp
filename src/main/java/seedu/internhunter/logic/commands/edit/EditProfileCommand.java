@@ -64,6 +64,13 @@ public class EditProfileCommand extends EditCommand {
         this.editProfileItemDescriptor = new EditProfileItemDescriptor(editProfileItemDescriptor);
     }
 
+    /**
+     * Executes the EditProfileCommand and returns the result message.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return feedback message of the operation result for display.
+     * @throws CommandException If an error occurs during command execution.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -83,6 +90,10 @@ public class EditProfileCommand extends EditCommand {
     /**
      * Creates and returns a {@code ProfileItem} with the details of {@code profileItemToEdit}
      * edited with {@code editProfileItemDescriptor}.
+     *
+     * @param profileItemToEdit is the profileItem retrieved from the model to be edited.
+     * @param editProfileItemDescriptor contains fields specified user used to edit the {@code profileItemToEdit}.
+     * @return a new ProfileItem to be stored to model.
      */
     private static ProfileItem createEditedProfileItem(ProfileItem profileItemToEdit,
             EditProfileItemDescriptor editProfileItemDescriptor) {

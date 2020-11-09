@@ -142,24 +142,24 @@ public class AddInternshipCommandTest {
 
 
         // different Wage -> returns false
-        assertNotEquals(addInternshipCommand, new AddInternshipCommand(INDEX_THIRD,
+        assertNotEquals(addInternshipCommand, new AddInternshipCommand(INDEX_FIRST,
                 new JobTitle(VALID_JOB_TITLE_SWE),
                 new Wage(VALID_WAGE_2000),
                 new Period(VALID_PERIOD_SUMMER),
                 new HashSet<Requirement>()));
 
         // different Period -> returns false
-        assertNotEquals(addInternshipCommand, new AddInternshipCommand(INDEX_THIRD,
+        assertNotEquals(addInternshipCommand, new AddInternshipCommand(INDEX_FIRST,
                 new JobTitle(VALID_JOB_TITLE_SWE),
-                new Wage(VALID_WAGE_2000),
+                new Wage(VALID_WAGE_4000),
                 new Period(VALID_PERIOD_MAY_TO_JULY),
                 new HashSet<Requirement>()));
 
         // different Requirements -> returns false
-        assertNotEquals(addInternshipCommand, new AddInternshipCommand(INDEX_THIRD,
+        assertNotEquals(addInternshipCommand, new AddInternshipCommand(INDEX_FIRST,
                 new JobTitle(VALID_JOB_TITLE_SWE),
-                new Wage(VALID_WAGE_2000),
-                new Period(VALID_PERIOD_MAY_TO_JULY),
+                new Wage(VALID_WAGE_4000),
+                new Period(VALID_PERIOD_SUMMER),
                 new HashSet<>(Arrays.asList(new Requirement(VALID_REQUIREMENT_GRAPHQL)))));
     }
 

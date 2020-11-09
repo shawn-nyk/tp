@@ -31,7 +31,7 @@ public class DeleteApplicationCommand extends DeleteCommand {
     private final Index targetIndex;
 
     /**
-     * Creates an DeleteApplicationCommand to add the specified {@code DeleteApplicationCommand}.
+     * Creates an DeleteApplicationCommand to delete the specified {@code ApplicationItem}.
      *
      * @param targetIndex Target index of the
      */

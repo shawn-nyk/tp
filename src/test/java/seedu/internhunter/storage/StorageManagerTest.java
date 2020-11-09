@@ -161,4 +161,9 @@ public class StorageManagerTest {
         assertNotNull(storageManager.getProfileItemListFilePath());
     }
 
+    @Test
+    public void getUserPrefsFilePath_equals() {
+        assertEquals(getTempFilePath("prefs"), storageManager.getUserPrefsFilePath());
+    }
+
 }

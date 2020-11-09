@@ -84,4 +84,9 @@ public class JsonAdaptedApplicationItemTest {
         assertThrows(IllegalValueException.class, expectedMessage, applicationItem::toModelType);
     }
 
+    @Test
+    public void constructor_nullInput_throwsAssertionError() {
+        assertThrows(AssertionError.class, () -> new JsonAdaptedApplicationItem(null));
+    }
+
 }

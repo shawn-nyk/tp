@@ -29,8 +29,8 @@ It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC.
     * What it does: Allows the user to list all applications in the app's application list.
   * Add match command GUI (Pull request [\#277](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/277))
     * What it does: Creates a new window to display all the matched internship to requirements.
-  * Contributed significantly to increase test coverage. (Pull request [\#178](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/178), [\#198](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/198) ,[\#273](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/273), [\#298](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/298), [\#353](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/353), [\#356](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/356), [\#398](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/398))
-  * Did javadocs (Pull request [\#179](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/179), [\#395](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/395/files)), as well as in some general pull request.
+  * Contributed significantly to increase test coverage. (Pull request [\#178](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/178), [\#198](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/198) ,[\#273](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/273), [\#298](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/298), [\#353](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/353), [\#356](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/356), [\#409](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/409), [\#422](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/422))
+  * Did javadocs (Pull request [\#179](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/179), [\#395](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/395), [\#409](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/409)), as well as in some general pull request.
 
 * **Documentation**:
   * User guide:

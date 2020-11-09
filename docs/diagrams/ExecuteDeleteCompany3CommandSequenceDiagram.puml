@@ -65,7 +65,7 @@ activate Model
 Model --> DeleteCompanyCommand
 deactivate Model
 
-DeleteCompanyCommand -> CommandUtil : getCommandResult(model, deleteSuccessMessage,\ncurrentTabName, TabName.COMPANY, 3)
+DeleteCompanyCommand -> CommandUtil : getCommandResult(...)
 activate CommandUtil
 
 ref over CommandUtil, Model: get delete command result

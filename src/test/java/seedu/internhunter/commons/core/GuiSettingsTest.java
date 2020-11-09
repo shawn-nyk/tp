@@ -79,5 +79,13 @@ public class GuiSettingsTest {
         // different type -> false
         assertFalse(defaultGuiSettings.equals(0.5f));
         assertFalse(userGuiSettings.equals(0.5f));
+
+        // different window width -> false
+        GuiSettings guiSettingsDifferentWindowWith = new GuiSettings(1234, 1234, 12, 34);
+        assertFalse(userGuiSettings.equals(guiSettingsDifferentWindowWith));
+
+        // different window coordinates -> false
+        GuiSettings guiSettingsDifferentWindowCoordinate = new GuiSettings(700, 900, 20, 30);
+        assertFalse(userGuiSettings.equals(guiSettingsDifferentWindowCoordinate));
     }
 }

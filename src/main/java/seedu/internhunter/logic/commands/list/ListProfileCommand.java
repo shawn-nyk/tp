@@ -17,6 +17,7 @@ import seedu.internhunter.ui.tabs.TabName;
 public class ListProfileCommand extends ListCommand {
 
     public static final String MESSAGE_SUCCESS = String.format(MESSAGE_LIST_SUCCESS, PROFILE_NAME);
+
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);

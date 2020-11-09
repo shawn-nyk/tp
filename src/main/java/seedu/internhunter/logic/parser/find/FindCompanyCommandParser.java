@@ -11,8 +11,19 @@ import seedu.internhunter.logic.parser.Parser;
 import seedu.internhunter.logic.parser.exceptions.ParseException;
 import seedu.internhunter.model.company.CompanyNameContainsKeyWordsPredicate;
 
+/**
+ * Parses input arguments and creates a new FindCompanyCommand object
+ */
 public class FindCompanyCommandParser implements Parser<FindCompanyCommand> {
 
+    /**
+     * Parses the given {@code String} of arguments in the context of the FindCompanyCommand
+     * and returns a FindCompanyCommand object for execution.
+     *
+     * @param args User's input.
+     * @return A FindCompanyCommand object that contains the input predicate.
+     * @throws ParseException if the user input does not conform the expected format
+     */
     @Override
     public FindCompanyCommand parse(String args) throws ParseException {
         requireNonNull(args);
