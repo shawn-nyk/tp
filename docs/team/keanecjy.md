@@ -38,11 +38,8 @@ morph the existing AB3 implementation into our own, adding a total of more than 
     general code structure of our application, as this helped to greatly reduce code duplication and allowed for smooth
     interaction between the 4 data types in the model, logic and storage component.
   * Delete an application (Pull request [\#140](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/140))
-    * Allows the user to delete an application.
   * Update an application (Pull request [\#152](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/152))
-    * Updates an application in the list of applications.
   * View an application (Pull request [\#152](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/152))
-    * What it does: Allows the user to view an application in full detail.
   * Created and maintained the ApplicationItem and InternshipItem classes and fields in the model. (Pull request [\#98](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/98))
   * Refactor the code to match application (Pull request [\#284](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/284))
   * Created general wrapper regex classes for items in the model (Pull request [\#126](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/126))
