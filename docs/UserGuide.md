@@ -860,13 +860,13 @@ Example:
 
 1. Suppose you want to clear all your data in InternHunter. Executing `clear` will clear all the data.
 
-<p align="center"><img src="images/ug-general/clear.png" width="70%" height="70%"/></p>
+<p align="center"><img src="images/ug-general/clear.png" /></p>
 
 <div style="page-break-after: always;"></div>
 
 2\. Note that all the data has been wiped as seen in the Ui.
 
-<p align="center"><img src="images/ug-general/clearResult.png" width="70%" height="70%"/></p>
+<p align="center"><img src="images/ug-general/clearResult.png" /></p>
 
 <div style="page-break-after: always;"></div>
 
@@ -887,13 +887,13 @@ Example:
 
 1. Suppose you can't remember the commands. Fret not, executing `help` will generate a new window containing the link to the user guide!
 
-<p align="center"><img src="images/ug-general/help.png" width="70%" height="70%"/></p>
+<p align="center"><img src="images/ug-general/help.png" /></p>
 
 <div style="page-break-after: always;"></div>
 
 2\. Copy the link and access our user guide for more information.
 
-<p align="center"><img src="images/ug-general/helpResult.png" width="70%" height="70%"/></p>
+<p align="center"><img src="images/ug-general/helpResult.png" /></p>
 
 <div style="page-break-after: always;"></div>
 
@@ -915,13 +915,13 @@ Example:
 
 1. Suppose you want to exit InternHunter without clicking the cross button, executing `exit` will generate a new window to confirm your request of exiting.
 
-<p align="center"><img src="images/ug-general/exit.png" width="70%" height="70%"/></p>
+<p align="center"><img src="images/ug-general/exit.png" /></p>
 
 <div style="page-break-after: always;"></div>
 
 2\. At this stage, you have the option to confirm the exit or continue to stay in InternHunter.
 
-<p align="center"><img src="images/ug-general/exitResult.png" width="70%" height="70%"/></p>
+<p align="center"><img src="images/ug-general/exitResult.png" /></p>
 
 --------------------------------------------------------------------------------------------------------------------
 
