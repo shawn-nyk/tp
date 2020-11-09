@@ -2,7 +2,6 @@ package seedu.internhunter.model.internship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.testutil.Assert.assertThrows;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.INVALID_PERIOD_EMPTY;
@@ -54,14 +53,14 @@ public class PeriodTest {
 
     @Test
     public void equals_equalityTest_success() {
-        assertEquals(VALID_PERIOD_ONE, VALID_PERIOD_ONE);
+        assertTrue(VALID_PERIOD_ONE.equals(VALID_PERIOD_ONE));
         Period periodCopy = new Period(VALID_PERIOD_SUMMER);
-        assertEquals(VALID_PERIOD_ONE, periodCopy);
+        assertTrue(VALID_PERIOD_ONE.equals(periodCopy));
     }
 
     @Test
     public void equals_nonEqualityTest_success() {
-        assertNotEquals(VALID_PERIOD_ONE, VALID_PERIOD_TWO);
+        assertFalse(VALID_PERIOD_ONE.equals(VALID_PERIOD_TWO));
     }
 
     @Test
