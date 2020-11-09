@@ -539,6 +539,8 @@ for an interview on the 28 Dec 2020, 2pm. Executing `edit app 1 s/interview d/28
 application as follows:
 <p align="center"><img src="images/ug-application/EditApplication1.png" width="90%" height="90%"/></p>
 
+<div style="page-break-after: always;"></div>
+
 #### Viewing an application's details in full: `view app`
 
 Selects an application in the list of applications to show in detail on the right panel.
@@ -549,6 +551,8 @@ Example:
 - Suppose you are currently viewing the first application and you want to view the second application. 
 Executing `view app 2` will update the right panel to display the second application:
 <p align="center"><img src="images/ug-application/ViewApplication.png" width="90%" height="90%"/></p>
+
+<div style="page-break-after: always;"></div>
 
 #### Finding applications: `find app`
 
@@ -578,6 +582,8 @@ applications:
 
 <p align="center"><img src="images/ug-application/FindApplication1.png" width="100%"/></p>
 
+<div style="page-break-after: always;"></div>
+
 #### Listing all applications: `list app`
 
 Lists out **all** applications in your list of applications. After using the `find app` command, you would have likely
@@ -592,6 +598,8 @@ Example:
 **all** 4 applications in your list of applications:
 
 <p align="center"><img src="images/ug-application/ListApplication.png" width="100%"/></p>
+
+<div style="page-break-after: always;"></div>
 
 ### **Profile**
 
