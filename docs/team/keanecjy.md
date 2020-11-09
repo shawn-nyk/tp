@@ -1,5 +1,7 @@
+---
 layout: page
 title: Keane Chan Jun Yu - Project Portfolio
+---
 
 InternHunter is a CLI-centric desktop application which aids university students in applying for tech internships.
 It lets users manage their own customisable collection of companies, internships, internship applications and their 
@@ -8,7 +10,7 @@ own user profile, so that they can keep track of internships that they are inter
 It has a GUI created with JavaFX. It is written in Java, and has about 35k LoC. Our team of 5 took roughly 6 weeks to
 morph the existing AB3 implementation into our own, adding a total of more than 30,000 lines of code to the application.
 
-## Summary of contributions
+**Summary of contributions**
 
 * **Code contributed:** [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=keanecjy)
 
