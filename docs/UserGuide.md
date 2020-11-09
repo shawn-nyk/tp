@@ -379,6 +379,7 @@ Example:
 Adds an internship to a company.
 
 Format: `add int INDEX j/JOB_TITLE [w/WAGE] [p/PERIOD] [r/REQUIREMENT]...`
+- `INDEX` refers to the index of the company in the company list.
 - `PERIOD` can refer to any word (e.g. `3 months`, `Summer break`, `Jun - Aug 2021`).
 - `WAGE` must be a positive integer (without leading zeroes or + symbol).
 
