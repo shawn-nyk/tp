@@ -13,6 +13,7 @@ import static seedu.internhunter.testutil.application.SampleApplicationItems.SHO
 import org.junit.jupiter.api.Test;
 
 import seedu.internhunter.commons.exceptions.IllegalValueException;
+import seedu.internhunter.model.application.ApplicationItem;
 import seedu.internhunter.model.application.Status;
 import seedu.internhunter.model.application.StatusDate;
 import seedu.internhunter.model.internship.InternshipItem;
@@ -82,6 +83,13 @@ public class JsonAdaptedApplicationItemTest {
                 null);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, InternshipItem.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, applicationItem::toModelType);
+    }
+
+    @Test
+    public void constructor_nullInput_throwsAssertionError() {
+        assertThrows(AssertionError.class, () -> new JsonAdaptedApplicationItem(null));
+        ApplicationItem applicationItem = null;
+        assertThrows(AssertionError.class, () -> new JsonAdaptedApplicationItem(applicationItem));
     }
 
 }

@@ -2,7 +2,6 @@ package seedu.internhunter.model.internship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.testutil.Assert.assertThrows;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.INVALID_JOB_TITLE_BLANK;
@@ -12,6 +11,10 @@ import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.VA
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests the JobTitle field in an InternshipItem. Tests for the isValidJobTitle is little since the
+ * isValidAlphaNumericWord accounts for more of the tests.
+ */
 public class JobTitleTest {
 
     private static final JobTitle VALID_JOB_TITLE_ONE = new JobTitle(VALID_JOB_TITLE_SWE);
@@ -54,14 +57,21 @@ public class JobTitleTest {
 
     @Test
     public void equals_equalityTest_success() {
-        assertEquals(VALID_JOB_TITLE_ONE, VALID_JOB_TITLE_ONE);
+        // same object -> return true
+        assertTrue(VALID_JOB_TITLE_ONE.equals(VALID_JOB_TITLE_ONE));
         JobTitle jobTitleCopy = new JobTitle(VALID_JOB_TITLE_SWE);
-        assertEquals(VALID_JOB_TITLE_ONE, jobTitleCopy);
+        // same value -> return true
+        assertTrue(VALID_JOB_TITLE_ONE.equals(jobTitleCopy));
     }
 
     @Test
     public void equals_nonEqualityTest_success() {
-        assertNotEquals(VALID_JOB_TITLE_ONE, VALID_JOB_TITLE_TWO);
+        // different value -> return false
+        assertFalse(VALID_JOB_TITLE_ONE.equals(VALID_JOB_TITLE_TWO));
+        // null -> return false
+        assertFalse(VALID_JOB_TITLE_ONE.equals(null));
+        // different types -> return false
+        assertFalse(VALID_JOB_TITLE_ONE.equals(0.5f));
     }
 
     @Test

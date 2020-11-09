@@ -14,11 +14,12 @@ import org.junit.jupiter.api.Test;
 
 import seedu.internhunter.commons.exceptions.IllegalValueException;
 import seedu.internhunter.model.profile.Descriptor;
+import seedu.internhunter.model.profile.ProfileItem;
 import seedu.internhunter.model.profile.ProfileItemCategory;
 import seedu.internhunter.model.profile.Title;
 
 public class JsonAdaptedProfileItemTest {
-    public static final String INVALID_TITLE = "@w350M3";
+    public static final String INVALID_TITLE = " ";
     public static final String INVALID_DESCRIPTOR = "";
 
     public static final String VALID_TITLE = HTML_SKILL.getTitle().toString();
@@ -72,4 +73,12 @@ public class JsonAdaptedProfileItemTest {
         String expectedMessage = Descriptor.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, profileItem::toModelType);
     }
+
+    @Test
+    public void constructor_nullInput_throwsAssertionError() {
+        assertThrows(AssertionError.class, () -> new JsonAdaptedProfileItem(null));
+        ProfileItem profileItem = null;
+        assertThrows(AssertionError.class, () -> new JsonAdaptedProfileItem(profileItem));
+    }
+
 }

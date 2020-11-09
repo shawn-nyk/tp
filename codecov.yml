@@ -2,7 +2,7 @@
 comment: yes # comment PR with the result
 
 coverage:
-  range: 60..100 # coverage lower than 50 is red, higher than 75 green, between color code
+  range: 60..75 # coverage lower than 50 is red, higher than 75 green, between color code
 
   status:
     project: # settings affecting project coverage

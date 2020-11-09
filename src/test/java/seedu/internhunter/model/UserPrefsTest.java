@@ -5,8 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.testutil.Assert.assertThrows;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import seedu.internhunter.commons.core.GuiSettings;
 
 public class UserPrefsTest {
 
@@ -52,6 +57,28 @@ public class UserPrefsTest {
 
         // different Types -> return false
         assertFalse(userPrefs.equals(0.5f));
+
+        // different Gui Settings
+        GuiSettings guiSettings = new GuiSettings(100, 100, 1, 1);
+        UserPrefs userPrefsDifferentGuiSettings = new UserPrefs();
+        userPrefsDifferentGuiSettings.setGuiSettings(guiSettings);
+        assertFalse(userPrefs.equals(userPrefsDifferentGuiSettings));
+
+        Path path = Paths.get("differentPath");
+        // different applicationItemListFilePath
+        UserPrefs userPrefsDifferentApplicationItemListFilePath = new UserPrefs();
+        userPrefsDifferentApplicationItemListFilePath.setApplicationItemListFilePath(path);
+        assertFalse(userPrefs.equals(userPrefsDifferentApplicationItemListFilePath));
+
+        // different companyItemListFilePath
+        UserPrefs userPrefsDifferentCompanyItemListFilePath = new UserPrefs();
+        userPrefsDifferentCompanyItemListFilePath.setCompanyItemListFilePath(path);
+        assertFalse(userPrefs.equals(userPrefsDifferentCompanyItemListFilePath));
+
+        // different profileItemListFilePath
+        UserPrefs userPrefsDifferentProfileItemListFilePath = new UserPrefs();
+        userPrefsDifferentProfileItemListFilePath.setProfileItemListFilePath(path);
+        assertFalse(userPrefs.equals(userPrefsDifferentProfileItemListFilePath));
     }
 
 }

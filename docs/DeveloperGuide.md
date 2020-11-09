@@ -12,6 +12,8 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## **Design**
 
 ### Architecture
@@ -28,6 +30,8 @@ components of lower layers are independent of higher layers. e.g. the `Logic` co
 :bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2021S1-CS2103T-T15-4/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 
 </div>
+
+<div style="page-break-after: always;"></div>
 
 **`Main`** has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
@@ -51,6 +55,8 @@ For example, the `Logic` component (see the class diagram given below) defines i
 
 ![Class Diagram of the Logic Component](images/LogicClassDiagram.png)
 
+<div style="page-break-after: always;"></div>
+
 **How the architecture components interact with each other**
 
 The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues
@@ -59,6 +65,8 @@ The *Sequence Diagram* below shows how the components interact with each other f
 <img src="images/ArchitectureSequenceDiagram.png" width="574" />
 
 The sections below give more details of each component.
+
+<div style="page-break-after: always;"></div>
 
 ### Ui component
 
@@ -70,27 +78,31 @@ The sections below give more details of each component.
   
 </div>
 
+<div style="page-break-after: always;"></div>
+
 **API** :
-[`Ui.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
+[`Ui.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/ui/Ui.java)
 
 The Ui consists of a `MainWindow` that is made up of parts e.g. `CommandBox`, `ResultDisplay`, `ListPanel`, `InformationDisplay`, `Tabs` etc. 
 All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `Tabs` is located at the most left of the application and it consists of three tabs which defines the main three data item `CompanyItem`, `ApplicationItem`, `ProfileItem`. <br/>
 
-The `ListPanel` is located at the center of the application and it consists of UI `CompanyCard`, `ApplicationCard`, `ProfileCard` to display key information of each data idea. <br/>
+The `ListPanel` is located at the center of the application and it consists of Ui `CompanyCard`, `ApplicationCard`, `ProfileCard` to display key information of each data idea. <br/>
 
-The `InformationDisplay` appears at the right of the application and it consists of UI `CompanyDisplay`, `ApplicationDisplay`, `ProfileDisplay`. The `InformationDisplay` displays the full information regarding the data item. <br/>
+The `InformationDisplay` appears at the right of the application and it consists of Ui `CompanyDisplay`, `ApplicationDisplay`, `ProfileDisplay`. The `InformationDisplay` displays the full information regarding the data item. <br/>
 
-The `ResultDisplay` and `CommandBox` appears at the bottom of the application and the `ResultDisplay` is above the `CommandBox` even though the UI does not show it explicitly. <br/>
+The `ResultDisplay` and `CommandBox` appears at the bottom of the application and the `ResultDisplay` is above the
+ `CommandBox` even though the Ui does not show it explicitly. <br/>
 
-The `UI` components uses the JavaFX UI framework. The layout of these UI parts are defined in matching .fxml files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/resources/view/MainWindow.fxml). The styling of the application is mainly at [`MainWindow.css`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/resources/view/MainWindow.css).
+The `Ui` components uses the JavaFX UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/resources/view/MainWindow.fxml). The styling of the application is mainly at [`MainWindow.css`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/resources/view/MainWindow.css).
 
-The `UI` component,
+The `Ui` component,
 
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
+<div style="page-break-after: always;"></div>
 
 ### Logic component
 
@@ -98,9 +110,9 @@ The `UI` component,
 
 <div markdown="span" class="alert alert-info">
 
-  :information_source: <strong>Note:</strong> Implementation of the command class is not accurate for commands
+  :information_source: **Note:** Implementation of the command class is not accurate for commands
   independent of type as the diagram is simplified for better readability.
-  Refer to the [command implementation](#implementation-of-command-classes) to see how is it implemented in full.
+  Refer to the [command implementation](#command-classes) to see how is it implemented in full.
 
 </div>
 
@@ -114,20 +126,26 @@ The `UI` component,
 5. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as switching
 tabs or displaying the matching internships window to the user.
 
+<div style="page-break-after: always;"></div>
+
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete app 1")`
 API call.
 
 ![Interactions Inside the Logic Component for the `delete app 1` Command](images/DeleteSequenceDiagram1.png)
 
+<div style="page-break-after: always;"></div>
+
 ### Model component
 
-<p id="model-class-diagram"><img src="images/dg-model/ModelClassDiagram.png" width="55%" height="55%"/></p>
+<p id="model-class-diagram"><img src="images/dg-model/ModelClassDiagram.png" width="60%" height="60%"/></p>
 
 Breakdown of the Company, Internship and Application packages:
 ![Structure of the Company, Internship and Application Classes](images/dg-model/CompanyInternshipApplicationClassDiagram.png)
 
 Breakdown of the Profile package:
-<p id="profile-class-diagram"><img src="images/dg-model/ProfileClassDiagram.png" width="40%" height="40%"/></p>
+<p id="profile-class-diagram"><img src="images/dg-model/ProfileClassDiagram.png" width="45%" height="45%"/></p>
+
+<div style="page-break-after: always;"></div>
 
 **API** :
 [`Model.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/model/Model.java)
@@ -141,7 +159,9 @@ The `Model`,
  list changes.
 * does not depend on any of the other three components.
 
-### Storage Component
+<div style="page-break-after: always;"></div>
+
+### Storage component
 
 <p id="storage-class-diagram"><img src="images/StorageClassDiagram.png"/></p>
 
@@ -158,16 +178,17 @@ Classes used by multiple components are in the `seedu.internhunter.commons` pack
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
 
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### Implementation of `Command` classes
+### `Command` classes
 
-#### Current Implementation
-There are 4 different subclasses of `Item` in InternHunter, namely `Company`, `Internship`, `Application`, and
-`Profile`. <br/>
+#### Implementation
+There are 4 different subclasses of `Item` in InternHunter, namely `CompanyItem`, `InternshipItem`, `ApplicationItem`, and
+`ProfileItem`. <br/>
 
 There are 2 types of commands:
 - Commands that are dependent on the type of `Item`
@@ -182,6 +203,8 @@ There are 2 types of commands:
 From this point on, we will be using `ABCCommand` to represent commands that are dependent on type and
 `XYZCommand` to represent commands that are independent of type.
 
+<div style="page-break-after: always;"></div>
+
 The following shows the class diagram for `Command` and its subclasses:
 
 ![CommandClassDiagram](images/CommandClassDiagram.png)
@@ -192,11 +215,13 @@ The following shows the class diagram for `Command` and its subclasses:
 
 **Alternatives considered**
 
-**Alternative 1 (current choice)**: `ABCCommand` is split into 4 other `ABCItemCommand`. Parser parses the
+**Alternative 1 (current choice)**: `ABCCommand` is split into 4 other `ABCItemCommand`. InternHunter parses the
 user input and creates the specific `ABCItemCommand` for execution. The following activity diagram shows how the 
 execution of the `AddApplicationCommand` will work.
 
 ![AddApplicationCommandActivityDiagram](images/AddApplicationCommandActivityDiagram.png)
+
+<div style="page-break-after: always;"></div>
 
 - Pros: 
     - Each command has its own specific task to execute. This means that classes are more flexible and can be changed
@@ -205,18 +230,22 @@ execution of the `AddApplicationCommand` will work.
     - Short and concise `execute` method, providing better readability and maintainability
 - Cons:
     - More classes have to be created
-        
-- **Alternative 2**: `ABCCommand` is a _concrete_ class and handles the execution of all 4 `Item` types.
-Parser parses the user input and creates the general `ABCCommand` for execution. The following
+
+<div style="page-break-after: always;"></div>
+    
+**Alternative 2**: `ABCCommand` is a _concrete_ class and handles the execution of all 4 `Item` types.
+InternHunter parses the user input and creates the general `ABCCommand` for execution. The following
 activity diagram shows how the `AddCommand` will work.
 
-![AddCommandActivityDiagram](images/AddCommandActivityDiagram.png)
+<p id="add-command-activity-diagram"><img src="images/AddCommandActivityDiagram.png" width="60%" height="60%"/></p>
+
+<div style="page-break-after: always;"></div>
 
 - Pros:
     - Only one command is needed, reducing the number of classes created
 - Cons:
     - `execute` method becomes extremely long as it needs to contain switch statements to handle the execution of
-    command X for the 4 different types of `Item`
+    `ABCCommand` for the 4 different types of `Item`
     - `ABCCommand` class is vulnerable to drastic changes when the parsing method of any one `Item` class changes
     - `ABCCommand` class holds more dependencies as it is now dependent on the 4 `Item` classes  
     - Poor readability and maintainability
@@ -224,12 +253,14 @@ activity diagram shows how the `AddCommand` will work.
     additional check for nullity in the parameter passed in is required
 
 **Conclusion**: Our group settled on the first design, since it better adheres to OOP principles such as
-Single Responsibility Principle. Our design meant that each specific `Item` command is only dependent on the `Item`
+Single Responsibility Principle. Our design meant that each specific `ABCItemCommand` is only dependent on the `Item`
 itself and not subjected to the changes in implementation of the other `Item` classes. This means that it will only
 have one reason to change. Moreover, this leads to lower coupling, which makes maintenance, integration and
 testing easier. This ended up being a good choice as we had some changes in the parsing requirements of one
-of the `Item` classes, `Internship`. If we had gone with the second design, the concrete `ABCCommand` might
-have broken down as it might not be suited to the different parsing requirements in the of the `Internship` item.
+of the `Item` classes, `InternshipItem`. If we had gone with the second design, the concrete `ABCCommand` might
+have broken down as it might not be suited to the different parsing requirements in the `InternshipItem`.
+
+<div style="page-break-after: always;"></div>
 
 ### Delete company feature
 
@@ -247,10 +278,10 @@ switch over to the Company tab if and when the command has finished executing su
 
 #### Implementation
 Upon a user’s entry of a valid delete company command, a `DeleteCompanyCommand` object is created. 
-`DeleteCompanyCommand` is a class that extends the `DeleteCommandAbstract` abstract class that in turn extends the 
+`DeleteCompanyCommand` is a class that extends the `DeleteCommand` abstract class that in turn extends the 
 `Command` abstract class.
 
-![DeleteCompanyCommandClassDiagram](images/dg-company/DeleteCompanyCommandClassDiagram.png)
+<p id="delete-company-command-class-diagram"><img src="images/dg-company/DeleteCompanyCommandClassDiagram.png" width="70%" height="70%"/></p>
 
 `DeleteCompanyCommand` implements the `execute()` method from the `Command` abstract class whereby upon execution, the 
 method will delete the respective company in the model’s list of companies if a valid index is given.
@@ -267,6 +298,8 @@ This is how the `DeleteCompanyCommand#execute()` method works upon execution:
  needs to be switched to the Company tab or not, based on if the user was already viewing the Company tab or not as 
  retrieved in Step 1.
 
+<br />
+
 The following sequence diagrams show how the delete company feature works successfully, using the example command 
 `delete com 3`:
 
@@ -275,7 +308,7 @@ The following sequence diagrams show how the delete company feature works succes
 
 <p align="center"><img src="images/GetDeleteCommandResultSequenceDiagram.png" width="80%" height="80%"/></p>
 
-HandleDeleteDisplaySwitchIndexSequenceDiagram can be found [here](#handle-delete-display-switch-index-sequence-diagram)
+Sequence diagram for handle delete display switch index can be found [here](#handle-delete-display-switch-index-sequence-diagram)
 
 #### Design considerations
 
@@ -294,6 +327,8 @@ HandleDeleteDisplaySwitchIndexSequenceDiagram can be found [here](#handle-delete
   * Cons:
     * Introduces a dependency on `DeleteInternshipCommand`.
 
+<div style="page-break-after: always;"></div>
+
 * **Alternative 2**: Delete all applications made to internships from the company to be deleted without executing
 delete internship commands, i.e. by implementing delete internship command’s internal workings.
   * Pros:
@@ -310,15 +345,17 @@ delete internship commands, i.e. by implementing delete internship command’s i
         internship command was executed directly by the user for the same internship.
         * Updating this behaviour will require updating code in both places rather than one centralised place.
 
-### User Profile feature
+<div style="page-break-after: always;"></div>
+
+### User profile feature
 
 #### What it is
 
 The user profile feature behaves like a resume for the user to keep track of noteworthy events and milestones in one's professional life.
-There are three categories of profile items namely: `ACHIEVEMENT`, `SKILL` and `EXPERIENCE`. One of the operations
+There are three categories of profile items namely: `achievement`, `skill` and `experience`. One of the operations
 that can be applied on profile items is editing.
 
-#### Editing User profile item
+#### Editing user profile item
 
 The `edit me` command for the user profile allows the user to update the fields of the each profile item by
 specifying the targeted index and at least one field. 
@@ -341,8 +378,9 @@ The following sequence diagrams show how the editing profile Item feature works 
 
 ![EditProfileCommandSequenceDiagramSimplified](images/dg-profile/EditProfileCommandSequenceDiagramSimplified.png)
 
+<div style="page-break-after: always;"></div>
 
-1. After the user enters an input  to edit the user profile, the input is first parsed by the `MainParser` looks out
+1. After the user enters an input to edit the user profile, the input is first parsed by the `MainParser` looks out
  for the command word, recognizes the `edit` command and  funnels the input to `EditCommandParser`.
 2. The `EditCommandParser` then identifies the item type, which is profile item and returns the
  `EditProfileCommandParser`.
@@ -357,9 +395,11 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
   `EditProfileCommand`.
 5. CommandResult is return to indicate a successful operation.
  
+<div style="page-break-after: always;"></div>
+ 
 #### Design considerations
 
-##### Aspect: How EditProfileCommand Object interacts with Model
+##### Aspect: How Logic components interact with Model
 
 **Alternatives considered**
 
@@ -370,10 +410,10 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
      components of other objects. This reduces coupling which increases testability as `EditProfileCommand` only
      requires one model stub as opposed to more objects stubs of the model for testing.
     * This also increases maintainability as `EditProfileCommand` only has to be concerned with the methods that
-     `Model` interface provides and not the other implementation details should they be subjected to change.
+     Model interface provides and not the other implementation details should they be subjected to change.
   * Cons:
-    * This increases code volume within `Model` as the model interface needs to hold every method to interact with all
-     the collections it contains.
+    * This increases code volume within `Model` as the model interface needs to provide every method to interact with
+     all the collections it contains.
 
 * **Alternative 2 (used in v1.2)**: The model acts as a container for its collections, allowing clients to retrieve
  these collections and directly operate on it. For example, `FilteredList` and `profileList` are both retrieved from the
@@ -383,6 +423,12 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
   ```
   model.getProfileList().setItem(profileItemToEdit, EditedProfileItem)
   ```
+  
+  <div style="page-break-after: always;"></div>
+  
+The following sequence diagram shows how the logic components bypass with model interface to interact directly with the
+`FilteredList` and the `profileList`:
+
 ![ExecuteEditMeCommandAlt.png](images/dg-profile/ExecuteEditMeCommandAlt.png)
 
   * Pros: 
@@ -392,7 +438,9 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
     ` and `FilteredList` directly.
   * Cons:
     * This exposes the internal components of the `Model` which increases coupling as `EditProfileCommand` is now
-     dependent on `FilteredList` and of the `ItemListManager` reduces testability and maintainability.
+     dependent on `FilteredList` and the `ItemListManager` which reduces testability and maintainability.
+
+<div style="page-break-after: always;"></div>
 
 ### Switch screen feature
 
@@ -430,6 +478,8 @@ This is how the `SwitchCommand#execute(...)` method works upon execution:
 
 <p align="center"><img src="images/ExecuteSwitchMeCommandSequenceDiagram.png" width="75%" height="75%"/></p>
 
+<div style="page-break-after: always;"></div>
+
 This is how the `CommandUtil#getCommandResult(...)` method works upon execution:
 1. The current tab that the user is viewing is obtained via the `Model#getTabName()` method.
 2. The input tab will be check against the current tab. <br/>
@@ -440,11 +490,15 @@ This is how the `CommandUtil#getCommandResult(...)` method works upon execution:
 
 <p align="center"><img src="images/GetCommandResultSequenceDiagram.png" width="95%" height="95%"/></p>
 
+<div style="page-break-after: always;"></div>
+
 The following activity diagram summarizes what happens when a user executes a switch command:
 
 ![SwitchCommandActivityDiagram](images/switchcommand/SwitchCommandActivityDiagram.png)
 
 The above activity diagram shows the logic and the path execution when the switch command is executed. The code will check if there is any missing input or if the input is not one of the three mentioned in the `Command format` above. If the aforementioned 2 conditions are not met, an error message is displayed. If the input is one of the three mentioned above in the `Command format`, there will be further checks if the user are already in the same tab.
+
+<div style="page-break-after: always;"></div>
 
 #### Design considerations
 
@@ -452,26 +506,30 @@ The above activity diagram shows the logic and the path execution when the switc
 
 **Alternatives Considered**
 
-* **Alternative 1 (current choice):** Allow the switch of tabs to not only be accessible via the switch command, but rather extract it out for all commands excluding `exit` and `help`.
+* **Alternative 1 (current choice):** Allow the switch of tabs to not only be accessible via the switch command, but rather extract it out for all commands excluding `exit`, `help` and `clear`.
     * Pros:
         * Allows user to type once instead of twice when executing a single command and wanting to view it. (This optimization is to allow for a faster way to type and view the changes). <br/>
         * By abstract the method out from switch command, it obeys the DRY principle as all the commands will be calling a single method.
         * This allows and obeys the Open-Close principle as new implementation of commands can just be calling this single method at the end.
         * Allows user to have a second alternative to switch tabs just for viewing purpose.
+        * Reduces some dependency between each commands as they would not need to call the switch command to switch tabs.
     * Cons:
         * User might switch tab accidentally because of inputting the wrong `TYPE`.
         * Increases some form of coupling between all commands as they are now linked to this single method.
 * **Alternative 2:** Only allow switch command to be the only way to switch tabs.
     * Pros:
-        * This introduces a "type-safe" checks like in Java where only if the user is in the correct tab, then he or she will be able to add items to that item type. <br/>
+        * This introduces a "type-safe" checks like in Java where only if the user is in the correct tab, then he or she will be able to add items to that item type.
+        * Easier to implement. <br />
     * Cons:
         * This introduces the need to type twice in order to view the execution of the command.
 
-### Storage Feature
+<div style="page-break-after: always;"></div>
+
+### Storage feature
 
 #### What it is
 After a command is successfully executed, InternHunter automatically saves users' data to JSON files. Moreover, 
-everytime the `GuiSettings` is modified, InternHunter updates the user preferences JSON file. Users can transfer or 
+every time the `GuiSettings` is modified, InternHunter updates the user preferences JSON file. Users can transfer or 
 backup the JSON files manually. The storage component is responsible for both reading and saving the data.
 
 #### Implementation
@@ -489,9 +547,11 @@ object.
  * `JsonSerializableItemList` represents a Jackson-friendly version of an `Item` list.
  * `JsonAdaptedItem` represents a Jackson-friendly version of an `Item`.
  
+ <div style="page-break-after: always;"></div>
+ 
  ![JsonAdaptedItemClassDiagram](images/JsonAdaptedItemClassDiagram.png)
  
- `JsonAdaptedItem` is an abstract class representing Jackson-friendly version of the `Item` class in the model component.
+ `JsonAdaptedItem` is an abstract class representing a Jackson-friendly version of the `Item` class in the model component.
   It has one method `toModelType()` which convert itself to an `Item` object. There are 4 classes extending 
   `JsonAdaptedItem`:
   * `JsonAdaptedApplicationItem` the Jackson-friendly version of `ApplicationItem`.
@@ -503,10 +563,22 @@ InternHunter automatically saves user data after every command. The following se
 InternHunter does it. Let `commandString` be any valid command string.
   
 ![SavingDataSequenceDiagram](images/SavingDataSequenceDiagram.png)
+
+ <div style="page-break-after: always;"></div>
+ 
+This is how the `LogicManager#execute()` method works upon execution:
+
+1. `LogicManager` will execute the given `commandString`.
+2. `LogicManager` calls the `ModelManager#getUnfilteredApplicationList()` to get the current application item list.
+3. `LogicManager` calls the `StorageManager#saveApplicationItemList(...)` to save the current application item list.
+4. `LogicManager` calls the `ModelManager#getUnfilteredCompanyList()` to get the current company item list.
+5. `LogicManager` calls the `StorageManager#saveCompanyItemList(...)` to save the current company item list.
+6. `LogicManager` calls the `ModelManager#getUnfilteredProfileList()` to get the current profile item list.
+7. `LogicManager` calls the `StorageManager#saveProfileItemList(...)` to save the current profile item list.
   
 #### Design considerations
 
-##### Aspect: How to handle 3 types of 'Item' list
+##### Aspect: How to handle 3 types of `Item` list
 
 InternHunter maintains 3 types of `Item` lists: `ApplicationItem`, `CompanyItem`, and `ProfileItem` lists.
 Both `ItemListStorage` and `JsonSerializableItemList` use  the same logic regardless of the `Item` type.
@@ -516,7 +588,7 @@ Both `ItemListStorage` and `JsonSerializableItemList` use  the same logic regard
 * **Alternative 1: current choice**: Creates a base abstract class `JsonAdaptedItem` and makes `ItemListStorage` 
 and `JsonSerializableItemList` use generics.
     * Pros: 
-        * Adheres to OOP principle, polymorphism.
+        * Adheres to OOP principle, specifically polymorphism.
         * Less code duplication.
         * Makes adding a new `Item` type easy. To be able to save and read a new `Item` type, only a new 
         class representing its Jackson-friendly version needs to be created.
@@ -524,6 +596,8 @@ and `JsonSerializableItemList` use generics.
 
     * Cons:
         * More complicated as Jackson does not provide a direct way to convert a generic object to its JSON format.
+
+<div style="page-break-after: always;"></div>
 
 * **Alternative 2**: Each `Item` type has their own `ItemListStorage` and `JsonSerializableItemList`.
     * Pros:
@@ -535,28 +609,43 @@ and `JsonSerializableItemList` use generics.
         * Extending the `ItemListStorage` and `JsonSerializableItemList` class would require changes to all the
         different versions corresponding to the different `Item` types.
 
-### Clear Feature
+<div style="page-break-after: always;"></div>
+
+### Clear feature
 
 #### What it is
-In the beginning, user can see how the app works with sample data. After that, user can decide to 
+In the beginning, users can see how the app works with sample data. After that, users can decide to 
 clear all the entries in InternHunter with just a `clear` command.
 
 #### Implementation
 
-The following diagram illustrates whether InternHunter use sample data.
+The following diagram illustrates whether InternHunter uses sample data.
 
 ![SampleDataActivityDiagram](images/SampleDataActivityDiagram.png)
 
-When user enters the `clear` command, InternHunter will reset all three lists. Here is a sequence diagram showcasing how
+When users enters the `clear` command, InternHunter will reset all three lists. Here is a sequence diagram showcasing how
 InternHunter does it.
 
 ![ClearCommandSequenceDiagram](images/ClearCommandSequenceDiagram.png)
 
+This is how the `ClearCommand#execute()` method works upon execution:
+
+1. A new empty `ItemList` for the application item list is created.
+2. `ModelManager#setApplicationList(...)` is called with the recently created empty list as the argument.
+3. A new empty `ItemList` for the company item list is created.
+4. `ModelManager#setCompanyList(...)` is called with the recently created empty list as the argument.
+5. A new empty `ItemList` for the profile item list is created.
+6. `ModelManager#setProfileList(...)` is called with the recently created empty list as the argument.
+
+<div style="page-break-after: always;"></div>
+ 
 #### Design considerations
 
 ##### Aspect: How to clear the lists
 
-InternHunter only lets users create applications for internships already added to companies.
+InternHunter only lets users create applications for internships already added to companies. When users apply for an internship,
+ InternHunter will create an `ApplicationItem` with the given `InternsipItem`. Hence, InternHunter needs to
+check whether the internships in both lists are consistent.
 
 **Alternatives Considered**
 
@@ -565,16 +654,18 @@ InternHunter only lets users create applications for internships already added t
         * Guarantees data consistency.
         
     * Cons:
-        * Less freedom for the users.
+        * Less freedom for users.
 
-* **Alternative 2**: Each list can be cleared individually.
+* **Alternative 2**: Clear each list individually.
     * Pros:
-        * Users can choose which lists to be cleared.
+        * Users can choose which list to be cleared.
     
     * Cons:
         * High risk of data inconsistency due to the linkage between company and application lists.
 
-### Match Command feature
+<div style="page-break-after: always;"></div>
+
+### Match command feature
 
 #### What it is
 Users are able to execute a command to generate a list of matching internships that matches their current profile
@@ -593,7 +684,9 @@ Here is a class diagram to show how the `MatchCommand` is implemented:
 
 ![MatchCommandClassDiagram](images/MatchCommandClassDiagram.png)
 
-This is how the `MatchCommand#execute()` method works upon execution:
+<div style="page-break-after: always;"></div>
+ 
+This is how the `MatchCommand#execute(...)` method works upon execution:
 
 1. The list of profile items and company items are first obtained via the `Model#getProfileItemList()` method and
 `Model#getCompanyItemList()` respectively.
@@ -614,6 +707,8 @@ The following sequence diagrams show how the match command works:
 <p align="center"><img src="images/MatchCommandSequenceDiagram1.png" width="72%" height="72%"/></p>
 
 <p align="center"><img src="images/MatchExecutionSequenceDiagram.png" width="72%" height="72%"/></p>
+
+<div style="page-break-after: always;"></div>
 
 #### Design considerations
 
@@ -649,6 +744,8 @@ The following sequence diagrams show how the match command works:
     `Model` now has to deal with algorithms, instead of keeping to what a `Model` does which is to manage the app data
     of the user.
 
+<div style="page-break-after: always;"></div>
+
 ## **Documentation, logging, testing, configuration, dev-ops**
 
 * [Documentation guide](Documentation.md)
@@ -671,6 +768,8 @@ The following sequence diagrams show how the match command works:
 **Value proposition**: Improves your planning, confidence and readiness for tech-related internship applications by
  improving your interview skills and search strategy.
 
+<div style="page-break-after: always;"></div>
+
 ### Appendix B: User Stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
@@ -688,6 +787,11 @@ Priority | As a …​    | I want to …​                                    
 `* * *`  | user       | delete an internship from a company profile                    | remove erroneous / outdated entries                                               
 `* * *`  | user       | edit an internship from a company profile                      | keep the list of internships that a company offers updated and accurate           
 `* * *`  | user       | view a company’s internships when I view their profile         | see what internships they are offering                                            
+
+<div style="page-break-after: always;"></div>
+
+Priority | As a …​    | I want to …​                                                   | So that I can…​                                                           
+-------- | ---------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------- 
 `* * *`  | user       | maintain a list of my internship applications                  | keep track of them                                                                
 `* * *`  | user       | add an internship application                                  | keep track of the internships that I have applied for                             
 `* * *`  | user       | delete an internship application                               | remove internship applications that I no longer need / am no longer interested in 
@@ -701,6 +805,11 @@ Priority | As a …​    | I want to …​                                    
 `* * *`  | user       | add information to my user profile                             | keep my user profile updated and accurate                                         
 `* * *`  | user       | delete information from my user profile                        | keep my user profile updated and accurate                                         
 `* * *`  | user       | edit information in my user profile                            | keep my user profile updated and accurate                                         
+
+<div style="page-break-after: always;"></div>
+
+Priority | As a …​    | I want to …​                                                   | So that I can…​                                                           
+-------- | ---------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------- 
 `* * *`  | user       | view information in my user profile                            | see its details  
 `* *`    | user       | find information in my user profile by title                   | quickly look up specific information in my user profile without having to search manually
 `* *`    | user       | list all the information in my user profile                    | see the full list of information in my user profile
@@ -711,6 +820,8 @@ Priority | As a …​    | I want to …​                                    
 `* *`    | user       | navigate the application easily through a clear user interface |                                                                                   
 `* *`    | user       | get fast feedback from the app                                 |                                                                                   
 `* *`    | user       | easily clear all data from the app                             | start from a clean slate
+
+<div style="page-break-after: always;"></div>
 
 ### Appendix C: Use Cases
 
@@ -752,6 +863,8 @@ Use case ends.
  1b. InternHunter detects an invalid index. <br/>
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
+
+<div style="page-break-after: always;"></div>
 
 **Use case: UC03 - Edit a company**
 
@@ -795,6 +908,8 @@ Use case ends.
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
+<div style="page-break-after: always;"></div>
+
 **Use case: UC05 - Find companies**
 
 Precondition: User already has an existing list of companies. <br/>
@@ -812,6 +927,9 @@ Use case ends.
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
   Use case resumes from step 1.
 
+ 2a. InternHunter does not find any companies that matches query. <br/>
+  2a1. InternHunter informs user that no companies are found. <br/>
+  Use case ends.
 
 **Use case: UC06 - List all companies**
 
@@ -820,7 +938,7 @@ Guarantees: All companies stored in InternHunter are shown.
 
 **MSS**
 
-1. User queries for all companies. 
+1. User queries for all companies.
 2. InternHunter displays all company it stores.<br/>
 Use case ends.
 
@@ -830,6 +948,7 @@ Use case ends.
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
   Use case resumes from step 1.
 
+<div style="page-break-after: always;"></div>
 
 **Use case: UC07 - Add an internship**
 
@@ -837,11 +956,11 @@ Precondition: User already has an existing list of companies. <br/>
 Guarantees: Addition of internship to company is successful.
 
 **MSS**
-*  Similar MSS to adding a company except user is now adding an internship.
+*  Similar MSS to UC01 - adding a company except user is now adding an internship.
 
 **Extensions**
 
- 1a. Similar to extension 1a of adding a company.
+ 1a. Similar to extension 1a of UC01 - adding a company except user is adding an internship.
 
  1b. InternHunter detects an invalid index. <br/>
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
@@ -862,11 +981,11 @@ Guarantees: Addition of application is successful.
 
 **MSS**
 
-*  Similar MSS to UC01 - adding a company except user is now adding an application.
+*  Similar MSS to UC01 - adding a company except user is adding an application.
 
 **Extensions**
 
-* Similar to extension of UC07 - Add an internship.
+* Similar to extension of UC07 - adding an internship except user is adding an application.
 
 **Use case: UC11 - Delete an application**
 
@@ -875,6 +994,8 @@ Guarantees: Addition of application is successful.
 **Use case: UC12 - Edit an application**
 
 * Similar to UC03 - editing a company except user is editing an application.
+
+<div style="page-break-after: always;"></div>
 
 **Use case: UC13 - View an application**
 
@@ -925,6 +1046,8 @@ Guarantees: Addition of application is successful.
   2a1. InternHunter displays an error message and informs the user that she has no matching internships. <br/>
   2a2. Use case ends.
 
+<div style="page-break-after: always;"></div>
+
 **Use case: UC23 - Switch tabs**
 
 Guarantees: InternHunter switches to the queried tab.
@@ -939,7 +1062,10 @@ Guarantees: InternHunter switches to the queried tab.
 
  1a. InternHunter detects an error in the input format. <br/>
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
-  Use case resumes from step 1.
+  Use case resumes from step 1. <br/>
+ 1b. InternHunter detects that the user is already in that tab. <br/>
+  1b1. InternHunter displays a message and informs the user that he is already in that tab. <br/>
+  Use case ends. <br/>
 
 **Use case: UC24 - Clear all entries**
 
@@ -961,6 +1087,7 @@ Guarantees: User will get directions to the user guide.
 2.  InternHunter displays help message directing user to user guide. <br/>
     Use case ends.
 
+<div style="page-break-after: always;"></div>
 
 **Use case: UC26 - Exit**
 
@@ -976,6 +1103,8 @@ Guarantees: User will get directions to the user guide.
 
  2a. User chooses to cancel the confirmation. <br/>
   Use case ends.
+
+<div style="page-break-after: always;"></div>
     
 ### Appendix D: Non-Functional Requirements
 
@@ -987,19 +1116,19 @@ Guarantees: User will get directions to the user guide.
 * Should work without requiring an installer.
 * Should only use third-party frameworks or libraries which are free, open-source and have permissive license term and 
 do not require installation by user of the software.
-* A user with above average typing speed for regular English text should be able to accomplish most of the tasks faster 
-using commands than using the mouse.
 
 ### Appendix E: Glossary
 
 * **CLI**: Command-Line Interface
 * **OS**: Operating System
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Json**: JavaScript Object Notation
+* **JSON**: JavaScript Object Notation
 * **DRY**: Don't Repeat Yourself
 * **OOP**: Object-oriented programming
 
-### Appendix F: Instructions for manual testing
+<div style="page-break-after: always;"></div>
+
+### Appendix F: Instructions for Manual Testing
 
 Given below are instructions to test the app manually.
 
@@ -1044,23 +1173,26 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: Garena not already added in InternHunter.
 
-   1. Test case: `add com n/Garena a/201 Victoria St e/GarenaHires@garena.com p/65093545`  <br>
+   1. Test case: `add com n/Amazon a/201 Victoria St e/AmazonHires@gamazon.com p/65000545`  <br>
       Expected: A card displaying information of the company is added. The right display will show full information of the company added.
       
-   1. Test case: `add com n/Google a/101 Tampines St e/GoogleHires@google.com p/62343434 t/Cloud Computing t/Artificial Intelligence` <br>
-      Expected: The differences compared to the above test case is, this adds some tags to the card which will show both `Cloud Computing` and `Artificial Intelligence`. It is reflected inside a blue box inside the card.
+   1. Test case: `add com n/Google Florida a/101 Tampines St e/GoogleHires@google.com p/62343434 t/Cloud Computing t/Artificial Intelligence` <br>
+      Expected: The difference compared to the above test case is, this adds some tags to the card which will show both `Cloud Computing` and `Artificial Intelligence`. It is reflected inside a blue box inside the card.
    
    1. Test case: `add com n/Facebook a/301 Raffles St e/FacebookHires@fb.com`  <br>
       Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
       
 **Adding an internship**
 
-1. Adding an internship with Job title Machine Learning Engineer.
+1. Adding an internship with Job title `Machine Learning Engineer`.
 
    1. Prerequisites: A company have to exist first, and add it to the company via a valid index.
    
    1. Test case: `add int 1 j/Machine Learning Engineer` <br>
    Expected: In the right display, the information of the internship will be shown.
+   
+   1. Test case: `add int 1 j/Frontend developer r/React` <br>
+   Expected: In the right display, the information of the internship will be shown with requirements.
   
    1. Test case: `add int 1` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
@@ -1072,11 +1204,11 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: An internship must exist first before you can apply for it.
    
-   1. Test case: `add app 1 i/1 d/24-12-20 s/interview` <br>
+   1. Test case: `add app 5 i/1 d/24-12-20 s/interview` <br>
    Expected: A card displaying information of this application is added. There will be a status showing as **interview**. The date will be shown as 24 dec and the year is taken to be from year 2000-2099(Note that the date have to be in the future). 
    
-   1. Test case: `add app 1 i/2` (ensure that you have a second internship first) <br>
-   Expected: Similar to the above test case, however the status will be shown as the default test status **applied**. The date will be today's date and the time will be taken to be 2359.
+   1. Test case: `add app 5 i/3` (ensure that you have a third internship first) <br>
+   Expected: Similar to the above test case, however the status will be shown as the default status **applied**. The date will be today's date and the time will be taken to be 2359.
    
    1. Test case: `add app 1` <br>
       Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
@@ -1085,9 +1217,9 @@ testers are expected to do more *exploratory* testing.
 
 1. Adding a skill/experience/achievement set into our profile list.
 
-   1. Prerequisites: This particular skill set should not be already added in InternHunter.
+   1. Prerequisites: This particular profile item's title should not be already added in InternHunter.
    
-   1. Test case: `add me c/skill t/React Native d/Created a mini MOBA game` <br>
+   1. Test case: `add me c/skill t/React d/Created a mini MOBA game` <br>
    Expected: A card displaying information of this profile item is added. There will be a circular colorful icon on the right of the card that will represent skills.
    
    1. Test case: `add me c/achievement t/Hackathon d/1st place` <br>
@@ -1103,10 +1235,10 @@ testers are expected to do more *exploratory* testing.
 
 1. Editing some fields in company.
    
-   1. Prerequisites: The company must exist and access via a valid index.
+   1. Prerequisites: The company must exist and be accessed via a valid index.
    
    1. Test case: `edit com 1 t/Frontend developer t/Backend developer t/Fullstack developer` <br>
-   Expected: The tags that are in the blue box will be changed to Frontend developer, Backend developer, Fullstack developer.
+   Expected: The tags that are in the blue box will be changed to Frontend developer, Backend developer, Fullstack developer. It is visible on both the card and the right display.
    
    1. Test case: `edit com 1 p/91910808` <br>
    Expected: The phone number of the company will be changed. It is visible on both the card and the right display.
@@ -1122,12 +1254,12 @@ testers are expected to do more *exploratory* testing.
 
 1. Editing some fields in internship.
 
-   1. Prerequisites: The internship must exist and access via a valid index.
+   1. Prerequisites: The internship must exist and be accessed via a valid index.
    
    1. Test case: `edit int 1 i/1 r/Java r/Python` <br>
-   Expected: The 1st internship at the first company will have the requirement java and python. Note that it overrides any existing requirements in that internship. (Note that if an application for this internship exist, these changes will be reflected as tags in blue boxes on the card in the application tab)
+   Expected: The 1st internship at the first company will have the requirement java and python. Note that it overrides any existing requirements in that internship. (Note that if an application for this internship exist, these changes will be reflected as tags in blue boxes on the card in the application tab). Execute `switch app` to confirm it.
    
-   1. Test case: `edit int 1 i/2 r/React native` <br>
+   1. Test case: `edit int 1 i/2 r/React r/CSS r/HTML` <br>
    Expected: The 2nd internship at the first company will have the requirement React native. Similarly to the above test case, any existing requirements in that internship will be overidden.
    
    1. Test case: `edit int 1` <br>
@@ -1138,7 +1270,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Editing some fields in application.
 
-   1. Prerequisites: The application must exist and access via a valid index.
+   1. Prerequisites: The application must exist and be accessed via a valid index.
    
    1. Test case: `edit app 1 s/accepted` <br>
    Expected: The status that was on the card will be changed into a green status with the word accepted.
@@ -1150,10 +1282,10 @@ testers are expected to do more *exploratory* testing.
 
 1. Editing some fields in the profile item.
 
-   1. Prerequisites: The profile item must exist and access via a valid index.
+   1. Prerequisites: The profile item must exist and be accessed via a valid index.
    
-   1. Test case: `edit me 1 c/achievement t/Hackathon at Shoppee d/2nd place` <br>
-   Expected: The image on the card will be changed into a trophy with the title being Hackathon.
+   1. Test case: `edit me 2 c/achievement t/Hackathon at Shoppee d/2nd place` <br>
+   Expected: Its description on the right display will be 2nd place instead.
    
    1. Test case: `edit me` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
@@ -1162,7 +1294,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Viewing full information of a company.
 
-   1. Prerequisites: The company item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card.
+   1. Prerequisites: The company item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card. You can execute `view com 1` first.
    
    1. Test case: `view com 2` <br>
    Expected: The right display will change and show the full information of the 2nd company in the list.
@@ -1177,7 +1309,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Viewing full information of an application.
 
-   1. Prerequisites: The application item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card.
+   1. Prerequisites: The application item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card. You can execute `view app 1` first.
    
    1. Test case: `view app 2` <br>
    Expected: The right display will change and show the full information of the 2nd application in the list.
@@ -1192,9 +1324,9 @@ testers are expected to do more *exploratory* testing.
 
 1. Viewing full information of a profile item.
 
-   1. Prerequisites: The profile item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card.
+   1. Prerequisites: The profile item must exist and the card be access via a valid index. Also, having more than 2 cards and current right display is showing information of the first card. You can execute `view me 1` first.
    
-   1. Test case: `view me 1` <br>
+   1. Test case: `view me 2` <br>
    Expected: The right display will change and show the full information of the 2nd profile item in the list.
    
    1. Test case: `view me 0` <br>
@@ -1207,10 +1339,10 @@ testers are expected to do more *exploratory* testing.
 
 1. Finding specific keyword(s) in the list of company/companies.
 
-   1. Prerequisites: List all companies using the `list com` command. At least one company. `Find` method and `list` method works hand in hand.
+   1. Prerequisites: List all companies using the `list com` command. At least one company. `find` method and `list` method works hand in hand.
    
-   1. Test case: `find com facebook` <br>
-   Expected: Any titles in the card that contains `facebook` will be matched. i.e `Facebook`, `Facebook Singapore`. However `FacebookMalaysia` will not be matched.
+   1. Test case: `find com google` <br>
+   Expected: Any titles in the card that contains `google` will be matched. i.e `Google`, `Google Florida`. However `GoogleMalaysia` will not be matched.
    
    1. Test case: `find com` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
@@ -1231,10 +1363,10 @@ testers are expected to do more *exploratory* testing.
 
 1. Finding specific keyword(s) in the list of application(s).
 
-   1. Prerequisites: List all applications using the `list app` command. At least one application. `Find` method and `list` method works hand in hand.
+   1. Prerequisites: List all applications using the `list app` command. At least one application. `find` method and `list` method works hand in hand.
    
-   1. Test case: `find app software` <br>
-   Expected: Any titles in the card that contains `software` will be matched. i.e `Software`, `Software Engineer`. However `SoftwareEngineer` will not be matched.
+   1. Test case: `find app engineer` <br>
+   Expected: Any titles in the card that contains `software` will be matched. i.e `Engineer`, `Front End Engineer`. However `FrontEndEngineer` will not be matched.
    
    1. Test case: `find app` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
@@ -1255,7 +1387,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Finding specific keyword(s) in the list of profile item(s).
 
-   1. Prerequisites: List all profile items using the `list me` command. At least one profile item. `Find` method and `list` method works hand in hand.
+   1. Prerequisites: List all profile items using the `list me` command. At least one profile item. `find` method and `list` method works hand in hand.
    
    1. Test case: `find me hackathon` <br>
    Expected: Any titles in the card that contains `hackathon` will be matched. i.e `Hackathon`, `2020 Hackathon`. However `ShoppeeHackathon` will not be matched.
@@ -1281,8 +1413,8 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: The company item must exist and access via a valid index as indicated on a card.
    
-   1. Test case: `delete com 1` <br>
-   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted company can be seen in the result display. All the internships in this company will be deleted as well. Note that if there is an application that is linked to any internships that this company had, it will be deleted as well.
+   1. Test case: `delete com 2` <br>
+   Expected: The second card will be deleted. Details of the deleted company can be seen in the result display. All the internships in this company will be deleted as well. Note that if there is an application that is linked to any internships that this company had, it will be deleted as well.
    
    1. Test case: `delete com 0` <br>
    Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
@@ -1312,7 +1444,7 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: The application item must exist and be access via a valid index.
    
    1. Test case: `delete app 1` <br>
-   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted application can be seen in the result display.
+   Expected: The first card will be deleted. Details of the deleted application can be seen in the result display.
    
    1. Test case: `delete app 0` <br>
    Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
@@ -1324,10 +1456,10 @@ testers are expected to do more *exploratory* testing.
 
 1. Deleting a profile item.
    
-   1. Prerequisites: The profile item must exist and be access via a valid index.
+   1. Prerequisites: The profile item must exist and be access via a valid index. At least 2 profile items for this manual testing.
    
-   1. Test case: `delete me 1` <br>
-   Expected: The first card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted profile can be seen in the result display.
+   1. Test case: `delete me 2` <br>
+   Expected: The second card will be deleted. The rest of the cards will shift upwards with index being updated. Details of the deleted profile can be seen in the result display.
    
    1. Test case: `delete me 0` <br>
    Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
@@ -1335,20 +1467,11 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `delete me` <br>
    Expected: Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
-**Matching skills to internship requirements**
-
-1. Finding if any internships requirements matches the skills that you have.
-
-   1. Prerequisites: There is some internships added and the skills that you have put into the profile matches the requirements in internship. You can try to add some internships with requirements for example HTML and add the skill with title being html.
-   
-   1. Test case: `match` <br>
-   Expected: A new window will pop-up and show you all the matched internships.
-
 **Switching of tabs**
 
 1. Switching tabs.
 
-   1. Prerequisites: Assuming you are on the company tab.
+   1. Prerequisites: Assuming you are on the company tab. If not execute `switch com`.
   
    1. Test case: `switch com` <br>
    Expected: A message will be displayed in the result display to inform you that you are already on the company tab.
@@ -1362,12 +1485,21 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `switch` <br>
    Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
+**Matching skills to internship requirements**
+
+1. Finding if any internships requirements matches the skills that you have.
+
+   1. Prerequisites: There is some internships added and the skills that you have put into the profile matches the requirements in internship. Now that now you have learnt how to use `switch` and `view`, use `switch com` and `switch me` and the relevant `view` commands to check the skills as well as some internships requirements.
+   
+   1. Test case: `match` <br>
+   Expected: A new window will pop-up and show you all the matched internships. Note that you can use <kbd>esc</kbd> on your keyboard to close the window.
+
 **Viewing help**
 
 1. Viewing help.
 
    1. Test case: `help` <br>
-   Expected: Help window appears with InternHunter's user guide url.
+   Expected: Help window appears with InternHunter's user guide url. Note that you can use <kbd>esc</kbd> on your keyboard to close the window.
 
 **Clearing all the data in the app**
 
@@ -1392,6 +1524,7 @@ testers are expected to do more *exploratory* testing.
    1. Double-click the jar file <br>
    Expected: Shows the GUI with no data.
 
+<div style="page-break-after: always;"></div>
 
 ### Appendix G: Effort 
 
@@ -1418,9 +1551,11 @@ The UI has also been completely revamped to have a different look and feel from 
  interface for switching between and displaying the different entities of InternHunter and a right display panel to show
  the details of each entity item which the cards in the list cannot show.
 
+<div style="page-break-after: always;"></div>
+
 ### Appendix H: Sequence Diagrams
 
-<p align="center">Sequence diagram for HandleDeleteDisplaySwitchIndex</p>
+<p align="center">Sequence diagram for handle delete display switch index</p>
 
 <p id="handle-delete-display-switch-index-sequence-diagram" align="center"><img src="images/HandleDeleteDisplaySwitchIndexSequenceDiagram.png" width ="70%" height="70%"/></p>
 

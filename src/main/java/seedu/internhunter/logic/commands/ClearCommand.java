@@ -6,7 +6,7 @@ import seedu.internhunter.model.Model;
 import seedu.internhunter.model.item.ItemList;
 
 /**
- * Clears the address book.
+ * Clears InternHunter.
  */
 public class ClearCommand extends Command {
 

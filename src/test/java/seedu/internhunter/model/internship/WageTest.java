@@ -2,7 +2,6 @@ package seedu.internhunter.model.internship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.model.internship.Wage.DEFAULT_WAGE;
 import static seedu.internhunter.model.internship.Wage.WAGE_SYMBOL;
@@ -49,6 +48,8 @@ public class WageTest {
     @Test
     public void isValidWage_invalidDigits_success() {
         assertFalse(Wage.isValidWage("0")); // Zero
+        assertFalse(Wage.isValidWage("0123")); // Zero
+        assertFalse(Wage.isValidWage("+123")); // Starting with positive
         assertFalse(Wage.isValidWage("-4")); // Negative number
         assertFalse(Wage.isValidWage("400.00")); // Decimals
         assertFalse(Wage.isValidWage("0.400")); // Decimals
@@ -58,7 +59,8 @@ public class WageTest {
     public void isValidWage_invalidInput_success() {
         assertFalse(Wage.isValidWage("")); // empty string
         assertFalse(Wage.isValidWage("    ")); // spaces only
-        assertFalse(Wage.isValidWage("   213")); // space then number
+        assertFalse(Wage.isValidWage("   213")); // leading spaces
+        assertFalse(Wage.isValidWage("213  ")); // trailing spaces
         assertFalse(Wage.isValidWage("1221abc2131")); // alphabets within digits
         assertFalse(Wage.isValidWage("90 41")); // spaces within digits
     }
@@ -66,7 +68,6 @@ public class WageTest {
     @Test
     public void isValidOutputWage_validInput_success() {
         assertTrue(Wage.isValidOutputWage("1")); // Min value of 1
-        assertTrue(Wage.isValidOutputWage("12345")); // Normal wage
         assertTrue(Wage.isValidOutputWage("3000")); // Normal wage
         assertTrue(Wage.isValidOutputWage("123456789123456789123456789123456789")); // Very large number
 
@@ -86,14 +87,23 @@ public class WageTest {
 
     @Test
     public void equals_equalityTest_success() {
-        assertEquals(VALID_WAGE_ONE, VALID_WAGE_ONE);
+        // same object -> return true
+        assertTrue(VALID_WAGE_ONE.equals(VALID_WAGE_ONE));
+
+        // same value -> return true
         Wage wageCopy = new Wage(VALID_WAGE_2000);
-        assertEquals(VALID_WAGE_ONE, wageCopy);
+        assertTrue(VALID_WAGE_ONE.equals(wageCopy));
     }
 
     @Test
     public void equals_nonEqualityTest_success() {
-        assertNotEquals(VALID_WAGE_ONE, VALID_WAGE_TWO);
+        assertFalse(VALID_WAGE_ONE.equals(VALID_WAGE_TWO));
+
+        // null -> return false
+        assertFalse(VALID_WAGE_ONE.equals(null));
+
+        // different types -> return false
+        assertFalse(VALID_WAGE_ONE.equals(0.5f));
     }
 
     @Test

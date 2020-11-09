@@ -3,6 +3,7 @@ package seedu.internhunter.storage.internship;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.internhunter.storage.internship.JsonAdaptedInternshipItem.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.internhunter.testutil.Assert.assertThrows;
+import static seedu.internhunter.testutil.internship.SampleInternshipItems.GOOGLE_SWE;
 import static seedu.internhunter.testutil.internship.SampleInternshipItems.SHOPEE_SWE;
 
 import java.util.HashSet;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.internhunter.commons.exceptions.IllegalValueException;
 import seedu.internhunter.model.company.CompanyName;
+import seedu.internhunter.model.internship.InternshipItem;
 import seedu.internhunter.model.internship.JobTitle;
 import seedu.internhunter.model.internship.Period;
 import seedu.internhunter.model.internship.Requirement;
@@ -38,6 +40,12 @@ public class JsonAdaptedInternshipItemTest {
     public void toModelType_validInternshipItemDetails_returnsInternshipItem() throws Exception {
         JsonAdaptedInternshipItem internshipItem = new JsonAdaptedInternshipItem(SHOPEE_SWE);
         assertEquals(SHOPEE_SWE, internshipItem.toModelType());
+    }
+
+    @Test
+    public void toModelType_validInternshipItemDetailsNoRequirements_returnsInternshipItem() throws Exception {
+        JsonAdaptedInternshipItem internshipItem = new JsonAdaptedInternshipItem(GOOGLE_SWE);
+        assertEquals(GOOGLE_SWE, internshipItem.toModelType());
     }
 
     @Test
@@ -112,6 +120,13 @@ public class JsonAdaptedInternshipItemTest {
                 VALID_JOB_TITLE, VALID_PERIOD, VALID_WAGE, invalidRequirements);
         String expectedMessage = Requirement.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, internshipItem::toModelType);
+    }
+
+    @Test
+    public void constructor_nullInput_throwsAssertionError() {
+        assertThrows(AssertionError.class, () -> new JsonAdaptedInternshipItem(null));
+        InternshipItem internshipItem = null;
+        assertThrows(AssertionError.class, () -> new JsonAdaptedInternshipItem(internshipItem));
     }
 
 }

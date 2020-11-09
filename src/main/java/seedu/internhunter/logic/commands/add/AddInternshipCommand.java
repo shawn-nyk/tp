@@ -27,6 +27,9 @@ import seedu.internhunter.model.internship.Requirement;
 import seedu.internhunter.model.internship.Wage;
 import seedu.internhunter.ui.tabs.TabName;
 
+/**
+ * Adds an internship to the Internship list of a Company.
+ */
 public class AddInternshipCommand extends AddCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + INTERNSHIP_ALIAS
@@ -73,7 +76,6 @@ public class AddInternshipCommand extends AddCommand {
      * @throws CommandException If an error occurs during command execution.
      */
     @Override
-
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         CompanyItem companyItem = getCompany(model, companyIndex);

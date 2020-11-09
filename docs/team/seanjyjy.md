@@ -23,7 +23,7 @@ own user profile, so that they can keep track of internships that they are inter
   * Find Applications (Pull request [\#190](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/190), [\#198](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/198))
   * List all applications (Pull request [\#190](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/190), [\#198](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/198))
   * Add match command GUI (Pull request [\#277](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/277))
-  * Contributed significantly to increase test coverage. (Pull request [\#178](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/178), [\#198](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/198) ,[\#273](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/273), [\#298](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/298), [\#353](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/353), [\#356](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/356), [\#398](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/398))
+  * Contributed significantly to increase test coverage. (Pull request [\#178](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/178), [\#198](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/198) ,[\#273](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/273), [\#298](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/298), [\#353](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/353), [\#356](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/356), [\#409](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/409), [\#422](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/422))
   * Did javadocs (Pull request [\#179](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/179), [\#395](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/395)), as well as in some general pull request.
 
 * **Documentation**:
@@ -45,7 +45,7 @@ own user profile, so that they can keep track of internships that they are inter
      (Pull request [\#353](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/353))
   
 * **Team-based tasks**:
-  * Designed the mockups for the app using [Adobe XD](https://www.adobe.com/products/xd.html)
+  * Designed the mockups for the app using [Adobe XD](https://www.adobe.com/products/xd.html).
   * Ensure and sufficiently test and [release](https://github.com/AY2021S1-CS2103T-T15-4/tp/releases) jar files for each iteration.
   * Did the [demo videos](https://docs.google.com/document/d/1CkYsVvewbjA4TZkfzKLBhu2uviXBE9_q-1hQXOxekeo/edit#heading=h.28i4rmmvhv4q) for each iteration.
   * Contributed to some version control. (help to update the version for each iteration) (Pull request [\#251](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/251), [\#259](https://github.com/AY2021S1-CS2103T-T15-4/tp/pull/259))

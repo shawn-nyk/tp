@@ -27,7 +27,7 @@ import seedu.internhunter.storage.JsonSerializableItemList;
 import seedu.internhunter.storage.item.JsonAdaptedItem;
 
 /**
- * Converts a Java object instance to JSON and vice versa
+ * Converts a Java object instance to JSON and vice versa.
  */
 public class JsonUtil {
 

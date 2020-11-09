@@ -10,10 +10,13 @@ import static seedu.internhunter.logic.commands.util.CommandUtil.getCommandResul
 import static seedu.internhunter.logic.commands.util.CommandUtil.getCompany;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getFullListIndex;
 import static seedu.internhunter.logic.commands.util.CommandUtil.getProfileItem;
+import static seedu.internhunter.testutil.application.SampleApplicationItems.FACEBOOK_ACCEPTED;
+import static seedu.internhunter.testutil.company.SampleCompanyItems.GOLDMAN;
 import static seedu.internhunter.testutil.internship.SampleInternshipItems.FACEBOOK_SWE;
 import static seedu.internhunter.testutil.internship.SampleInternshipItems.GOLDMAN_FE;
 import static seedu.internhunter.testutil.internship.SampleInternshipItems.GOOGLE_SWE;
 import static seedu.internhunter.testutil.internship.SampleInternshipItems.LAZADA_DS;
+import static seedu.internhunter.testutil.profile.SampleProfileItems.MS_HACKATHON_ACHIEVEMENT;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -99,6 +102,43 @@ public class CommandUtilTest {
         CommandResult result = getCommandResult(model, FEEDBACK, TabName.COMPANY, TabName.COMPANY,
             Index.fromOneBased(3));
         assertEquals(expected, result);
+    }
+
+    @Test
+    public void getCommandResult4Parameters_deletionCausingIndexSwitchCompany_success() {
+        // simulate the process of deletion
+        modelWithData.addCompany(new CompanyItemBuilder(GOLDMAN).build());
+        modelWithData.setCompanyViewIndex(Index.fromOneBased(2)); // simulate the index changing.
+        modelWithData.deleteCompany(GOLDMAN);
+        // execute getCommandResult. Expected the Index to be changed to 1 instead.
+        getCommandResult(model, FEEDBACK, TabName.COMPANY, TabName.COMPANY, Index.fromOneBased(2));
+
+        assertEquals(Index.fromOneBased(1), model.getCompanyViewIndex());
+    }
+
+    @Test
+    public void getCommandResult4Parameters_deletionCausingIndexSwitchApplication_success() {
+        // simulate the process of deletion
+        modelWithData.addApplication(new ApplicationItemBuilder(FACEBOOK_ACCEPTED).build());
+        modelWithData.setApplicationViewIndex(Index.fromOneBased(2)); // simulate the index changing.
+        modelWithData.deleteApplication(FACEBOOK_ACCEPTED);
+        // execute getCommandResult. Expected the Index to be changed to 1 instead.
+        getCommandResult(model, FEEDBACK, TabName.APPLICATION, TabName.APPLICATION, Index.fromOneBased(2));
+
+        assertEquals(Index.fromOneBased(1), model.getApplicationViewIndex());
+    }
+
+    @Test
+    public void getCommandResult4Parameters_deletionCausingIndexSwitchProfile_success() {
+        // simulate the process of deletion
+        modelWithData.addProfileItem(new ProfileItemBuilder(MS_HACKATHON_ACHIEVEMENT).build());
+        modelWithData.setProfileViewIndex(Index.fromOneBased(2)); // simulate the index changing.
+        modelWithData.deleteProfileItem(MS_HACKATHON_ACHIEVEMENT);
+
+        // execute getCommandResult. Expected the Index to be changed to 1 instead.
+        getCommandResult(model, FEEDBACK, TabName.PROFILE, TabName.PROFILE, Index.fromOneBased(2));
+
+        assertEquals(Index.fromOneBased(1), model.getProfileViewIndex());
     }
 
     @Test
@@ -190,6 +230,7 @@ public class CommandUtilTest {
 
     @Nested
     class SetIndexWhenDeletionTest {
+
         @Test
         public void setIndexWhenDeletion_applicationViewIndexAtLastPosition_success() throws CommandException {
             ApplicationItem applicationItem1 = applicationItemBuilder.withInternshipItem(FACEBOOK_SWE).build();
