@@ -813,7 +813,7 @@ Example:
 
 <div style="page-break-after: always;"></div>
 
-2\. And this is your current profile item list. Note that only the 2 profile items of `Skill` type will be used for
+2\. And this is your current profile item list. Note that only the 2 profile items of `skill` type will be used for
 matching with the internships.
 
 <p align="center"><img src="images/ug-general/match-skills.png" width="100%"/></p>
