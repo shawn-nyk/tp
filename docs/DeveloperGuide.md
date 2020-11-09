@@ -1087,6 +1087,7 @@ Guarantees: User will get directions to the user guide.
 2.  InternHunter displays help message directing user to user guide. <br/>
     Use case ends.
 
+<div style="page-break-after: always;"></div>
 
 **Use case: UC26 - Exit**
 
