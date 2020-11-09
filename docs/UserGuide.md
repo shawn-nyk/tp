@@ -232,6 +232,8 @@ This represents a company, any company, but typically one you are interested in 
 You can record and maintain a company's name, phone number, email address, physical address, and its industry types.
 You can then specify what internships the company is offering by using the [internship commands](#internship).
 
+#### Command execution
+
 Note that all Company commands follow the following general 2-step process:
 
 Step 1: Enter the command into the command box. An example command is given in the image below.
