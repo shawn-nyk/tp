@@ -383,6 +383,8 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
  
 #### Design considerations
 
+<div style="page-break-after: always;"></div>
+
 ##### Aspect: How Logic components interact with Model
 
 **Alternatives considered**
@@ -407,6 +409,9 @@ containing a editProfileItemDescriptor. The following sequence diagram depicts h
   ```
   model.getProfileList().setItem(profileItemToEdit, EditedProfileItem)
   ```
+  
+  <div style="page-break-after: always;"></div>
+  
 The following sequence diagram shows how the logic components bypass with model interface to interact directly with the
 `FilteredList` and the `profileList`:
 
@@ -468,6 +473,8 @@ This is how the `CommandUtil#getCommandResult(...)` method works upon execution:
 <p align="center">The process of how <code>getCommandResult</code> is being generated:</p>
 
 <p align="center"><img src="images/GetCommandResultSequenceDiagram.png" width="95%" height="95%"/></p>
+
+<div style="page-break-after: always;"></div>
 
 The following activity diagram summarizes what happens when a user executes a switch command:
 
