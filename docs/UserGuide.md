@@ -47,6 +47,8 @@ title: User Guide
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ## **Introduction**
 
 **InternHunter is a CLI-centric\* desktop application which aids university students in applying
@@ -62,6 +64,8 @@ app in your pursuit to land that desired internship.
 Let's dive in.
 
 *\*If you're unfamiliar with Command-Line Interfaces (CLIs), you can find out about them [here](https://en.wikipedia.org/wiki/Command-line_interface)!*
+
+<div style="page-break-after: always;"></div>
 
 ### **Overview**
 
@@ -104,6 +108,8 @@ Now, along the way you're probably going to want to edit, delete and look throug
 InternHunter supports all those features and more.
 
 Ready to begin? Let's get hunting.
+
+<div style="page-break-after: always;"></div>
 
 ## **Quick start**
 
