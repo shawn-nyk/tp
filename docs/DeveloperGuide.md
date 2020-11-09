@@ -75,7 +75,7 @@ The sections below give more details of each component.
 <div style="page-break-after: always;"></div>
 
 **API** :
-[`Ui.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
+[`Ui.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/ui/Ui.java)
 
 The Ui consists of a `MainWindow` that is made up of parts e.g. `CommandBox`, `ResultDisplay`, `ListPanel`, `InformationDisplay`, `Tabs` etc. 
 All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
@@ -86,9 +86,10 @@ The `ListPanel` is located at the center of the application and it consists of U
 
 The `InformationDisplay` appears at the right of the application and it consists of Ui `CompanyDisplay`, `ApplicationDisplay`, `ProfileDisplay`. The `InformationDisplay` displays the full information regarding the data item. <br/>
 
-The `ResultDisplay` and `CommandBox` appears at the bottom of the application and the `ResultDisplay` is above the `CommandBox` even though the Ui does not show it explicitly. <br/>
+The `ResultDisplay` and `CommandBox` appears at the bottom of the application and the `ResultDisplay` is above the
+ `CommandBox` even though the Ui does not show it explicitly. <br/>
 
-The `Ui` components uses the JavaFX UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/resources/view/MainWindow.fxml). The styling of the application is mainly at [`MainWindow.css`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/resources/view/MainWindow.css).
+The `Ui` components uses the JavaFX UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/resources/view/MainWindow.fxml). The styling of the application is mainly at [`MainWindow.css`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/resources/view/MainWindow.css).
 
 The `Ui` component,
 
@@ -124,6 +125,8 @@ API call.
 
 ![Interactions Inside the Logic Component for the `delete app 1` Command](images/DeleteSequenceDiagram1.png)
 
+<div style="page-break-after: always;"></div>
+
 ### Model component
 
 <p id="model-class-diagram"><img src="images/dg-model/ModelClassDiagram.png" width="60%" height="60%"/></p>
@@ -146,6 +149,8 @@ The `Model`,
  list changes.
 * does not depend on any of the other three components.
 
+<div style="page-break-after: always;"></div>
+
 ### Storage component
 
 <p id="storage-class-diagram"><img src="images/StorageClassDiagram.png"/></p>
@@ -163,6 +168,7 @@ Classes used by multiple components are in the `seedu.internhunter.commons` pack
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
 
 ## **Implementation**
 
