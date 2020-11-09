@@ -550,6 +550,8 @@ InternHunter does it. Let `commandString` be any valid command string.
   
 ![SavingDataSequenceDiagram](images/SavingDataSequenceDiagram.png)
 
+ <div style="page-break-after: always;"></div>
+ 
 This is how the `LogicManager#execute()` method works upon execution:
 
 1. `LogicManager` will execute the given `commandString`.
@@ -580,6 +582,8 @@ and `JsonSerializableItemList` use generics.
 
     * Cons:
         * More complicated as Jackson does not provide a direct way to convert a generic object to its JSON format.
+
+<div style="page-break-after: always;"></div>
 
 * **Alternative 2**: Each `Item` type has their own `ItemListStorage` and `JsonSerializableItemList`.
     * Pros:
@@ -689,6 +693,8 @@ The following sequence diagrams show how the match command works:
 <p align="center"><img src="images/MatchCommandSequenceDiagram1.png" width="72%" height="72%"/></p>
 
 <p align="center"><img src="images/MatchExecutionSequenceDiagram.png" width="72%" height="72%"/></p>
+
+<div style="page-break-after: always;"></div>
 
 #### Design considerations
 
