@@ -911,6 +911,8 @@ Format: `exit`
   
 </div>
 
+<div style="page-break-after: always;"></div>
+
 Example:
 
 1. Suppose you want to exit InternHunter without clicking the cross button, executing `exit` will generate a new window to confirm your request of exiting.
