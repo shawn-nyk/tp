@@ -505,8 +505,8 @@ internship in the company’s internship list.
 <div markdown="span" class="alert alert-primary">
 
   :bulb: **Tip:** The optional <code>STATUS</code> field can be used as freely as you want it too! Say you have applied and already
-  got the interview, you can immediately add the application with status <code>Interview</code> without needing to add
-  the application and update it afterwards.
+  got the interview for the internship, you can immediately add the application with status <code>Interview</code> without needing to add
+  the application and update it afterwards in a 2-step process.
      
 </div>
 
