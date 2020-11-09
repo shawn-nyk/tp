@@ -995,6 +995,8 @@ Guarantees: Addition of application is successful.
 
 * Similar to UC03 - editing a company except user is editing an application.
 
+<div style="page-break-after: always;"></div>
+
 **Use case: UC13 - View an application**
 
 * Similar to UC04 - viewing a company except  user is viewing an application.
@@ -1044,6 +1046,8 @@ Guarantees: Addition of application is successful.
   2a1. InternHunter displays an error message and informs the user that she has no matching internships. <br/>
   2a2. Use case ends.
 
+<div style="page-break-after: always;"></div>
+
 **Use case: UC23 - Switch tabs**
 
 Guarantees: InternHunter switches to the queried tab.
@@ -1062,8 +1066,6 @@ Guarantees: InternHunter switches to the queried tab.
  1b. InternHunter detects that the user is already in that tab. <br/>
   1b1. InternHunter displays a message and informs the user that he is already in that tab. <br/>
   Use case ends. <br/>
-  
-<div style="page-break-after: always;"></div>
 
 **Use case: UC24 - Clear all entries**
 
