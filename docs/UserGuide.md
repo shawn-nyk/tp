@@ -65,8 +65,6 @@ Let's dive in.
 
 *\*If you're unfamiliar with Command-Line Interfaces (CLIs), you can find out about them [here](https://en.wikipedia.org/wiki/Command-line_interface)!*
 
-<div style="page-break-after: always;"></div>
-
 ### **Overview**
 
 You're searching for an internship.
@@ -80,6 +78,8 @@ It's a mess.
 
 InternHunter is here to fix that. Here's how:
 
+<div style="page-break-after: always;"></div>
+
 InternHunter lets you record crucial information that you would want to keep track of during your internship hunting 
 process by managing a collection of four types of items:
 
@@ -89,8 +89,6 @@ Company | com | company name, phone number, email, address, industry types, inte
 Internship | int | company name, job title, period, wage, requirements | An internship offered by a company
 Application | app | internship, status, status date | An internship application that you applied for
 Profile Item | me | category, title, descriptors | An item in your profile
-
-<div style="page-break-after: always;"></div>
 
 And here's what you can do:
 1. When you find a company that you are interested in, add it to your list of companies with the: <br />
@@ -161,6 +159,7 @@ Symbol | What it means
 `add` | Words that have a grey highlighted background are commands that can be keyed into the command box.
 *italics* | Words in italics represent additional information.
 
+<div style="page-break-after: always;"></div>
 
 #### Understanding the usage of the commands
 
