@@ -556,6 +556,7 @@ Executing `view app 2` will update the right panel to display the second applica
 
 <br/>
 <br/>
+<br/>
 
 #### Finding applications: `find app`
 
