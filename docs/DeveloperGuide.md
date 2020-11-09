@@ -137,6 +137,8 @@ Breakdown of the Company, Internship and Application packages:
 Breakdown of the Profile package:
 <p id="profile-class-diagram"><img src="images/dg-model/ProfileClassDiagram.png" width="45%" height="45%"/></p>
 
+<div style="page-break-after: always;"></div>
+
 **API** :
 [`Model.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/internhunter/model/Model.java)
 
@@ -193,6 +195,8 @@ There are 2 types of commands:
 From this point on, we will be using `ABCCommand` to represent commands that are dependent on type and
 `XYZCommand` to represent commands that are independent of type.
 
+<div style="page-break-after: always;"></div>
+
 The following shows the class diagram for `Command` and its subclasses:
 
 ![CommandClassDiagram](images/CommandClassDiagram.png)
@@ -221,7 +225,7 @@ execution of the `AddApplicationCommand` will work.
 Parser parses the user input and creates the general `ABCCommand` for execution. The following
 activity diagram shows how the `AddCommand` will work.
 
-![AddCommandActivityDiagram](images/AddCommandActivityDiagram.png)
+<p id="add-command-acitivity-diagram"><img src="images/AddCommandActivityDiagram.png" width="80%" height="80%"/></p>
 
 - Pros:
     - Only one command is needed, reducing the number of classes created
