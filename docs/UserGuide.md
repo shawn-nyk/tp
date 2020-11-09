@@ -295,6 +295,8 @@ Format: `edit com INDEX [n/COMPANY_NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] 
 - When editing industry types, the existing industry types get removed i.e. industry types do not accumulate.
 - You can remove all of a company’s industry types by simply typing `t/` without specifying anything after it.
 
+<div style="page-break-after: always;"></div>
+
 Examples:
 - `edit com 2 p/61234567`
 - For the following example, executing `edit com 1 n/Google Singapore e/GoogleIsHiring@google.com t/Internet` will
