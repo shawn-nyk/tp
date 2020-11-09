@@ -554,8 +554,6 @@ Example:
 Executing `view app 2` will update the right panel to display the second application:
 <p align="center"><img src="images/ug-application/ViewApplication.png" width="90%" height="90%"/></p>
 
-<div style="page-break-after: always;"></div>
-
 #### Finding applications: `find app`
 
 Finds all applications in your list of applications whose job titles contain any of the given keywords.
