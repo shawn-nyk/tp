@@ -1450,7 +1450,7 @@ testers are expected to do more *exploratory* testing.
    Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
    
    1. Test case: `delete app` <br>
-   Expected: Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
 **Deleting a profile item**
 
@@ -1465,7 +1465,7 @@ testers are expected to do more *exploratory* testing.
    Expected: An error message informing you that index is not a non-zero unsigned integer. The command box text will turn red to inform you of the invalid command.
    
    1. Test case: `delete me` <br>
-   Expected: Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
+   Expected: An error message will be shown, showing information of how this command should be entered. The command box text will turn red to inform you of the invalid command.
 
 **Switching of tabs**
 
