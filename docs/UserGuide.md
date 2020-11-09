@@ -191,6 +191,8 @@ Symbol | What it means
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## **Features**
 
 ### **Navigating InternHunter**
