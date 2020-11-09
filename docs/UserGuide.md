@@ -793,13 +793,13 @@ Generates a list of internships that have requirements that matches your current
 
 Format: `match`
 - Only the `Requirement` field in the internships will be searched for.
-- Only profile items with `Skill` category will be used for matching.
-- An Internship with at least one `Requirement` matching any one `Skill` in the profile list will be
-considered as a successful match. e.g. Say you have a profile item which is of `Skill` category and titled `Python`, any
+- Only profile items with `skill` category will be used for matching.
+- An Internship with at least one `Requirement` matching any one `skill` in the profile list will be
+considered as a successful match. e.g. Say you have a profile item which is of `skill` category and titled `Python`, any
 internship that has a `Requirement` of `Python` will be successfully matched.
 - An Internship with no requirements will never be matched.
-- Matched internships can have `Requirements` that do not match with the profile `Skills`, since a match is found when
-an internship has **at least one and not all** `Requirements` that matches with the profile `Skills`.
+- Matched internships can have requirements that do not match with the profile skills, since a match is found when
+an internship has **at least one and not all** requirements that matches with the profile skills.
 - Matching done is case-insensitive. e.g. `Python` will match `python`.
 - Only the full phrase will be matched. e.g. `Machine` will not match `Machine Learning`.
 
