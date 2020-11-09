@@ -2,7 +2,6 @@ package seedu.internhunter.model.internship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.testutil.Assert.assertThrows;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.INVALID_REQUIREMENT_EMPTY;
@@ -54,14 +53,14 @@ public class RequirementTest {
 
     @Test
     public void equals_equalityTest_success() {
-        assertEquals(VALID_REQUIREMENT_ONE, VALID_REQUIREMENT_ONE);
+        assertTrue(VALID_REQUIREMENT_ONE.equals(VALID_REQUIREMENT_ONE));
         Requirement validRequirementCopy = new Requirement(VALID_REQUIREMENT_VUE);
-        assertEquals(VALID_REQUIREMENT_ONE, validRequirementCopy);
+        assertTrue(VALID_REQUIREMENT_ONE.equals(validRequirementCopy));
     }
 
     @Test
     public void equals_nonEqualityTest_success() {
-        assertNotEquals(VALID_REQUIREMENT_ONE, VALID_REQUIREMENT_TWO);
+        assertFalse(VALID_REQUIREMENT_ONE.equals(VALID_REQUIREMENT_TWO));
     }
 
     @Test
