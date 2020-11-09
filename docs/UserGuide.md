@@ -407,6 +407,8 @@ internship in the company’s list of internships.
 * When editing `REQUIREMENTS`, all existing requirements get replaced by the new specified requirements.
 * You can remove all `REQUIREMENTS` by adding r/ without anything after it.
 
+<div style="page-break-after: always;"></div>
+
 Examples:
 - `edit int 3 i/1 j/Frontend Developer`
 - Executing `edit int 1 i/2 w/4800 r/Java r/Python`:
@@ -416,6 +418,8 @@ Examples:
 If an application is already created for the internship, it will also be edited as shown below:
 
 ![EditInternshipApplication](images/EditInternshipApplication.png)
+
+<div style="page-break-after: always;"></div>
 
 ### **Application**
 
