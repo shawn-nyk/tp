@@ -461,9 +461,13 @@ Valid `STATUS_DATE` formats:
   
 </div>
 
+<div style="page-break-after: always;"></div>
+
 Here is how the application tab looks like: 
 
 <p align="center"><img src="images/ug-application/ApplicationAnnotated1.png" width="100%"/></p>
+
+<div style="page-break-after: always;"></div>
 
 #### Command execution
 
@@ -473,11 +477,15 @@ Step 1: Enter the command into the command box. An example command is given in t
 
 ![GeneralApplicationCommand1](images/ug-application/GeneralApplicationCommand01.png)
 
+<div style="page-break-after: always;"></div>
+
 Step 2: Press 'Enter' on your keyboard to execute the command. Upon successful execution, you will see the results of 
 your command reflected immediately in the app. An appropriate result message will also be displayed in the result 
 display.
 
 ![GeneralApplicationCommand2](images/ug-application/GeneralApplicationCommand02.png)
+
+<div style="page-break-after: always;"></div>
 
 #### Applying for an internship: `add app`
 
