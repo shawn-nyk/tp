@@ -90,6 +90,8 @@ Internship | int | company name, job title, period, wage, requirements | An inte
 Application | app | internship, status, status date | An internship application that you applied for
 Profile Item | me | category, title, descriptors | An item in your profile
 
+<div style="page-break-after: always;"></div>
+
 And here's what you can do:
 1. When you find a company that you are interested in, add it to your list of companies with the: <br />
 [`add com` command](#adding-a-company-add-com)
@@ -127,6 +129,8 @@ Ready to begin? Let's get hunting.
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## **About**
 
 This section will bring you through the [Graphical User Interface(GUI)](#understanding-the-gui), [technical terminologies](#understanding-the-technical-terminologies), as well as commonly used [symbols](#understanding-the-symbols).
@@ -134,6 +138,8 @@ This section will bring you through the [Graphical User Interface(GUI)](#underst
 #### Understanding the GUI
 
 <p><img src="images/AnnotatedGui.png"/></p>
+
+<div style="page-break-after: always;"></div>
 
 #### Understanding the technical terminologies
 
@@ -154,6 +160,7 @@ Symbol | What it means
 :warning:| Warning.
 `add` | Words that have a grey highlighted background are commands that can be keyed into the command box.
 *italics* | Words in italics represent additional information.
+
 
 #### Understanding the usage of the commands
 
