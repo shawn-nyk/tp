@@ -2,7 +2,6 @@ package seedu.internhunter.model.internship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.model.internship.Wage.DEFAULT_WAGE;
 import static seedu.internhunter.model.internship.Wage.WAGE_SYMBOL;
@@ -88,14 +87,23 @@ public class WageTest {
 
     @Test
     public void equals_equalityTest_success() {
-        assertEquals(VALID_WAGE_ONE, VALID_WAGE_ONE);
+        // same object -> return true
+        assertTrue(VALID_WAGE_ONE.equals(VALID_WAGE_ONE));
+
+        // same value -> return true
         Wage wageCopy = new Wage(VALID_WAGE_2000);
-        assertEquals(VALID_WAGE_ONE, wageCopy);
+        assertTrue(VALID_WAGE_ONE.equals(wageCopy));
     }
 
     @Test
     public void equals_nonEqualityTest_success() {
-        assertNotEquals(VALID_WAGE_ONE, VALID_WAGE_TWO);
+        assertFalse(VALID_WAGE_ONE.equals(VALID_WAGE_TWO));
+
+        // null -> return false
+        assertFalse(VALID_WAGE_ONE.equals(null));
+
+        // different types -> return false
+        assertFalse(VALID_WAGE_ONE.equals(0.5f));
     }
 
     @Test

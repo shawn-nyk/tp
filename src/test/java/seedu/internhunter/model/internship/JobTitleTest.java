@@ -2,7 +2,6 @@ package seedu.internhunter.model.internship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.internhunter.testutil.Assert.assertThrows;
 import static seedu.internhunter.testutil.internship.InternshipItemFieldsUtil.INVALID_JOB_TITLE_BLANK;
@@ -58,14 +57,14 @@ public class JobTitleTest {
 
     @Test
     public void equals_equalityTest_success() {
-        assertEquals(VALID_JOB_TITLE_ONE, VALID_JOB_TITLE_ONE);
+        assertTrue(VALID_JOB_TITLE_ONE.equals(VALID_JOB_TITLE_ONE));
         JobTitle jobTitleCopy = new JobTitle(VALID_JOB_TITLE_SWE);
-        assertEquals(VALID_JOB_TITLE_ONE, jobTitleCopy);
+        assertTrue(VALID_JOB_TITLE_ONE.equals(jobTitleCopy));
     }
 
     @Test
     public void equals_nonEqualityTest_success() {
-        assertNotEquals(VALID_JOB_TITLE_ONE, VALID_JOB_TITLE_TWO);
+        assertFalse(VALID_JOB_TITLE_ONE.equals(VALID_JOB_TITLE_TWO));
     }
 
     @Test
