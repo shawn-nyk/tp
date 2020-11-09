@@ -57,14 +57,21 @@ public class JobTitleTest {
 
     @Test
     public void equals_equalityTest_success() {
+        // same object -> return true
         assertTrue(VALID_JOB_TITLE_ONE.equals(VALID_JOB_TITLE_ONE));
         JobTitle jobTitleCopy = new JobTitle(VALID_JOB_TITLE_SWE);
+        // same value -> return true
         assertTrue(VALID_JOB_TITLE_ONE.equals(jobTitleCopy));
     }
 
     @Test
     public void equals_nonEqualityTest_success() {
+        // different value -> return false
         assertFalse(VALID_JOB_TITLE_ONE.equals(VALID_JOB_TITLE_TWO));
+        // null -> return false
+        assertFalse(VALID_JOB_TITLE_ONE.equals(null));
+        // different types -> return false
+        assertFalse(VALID_JOB_TITLE_ONE.equals(0.5f));
     }
 
     @Test
