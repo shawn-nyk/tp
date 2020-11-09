@@ -777,6 +777,7 @@ Priority | As a …​    | I want to …​                                    
 <div style="page-break-after: always;"></div>
 
 Priority | As a …​    | I want to …​                                                   | So that I can…​                                                           
+-------- | ---------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------- 
 `* * *`  | user       | maintain a list of my internship applications                  | keep track of them                                                                
 `* * *`  | user       | add an internship application                                  | keep track of the internships that I have applied for                             
 `* * *`  | user       | delete an internship application                               | remove internship applications that I no longer need / am no longer interested in 
@@ -794,6 +795,7 @@ Priority | As a …​    | I want to …​                                    
 <div style="page-break-after: always;"></div>
 
 Priority | As a …​    | I want to …​                                                   | So that I can…​                                                           
+-------- | ---------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------- 
 `* * *`  | user       | view information in my user profile                            | see its details  
 `* *`    | user       | find information in my user profile by title                   | quickly look up specific information in my user profile without having to search manually
 `* *`    | user       | list all the information in my user profile                    | see the full list of information in my user profile
