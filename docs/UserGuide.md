@@ -2,10 +2,6 @@
 layout: page
 title: User Guide
 ---
----
-
-# Welcome to the InternHunter User Guide
-
 ## Table Of Contents
 
 [1. Introduction](#introduction) <br />
