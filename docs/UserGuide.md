@@ -306,6 +306,8 @@ Examples:
  *(Notice that by editing industry types, the existing industry types get replaced i.e. industry types do not
   accumulate)*
 
+<div style="page-break-after: always;"></div>
+
 #### Viewing a company's particulars in full: `view com`
 
 Selects a company in your list of companies to show in detail on the right panel.
@@ -317,6 +319,8 @@ Examples:
 - Suppose you are currently viewing the first company and you want to view the second company. Executing `view com 2` 
 will update the right panel to display the second company: <br />
    ![ViewCompany](images/ug-company/ViewCom.png) <br />
+
+<div style="page-break-after: always;"></div>
 
 #### Finding companies: `find com`
 
