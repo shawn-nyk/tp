@@ -215,7 +215,7 @@ The following shows the class diagram for `Command` and its subclasses:
 
 **Alternatives considered**
 
-**Alternative 1 (current choice)**: `ABCCommand` is split into 4 other `ABCItemCommand`. Parser parses the
+**Alternative 1 (current choice)**: `ABCCommand` is split into 4 other `ABCItemCommand`. InternHunter parses the
 user input and creates the specific `ABCItemCommand` for execution. The following activity diagram shows how the 
 execution of the `AddApplicationCommand` will work.
 
@@ -234,7 +234,7 @@ execution of the `AddApplicationCommand` will work.
 <div style="page-break-after: always;"></div>
     
 **Alternative 2**: `ABCCommand` is a _concrete_ class and handles the execution of all 4 `Item` types.
-Parser parses the user input and creates the general `ABCCommand` for execution. The following
+InternHunter parses the user input and creates the general `ABCCommand` for execution. The following
 activity diagram shows how the `AddCommand` will work.
 
 <p id="add-command-activity-diagram"><img src="images/AddCommandActivityDiagram.png" width="60%" height="60%"/></p>
@@ -948,6 +948,7 @@ Use case ends.
   1a1. InternHunter displays an error message and informs the user of the valid input format. <br/>
   Use case resumes from step 1.
 
+<div style="page-break-after: always;"></div>
 
 **Use case: UC07 - Add an internship**
 
