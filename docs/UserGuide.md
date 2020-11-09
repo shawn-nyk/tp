@@ -524,6 +524,8 @@ Executing `delete app 2` will delete the 2nd application and update the list to 
 
 <p align="center"><img src="images/ug-application/DeleteApplication.png" width="100%"/></p>
 
+<div style="page-break-after: always;"></div>
+
 #### Updating an application: `edit app`
 
 Updates an application in your list of applications.
