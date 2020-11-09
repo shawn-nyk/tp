@@ -508,6 +508,8 @@ Example:
 - Suppose you are interested in applying for the Software Engineer internship in Google Singapore:
 <p align="center"><img src="images/ug-application/Internship1.png" width="100%"/></p>
 
+<div style="page-break-after: always;"></div>
+
 Executing `add app 1 i/1 d/24-12-20` will apply for the internship as follows.
 Note that you will be automatically switched to the application tab to view the application made:
 <p align="center"><img src="images/ug-application/AddApplication1.png" width="100%"/></p>
