@@ -13,6 +13,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 --------------------------------------------------------------------------------------------------------------------
 
 <div style="page-break-after: always;"></div>
+
 ## **Design**
 
 ### Architecture
@@ -70,6 +71,8 @@ The sections below give more details of each component.
   :information_source: <strong>Note:</strong> The class diagram for the Ui is a simplified version of the implementation. Generics are used in the implementation but is omitted in the class diagram.
   
 </div>
+
+<div style="page-break-after: always;"></div>
 
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-T15-4/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
