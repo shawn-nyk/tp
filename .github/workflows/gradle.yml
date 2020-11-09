@@ -1,26 +1,26 @@
-name: Java CI
-
-on: [push, pull_request]
-
-jobs:
-  build:
-    strategy:
-      matrix:
-        platform: [ubuntu-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.platform }}
-
-    steps:
-      - name: Set up repository
-        uses: actions/checkout@master
-
-      - name: Set up repository
-        uses: actions/checkout@master
-        with:
-          ref: master
-
-      - name: Merge to master
-        run: git checkout --progress --force ${{ github.sha }}
-
+#name: Java CI
+#
+#on: [push, pull_request]
+#
+#jobs:
+#  build:
+#    strategy:
+#      matrix:
+#        platform: [ubuntu-latest, macos-latest, windows-latest]
+#    runs-on: ${{ matrix.platform }}
+#
+#    steps:
+#      - name: Set up repository
+#        uses: actions/checkout@master
+#
+#      - name: Set up repository
+#        uses: actions/checkout@master
+#        with:
+#          ref: master
+#
+#      - name: Merge to master
+#        run: git checkout --progress --force ${{ github.sha }}
+#
 #      - name: Run repository-wide tests
 #        if: runner.os == 'Linux'
 #        working-directory:  ${{ github.workspace }}/.github
