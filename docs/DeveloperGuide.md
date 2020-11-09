@@ -754,6 +754,8 @@ The following sequence diagrams show how the match command works:
 **Value proposition**: Improves your planning, confidence and readiness for tech-related internship applications by
  improving your interview skills and search strategy.
 
+<div style="page-break-after: always;"></div>
+
 ### Appendix B: User Stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
@@ -794,6 +796,8 @@ Priority | As a …​    | I want to …​                                    
 `* *`    | user       | navigate the application easily through a clear user interface |                                                                                   
 `* *`    | user       | get fast feedback from the app                                 |                                                                                   
 `* *`    | user       | easily clear all data from the app                             | start from a clean slate
+
+<div style="page-break-after: always;"></div>
 
 ### Appendix C: Use Cases
 
@@ -1065,6 +1069,8 @@ Guarantees: User will get directions to the user guide.
 
  2a. User chooses to cancel the confirmation. <br/>
   Use case ends.
+
+<div style="page-break-after: always;"></div>
     
 ### Appendix D: Non-Functional Requirements
 
@@ -1085,6 +1091,8 @@ do not require installation by user of the software.
 * **JSON**: JavaScript Object Notation
 * **DRY**: Don't Repeat Yourself
 * **OOP**: Object-oriented programming
+
+<div style="page-break-after: always;"></div>
 
 ### Appendix F: Instructions for Manual Testing
 
@@ -1482,6 +1490,7 @@ testers are expected to do more *exploratory* testing.
    1. Double-click the jar file <br>
    Expected: Shows the GUI with no data.
 
+<div style="page-break-after: always;"></div>
 
 ### Appendix G: Effort 
 
@@ -1507,6 +1516,8 @@ will require its internships and the internship's applications to be deleted as 
 The UI has also been completely revamped to have a different look and feel from Address Book 3. It uses a tab
  interface for switching between and displaying the different entities of InternHunter and a right display panel to show
  the details of each entity item which the cards in the list cannot show.
+
+<div style="page-break-after: always;"></div>
 
 ### Appendix H: Sequence Diagrams
 
