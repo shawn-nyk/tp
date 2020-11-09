@@ -382,6 +382,8 @@ Examples:
 
 ![AddInternship](images/AddInternship.png)
 
+<div style="page-break-after: always;"></div>
+
 #### Deleting an internship from a company: `delete int`
 
 Deletes an internship from a company. The application (if any) made with this internship will also be deleted.
