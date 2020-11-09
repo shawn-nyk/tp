@@ -604,7 +604,7 @@ check whether the internships in both lists are consistent.
 
 #### What it is
 Users are able to execute a command to generate a list of matching internships that matches their current profile
-skills. This matching is done by filtering the list of profile items that has the category `SKILL` and
+skills. This matching is done by filtering the list of profile items that has the category `skill` and
 using it to filter the list of internships. Remaining internships are those that consist of at least one
 `Requirement` that matches the user's list of skills. 
 
