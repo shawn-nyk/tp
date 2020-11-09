@@ -95,6 +95,7 @@ The `Ui` component,
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
+<div style="page-break-after: always;"></div>
 
 ### Logic component
 
