@@ -894,6 +894,8 @@ Use case ends.
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
+<div style="page-break-after: always;"></div>
+
 **Use case: UC05 - Find companies**
 
 Precondition: User already has an existing list of companies. <br/>
@@ -948,8 +950,6 @@ Guarantees: Addition of internship to company is successful.
  1b. InternHunter detects an invalid index. <br/>
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
-
-<div style="page-break-after: always;"></div>
 
 **Use case: UC08 - Delete an internship**
 
