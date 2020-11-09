@@ -634,6 +634,11 @@ Each category is represented by the following icons in the UI:
 |`experience` | <img src="images/ug-profile/experience.png" width="10%" height="10%"/>
 |`skill`      | <img src="images/ug-profile/skills.png" width="10%" height="10%"/>
 
+<div markdown="span" class="alert alert-info">
+
+  :information_source: **Note:** category is case-insensitive.
+  
+</div>
 
 Each profile item also contains a `TITLE` that describes the item, and you can optionally 
 add additional `DESCRIPTOR`s to further describe the item in point form.
