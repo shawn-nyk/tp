@@ -212,6 +212,8 @@ There are three `TYPE`s:
 
 `com` refers to Company tab, `app` refers to Application tab, `me` refers to Profile tab.
 
+<div style="page-break-after: always;"></div>
+
 Example:
 
 1. Suppose you want to switch tabs to the application tab. Executing `switch app` will switch the tabs to application tab.
@@ -235,6 +237,8 @@ Note that all Company commands follow the following general 2-step process:
 Step 1: Enter the command into the command box. An example command is given in the image below.
 
 ![GeneralStep1MarkUp](images/ug-company/GeneralStep1MarkUp.png)
+
+<div style="page-break-after: always;"></div>
 
 Step 2: Press 'Enter' on your keyboard to execute the command. Upon successful execution, you will see the results of 
 your command reflected immediately in the app. An appropriate result message will also be displayed in the result 
