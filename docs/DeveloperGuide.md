@@ -464,6 +464,8 @@ This is how the `SwitchCommand#execute(...)` method works upon execution:
 
 <p align="center"><img src="images/ExecuteSwitchMeCommandSequenceDiagram.png" width="75%" height="75%"/></p>
 
+<div style="page-break-after: always;"></div>
+
 This is how the `CommandUtil#getCommandResult(...)` method works upon execution:
 1. The current tab that the user is viewing is obtained via the `Model#getTabName()` method.
 2. The input tab will be check against the current tab. <br/>
@@ -481,6 +483,8 @@ The following activity diagram summarizes what happens when a user executes a sw
 ![SwitchCommandActivityDiagram](images/switchcommand/SwitchCommandActivityDiagram.png)
 
 The above activity diagram shows the logic and the path execution when the switch command is executed. The code will check if there is any missing input or if the input is not one of the three mentioned in the `Command format` above. If the aforementioned 2 conditions are not met, an error message is displayed. If the input is one of the three mentioned above in the `Command format`, there will be further checks if the user are already in the same tab.
+
+<div style="page-break-after: always;"></div>
 
 #### Design considerations
 
@@ -528,6 +532,8 @@ object.
  * `ItemListStorage` handles the storage for `Item` lists.
  * `JsonSerializableItemList` represents a Jackson-friendly version of an `Item` list.
  * `JsonAdaptedItem` represents a Jackson-friendly version of an `Item`.
+ 
+ <div style="page-break-after: always;"></div>
  
  ![JsonAdaptedItemClassDiagram](images/JsonAdaptedItemClassDiagram.png)
  
@@ -613,6 +619,8 @@ This is how the `ClearCommand#execute()` method works upon execution:
 5. A new empty `ItemList` for the profile item list is created.
 6. `ModelManager#setProfileList(...)` is called with the recently created empty list as the argument.
 
+<div style="page-break-after: always;"></div>
+ 
 #### Design considerations
 
 ##### Aspect: How to clear the lists
@@ -658,6 +666,8 @@ Here is a class diagram to show how the `MatchCommand` is implemented:
 
 ![MatchCommandClassDiagram](images/MatchCommandClassDiagram.png)
 
+<div style="page-break-after: always;"></div>
+ 
 This is how the `MatchCommand#execute(...)` method works upon execution:
 
 1. The list of profile items and company items are first obtained via the `Model#getProfileItemList()` method and
