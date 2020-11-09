@@ -222,6 +222,7 @@ Example:
 
 <p align="center"><img src="images/ug-general/switchAppResultAnnotated.png"/></p>
 
+<div style="page-break-after: always;"></div>
 
 ### **Company**
 
@@ -257,6 +258,8 @@ display.
     include the company's location in their name (e.g. `n/Google Singapore` and `n/Google San Francisco`)!
   
 </div>
+
+<div style="page-break-after: always;"></div>
 
 #### Adding a company: `add com`
 
