@@ -1,11 +1,5 @@
----
 layout: page
 title: Keane Chan Jun Yu - Project Portfolio
----
-
-## Project: InternHunter
-
----
 
 InternHunter is a CLI-centric desktop application which aids university students in applying for tech internships.
 It lets users manage their own customisable collection of companies, internships, internship applications and their 
