@@ -53,14 +53,21 @@ public class PeriodTest {
 
     @Test
     public void equals_equalityTest_success() {
+        // same object -> return true
         assertTrue(VALID_PERIOD_ONE.equals(VALID_PERIOD_ONE));
         Period periodCopy = new Period(VALID_PERIOD_SUMMER);
+        // same value -> return true
         assertTrue(VALID_PERIOD_ONE.equals(periodCopy));
     }
 
     @Test
     public void equals_nonEqualityTest_success() {
+        // different value -> return false
         assertFalse(VALID_PERIOD_ONE.equals(VALID_PERIOD_TWO));
+        // null -> return false
+        assertFalse(VALID_PERIOD_ONE.equals(null));
+        // different types -> return false
+        assertFalse(VALID_PERIOD_ONE.equals(0.5f));
     }
 
     @Test

@@ -53,14 +53,21 @@ public class RequirementTest {
 
     @Test
     public void equals_equalityTest_success() {
+        // same object -> return true
         assertTrue(VALID_REQUIREMENT_ONE.equals(VALID_REQUIREMENT_ONE));
         Requirement validRequirementCopy = new Requirement(VALID_REQUIREMENT_VUE);
+        // same value -> return true
         assertTrue(VALID_REQUIREMENT_ONE.equals(validRequirementCopy));
     }
 
     @Test
     public void equals_nonEqualityTest_success() {
+        // different value -> return false
         assertFalse(VALID_REQUIREMENT_ONE.equals(VALID_REQUIREMENT_TWO));
+        // null -> return false
+        assertFalse(VALID_REQUIREMENT_ONE.equals(null));
+        // different types -> return false
+        assertFalse(VALID_REQUIREMENT_ONE.equals(0.5f));
     }
 
     @Test

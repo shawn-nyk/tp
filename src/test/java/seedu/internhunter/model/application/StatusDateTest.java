@@ -57,8 +57,10 @@ public class StatusDateTest {
 
     @Test
     public void equals_equalityTest_success() {
+        // same object -> return true
         assertTrue(VALID_STATUS_DATE_JUNE_2021.equals(VALID_STATUS_DATE_JUNE_2021));
         StatusDate statusDateCopy = new StatusDate(DateUtil.convertToDateTime(STATUS_DATE_JUNE_2021));
+        // same value -> return true
         assertTrue(VALID_STATUS_DATE_JUNE_2021.equals(statusDateCopy));
     }
 
@@ -68,6 +70,10 @@ public class StatusDateTest {
         assertFalse(VALID_STATUS_DATE_JUNE_2021.equals(VALID_STATUS_DATE_JUNE_2022));
         // Different day in same year
         assertFalse(VALID_STATUS_DATE_JUNE_2021.equals(VALID_STATUS_DATE_MAY_2021));
+        // null -> return false
+        assertFalse(VALID_STATUS_DATE_JUNE_2021.equals(null));
+        // different types -> return false
+        assertFalse(VALID_STATUS_DATE_JUNE_2021.equals(0.5f));
     }
 
     @Test
