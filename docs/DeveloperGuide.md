@@ -221,6 +221,8 @@ execution of the `AddApplicationCommand` will work.
 
 ![AddApplicationCommandActivityDiagram](images/AddApplicationCommandActivityDiagram.png)
 
+<div style="page-break-after: always;"></div>
+
 - Pros: 
     - Each command has its own specific task to execute. This means that classes are more flexible and can be changed
     very easily. 
@@ -228,14 +230,16 @@ execution of the `AddApplicationCommand` will work.
     - Short and concise `execute` method, providing better readability and maintainability
 - Cons:
     - More classes have to be created
-        
+
+<div style="page-break-after: always;"></div>
+    
 **Alternative 2**: `ABCCommand` is a _concrete_ class and handles the execution of all 4 `Item` types.
 Parser parses the user input and creates the general `ABCCommand` for execution. The following
 activity diagram shows how the `AddCommand` will work.
 
-<div style="page-break-after: always;"></div>
-
 <p id="add-command-activity-diagram"><img src="images/AddCommandActivityDiagram.png" width="60%" height="60%"/></p>
+
+<div style="page-break-after: always;"></div>
 
 - Pros:
     - Only one command is needed, reducing the number of classes created
@@ -274,7 +278,7 @@ switch over to the Company tab if and when the command has finished executing su
 
 #### Implementation
 Upon a user’s entry of a valid delete company command, a `DeleteCompanyCommand` object is created. 
-`DeleteCompanyCommand` is a class that extends the `DeleteCommandAbstract` abstract class that in turn extends the 
+`DeleteCompanyCommand` is a class that extends the `DeleteCommand` abstract class that in turn extends the 
 `Command` abstract class.
 
 <p id="delete-company-command-class-diagram"><img src="images/dg-company/DeleteCompanyCommandClassDiagram.png" width="70%" height="70%"/></p>
@@ -293,6 +297,8 @@ This is how the `DeleteCompanyCommand#execute()` method works upon execution:
  operation success via the `CommandUtil#getCommandResult()` method. The `CommandResult` also indicates whether the tab 
  needs to be switched to the Company tab or not, based on if the user was already viewing the Company tab or not as 
  retrieved in Step 1.
+
+<br />
 
 The following sequence diagrams show how the delete company feature works successfully, using the example command 
 `delete com 3`:
