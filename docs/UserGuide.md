@@ -775,6 +775,8 @@ Example:
  having executed a `find me` command, to view all the items in your profile list, execute `list me`: <br />
  ![ListProfile](images/ug-profile/ListProfile.png)
 
+<div style="page-break-after: always;"></div>
+
 ### **Finding the most suitable internships**
 
 #### Generating matching internships: `match`
@@ -799,10 +801,14 @@ Example:
 
 <p align="center"><img src="images/ug-general/match-internships1.png" width="100%"/></p>
 
+<div style="page-break-after: always;"></div>
+
 2\. And this is your current profile item list. Note that only the 2 profile items of `Skill` type will be used for
 matching with the internships.
 
 <p align="center"><img src="images/ug-general/match-skills.png" width="100%"/></p>
+
+<div style="page-break-after: always;"></div>
 
 3\. All that's left to do is to type the `match` word in the command box.
 
@@ -814,6 +820,8 @@ matching with the internships.
 
 </div>
 
+<div style="page-break-after: always;"></div>
+
 4\. A pop-up window showing the list of matching internships will be displayed!
 
 <p align="center"><img src="images/ug-general/match-window1.png" width="100%"/></p>
@@ -823,6 +831,8 @@ matching with the internships.
   :bulb: **Tip:** You can press Esc key to close the popup window!
   
 </div>
+
+<div style="page-break-after: always;"></div>
 
 ### **General**
 
@@ -844,9 +854,13 @@ Example:
 
 <p align="center"><img src="images/ug-general/clear.png" width="70%" height="70%"/></p>
 
+<div style="page-break-after: always;"></div>
+
 2\. Note that all the data has been wiped as seen in the Ui.
 
 <p align="center"><img src="images/ug-general/clearResult.png" width="70%" height="70%"/></p>
+
+<div style="page-break-after: always;"></div>
 
 #### Viewing help: `help`
 
@@ -867,11 +881,13 @@ Example:
 
 <p align="center"><img src="images/ug-general/help.png" width="70%" height="70%"/></p>
 
+<div style="page-break-after: always;"></div>
+
 2\. Copy the link and access our user guide for more information.
 
 <p align="center"><img src="images/ug-general/helpResult.png" width="70%" height="70%"/></p>
 
-
+<div style="page-break-after: always;"></div>
 
 #### Exiting the program: `exit`
 
@@ -887,19 +903,21 @@ Format: `exit`
   
 </div>
 
-<br/>
-
 Example:
 
 1. Suppose you want to exit InternHunter without clicking the cross button, executing `exit` will generate a new window to confirm your request of exiting.
 
 <p align="center"><img src="images/ug-general/exit.png" width="70%" height="70%"/></p>
 
+<div style="page-break-after: always;"></div>
+
 2\. At this stage, you have the option to confirm the exit or continue to stay in InternHunter.
 
 <p align="center"><img src="images/ug-general/exitResult.png" width="70%" height="70%"/></p>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## **FAQ**
 
@@ -929,6 +947,7 @@ Make sure your json files are in the correct folder and format. If not, InternHu
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
 
 ## **Command summary**
 
