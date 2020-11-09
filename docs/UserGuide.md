@@ -586,8 +586,6 @@ applications:
 
 <p align="center"><img src="images/ug-application/FindApplication1.png" width="100%"/></p>
 
-<div style="page-break-after: always;"></div>
-
 #### Listing all applications: `list app`
 
 Lists out **all** applications in your list of applications. After using the `find app` command, you would have likely
@@ -664,6 +662,8 @@ display.
      
 </div>
 
+<div style="page-break-after: always;"></div>
+
 #### Adding an item to your profile: `add me`
 
 Adds a profile item to your profile.
@@ -679,6 +679,8 @@ Examples:
  
 ![AddProfileSS](images/ug-profile/AddProfile.png)
 
+<div style="page-break-after: always;"></div>
+
 #### Deleting an item from your profile: `delete me`
 
 Deletes experience, skills or achievements from your profile.
@@ -690,6 +692,8 @@ Example:
 * Executing `delete me 2` on the following list will delete the 2nd profile item as follows: <br />
 
 ![DeleteProfile](images/ug-profile/DeleteProfile.png)
+
+<div style="page-break-after: always;"></div>
 
 #### Updating profile item details: `edit me`
 
@@ -708,6 +712,8 @@ Examples:
 ![EditProfile](images/ug-profile/EditProfile.png)<br />
  *(Note that the existing descriptors get replaced)*
  
+ <div style="page-break-after: always;"></div>
+
 #### Viewing a profile item's details in full: `view me`
 
 Selects an item in the profile to show in detail on the right panel.
@@ -720,6 +726,8 @@ Example:
 
 ![ViewProfile](images/ug-profile/ViewProfileThree.png)<br />
 *(As you can see the details of the third item can be seen in the right panel)*
+
+<div style="page-break-after: always;"></div>
 
 #### Finding items in profile: `find me`
 
@@ -751,6 +759,8 @@ Examples:
      And executing `find me internship google` will return the following: <br />
      ![FindProfileDouble](images/ug-profile/FindProfileDouble.png) <br />
      *(As you can see, the search results match at least one of the keywords specified regardless of its casing)*
+
+<div style="page-break-after: always;"></div>
 
 #### Listing all items in profile: `list me`
 
