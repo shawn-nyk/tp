@@ -412,7 +412,7 @@ internship in the company’s list of internships.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing `REQUIREMENTS`, all existing requirements get replaced by the new specified requirements.
-* You can remove all `REQUIREMENTS` by adding r/ without anything after it.
+* You can remove all `REQUIREMENTS` by adding `r/` without anything after it.
 
 <div style="page-break-after: always;"></div>
 
@@ -505,9 +505,9 @@ internship in the company’s internship list.
 
 <div markdown="span" class="alert alert-primary">
 
-  :bulb: **Tip:** The optional STATUS field can be used as freely as you want it too! Say you have applied and already
-  got the interview, you can immediately add the application with status <code>Interview</code> without needing to add
-  the application and update it afterwards.
+  :bulb: **Tip:** The optional <code>STATUS</code> field can be used as freely as you want it too! Say you have applied and already
+  got the interview for the internship, you can immediately add the application with status <code>Interview</code> without needing to add
+  the application and update it afterwards in a 2-step process.
      
 </div>
 
@@ -814,7 +814,7 @@ Example:
 
 <div style="page-break-after: always;"></div>
 
-2\. And this is your current profile item list. Note that only the 2 profile items of `Skill` type will be used for
+2\. And this is your current profile item list. Note that only the 2 profile items of `skill` type will be used for
 matching with the internships.
 
 <p align="center"><img src="images/ug-general/match-skills.png" width="100%"/></p>

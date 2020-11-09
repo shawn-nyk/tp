@@ -245,7 +245,7 @@ activity diagram shows how the `AddCommand` will work.
     - Only one command is needed, reducing the number of classes created
 - Cons:
     - `execute` method becomes extremely long as it needs to contain switch statements to handle the execution of
-    command X for the 4 different types of `Item`
+    `ABCCommand` for the 4 different types of `Item`
     - `ABCCommand` class is vulnerable to drastic changes when the parsing method of any one `Item` class changes
     - `ABCCommand` class holds more dependencies as it is now dependent on the 4 `Item` classes  
     - Poor readability and maintainability
@@ -253,7 +253,7 @@ activity diagram shows how the `AddCommand` will work.
     additional check for nullity in the parameter passed in is required
 
 **Conclusion**: Our group settled on the first design, since it better adheres to OOP principles such as
-Single Responsibility Principle. Our design meant that each specific `Item` command is only dependent on the `Item`
+Single Responsibility Principle. Our design meant that each specific `ABCItemCommand` is only dependent on the `Item`
 itself and not subjected to the changes in implementation of the other `Item` classes. This means that it will only
 have one reason to change. Moreover, this leads to lower coupling, which makes maintenance, integration and
 testing easier. This ended up being a good choice as we had some changes in the parsing requirements of one
