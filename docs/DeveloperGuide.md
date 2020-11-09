@@ -790,6 +790,10 @@ Priority | As a …​    | I want to …​                                    
 `* * *`  | user       | add information to my user profile                             | keep my user profile updated and accurate                                         
 `* * *`  | user       | delete information from my user profile                        | keep my user profile updated and accurate                                         
 `* * *`  | user       | edit information in my user profile                            | keep my user profile updated and accurate                                         
+
+<div style="page-break-after: always;"></div>
+
+Priority | As a …​    | I want to …​                                                   | So that I can…​                                                           
 `* * *`  | user       | view information in my user profile                            | see its details  
 `* *`    | user       | find information in my user profile by title                   | quickly look up specific information in my user profile without having to search manually
 `* *`    | user       | list all the information in my user profile                    | see the full list of information in my user profile
@@ -843,6 +847,8 @@ Use case ends.
  1b. InternHunter detects an invalid index. <br/>
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
+
+<div style="page-break-after: always;"></div>
 
 **Use case: UC03 - Edit a company**
 
@@ -941,6 +947,8 @@ Guarantees: Addition of internship to company is successful.
   1b1. InternHunter displays an error message and informs the user that the index is out of bounds. <br/>
   Use case resumes from step 1.
 
+<div style="page-break-after: always;"></div>
+
 **Use case: UC08 - Delete an internship**
 
 * Similar to UC02 - delete a company except user is deleting an internship.
@@ -1038,6 +1046,8 @@ Guarantees: InternHunter switches to the queried tab.
   1b1. InternHunter displays a message and informs the user that he is already in that tab. <br/>
   Use case ends. <br/>
   
+<div style="page-break-after: always;"></div>
+
 **Use case: UC24 - Clear all entries**
 
 Guarantees: All entries in InternHunter will be cleared.
