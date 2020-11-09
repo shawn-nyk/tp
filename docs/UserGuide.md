@@ -586,6 +586,8 @@ applications:
 
 <p align="center"><img src="images/ug-application/FindApplication1.png" width="100%"/></p>
 
+<div style="page-break-after: always;"></div>
+
 #### Listing all applications: `list app`
 
 Lists out **all** applications in your list of applications. After using the `find app` command, you would have likely
@@ -795,6 +797,8 @@ an internship has **at least one and not all** `Requirements` that matches with 
 - Matching done is case-insensitive. e.g. `Python` will match `python`.
 - Only the full phrase will be matched. e.g. `Machine` will not match `Machine Learning`.
 
+<div style="page-break-after: always;"></div>
+
 Example:
 
 1. Say you currently have these 2 list of internships from Google Singapore and Garena:
@@ -969,6 +973,8 @@ Action     | Format
 **Find**   | `find com KEYWORD [ANOTHER_KEYWORD]...`
 **List**   | `list com`
 
+<div style="page-break-after: always;"></div>
+
 ### Internship
 
 Action     | Format
@@ -987,6 +993,8 @@ Action     | Format
 **View**   | `view app INDEX`
 **Find**   | `find app KEYWORD [ANOTHER_KEYWORD]...`
 **List**   | `list app`
+
+<div style="page-break-after: always;"></div>
 
 ### Profile
 
