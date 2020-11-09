@@ -773,6 +773,10 @@ Priority | As a …​    | I want to …​                                    
 `* * *`  | user       | delete an internship from a company profile                    | remove erroneous / outdated entries                                               
 `* * *`  | user       | edit an internship from a company profile                      | keep the list of internships that a company offers updated and accurate           
 `* * *`  | user       | view a company’s internships when I view their profile         | see what internships they are offering                                            
+
+<div style="page-break-after: always;"></div>
+
+Priority | As a …​    | I want to …​                                                   | So that I can…​                                                           
 `* * *`  | user       | maintain a list of my internship applications                  | keep track of them                                                                
 `* * *`  | user       | add an internship application                                  | keep track of the internships that I have applied for                             
 `* * *`  | user       | delete an internship application                               | remove internship applications that I no longer need / am no longer interested in 
