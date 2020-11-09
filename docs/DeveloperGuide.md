@@ -227,7 +227,7 @@ activity diagram shows how the `AddCommand` will work.
 
 <div style="page-break-after: always;"></div>
 
-<p id="add-command-activity-diagram"><img src="images/AddCommandActivityDiagram.png" width="80%" height="80%"/></p>
+<p id="add-command-activity-diagram"><img src="images/AddCommandActivityDiagram.png" width="60%" height="60%"/></p>
 
 - Pros:
     - Only one command is needed, reducing the number of classes created
@@ -313,6 +313,8 @@ Sequence diagram for handle delete display switch index can be found [here](#han
   * Cons:
     * Introduces a dependency on `DeleteInternshipCommand`.
 
+<div style="page-break-after: always;"></div>
+
 * **Alternative 2**: Delete all applications made to internships from the company to be deleted without executing
 delete internship commands, i.e. by implementing delete internship command’s internal workings.
   * Pros:
@@ -362,8 +364,9 @@ The following sequence diagrams show how the editing profile Item feature works 
 
 ![EditProfileCommandSequenceDiagramSimplified](images/dg-profile/EditProfileCommandSequenceDiagramSimplified.png)
 
+<div style="page-break-after: always;"></div>
 
-1. After the user enters an input  to edit the user profile, the input is first parsed by the `MainParser` looks out
+1. After the user enters an input to edit the user profile, the input is first parsed by the `MainParser` looks out
  for the command word, recognizes the `edit` command and  funnels the input to `EditCommandParser`.
 2. The `EditCommandParser` then identifies the item type, which is profile item and returns the
  `EditProfileCommandParser`.
