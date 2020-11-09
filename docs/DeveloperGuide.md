@@ -225,7 +225,9 @@ execution of the `AddApplicationCommand` will work.
 Parser parses the user input and creates the general `ABCCommand` for execution. The following
 activity diagram shows how the `AddCommand` will work.
 
-<p id="add-command-acitivity-diagram"><img src="images/AddCommandActivityDiagram.png" width="80%" height="80%"/></p>
+<div style="page-break-after: always;"></div>
+
+<p id="add-command-activity-diagram"><img src="images/AddCommandActivityDiagram.png" width="80%" height="80%"/></p>
 
 - Pros:
     - Only one command is needed, reducing the number of classes created
@@ -245,6 +247,8 @@ have one reason to change. Moreover, this leads to lower coupling, which makes m
 testing easier. This ended up being a good choice as we had some changes in the parsing requirements of one
 of the `Item` classes, `InternshipItem`. If we had gone with the second design, the concrete `ABCCommand` might
 have broken down as it might not be suited to the different parsing requirements in the `InternshipItem`.
+
+<div style="page-break-after: always;"></div>
 
 ### Delete company feature
 
@@ -324,6 +328,8 @@ delete internship commands, i.e. by implementing delete internship command’s i
         happens to any application for that internship may not be the same as what would happen to it if a delete 
         internship command was executed directly by the user for the same internship.
         * Updating this behaviour will require updating code in both places rather than one centralised place.
+
+<div style="page-break-after: always;"></div>
 
 ### User profile feature
 
@@ -412,6 +418,8 @@ The following sequence diagram shows how the logic components bypass with model 
     * This exposes the internal components of the `Model` which increases coupling as `EditProfileCommand` is now
      dependent on `FilteredList` and the `ItemListManager` which reduces testability and maintainability.
 
+<div style="page-break-after: always;"></div>
+
 ### Switch screen feature
 
 #### What it is
@@ -486,6 +494,8 @@ The above activity diagram shows the logic and the path execution when the switc
         * Easier to implement. <br />
     * Cons:
         * This introduces the need to type twice in order to view the execution of the command.
+
+<div style="page-break-after: always;"></div>
 
 ### Storage feature
 
@@ -565,6 +575,8 @@ and `JsonSerializableItemList` use generics.
         * Extending the `ItemListStorage` and `JsonSerializableItemList` class would require changes to all the
         different versions corresponding to the different `Item` types.
 
+<div style="page-break-after: always;"></div>
+
 ### Clear feature
 
 #### What it is
@@ -614,6 +626,8 @@ check whether the internships in both lists are consistent.
     
     * Cons:
         * High risk of data inconsistency due to the linkage between company and application lists.
+
+<div style="page-break-after: always;"></div>
 
 ### Match command feature
 
@@ -689,6 +703,8 @@ The following sequence diagrams show how the match command works:
     - Lower cohesion as the `Model` interface has additional responsibilities and functionalities.
     `Model` now has to deal with algorithms, instead of keeping to what a `Model` does which is to manage the app data
     of the user.
+
+<div style="page-break-after: always;"></div>
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 
